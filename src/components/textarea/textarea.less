@@ -1,0 +1,43 @@
+@import '../../styles/variables.less';
+
+.it-textarea {
+  // position: relative;
+  padding: 5px 7px;
+  border: 1px solid #dfdfdf;
+  height: 32px;
+  color: #131313;
+  background-color: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border 0.2s;
+  transition: background-color 0.2s;
+
+  &:hover {
+    border-color: @color-neutral;
+  }
+
+  &:disabled {
+    border-color: @color-secondary-text;
+    background-color: @color-disabled-bg;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border: 1px solid @color-primary;
+    outline: none;
+    &:hover {
+      border-color: @color-primary;
+    }
+  }
+
+  &::placeholder {
+    color: @color-neutral;
+    text-indent: 0px;
+    transition: text-indent 0.27s ease;
+  }
+
+  &:focus::placeholder {
+    text-indent: 6px;
+    transition: text-indent 0.27s ease;
+  }
+}

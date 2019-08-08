@@ -1,0 +1,29 @@
+.pulse::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 @color-primary;
+  opacity: 0.4;
+  animation: fadeEffect 1.3s, waveEffect 1.3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  content: '';
+  pointer-events: none;
+}
+@keyframes waveEffect {
+  40%,
+  100% {
+    // box-shadow: 0 0 0 #1890ff;
+    box-shadow: 0 0 0 6px @color-primary;
+  }
+}
+@keyframes fadeEffect {
+  40%,
+  100% {
+    opacity: 0;
+  }
+}

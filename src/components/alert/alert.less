@@ -1,0 +1,81 @@
+@import '../../styles/variables.less';
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.set-type (@color) {
+  border: 1px solid @color;
+  .it-alert-icon {
+    color: @color;
+  }
+}
+
+.it-alert {
+  position: relative;
+  width: auto;
+  border-radius: 4px;
+  display: flex;
+  text-align: left;
+  background-color: #fff;
+  padding: 12px 18px;
+
+  &-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &-body {
+    font-size: 14px;
+    color: @color-grey-text;
+    margin-top: 7px;
+  }
+
+  &-icon {
+    font-size: 25px !important;
+    margin-right: 14px;
+    color: @color-primary;
+    user-select: none;
+  }
+
+  &-close {
+    position: absolute;
+    right: 18px;
+    color: @color-neutral;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      color: darken(@color-neutral, 20);
+    }
+  }
+
+  &--small {
+    align-items: center;
+    .it-alert-icon {
+      font-size: 20px;
+    }
+  }
+
+  &--primary {
+    .set-type(@color-primary);
+  }
+  &--success {
+    .set-type(@color-success);
+  }
+  &--warning {
+    .set-type(@color-warning);
+  }
+  &--danger {
+    .set-type(@color-danger);
+  }
+  &--black {
+    .set-type(@color-secondary-black);
+  }
+}
+
+.it-alert-iconbox {
+  display: flex;
+}

@@ -1,0 +1,55 @@
+@import '../../styles/variables.less';
+
+.it-modal {
+  &-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 99999;
+  }
+
+  &-body {
+    position: relative;
+
+    top: 150px;
+    width: 500px;
+    margin: 0 auto;
+    border: none;
+    border-radius: @border-radius-base;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25),
+    0px 1.5px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: default;
+  }
+
+  &-header {
+    text-align: left;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  &-content {
+    padding: 0px 24px 16px;
+    font-size: 14px;
+    overflow: auto;
+  }
+
+  &-footer {
+    background-color: #f9f9f9;
+    text-align: right;
+    padding: 16px 24px;
+
+    .it-btn+.it-btn {
+      margin-left: 16px;
+    }
+  }
+
+}

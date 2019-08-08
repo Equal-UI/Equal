@@ -1,0 +1,1 @@
+Equal – Vue components system

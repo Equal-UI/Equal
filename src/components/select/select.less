@@ -1,0 +1,133 @@
+@import '../../styles/variables.less';
+
+.it-select {
+  display: inline-block;
+  position: relative;
+  min-width: 100px;
+}
+
+.it-select-option-check {
+  position: absolute;
+  border-radius: 50%;
+  background-color: @color-primary;
+  width: 7px;
+  height: 7px;
+  right: 16px;
+  top: 14px;
+}
+
+.it-select-selection {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  text-align: left;
+  border: 1px solid @color-secondary-text;
+  border-radius: 4px;
+  line-height: 1;
+  padding: 8px 28px 8px 12px;
+
+  &:hover {
+    border-color: @color-neutral;
+  }
+
+  &--active {
+    border-color: @color-primary;
+    & > .it-select-arrow {
+      color: @color-primary;
+    }
+    &:hover {
+      border-color: @color-primary;
+    }
+  }
+
+  &--disabled {
+    border-color: @color-secondary-text;
+    background: @color-disabled-bg;
+    color: @color-neutral;
+    cursor: not-allowed;
+  }
+}
+
+.it-select-placeholder,
+.it-select-selected {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.it-select-placeholder {
+  color: @color-neutral;
+}
+
+.it-select-arrow {
+  position: absolute;
+  top: 8px;
+  right: 6.5px;
+  color: inherit;
+  transition: all 0.27s;
+
+  &--active {
+    transform: rotate(-180deg);
+  }
+}
+
+.it-select-dropdown {
+  margin-top: 6px;
+  position: absolute;
+  z-index: 9000;
+}
+
+.it-select-list {
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25), 0px 1.5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  min-width: 130px;
+  font-size: 13px;
+  width: inherit;
+  overflow: hidden;
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  text-align: left;
+  background-color: #fff;
+  word-wrap: break-word;
+  user-select: none;
+}
+
+.it-select-option {
+  position: relative;
+  padding: 11px 14px;
+  display: block;
+  overflow: hidden;
+  line-height: 1;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  white-space: nowrap;
+  word-wrap: normal;
+  max-width: 100%;
+  width: 100%;
+
+  &:hover {
+    background: @color-primary;
+    color: #fff;
+    cursor: pointer;
+    .it-select-option-check {
+      background-color: #ffffff;
+    }
+  }
+
+  &--divided {
+    border-top: 0.6px solid @color-secondary-text;
+    // margin-top: 3px;
+  }
+
+  &--disabled {
+    color: @color-neutral;
+    &:hover {
+      background-color: #fff;
+      color: @color-neutral;
+      cursor: not-allowed;
+    }
+  }
+}

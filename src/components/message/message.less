@@ -1,0 +1,53 @@
+@import '../../styles/variables.less';
+
+.set-type (@color) {
+  .it-message-icon {
+    color: @color;
+  }
+}
+
+.it-message {
+
+  z-index: 99999;
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  top: 10px;
+  padding: 6px 12px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25),
+    0px 1.5px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  // max-width: 150px;
+  width: max-content;
+  color: @color-secondary-black;
+  font-size: 12px;
+  line-height: 1;
+  background-color: #fff;
+  word-wrap: break-word;
+  transition: all .4s;
+  display: inline-block;
+
+  &-icon {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  &-text {
+    vertical-align: middle;
+  }
+
+  &--primary {
+    .set-type(@color-primary);
+  }
+  &--success {
+    .set-type(@color-success);
+  }
+  &--warning {
+    .set-type(@color-warning);
+  }
+  &--danger {
+    .set-type(@color-danger);
+  }
+}

@@ -1,0 +1,112 @@
+@import '../../styles/variables.less';
+
+@switch-circle-size-base: 16px;
+@switch-circle-size-active: 21px;
+
+.set-type (@bg-color) {
+  &--checked {
+    background-color: @bg-color;
+    & .it-switch-circle {
+      left: 100%;
+      margin-left: -(@switch-circle-size-base + 2);
+    }
+
+    &:hover {
+      background-color: @bg-color !important;
+    }
+
+    &:active {
+      & .it-switch-circle {
+        margin-left: -(@switch-circle-size-active + 2);
+      }
+    }
+  }
+
+  &--disabled {
+    cursor: not-allowed !important;
+    background-color: lighten(@color-secondary-text, 7%);
+
+    & .it-switch-circle {
+      box-shadow: none;
+    }
+
+    &:hover {
+      background-color: lighten(@color-secondary-text, 7%) !important;
+    }
+  }
+
+  &--disabled&--checked {
+    background-color: lighten(@bg-color, 30%);
+    &:hover {
+      background-color: lighten(@bg-color, 30%) !important;
+    }
+  }
+}
+
+.it-switch {
+  position: relative;
+  display: inline-block;
+  // border: 1px solid transparent;
+  height: 20px;
+  min-width: 35px;
+  border-radius: 10px;
+  background-color: @color-secondary-text;
+  vertical-align: middle;
+  transition: all 0.2s;
+  // overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+
+  &--primary {
+    .set-type(@color-primary);
+  }
+  &--success {
+    .set-type(@color-success);
+  }
+  &--warning {
+    .set-type(@color-warning);
+  }
+  &--danger {
+    .set-type(@color-danger);
+  }
+  &--black {
+    .set-type(@color-secondary-black);
+  }
+
+  &:active {
+    & .it-switch-circle {
+      width: @switch-circle-size-active;
+    }
+  }
+
+  &:hover {
+    background-color: @color-neutral;
+  }
+
+  &-circle {
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: @switch-circle-size-base;
+    height: @switch-circle-size-base;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all 0.3s;
+    cursor: inherit;
+    box-shadow: @default-text-shadow;
+  }
+
+  .it-switch-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    cursor: inherit;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "equal-vue",
+  "version": "0.1.0",
+  "author": {
+    "name": "Yan Savinov"
+  },
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib src/index.ts --name equal",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "docs:dev": "nuxt ./docs",
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate ./docs",
+    "deploy:docs": "push-dir --dir=/docs/dist --branch=gh-pages --cleanup"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@nuxt/typescript-build": "^0.2.10",
+    "@types/jest": "^23.1.4",
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-typescript": "^3.10.0",
+    "@vue/cli-plugin-unit-jest": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "lint-staged": "^8.1.5",
+    "nuxt": "^2.9.2",
+    "nuxt-class-component": "^1.3.0",
+    "prismjs": "^1.17.1",
+    "push-dir": "^0.4.1",
+    "ts-jest": "^23.0.0",
+    "vue-prism-component": "^1.1.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
