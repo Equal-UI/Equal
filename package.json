@@ -11,8 +11,7 @@
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "docs:dev": "nuxt ./docs",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate ./docs",
-    "deploy:docs": "push-dir --dir=/docs/dist --branch=gh-pages --cleanup --remote=github"
+    "docs:generate": "DEPLOY_ENV=GH_PAGES nuxt generate ./docs"
   },
   "dependencies": {
     "core-js": "^2.6.5",

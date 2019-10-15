@@ -12,7 +12,7 @@ branches:
 
 install:
   - npm install
-  - npm run generate:gh-pages
+  - npm run docs:generate
 
 script:
   - echo "Skipping tests"
