@@ -38,7 +38,7 @@ const components = {
   Tooltip
 }
 
-const install = (Vue: any) => {
+function install(Vue: any) {
   for (const component in components) {
     if (components[component]) {
       Vue.component(components[component].name, components[component])
