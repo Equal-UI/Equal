@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { Vue } from 'vue-property-decorator'
 import Equal from '../../src'
 
-Vue.component('it-button', Equal.Button)
+Vue.use(Equal)

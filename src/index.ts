@@ -40,7 +40,7 @@ const components = {
 
 const install = (Vue: any) => {
   for (const component in components) {
-    if (components[component].name) {
+    if (components[component]) {
       Vue.component(components[component].name, components[component])
     }
   }
