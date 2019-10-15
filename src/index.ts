@@ -49,9 +49,9 @@ const install = (Vue: any) => {
   Vue.prototype.$Notification = Notification
 }
 
-// if (typeof window !== 'undefined' && window.Vue) {
-//   install(window.Vue)
-// }
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
 
 export default {
   install,
