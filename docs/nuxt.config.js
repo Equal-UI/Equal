@@ -36,8 +36,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/equal', ssr: false },
-    { src: "@/plugins/prism", ssr: false }
+    { src: '@/plugins/equal', mode: 'client' },
+    { src: "@/plugins/prism", mode: 'client' }
   ],
   /*
   ** Nuxt.js dev-modules

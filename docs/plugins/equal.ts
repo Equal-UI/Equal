@@ -1,4 +1,4 @@
 import Vue from 'vue'
 import Equal from '../../src'
 
-Vue.use(Equal)
+Vue.component('it-button', Equal.Button)
