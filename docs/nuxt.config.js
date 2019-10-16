@@ -57,7 +57,7 @@ export default {
     */
     extend (config, {isClient}) {
       if (isClient) {
-        config.devtool = 'eval-source-map'
+        config.devtool = '#source-map'
       }
     }
   }
