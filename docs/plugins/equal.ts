@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import Equal from '../../dist/equal.common.js'
+import Equal from '../../src'
 
 Vue.use(Equal)
