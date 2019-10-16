@@ -41,7 +41,7 @@ Vue.component('it-select', Equal.Select)
 Vue.component('it-select-option', Equal.SelectOption)
 // Vue.component('it-slider', Equal.Slider)
 Vue.component('it-switch', Equal.Switch)
-// Vue.component('it-tag', Equal.Tag)
+Vue.component('it-tag', Equal.Tag)
 Vue.component('it-textarea', Equal.Textarea)
 // Vue.component('it-tooltip', Equal.Tooltip)
 

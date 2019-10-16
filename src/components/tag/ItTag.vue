@@ -5,7 +5,7 @@
       <slot></slot>
       </div>
         
-      <it-icon v-if="closable" @click="clickClose" name="clear" class="it-tag-close" />
+      <it-icon v-if="closable" @click="clickClose" name="clear" class="it-tag-close"></it-icon>
     </div>
   </div>
 </template>
