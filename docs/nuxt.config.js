@@ -64,9 +64,18 @@ export default {
      ** You can extend webpack config here
      */
     terser: {
+      parallel: true,
+      cache: false,
+      sourceMap: false,
+      extractComments: {
+        filename: 'LICENSES'
+      },
       terserOptions: {
         keep_classnames: true,
-        keep_fnames: true
+        keep_fnames: true,
+        output: {
+          comments: /^\**!|@preserve|@license|@cc_on/
+        }
       }
     },
     extend(config, ctx) {}
