@@ -4,7 +4,8 @@ import Equal from '../../src'
 // Vue.use(Equal)
 
 for (const component in Equal) {
-  if (Equal[component].name) {
+  if (Equal[component]) {
+    console.log(Equal[component].name)
     Vue.component(Equal[component].name, Equal[component])
   }
 }
