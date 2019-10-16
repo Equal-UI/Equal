@@ -45,6 +45,6 @@ Vue.component('it-tag', Equal.Tag)
 Vue.component('it-textarea', Equal.Textarea)
 Vue.component('it-tooltip', Equal.Tooltip)
 
-Vue.prototype.$Message = Equal.Message
-Vue.prototype.$Modal = Equal.Modal
-Vue.prototype.$Notification = Equal.Notification
+// Vue.prototype.$Message = Equal.Message
+// Vue.prototype.$Modal = Equal.Modal
+// Vue.prototype.$Notification = Equal.Notification
