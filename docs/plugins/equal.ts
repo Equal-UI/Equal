@@ -31,9 +31,9 @@ Vue.component('it-dropdown-menu', Equal.DropdownMenu)
 Vue.component('it-dropdown-item', Equal.DropdownItem)
 Vue.component('it-icon', Equal.Icon)
 Vue.component('it-input', Equal.Input)
-Vue.component('it-message', Equal.Message)
-Vue.component('it-modal', Equal.Modal)
-Vue.component('it-notification', Equal.Notification)
+// Vue.component('it-message', Equal.Message)
+// Vue.component('it-modal', Equal.Modal)
+// Vue.component('it-notification', Equal.Notification)
 Vue.component('it-number-input', Equal.NumberInput)
 Vue.component('it-progressbar', Equal.Progressbar)
 Vue.component('it-radio', Equal.Radio)
@@ -45,6 +45,6 @@ Vue.component('it-tag', Equal.Tag)
 Vue.component('it-textarea', Equal.Textarea)
 Vue.component('it-tooltip', Equal.Tooltip)
 
-Vue.prototype.$Message = Equal.Message
-Vue.prototype.$Modal = Equal.Modal
-Vue.prototype.$Notification = Equal.Notification
+// Vue.prototype.$Message = Equal.Message
+// Vue.prototype.$Modal = Equal.Modal
+// Vue.prototype.$Notification = Equal.Notification
