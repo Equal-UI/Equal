@@ -1,9 +1,9 @@
 <template>
-  <span v-show="show" :class="['it-tag', type && `it-tag--${type}`]">
-    <span>
+  <div v-show="show" :class="['it-tag', type && `it-tag--${type}`]">
+    <div>
       <slot></slot>
-    </span>
-  </span>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
