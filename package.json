@@ -5,6 +5,7 @@
     "name": "Yan Savinov"
   },
   "private": false,
+  "main": "./dist/equal.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/index.ts --name equal",

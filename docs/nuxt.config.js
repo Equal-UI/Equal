@@ -37,7 +37,9 @@ export default {
   */
   plugins: [
     { src: '@/plugins/equal', mode: 'client' },
-    { src: "@/plugins/prism", mode: 'client' }
+    { src: '@/plugins/prism', mode: 'client' },
+    { src: '@/plugins/hotjar', mode: 'client' },
+    { src: '@/plugins/ga', mode: 'client' },
   ],
   /*
   ** Nuxt.js dev-modules
