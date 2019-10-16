@@ -3,7 +3,7 @@
     <h1>Tag</h1>
 
     <Demobox>
-      <it-tag :closable="tagClosable" :type="tagType">{{tagText}}</it-tag>
+      <it-tag :closable="tagClosable" :type="tagType"><span>{{tagText}}</span></it-tag>
 
       <template slot="props">
         <it-select placeholder="Select type" labelTop="Tag type" v-model="tagType">

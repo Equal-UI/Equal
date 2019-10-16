@@ -11,7 +11,6 @@
       </li>
       <li class="group-title">
         Components
-        <it-tag type="primary">18</it-tag>
       </li>
       <li :class="{
         'active-menu-item': $route.name === 'components-button'
