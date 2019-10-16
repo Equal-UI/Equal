@@ -26,9 +26,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import './button.less'
 
-@Component({
-  name: 'it-button'
-})
+@Component
 export default class ItButton extends Vue {
   @Prop({
     default: 'primary',
