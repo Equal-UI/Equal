@@ -30,6 +30,8 @@
     ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./plugins/ga.ts",
+    "./plugins/hotjar.ts"
   ]
 }
