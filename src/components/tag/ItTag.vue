@@ -1,10 +1,10 @@
 <template>
-  <span v-show="show" :class="['it-tag', type && `it-tag--${type}`]">
-    <span>
+  <div v-show="show" :class="['it-tag', type && `it-tag--${type}`]">
+    <div>
       <slot></slot>
       <it-icon v-if="closable" @click="clickClose" name="clear" class="it-tag-close" />
-    </span>
-  </span>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">

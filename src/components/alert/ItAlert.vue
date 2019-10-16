@@ -9,7 +9,7 @@
       ]"
     >
       <div v-if="showIcon" class="it-alert-iconbox">
-        <ItIcon class="it-alert-icon" :name="typeIcon[`${type}`]" />
+        <it-icon class="it-alert-icon" :name="typeIcon[`${type}`]" />
       </div>
       <div>
         <p class="it-alert-title">{{title}}</p>
