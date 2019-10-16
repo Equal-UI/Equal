@@ -25,9 +25,9 @@ const components = {
   ...Dropdown,
   Icon,
   Input,
-  // Message,
-  // Modal,
-  // Notification,
+  Message,
+  Modal,
+  Notification,
   NumberInput,
   Progressbar,
   Radio,
@@ -42,7 +42,7 @@ const components = {
 function install(Vue: any) {
   for (const component in components) {
     if (components[component]) {
-      Vue.use(components[component])
+      Vue.component(components[component].name, components[component])
     }
   }
   Vue.prototype.$Message = Message

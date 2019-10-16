@@ -2,7 +2,7 @@ import Switch from './ItSwitch.vue'
 
 // @ts-ignore
 Switch.install = (Vue) => {
-  Vue.component('it-switch', Switch)
+  Vue.component(Switch.name, Switch)
 }
 
 export default Switch

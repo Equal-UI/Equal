@@ -50,7 +50,7 @@ import Row from '~/components/Row.vue'
   components: {
     Col,
     Row
-  },
+  }
 })
 export default class Index extends Vue {}
 </script>

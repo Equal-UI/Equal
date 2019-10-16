@@ -2,7 +2,7 @@ import Icon from './ItIcon.vue'
 
 // @ts-ignore
 Icon.install = (Vue) => {
-  Vue.component('it-icon', Icon)
+  Vue.component(Icon.name, Icon)
 }
 
 export default Icon
