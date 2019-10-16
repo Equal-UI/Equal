@@ -18,7 +18,7 @@
           <slot></slot>
         </p>
       </div>
-      <ItIcon v-if="closable" @click="clickCross" name="clear" class="it-alert-close" />
+      <it-icon v-if="closable" @click="clickCross" name="clear" class="it-alert-close" />
     </div>
   </transition>
 </template>

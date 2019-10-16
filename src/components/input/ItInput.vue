@@ -19,7 +19,7 @@
     />
     <slot name="icon">
       <span class="it-input-icon-wrapper">
-      <ItIcon class="it-input-icon" v-if="icon" :name="icon" />
+      <it-icon class="it-input-icon" v-if="icon" :name="icon" />
       </span>
     </slot>
   </div>
