@@ -4,7 +4,7 @@
 
     <Demobox>
       <it-dropdown :placement="dropdownType">
-        Hover me
+        <it-button>Hover me</it-button>
         <it-dropdown-menu slot="menu">
           <it-dropdown-item>Hello</it-dropdown-item>
           <it-dropdown-item disabled >Disabled</it-dropdown-item>

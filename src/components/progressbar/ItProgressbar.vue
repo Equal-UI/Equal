@@ -6,14 +6,14 @@
       <div class="it-progress-line" :style="{
         width: progress + '%'
       }">
-        <ItTooltip
+        <it-tooltip
           v-show="showTooltip"
           style="float: right; height: 100%"
           permanent
           ref="tooltip"
           :placement="tooltip"
           :content="progress+'%'"
-        >&nbsp</ItTooltip>
+        >&nbsp</it-tooltip>
       </div>
     </div>
   </div>

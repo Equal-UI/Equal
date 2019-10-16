@@ -7,13 +7,13 @@
         sm="12"
         xs="12"
       >
-        <h1 class="main-title">Equal design system</h1>
+        <h1 class="main-title">Equal Vue</h1>
         <h4 class="sub-title">Perfect soultion for your next Vue project </h4>
         <div class="buttons-group">
           <nuxt-link to="/start">
             <it-button size="big">Get started</it-button>
           </nuxt-link>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/">
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/quatrochan/Equal">
             <it-button size="big" outlined>Github</it-button>
           </a>
         </div>
@@ -26,16 +26,7 @@
         sm="12"
         xs="12"
       >
-        <h1 class="main-title">Equal design system</h1>
-        <h4 class="sub-title">Perfect soultion for your next Vue project </h4>
-        <div class="buttons-group">
-          <nuxt-link to="/start">
-            <it-button size="big">Get started</it-button>
-          </nuxt-link>
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/">
-            <it-button size="big" outlined>Github</it-button>
-          </a>
-        </div>
+        Test
       </Col>
     </Row>
   </div>

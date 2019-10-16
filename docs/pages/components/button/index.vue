@@ -164,6 +164,13 @@ export default class ButtonPage extends Vue {
       description: 'Add material-icon with provided name'
     },
     {
+      property: 'disabled',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Makes button disabled'
+    },
+    {
       property: 'pulse',
       type: ['Boolean'],
       default: false,

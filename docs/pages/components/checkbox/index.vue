@@ -14,17 +14,37 @@
         <it-checkbox label="Disabled" v-model="checkboxDisabled" />
       </template>
     </Demobox>
+
+    <Box :code="codeType" title="Type">
+      <it-checkbox type="primary" label="Primary" v-model="typesCheck" />
+      <it-checkbox type="success" label="Success" v-model="typesCheck" />
+      <it-checkbox type="danger" label="Danger" v-model="typesCheck" />
+      <it-checkbox type="warning" label="Warning" v-model="typesCheck" />
+      <it-checkbox type="black" label="Black" v-model="typesCheck" />
+    </Box>
+
+    <Box :code="codeIcon" title="Icon">
+      <it-checkbox type="primary" label="Primary" icon="visibility" v-model="iconsCheck" />
+      <it-checkbox type="success" label="Success" icon="room" v-model="iconsCheck" />
+      <it-checkbox type="danger" label="Danger" icon="favorite" v-model="iconsCheck" />
+      <it-checkbox type="warning" label="Warning" icon="alarm_on" v-model="iconsCheck" />
+      <it-checkbox type="black" label="Black" icon="verified_user" v-model="iconsCheck" />
+    </Box>
+
+    <props-table :data-sheet="dataSheet" />
   </div>
 </template>
 
 <script lang="ts">
 import Demobox from '~/components/Demobox.vue'
+import Box from '~/components/Box.vue'
+import PropsTable from '~/components/Table.vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   // @ts-ignore
   layout: 'components',
-  components: { Demobox }
+  components: { Demobox, Box, PropsTable }
 })
 export default class CheckboxPage extends Vue {
   // @Prop({ type: Boolean, default: false }) private disabled?: boolean
@@ -35,5 +55,58 @@ export default class CheckboxPage extends Vue {
   checkboxIcon = 'check'
   checkboxType = 'primary'
   checkboxTypes = ['primary', 'success', 'danger', 'warning', 'black']
+
+  typesCheck = true
+  iconsCheck = true
+
+  codeType = `<it-checkbox type="primary" label="Primary" v-model="typesCheck" />
+<it-checkbox type="success" label="Success" v-model="typesCheck" />
+<it-checkbox type="danger" label="Danger" v-model="typesCheck" />
+<it-checkbox type="warning" label="Warning" v-model="typesCheck" />
+<it-checkbox type="black" label="Black" v-model="typesCheck" />`
+
+  codeIcon = `<it-checkbox type="primary" label="Primary" icon="visibility" v-model="iconsCheck" />
+<it-checkbox type="success" label="Success" icon="room" v-model="iconsCheck" />
+<it-checkbox type="danger" label="Danger" icon="favorite" v-model="iconsCheck" />
+<it-checkbox type="warning" label="Warning" icon="alarm_on" v-model="iconsCheck" />
+<it-checkbox type="black" label="Black" icon="verified_user" v-model="iconsCheck" />`
+
+  dataSheet = [
+    {
+      property: 'type',
+      type: ['String'],
+      default: 'primary',
+      values: ['primary', 'success', 'danger', 'warning', 'black'],
+      description: 'Type of the checkbox'
+    },
+    {
+      property: 'label',
+      type: ['String'],
+      default: '',
+      values: [],
+      description: 'Label of the checkbox'
+    },
+    {
+      property: 'icon',
+      type: ['String'],
+      default: 'check',
+      values: ['Material Icons'],
+      description: 'Icon of the checkbox'
+    },
+    {
+      property: 'disabled',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Makes checkbox disabled'
+    },
+    {
+      property: 'pulse',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Add pulse to the element'
+    }
+  ]
 }
 </script>

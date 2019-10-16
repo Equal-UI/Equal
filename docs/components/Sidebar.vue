@@ -13,14 +13,14 @@
         Components
       </li>
       <li :class="{
-        'active-menu-item': $route.name === 'components-button'
-      }">
-        <nuxt-link to="/components/button">Button</nuxt-link>
-      </li>
-      <li :class="{
         'active-menu-item': $route.name === 'components-alert'
       }">
         <nuxt-link to="/components/alert">Alert</nuxt-link>
+      </li>
+      <li :class="{
+        'active-menu-item': $route.name === 'components-button'
+      }">
+        <nuxt-link to="/components/button">Button</nuxt-link>
       </li>
       <li :class="{
         'active-menu-item': $route.name === 'components-checkbox'
