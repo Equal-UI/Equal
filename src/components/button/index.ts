@@ -2,7 +2,7 @@ import Button from './ItButton.vue'
 
 // @ts-ignore
 Button.install = (Vue) => {
-  Vue.component(Button.name, Button)
+  Vue.component('it-button', Button)
 }
 
 export default Button

@@ -2,7 +2,7 @@ import Input from './ItInput.vue'
 
 // @ts-ignore
 Input.install = (Vue) => {
-  Vue.component(Input.name, Input)
+  Vue.component('it-input', Input)
 }
 
 export default Input
