@@ -10,7 +10,7 @@
       disabled && 'it-checkbox--disabled'
       ]"
       >
-        <ItIcon :name="icon" />
+        <it-icon :name="icon" />
       </span>
     </span>
     <span v-if="label" class="it-checkbox-label">{{label}}</span>
