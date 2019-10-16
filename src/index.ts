@@ -25,8 +25,6 @@ const components = {
   ...Dropdown,
   Icon,
   Input,
-  Message,
-  Modal,
   NumberInput,
   Progressbar,
   Radio,
