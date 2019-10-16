@@ -36,7 +36,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '@/plugins/equal', mode: 'client' },
+    { src: '@/plugins/equal', mode: 'server' },
     { src: "@/plugins/prism", mode: 'client' }
   ],
   /*
