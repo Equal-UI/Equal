@@ -1,10 +1,11 @@
 {
   "name": "equal-vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Yan Savinov"
   },
   "private": false,
+  "license": "MIT",
   "main": "./dist/equal.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",

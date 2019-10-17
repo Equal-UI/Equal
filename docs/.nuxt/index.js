@@ -13,6 +13,8 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 import nuxt_plugin_equal_225e49c0 from 'nuxt_plugin_equal_225e49c0' // Source: ../plugins/equal (mode: 'client')
 import nuxt_plugin_prism_22f995cd from 'nuxt_plugin_prism_22f995cd' // Source: ../plugins/prism (mode: 'client')
+import nuxt_plugin_hotjar_2e6cf5a2 from 'nuxt_plugin_hotjar_2e6cf5a2' // Source: ../plugins/hotjar (mode: 'client')
+import nuxt_plugin_ga_170fd464 from 'nuxt_plugin_ga_170fd464' // Source: ../plugins/ga (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -45,7 +47,7 @@ Vue.use(Meta, {
   tagIDKeyName: 'hid' // the property name that vue-meta uses to determine whether to overwrite or append a tag
 })
 
-const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
+const defaultTransition = {"name":"page","mode":"out-in","appear":true,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
 async function createApp(ssrContext) {
   const router = await createRouter(ssrContext)
@@ -148,6 +150,14 @@ async function createApp(ssrContext) {
 
   if (process.client && typeof nuxt_plugin_prism_22f995cd === 'function') {
     await nuxt_plugin_prism_22f995cd(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_hotjar_2e6cf5a2 === 'function') {
+    await nuxt_plugin_hotjar_2e6cf5a2(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_ga_170fd464 === 'function') {
+    await nuxt_plugin_ga_170fd464(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
