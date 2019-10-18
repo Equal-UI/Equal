@@ -18,6 +18,7 @@ Equal UI is a Vue 2 components library
 
 ## Links
 - [📚Docs](https://quatrochan.github.io/Equal/)
+- 🔮 Twitter: [@EqualVue](https://twitter.com/EqualVue)
 
 # 🔧 Install
 

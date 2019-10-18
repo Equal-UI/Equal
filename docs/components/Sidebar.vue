@@ -1,7 +1,9 @@
 <template>
   <div class="sidebar" :style="{
       left
-    }">
+    }"
+    v-clickoutside="hideSidebar"
+    >
     <it-button @click="toggleSidebar" class="burger" :icon="left === 'inherit' ? 'menu' : 'close'" />
     <ul class="sidebar-menu">
       <li :class="{
@@ -108,15 +110,23 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import clickoutside from '../../src/directives/clickOutside'
 
 @Component({
   // @ts-ignore
-  layout: 'components'
+  layout: 'components',
+  directives: {clickoutside}
 })
 export default class Comps extends Vue {
   left = 'inherit'
   toggleSidebar() {
     this.left = this.left === 'inherit' ? '0px !important' : 'inherit'
+  }
+  hideSidebar() {
+    if (this.left === 'inherit') {
+      return
+    }
+    this.left = 'inherit'
   }
 }
 </script>

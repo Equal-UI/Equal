@@ -62,6 +62,11 @@
       <it-button icon="face" />
       <it-button icon="face" iconAfter>Button</it-button>
     </Box>
+    <Box :code="codePulse" title="Pulse">
+      <p slot="description" style="padding: 0px 24px;">Pulse helps you to catch user's attention</p>
+      <it-button type="primary" pulse>Look at me</it-button>
+      <it-button type="primary" pulse outlined>Look at me</it-button>
+    </Box>
     <Box :code="codeDisabled" title="Disabled">
       <it-button size="small" disabled>Button</it-button>
       <it-button size="normal" disabled>Button</it-button>
@@ -122,6 +127,9 @@ export default class ButtonPage extends Vue {
   codeIcon = `<it-button icon="face">Button</it-button>
 <it-button icon="face" />
 <it-button icon="face" iconAfter>Button</it-button>`
+
+  codePulse = `<it-button type="primary" pulse>Look at me</it-button>
+<it-button type="primary" pulse outlined>Look at me</it-button>`
 
   codeDisabled = `<it-button size="small" disabled>Button</it-button>
 <it-button size="normal" disabled>Button</it-button>

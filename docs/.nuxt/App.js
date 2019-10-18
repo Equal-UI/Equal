@@ -11,7 +11,7 @@ import _6f6c098b from '../layouts/default.vue'
 const layouts = { "_components": _0a4d138c,"_default": _6f6c098b }
 
 export default {
-  head: {"title":"Equal components","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Equal – Vue components system"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002FEqual\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Material+Icons|Material+Icons+Outlined"}],"style":[],"script":[]},
+  head: {"title":"Equal components","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"\u003Cp align=\"center\"\u003E   \u003Ca href=\"https:\u002F\u002Fquatrochan.github.io\u002FEqual\u002F\"\u003E     \u003Cimg width=\"200\" src=\"https:\u002F\u002Fraw.githubusercontent.com\u002Fquatrochan\u002FEqual\u002Fmaster\u002Fdocs\u002Fassets\u002Flogo.png\"\u003E   \u003C\u002Fa\u003E \u003C\u002Fp\u003E"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002FEqual\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Material+Icons|Material+Icons+Outlined"}],"style":[],"script":[]},
 
   render(h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })

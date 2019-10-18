@@ -1,7 +1,10 @@
 <template>
   <div>
     <h1>Getting started</h1>
+    <div class="it-box">
     <h5>Coming soon...</h5>
+
+    </div>
 
   </div>
 </template>
