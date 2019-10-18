@@ -3,6 +3,7 @@
     <Row style="display: flex; border-bottom: 1px solid #e2e2e2;" justify="center">
       <Col
         style="display: flex; flex-direction: column; margin: 130px 60px 30px 60px;"
+        class="mainpage-col"
         lg="12"
         sm="12"
         xs="12"
@@ -14,7 +15,7 @@
             <it-button size="big">Get started</it-button>
           </nuxt-link>
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/quatrochan/Equal">
-            <it-button size="big" outlined>Github</it-button>
+            <it-button size="big" type="black" outlined>Github</it-button>
           </a>
         </div>
       </Col>
@@ -64,5 +65,11 @@ export default class Index extends Vue {}
     & a + a {
       margin-left: 22px;
     }
+  }
+
+    @media only screen and (max-width: 600px) {
+      .mainpage-col {
+        margin: 120px 30px 30px !important;
+      }
   }
 </style>
