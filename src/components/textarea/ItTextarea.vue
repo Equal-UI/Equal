@@ -20,7 +20,7 @@ export default class ItTextarea extends Vue {
   @Prop({type: Boolean, default: false}) public resizable?: boolean
 
   @Model('input') public value!: string
-  @Prop({ default: false }) private disabled!: boolean
+  @Prop({ type: Boolean, default: false }) private disabled!: boolean
 
   public onInput(e: InputEvent) {
     this.$emit('input', (e.target as HTMLInputElement).value)

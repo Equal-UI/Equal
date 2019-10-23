@@ -48,6 +48,9 @@ export default {
     }
   }
 
+  .it-demobox + .table-box {
+    margin-top: 30px;
+  }
   @media only screen and (max-width: 600px) {
     .it-demobox {
       flex-direction: column;

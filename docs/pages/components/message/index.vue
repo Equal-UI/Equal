@@ -10,19 +10,21 @@
     </Box>
 
     <Box :code="durationCode" title="Duration">
-      <it-button @click="$Message({duration: 4000, text: 'I have 4000ms left'})">4000 ms</it-button>
+      <it-button @click="$Message({duration: 5000, text: 'I have 5000ms left'})">5000 ms</it-button>
     </Box>
+    <props-table :event-sheet="eventSheet" :data-sheet="dataSheet" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Box from '~/components/Box.vue'
+import PropsTable from '~/components/Table.vue'
 
 @Component({
   // @ts-ignore
   layout: 'components',
-  components: { Box }
+  components: { Box, PropsTable }
 })
 export default class MessagePage extends Vue {
   messagesCode = `<it-button @click="showMessage()">Primary message</it-button>
@@ -31,7 +33,7 @@ export default class MessagePage extends Vue {
 <it-button @click="showMessage('Warning')" type="warning">Warning message</it-button>
 
 <script>
-export default: {
+export default {
   methods: {
     showMessage(type) {
       switch (type) {
@@ -55,7 +57,7 @@ export default: {
 
   durationCode = `
 
-<it-button @click="$Message({duration: 4000, text: 'I have 4000ms left'})">4000 ms</it-button>`
+<it-button @click="$Message({duration: 5000, text: 'I have 5000ms left'})">5000 ms</it-button>`
 
   showMessage(type) {
     switch (type) {
@@ -73,5 +75,45 @@ export default: {
         break
     }
   }
+
+  dataSheet = [
+    {
+      property: 'text',
+      type: ['String'],
+      default: '-',
+      values: [],
+      description: 'Text of the message'
+    },
+    {
+      property: 'type',
+      type: ['String'],
+      default: 'primary',
+      values: ['primary', 'success', 'danger', 'warning'],
+      description: 'Type of the message'
+    },
+    {
+      property: 'duration',
+      type: ['Number'],
+      default: 4000,
+      values: [],
+      description: 'Message duration'
+    },
+    {
+      property: 'icon',
+      type: ['String'],
+      default: '',
+      values: ['Material Icon'],
+      description: 'Message icon'
+    }
+  ]
+
+  eventSheet = [
+    {
+      event: '@on-close',
+      description: 'The event function triggered when message hides',
+      arguments: 'function'
+    }
+  ]
+
 }
 </script>

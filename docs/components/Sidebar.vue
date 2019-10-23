@@ -152,6 +152,8 @@ export default class Comps extends Vue {
       list-style: none;
       padding: 0px;
       font-size: 14px;
+      height: 86vh;
+      overflow-y: auto;
 
       & > li {
         display: list-item;

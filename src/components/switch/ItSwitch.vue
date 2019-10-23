@@ -30,7 +30,7 @@ import './switch.less'
 export default class ItSwitch extends Vue {
   @Prop({ default: 'primary' }) private type!: string
   @Prop() private label?: string
-  @Prop({ default: false }) private pulse!: boolean
+  @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Model('change', { default: false }) private value!: boolean | string | number
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
 

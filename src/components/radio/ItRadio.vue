@@ -26,11 +26,10 @@ import './radio.less'
 @Component
 export default class ItRadio extends Vue {
   @Prop({ default: 'primary' }) private type!: string
-  @Prop({ default: false }) private pulse!: boolean
+  @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Prop() private label?: string
   @Prop() private value!: string
-  @Prop({ default: false }) private disabled!: boolean
-  @Prop() private color!: string // TODO
+  @Prop({ type: Boolean, default: false }) private disabled!: boolean
 
   @Model('change') private checked!: string
 

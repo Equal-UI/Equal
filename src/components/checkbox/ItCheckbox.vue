@@ -25,7 +25,7 @@ import './checkbox.less'
 export default class ItCheckbox extends Vue {
   @Prop({ default: 'primary' }) private type!: string
   @Prop({ default: 'check' }) private icon!: string
-  @Prop({ default: false }) private pulse!: boolean
+  @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Prop() private label!: string
   @Model('change', { default: false }) private value!: boolean
   @Prop({ type: Boolean, default: false }) private disabled?: boolean

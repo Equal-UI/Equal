@@ -35,7 +35,7 @@ export default class ItAlert extends Vue {
       ['primary', 'success', 'danger', 'warning', 'black'].includes(value)
   })
   private type?: string
-  @Prop({ type: Boolean, default: false }) private showIcon?: boolean
+  @Prop({ type: Boolean, default: true }) private showIcon?: boolean
   @Prop({ type: Boolean, default: false }) private closable?: boolean
   @Prop({ type: Boolean, default: true }) private visible!: boolean
   @Prop() private title!: string

@@ -1,8 +1,7 @@
 <template>
   <div class="table-box">
-    <h2 class="it-box-title">Props</h2>
-
-    <table class="table">
+    <h2 v-if="dataSheet" class="it-box-title">Props</h2>
+    <table v-if="dataSheet" class="table">
       <thead>
         <tr>
           <th>Property</th>
@@ -24,6 +23,24 @@
         </tr>
       </tbody>
     </table>
+
+    <h2 v-if="eventSheet" class="it-box-title">Events</h2>
+    <table v-if="eventSheet" class="table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Description</th>
+          <th>Arguments</th>
+        </tr>
+      </thead>
+      <tbody v-for="item in eventSheet" :key="item.property">
+        <tr>
+          <td v-for="(col, name) in item">
+            <span>{{col}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -33,6 +50,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class PropsTable extends Vue {
   @Prop() dataSheet!: object[]
+  @Prop() eventSheet!: object[]
 }
 </script>
 
@@ -44,6 +62,7 @@ export default class PropsTable extends Vue {
     flex-direction: column;
     overflow: hidden;
     box-sizing: border-box;
+    overflow-x: auto;
   }
 
   .table {

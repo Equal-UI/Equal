@@ -31,6 +31,11 @@
       <it-checkbox type="black" label="Black" icon="verified_user" v-model="iconsCheck" />
     </Box>
 
+    <Box :code="codePulse" title="Pulse">
+      <p slot="description" style="padding: 0px 24px;">Pulse helps you to catch user's attention</p>
+      <it-checkbox type="primary" pulse label="Look at me" v-model="pulseValue" />
+    </Box>
+
     <props-table :data-sheet="dataSheet" />
   </div>
 </template>
@@ -47,7 +52,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class CheckboxPage extends Vue {
-  // @Prop({ type: Boolean, default: false }) private disabled?: boolean
   checkboxDisabled = false
   checkboxValue = false
   checkboxPulse = false
@@ -58,6 +62,8 @@ export default class CheckboxPage extends Vue {
 
   typesCheck = true
   iconsCheck = true
+
+  pulseValue = false
 
   codeType = `<it-checkbox type="primary" label="Primary" v-model="typesCheck" />
 <it-checkbox type="success" label="Success" v-model="typesCheck" />
@@ -70,6 +76,8 @@ export default class CheckboxPage extends Vue {
 <it-checkbox type="danger" label="Danger" icon="favorite" v-model="iconsCheck" />
 <it-checkbox type="warning" label="Warning" icon="alarm_on" v-model="iconsCheck" />
 <it-checkbox type="black" label="Black" icon="verified_user" v-model="iconsCheck" />`
+
+  codePulse = `<it-checkbox type="primary" pulse label="Look at me" v-model="pulseValue" />`
 
   dataSheet = [
     {
@@ -99,6 +107,13 @@ export default class CheckboxPage extends Vue {
       default: false,
       values: [],
       description: 'Makes checkbox disabled'
+    },
+    {
+      property: 'value (v-model)',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Checkbox value'
     },
     {
       property: 'pulse',

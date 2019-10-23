@@ -7,7 +7,7 @@
         <it-button>Hover me</it-button>
         <it-dropdown-menu slot="menu">
           <it-dropdown-item>Hello</it-dropdown-item>
-          <it-dropdown-item disabled >Disabled</it-dropdown-item>
+          <it-dropdown-item disabled>Disabled</it-dropdown-item>
           <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
           <it-dropdown-item divided>Divided</it-dropdown-item>
         </it-dropdown-menu>
@@ -22,17 +22,35 @@
         </it-select>
       </template>
     </Demobox>
+
+    <Box :code="codeExample" title="Example">
+      <it-dropdown>
+        <it-button>Hover me</it-button>
+        <it-dropdown-menu slot="menu">
+          <it-dropdown-item>Hello</it-dropdown-item>
+          <it-dropdown-item disabled>Disabled</it-dropdown-item>
+          <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+          <it-dropdown-item divided>Divided</it-dropdown-item>
+        </it-dropdown-menu>
+      </it-dropdown>
+    </Box>
+    <h2>it-dropdown</h2>
+    <props-table :data-sheet="dataSheet" />
+    <h2 style="margin-top: 20px;">it-dropdown-item</h2>
+    <props-table :data-sheet="dataSheet2" />
   </div>
 </template>
 
 <script lang="ts">
 import Demobox from '~/components/Demobox.vue'
+import Box from '~/components/Box.vue'
+import PropsTable from '~/components/Table.vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   // @ts-ignore
   layout: 'components',
-  components: { Demobox }
+  components: { Demobox, Box, PropsTable }
 })
 export default class DropdownPage extends Vue {
   // dropdownDisabled = false
@@ -51,6 +69,50 @@ export default class DropdownPage extends Vue {
     'top',
     'top-left',
     'top-right'
+  ]
+
+  codeExample = `<it-dropdown>
+  <it-button>Hover me</it-button>
+  <it-dropdown-menu slot="menu">
+    <it-dropdown-item>Hello</it-dropdown-item>
+    <it-dropdown-item disabled>Disabled</it-dropdown-item>
+    <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+    <it-dropdown-item divided>Divided</it-dropdown-item>
+  </it-dropdown-menu>
+</it-dropdown>`
+
+  dataSheet = [
+    {
+      property: 'placement',
+      type: ['String'],
+      default: 'bottom',
+      values: this.dropdownTypes,
+      description: 'Position of the dropdown'
+    }
+  ]
+
+  dataSheet2 = [
+    {
+      property: 'disabled',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Disabled menu item'
+    },
+    {
+      property: 'divided',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Divides menu item from previous item'
+    },
+    {
+      property: 'icon',
+      type: ['String'],
+      default: '',
+      values: ['Material Icon'],
+      description: 'Adds icon to the mmenu item'
+    }
   ]
 }
 </script>

@@ -88,7 +88,7 @@ export default class Box extends Vue {
       transition: all 0.4s;
       width: 100%;
       position: relative;
-      overflow: hidden;
+      overflow:auto;
       // height: 0;
 
       &-copy {

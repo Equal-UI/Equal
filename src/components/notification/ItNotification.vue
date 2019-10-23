@@ -8,14 +8,20 @@
       class="it-notification"
       :class="[`it-notification--${type}`]"
     >
-      <div class="it-notification-left" :style="{
-        'background-image': backgroundImage
-      }">
-        <it-icon v-if="!image" class="it-notification-icon" :name="icon || typeIcon[type]" />
+      <div
+        class="it-notification-left"
+        :style="{
+        'background-image': backgroundImage,
+        'background-color': emoji || image ? '#fdfdfd' : typeColor[type],
+        'border-right': (emoji || image) && '1px solid #dfdfdf'
+      }"
+      >
+        <it-icon v-if="!image && !emoji" class="it-notification-icon" :name="icon || typeIcon[type]" />
+        <span class="it-notification-emoji" v-if="emoji && !image">{{emoji}}</span>
       </div>
       <div class="it-notification-text-block">
-      <span class="it-notification-text-block-title" v-if="title">{{title}}</span>
-      <span>{{text}}</span>
+        <span class="it-notification-text-block-title" v-if="title">{{title}}</span>
+        <span>{{text}}</span>
       </div>
     </div>
   </transition>
@@ -41,6 +47,7 @@ export default class ItNotification extends Vue {
   public text: string = ''
   public title: string
   public icon: string = ''
+  public emoji: string = ''
   public duration: number = 5000
   public onClose: () => void
   public top: number | string = 6
@@ -74,6 +81,18 @@ export default class ItNotification extends Vue {
 
   get backgroundImage() {
     return this.image ? `url(${this.image})` : 'none'
+  }
+
+  get typeColor() {
+    if (this.emoji) {
+      return '#fbfbfb'
+    }
+    return {
+      primary: '#3051ff',
+      success: '#07d85b',
+      danger: '#F93155',
+      warning: '#ffba00'
+    }
   }
 }
 </script>

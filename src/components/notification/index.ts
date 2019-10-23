@@ -15,6 +15,7 @@ interface INotificationOptions {
   duration?: number
   icon?: string
   image?: string
+  emoji?: string
   onClose?: () => void
 }
 

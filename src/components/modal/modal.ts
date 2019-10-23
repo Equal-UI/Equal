@@ -11,6 +11,7 @@ interface IModalOptions {
   title?: string
   content?: string
   closableMask?: boolean
+  closeOnEsc?: boolean
   hideFooter?: boolean
   okClick?(): void
   cancelClick?(): void
