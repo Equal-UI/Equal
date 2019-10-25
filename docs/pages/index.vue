@@ -9,7 +9,7 @@
         xs="12"
       >
         <img width="170" style="margin-bottom: 18px;" src="~/assets/equal.svg" />
-        <h1 class="main-title">Equal UI <span style="font-size:12px;">v0.1.2</span> </h1>
+        <h1 class="main-title">Equal UI <span style="font-size:12px;">v0.1.3</span> </h1>
         <h4 class="sub-title">Equal – open-source Vue components system for your next project</h4>
         <div class="buttons-group">
           <nuxt-link to="/start">

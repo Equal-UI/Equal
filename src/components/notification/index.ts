@@ -80,8 +80,13 @@ Notification.close = (onClose, id) => {
   if (onClose) {
     onClose()
   }
-  // @ts-ignore
-  messages.forEach((el) => (el.top -= height + 6))
+
+  messages.forEach((el) => {
+    if (el.id > id) {
+      // @ts-ignore
+      el.top -= height + 6
+    }
+  })
 }
 
 messageTypes.forEach((type) => {

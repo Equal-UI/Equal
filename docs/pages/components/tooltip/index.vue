@@ -36,7 +36,16 @@
       </it-tooltip>
       </div>
     </Box>
-    <props-table :data-sheet="dataSheet" />
+    <Box :code="slotCode" title="Content Slot">
+      <div style="display:flex; flex-direction:column; align-items: center">
+
+      <it-tooltip placement="top">
+        <span slot="content"><it-tag type="primary">Wow</it-tag> &nbsp; I came from slot</span>
+        <it-button>Slot content</it-button>
+      </it-tooltip>
+      </div>
+    </Box>
+    <props-table :slot-sheet="slotSheet" :data-sheet="dataSheet" />
   </div>
 </template>
 
@@ -71,6 +80,12 @@ export default class SliderPage extends Vue {
   <it-button>Bottom</it-button>
 </it-tooltip>`
 
+slotCode = 
+`<it-tooltip placement="top">
+  <span slot="content"><it-tag type="primary">Wow</it-tag> &nbsp; I came from slot</span>
+  <it-button>Slot content</it-button>
+</it-tooltip>`
+
 dataSheet = [
   {
       property: 'content',
@@ -93,6 +108,17 @@ dataSheet = [
       values: [],
       description: 'Makes tooltip hoverable'
     }
+]
+
+slotSheet = [
+  {
+    name: 'default',
+    description: 'Hoverable element for tooltip' 
+  },
+  {
+    name: 'content',
+    description: 'Content of the tooltip'
+  }
 ]
 }
 </script>

@@ -24,6 +24,23 @@
       </tbody>
     </table>
 
+    <h2 v-if="slotSheet" class="it-box-title">Slots</h2>
+    <table v-if="slotSheet" class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody v-for="item in slotSheet" :key="item.property">
+        <tr>
+          <td v-for="(col, name) in item">
+            <span>{{col}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2 v-if="eventSheet" class="it-box-title">Events</h2>
     <table v-if="eventSheet" class="table">
       <thead>
@@ -51,6 +68,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class PropsTable extends Vue {
   @Prop() dataSheet!: object[]
   @Prop() eventSheet!: object[]
+  @Prop() slotSheet!: object[]
 }
 </script>
 

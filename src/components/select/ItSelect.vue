@@ -24,7 +24,6 @@
         :class="[
           placement ? `it-select-dropdown--${placement}` : 'it-select-dropdown--bottom'
         ]"
-        style="width:100%"
         v-show="show"
         ref="popover"
       >
