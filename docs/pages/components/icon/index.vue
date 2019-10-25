@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Dropdown</h1>
+    <h1>Icon</h1>
 
     <Demobox>
       <it-icon :name="iconName" :outlined="iconOutlined" :color="iconColor" />
