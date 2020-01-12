@@ -9,14 +9,14 @@
         xs="12"
       >
         <img width="170" style="margin-bottom: 18px;" src="~/assets/equal.svg" />
-        <h1 class="main-title">Equal UI <span style="font-size:12px;">v0.1.3</span> </h1>
-        <h4 class="sub-title">Equal – open-source Vue components system for your next project</h4>
+        <h1 class="main-title">Equal UI <span style="font-size:12px;"><it-tag type="primary">v0.2.0</it-tag></span> </h1>
+        <h4 class="sub-title"><b>Equal</b> – open-source Vue components system for your next project based on TypeScript</h4>
         <div class="buttons-group">
           <nuxt-link to="/start">
             <it-button size="big" pulse>Get started</it-button>
           </nuxt-link>
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/quatrochan/Equal">
-            <it-button size="big" type="black" outlined>Github</it-button>
+            <it-button size="big" type="neutral" outlined>Github</it-button>
           </a>
         </div>
       </Col>
@@ -48,6 +48,10 @@ export default class Index extends Vue {}
 </script>
 
 <style lang="less">
+  .button-logo {
+    height: 15px;
+    margin-right: 10px;
+  }
   .main-title {
     font-size: 60px;
     margin-bottom: 16px;

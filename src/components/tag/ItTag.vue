@@ -1,5 +1,5 @@
 <template>
-  <span v-show="show" :class="['it-tag', type && `it-tag--${type}`]">
+  <span v-show="show" :class="['it-tag', type && `it-tag--${type}`, filled && `it-tag--${type}--filled`]">
     <span>
       <slot></slot>
       <it-icon v-if="closable" @click="clickClose" name="clear" class="it-tag-close" />
@@ -14,11 +14,12 @@ import './tag.less'
 @Component
 export default class ItTag extends Vue {
   @Prop({ type: Boolean, default: false }) public closable?: boolean
+  @Prop({ type: Boolean, default: false }) public filled?: boolean
 
   public show = true
   @Prop({
     default: 'neutral',
-    validator: (value) =>
+    validator: value =>
       ['primary', 'success', 'danger', 'warning', 'black', 'neutral'].includes(
         value
       )

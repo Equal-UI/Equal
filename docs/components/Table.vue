@@ -41,6 +41,24 @@
       </tbody>
     </table>
 
+    <h2 v-if="methodSheet" class="it-box-title">Methods</h2>
+    <table v-if="methodSheet" class="table">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+          <th>Arguments</th>
+        </tr>
+      </thead>
+      <tbody v-for="item in methodSheet" :key="item.property">
+        <tr>
+          <td v-for="(col, name) in item">
+            <span>{{col}}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2 v-if="eventSheet" class="it-box-title">Events</h2>
     <table v-if="eventSheet" class="table">
       <thead>
@@ -68,6 +86,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class PropsTable extends Vue {
   @Prop() dataSheet!: object[]
   @Prop() eventSheet!: object[]
+  @Prop() methodSheet!: object[]
   @Prop() slotSheet!: object[]
 }
 </script>
@@ -96,8 +115,8 @@ export default class PropsTable extends Vue {
     td {
       line-height: 1;
       text-align: left;
-      padding: 13px 26px;
-      font-size: 15px;
+      padding: 11px 26px;
+      font-size: 14px;
       font-weight: 500;
     }
 

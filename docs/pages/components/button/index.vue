@@ -8,6 +8,7 @@
         :outlined="buttonOutlined"
         :round="buttonRound"
         :pulse="buttonPulse"
+        :loading="buttonLoading"
         :disabled="buttonDisabled"
         :icon="buttonIconValue"
       >{{buttonText}}</it-button>
@@ -24,6 +25,7 @@
         <it-checkbox label="Outline" v-model="buttonOutlined" />
         <it-checkbox label="Round" v-model="buttonRound" />
         <it-checkbox label="Icon" v-model="buttonIcon" />
+        <it-checkbox label="Loading" v-model="buttonLoading" />
         <it-checkbox label="Pulse" v-model="buttonPulse" />
         <it-checkbox label="Disabled" v-model="buttonDisabled" />
       </template>
@@ -62,6 +64,10 @@
       <it-button icon="face" />
       <it-button icon="face" iconAfter>Button</it-button>
     </Box>
+    <Box :code="codeLoading" title="Loading">
+      <it-button type="primary" loading>Loading</it-button>
+      <it-button type="primary" loading outlined>Loading</it-button>
+    </Box>
     <Box :code="codePulse" title="Pulse">
       <p slot="description" style="padding: 0px 24px;">Pulse helps you to catch user's attention</p>
       <it-button type="primary" pulse>Look at me</it-button>
@@ -94,6 +100,7 @@ export default class ButtonPage extends Vue {
   buttonOutlined = false
   buttonRound = false
   buttonDisabled = false
+  buttonLoading = false
   buttonPulse = false
   buttonType = 'primary'
   buttonTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
@@ -127,6 +134,9 @@ export default class ButtonPage extends Vue {
   codeIcon = `<it-button icon="face">Button</it-button>
 <it-button icon="face" />
 <it-button icon="face" iconAfter>Button</it-button>`
+
+  codeLoading = `<it-button type="primary" loading>Loading</it-button>
+<it-button type="primary" loading outlined>Loading</it-button>`
 
   codePulse = `<it-button type="primary" pulse>Look at me</it-button>
 <it-button type="primary" pulse outlined>Look at me</it-button>`
@@ -170,6 +180,13 @@ export default class ButtonPage extends Vue {
       default: '',
       values: [],
       description: 'Add material-icon with provided name'
+    },
+    {
+      property: 'loading',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Shows loading spinner'
     },
     {
       property: 'disabled',

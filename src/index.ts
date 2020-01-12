@@ -1,9 +1,12 @@
 import Alert from './components/alert'
 import Button from './components/button'
+import Badge from './components/badge'
 import Checkbox from './components/checkbox'
 import Dropdown from './components/dropdown'
 import Icon from './components/icon'
 import Input from './components/input'
+import Loading from './components/loading'
+import Loadingbar from './components/loadingbar'
 import Message from './components/message'
 import Modal from './components/modal'
 import Notification from './components/notification'
@@ -21,10 +24,13 @@ import Tooltip from './components/tooltip'
 const components = {
   Alert,
   Button,
+  Badge,
   Checkbox,
   ...Dropdown,
   Icon,
   Input,
+  Loading,
+  Loadingbar,
   Message,
   Modal,
   Notification,
@@ -48,6 +54,7 @@ function install(Vue: any) {
   Vue.prototype.$Message = Message
   Vue.prototype.$Modal = Modal
   Vue.prototype.$Notification = Notification
+  Vue.prototype.$Loading = Loadingbar
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

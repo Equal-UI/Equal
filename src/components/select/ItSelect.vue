@@ -26,6 +26,7 @@
         ]"
         v-show="show"
         ref="popover"
+        style="width:100%;"
       >
         <ul class="it-select-list">
           <slot></slot>

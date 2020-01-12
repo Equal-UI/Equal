@@ -6,8 +6,7 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**",
-      "tests/**",
-      "docs/**"
+      "tests/**"
     ]
   },
   "rules": {

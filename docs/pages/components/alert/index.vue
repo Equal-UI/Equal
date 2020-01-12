@@ -26,7 +26,16 @@
       </div>
     </Box>
 
-    <props-table :event-sheet="eventSheet" :data-sheet="dataSheet" />
+    <Box :code="slotCode" title="Slot">
+      <div style="flex-direction: column; flex: 1;">
+
+      <it-alert type="primary" title="Alert with slot body">
+        You can put whatever you want here, I'd put a <it-tag type="primary">Tag</it-tag>
+      </it-alert>
+      </div>
+    </Box>
+
+    <props-table :slot-sheet="slotSheet" :event-sheet="eventSheet" :data-sheet="dataSheet" />
   </div>
 </template>
 
@@ -48,13 +57,18 @@ export default class AlertPage extends Vue {
   alertShowIcon = true
   alertClosable = false
   alertType = 'primary'
-  alertTypes = ['primary', 'success', 'danger', 'warning', 'black']
+  alertTypes = ['primary', 'success', 'danger', 'warning']
 
   typesCode = 
 `<it-alert type="primary" :title="alertTitle" :body="alertBody"/>
 <it-alert type="success" :title="alertTitle" :body="alertBody"/>
 <it-alert type="danger" :title="alertTitle" :body="alertBody"/>
 <it-alert type="warning" :title="alertTitle" :body="alertBody"/>`
+
+slotCode = 
+`<it-alert type="primary" title="Alert with slot body">
+  You can put whatever you want here, I'd put a <it-tag type="primary">Tag</it-tag>
+</it-alert>`
 
   dataSheet = [
     {
@@ -108,6 +122,13 @@ export default class AlertPage extends Vue {
       arguments: 'function(e: Event)'
     }
   ]
+
+  slotSheet = [
+  {
+    name: 'default',
+    description: 'Alert body' 
+  }
+]
 
 }
 </script>

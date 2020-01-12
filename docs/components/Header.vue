@@ -1,12 +1,23 @@
 <template lang="html">
-  <div class="header">
-    <nuxt-link to="/" class="logo-link">
-    <img class="header-logo" src="~/assets/equal.svg" />
-    </nuxt-link>
-    <nuxt-link to="/">
-    <h3>Equal</h3>
-    </nuxt-link>
-  </div>
+  <header class="header">
+    <div class="header-left">
+      <nuxt-link to="/" class="logo-link">
+        <img class="header-logo" src="~/assets/equal.svg" />
+      </nuxt-link>
+      <nuxt-link to="/">
+        <h3 style="color: black">Equal</h3>
+      </nuxt-link>
+    </div>
+
+    <div class="header-right">
+      <a target="_blank" class="logo-link" rel="noopener noreferrer" href="https://github.com/quatrochan/Equal">
+        <img class="social-logo" src="~/assets/github-logo.svg" />
+      </a>
+      <a target="_blank" class="logo-link" rel="noopener noreferrer" href="https://twitter.com/EqualVue">
+        <img class="social-logo-twitter" src="~/assets/twitter-logo.svg" />
+      </a>
+    </div>
+  </header>
 </template>
 
 <script lang="ts">
@@ -29,7 +40,7 @@ export default class Header extends Vue {}
     padding: 0px 300px;
     box-sizing: border-box;
     display: flex;
-    // justify-content: center;
+    justify-content: space-between;
     flex-direction: row;
     align-items: center;
 
@@ -39,6 +50,12 @@ export default class Header extends Vue {}
 
     .logo-link {
       height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-link + .logo-link {
+      margin-left: 15px;
     }
 
     a + a {
@@ -48,12 +65,31 @@ export default class Header extends Vue {}
     img {
       padding: 7px 0px;
     }
+
+    &-left, &-right {
+      display: flex;
+      height: 100%;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .social-logo {
+    height: 40%;
+  }
+
+  .social-logo-twitter {
+    height: 36%;
   }
 
   @media only screen and (max-width: 600px) {
     .header {
       justify-content: center;
       padding: 0px !important;
+    }
+
+    .header-right {
+      display: none;
     }
   }
 </style>

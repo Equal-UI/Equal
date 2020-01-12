@@ -26,19 +26,24 @@
         <it-checkbox label="Show tooltip" v-model="progressShowTooltip" />
       </template>
     </Demobox>
+    <Box :code="infiniteCode" title="Infinite">
+      <div class="heights-progress">
+        <it-progressbar infinite />
+      </div>
+    </Box>
     <Box :code="heightCode" title="Height">
       <div class="heights-progress">
-        <it-progressbar :height="3" :progress="progressValue" />
-        <it-progressbar :height="5" :progress="progressValue" />
-        <it-progressbar :height="7" :progress="progressValue" />
-        <it-progressbar :height="10" :progress="progressValue" />
-        <it-progressbar :height="13" :progress="progressValue" />
+        <it-progressbar :height="3" :progress="progressValue42" />
+        <it-progressbar :height="5" :progress="progressValue42" />
+        <it-progressbar :height="7" :progress="progressValue42" />
+        <it-progressbar :height="10" :progress="progressValue42" />
+        <it-progressbar :height="13" :progress="progressValue42" />
       </div>
     </Box>
     <Box :code="tooltipCode" title="Tooltip position">
       <div class="heights-progress">
-        <it-progressbar :progress="progressValue" />
-        <it-progressbar :progress="progressValue" tooltip="bottom" />
+        <it-progressbar :progress="progressValue42" />
+        <it-progressbar :progress="progressValue42" tooltip="bottom" />
       </div>
     </Box>
     <props-table :data-sheet="dataSheet" />
@@ -62,6 +67,9 @@ export default class ProgressPage extends Vue {
   tooltipTypes: string[] = ['top', 'bottom']
   progressTooltip: string = 'top'
   progressShowTooltip: boolean = true
+  progressValue42: number = 42
+
+  infiniteCode = `<it-progressbar infinite />`
 
   heightCode = `<it-progressbar :height="3" :progress="progressValue" />
 <it-progressbar :height="5" :progress="progressValue" />
@@ -79,6 +87,13 @@ export default class ProgressPage extends Vue {
       default: '0',
       values: ['0-100'],
       description: 'Progress value'
+    },
+    {
+      property: 'infinite',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Makes progress infinite'
     },
     {
       property: 'height',

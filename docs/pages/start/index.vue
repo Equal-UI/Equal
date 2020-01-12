@@ -44,14 +44,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox }
 })
 export default class StartPage extends Vue {
-  alertVisible = true
-  alertTitle = 'Alert title'
-  alertBody = 'We think we know you'
-  alertShowIcon = true
-  alertClosable = false
-  alertType = 'primary'
-  alertTypes = ['primary', 'success', 'danger', 'warning', 'black']
-
   installCode = `# NPM
 npm install equal-vue
 

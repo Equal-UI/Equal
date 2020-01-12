@@ -3,17 +3,18 @@
     <h1>Select</h1>
 
     <Demobox>
-      <it-select
-        :placeholder="selectPlaceholder"
-        :disabled="selectDisabled"
-        :labelTop="selectLabel"
-        v-model="selectValue"
-      >
-        <it-select-option key="one" value="One">One</it-select-option>
-        <it-select-option key="two" value="Two">Two</it-select-option>
-        <it-select-option key="three" value="Three">Three</it-select-option>
-      </it-select>
-
+      <div style="padding: 130px 0px">
+        <it-select
+          :placeholder="selectPlaceholder"
+          :disabled="selectDisabled"
+          :labelTop="selectLabel"
+          v-model="selectValue"
+        >
+          <it-select-option key="one" value="One">One</it-select-option>
+          <it-select-option key="two" value="Two">Two</it-select-option>
+          <it-select-option key="three" value="Three">Three</it-select-option>
+        </it-select>
+      </div>
       <template slot="props">
         <it-input v-model="selectLabel" labelTop="Select label" />
         <it-input v-model="selectPlaceholder" labelTop="Select placeholder" />
@@ -88,7 +89,7 @@ export default class SelectPage extends Vue {
     }
   ]
 
-  dataSheet2= [
+  dataSheet2 = [
     {
       property: 'value',
       type: ['Number', 'String'],

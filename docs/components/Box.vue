@@ -71,7 +71,7 @@ export default class Box extends Vue {
       width: 100%;
       padding: 48px 25px;
       flex-wrap: wrap;
-      line-height: 3;
+      line-height: 1;
       display: flex;
       justify-content: center;
       align-items: center;

@@ -17,7 +17,7 @@
 .it-alert {
   position: relative;
   width: auto;
-  border-radius: 4px;
+  border-radius: @border-radius-base;
   display: flex;
   text-align: left;
   background-color: #fff;
@@ -34,6 +34,12 @@
     color: @color-grey-text;
     margin-top: 10px;
     line-height: 1;
+  }
+
+  &-slot {
+    font-size: 14px;
+    line-height: 1;
+    margin-top: 10px;
   }
 
   &-icon {
@@ -72,9 +78,6 @@
   }
   &--danger {
     .set-type(@color-danger);
-  }
-  &--black {
-    .set-type(@color-secondary-black);
   }
 }
 

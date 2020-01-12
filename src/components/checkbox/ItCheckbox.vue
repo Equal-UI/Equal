@@ -31,7 +31,7 @@ export default class ItCheckbox extends Vue {
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
   @Prop() private color!: string // TODO
 
-  private types: string[] = ['primary', 'success', 'danger', 'warning', 'black']
+  private types: string[] = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
 
   get listeners() {
     return {

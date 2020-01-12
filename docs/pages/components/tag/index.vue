@@ -28,6 +28,14 @@
       <it-tag type="warning">Warning</it-tag>
       <it-tag type="black">Black</it-tag>
     </Box>
+    <Box :code="filledCode" title="Filled">
+      <it-tag>Neutral</it-tag>
+      <it-tag type="primary" filled>Primary</it-tag>
+      <it-tag type="success" filled>Success</it-tag>
+      <it-tag type="danger" filled>Danger</it-tag>
+      <it-tag type="warning" filled>Warning</it-tag>
+      <it-tag type="black" filled>Black</it-tag>
+    </Box>
     <props-table :data-sheet="dataSheet" />
   </div>
 </template>
@@ -63,6 +71,14 @@ export default class SliderPage extends Vue {
 <it-tag type="warning">Warning</it-tag>
 <it-tag type="black">Black</it-tag>`
 
+  filledCode = `<it-tag>Neutral</it-tag>
+<it-tag type="primary" filled >Primary</it-tag>
+<it-tag type="success" filled >Success</it-tag>
+<it-tag type="danger" filled >Danger</it-tag>
+<it-tag type="warning" filled >Warning</it-tag>
+<it-tag type="black" filled >Black</it-tag>
+`
+
   dataSheet = [
     {
       property: 'type',
@@ -70,6 +86,13 @@ export default class SliderPage extends Vue {
       default: 'neutral',
       values: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
       description: 'Type of the tag'
+    },
+    {
+      property: 'filled',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Makes tag filled'
     },
     {
       property: 'closable',

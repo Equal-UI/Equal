@@ -7,10 +7,23 @@
     <it-button @click="toggleSidebar" class="burger" :icon="left === 'inherit' ? 'menu' : 'close'" />
     <ul class="sidebar-menu">
       <li :class="{
+        'active-menu-item': $route.name === 'introduction'
+      }">
+        <nuxt-link style="padding: 6px 13px;" to="/introduction">Introduction</nuxt-link>
+      </li>
+      <li :class="{
         'active-menu-item': $route.name === 'start'
       }">
         <nuxt-link style="padding: 6px 13px;" to="/start">Getting started</nuxt-link>
       </li>
+      <!-- <li class="group-title">
+        Layout
+      </li>
+      <li :class="{
+        'active-menu-item': $route.name === 'layout-grid'
+      }">
+        <nuxt-link to="/layout/grid">Grid</nuxt-link>
+      </li> -->
       <li class="group-title">
         Components
       </li>
@@ -23,6 +36,11 @@
         'active-menu-item': $route.name === 'components-button'
       }">
         <nuxt-link to="/components/button">Button</nuxt-link>
+      </li>
+      <li :class="{
+        'active-menu-item': $route.name === 'components-badge'
+      }">
+        <nuxt-link to="/components/badge">Badge</nuxt-link>
       </li>
       <li :class="{
         'active-menu-item': $route.name === 'components-checkbox'
@@ -43,6 +61,16 @@
         'active-menu-item': $route.name === 'components-input'
       }">
         <nuxt-link to="/components/input">Input</nuxt-link>
+      </li>
+      <li :class="{
+        'active-menu-item': $route.name === 'components-loading'
+      }">
+        <nuxt-link to="/components/loading">Loading</nuxt-link>
+      </li>
+      <li :class="{
+        'active-menu-item': $route.name === 'components-loadingbar'
+      }">
+        <nuxt-link to="/components/loadingbar">Loading bar</nuxt-link>
       </li>
       <li :class="{
         'active-menu-item': $route.name === 'components-message'
@@ -141,7 +169,7 @@ export default class Comps extends Vue {
     width: 14rem;
     background-color: #ffffff;
     border-right: 1px solid #e2e2e2;
-    height: 100%;
+    height: calc(100% - 50px);
     z-index: 1010;
 
     transition: all .18s;
@@ -150,9 +178,10 @@ export default class Comps extends Vue {
       width: 100%;
       box-sizing: border-box;
       list-style: none;
-      padding: 0px;
+      padding: 10px 0px;
+      margin: 0px;
       font-size: 14px;
-      height: 86vh;
+      height: 100%;
       overflow-y: auto;
 
       & > li {
@@ -162,9 +191,17 @@ export default class Comps extends Vue {
 
       & > li > a {
         display: inline-block;
-        padding: 6px 30px;
+        padding: 7px 30px;
         width: 100%;
         box-sizing: border-box;
+        font-weight: 500;
+        color: #72747f;
+        transition: all .2s ease;
+
+        &:hover {
+          margin-left: 4px;
+          color: #131313;
+        }
       }
 
       li.group-title {
@@ -186,16 +223,24 @@ export default class Comps extends Vue {
   }
 
   .active-menu-item {
-    border-right: 3px solid #3051FF;
+    border-left: 3px solid #3051FF;
     background-color: #E8EBFF;
     font-weight: 500;
-    color: #3051FF;
     transition: all .3s;
+
+    > a {
+    color: #3051FF !important;
+
+    }
   }
 
   @media only screen and (max-width: 900px) {
     .sidebar {
       left: -14rem !important;
+
+      &-menu {
+        height: 93%;
+      }
     }
 
     .burger {

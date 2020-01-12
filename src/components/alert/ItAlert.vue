@@ -14,7 +14,7 @@
       <div>
         <p class="it-alert-title">{{title}}</p>
         <p v-if="!$slots.default && body" class="it-alert-body">{{body}}</p>
-        <p v-if="$slots.default" class="it-alert-body">
+        <p v-if="$slots.default" class="it-alert-slot">
           <slot></slot>
         </p>
       </div>
@@ -32,7 +32,7 @@ export default class ItAlert extends Vue {
   @Prop({
     default: 'primary',
     validator: (value) =>
-      ['primary', 'success', 'danger', 'warning', 'black'].includes(value)
+      ['primary', 'success', 'danger', 'warning'].includes(value)
   })
   private type?: string
   @Prop({ type: Boolean, default: true }) private showIcon?: boolean

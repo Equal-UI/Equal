@@ -3,6 +3,12 @@
     <img width="200" src="https://raw.githubusercontent.com/quatrochan/Equal/master/docs/assets/logo.png">
   </a>
 </p>
+![npm](https://img.shields.io/npm/v/equal-vue?color=blue)
+![NPM](https://img.shields.io/npm/l/equal-vue)
+![npm](https://img.shields.io/npm/dw/equal-vue)
+<a href="https://twitter.com/EqualVue">
+    <img src="https://img.shields.io/twitter/follow/EqualVue?label=Equal%20Vue&style=social" alt="Twitter Follow">
+  </a>
 
 <h1 align="center">Equal UI</h1>
 
@@ -10,12 +16,6 @@
 <div align="center">
 Equal UI is a Vue 2 TypeScript components library
 
-![npm](https://img.shields.io/npm/v/equal-vue?color=blue)
-![NPM](https://img.shields.io/npm/l/equal-vue)
-![npm](https://img.shields.io/npm/dw/equal-vue)
-<a href="https://twitter.com/EqualVue">
-    <img src="https://img.shields.io/twitter/follow/EqualVue?label=Equal%20Vue&style=social" alt="Twitter Follow">
-  </a>
 </div>
 
 ## Links

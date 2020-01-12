@@ -53,7 +53,7 @@ export default class ModalPage extends Vue {
       case 'warning':
         modal = this.$Modal.warning({
           title: 'Warning modal!',
-          content: 'Warning modal content',
+          content: 'Prepare for unforeseen consequences',
           okClick: () => {
             modal.close()
           },

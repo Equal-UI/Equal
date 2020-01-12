@@ -1,4 +1,4 @@
-@import '../../styles/variables.less';
+@import "../../styles/variables.less";
 
 @btn-font-weight: 500;
 @btn-normal-padding: 9px 20px;
@@ -22,6 +22,12 @@
     box-shadow: none;
     top: 1px;
   }
+
+  &:disabled {
+    circle {
+      stroke: @btn-disabled-color;
+    }
+  }
 }
 
 .set-outlined (@bg-color) {
@@ -29,6 +35,11 @@
   background-color: #fff;
   box-shadow: inset 0 0 0 1px @bg-color;
   text-shadow: none;
+
+  circle {
+    stroke: @bg-color !important;
+  }
+
   &:hover,
   &:focus {
     background-color: fade(@bg-color, 7%);
@@ -38,13 +49,18 @@
     box-shadow: inset 0 0 0 1px @bg-color;
     top: 0px;
   }
+  &:disabled {
+    circle {
+      stroke: @btn-disabled-color !important;
+    }
+  }
 }
 
 .it-btn {
   box-sizing: border-box;
   position: relative;
   display: inline-block;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   align-items: center;
   text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.07);
   color: #fff;
@@ -63,6 +79,10 @@
   &-text,
   > i {
     vertical-align: middle;
+  }
+
+  > .it-icon {
+    font-size: 14px;
   }
 
   &--primary {
@@ -97,7 +117,8 @@
   }
   &--neutral {
     color: @color-black;
-    border: 1px solid @color-secondary-text;
+    border: 1px solid rgb(193, 204, 217);
+    box-shadow: rgb(228, 231, 235) 0px 1px 1px 0px;
     text-shadow: none;
     background-color: #ffffff;
     &:hover {
@@ -106,6 +127,15 @@
     &:active {
       background-color: @color-disabled-bg;
     }
+    circle {
+      stroke: rgb(193, 204, 217);
+    }
+
+      &:disabled {
+    circle {
+      stroke: @btn-disabled-color;
+    }
+  }
   }
 
   &:disabled,

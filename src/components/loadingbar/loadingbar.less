@@ -1,0 +1,15 @@
+@import '../../styles/variables.less';
+
+.it-loadingbar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999999;
+  background-color: @color-primary;
+
+  transition: all .3s, height .3s .3s;
+
+  &--start {
+    transition: all 3s linear, height .3s .3s !important;
+  }
+}

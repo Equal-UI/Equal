@@ -1,6 +1,6 @@
 {
   "name": "equal-vue",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "author": {
     "name": "Yan Savinov",
     "email": "yan.savinov.hire@gmail.com"
@@ -11,7 +11,9 @@
   "keywords": [
     "equal",
     "vue",
+    "vue2",
     "vuejs",
+    "typescript",
     "vue-components",
     "ui",
     "framework"

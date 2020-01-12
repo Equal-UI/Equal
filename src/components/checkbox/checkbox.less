@@ -91,6 +91,34 @@
   &--black {
     .set-type(@color-secondary-black);
   }
+  &--neutral {
+    &:hover {
+      border: 1px solid @color-primary;
+    }
+  
+    &--checked {
+      border: 1px solid @color-primary;
+      > i {
+        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.07);
+        opacity: 1;
+        margin-top: 0px;
+        color: @color-primary;
+      }
+      // &:hover {
+      //   background-color: @bg-color;
+      // }
+      &:active {
+        background-color: #fff !important;
+        > i {
+          margin-top: 4.4px;
+        }
+      }
+    }
+  
+    &:active {
+      background-color: fade(@color-primary, 10%);
+    }
+  }
 
   &--disabled {
     cursor: not-allowed;
