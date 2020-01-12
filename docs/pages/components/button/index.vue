@@ -96,56 +96,56 @@ import { Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class ButtonPage extends Vue {
-  buttonText = 'Button'
-  buttonOutlined = false
-  buttonRound = false
-  buttonDisabled = false
-  buttonLoading = false
-  buttonPulse = false
-  buttonType = 'primary'
-  buttonTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
-  buttonIcon = false
+  public buttonText = 'Button'
+  public buttonOutlined = false
+  public buttonRound = false
+  public buttonDisabled = false
+  public buttonLoading = false
+  public buttonPulse = false
+  public buttonType = 'primary'
+  public buttonTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
+  public buttonIcon = false
 
-  codeType = `<it-button type="primary">Button</it-button>
+  public codeType = `<it-button type="primary">Button</it-button>
 <it-button type="success">Button</it-button>
 <it-button type="danger">Button</it-button>
 <it-button type="warning">Button</it-button>
 <it-button type="black">Button</it-button>
 <it-button type="neutral">Button</it-button>
 `
-  codeSize = `<it-button size="small">Button</it-button>
+  public codeSize = `<it-button size="small">Button</it-button>
 <it-button size="normal">Button</it-button>
 <it-button size="big">Button</it-button>`
 
-  codeOutline = `<it-button type="primary" outlined>Button</it-button>
+  public codeOutline = `<it-button type="primary" outlined>Button</it-button>
 <it-button type="success" outlined>Button</it-button>
 <it-button type="danger" outlined>Button</it-button>
 <it-button type="warning" outlined>Button</it-button>
 <it-button type="black" outlined>Button</it-button>
 <it-button type="neutral" outlined>Button</it-button>`
 
-  codeRound = `<it-button type="primary" round>Button</it-button>
+  public codeRound = `<it-button type="primary" round>Button</it-button>
 <it-button type="success" round>Button</it-button>
 <it-button type="danger" round>Button</it-button>
 <it-button type="warning" round>Button</it-button>
 <it-button type="black" round>Button</it-button>
 <it-button type="neutral" round>Button</it-button>`
 
-  codeIcon = `<it-button icon="face">Button</it-button>
+  public codeIcon = `<it-button icon="face">Button</it-button>
 <it-button icon="face" />
 <it-button icon="face" iconAfter>Button</it-button>`
 
-  codeLoading = `<it-button type="primary" loading>Loading</it-button>
+  public codeLoading = `<it-button type="primary" loading>Loading</it-button>
 <it-button type="primary" loading outlined>Loading</it-button>`
 
-  codePulse = `<it-button type="primary" pulse>Look at me</it-button>
+  public codePulse = `<it-button type="primary" pulse>Look at me</it-button>
 <it-button type="primary" pulse outlined>Look at me</it-button>`
 
-  codeDisabled = `<it-button size="small" disabled>Button</it-button>
+  public codeDisabled = `<it-button size="small" disabled>Button</it-button>
 <it-button size="normal" disabled>Button</it-button>
 <it-button size="big" disabled>Button</it-button>`
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'type',
       type: ['String'],

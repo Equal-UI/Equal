@@ -146,11 +146,11 @@ import clickoutside from '../../src/directives/clickOutside'
   directives: {clickoutside}
 })
 export default class Comps extends Vue {
-  left = 'inherit'
-  toggleSidebar() {
+  public left = 'inherit'
+  public toggleSidebar() {
     this.left = this.left === 'inherit' ? '0px !important' : 'inherit'
   }
-  hideSidebar() {
+  public hideSidebar() {
     if (this.left === 'inherit') {
       return
     }

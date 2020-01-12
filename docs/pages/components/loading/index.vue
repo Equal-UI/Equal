@@ -24,13 +24,13 @@ import PropsTable from '~/components/Table.vue'
 })
 export default class LoadingPage extends Vue {
 
-  loadingCode = 
+  public loadingCode =
 `<it-loading></it-loading>
 <it-loading color="#f93155"></it-loading>
 <it-loading color="#ffba00"></it-loading>
 <it-loading color="#232323"></it-loading>`
 
-dataSheet = [
+public dataSheet = [
     {
       property: 'radius',
       type: ['Number'],

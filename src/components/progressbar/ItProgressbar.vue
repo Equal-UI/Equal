@@ -30,12 +30,12 @@ import './progressbar.less'
 
 @Component
 export default class ItProgressbar extends Vue {
+  @Prop({ type: Boolean, default: false }) public infinite?: boolean
   @Prop({
     default: 0,
     validator: (val) => val >= 0 && val <= 100
   })
   private progress?: number | string
-  @Prop({ type: Boolean, default: false }) infinite?: boolean
   @Prop({ default: 7 }) private height?: number | string
   @Prop({ default: 'top' }) private tooltip?: string
   @Prop({ type: Boolean, default: true }) private showTooltip?: boolean
@@ -51,11 +51,11 @@ export default class ItProgressbar extends Vue {
   @Watch('progress')
   private onProgressChange() {
     if (!this.infinite) {
-      
+
       const ittt = setInterval(() => {
         (this.$refs.tooltip as PopoverMixin).setPopoverPosition()
     }, 20)
-    setTimeout(() => {
+      setTimeout(() => {
       clearInterval(ittt)
     }, 200)
     }

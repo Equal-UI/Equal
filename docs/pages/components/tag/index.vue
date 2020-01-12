@@ -52,10 +52,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class SliderPage extends Vue {
-  tagText: string = 'Tag'
-  tagClosable: boolean = false
-  tagType: string = 'neutral'
-  tagTypes: string[] = [
+  public tagText: string = 'Tag'
+  public tagClosable: boolean = false
+  public tagType: string = 'neutral'
+  public tagTypes: string[] = [
     'primary',
     'success',
     'danger',
@@ -64,14 +64,14 @@ export default class SliderPage extends Vue {
     'neutral'
   ]
 
-  typesCode = `<it-tag>Neutral</it-tag>
+  public typesCode = `<it-tag>Neutral</it-tag>
 <it-tag type="primary">Primary</it-tag>
 <it-tag type="success">Success</it-tag>
 <it-tag type="danger">Danger</it-tag>
 <it-tag type="warning">Warning</it-tag>
 <it-tag type="black">Black</it-tag>`
 
-  filledCode = `<it-tag>Neutral</it-tag>
+  public filledCode = `<it-tag>Neutral</it-tag>
 <it-tag type="primary" filled >Primary</it-tag>
 <it-tag type="success" filled >Success</it-tag>
 <it-tag type="danger" filled >Danger</it-tag>
@@ -79,7 +79,7 @@ export default class SliderPage extends Vue {
 <it-tag type="black" filled >Black</it-tag>
 `
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'type',
       type: ['String'],

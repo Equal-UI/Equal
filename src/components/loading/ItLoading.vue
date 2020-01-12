@@ -24,10 +24,10 @@ import './loading.less'
 
 @Component
 export default class ItLoading extends Vue {
-  @Prop({ default: 6 }) stroke?: number
-  @Prop({ default: '#3051ff' }) color?: string
-  @Prop({ default: 32 }) radius?: number
+  @Prop({ default: 6 }) public stroke?: number
+  @Prop({ default: '#3051ff' }) public color?: string
+  @Prop({ default: 32 }) public radius?: number
 
-  normalizedRadius = this.radius - (this.stroke / 2)
+  public normalizedRadius = this.radius - (this.stroke / 2)
 }
 </script>

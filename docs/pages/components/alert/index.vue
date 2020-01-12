@@ -51,26 +51,26 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class AlertPage extends Vue {
-  alertVisible = true
-  alertTitle = 'Alert title'
-  alertBody = 'We think we know you'
-  alertShowIcon = true
-  alertClosable = false
-  alertType = 'primary'
-  alertTypes = ['primary', 'success', 'danger', 'warning']
+  public alertVisible = true
+  public alertTitle = 'Alert title'
+  public alertBody = 'We think we know you'
+  public alertShowIcon = true
+  public alertClosable = false
+  public alertType = 'primary'
+  public alertTypes = ['primary', 'success', 'danger', 'warning']
 
-  typesCode = 
+  public typesCode =
 `<it-alert type="primary" :title="alertTitle" :body="alertBody"/>
 <it-alert type="success" :title="alertTitle" :body="alertBody"/>
 <it-alert type="danger" :title="alertTitle" :body="alertBody"/>
 <it-alert type="warning" :title="alertTitle" :body="alertBody"/>`
 
-slotCode = 
+public slotCode =
 `<it-alert type="primary" title="Alert with slot body">
   You can put whatever you want here, I'd put a <it-tag type="primary">Tag</it-tag>
 </it-alert>`
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'type',
       type: ['String'],
@@ -115,7 +115,7 @@ slotCode =
     }
   ]
 
-  eventSheet = [
+  public eventSheet = [
     {
       event: '@on-close',
       description: 'The event function triggered when user clicks on close icon',
@@ -123,10 +123,10 @@ slotCode =
     }
   ]
 
-  slotSheet = [
+  public slotSheet = [
   {
     name: 'default',
-    description: 'Alert body' 
+    description: 'Alert body'
   }
 ]
 

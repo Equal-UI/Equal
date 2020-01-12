@@ -19,7 +19,7 @@ export default class ItTag extends Vue {
   public show = true
   @Prop({
     default: 'neutral',
-    validator: value =>
+    validator: (value) =>
       ['primary', 'success', 'danger', 'warning', 'black', 'neutral'].includes(
         value
       )

@@ -23,61 +23,8 @@ import PropsTable from '~/components/Table.vue'
   components: { Box, PropsTable }
 })
 export default class ModalPage extends Vue {
-  showModal(type: string) {
-    let modal
-    switch (type) {
-      case 'success':
-        modal = this.$Modal.success({
-          title: 'Success modal!',
-          content: 'Success modal content',
-          okClick: () => {
-            modal.close()
-          },
-          cancelClick: () => {
-            modal.close()
-          }
-        })
-        break
-      case 'danger':
-        modal = this.$Modal.danger({
-          title: 'Danger modal!',
-          content: 'Danger modal content',
-          okClick: () => {
-            modal.close()
-          },
-          cancelClick: () => {
-            modal.close()
-          }
-        })
-        break
-      case 'warning':
-        modal = this.$Modal.warning({
-          title: 'Warning modal!',
-          content: 'Prepare for unforeseen consequences',
-          okClick: () => {
-            modal.close()
-          },
-          cancelClick: () => {
-            modal.close()
-          }
-        })
-        break
-      default:
-        modal = this.$Modal({
-          title: 'Primary modal!',
-          content: 'Primary modal content',
-          okClick: () => {
-            modal.close()
-          },
-          cancelClick: () => {
-            modal.close()
-          }
-        })
-        break
-    }
-  }
 
-  typesCode = `<template>
+  public typesCode = `<template>
   <it-button @click="showModal">Primary modal</it-button>
   <it-button @click="showModal('success')" type="success">Success modal</it-button>
   <it-button @click="showModal('danger')" type="danger">Danger modal</it-button>
@@ -146,7 +93,7 @@ export default {
 <\/script>
 `
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'type',
       type: ['String'],
@@ -204,5 +151,58 @@ export default {
       description: 'Callback triggers on Cancel click'
     }
   ]
+  public showModal(type: string) {
+    let modal
+    switch (type) {
+      case 'success':
+        modal = this.$Modal.success({
+          title: 'Success modal!',
+          content: 'Success modal content',
+          okClick: () => {
+            modal.close()
+          },
+          cancelClick: () => {
+            modal.close()
+          }
+        })
+        break
+      case 'danger':
+        modal = this.$Modal.danger({
+          title: 'Danger modal!',
+          content: 'Danger modal content',
+          okClick: () => {
+            modal.close()
+          },
+          cancelClick: () => {
+            modal.close()
+          }
+        })
+        break
+      case 'warning':
+        modal = this.$Modal.warning({
+          title: 'Warning modal!',
+          content: 'Prepare for unforeseen consequences',
+          okClick: () => {
+            modal.close()
+          },
+          cancelClick: () => {
+            modal.close()
+          }
+        })
+        break
+      default:
+        modal = this.$Modal({
+          title: 'Primary modal!',
+          content: 'Primary modal content',
+          okClick: () => {
+            modal.close()
+          },
+          cancelClick: () => {
+            modal.close()
+          }
+        })
+        break
+    }
+  }
 }
 </script>

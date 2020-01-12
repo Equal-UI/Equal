@@ -29,22 +29,22 @@ import PopoverMixin from '../../src/mixins/popover'
 
 @Component
 export default class Box extends Vue {
-  @Prop() code?: string
-  @Prop() title?: string
+  @Prop() public code?: string
+  @Prop() public title?: string
 
-  expandHeight: string = '0px'
-  copyText: string = 'Copy to clipboard'
-  expanded: boolean = false
+  public expandHeight: string = '0px'
+  public copyText: string = 'Copy to clipboard'
+  public expanded: boolean = false
 
-  toggleExpand() {
+  public toggleExpand() {
     this.expandHeight = this.expandHeight === '0px' ? '1000px' : '0px'
     this.expanded = !this.expanded
   }
 
-  async clickCopy() {
+  public async clickCopy() {
     this.copyText = 'Copied!'
     await navigator.clipboard.writeText(this.code)
-    ;(this.$refs.tooltip as PopoverMixin).setPopoverPosition()
+    ; (this.$refs.tooltip as PopoverMixin).setPopoverPosition()
   }
 }
 </script>

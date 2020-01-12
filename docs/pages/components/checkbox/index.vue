@@ -54,36 +54,36 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class CheckboxPage extends Vue {
-  checkboxDisabled = false
-  checkboxValue = false
-  checkboxPulse = false
-  checkboxLabel = 'Checkbox'
-  checkboxIcon = 'check'
-  checkboxType = 'primary'
-  checkboxTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
+  public checkboxDisabled = false
+  public checkboxValue = false
+  public checkboxPulse = false
+  public checkboxLabel = 'Checkbox'
+  public checkboxIcon = 'check'
+  public checkboxType = 'primary'
+  public checkboxTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
 
-  typesCheck = true
-  iconsCheck = true
+  public typesCheck = true
+  public iconsCheck = true
 
-  pulseValue = false
+  public pulseValue = false
 
-  codeType = `<it-checkbox type="primary" label="Primary" v-model="typesCheck" />
+  public codeType = `<it-checkbox type="primary" label="Primary" v-model="typesCheck" />
 <it-checkbox type="success" label="Success" v-model="typesCheck" />
 <it-checkbox type="danger" label="Danger" v-model="typesCheck" />
 <it-checkbox type="warning" label="Warning" v-model="typesCheck" />
 <it-checkbox type="black" label="Black" v-model="typesCheck" />
 <it-checkbox type="neutral" label="Neutral" v-model="typesCheck" />`
 
-  codeIcon = `<it-checkbox type="primary" label="Primary" icon="visibility" v-model="iconsCheck" />
+  public codeIcon = `<it-checkbox type="primary" label="Primary" icon="visibility" v-model="iconsCheck" />
 <it-checkbox type="success" label="Success" icon="room" v-model="iconsCheck" />
 <it-checkbox type="danger" label="Danger" icon="favorite" v-model="iconsCheck" />
 <it-checkbox type="warning" label="Warning" icon="alarm_on" v-model="iconsCheck" />
 <it-checkbox type="black" label="Black" icon="verified_user" v-model="iconsCheck" />
 <it-checkbox type="neutral" label="Neutral" icon="refresh" v-model="iconsCheck" />`
 
-  codePulse = `<it-checkbox type="primary" pulse label="Look at me" v-model="pulseValue" />`
+  public codePulse = `<it-checkbox type="primary" pulse label="Look at me" v-model="pulseValue" />`
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'type',
       type: ['String'],

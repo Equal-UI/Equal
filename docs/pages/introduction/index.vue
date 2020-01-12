@@ -23,13 +23,13 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 })
 export default class IntroductionPage extends Vue {
 
-  installCode = `# NPM
+  public installCode = `# NPM
 npm install equal-vue
 
 # Yarn
 yarn add equal-vue`
 
-  headLink = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined">'
+  public headLink = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined">'
 }
 </script>
 

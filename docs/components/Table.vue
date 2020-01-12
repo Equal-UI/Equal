@@ -84,10 +84,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class PropsTable extends Vue {
-  @Prop() dataSheet!: object[]
-  @Prop() eventSheet!: object[]
-  @Prop() methodSheet!: object[]
-  @Prop() slotSheet!: object[]
+  @Prop() public dataSheet!: object[]
+  @Prop() public eventSheet!: object[]
+  @Prop() public methodSheet!: object[]
+  @Prop() public slotSheet!: object[]
 }
 </script>
 

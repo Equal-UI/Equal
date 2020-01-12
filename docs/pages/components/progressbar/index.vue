@@ -62,25 +62,25 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class ProgressPage extends Vue {
-  progressValue: number = 42
-  progressHeight: number = 7
-  tooltipTypes: string[] = ['top', 'bottom']
-  progressTooltip: string = 'top'
-  progressShowTooltip: boolean = true
-  progressValue42: number = 42
+  public progressValue: number = 42
+  public progressHeight: number = 7
+  public tooltipTypes: string[] = ['top', 'bottom']
+  public progressTooltip: string = 'top'
+  public progressShowTooltip: boolean = true
+  public progressValue42: number = 42
 
-  infiniteCode = `<it-progressbar infinite />`
+  public infiniteCode = `<it-progressbar infinite />`
 
-  heightCode = `<it-progressbar :height="3" :progress="progressValue" />
+  public heightCode = `<it-progressbar :height="3" :progress="progressValue" />
 <it-progressbar :height="5" :progress="progressValue" />
 <it-progressbar :height="7" :progress="progressValue" />
 <it-progressbar :height="10" :progress="progressValue" />
 <it-progressbar :height="13" :progress="progressValue" />`
 
-  tooltipCode = `<it-progressbar :progress="progressValue" />
+  public tooltipCode = `<it-progressbar :progress="progressValue" />
 <it-progressbar :progress="progressValue" tooltip="bottom" />`
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'progress',
       type: ['Number', 'String'],

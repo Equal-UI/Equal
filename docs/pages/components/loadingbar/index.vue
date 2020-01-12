@@ -23,13 +23,13 @@ import PropsTable from '~/components/Table.vue'
 })
 export default class LoadingbarPage extends Vue {
 
-  typesCode = 
+  public typesCode =
 `<it-button @click="$Loading.start()">Start</it-button>
 <it-button @click="$Loading.update(50)">Set 50%</it-button>
 <it-button @click="$Loading.finish()">Finish</it-button>
 `
 
-  methodSheet = [
+  public methodSheet = [
     {
       method: 'start',
       description: 'Start loading progress',

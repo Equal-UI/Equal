@@ -46,38 +46,38 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import "./button.less";
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import './button.less'
 
 @Component
 export default class ItButton extends Vue {
   @Prop({
-    default: "primary",
-    validator: value =>
-      ["primary", "success", "danger", "warning", "black", "neutral"].includes(
+    default: 'primary',
+    validator: (value) =>
+      ['primary', 'success', 'danger', 'warning', 'black', 'neutral'].includes(
         value
       )
   })
-  private type!: string;
+  private type!: string
   @Prop({
-    default: "normal",
-    validator: value => ["small", "normal", "big"].includes(value)
+    default: 'normal',
+    validator: (value) => ['small', 'normal', 'big'].includes(value)
   })
-  private size?: string;
-  @Prop({ type: Boolean, default: false }) private iconAfter!: boolean;
-  @Prop({ type: Boolean, default: false }) private disabled!: boolean;
-  @Prop({ type: Boolean, default: false }) private outlined!: boolean;
-  @Prop({ type: Boolean, default: false }) private round!: boolean;
-  @Prop({ type: Boolean, default: false }) private pulse!: boolean;
-  @Prop({ type: Boolean, default: false }) private loading!: boolean;
-  @Prop() private icon!: string;
+  private size?: string
+  @Prop({ type: Boolean, default: false }) private iconAfter!: boolean
+  @Prop({ type: Boolean, default: false }) private disabled!: boolean
+  @Prop({ type: Boolean, default: false }) private outlined!: boolean
+  @Prop({ type: Boolean, default: false }) private round!: boolean
+  @Prop({ type: Boolean, default: false }) private pulse!: boolean
+  @Prop({ type: Boolean, default: false }) private loading!: boolean
+  @Prop() private icon!: string
 
   private marginStyle = this.iconAfter
-    ? { marginLeft: "6px" }
-    : { marginRight: "6px" };
+    ? { marginLeft: '6px' }
+    : { marginRight: '6px' }
 
   get listeners() {
-    return { ...this.$listeners };
+    return { ...this.$listeners }
   }
 }
 </script>

@@ -40,12 +40,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, PropsTable }
 })
 export default class SelectPage extends Vue {
-  selectValue = ''
-  selectLabel: string = 'Select me'
-  selectPlaceholder: string = 'Select me'
-  selectDisabled: boolean = false
+  public selectValue = ''
+  public selectLabel: string = 'Select me'
+  public selectPlaceholder: string = 'Select me'
+  public selectDisabled: boolean = false
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'label-top',
       type: ['String'],
@@ -89,7 +89,7 @@ export default class SelectPage extends Vue {
     }
   ]
 
-  dataSheet2 = [
+  public dataSheet2 = [
     {
       property: 'value',
       type: ['Number', 'String'],
