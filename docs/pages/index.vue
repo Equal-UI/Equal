@@ -8,12 +8,11 @@
         sm="12"
         xs="12"
       >
-        <img width="170" style="margin-bottom: 18px;" src="~/assets/equal.svg" />
-        <h1 class="main-title">Equal UI <span style="font-size:12px;"><it-tag type="primary">v0.2.0</it-tag></span> </h1>
-        <h4 class="sub-title"><b>Equal</b> – open-source Vue components system for your next project based on TypeScript</h4>
+        <p class="main-title">        <img width="300" src="~/assets/eqqqual.png" /></p>
+        <h4 class="sub-title"><b>Equal UI</b> – open-source Vue components system for your next project based on TypeScript</h4>
         <div class="buttons-group">
           <nuxt-link to="/start">
-            <it-button size="big" pulse>Get started</it-button>
+            <it-button type="primary" size="big" pulse>Get started</it-button>
           </nuxt-link>
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/quatrochan/Equal">
             <it-button size="big" type="neutral" outlined>Github</it-button>

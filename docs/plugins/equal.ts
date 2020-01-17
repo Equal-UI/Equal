@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Equal from '../../src'
 
 Vue.component('it-alert', Equal.Alert)
+Vue.component('it-avatar', Equal.Avatar)
 Vue.component('it-button', Equal.Button)
 Vue.component('it-badge', Equal.Badge)
 Vue.component('it-checkbox', Equal.Checkbox)

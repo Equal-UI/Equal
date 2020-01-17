@@ -1,6 +1,6 @@
 {
   "name": "equal-vue",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Yan Savinov",
     "email": "yan.savinov.hire@gmail.com"
@@ -8,6 +8,10 @@
   "private": false,
   "license": "MIT",
   "bugs": "https://github.com/quatrochan/Equal/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quatrochan/Equal"
+  },
   "keywords": [
     "equal",
     "vue",

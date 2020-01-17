@@ -2,10 +2,8 @@
   <header class="header">
     <div class="header-left">
       <nuxt-link to="/" class="logo-link">
-        <img class="header-logo" src="~/assets/equal.svg" />
-      </nuxt-link>
-      <nuxt-link to="/">
-        <h3 style="color: black">Equal</h3>
+        <img class="header-logo" src="~/assets/eqqqual.png" />
+        <it-tag type="primary">v0.3.0</it-tag>
       </nuxt-link>
     </div>
 
@@ -46,10 +44,11 @@ export default class Header extends Vue {}
 
     &-logo {
       height: 74%;
+      margin-right: 10px;
     }
 
     .logo-link {
-      height: 100%;
+      height: 90%;
       display: flex;
       align-items: center;
     }

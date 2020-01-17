@@ -16,14 +16,6 @@
       }">
         <nuxt-link style="padding: 6px 13px;" to="/start">Getting started</nuxt-link>
       </li>
-      <!-- <li class="group-title">
-        Layout
-      </li>
-      <li :class="{
-        'active-menu-item': $route.name === 'layout-grid'
-      }">
-        <nuxt-link to="/layout/grid">Grid</nuxt-link>
-      </li> -->
       <li class="group-title">
         Components
       </li>
@@ -31,6 +23,11 @@
         'active-menu-item': $route.name === 'components-alert'
       }">
         <nuxt-link to="/components/alert">Alert</nuxt-link>
+      </li>
+      <li :class="{
+        'active-menu-item': $route.name === 'components-avatar'
+      }">
+        <nuxt-link to="/components/avatar">Avatar</nuxt-link>
       </li>
       <li :class="{
         'active-menu-item': $route.name === 'components-button'

@@ -11,6 +11,7 @@
         :loading="buttonLoading"
         :disabled="buttonDisabled"
         :icon="buttonIconValue"
+        :block="buttonBlock"
       >{{buttonText}}</it-button>
       <template slot="props">
         <it-select placeholder="Select type" labelTop="Button type" v-model="buttonType">
@@ -27,16 +28,17 @@
         <it-checkbox label="Icon" v-model="buttonIcon" />
         <it-checkbox label="Loading" v-model="buttonLoading" />
         <it-checkbox label="Pulse" v-model="buttonPulse" />
+        <it-checkbox label="Block" v-model="buttonBlock" />
         <it-checkbox label="Disabled" v-model="buttonDisabled" />
       </template>
     </Demobox>
     <Box :code="codeType" title="Type">
+      <it-button>Button</it-button>
       <it-button type="primary">Button</it-button>
       <it-button type="success">Button</it-button>
       <it-button type="danger">Button</it-button>
       <it-button type="warning">Button</it-button>
       <it-button type="black">Button</it-button>
-      <it-button type="neutral">Button</it-button>
     </Box>
     <Box :code="codeOutline" title="Outline">
       <it-button type="primary" outlined>Button</it-button>
@@ -44,15 +46,21 @@
       <it-button type="danger" outlined>Button</it-button>
       <it-button type="warning" outlined>Button</it-button>
       <it-button type="black" outlined>Button</it-button>
-      <it-button type="neutral" outlined>Button</it-button>
     </Box>
     <Box :code="codeRound" title="Round">
+      <it-button round>Button</it-button>
       <it-button type="primary" round>Button</it-button>
       <it-button type="success" round>Button</it-button>
       <it-button type="danger" round>Button</it-button>
       <it-button type="warning" round>Button</it-button>
       <it-button type="black" round>Button</it-button>
-      <it-button type="neutral" round>Button</it-button>
+    </Box>
+    <Box :code="codeBlock" title="Block">
+      <it-button block>Button</it-button>
+      <br>
+      <it-button type="primary" block>Button</it-button>
+      <br>
+
     </Box>
     <Box :code="codeSize" title="Size">
       <it-button size="small">Button</it-button>
@@ -102,16 +110,17 @@ export default class ButtonPage extends Vue {
   public buttonDisabled = false
   public buttonLoading = false
   public buttonPulse = false
+  public buttonBlock = false
   public buttonType = 'primary'
   public buttonTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
   public buttonIcon = false
 
-  public codeType = `<it-button type="primary">Button</it-button>
+  public codeType = `<it-button>Button</it-button>
+<it-button type="primary">Button</it-button>
 <it-button type="success">Button</it-button>
 <it-button type="danger">Button</it-button>
 <it-button type="warning">Button</it-button>
 <it-button type="black">Button</it-button>
-<it-button type="neutral">Button</it-button>
 `
   public codeSize = `<it-button size="small">Button</it-button>
 <it-button size="normal">Button</it-button>
@@ -121,15 +130,14 @@ export default class ButtonPage extends Vue {
 <it-button type="success" outlined>Button</it-button>
 <it-button type="danger" outlined>Button</it-button>
 <it-button type="warning" outlined>Button</it-button>
-<it-button type="black" outlined>Button</it-button>
-<it-button type="neutral" outlined>Button</it-button>`
+<it-button type="black" outlined>Button</it-button>`
 
-  public codeRound = `<it-button type="primary" round>Button</it-button>
+  public codeRound = `<it-button round>Button</it-button>
+<it-button type="primary" round>Button</it-button>
 <it-button type="success" round>Button</it-button>
 <it-button type="danger" round>Button</it-button>
 <it-button type="warning" round>Button</it-button>
-<it-button type="black" round>Button</it-button>
-<it-button type="neutral" round>Button</it-button>`
+<it-button type="black" round>Button</it-button>`
 
   public codeIcon = `<it-button icon="face">Button</it-button>
 <it-button icon="face" />
@@ -144,6 +152,10 @@ export default class ButtonPage extends Vue {
   public codeDisabled = `<it-button size="small" disabled>Button</it-button>
 <it-button size="normal" disabled>Button</it-button>
 <it-button size="big" disabled>Button</it-button>`
+
+codeBlock = 
+`<it-button block>Button</it-button>
+<it-button type="primary" block>Button</it-button>`
 
   public dataSheet = [
     {
@@ -187,6 +199,13 @@ export default class ButtonPage extends Vue {
       default: false,
       values: [],
       description: 'Shows loading spinner'
+    },
+    {
+      property: 'block',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Makes button fit parent width'
     },
     {
       property: 'disabled',

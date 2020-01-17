@@ -6,7 +6,8 @@
       outlined && `it-btn--${type}--outlined`,
       size && `it-btn--${size}`,
       round && 'round',
-      pulse && 'pulse'
+      pulse && 'pulse',
+      block && 'it-btn--block'
     ]"
     :style="[!$slots.default && {padding: '9px 9px'}]"
     :disabled="disabled"
@@ -52,7 +53,7 @@ import './button.less'
 @Component
 export default class ItButton extends Vue {
   @Prop({
-    default: 'primary',
+    default: 'neutral',
     validator: (value) =>
       ['primary', 'success', 'danger', 'warning', 'black', 'neutral'].includes(
         value
@@ -70,6 +71,7 @@ export default class ItButton extends Vue {
   @Prop({ type: Boolean, default: false }) private round!: boolean
   @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Prop({ type: Boolean, default: false }) private loading!: boolean
+  @Prop({ type: Boolean, default: false }) private block!: boolean
   @Prop() private icon!: string
 
   private marginStyle = this.iconAfter

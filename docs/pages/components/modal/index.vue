@@ -3,7 +3,7 @@
     <h1>Modal</h1>
 
     <Box :code="typesCode" title="Modal types">
-      <it-button @click="showModal">Primary modal</it-button>
+      <it-button @click="showModal" type="primary">Primary modal</it-button>
       <it-button @click="showModal('success')" type="success">Success modal</it-button>
       <it-button @click="showModal('danger')" type="danger">Danger modal</it-button>
       <it-button @click="showModal('warning')" type="warning">Warning modal</it-button>

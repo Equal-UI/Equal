@@ -1,0 +1,54 @@
+@import '../../styles/variables.less';
+
+.it-avatar {
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background: @color-secondary-text;
+  // width: 40px;
+  // height: 40px;
+  // line-height: 40px;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  & > span {
+    vertical-align: middle;
+    font-weight: 500;
+  }
+
+  &--square {
+    border-radius: 6px;
+  }
+
+    // display: inline-block;
+    // font-size: 18px;
+    // color: inherit;
+    // font-style: normal;
+    // line-height: 0;
+    // text-align: center;
+    // text-transform: none;
+    // text-rendering: optimizeLegibility;
+    // -webkit-font-smoothing: antialiased;
+    
+    > svg {
+      vertical-align: middle;
+      display: inline-block;
+      fill: #fff;
+      margin-bottom: 4px;
+    }
+}

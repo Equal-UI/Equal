@@ -1,4 +1,5 @@
 import Alert from './components/alert'
+import Avatar from './components/avatar'
 import Button from './components/button'
 import Badge from './components/badge'
 import Checkbox from './components/checkbox'
@@ -23,6 +24,7 @@ import Tooltip from './components/tooltip'
 
 const components = {
   Alert,
+  Avatar,
   Button,
   Badge,
   Checkbox,

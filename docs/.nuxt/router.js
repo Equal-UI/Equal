@@ -6,6 +6,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _6081ed0b = () => interopDefault(import('../pages/introduction/index.vue' /* webpackChunkName: "pages/introduction/index" */))
 const _7adb6767 = () => interopDefault(import('../pages/start/index.vue' /* webpackChunkName: "pages/start/index" */))
 const _76e7a858 = () => interopDefault(import('../pages/components/alert/index.vue' /* webpackChunkName: "pages/components/alert/index" */))
+const _eb90cb12 = () => interopDefault(import('../pages/components/avatar/index.vue' /* webpackChunkName: "pages/components/avatar/index" */))
 const _6d54515b = () => interopDefault(import('../pages/components/badge/index.vue' /* webpackChunkName: "pages/components/badge/index" */))
 const _24ef75e0 = () => interopDefault(import('../pages/components/button/index.vue' /* webpackChunkName: "pages/components/button/index" */))
 const _78c998be = () => interopDefault(import('../pages/components/checkbox/index.vue' /* webpackChunkName: "pages/components/checkbox/index" */))
@@ -50,6 +51,10 @@ export const routerOptions = {
       path: "/components/alert",
       component: _76e7a858,
       name: "components-alert"
+    }, {
+      path: "/components/avatar",
+      component: _eb90cb12,
+      name: "components-avatar"
     }, {
       path: "/components/badge",
       component: _6d54515b,

@@ -19,6 +19,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/Equal/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/Equal/favicon-16x16.png' },
+      { rel: 'manifest', href: '/Equal/site.webmanifest' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined' },
     ]
   },

@@ -3,7 +3,7 @@
     <h1>Message</h1>
 
     <Box :code="messagesCode" title="Message types">
-      <it-button @click="showMessage">Primary message</it-button>
+      <it-button @click="showMessage" type="primary">Primary message</it-button>
       <it-button @click="showMessage('success')" type="success">Success message</it-button>
       <it-button @click="showMessage('danger')" type="danger">Danger message</it-button>
       <it-button @click="showMessage('warning')" type="warning">Warning message</it-button>

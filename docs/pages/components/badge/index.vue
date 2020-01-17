@@ -9,14 +9,16 @@
         :type="badgeType"
         :maxValue="badgeMax"
         :point="badgePoint"
+        :square="badgeSquare"
       >
-        <it-button type="neutral">Badged</it-button>
+        <it-button>Badged</it-button>
       </it-badge>
       <template slot="props">
         <it-select placeholder="Select type" labelTop="Badge type" v-model="badgeType">
           <it-select-option :key="type" v-for="type in badgeTypes" :value="type">{{type}}</it-select-option>
         </it-select>
         <it-checkbox label="Point" v-model="badgePoint" />
+        <it-checkbox label="Square" v-model="badgeSquare" />
         <it-checkbox label="Show" v-model="badgeShow" />
         <it-number-input v-model="badgeMax" labelTop="Max value" />
         <it-number-input v-model="badgeValue" labelTop="Badge value" />
@@ -25,31 +27,40 @@
 
     <Box :code="typesCode" title="Type">
       <it-badge value="12" type="primary">
-        <it-button type="neutral">Primary</it-button>
+        <it-button>Primary</it-button>
       </it-badge>
-      <it-badge value="12" type="danger">
-        <it-button type="neutral">Default</it-button>
+      <it-badge value="new" type="danger">
+        <it-button>Default</it-button>
       </it-badge>
       <it-badge value="12" type="success">
-        <it-button type="neutral">Success</it-button>
+        <it-button>Success</it-button>
       </it-badge>
       <it-badge value="12" type="warning">
-        <it-button type="neutral">Warning</it-button>
+        <it-button>Warning</it-button>
       </it-badge>
     </Box>
 
     <Box :code="pointCode" title="Point">
       <it-badge type="primary" point>
-        <it-button type="neutral">Primary</it-button>
+        <it-button>Primary</it-button>
       </it-badge>
       <it-badge type="danger" point>
-        <it-button type="neutral" icon="mail_outline"></it-button>
+        <it-button icon="mail_outline"></it-button>
       </it-badge>
       <it-badge type="success" point>
-        <it-button type="neutral" icon="thumb_up"></it-button>
+        <it-button icon="thumb_up"></it-button>
       </it-badge>
       <it-badge type="warning" point>
-        <it-button type="neutral" icon="error_outline"></it-button>
+        <it-button icon="error_outline"></it-button>
+      </it-badge>
+    </Box>
+
+    <Box :code="squareCode" title="Square">
+      <it-badge type="primary" :value="12" square>
+        <it-button>Square</it-button>
+      </it-badge>
+      <it-badge type="primary" point square>
+        <it-button icon="thumb_up"></it-button>
       </it-badge>
     </Box>
 
@@ -57,6 +68,11 @@
       <it-badge :value="110" :max-value="99">
         <it-tag type="danger">Maximum</it-tag>
       </it-badge>
+    </Box>
+
+    <Box :code="standaloneCode" title="Standalone">
+      <it-badge :value="101" />
+      <it-badge :value="101" square />
     </Box>
 
     <props-table :data-sheet="dataSheet" />
@@ -77,40 +93,52 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class BadgePage extends Vue {
   public badgeValue = 97
   public badgePoint = false
+  public badgeSquare = false
   public badgeShow = true
   public badgeMax = 99
   public badgeType = 'danger'
   public badgeTypes = ['primary', 'success', 'danger', 'warning']
 
   public typesCode = `<it-badge value="12" type="primary">
-  <it-button type="neutral">Primary</it-button>
+  <it-button>Primary</it-button>
 </it-badge>
-<it-badge value="12" type="danger">
-  <it-button type="neutral">Default</it-button>
+<it-badge value="new" type="danger">
+  <it-button>Default</it-button>
 </it-badge>
 <it-badge value="12" type="success">
-  <it-button type="neutral">Success</it-button>
+  <it-button>Success</it-button>
 </it-badge>
 <it-badge value="12" type="warning">
-  <it-button type="neutral">Warning</it-button>
+  <it-button>Warning</it-button>
 </it-badge>`
 
   public pointCode = `<it-badge type="primary" point>
-  <it-button type="neutral">Primary</it-button>
+  <it-button>Primary</it-button>
 </it-badge>
 <it-badge type="danger" point>
-  <it-button type="neutral" icon="mail_outline"></it-button>
+  <it-button icon="mail_outline"></it-button>
 </it-badge>
 <it-badge type="success" point>
-  <it-button type="neutral" icon="thumb_up"></it-button>
+  <it-button icon="thumb_up"></it-button>
 </it-badge>
 <it-badge type="warning" point>
-  <it-button type="neutral" icon="error_outline"></it-button>
+  <it-button icon="error_outline"></it-button>
 </it-badge>`
 
   public maxvalCode = `<it-badge :value="110" :max-value="99">
   <it-tag type="danger">Maximum</it-tag>
 </it-badge>`
+
+  public squareCode = `<it-badge type="primary" :value="12" square>
+<it-button>Square</it-button>
+  </it-badge>
+<it-badge type="success" point square>
+  <it-button icon="thumb_up"></it-button>
+</it-badge>`
+
+standaloneCode = 
+`<it-badge :value="101" />
+<it-badge :value="101" square />`
 
   public dataSheet = [
     {
@@ -147,6 +175,13 @@ export default class BadgePage extends Vue {
       default: 'false',
       values: [],
       description: 'Show badge as point'
+    },
+    {
+      property: 'square',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Make badge squared'
     }
   ]
 }

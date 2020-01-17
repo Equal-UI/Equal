@@ -9,6 +9,7 @@
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
       })"
+      type="primary"
       >Primary notification</it-button>
       <it-button
         type="success"
@@ -50,7 +51,7 @@
       <it-button
         @click="$Notification({
       title: 'Image notification',
-      image: 'https://images.unsplash.com/photo-1545920281-8f9385c1b875?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
+      image: 'https://picsum.photos/200',
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
       })"

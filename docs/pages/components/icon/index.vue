@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Icon</h1>
-
+    <p style="margin-bottom: 10px;">Equal UI uses <a href="https://material.io/resources/icons/?style=baseline" target="_blank" rel="noopener noreferrer">Material icons</a> as a default icons library</p>
     <Demobox>
       <it-icon :name="iconName" :outlined="iconOutlined" :color="iconColor" />
 
@@ -37,21 +37,19 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class IconPage extends Vue {
-  iconColor: string = '#000000'
-  iconName: string = 'face'
-  iconOutlined: boolean = false
+  public iconColor: string = '#000000'
+  public iconName: string = 'face'
+  public iconOutlined: boolean = false
 
-  codeOutlined = 
-  `<it-icon name="face" :outlined="true" />
+  public codeOutlined = `<it-icon name="face" :outlined="true" />
 <it-icon name="label" :outlined="true" />
 <it-icon name="feedback" :outlined="true" />`
 
-  codeColor = 
-`<it-icon name="face" color="#3051FF" />
+  public codeColor = `<it-icon name="face" color="#3051FF" />
 <it-icon name="label" color="#3051FF" />
 <it-icon name="feedback" color="#3051FF" />`
 
-  dataSheet = [
+  public dataSheet = [
     {
       property: 'name',
       type: ['String'],
