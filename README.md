@@ -14,7 +14,9 @@
 </p>
 </p>
 
-<h1 align="center">Equal UI</h1>
+<h1 align="center">
+  Equal UI
+</h1>
 
 <div align="center">
 Equal UI is a Vue 2 TypeScript components library
@@ -63,5 +65,4 @@ Vue.use(Switch)
 ```
 
 # License
-
 [MIT](https://raw.githubusercontent.com/quatrochan/Equal/master/LICENSE)
