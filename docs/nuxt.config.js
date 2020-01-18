@@ -39,7 +39,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family:Material+Icons|Material+Icons+Outlined'
+          'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined'
       },
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@EqualVue' },
