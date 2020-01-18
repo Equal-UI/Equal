@@ -33,6 +33,10 @@
         </it-tooltip>
       </div>
     </div>
+    <div v-if="numbers" class="it-slider-numbers">
+      <div>{{min}}</div>
+      <div style="left: 100%">{{max}}</div>
+    </div>
   </div>
 </template>
 
@@ -45,6 +49,7 @@ import './slider.less'
 export default class ItSlider extends Vue {
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
   @Prop({ type: Boolean, default: false }) private stepPoints?: boolean
+  @Prop({ type: Boolean, default: false }) private numbers?: boolean
   @Prop({ default: 0 }) private min?: number
   @Prop({ default: 100 }) private max?: number
   @Prop({ default: 1 }) private step?: number
@@ -97,8 +102,8 @@ export default class ItSlider extends Vue {
   private onDragStart(e: MouseEvent) {
     this.dragging = true
     this.startX = e.clientX
-    this.startPos = this.valuePosition
-    ; (this.$refs.tooltip as PopoverMixin).showTooltip()
+    this.startPos = this.valuePosition;
+    (this.$refs.tooltip as PopoverMixin).showTooltip()
   }
 
   private onDragging(e: MouseEvent) {
@@ -120,8 +125,8 @@ export default class ItSlider extends Vue {
       this.dragging = false
       this.setPosition(this.newPos)
       window.removeEventListener('mousemove', this.onDragging)
-      window.removeEventListener('mouseup', this.onDragEnd)
-      ; (this.$refs.tooltip as PopoverMixin).handleMouseLeave()
+      window.removeEventListener('mouseup', this.onDragEnd);
+      (this.$refs.tooltip as PopoverMixin).handleMouseLeave()
     }
   }
 

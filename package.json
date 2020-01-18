@@ -1,6 +1,6 @@
 {
   "name": "equal-vue",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Yan Savinov",
     "email": "yan.savinov.hire@gmail.com"
@@ -61,6 +61,9 @@
     "ts-jest": "^23.0.0",
     "vue-prism-component": "^1.1.1",
     "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
   },
   "lint-staged": {
     "*.ts": [

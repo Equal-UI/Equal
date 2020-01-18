@@ -17,7 +17,7 @@
           ref="tooltip"
           :placement="tooltip"
           :content="progress+'%'"
-        >&nbsp</it-tooltip>
+        >&nbsp;</it-tooltip>
       </div>
     </div>
   </div>

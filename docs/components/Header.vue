@@ -3,7 +3,7 @@
     <div class="header-left">
       <nuxt-link to="/" class="logo-link">
         <img class="header-logo" src="~/assets/eqqqual.png" />
-        <it-tag type="primary">v0.3.0</it-tag>
+        <it-tag type="primary">v0.3.1</it-tag>
       </nuxt-link>
     </div>
 

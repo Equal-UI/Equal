@@ -11,6 +11,7 @@
           :min="sliderMin"
           :max="sliderMax"
           :step="sliderStep"
+          :numbers="sliderNumbers"
         />
       </div>
 
@@ -18,6 +19,7 @@
         <it-number-input v-model="sliderMin" labelTop="Min" />
         <it-number-input v-model="sliderMax" labelTop="Max" />
         <it-number-input v-model="sliderStep" labelTop="Step" />
+        <it-checkbox label="Numbers" v-model="sliderNumbers" />
         <it-checkbox label="Step points" v-model="sliderStepPoints" />
         <it-checkbox label="Disabled" v-model="sliderDisabled" />
       </template>
@@ -51,6 +53,7 @@ export default class SliderPage extends Vue {
   sliderStep: number = 1
   sliderStepPoints: boolean = false
   sliderDisabled: boolean = false
+  sliderNumbers: boolean = false
 
   stepCode = `<it-slider v-model="stepSliderValue" :stepPoints="true" :min="0" :max="12" :step="2" />`
   disabledCode = `<it-slider v-model="stepSliderValue" disabled :min="0" :max="20" />`
@@ -83,6 +86,13 @@ export default class SliderPage extends Vue {
       default: 'false',
       values: [],
       description: 'Show step points'
+    },
+    {
+      property: 'numbers',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Show min/max value numbers'
     },
     {
       property: 'step',
