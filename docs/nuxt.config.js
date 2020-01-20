@@ -30,7 +30,7 @@ export default {
         content:
           'Equal UI – open-source Vue components system for your next project based on TypeScript'
       },
-      { property: 'og:image', content: '~/assets/eqqqual.png' }
+      { property: 'og:image', content: '/Equal/eqqqual.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
