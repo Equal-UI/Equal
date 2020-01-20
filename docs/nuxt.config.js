@@ -19,7 +19,18 @@ export default {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
-      }
+      },
+      { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:site', content: '@EqualVue' },
+      { name: 'twitter:creator', content: '@k0mmsussertod' },
+      { property: 'og:url', content: 'https://quatrochan.github.io/Equal/' },
+      { property: 'og:title', content: 'Equal UI' },
+      {
+        property: 'og:description',
+        content:
+          'Equal UI – open-source Vue components system for your next project based on TypeScript'
+      },
+      { property: 'og:image', content: '~/assets/eqqqual.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
@@ -40,18 +51,7 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined'
-      },
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:site', content: '@EqualVue' },
-      { name: 'twitter:creator', content: '@k0mmsussertod' },
-      { property: 'og:url', content: 'https://quatrochan.github.io/Equal/' },
-      { property: 'og:title', content: 'Equal UI' },
-      {
-        property: 'og:description',
-        content:
-          'Equal UI – open-source Vue components system for your next project based on TypeScript'
-      },
-      { property: 'og:image', content: '~/assets/eqqqual.png' }
+      }
     ]
   },
   /*

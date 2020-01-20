@@ -7,7 +7,7 @@
       class="it-select-selection"
       :class="[disabled && 'it-select-selection--disabled', show && 'it-select-selection--active']"
       ref="trigger"
-      @click="showList"
+      @click="toggleList"
       v-clickoutside="hidePopover"
     >
       <span class="it-select-placeholder" v-show="!selected">{{ placeholder }}</span>
@@ -43,25 +43,27 @@ import PopoverMixin from '../../mixins/popover'
 import './select.less'
 
 @Component({
-  directives: { clickoutside },
-  mixins: [PopoverMixin]
+  directives: { clickoutside }
 })
-export default class ItSelect extends Vue {
+export default class ItSelect extends PopoverMixin {
+  @Prop({ default: 'bottom' }) public placement?: string
+  @Prop({ type: Boolean, default: false }) public disabled!: boolean
   @Provide() private select = this.selectOption
   @Prop() private labelTop?: string
-  @Prop({ default: 'bottom' }) private placement!: string
   @Prop({ default: 'Select' }) private placeholder?: string
-  @Prop({ type: Boolean, default: false }) private disabled?: boolean
 
   @Model('input') private value?: string
   private selected: any = this.value
 
-  private showList() {
+  private toggleList() {
     if (this.disabled) {
       return
     }
-    // @ts-ignore
-    this.showTooltip()
+    if (this.show) {
+      this.hidePopover()
+    } else {
+      this.showTooltip()
+    }
   }
 
   private selectOption(value: string | number) {
