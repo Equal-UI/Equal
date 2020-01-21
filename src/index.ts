@@ -21,7 +21,6 @@ import Tag from './components/tag'
 import Textarea from './components/textarea'
 import Tooltip from './components/tooltip'
 
-
 const components = {
   Alert,
   Avatar,
@@ -32,10 +31,6 @@ const components = {
   Icon,
   Input,
   Loading,
-  Loadingbar,
-  Message,
-  Modal,
-  Notification,
   NumberInput,
   Progressbar,
   Radio,
@@ -63,7 +58,27 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export default {
-  install,
-  ...components
-}
+export default { install }
+
+export { default as Alert } from './components/alert'
+export { default as Avatar } from './components/avatar'
+export { default as Button } from './components/button'
+export { default as Badge } from './components/badge'
+export { default as Checkbox } from './components/checkbox'
+export { default as Dropdown } from './components/dropdown'
+export { default as Icon } from './components/icon'
+export { default as Input } from './components/input'
+export { default as Loading } from './components/loading'
+export { default as Loadingbar } from './components/loadingbar'
+export { default as Message } from './components/message'
+export { default as Modal } from './components/modal'
+export { default as Notification } from './components/notification'
+export { default as NumberInput } from './components/numberinput'
+export { default as Progressbar } from './components/progressbar'
+export { default as Radio } from './components/radio'
+export { default as Select } from './components/select'
+export { default as Slider } from './components/slider'
+export { default as Switch } from './components/switch'
+export { default as Tag } from './components/tag'
+export { default as Textarea } from './components/textarea'
+export { default as Tooltip } from './components/tooltip'

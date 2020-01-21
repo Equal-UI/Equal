@@ -4,12 +4,15 @@
   &-mask {
     position: fixed;
     left: 0;
-    right: 0;
     top: 0;
-    bottom: 0;
-    height: 100%;
+    width: 100%;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.45);
     z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
   }
 
   &-body {
@@ -18,7 +21,7 @@
     display: flex;
     max-height: 50%;
     flex-direction: column;
-    top: 150px;
+    top: -12%;
     width: 500px;
     margin: 0 auto;
     border: none;
@@ -26,7 +29,6 @@
     background-color: #fff;
     outline: none;
     box-shadow: @default-shadow;
-    overflow: hidden;
     cursor: default;
   }
 
@@ -49,9 +51,12 @@
     text-align: right;
     padding: 16px 24px;
 
-    .it-btn+.it-btn {
+    .it-btn + .it-btn {
       margin-left: 16px;
     }
   }
+}
 
+.stop-scroll {
+  overflow: hidden;
 }

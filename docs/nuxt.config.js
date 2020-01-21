@@ -82,6 +82,9 @@ export default {
   /*
    ** Build configuration
    */
+  server: {
+    host: '0.0.0.0'
+  },
   build: {
     /*
      ** You can extend webpack config here
