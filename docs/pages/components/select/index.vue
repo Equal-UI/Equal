@@ -22,10 +22,8 @@
       </template>
     </Demobox>
 
-    <h2>it-select</h2>
-    <props-table :data-sheet="dataSheet" />
-    <h2 style="margin-top: 20px;">it-select-item</h2>
-    <props-table :data-sheet="dataSheet2" />
+    <props-table tagName="it-select" :data-sheet="dataSheet" />
+    <props-table tagName="it-select-item" :data-sheet="dataSheet2" />
   </div>
 </template>
 

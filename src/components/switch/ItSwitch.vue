@@ -6,7 +6,7 @@
       type && types.includes(type) ? `it-switch--${type}` : 'it-switch--primary',
       value && `it-switch--${type}--checked`,
       disabled && `it-switch--${type}--disabled`,
-      pulse && 'pulse'
+      (pulse && !disabled) && 'pulse'
     ]"
     >
       <input

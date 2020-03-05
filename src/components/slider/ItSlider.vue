@@ -1,5 +1,13 @@
 <template>
-  <div class="it-slider">
+  <div
+    class="it-slider"
+    :class="{
+        'it-slider--disabled': disabled
+      }"
+    :tabindex="disabled ? -1 : 0"
+    @keydown.down.left.stop.prevent="keyEvent('left')"
+    @keydown.up.right.stop.prevent="keyEvent('right')"
+  >
     <div
       class="it-slider-line"
       @mouseenter="handleMouseEnter"
@@ -7,22 +15,7 @@
       ref="sliderLine"
       @click="onSliderClick"
     >
-      <div
-        class="it-slider-bar"
-        :class="{
-        'it-slider-bar--disabled': disabled
-      }"
-        :style="{width: `${valuePosition}%`}"
-      ></div>
-      <div
-        class="it-slider-point"
-        v-if="stepPoints && stepsArr.length"
-        v-for="stepp in stepsArr"
-        :style="{ left: `${stepp.left}%` }"
-        :class="{
-          'it-slider-point--active': stepp.active
-        }"
-      ></div>
+      <div class="it-slider-bar" :style="{width: `${valuePosition}%`}"></div>
       <div
         class="it-slider-controller-wrapper"
         :style="{ left: `${valuePosition}%` }"
@@ -33,6 +26,17 @@
         </it-tooltip>
       </div>
     </div>
+    <div v-if="stepPoints && stepsArr.length" style="height: 8px">
+        <div
+          class="it-slider-point"
+          v-for="stepp in stepsArr"
+          :key="stepp.left"
+          :style="{ left: `${stepp.left}%`, height: stepp.height }"
+          :class="{
+          'it-slider-point--active': stepp.active
+        }"
+        ></div>
+      </div>
     <div v-if="numbers" class="it-slider-numbers">
       <div>{{min}}</div>
       <div style="left: 100%">{{max}}</div>
@@ -84,10 +88,29 @@ export default class ItSlider extends Vue {
         }
         arr.push({ left, active })
       }
-      arr[0].left += 0.25
-      arr[arr.length - 1].left -= 0.25
+      arr[0].height = '8px'
+      arr[arr.length - 1].height = '8px'
     }
     this.stepsArr = arr
+  }
+
+  @Watch('value')
+  public onValueChange(val) {
+    if (this.disabled) {
+      return
+    }
+    this.setPosition(((val - this.min) * 100) / (this.max - this.min))
+  }
+
+  private keyEvent(key: 'up' | 'right' | 'down' | 'left') {
+    if (this.disabled) {
+      return
+    }
+    if (['up', 'right'].includes(key)) {
+      this.$emit('input', this.value + this.step)
+    } else if (['down', 'left'].includes(key)) {
+      this.$emit('input', this.value - this.step)
+    }
   }
 
   private onMouseDown(e: MouseEvent) {
@@ -152,7 +175,10 @@ export default class ItSlider extends Vue {
     const lengthPerStep = 100 / ((this.max - this.min) / this.step)
     const steps = Math.round(pos / lengthPerStep)
     let value = steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min
-    value = parseFloat(value.toFixed(0))
+    value =
+      parseFloat(value.toFixed(0)) > this.max
+        ? this.max
+        : parseFloat(value.toFixed(0))
 
     this.$emit('input', value)
     const valPos = ((value - this.min) * 100) / (this.max - this.min)

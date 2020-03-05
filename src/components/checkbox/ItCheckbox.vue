@@ -1,7 +1,7 @@
 <template>
   <label class="it-checkbox-wrapper">
+    <span class="it-checkbox-check-wrapper" :class="[(pulse && !disabled) && 'pulse']">
     <input type="checkbox" class="it-checkbox-input" v-on="listeners" />
-    <span class="it-checkbox-check-wrapper" :class="[pulse && 'pulse']">
       <span
         class="it-checkbox"
         :class="[      
@@ -13,7 +13,7 @@
         <it-icon :name="icon" />
       </span>
     </span>
-    <span v-if="label" class="it-checkbox-label">{{label}}</span>
+    <span v-if="label" class="it-checkbox-label" :class="[(lineThrough && value) && 'it-checkbox-label--linethrough']">{{label}}</span>
   </label>
 </template>
 
@@ -26,6 +26,7 @@ export default class ItCheckbox extends Vue {
   @Prop({ default: 'primary' }) private type!: string
   @Prop({ default: 'check' }) private icon!: string
   @Prop({ type: Boolean, default: false }) private pulse!: boolean
+  @Prop({ type: Boolean, default: false }) private lineThrough!: boolean
   @Prop() private label!: string
   @Model('change', { default: false }) private value!: boolean
   @Prop({ type: Boolean, default: false }) private disabled?: boolean

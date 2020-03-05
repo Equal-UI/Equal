@@ -3,15 +3,15 @@
     class="it-btn"
     :class="[
       type ? `it-btn--${type}` : 'it-btn--primary',
-      outlined && `it-btn--${type}--outlined`,
+      outlined && `it-btn--outlined`,
       size && `it-btn--${size}`,
       round && 'round',
-      pulse && 'pulse',
+      (pulse && !disabled) && 'pulse',
       block && 'it-btn--block'
     ]"
     :style="[!$slots.default && {padding: '9px 9px'}]"
     :disabled="disabled"
-    v-on="listeners"
+    v-on="$listeners"
   >
     <it-icon
       v-if="icon && !iconAfter"
@@ -77,10 +77,6 @@ export default class ItButton extends Vue {
   private marginStyle = this.iconAfter
     ? { marginLeft: '6px' }
     : { marginRight: '6px' }
-
-  get listeners() {
-    return { ...this.$listeners }
-  }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="table-box">
-    <h2 v-if="dataSheet" class="it-box-title">Props</h2>
+    <h2 v-if="dataSheet" class="it-box-title">Props <it-tag v-if="tagName">{{tagName}}</it-tag> </h2>
     <table v-if="dataSheet" class="table">
       <thead>
         <tr>
@@ -11,12 +11,14 @@
           <th>Description</th>
         </tr>
       </thead>
-      <tbody v-for="item in dataSheet" :key="item.property">
-        <tr>
+      <tbody>
+        <tr v-for="item in dataSheet" :key="item.property">
           <td v-for="(col, name) in item">
-            <div style="line-height: 2;" v-if="!['description', 'property'].includes(name) && Array.isArray(col)">
-
-            <it-tag v-for="i in col" :key="i">{{i}}</it-tag>
+            <div
+              style="line-height: 2;"
+              v-if="!['description', 'property'].includes(name) && Array.isArray(col)"
+            >
+              <it-tag v-for="i in col" :key="i">{{i}}</it-tag>
             </div>
             <span v-else>{{col}}</span>
           </td>
@@ -32,8 +34,8 @@
           <th>Description</th>
         </tr>
       </thead>
-      <tbody v-for="item in slotSheet" :key="item.property">
-        <tr>
+      <tbody>
+        <tr v-for="item in slotSheet" :key="item.property">
           <td v-for="(col, name) in item">
             <span>{{col}}</span>
           </td>
@@ -50,8 +52,8 @@
           <th>Arguments</th>
         </tr>
       </thead>
-      <tbody v-for="item in methodSheet" :key="item.property">
-        <tr>
+      <tbody >
+        <tr v-for="item in methodSheet" :key="item.property">
           <td v-for="(col, name) in item">
             <span>{{col}}</span>
           </td>
@@ -68,8 +70,8 @@
           <th>Arguments</th>
         </tr>
       </thead>
-      <tbody v-for="item in eventSheet" :key="item.property">
-        <tr>
+      <tbody>
+        <tr v-for="item in eventSheet" :key="item.property">
           <td v-for="(col, name) in item">
             <span>{{col}}</span>
           </td>
@@ -84,6 +86,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class PropsTable extends Vue {
+  @Prop() public tagName?: string
   @Prop() public dataSheet!: object[]
   @Prop() public eventSheet!: object[]
   @Prop() public methodSheet!: object[]
@@ -92,45 +95,60 @@ export default class PropsTable extends Vue {
 </script>
 
 <style lang="less">
-  .table-box {
-    border: 1px solid #dfdfdf;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-sizing: border-box;
-    overflow-x: auto;
+.table-box {
+  border: 1px solid #d3dae6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  overflow-x: auto;
+
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+
+  & thead {
+    background-color: #fafbfd;
+    border-bottom: 1px solid #d3dae6;
+    border-top: 1px solid #d3dae6;
   }
 
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
+  & th,
+  td {
+    line-height: 1;
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
 
-    & thead {
-      background-color: #f2f2f2;
-    }
-
-    & th,
-    td {
-      line-height: 1;
-      text-align: left;
-      padding: 11px 26px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    & td {
-      font-size: 14px;
+  & td {
+    font-size: 13px;
+    font-weight: normal;
+    & > .it-tag {
+      font-size: 12px !important;
       font-weight: normal;
-      & > .it-tag {
-        font-size: 12px !important;
-        font-weight: normal;
-      }
+    }
 
-      & .it-tag + .it-tag {
-        margin-left: 4px;
-      }
+    & .it-tag + .it-tag {
+      margin-left: 4px;
     }
   }
+
+  & tr {
+    border-top: 1px solid #D3DAE6;
+    border-bottom: 1px solid #D3DAE6;
+  }
+
+  tr:last-child {
+    border-bottom: none;
+  }
+}
 </style>

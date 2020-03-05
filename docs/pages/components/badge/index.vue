@@ -10,12 +10,20 @@
         :maxValue="badgeMax"
         :point="badgePoint"
         :square="badgeSquare"
+        :position="badgePosition"
       >
         <it-button>Badged</it-button>
       </it-badge>
       <template slot="props">
         <it-select placeholder="Select type" labelTop="Badge type" v-model="badgeType">
           <it-select-option :key="type" v-for="type in badgeTypes" :value="type">{{type}}</it-select-option>
+        </it-select>
+        <it-select placeholder="Select position" labelTop="Badge position" v-model="badgePosition">
+          <it-select-option
+            :key="position"
+            v-for="position in badgePositions"
+            :value="position"
+          >{{position}}</it-select-option>
         </it-select>
         <it-checkbox label="Point" v-model="badgePoint" />
         <it-checkbox label="Square" v-model="badgeSquare" />
@@ -64,6 +72,21 @@
       </it-badge>
     </Box>
 
+    <Box :code="positionsCode" title="Positions" style="">
+      <it-badge point :value="12">
+        <it-button>Top-right</it-button>
+      </it-badge>
+      <it-badge point position="bottom-right" :value="12">
+        <it-button>Bottom-right</it-button>
+      </it-badge>
+      <it-badge point position="bottom-left" :value="12">
+        <it-button>Bottom-left</it-button>
+      </it-badge>
+      <it-badge point position="top-left" :value="12">
+        <it-button>Top-left</it-button>
+      </it-badge>
+    </Box>
+
     <Box :code="maxvalCode" title="Max value">
       <it-badge :value="110" :max-value="99">
         <it-tag type="danger">Maximum</it-tag>
@@ -98,6 +121,14 @@ export default class BadgePage extends Vue {
   public badgeMax = 99
   public badgeType = 'danger'
   public badgeTypes = ['primary', 'success', 'danger', 'warning']
+
+  public badgePosition = 'top-right'
+  public badgePositions = [
+    'top-right',
+    'top-left',
+    'bottom-right',
+    'bottom-left'
+  ]
 
   public typesCode = `<it-badge value="12" type="primary">
   <it-button>Primary</it-button>
@@ -136,8 +167,21 @@ export default class BadgePage extends Vue {
   <it-button icon="thumb_up"></it-button>
 </it-badge>`
 
-standaloneCode = 
-`<it-badge :value="101" />
+  public positionsCode = 
+`<it-badge point :value="12">
+  <it-button>Top-right</it-button>
+</it-badge>
+<it-badge point position="bottom-right" :value="12">
+  <it-button>Bottom-right</it-button>
+</it-badge>
+<it-badge point position="bottom-left" :value="12">
+  <it-button>Bottom-left</it-button>
+</it-badge>
+<it-badge point position="top-left" :value="12">
+  <it-button>Top-left</it-button>
+</it-badge>`
+
+  public standaloneCode = `<it-badge :value="101" />
 <it-badge :value="101" square />`
 
   public dataSheet = [
@@ -161,6 +205,13 @@ standaloneCode =
       default: '',
       values: [],
       description: 'Max value of the badge'
+    },
+    {
+      property: 'position',
+      type: ['String'],
+      default: 'top-right',
+      values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+      description: 'Set position of the badge'
     },
     {
       property: 'show',

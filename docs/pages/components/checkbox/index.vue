@@ -3,12 +3,13 @@
     <h1>Checkbox</h1>
 
     <Demobox>
-      <it-checkbox v-model="checkboxValue" :disabled="checkboxDisabled" :type="checkboxType" :pulse="checkboxPulse" :icon="checkboxIcon" :label="checkboxLabel"  />
+      <it-checkbox v-model="checkboxValue" :line-through="lineCheck" :disabled="checkboxDisabled" :type="checkboxType" :pulse="checkboxPulse" :icon="checkboxIcon" :label="checkboxLabel"  />
       <template slot="props">
         <it-select placeholder="Select type" labelTop="Checkbox type" v-model="checkboxType">
           <it-select-option :key="type" v-for="type in checkboxTypes" :value="type">{{type}}</it-select-option>
         </it-select>
         <it-input v-model="checkboxLabel" labelTop="Checkbox label" />
+        <it-checkbox label="Line through" v-model="lineCheck" />
         <it-input v-model="checkboxIcon" labelTop="Checkbox icon" />
         <it-checkbox label="Pulse" v-model="checkboxPulse" />
         <it-checkbox label="Disabled" v-model="checkboxDisabled" />
@@ -22,6 +23,10 @@
       <it-checkbox type="warning" label="Warning" v-model="typesCheck" />
       <it-checkbox type="black" label="Black" v-model="typesCheck" />
       <it-checkbox type="neutral" label="Neutral" v-model="typesCheck" />
+    </Box>
+
+    <Box :code="codeLine" title="LineThrough">
+      <it-checkbox type="primary" label="Click me" v-model="lineCheck" line-through />
     </Box>
 
     <Box :code="codeIcon" title="Icon">
@@ -64,7 +69,7 @@ export default class CheckboxPage extends Vue {
 
   public typesCheck = true
   public iconsCheck = true
-
+  public lineCheck = false
   public pulseValue = false
 
   public codeType = `<it-checkbox type="primary" label="Primary" v-model="typesCheck" />
@@ -82,6 +87,8 @@ export default class CheckboxPage extends Vue {
 <it-checkbox type="neutral" label="Neutral" icon="refresh" v-model="iconsCheck" />`
 
   public codePulse = `<it-checkbox type="primary" pulse label="Look at me" v-model="pulseValue" />`
+
+  public codeLine = `<it-checkbox type="primary" label="Click me" v-model="lineCheck" line-through />`
 
   public dataSheet = [
     {
@@ -104,6 +111,13 @@ export default class CheckboxPage extends Vue {
       default: 'check',
       values: ['Material Icons'],
       description: 'Icon of the checkbox'
+    },
+    {
+      property: 'line-through',
+      type: ['Boolean'],
+      default: false,
+      values: [],
+      description: 'Adds line-through on label when checked'
     },
     {
       property: 'disabled',

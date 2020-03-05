@@ -3,7 +3,7 @@
     <div
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
-      :style="{top: `${top}px`}"
+      :style="positionPx"
       v-show="show"
       class="it-notification"
       :class="[`it-notification--${type}`]"
@@ -50,7 +50,8 @@ export default class ItNotification extends Vue {
   public emoji: string = ''
   public duration: number = 5000
   public onClose: () => void
-  public top: number | string = 6
+  public position = {}
+  public placement: string
   public type: string = 'primary'
   public image: string = ''
   public timer: number | any
@@ -93,6 +94,16 @@ export default class ItNotification extends Vue {
       danger: '#F93155',
       warning: '#ffba00'
     }
+  }
+
+  get positionPx() {
+    const posPx = {}
+    for (const key in this.position) {
+      if (this.position.hasOwnProperty(key)) {
+        posPx[key] = this.position[key] + 'px'
+      }
+    }
+    return posPx
   }
 }
 </script>

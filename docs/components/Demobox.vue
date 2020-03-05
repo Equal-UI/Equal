@@ -19,7 +19,7 @@ export default {
 <style lang="less">
   .it-demobox {
     background: #ffffff;
-    border: 1px solid #dfdfdf;
+    border: 1px solid #D3DAE6;
     border-radius: 4px;
     display: flex;
     width: 100%;
@@ -40,7 +40,7 @@ export default {
       flex-direction: column;
       padding: 10px 15px;
       flex: 2;
-      border-left: 1px solid #dfdfdf;
+      border-left: 1px solid #D3DAE6;
     }
 
     &-props > * {
@@ -59,7 +59,7 @@ export default {
       }
 
       &-props {
-        border-top: 1px solid #dfdfdf;
+        border-top: 1px solid #D3DAE6;
         border-left: none;
       }
     }

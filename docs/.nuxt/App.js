@@ -1,5 +1,11 @@
 import Vue from 'vue'
-import { getMatchedComponentsInstances, promisify, globalHandleError } from './utils'
+
+import {
+  getMatchedComponentsInstances,
+  promisify,
+  globalHandleError
+} from './utils'
+
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
@@ -11,17 +17,18 @@ import _6f6c098b from '../layouts/default.vue'
 const layouts = { "_components": _0a4d138c,"_default": _6f6c098b }
 
 export default {
-  head: {"title":"Equal components","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"\u003Cp align=\"center\"\u003E   \u003Ca href=\"https:\u002F\u002Fquatrochan.github.io\u002FEqual\u002F\"\u003E     \u003Cimg width=\"300\" src=\"https:\u002F\u002Fraw.githubusercontent.com\u002Fquatrochan\u002FEqual\u002Fmaster\u002Fdocs\u002Fassets\u002Feqqqual.png\"\u003E   \u003C\u002Fa\u003E"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002FEqual\u002Ffavicon.ico"},{"rel":"icon","type":"image\u002Fpng","sizes":"32x32","href":"\u002FEqual\u002Ffavicon-32x32.png"},{"rel":"icon","type":"image\u002Fpng","sizes":"16x16","href":"\u002FEqual\u002Ffavicon-16x16.png"},{"rel":"manifest","href":"\u002FEqual\u002Fsite.webmanifest"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family:Material+Icons|Material+Icons+Outlined"},{"name":"twitter:card","content":"summary"},{"name":"twitter:site","content":"@EqualVue"},{"name":"twitter:creator","content":"@k0mmsussertod"},{"property":"og:url","content":"https:\u002F\u002Fquatrochan.github.io\u002FEqual\u002F"},{"property":"og:title","content":"Equal UI"},{"property":"og:description","content":"Equal UI – open-source Vue components system for your next project based on TypeScript"},{"property":"og:image","content":"~\u002Fassets\u002Feqqqual.png"}],"style":[],"script":[]},
+  head: {"title":"Equal components","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"- [📚Docs](https:\u002F\u002Fquatrochan.github.io\u002FEqual\u002F) - 🔮 Twitter: [@EqualVue](https:\u002F\u002Ftwitter.com\u002FEqualVue)"},{"name":"twitter:card","content":"summary"},{"name":"twitter:site","content":"@EqualVue"},{"name":"twitter:creator","content":"@k0mmsussertod"},{"name":"twitter:image","content":"\u002FEqual\u002Flogo.png"},{"property":"og:url","content":"https:\u002F\u002Fquatrochan.github.io\u002FEqual\u002F"},{"property":"og:title","content":"Equal UI"},{"property":"og:description","content":"Equal UI – open-source Vue components system for your next project based on TypeScript"},{"property":"og:image","content":"\u002FEqual\u002Feqqqual.png"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002FEqual\u002Ffavicon.ico"},{"rel":"icon","type":"image\u002Fpng","sizes":"32x32","href":"\u002FEqual\u002Ffavicon-32x32.png"},{"rel":"icon","type":"image\u002Fpng","sizes":"16x16","href":"\u002FEqual\u002Ffavicon-16x16.png"},{"rel":"manifest","href":"\u002FEqual\u002Fsite.webmanifest"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Material+Icons|Material+Icons+Outlined"}],"style":[],"script":[]},
 
-  render(h, props) {
+  render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })
+
     const layoutEl = h(this.layout || 'nuxt')
     const templateEl = h('div', {
       domProps: {
         id: '__layout'
       },
       key: this.layoutName
-    }, [ layoutEl ])
+    }, [layoutEl])
 
     const transitionEl = h('transition', {
       props: {
@@ -29,35 +36,43 @@ export default {
         mode: 'out-in'
       },
       on: {
-        beforeEnter(el) {
+        beforeEnter (el) {
           // Ensure to trigger scroll event after calling scrollBehavior
           window.$nuxt.$nextTick(() => {
             window.$nuxt.$emit('triggerScroll')
           })
         }
       }
-    }, [ templateEl ])
+    }, [templateEl])
 
     return h('div', {
       domProps: {
         id: '__nuxt'
       }
-    }, [loadingEl, h(NuxtBuildIndicator), transitionEl])
+    }, [
+      loadingEl,
+      h(NuxtBuildIndicator),
+      transitionEl
+    ])
   },
+
   data: () => ({
     isOnline: true,
+
     layout: null,
     layoutName: ''
   }),
-  beforeCreate() {
+
+  beforeCreate () {
     Vue.util.defineReactive(this, 'nuxt', this.$options.nuxt)
   },
-  created() {
+  created () {
     // Add this.$nuxt in child instances
     Vue.prototype.$nuxt = this
     // add to window so we can listen when ready
     if (process.client) {
       window.$nuxt = this
+
       this.refreshOnlineStatus()
       // Setup the listeners
       window.addEventListener('online', this.refreshOnlineStatus)
@@ -69,7 +84,7 @@ export default {
     this.context = this.$options.context
   },
 
-  mounted() {
+  mounted () {
     this.$loading = this.$refs.loading
   },
   watch: {
@@ -77,12 +92,13 @@ export default {
   },
 
   computed: {
-    isOffline() {
+    isOffline () {
       return !this.isOnline
     }
   },
+
   methods: {
-    refreshOnlineStatus() {
+    refreshOnlineStatus () {
       if (process.client) {
         if (typeof window.navigator.onLine === 'undefined') {
           // If the browser doesn't support connection status reports
@@ -94,19 +110,22 @@ export default {
         }
       }
     },
-    async refresh() {
+
+    async refresh () {
       const pages = getMatchedComponentsInstances(this.$route)
 
       if (!pages.length) {
         return
       }
       this.$loading.start()
-      const promises = pages.map(async (page) => {
+
+      const promises = pages.map((page) => {
         const p = []
 
         if (page.$options.fetch) {
           p.push(promisify(page.$options.fetch, this.context))
         }
+
         if (page.$options.asyncData) {
           p.push(
             promisify(page.$options.asyncData, this.context)
@@ -117,6 +136,7 @@ export default {
               })
           )
         }
+
         return Promise.all(p)
       })
       try {
@@ -129,15 +149,21 @@ export default {
       this.$loading.finish()
     },
 
-    errorChanged() {
+    errorChanged () {
       if (this.nuxt.err && this.$loading) {
-        if (this.$loading.fail) this.$loading.fail()
-        if (this.$loading.finish) this.$loading.finish()
+        if (this.$loading.fail) {
+          this.$loading.fail()
+        }
+        if (this.$loading.finish) {
+          this.$loading.finish()
+        }
       }
     },
 
-    setLayout(layout) {
-      if(layout && typeof layout !== 'string') throw new Error('[nuxt] Avoid using non-string value as layout property.')
+    setLayout (layout) {
+      if(layout && typeof layout !== 'string') {
+        throw new Error('[nuxt] Avoid using non-string value as layout property.')
+      }
 
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
@@ -146,13 +172,14 @@ export default {
       this.layout = layouts['_' + layout]
       return this.layout
     },
-    loadLayout(layout) {
+    loadLayout (layout) {
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
       }
       return Promise.resolve(layouts['_' + layout])
     }
   },
+
   components: {
     NuxtLoading
   }

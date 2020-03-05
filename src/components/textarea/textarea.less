@@ -3,7 +3,8 @@
 .it-textarea {
   // position: relative;
   padding: 5px 7px;
-  border: 1px solid #dfdfdf;
+      border: 1px solid @color-secondary-text;
+    box-shadow: 0px 1px 1px 0px #d3dae64d;
   height: 32px;
   color: #131313;
   background-color: #fff;
@@ -14,6 +15,7 @@
 
   &:hover {
     border-color: @color-neutral;
+    border: 1px solid darken(@color-secondary-text, 10%);
   }
 
   &:disabled {

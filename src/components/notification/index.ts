@@ -15,6 +15,7 @@ interface INotificationOptions {
   duration?: number
   icon?: string
   image?: string
+  placement?: string
   emoji?: string
   onClose?: () => void
 }
@@ -37,8 +38,9 @@ let idStart = 0
 
 // tslint:disable-next-line: only-arrow-functions
 const Notification = function(
-  options: INotificationOptions = {}
+  options: INotificationOptions,
 ): NotificationVue {
+  options.placement = options.placement || 'top-right'
   const onClose = options.onClose
   const id = idStart++
 
@@ -47,7 +49,7 @@ const Notification = function(
   }
 
   const instance: NotificationVue & {
-    top: number
+    position: object
     id: number
     show: boolean
   } = new NotificationConstructor({
@@ -59,13 +61,23 @@ const Notification = function(
   document.body.appendChild(instance.$el)
   instance.show = true
 
-  let topDist = 0
+  const offsets = {
+    'top-right': 0,
+    'top-left': 0,
+    'bottom-right': 0,
+    'bottom-left': 0
+  }
 
-  messages.forEach((el) => {
-    topDist += (el.$el as HTMLElement).offsetHeight + 6
-  })
+  messages
+    .filter(el => el.$data.placement === options.placement)
+    .forEach(el => {
+      offsets[options.placement] += (el.$el as HTMLElement).offsetHeight + 6
+    })
 
-  instance.top = topDist + 6
+  instance.position = {
+    [options.placement.split('-')[0]]: offsets[options.placement] + 6,
+    [options.placement.split('-')[1]]: 10
+  }
 
   messages.push(instance)
 
@@ -74,24 +86,33 @@ const Notification = function(
 
 Notification.close = (onClose, id) => {
   // @ts-ignore
-  const index = messages.findIndex((el) => el.id === id)
+  const index = messages.findIndex(el => el.id === id)
   const height = (messages[index].$el as HTMLElement).offsetHeight
-  messages.splice(index, 1)
   if (onClose) {
     onClose()
   }
 
-  messages.forEach((el) => {
-    if (el.id > id) {
-      // @ts-ignore
-      el.top -= height + 6
-    }
-  })
+  messages
+    .filter(el => el.$data.placement === messages[index].$data.placement)
+    .forEach(el => {
+      if (el.id > id) {
+        const elPlacement = el.$data.placement.split('-')
+        // @ts-ignore
+        el.position = {
+          [elPlacement[0]]: el.position[elPlacement[0]] - (height + 6),
+          [elPlacement[1]]: 10
+        }
+      }
+    })
+
+  messages.splice(index, 1)
 }
 
-messageTypes.forEach((type) => {
-  Notification[type] = (options: INotificationOptions): NotificationVue =>
-    Notification({ type, ...options })
+messageTypes.forEach(type => {
+  Notification[type] = (
+    options: INotificationOptions,
+    placement
+  ): NotificationVue => Notification({ type, ...options })
 })
 
 export default Notification

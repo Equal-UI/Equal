@@ -27,6 +27,9 @@
     <Box :code="stepCode" title="Step points">
       <it-slider v-model="stepSliderValue" :stepPoints="true" :min="0" :max="20" :step="2" />
     </Box>
+    <Box :code="numbersCode" title="Numbers">
+      <it-slider v-model="numberSliderValue" numbers :min="0" :max="42"/>
+    </Box>
     <Box :code="disabledCode" title="Disabled">
       <it-slider v-model="stepSliderValue" disabled :min="0" :max="20" />
     </Box>
@@ -48,6 +51,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class SliderPage extends Vue {
   sliderValue: number = 14
   stepSliderValue: number = 10
+  numberSliderValue: number = 10
   sliderMin: number = 0
   sliderMax: number = 42
   sliderStep: number = 1
@@ -57,6 +61,7 @@ export default class SliderPage extends Vue {
 
   stepCode = `<it-slider v-model="stepSliderValue" :stepPoints="true" :min="0" :max="12" :step="2" />`
   disabledCode = `<it-slider v-model="stepSliderValue" disabled :min="0" :max="20" />`
+  numbersCode = `<it-slider v-model="numberSliderValue" numbers :min="0" :max="42"/>`
 
   dataSheet = [
     {

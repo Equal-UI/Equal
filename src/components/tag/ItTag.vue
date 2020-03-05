@@ -1,9 +1,7 @@
 <template>
   <span v-show="show" :class="['it-tag', type && `it-tag--${type}`, filled && `it-tag--${type}--filled`]">
-    <span>
       <slot></slot>
       <it-icon v-if="closable" @click="clickClose" name="clear" class="it-tag-close" />
-    </span>
   </span>
 </template>
 

@@ -52,7 +52,7 @@ export default class Box extends Vue {
 <style lang="less">
   .it-box {
     background: #ffffff;
-    border: 1px solid #dfdfdf;
+    border: 1px solid #D3DAE6;
     border-radius: 4px;
     display: flex;
     width: 100%;
@@ -65,6 +65,10 @@ export default class Box extends Vue {
     &-title {
       padding: 17px 24px;
       line-height: 1;
+
+      .it-tag {
+        margin-left: 6px;
+      }
     }
 
     &-scene {
@@ -83,8 +87,8 @@ export default class Box extends Vue {
     }
 
     &-code {
-      border-bottom: 1px solid #dfdfdf;
-      border-top: 1px solid #dfdfdf;
+      border-bottom: 1px solid #D3DAE6;
+      border-top: 1px solid #D3DAE6;
       transition: all 0.4s;
       width: 100%;
       position: relative;

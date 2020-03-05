@@ -64,5 +64,30 @@ Vue.use(Alert)
 Vue.use(Switch)
 ```
 
+## Or start with CDN
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/equal-vue/dist/equal.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <it-button type="primary">Quickstart</it-button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/equal-vue/dist/equal.umd.js"></script>
+  <script>
+    new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+</html>
+```
+
 # License
 [MIT](https://raw.githubusercontent.com/quatrochan/Equal/master/LICENSE)

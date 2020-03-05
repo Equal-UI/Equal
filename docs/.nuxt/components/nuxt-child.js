@@ -13,7 +13,7 @@ export default {
       default: undefined
     }
   },
-  render(h, { parent, data, props }) {
+  render (h, { parent, data, props }) {
     data.nuxtChild = true
     const _parent = parent
     const transitions = parent.$nuxt.nuxt.transitions

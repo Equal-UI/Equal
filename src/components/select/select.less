@@ -4,6 +4,30 @@
   display: inline-block;
   position: relative;
   min-width: 100px;
+
+  &-input {
+    padding: 0px;
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    font-size: 12px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    background: transparent;
+
+    &::placeholder {
+      color: @color-neutral;
+      text-indent: 0px;
+      transition: text-indent 0.27s ease;
+    }
+
+    &:focus::placeholder {
+      text-indent: 6px;
+      transition: text-indent 0.27s ease;
+    }
+  }
 }
 
 .it-select-option-check {
@@ -17,17 +41,26 @@
 }
 
 .it-select-selection {
+  justify-content: space-between;
   user-select: none;
   cursor: pointer;
+  background-color: #ffffff;
   position: relative;
   text-align: left;
-  border: 1px solid @color-secondary-text;
+  border: 1px solid #d3dae6;
+  box-shadow: 0px 1px 1px 0px #d3dae64d;
+  box-sizing: border-box;
   border-radius: 4px;
   line-height: 1;
-  padding: 8px 28px 8px 12px;
+  padding: 0 8px 0 12px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  outline: none;
+  transition: all 0.27s;
 
   &:hover {
-    border-color: @color-neutral;
+    border-color: darken(@color-secondary-text, 10%);
   }
 
   &--active {
@@ -45,6 +78,13 @@
     background: @color-disabled-bg;
     color: @color-neutral;
     cursor: not-allowed;
+    &:hover {
+      border-color: @color-secondary-text;
+    }
+  }
+
+  &:focus:not(&--disabled) {
+    border-color: @color-primary;
   }
 }
 
@@ -52,6 +92,7 @@
 .it-select-selected {
   font-size: 14px;
   overflow: hidden;
+  line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
@@ -59,12 +100,16 @@
 
 .it-select-placeholder {
   color: @color-neutral;
+  & + .it-icon {
+    margin-left: 10px;
+  }
 }
 
 .it-select-arrow {
-  position: absolute;
-  top: 8px;
-  right: 6.5px;
+  // position: absolute;
+  // top: 8px;
+  // right: 6.5px;
+  font-size: @default-text-size+2;
   color: inherit;
   transition: all 0.27s;
 
@@ -83,9 +128,10 @@
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25), 0px 1.5px 1px rgba(0, 0, 0, 0.1);
   border-radius: @border-radius-base;
   min-width: 130px;
+  max-height: 200px;
   font-size: 13px;
   width: inherit;
-  overflow: hidden;
+  overflow-y: scroll;
   padding: 0px;
   margin: 0px;
   list-style: none;
@@ -108,10 +154,19 @@
   max-width: 100%;
   width: 100%;
 
+  &--focused,
   &:hover {
     background: @color-primary;
     color: #fff;
     cursor: pointer;
+    .it-select-option-check {
+      background-color: #ffffff;
+    }
+  }
+
+  &--focused {
+    background: @color-primary;
+    color: #fff;
     .it-select-option-check {
       background-color: #ffffff;
     }

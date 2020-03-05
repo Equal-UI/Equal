@@ -9,7 +9,7 @@
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
       })"
-      type="primary"
+        type="primary"
       >Primary notification</it-button>
       <it-button
         type="success"
@@ -38,7 +38,7 @@
     </Box>
     <Box :code="emojiCode" title="🧬 Notification with Emoji">
       <it-button
-      outlined
+        outlined
         @click="$Notification({
       title: 'Emoji notification',
       emoji: '🧬',
@@ -57,6 +57,44 @@
       })"
       >Click me</it-button>
     </Box>
+    <Box :code="placementCode" title="Notification position">
+      <it-button
+        @click="$Notification({
+      title: 'Top-left notification',
+      image: 'https://picsum.photos/200',
+      placement: 'top-left',
+      text:
+        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+      })"
+      >Top-left</it-button>
+      <it-button
+        @click="$Notification({
+      title: 'Top-right notification',
+      image: 'https://picsum.photos/200',
+      placement: 'top-right',
+      text:
+        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+      })"
+      >Top-right</it-button>
+      <it-button
+        @click="$Notification({
+      title: 'Bottom-left notification',
+      image: 'https://picsum.photos/200',
+      placement: 'bottom-left',
+      text:
+        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+      })"
+      >Bottom-left</it-button>
+      <it-button
+        @click="$Notification({
+      title: 'Top-right notification',
+      image: 'https://picsum.photos/200',
+      placement: 'bottom-right',
+      text:
+        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+      })"
+      >Bottom-right</it-button>
+    </Box>
     <props-table :data-sheet="dataSheet" />
   </div>
 </template>
@@ -72,7 +110,7 @@ import PropsTable from '~/components/Table.vue'
   components: { Box, PropsTable }
 })
 export default class NotificationPage extends Vue {
-  typesCode = `
+  public typesCode = `
 <it-button
   @click="$Notification({
   title: 'Primary notification',
@@ -105,7 +143,7 @@ export default class NotificationPage extends Vue {
   })"
 >Warning notification</it-button>`
 
-emojiCode = `
+  public emojiCode = `
 <it-button
   outlined
   @click="$Notification({
@@ -116,7 +154,7 @@ emojiCode = `
   })"
 >🧬 Emoji notification</it-button>`
 
-imageCode = `
+  public imageCode = `
 <it-button
   @click="$Notification({
   title: 'Image notification',
@@ -126,7 +164,45 @@ imageCode = `
   })"
 >Click me</it-button>`
 
-  dataSheet = [
+  public placementCode= `
+<it-button
+  @click="$Notification({
+  title: 'Top-left notification',
+  image: 'https://picsum.photos/200',
+  placement: 'top-left',
+  text:
+    'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+  })"
+>Top-left</it-button>
+<it-button
+  @click="$Notification({
+  title: 'Top-right notification',
+  image: 'https://picsum.photos/200',
+  placement: 'top-right',
+  text:
+    'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+  })"
+>Top-right</it-button>
+<it-button
+  @click="$Notification({
+  title: 'Bottom-left notification',
+  image: 'https://picsum.photos/200',
+  placement: 'bottom-left',
+  text:
+    'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+  })"
+>Bottom-left</it-button>
+<it-button
+  @click="$Notification({
+  title: 'Top-right notification',
+  image: 'https://picsum.photos/200',
+  placement: 'bottom-right',
+  text:
+    'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
+  })"
+>Bottom-right</it-button>`
+
+  public dataSheet = [
     {
       property: 'type',
       type: ['String'],
@@ -149,6 +225,13 @@ imageCode = `
       description: 'Content of the notification'
     },
     {
+      property: 'placeennt',
+      type: ['String'],
+      default: 'top-right',
+      values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+      description: 'Position of the notification'
+    },
+    {
       property: 'duration',
       type: ['Number'],
       default: '5000',
@@ -169,6 +252,7 @@ imageCode = `
       values: ['url'],
       description: 'Image of the notification'
     },
+
     {
       property: 'emoji',
       type: ['String'],

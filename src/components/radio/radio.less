@@ -11,12 +11,19 @@
     .it-radio-border,
     .it-radio-border:hover {
       border: 1px solid @bg-color;
+      background-color: @bg-color;
     }
 
     .it-radio-circle {
-      background-color: @bg-color;
+      background-color: #fff;
       transform: scale(1);
+      opacity: 0;
     }
+  }
+
+  .it-radio-input:focus + .it-radio-border {
+    box-shadow: 0 0 0 3px fade(@bg-color, 20%);
+        border-color: @bg-color;
   }
 }
 
@@ -32,9 +39,11 @@
   cursor: pointer;
 
   &--disabled {
-    .it-radio-circle, .it-radio-circle:hover, .it-radio-circle:active {
+    .it-radio-circle, .it-radio-circle:hover {
+      opacity: 0;
       background-color: @color-neutral !important;
     }
+    
     .it-radio-border, .it-radio-border:hover, .it-radio-border:active {
       border: 1px solid @color-secondary-text !important;
       background-color: @color-disabled-bg !important;
@@ -61,16 +70,18 @@
 
 .it-radio-circle {
   transition: all 0.15s ease;
-  transform: scale(0);
-  width: 12px;
-  height: 12px;
+  transform: scale(1.5);
+  width: 8px;
+  height: 8px;
   border-radius: 100%;
   position: absolute;
-  left: 2px;
-  top: 2px;
+  left: 4px;
+  top: 4px;
+  opacity: 0;
 }
 
 .it-radio-border {
+  box-shadow: 0px 1px 1px 0px #d3dae64d;
   margin: 0;
   padding: 0;
   position: relative;
@@ -85,12 +96,12 @@
   vertical-align: middle;
   outline: none;
   cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .it-radio-input {
   position: absolute;
   top: 0;
-  // z-index: 2;
   right: 0;
   bottom: 0;
   left: 0;
@@ -104,11 +115,12 @@
     + .it-radio-border {
       &:active,
       &:hover {
-        background-color: #fff;
+        // background-color: #fff;
       }
     }
     + .it-radio-border > .it-radio-circle {
       transform: scale(1);
+      opacity: 1;
     }
   }
 }

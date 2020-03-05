@@ -10,7 +10,8 @@
         :max="max"
         :min="min"
         ref="input"
-        @input="onInput"
+        v-on="listeners"
+        v-bind="$attrs"
         @keydown.up.stop.prevent="increase"
         @keydown.down.stop.prevent="decrease"
       />
@@ -46,22 +47,24 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Model, Vue } from 'vue-property-decorator'
+import { Component, Prop, Model, Vue, Watch } from 'vue-property-decorator'
 import './numberinput.less'
 
-@Component({
-  model: {
-    prop: 'value',
-    event: 'input'
-  }
-})
+@Component
 export default class ItNumberInput extends Vue {
+
+  get listeners() {
+    return {
+      ...this.$listeners,
+      input: this.onInput
+    }
+  }
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
   @Prop({ default: -Infinity }) private min?: number
   @Prop({ default: Infinity }) private max?: number
   @Prop({ default: 1 }) private step?: number
   @Prop() private labelTop?: string
-  @Model('change', { default: 0 }) private value!: number
+  @Model('input', { default: 0 }) private value!: number
 
   private currentValue: number = this.value
   private interval: number | any
@@ -69,12 +72,17 @@ export default class ItNumberInput extends Vue {
   private topHeight: number = 50
   private bottomHeight: number = 50
 
+  @Watch('value')
+  public onValChange(val) {
+    this.onInput(null, val)
+  }
+
   private press(type: 'up' | 'down') {
     (this.$refs.input as HTMLInputElement).focus()
 
-     if (this.disabled) return
-     const handler = type === 'up' ? this.increase : this.decrease
-     this.interval = setInterval(handler, 140)
+    if (this.disabled) return
+    const handler = type === 'up' ? this.increase : this.decrease
+    this.interval = setInterval(handler, 140)
   }
 
   private hover(type: 'up' | 'down') {
@@ -98,37 +106,36 @@ export default class ItNumberInput extends Vue {
     clearInterval(this.interval)
   }
 
-  private onInput(e: InputEvent) {
-    const newVal = Number((e.target as HTMLInputElement).value)
-    console.log(newVal)
+  private onInput(e: InputEvent, watchVal: number) {
+    const newVal = watchVal ?? Number((e.target as HTMLInputElement).value)
 
     if (newVal > this.max) {
-      this.$emit('change', this.max)
+      this.$emit('input', this.max)
       this.currentValue = this.max
       return
     } else if (newVal < this.min) {
-      this.$emit('change', this.min)
+      this.$emit('input', this.min)
       this.currentValue = this.min
       return
     }
-    this.$emit('change', newVal)
+    this.$emit('input', newVal)
     this.currentValue = newVal
   }
 
   private increase() {
     (this.$refs.input as HTMLInputElement).focus()
 
-     const value = this.currentValue
-     if (this.disabled || value >= this.max) return
-     this.calculateStep('up')
+    const value = this.currentValue
+    if (this.disabled || value >= this.max) return
+    this.calculateStep('up')
   }
 
   private decrease() {
     (this.$refs.input as HTMLInputElement).focus()
 
-     const value = this.currentValue
-     if (this.disabled || value <= this.min) return
-     this.calculateStep('down')
+    const value = this.currentValue
+    if (this.disabled || value <= this.min) return
+    this.calculateStep('down')
   }
 
   private calculateStep(stepType: 'up' | 'down') {
@@ -154,7 +161,7 @@ export default class ItNumberInput extends Vue {
     }
 
     this.currentValue = Number(value.toFixed(10))
-    this.$emit('change', this.currentValue)
+    this.$emit('input', this.currentValue)
   }
 }
 </script>

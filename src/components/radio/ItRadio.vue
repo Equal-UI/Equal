@@ -11,8 +11,9 @@
       :checked="isChecked"
       :value="value"
       @change="check"
+      v-bind="$attrs"
     />
-    <span :class="['it-radio-border', pulse && 'pulse']">
+    <span :class="['it-radio-border', (pulse && !disabled) && 'pulse']">
       <span class="it-radio-circle"></span>
     </span>
     <span class="it-radio-label" v-if="label">{{label}}</span>

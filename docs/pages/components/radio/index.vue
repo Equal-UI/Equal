@@ -6,9 +6,9 @@
 
       <div class="radios">
 
-      <it-radio v-model="radioValue" :disabled="radioDisabled" :pulse="radioPulse" :label="radioLabel" value="1" />
-      <it-radio v-model="radioValue" label="Second" value="2"/>
-      <it-radio v-model="radioValue" label="Third" value="3"/>
+      <it-radio v-model="radioValue" name="demo" :disabled="radioDisabled" :pulse="radioPulse" :label="radioLabel" value="1" />
+      <it-radio v-model="radioValue" name="demo" label="Second" value="2"/>
+      <it-radio v-model="radioValue" name="demo" label="Third" value="3"/>
       </div>
 
       <template slot="props">
@@ -19,10 +19,10 @@
     </Demobox>
 
     <Box :code="typeCode" title="Types">
-      <it-radio v-model="typeValue" label="Primary" value="00"/>
-      <it-radio v-model="typeValue" type="success" label="Success" value="11"/>
-      <it-radio v-model="typeValue" type="danger" label="Danger" value="22"/>
-      <it-radio v-model="typeValue" type="warning" label="Warning" value="33"/>
+      <it-radio v-model="typeValue" name="type" label="Primary" value="00"/>
+      <it-radio v-model="typeValue" name="type" type="success" label="Success" value="11"/>
+      <it-radio v-model="typeValue" name="type" type="danger" label="Danger" value="22"/>
+      <it-radio v-model="typeValue" name="type" type="warning" label="Warning" value="33"/>
     </Box>
 
     <Box :code="pulseCode" title="Pulse">
@@ -48,7 +48,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   components: { Demobox, Box, PropsTable }
 })
 export default class RadioPage extends Vue {
-  radioValue = 1
+  radioValue = "1"
   radioLabel: string = 'Edit me'
   radioPulse: boolean = false
   radioDisabled: boolean = false

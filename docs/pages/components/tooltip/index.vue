@@ -21,7 +21,7 @@
     </Demobox>
     <Box :code="positionCode" title="Position">
       <div style="display:flex; flex-direction:column; align-items: center">
-
+      <it-button-group vertical>
       <it-tooltip content="Top" placement="top">
         <it-button>Top</it-button>
       </it-tooltip>
@@ -34,6 +34,7 @@
       <it-tooltip content="Bottom" placement="bottom">
         <it-button>Bottom</it-button>
       </it-tooltip>
+      </it-button-group>
       </div>
     </Box>
     <Box :code="slotCode" title="Content Slot">

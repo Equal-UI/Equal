@@ -45,10 +45,10 @@
 
     <Box :code="badgeCode" title="With badge">
       <it-badge value="1">
-        <it-avatar square />
+        <it-avatar src="https://picsum.photos/200" square />
       </it-badge>
       <it-badge point>
-        <it-avatar square />
+        <it-avatar src="https://picsum.photos/200" square />
       </it-badge>
     </Box>
 

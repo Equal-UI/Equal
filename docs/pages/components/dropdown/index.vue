@@ -34,10 +34,8 @@
         </it-dropdown-menu>
       </it-dropdown>
     </Box>
-    <h2>it-dropdown</h2>
-    <props-table :data-sheet="dataSheet" />
-    <h2 style="margin-top: 20px;">it-dropdown-item</h2>
-    <props-table :data-sheet="dataSheet2" />
+    <props-table tagName="it-dropdown" :data-sheet="dataSheet" />
+    <props-table tagName="it-dropdown-item" :data-sheet="dataSheet2" />
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 import Alert from './components/alert'
 import Avatar from './components/avatar'
 import Button from './components/button'
+import ButtonGroup from './components/button-group'
 import Badge from './components/badge'
 import Checkbox from './components/checkbox'
 import Dropdown from './components/dropdown'
@@ -25,6 +26,7 @@ const components = {
   Alert,
   Avatar,
   Button,
+  ButtonGroup,
   Badge,
   Checkbox,
   ...Dropdown,
@@ -63,6 +65,7 @@ export default { install }
 export { default as Alert } from './components/alert'
 export { default as Avatar } from './components/avatar'
 export { default as Button } from './components/button'
+export { default as ButtonGroup } from './components/button-group'
 export { default as Badge } from './components/badge'
 export { default as Checkbox } from './components/checkbox'
 export { default as Dropdown } from './components/dropdown'

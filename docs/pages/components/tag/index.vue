@@ -3,7 +3,7 @@
     <h1>Tag</h1>
 
     <Demobox>
-      <it-tag :closable="tagClosable" :type="tagType">
+      <it-tag :filled="tagFilled" :closable="tagClosable" :type="tagType">
         <span>{{tagText}}</span>
       </it-tag>
 
@@ -17,6 +17,7 @@
           >{{type}}</it-select-option>
         </it-select>
         <it-input v-model="tagText" labelTop="Tag text" />
+        <it-checkbox label="Filled" v-model="tagFilled" />
         <it-checkbox label="Closable" v-model="tagClosable" />
       </template>
     </Demobox>
@@ -54,6 +55,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class SliderPage extends Vue {
   public tagText: string = 'Tag'
   public tagClosable: boolean = false
+  public tagFilled: boolean = false
   public tagType: string = 'neutral'
   public tagTypes: string[] = [
     'primary',

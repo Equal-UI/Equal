@@ -6,6 +6,7 @@
       v-show="value"
       @click.self="maskClick"
     >
+    <focus-lock>
       <transition name="drop-top">
         <div v-show="value" class="it-modal-body">
           <div class="it-modal-header" v-if="title">{{title}}</div>
@@ -15,20 +16,24 @@
             :style="{'padding-top': title ? '0px' : '16px'}"
           >{{content}}</div>
           <div class="it-modal-footer" v-if="!hideFooter">
-            <it-button @click="cancelHandler" type="neutral">Cancel</it-button>
             <it-button @click="okClick" :type="type">Accept</it-button>
+            <it-button @click="cancelHandler" ref="cancelButton" type="neutral">Cancel</it-button>
           </div>
         </div>
       </transition>
+    </focus-lock>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
 import { Component, Emit, Prop, Model, Vue } from 'vue-property-decorator'
+import FocusLock from 'vue-focus-lock'
 import './modal.less'
 
-@Component
+@Component({
+  components: {FocusLock}
+})
 export default class ItModal extends Vue {
   @Prop() public title?: string
   @Prop() public content?: string
@@ -40,16 +45,22 @@ export default class ItModal extends Vue {
   @Prop({ type: Boolean, default: true }) public closeOnEsc?: boolean
   @Prop({ default: 'primary' }) public type?: string
 
+  public activeElement: HTMLElement
+
   public cancelHandler = this.cancelClick || this.close
 
   public mounted() {
     this.value = true
     document.addEventListener('keydown', this.escEvt)
-    document.body.classList.add('stop-scroll')
+    document.body.classList.add('stop-scroll');
+    // this.$refs.cancelButton.$el.focus()
   }
 
   public beforeDestroy() {
     document.body.classList.remove('stop-scroll')
+    if (this.activeElement) {
+      this.activeElement.focus()
+    }
     this.$el.remove()
   }
 

@@ -23,6 +23,7 @@ export default {
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@EqualVue' },
       { name: 'twitter:creator', content: '@k0mmsussertod' },
+      { name: 'twitter:image', content: '/Equal/logo.png' },
       { property: 'og:url', content: 'https://quatrochan.github.io/Equal/' },
       { property: 'og:title', content: 'Equal UI' },
       {

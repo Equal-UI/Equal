@@ -3,6 +3,7 @@ import {
   Alert,
   Avatar,
   Button,
+  ButtonGroup,
   Badge,
   Checkbox,
   Dropdown,
@@ -27,6 +28,7 @@ import {
 Vue.component('it-alert', Alert)
 Vue.component('it-avatar', Avatar)
 Vue.component('it-button', Button)
+Vue.component('it-button-group', ButtonGroup)
 Vue.component('it-badge', Badge)
 Vue.component('it-checkbox', Checkbox)
 Vue.component('it-dropdown', Dropdown.Dropdown)

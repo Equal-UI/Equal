@@ -33,16 +33,23 @@ const ModalConstructor = Vue.extend(ModalVue)
 
 // tslint:disable-next-line: only-arrow-functions
 const Modal = function(options: IModalOptions = {}) {
+  // Element to return focus
+  const activeElement = document.activeElement
   const instance = new ModalConstructor({
-    propsData: options
+    propsData: options,
+    data: { activeElement }
   })
 
   instance.$mount()
   document.body.appendChild(instance.$el)
+  Vue.nextTick(() => {
+    // @ts-ignore
+    instance.$refs.cancelButton.$el.focus()
+  })
   return instance
 } as IModal
 
-modalTypes.forEach((type) => {
+modalTypes.forEach(type => {
   Modal[type] = (options: IModalOptions): ModalVue =>
     Modal({ type, ...options })
 })

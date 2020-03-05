@@ -57,10 +57,9 @@
     </Box>
     <Box :code="codeBlock" title="Block">
       <it-button block>Button</it-button>
-      <br>
+      <br />
       <it-button type="primary" block>Button</it-button>
-      <br>
-
+      <br />
     </Box>
     <Box :code="codeSize" title="Size">
       <it-button size="small">Button</it-button>
@@ -86,8 +85,38 @@
       <it-button size="normal" disabled>Button</it-button>
       <it-button size="big" disabled>Button</it-button>
     </Box>
+    <Box :code="codeGroup" title="Group">
+      <div class="margins">
+      <it-button-group>
+        <it-button>Left</it-button>
+        <it-button>Middle</it-button>
+        <it-button>Right</it-button>
+      </it-button-group>
+      <it-button-group>
+        <it-button type="primary" outlined>Left</it-button>
+        <it-button type="primary" outlined>Middle</it-button>
+        <it-button type="primary" outlined>Right</it-button>
+      </it-button-group>
+      </div>
+    </Box>
 
-    <props-table :data-sheet="dataSheet" />
+        <Box :code="codeVerticalGroup" title="Vertical group">
+      <div class="margins">
+      <it-button-group vertical>
+        <it-button>Top</it-button>
+        <it-button>Middle</it-button>
+        <it-button>Bottom</it-button>
+      </it-button-group>
+      <it-button-group vertical>
+        <it-button type="primary" outlined>Top</it-button>
+        <it-button type="primary" outlined>Middle</it-button>
+        <it-button type="primary" outlined>Bottom</it-button>
+      </it-button-group>
+      </div>
+    </Box>
+
+    <props-table tagName="it-button" :data-sheet="dataSheet" />
+    <props-table tagName="it-button-group" :data-sheet="dataSheetGroup" />
   </div>
 </template>
 
@@ -112,7 +141,14 @@ export default class ButtonPage extends Vue {
   public buttonPulse = false
   public buttonBlock = false
   public buttonType = 'primary'
-  public buttonTypes = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
+  public buttonTypes = [
+    'primary',
+    'success',
+    'danger',
+    'warning',
+    'black',
+    'neutral'
+  ]
   public buttonIcon = false
 
   public codeType = `<it-button>Button</it-button>
@@ -153,9 +189,41 @@ export default class ButtonPage extends Vue {
 <it-button size="normal" disabled>Button</it-button>
 <it-button size="big" disabled>Button</it-button>`
 
-codeBlock = 
-`<it-button block>Button</it-button>
+  public codeBlock = `<it-button block>Button</it-button>
 <it-button type="primary" block>Button</it-button>`
+
+  public codeGroup = 
+`<it-button-group>
+  <it-button>Left</it-button>
+  <it-button>Middle</it-button>
+  <it-button>Right</it-button>
+</it-button-group>
+<it-button-group>
+  <it-button type="primary" outlined>Left</it-button>
+  <it-button type="primary" outlined>Middle</it-button>
+  <it-button type="primary" outlined>Right</it-button>
+</it-button-group>`
+
+  public codeVerticalGroup = 
+`<it-button-group vertical>
+  <it-button>Left</it-button>
+  <it-button>Middle</it-button>
+  <it-button>Right</it-button>
+</it-button-group>
+<it-button-group vertical>
+  <it-button type="primary" outlined>Left</it-button>
+  <it-button type="primary" outlined>Middle</it-button>
+  <it-button type="primary" outlined>Right</it-button>
+</it-button-group>`
+
+  public dataSheetGroup = [
+    {
+      property: 'vertical',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Make group vertical'
+    }]
 
   public dataSheet = [
     {
@@ -190,7 +258,7 @@ codeBlock =
       property: 'icon',
       type: ['String'],
       default: '',
-      values: [],
+      values: ['material-icon'],
       description: 'Add material-icon with provided name'
     },
     {
@@ -231,3 +299,4 @@ codeBlock =
   // }
 }
 </script>
+

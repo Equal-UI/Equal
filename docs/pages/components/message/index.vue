@@ -68,7 +68,7 @@ export default {
         this.$Message.danger({ text: 'Danger message!' })
         break
       case 'warning':
-        this.$Message.warning({ text: 'Success message!' })
+        this.$Message.warning({ text: 'Warning message!' })
         break
       default:
         this.$Message({ text: 'Primary message!' })
@@ -101,7 +101,7 @@ export default {
     {
       property: 'icon',
       type: ['String'],
-      default: '',
+      default: '-',
       values: ['Material Icon'],
       description: 'Message icon'
     }

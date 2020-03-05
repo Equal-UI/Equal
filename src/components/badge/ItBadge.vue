@@ -3,7 +3,12 @@
     <slot></slot>
     <span
       class="it-badge-body"
-      :class="[$slots.default && 'it-badge-body--corner', point && 'it-badge-body--point', square && 'it-badge-body--square', `it-badge-body--${type}`]"
+      :class="[
+        $slots.default && `it-badge-body--corner-${position}`, 
+        point && 'it-badge-body--point',
+        square && 'it-badge-body--square',
+        `it-badge-body--${type}`
+      ]"
       v-show="show"
     >{{contentValue}}</span>
   </span>
@@ -22,6 +27,7 @@ export default class ItBadge extends Vue {
   })
   public type: string
   @Prop() public value: number | string
+  @Prop({ default: 'top-right' }) public position!: string
   @Prop({ type: Boolean, default: true }) public show!: boolean
   @Prop({ type: Boolean, default: false }) public point!: boolean
   @Prop({ type: Boolean, default: false }) public square!: boolean

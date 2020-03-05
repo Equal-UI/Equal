@@ -1,45 +1,53 @@
 @import '../../styles/variables.less';
 
 .it-slider {
-
   width: 100%;
+  position: relative;
+  outline: none;
+
+  &:not(&--disabled):focus {
+    .it-slider-controller {
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2),
+        0px 2px 2px rgba(0, 0, 0, 0.12), 0 0 0 3px fade(@color-primary, 20%);
+      border: 0.8px solid @color-primary;
+    }
+  }
+
+  &--disabled {
+    .it-slider-bar {
+      background-color: @color-secondary-text;
+      & ~ .it-slider-point--active {
+        background-color: @color-secondary-text;
+      }
+    }
+  }
 
   &-line {
     // width: 630px;
     background-color: @color-disabled-bg;
     height: 6px;
-    border-radius: 50px;
+    border-radius: 2px;
     cursor: pointer;
     position: relative;
     // overflow: hidden;
   }
 
-
   &-bar {
     background-color: @color-primary;
     height: 100%;
-    border-radius: 50px;
-    transition: background-color .15s;
-
-    
-    &--disabled {
-      background-color: @color-secondary-text;
-        & ~ .it-slider-point--active {
-          background-color: @color-secondary-text;
-        }
-    }
+    border-radius: 2px;
+    transition: background-color 0.15s;
   }
 
   &-point {
     position: absolute;
-    background-color: @color-disabled-bg;
-    width: 2px;
-    top: -6px;
-    height: 10px;
+    background-color: #000000;
+    width: 1px;
+    top: 10px;
+    height: 5px;
     // z-index: -1;
     transform: translateX(-50%);
-    border-radius: 40px;
-    transition: all .09s;
+    transition: all 0.09s;
 
     &--active {
       background-color: @color-primary;
@@ -52,13 +60,15 @@
     box-sizing: border-box;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border-radius: 2px;
+    transition: all 0.2s;
     width: 9px;
     height: 19px;
-    
+
     &-wrapper {
       position: absolute;
       top: -8px;
       line-height: 1;
+      z-index: 99;
       background-color: transparent;
       transform: translateX(-50%);
       user-select: none;
@@ -66,16 +76,15 @@
     }
   }
 
-
   &-numbers {
-  position: relative;
-  padding-top: 5px;
+    position: relative;
+    padding-top: 5px;
 
-  & > div {
-    position: absolute;
-    display: inline-block;
-    font-size: 12px;
-    transform: translateX(-50%);
+    & > div {
+      position: absolute;
+      display: inline-block;
+      font-size: 12px;
+      transform: translateX(-50%);
+    }
   }
-}
 }

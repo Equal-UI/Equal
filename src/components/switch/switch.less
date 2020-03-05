@@ -20,6 +20,15 @@
         margin-left: -(@switch-circle-size-active + 2);
       }
     }
+
+    &:focus-within {
+      box-shadow: 0 0 0 3px fade(@bg-color, 20%) !important;
+    }
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 3px fade(@bg-color, 20%), 0 0 0 1px @bg-color;
+
   }
 
   &--disabled {
@@ -79,9 +88,9 @@
     }
   }
 
-  &:hover {
-    background-color: @color-neutral;
-  }
+  // &:hover {
+  //   background-color: @color-neutral;
+  // }
 
   &-circle {
     display: block;
