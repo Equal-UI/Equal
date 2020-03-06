@@ -174,11 +174,11 @@ import clickoutside from '../../src/directives/clickOutside'
 })
 export default class Comps extends Vue {
   public left = 'inherit'
-  public async beforeMount() {
-    const data = await fetch('https://api.github.com/repos/quatrochan/Equal')
-    const { stargazers_count } = await data.json()
-    console.log(stargazers_count)
-  }
+  // public async beforeMount() {
+  //   const data = await fetch('https://api.github.com/repos/quatrochan/Equal')
+  //   const { stargazers_count } = await data.json()
+  //   console.log(stargazers_count)
+  // }
   public toggleSidebar() {
     this.left = this.left === 'inherit' ? '0px !important' : 'inherit'
   }

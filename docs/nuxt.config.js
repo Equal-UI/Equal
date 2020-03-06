@@ -23,7 +23,10 @@ export default {
       { name: 'twitter:card', content: 'summary' },
       { name: 'twitter:site', content: '@EqualVue' },
       { name: 'twitter:creator', content: '@k0mmsussertod' },
-      { name: 'twitter:image', content: '/Equal/logo.png' },
+      {
+        name: 'twitter:image',
+        content: 'https://quatrochan.github.io/Equal/logo.png'
+      },
       { property: 'og:url', content: 'https://quatrochan.github.io/Equal/' },
       { property: 'og:title', content: 'Equal UI' },
       {
@@ -31,7 +34,10 @@ export default {
         content:
           'Equal UI – open-source Vue components system for your next project based on TypeScript'
       },
-      { property: 'og:image', content: '/Equal/eqqqual.png' }
+      {
+        property: 'og:image',
+        content: 'https://quatrochan.github.io/Equal/eqqqual.png'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
