@@ -21,14 +21,16 @@ Vue.use(Button)
 Vue.use(Alert)
 Vue.use(Switch)</prism>
 
-<h2 style="margin: 20px 0px;">Add Material Icons</h2>
-<p style="margin: 0px 0px 10px 0px">Equal UI uses <a style="color: #3051FF" target="_blank" rel="noopener noreferrer" href="https://material.io/resources/icons/">Material Icons</a> as a default icons, so don't forget to add them too</p>
+<h2 style="margin: 20px 0px;">Add Material Icons and Inter font</h2>
+<p style="margin: 0px 0px 10px 0px">Equal UI uses <a style="color: #3051FF" target="_blank" rel="noopener noreferrer" href="https://material.io/resources/icons/">Material Icons</a> as default icons, and <a href="https://fonts.google.com/specimen/Inter" target="_blank" rel="noopener noreferrer">Inter</a> font by <a href="https://twitter.com/rsms" target="_blank" rel="noopener noreferrer">@rsms</a>.
+The simplest way to add them via CDN:</p>
+<!-- 
       <prism language="bash">npm install material-icons --save</prism>
       <p style="margin: 10px 0px">and import to your project</p>
       <prism language="js">import 'material-icons/iconfont/material-icons.css'</prism>
   <p style="margin: 10px 0px">
       Or add via link in the head of the page
-  </p>
+  </p> -->
       <prism language="html">{{headLink}}</prism>
     </div>
   </div>
@@ -50,7 +52,7 @@ npm install equal-vue
 # Yarn
 yarn add equal-vue`
 
-  public headLink = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined">'
+  public headLink = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined">\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">'
 }
 </script>
 

@@ -25,7 +25,7 @@ export default {
       { name: 'twitter:creator', content: '@k0mmsussertod' },
       {
         name: 'twitter:image',
-        content: 'https://quatrochan.github.io/Equal/logo.png'
+        content: 'https://quatrochan.github.io/Equal/og.png'
       },
       { property: 'og:url', content: 'https://quatrochan.github.io/Equal/' },
       { property: 'og:title', content: 'Equal UI' },
@@ -36,7 +36,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://quatrochan.github.io/Equal/eqqqual.png'
+        content: 'https://quatrochan.github.io/Equal/og.png'
       }
     ],
     link: [
@@ -58,6 +58,11 @@ export default {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap'
       }
     ]
   },

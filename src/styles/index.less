@@ -1,9 +1,16 @@
-@import "./variables.less";
+@import './variables.less';
 
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: Inter,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif; -webkit-font-smoothing: antialiased;}
+html {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 @supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var',system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif; -webkit-font-smoothing: antialiased;}
+  html {
+    font-family: 'Inter var', system-ui, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
 p {
@@ -13,4 +20,5 @@ p {
 a {
   text-decoration: inherit;
   color: @color-primary;
+  font-weight: 500;
 }
