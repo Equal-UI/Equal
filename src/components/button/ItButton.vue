@@ -49,20 +49,30 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import './button.less'
+import { Sizes } from '@/models/Sizes'
+import { Colors } from '@/models/Colors'
 
 @Component
 export default class ItButton extends Vue {
   @Prop({
-    default: 'neutral',
-    validator: (value) =>
-      ['primary', 'success', 'danger', 'warning', 'black', 'neutral'].includes(
-        value
-      )
+    default: Colors.NEUTRAL,
+    validator: (value) => [
+        Colors.PRIMARY,
+        Colors.SUCCESS,
+        Colors.DANGER,
+        Colors.WARNING,
+        Colors.BLACK,
+        Colors.NEUTRAL
+      ].includes(value)
   })
   private type!: string
   @Prop({
     default: 'normal',
-    validator: (value) => ['small', 'normal', 'big'].includes(value)
+    validator: (value) => [
+      Sizes.SMALL,
+      Sizes.NORMAL,
+      Sizes.BIG
+    ].includes(value)
   })
   private size?: string
   @Prop({ type: Boolean, default: false }) private iconAfter!: boolean
