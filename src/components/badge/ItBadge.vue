@@ -16,18 +16,24 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Colors } from '@/models/Colors'
+import { Positions } from '@/models/Positions'
 import './badge.less'
 
 @Component
 export default class ItBadge extends Vue {
   @Prop({
-    default: 'danger',
-    validator: (value) =>
-      ['primary', 'success', 'danger', 'warning'].includes(value)
+    default: Colors.DANGER,
+    validator: (value) => [
+      Colors.PRIMARY,
+      Colors.SUCCESS,
+      Colors.DANGER,
+      Colors.WARNING
+    ].includes(value)
   })
   public type: string
   @Prop() public value: number | string
-  @Prop({ default: 'top-right' }) public position!: string
+  @Prop({ default: Positions.TR }) public position!: string
   @Prop({ type: Boolean, default: true }) public show!: boolean
   @Prop({ type: Boolean, default: false }) public point!: boolean
   @Prop({ type: Boolean, default: false }) public square!: boolean
