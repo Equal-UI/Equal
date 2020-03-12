@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Positions } from '@/models/Positions'
 import PopoverMixin from '../../mixins/popover'
 import './progressbar.less'
 
@@ -37,7 +38,7 @@ export default class ItProgressbar extends Vue {
   })
   private progress?: number | string
   @Prop({ default: 7 }) private height?: number | string
-  @Prop({ default: 'top' }) private tooltip?: string
+  @Prop({ default: Positions.T }) private tooltip?: string
   @Prop({ type: Boolean, default: true }) private showTooltip?: boolean
 
   @Watch('tooltip')
