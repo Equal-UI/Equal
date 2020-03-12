@@ -51,6 +51,7 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue, Provide, Model } from 'vue-property-decorator'
+import { Positions } from '@/models/Positions'
 import clickoutside from '../../directives/clickOutside'
 import PopoverMixin from '../../mixins/popover'
 import './select.less'
@@ -59,33 +60,33 @@ import './select.less'
   directives: { clickoutside }
 })
 export default class ItSelect extends PopoverMixin {
-  @Prop({ default: 'bottom' }) public placement?: string
+  @Prop({ default: Positions.B }) public placement?: string
   @Prop({ type: Boolean, default: false }) public disabled!: boolean
   @Prop({ type: Boolean, default: false }) public filterable!: boolean
   @Provide() private select = this.selectOption
   @Prop() private labelTop?: string
   @Prop({ default: 'Select' }) private placeholder?: string
 
-  @Model('input') private value?: (string | number)[] | number | string
+  @Model('input') private value?: Array<string | number> | number | string
 
   private selected: any = this.value
   private search: string | number = ''
   private focusIndex: number = -1
 
   @Watch('search')
-  onSearchInput(newVal) {
+  public onSearchInput(newVal) {
     if (!this.show) {
       this.showTooltip()
     }
     this.unfocus()
-    this.$children.forEach(i => {
+    this.$children.forEach((i) => {
       if (!i.$slots.default[0].text.toLowerCase().includes(newVal.toLowerCase())) {
         i.$data.visible = false
       } else {
         i.$data.visible = true
       }
     })
-    
+
   }
 
   private handleKey(type: 'up' | 'down') {
@@ -109,7 +110,7 @@ export default class ItSelect extends PopoverMixin {
   }
 
   get searched() {
-    return this.$children.filter(i => i.$data.visible === true)
+    return this.$children.filter((i) => i.$data.visible === true)
   }
 
   private toggleList() {
