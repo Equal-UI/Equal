@@ -19,11 +19,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator'
+import { Colors } from '@/models/Colors'
 import './checkbox.less'
 
 @Component
 export default class ItCheckbox extends Vue {
-  @Prop({ default: 'primary' }) private type!: string
+  @Prop({ default: Colors.PRIMARY }) private type!: string
   @Prop({ default: 'check' }) private icon!: string
   @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Prop({ type: Boolean, default: false }) private lineThrough!: boolean
@@ -32,7 +33,14 @@ export default class ItCheckbox extends Vue {
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
   @Prop() private color!: string // TODO
 
-  private types: string[] = ['primary', 'success', 'danger', 'warning', 'black', 'neutral']
+  private types: Colors[] = [
+    Colors.PRIMARY,
+    Colors.SUCCESS,
+    Colors.DANGER,
+    Colors.WARNING,
+    Colors.BLACK,
+    Colors.NEUTRAL
+  ]
 
   get listeners() {
     return {
