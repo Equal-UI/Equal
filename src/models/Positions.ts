@@ -1,5 +1,4 @@
 export enum Positions {
-  TR = 'top-right',
   B = 'bottom',
   BL = 'bottom-left',
   BR = 'bottom-right',

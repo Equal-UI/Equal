@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator'
-import { Colors } from '@/models/Colors'
+import { Colors } from '../../models'
 import './radio.less'
 
 @Component

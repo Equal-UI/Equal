@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Colors } from '@/models/Colors'
+import { Colors } from '../../models'
 import './alert.less'
 
 @Component

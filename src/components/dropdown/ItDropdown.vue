@@ -21,7 +21,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import PopoverMixin from '../../mixins/popover'
 import './dropdown.less'
-import { Positions } from '../../models/Positions'
+import { Positions } from '../../models'
 
 @Component({
   mixins: [PopoverMixin]

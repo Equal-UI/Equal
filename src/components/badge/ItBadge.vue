@@ -16,8 +16,8 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Colors } from '@/models/Colors'
-import { Positions } from '@/models/Positions'
+import { Colors } from '../../models'
+import { Positions } from '../../models'
 import './badge.less'
 
 @Component

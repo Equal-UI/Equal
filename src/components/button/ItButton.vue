@@ -49,8 +49,8 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import './button.less'
-import { Sizes } from '@/models/Sizes'
-import { Colors } from '@/models/Colors'
+import { Sizes } from '../../models'
+import { Colors } from '../../models'
 
 @Component
 export default class ItButton extends Vue {

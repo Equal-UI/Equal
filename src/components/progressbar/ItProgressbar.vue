@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { Positions } from '@/models/Positions'
+import { Positions } from '../../models'
 import PopoverMixin from '../../mixins/popover'
 import './progressbar.less'
 

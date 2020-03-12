@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import { Component, Prop, Model, Vue } from 'vue-property-decorator'
-import { Colors } from '@/models/Colors'
+import { Colors } from '../../models'
 import './input.less'
 
 @Component({

@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue, Provide, Model } from 'vue-property-decorator'
-import { Positions } from '@/models/Positions'
+import { Positions } from '../../models'
 import clickoutside from '../../directives/clickOutside'
 import PopoverMixin from '../../mixins/popover'
 import './select.less'
