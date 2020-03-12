@@ -25,14 +25,19 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Colors } from '../../models'
 import './alert.less'
 
 @Component
 export default class ItAlert extends Vue {
   @Prop({
-    default: 'primary',
-    validator: (value) =>
-      ['primary', 'success', 'danger', 'warning'].includes(value)
+    default: Colors.PRIMARY,
+    validator: (value) => [
+      Colors.PRIMARY,
+      Colors.SUCCESS,
+      Colors.DANGER,
+      Colors.WARNING
+    ].includes(value)
   })
   private type?: string
   @Prop({ type: Boolean, default: true }) private showIcon?: boolean

@@ -28,6 +28,7 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Model, Vue } from 'vue-property-decorator'
+import { Colors } from '../../models'
 import FocusLock from 'vue-focus-lock'
 import './modal.less'
 
@@ -43,7 +44,7 @@ export default class ItModal extends Vue {
   @Prop({ type: Function, default: null }) public okClick?: () => void
   @Prop({ type: Function, default: null }) public cancelClick?: () => void
   @Prop({ type: Boolean, default: true }) public closeOnEsc?: boolean
-  @Prop({ default: 'primary' }) public type?: string
+  @Prop({ default: Colors.PRIMARY }) public type?: string
 
   public activeElement: HTMLElement
 
@@ -52,7 +53,7 @@ export default class ItModal extends Vue {
   public mounted() {
     this.value = true
     document.addEventListener('keydown', this.escEvt)
-    document.body.classList.add('stop-scroll');
+    document.body.classList.add('stop-scroll')
     // this.$refs.cancelButton.$el.focus()
   }
 

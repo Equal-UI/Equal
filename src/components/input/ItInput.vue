@@ -38,6 +38,7 @@
 
 <script lang="ts">
 import { Component, Prop, Model, Vue } from 'vue-property-decorator'
+import { Colors } from '../../models'
 import './input.less'
 
 @Component({
@@ -51,7 +52,11 @@ export default class ItInput extends Vue {
   @Prop() private suffix?: string
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
   @Prop({
-    validator: (value) => ['success', 'warning', 'danger'].includes(value)
+    validator: (value) => [
+      Colors.SUCCESS,
+      Colors.WARNING,
+      Colors.DANGER
+    ].includes(value)
   })
   private status?: string
   @Prop() private suffixIcon?: string

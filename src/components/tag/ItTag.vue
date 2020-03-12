@@ -7,6 +7,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Colors } from '../../models'
 import './tag.less'
 
 @Component
@@ -16,11 +17,15 @@ export default class ItTag extends Vue {
 
   public show = true
   @Prop({
-    default: 'neutral',
-    validator: (value) =>
-      ['primary', 'success', 'danger', 'warning', 'black', 'neutral'].includes(
-        value
-      )
+    default: Colors.NEUTRAL,
+    validator: (value) => [
+      Colors.PRIMARY,
+      Colors.SUCCESS,
+      Colors.DANGER,
+      Colors.WARNING,
+      Colors.BLACK,
+      Colors.NEUTRAL
+    ].includes(value)
   })
   private type?: string
 

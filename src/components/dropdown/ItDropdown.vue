@@ -21,27 +21,28 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import PopoverMixin from '../../mixins/popover'
 import './dropdown.less'
+import { Positions } from '../../models'
 
 @Component({
   mixins: [PopoverMixin]
 })
 export default class ItDropdown extends Vue {
   @Prop({
-    default: 'bottom',
+    default: Positions.B,
     validator: (value) =>
       [
-        'bottom',
-        'bottom-left',
-        'bottom-right',
-        'left',
-        'left-top',
-        'left-bottom',
-        'right',
-        'right-top',
-        'right-bottom',
-        'top',
-        'top-left',
-        'top-right'
+        Positions.B,
+        Positions.BL,
+        Positions.BR,
+        Positions.L,
+        Positions.LT,
+        Positions.LB,
+        Positions.R,
+        Positions.RT,
+        Positions.RB,
+        Positions.T,
+        Positions.TL,
+        Positions.TR
       ].includes(value)
   })
   private placement!: string
