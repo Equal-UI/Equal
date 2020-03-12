@@ -24,17 +24,24 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator'
+import { Colors } from '@/models/Colors'
 import './switch.less'
 
 @Component
 export default class ItSwitch extends Vue {
-  @Prop({ default: 'primary' }) private type!: string
+  @Prop({ default: Colors.PRIMARY }) private type!: string
   @Prop() private label?: string
   @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Model('change', { default: false }) private value!: boolean | string | number
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
 
-  private types: string[] = ['primary', 'success', 'danger', 'warning', 'black']
+  private types: string[] = [
+    Colors.PRIMARY,
+    Colors.SUCCESS,
+    Colors.DANGER,
+    Colors.WARNING,
+    Colors.BLACK
+  ]
 
   get listeners() {
     return {
