@@ -1,6 +1,7 @@
 {
   "name": "equal-vue",
   "version": "0.41.0",
+  "description": "Equal is a Vue UI library based on TypeScript",
   "author": {
     "name": "Yan Savinov",
     "email": "yan.savinov.hire@gmail.com"
