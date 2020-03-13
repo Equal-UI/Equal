@@ -32,7 +32,7 @@ Equal UI is a Vue 2 TypeScript components library
 
 ```bash
 # npm
-npm install equal-vue
+npm i equal-vue
 ```
 
 ```bash
