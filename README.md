@@ -20,6 +20,7 @@
 
 <div align="center">
 Equal UI is a Vue 2 TypeScript components library
+<p></p>
  <img width="800" src="https://raw.githubusercontent.com/horpey/Equal/master/docs/assets/equal-preview.png">
 </div>
 
