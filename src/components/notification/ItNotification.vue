@@ -30,7 +30,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import './notification.less'
 
 @Component
 export default class ItNotification extends Vue {

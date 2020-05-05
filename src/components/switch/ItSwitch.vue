@@ -25,7 +25,6 @@
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator'
 import { Colors } from '../../models'
-import './switch.less'
 
 @Component
 export default class ItSwitch extends Vue {

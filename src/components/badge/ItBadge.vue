@@ -18,7 +18,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Colors } from '../../models'
 import { Positions } from '../../models'
-import './badge.less'
 
 @Component
 export default class ItBadge extends Vue {

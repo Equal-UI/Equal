@@ -5,7 +5,7 @@
     <Demobox>
       <it-avatar
         :text="avatarText ? 'Yan Savinov' : null"
-        :src="avatarImage ? 'https://picsum.photos/200' : null"
+        :src="avatarImage ? '/Equal/husky.jpg' : null"
         :square="avatarSquare"
       ></it-avatar>
       <template slot="props">
@@ -27,11 +27,11 @@
     </Box>
 
     <Box :code="imageCode" title="Image">
-      <it-avatar src="https://picsum.photos/200" />
-      <it-avatar src="https://picsum.photos/200" square />
+      <it-avatar src="/Equal/husky.jpg" />
+      <it-avatar src="/Equal/husky.jpg" square />
     </Box>
 
-    <Box :code="textCode" title="Text">
+    <Box :code="textCode" title="Initials">
       <it-avatar color="#3051ff" text="Yan" />
       <it-avatar color="#3051ff" text="Yan Savinov" />
     </Box>
@@ -45,10 +45,10 @@
 
     <Box :code="badgeCode" title="With badge">
       <it-badge value="1">
-        <it-avatar src="https://picsum.photos/200" square />
+        <it-avatar src="/Equal/husky.jpg" square />
       </it-badge>
-      <it-badge point>
-        <it-avatar src="https://picsum.photos/200" square />
+      <it-badge position="bottom-left" type="success" point>
+        <it-avatar src="/Equal/husky.jpg" square />
       </it-badge>
     </Box>
 
@@ -82,8 +82,8 @@ export default class AvatarPage extends Vue {
 <it-avatar color="#f93155" />
 <it-avatar color="#131313" />`
 
-  public imageCode = `<it-avatar src="https://picsum.photos/200" />
-<it-avatar src="https://picsum.photos/200" square />`
+  public imageCode = `<it-avatar src="/Equal/husky.jpg" />
+<it-avatar src="/Equal/husky.jpg" square />`
 
   public textCode = `<it-avatar color="#3051ff" text="Yan" />
 <it-avatar color="#3051ff" text="Yan Savinov" />`
@@ -120,7 +120,7 @@ badgeCode =
       property: 'color',
       type: ['String'],
       default: '-',
-      values: ['hex', 'rgd', 'hsl'],
+      values: ['hex', 'rgb', 'hsl'],
       description: 'Avatar color'
     },
     {

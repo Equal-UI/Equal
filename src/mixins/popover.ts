@@ -11,7 +11,7 @@ export default class PopoverMixin extends Vue {
   @Prop({ default: 'top' }) public placement?: string
   // https://github.com/kaorun343/vue-property-decorator/issues/118
   @Prop({ type: Boolean, default: false }) public disabled!: boolean
-  @Prop({ type: Boolean, default: false }) private hoverable?: boolean
+  @Prop({ type: Boolean, default: false }) public hoverable!: boolean
   private position = {
     top: 0,
     left: 0
@@ -28,7 +28,7 @@ export default class PopoverMixin extends Vue {
     ) {
       return
     }
-    this.showTooltip()
+    this.showPopover()
     clearTimeout(this.visionTimer)
   }
 
@@ -42,7 +42,7 @@ export default class PopoverMixin extends Vue {
     this.show = false
   }
 
-  public showTooltip() {
+  public showPopover() {
     if (!this.show) {
       this.show = true
       this.setPopoverPosition()

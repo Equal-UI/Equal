@@ -1,49 +1,56 @@
 @import '../../styles/variables.less';
 
-.fade-top-enter-to, .fade-top-leave {
-  transition: all .15s;
+.fade-top-enter-to,
+.fade-top-leave {
+  transition: all 0.15s;
   transform: translateY(0px) scale(1);
 }
 
-.fade-top-enter, .fade-top-leave-to {
-  transition: all .15s;
-  transform: translateY(8px) scale(.9);
+.fade-top-enter,
+.fade-top-leave-to {
+  transition: all 0.15s;
+  transform: translateY(8px) scale(0.9);
   opacity: 0;
 }
 
-.fade-left-enter-to, .fade-left-leave {
-  transition: all .15s;
+.fade-left-enter-to,
+.fade-left-leave {
+  transition: all 0.15s;
   transform: translateX(0px) scale(1);
 }
 
-.fade-left-enter, .fade-left-leave-to {
-  transition: all .15s;
-  transform: translateX(8px) scale(.9);
+.fade-left-enter,
+.fade-left-leave-to {
+  transition: all 0.15s;
+  transform: translateX(8px) scale(0.9);
   opacity: 0;
 }
 
-.fade-right-enter-to, .fade-right-leave {
-  transition: all .15s;
+.fade-right-enter-to,
+.fade-right-leave {
+  transition: all 0.15s;
   transform: translateX(0px) scale(1);
 }
 
-.fade-right-enter, .fade-right-leave-to {
-  transition: all .15s;
-  transform: translateX(-8px) scale(.9);
+.fade-right-enter,
+.fade-right-leave-to {
+  transition: all 0.15s;
+  transform: translateX(-8px) scale(0.9);
   opacity: 0;
 }
 
-.fade-bottom-enter-to, .fade-bottom-leave {
-  transition: all .15s;
+.fade-bottom-enter-to,
+.fade-bottom-leave {
+  transition: all 0.15s;
   transform: translateY(0px) scale(1);
 }
 
-.fade-bottom-enter, .fade-bottom-leave-to {
-  transition: all .15s;
-  transform: translateY(-8px) scale(.9);
+.fade-bottom-enter,
+.fade-bottom-leave-to {
+  transition: all 0.15s;
+  transform: translateY(-8px) scale(0.9);
   opacity: 0;
 }
-
 
 .it-tooltip {
   display: inline-block;
@@ -55,13 +62,10 @@
   &__popper {
     position: absolute;
     z-index: 9000;
-    // transition: all .1s ease-out;
   }
   &__content {
     padding: 8px;
-    box-shadow: @default-shadow;
-    border-radius: 4px;
-    // max-width: 160px;
+    box-shadow: @popup-shadow;
     width: max-content;
     color: @color-secondary-black;
     font-size: 12px;

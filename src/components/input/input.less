@@ -18,7 +18,7 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid @color-secondary-text;
-  box-shadow: 0px 1px 1px 0px #d3dae64d;
+  box-shadow: @input-shadow;
   width: 100%;
   height: 32px;
   color: @color-black;
@@ -51,11 +51,12 @@
 
   &--disabled,
   &--disabled:hover {
-    border-color: @color-secondary-text !important;
+    border-color: @color-disabled-border !important;
     background: @color-disabled-bg;
     cursor: not-allowed;
     .it-input:disabled {
       cursor: not-allowed;
+      color: @color-disabled-border;
     }
     .it-input-icon {
       cursor: not-allowed;
@@ -81,7 +82,9 @@
   box-sizing: border-box;
   outline: none;
   border: none;
-  font-family: inherit;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  -webkit-font-smoothing: antialiased;
   padding: 4px 10px;
   background: transparent;
 
@@ -92,7 +95,7 @@
   &-prefix,
   &-suffix {
     background-color: #fafbfd;
-    color: #69707D;
+    color: #69707d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,10 +156,13 @@
   &--danger {
     .set-message-status(@color-danger);
   }
+  &--disabled {
+    color: @color-disabled-border;
+  }
 }
 
 .it-input-icon {
-  color: @color-secondary-text;
+  color: @color-default-border;
   cursor: default;
   margin: 0px 8px;
   vertical-align: middle;

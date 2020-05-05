@@ -13,17 +13,17 @@
       </div>
 
       <template slot="props">
-        <span class="it-input-label">Progress</span>
         <it-slider v-model="progressValue" labelTop="Progress" />
         <it-number-input v-model="progressHeight" labelTop="Progress bar height" />
+        <it-checkbox label="Show tooltip" v-model="progressShowTooltip" />
         <it-select
           placeholder="Select tooltip"
           labelTop="Tooltip position"
+          :disabled="!progressShowTooltip"
           v-model="progressTooltip"
         >
           <it-select-option :key="type" v-for="type in tooltipTypes" :value="type">{{type}}</it-select-option>
         </it-select>
-        <it-checkbox label="Show tooltip" v-model="progressShowTooltip" />
       </template>
     </Demobox>
     <Box :code="infiniteCode" title="Infinite">

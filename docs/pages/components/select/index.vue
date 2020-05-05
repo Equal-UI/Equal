@@ -8,6 +8,7 @@
           :placeholder="selectPlaceholder"
           :disabled="selectDisabled"
           :labelTop="selectLabel"
+          :divided="selectDivided"
           v-model="selectValue"
         >
           <it-select-option key="one" value="One">One</it-select-option>
@@ -18,7 +19,10 @@
       <template slot="props">
         <it-input v-model="selectLabel" labelTop="Select label" />
         <it-input v-model="selectPlaceholder" labelTop="Select placeholder" />
+        <it-checkbox label="Divided" v-model="selectDivided" />
         <it-checkbox label="Disabled" v-model="selectDisabled" />
+
+
       </template>
     </Demobox>
 
@@ -42,6 +46,7 @@ export default class SelectPage extends Vue {
   public selectLabel: string = 'Select me'
   public selectPlaceholder: string = 'Select me'
   public selectDisabled: boolean = false
+  public selectDivided: boolean = false
 
   public dataSheet = [
     {
@@ -77,6 +82,13 @@ export default class SelectPage extends Vue {
         'top-right'
       ],
       description: 'Select list position'
+    },
+    {
+      property: 'divided',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Makes select options divided by line'
     },
     {
       property: 'disabled',

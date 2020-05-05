@@ -11,7 +11,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: 'Equal components' || process.env.npm_package_name || '',
+    title: 'Equal components',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -101,10 +101,25 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, { isClient }) {
-      if (isClient) {
-        config.devtool = '#source-map'
+    terser: {
+      parallel: true,
+      cache: false,
+      sourceMap: false,
+      extractComments: {
+        filename: 'LICENSES'
+      },
+      terserOptions: {
+        keep_classnames: true,
+        keep_fnames: true,
+        output: {
+          comments: /^\**!|@preserve|@license|@cc_on/
+        }
       }
     }
+    // extend(config, { isClient }) {
+    //   if (isClient) {
+    //     config.devtool = '#source-map'
+    //   }
+    // }
   }
 }

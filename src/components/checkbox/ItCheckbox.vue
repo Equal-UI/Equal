@@ -10,17 +10,16 @@
       disabled && 'it-checkbox--disabled'
       ]"
       >
-        <it-icon :name="icon" />
+        <it-icon style="font-size: 16px" :name="icon" />
       </span>
     </span>
-    <span v-if="label" class="it-checkbox-label" :class="[(lineThrough && value) && 'it-checkbox-label--linethrough']">{{label}}</span>
+    <span v-if="label" class="it-checkbox-label" :class="[(lineThrough && value) && 'it-checkbox-label--linethrough', disabled && 'it-checkbox-label--disabled']">{{label}}</span>
   </label>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator'
 import { Colors } from '../../models'
-import './checkbox.less'
 
 @Component
 export default class ItCheckbox extends Vue {

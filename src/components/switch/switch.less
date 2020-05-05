@@ -3,7 +3,7 @@
 @switch-circle-size-base: 16px;
 @switch-circle-size-active: 21px;
 
-.set-type (@bg-color) {
+.set-switch-type (@bg-color) {
   &--checked {
     background-color: @bg-color;
     & .it-switch-circle {
@@ -67,19 +67,19 @@
   cursor: pointer;
 
   &--primary {
-    .set-type(@color-primary);
+    .set-switch-type(@color-primary);
   }
   &--success {
-    .set-type(@color-success);
+    .set-switch-type(@color-success);
   }
   &--warning {
-    .set-type(@color-warning);
+    .set-switch-type(@color-warning);
   }
   &--danger {
-    .set-type(@color-danger);
+    .set-switch-type(@color-danger);
   }
   &--black {
-    .set-type(@color-secondary-black);
+    .set-switch-type(@color-secondary-black);
   }
 
   &:active {

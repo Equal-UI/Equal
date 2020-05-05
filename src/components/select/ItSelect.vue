@@ -28,14 +28,15 @@
       <span class="it-select-selected" v-if="!filterable && selected">{{ selected }}</span>
       <i
         :class="['material-icons','it-select-arrow', show && 'it-select-arrow--active']"
-      >keyboard_arrow_down</i>
+      >unfold_more</i>
     </div>
 
     <transition name="drop-bottom">
       <div
         class="it-select-dropdown"
         :class="[
-          placement ? `it-select-dropdown--${placement}` : 'it-select-dropdown--bottom'
+          placement ? `it-select-dropdown--${placement}` : 'it-select-dropdown--bottom',
+          divided && 'it-select-dropdown--divided'
         ]"
         v-show="show"
         ref="popover"
@@ -54,7 +55,6 @@ import { Component, Prop, Watch, Vue, Provide, Model } from 'vue-property-decora
 import { Positions } from '../../models'
 import clickoutside from '../../directives/clickOutside'
 import PopoverMixin from '../../mixins/popover'
-import './select.less'
 
 @Component({
   directives: { clickoutside }
@@ -62,6 +62,7 @@ import './select.less'
 export default class ItSelect extends PopoverMixin {
   @Prop({ default: Positions.B }) public placement?: string
   @Prop({ type: Boolean, default: false }) public disabled!: boolean
+  @Prop({ type: Boolean, default: false }) public divided!: boolean
   @Prop({ type: Boolean, default: false }) public filterable!: boolean
   @Provide() private select = this.selectOption
   @Prop() private labelTop?: string
@@ -76,7 +77,7 @@ export default class ItSelect extends PopoverMixin {
   @Watch('search')
   public onSearchInput(newVal) {
     if (!this.show) {
-      this.showTooltip()
+      this.showPopover()
     }
     this.unfocus()
     this.$children.forEach((i) => {
@@ -121,7 +122,7 @@ export default class ItSelect extends PopoverMixin {
       this.hidePopover()
     } else {
       this.unfocus()
-      this.showTooltip()
+      this.showPopover()
     }
   }
 

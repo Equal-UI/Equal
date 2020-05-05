@@ -8,7 +8,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Colors } from '../../models'
-import './tag.less'
 
 @Component
 export default class ItTag extends Vue {

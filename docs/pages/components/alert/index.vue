@@ -3,7 +3,7 @@
     <h1>Alert</h1>
 
     <Demobox>
-      <it-alert :visible="alertVisible" @on-close="alertVisible=false" :type="alertType" :showIcon="alertShowIcon" :closable="alertClosable" :title="alertTitle" :body="alertBody" />
+      <it-alert :iconbox="alertIconBox" :visible="alertVisible" @on-close="alertVisible=false" :type="alertType" :showIcon="alertShowIcon" :closable="alertClosable" :title="alertTitle" :body="alertBody" />
       <template slot="props">
         <it-select placeholder="Select type" labelTop="Alert type" v-model="alertType">
           <it-select-option :key="type" v-for="type in alertTypes" :value="type">{{type}}</it-select-option>
@@ -11,6 +11,7 @@
         <it-input v-model="alertTitle" labelTop="Alert title" />
         <it-input v-model="alertBody" labelTop="Alert Body" />
         <it-checkbox label="Icon" v-model="alertShowIcon" />
+        <it-checkbox label="Icon box" v-model="alertIconBox" />
         <it-checkbox label="Closable" v-model="alertClosable" />
         <it-checkbox label="Visible" v-model="alertVisible" />
       </template>
@@ -23,6 +24,16 @@
       <it-alert type="success" :title="alertTitle" :body="alertBody"/>
       <it-alert type="danger" :title="alertTitle" :body="alertBody"/>
       <it-alert type="warning" :title="alertTitle" :body="alertBody"/>
+      </div>
+    </Box>
+
+    <Box :code="typesBox" title="Icon in box">
+      <div style="flex-direction: column; flex: 1;">
+
+      <it-alert iconbox type="primary" :title="alertTitle" :body="alertBody"/>
+      <it-alert iconbox type="success" :title="alertTitle" :body="alertBody"/>
+      <it-alert iconbox type="danger" :title="alertTitle" :body="alertBody"/>
+      <it-alert iconbox type="warning" :title="alertTitle" :body="alertBody"/>
       </div>
     </Box>
 
@@ -58,12 +69,18 @@ export default class AlertPage extends Vue {
   public alertClosable = false
   public alertType = 'primary'
   public alertTypes = ['primary', 'success', 'danger', 'warning']
+  public alertIconBox = false
 
   public typesCode =
 `<it-alert type="primary" :title="alertTitle" :body="alertBody"/>
 <it-alert type="success" :title="alertTitle" :body="alertBody"/>
 <it-alert type="danger" :title="alertTitle" :body="alertBody"/>
 <it-alert type="warning" :title="alertTitle" :body="alertBody"/>`
+
+  public typesBox = `<it-alert iconbox type="primary" :title="alertTitle" :body="alertBody"/>
+<it-alert iconbox type="success" :title="alertTitle" :body="alertBody"/>
+<it-alert iconbox type="danger" :title="alertTitle" :body="alertBody"/>
+<it-alert iconbox type="warning" :title="alertTitle" :body="alertBody"/>`
 
 public slotCode =
 `<it-alert type="primary" title="Alert with slot body">
@@ -97,7 +114,14 @@ public slotCode =
       type: ['Boolean'],
       default: 'true',
       values: [],
-      description: 'Show icon on the right side'
+      description: 'Show icon'
+    },
+    {
+      property: 'iconbox',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Show icon in the box'
     },
     {
       property: 'closable',

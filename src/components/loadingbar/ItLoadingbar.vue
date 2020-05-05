@@ -13,7 +13,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import './loadingbar.less'
 
 @Component
 export default class ItLoadingbar extends Vue {

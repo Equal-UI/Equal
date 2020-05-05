@@ -9,7 +9,7 @@
         <it-input v-model="inputTopLabel" labelTop="Top label" />
         <it-number-input v-model="inputMin" labelTop="Min"/>
         <it-number-input v-model="inputMax" labelTop="Max"/>
-        <it-number-input v-model="inputStep" labelTop="Step"/>
+        <it-number-input :min="0" v-model="inputStep" labelTop="Step"/>
         <it-checkbox label="Disabled" v-model="inputDisabled" />
       </template>
     </Demobox>

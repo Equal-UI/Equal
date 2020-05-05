@@ -51,7 +51,7 @@
       <it-button
         @click="$Notification({
       title: 'Image notification',
-      image: 'https://picsum.photos/200',
+      image: '/Equal/husky.jpg',
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
       })"
@@ -61,7 +61,7 @@
       <it-button
         @click="$Notification({
       title: 'Top-left notification',
-      image: 'https://picsum.photos/200',
+      image: '/Equal/husky.jpg',
       placement: 'top-left',
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -70,7 +70,7 @@
       <it-button
         @click="$Notification({
       title: 'Top-right notification',
-      image: 'https://picsum.photos/200',
+      image: '/Equal/husky.jpg',
       placement: 'top-right',
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -79,7 +79,7 @@
       <it-button
         @click="$Notification({
       title: 'Bottom-left notification',
-      image: 'https://picsum.photos/200',
+      image: '/Equal/husky.jpg',
       placement: 'bottom-left',
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -88,7 +88,7 @@
       <it-button
         @click="$Notification({
       title: 'Top-right notification',
-      image: 'https://picsum.photos/200',
+      image: '/Equal/husky.jpg',
       placement: 'bottom-right',
       text:
         'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -168,7 +168,7 @@ export default class NotificationPage extends Vue {
 <it-button
   @click="$Notification({
   title: 'Top-left notification',
-  image: 'https://picsum.photos/200',
+  image: '/Equal/husky.jpg',
   placement: 'top-left',
   text:
     'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -177,7 +177,7 @@ export default class NotificationPage extends Vue {
 <it-button
   @click="$Notification({
   title: 'Top-right notification',
-  image: 'https://picsum.photos/200',
+  image: '/Equal/husky.jpg',
   placement: 'top-right',
   text:
     'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -186,7 +186,7 @@ export default class NotificationPage extends Vue {
 <it-button
   @click="$Notification({
   title: 'Bottom-left notification',
-  image: 'https://picsum.photos/200',
+  image: '/Equal/husky.jpg',
   placement: 'bottom-left',
   text:
     'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
@@ -195,7 +195,7 @@ export default class NotificationPage extends Vue {
 <it-button
   @click="$Notification({
   title: 'Top-right notification',
-  image: 'https://picsum.photos/200',
+  image: '/Equal/husky.jpg',
   placement: 'bottom-right',
   text:
     'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'

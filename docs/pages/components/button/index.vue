@@ -47,6 +47,13 @@
       <it-button type="warning" outlined>Button</it-button>
       <it-button type="black" outlined>Button</it-button>
     </Box>
+    <Box :code="codeText" title="Text type">
+      <it-button text>Button</it-button>
+      <it-button type="primary" text>Button</it-button>
+      <it-button type="success" text>Button</it-button>
+      <it-button type="danger" text>Button</it-button>
+      <it-button type="warning" text>Button</it-button>
+    </Box>
     <Box :code="codeRound" title="Round">
       <it-button round>Button</it-button>
       <it-button type="primary" round>Button</it-button>
@@ -58,8 +65,7 @@
     <Box :code="codeBlock" title="Block">
       <it-button block>Button</it-button>
       <br />
-      <it-button type="primary" block>Button</it-button>
-      <br />
+      <it-button style="margin-left:0" type="primary" block>Button</it-button>
     </Box>
     <Box :code="codeSize" title="Size">
       <it-button size="small">Button</it-button>
@@ -87,31 +93,31 @@
     </Box>
     <Box :code="codeGroup" title="Group">
       <div class="margins">
-      <it-button-group>
-        <it-button>Left</it-button>
-        <it-button>Middle</it-button>
-        <it-button>Right</it-button>
-      </it-button-group>
-      <it-button-group>
-        <it-button type="primary" outlined>Left</it-button>
-        <it-button type="primary" outlined>Middle</it-button>
-        <it-button type="primary" outlined>Right</it-button>
-      </it-button-group>
+        <it-button-group>
+          <it-button>Left</it-button>
+          <it-button>Middle</it-button>
+          <it-button>Right</it-button>
+        </it-button-group>
+        <it-button-group>
+          <it-button type="primary" outlined>Left</it-button>
+          <it-button type="primary" outlined>Middle</it-button>
+          <it-button type="primary" outlined>Right</it-button>
+        </it-button-group>
       </div>
     </Box>
 
-        <Box :code="codeVerticalGroup" title="Vertical group">
+    <Box :code="codeVerticalGroup" title="Vertical group">
       <div class="margins">
-      <it-button-group vertical>
-        <it-button>Top</it-button>
-        <it-button>Middle</it-button>
-        <it-button>Bottom</it-button>
-      </it-button-group>
-      <it-button-group vertical>
-        <it-button type="primary" outlined>Top</it-button>
-        <it-button type="primary" outlined>Middle</it-button>
-        <it-button type="primary" outlined>Bottom</it-button>
-      </it-button-group>
+        <it-button-group vertical>
+          <it-button>Top</it-button>
+          <it-button>Middle</it-button>
+          <it-button>Bottom</it-button>
+        </it-button-group>
+        <it-button-group vertical>
+          <it-button type="primary" outlined>Top</it-button>
+          <it-button type="primary" outlined>Middle</it-button>
+          <it-button type="primary" outlined>Bottom</it-button>
+        </it-button-group>
       </div>
     </Box>
 
@@ -142,12 +148,12 @@ export default class ButtonPage extends Vue {
   public buttonBlock = false
   public buttonType = 'primary'
   public buttonTypes = [
+    'neutral',
     'primary',
     'success',
     'danger',
     'warning',
-    'black',
-    'neutral'
+    'black'
   ]
   public buttonIcon = false
 
@@ -192,8 +198,7 @@ export default class ButtonPage extends Vue {
   public codeBlock = `<it-button block>Button</it-button>
 <it-button type="primary" block>Button</it-button>`
 
-  public codeGroup = 
-`<it-button-group>
+  public codeGroup = `<it-button-group>
   <it-button>Left</it-button>
   <it-button>Middle</it-button>
   <it-button>Right</it-button>
@@ -204,8 +209,7 @@ export default class ButtonPage extends Vue {
   <it-button type="primary" outlined>Right</it-button>
 </it-button-group>`
 
-  public codeVerticalGroup = 
-`<it-button-group vertical>
+  public codeVerticalGroup = `<it-button-group vertical>
   <it-button>Left</it-button>
   <it-button>Middle</it-button>
   <it-button>Right</it-button>
@@ -216,6 +220,12 @@ export default class ButtonPage extends Vue {
   <it-button type="primary" outlined>Right</it-button>
 </it-button-group>`
 
+  public codeText = `<it-button text>Button</it-button>
+<it-button type="primary" text>Button</it-button>
+<it-button type="success" text>Button</it-button>
+<it-button type="danger" text>Button</it-button>
+<it-button type="warning" text>Button</it-button>`
+
   public dataSheetGroup = [
     {
       property: 'vertical',
@@ -223,7 +233,8 @@ export default class ButtonPage extends Vue {
       default: 'false',
       values: [],
       description: 'Make group vertical'
-    }]
+    }
+  ]
 
   public dataSheet = [
     {

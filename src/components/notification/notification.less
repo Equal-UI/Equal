@@ -1,21 +1,13 @@
 @import '../../styles/variables.less';
 
-
-// .set-type (@color) {
-//   .it-notification-icon {
-//     color: @color;
-//   }
-// }
-
 .it-notification {
-
   z-index: 99999;
   position: fixed;
   // right: 10px;
   // top: 10px;
   // padding: 6px 12px;
   overflow: hidden;
-  box-shadow: @default-shadow;
+  box-shadow: @popup-shadow;
   border-radius: @border-radius-base;
   width: 333px;
   max-width: 333px;
@@ -23,13 +15,12 @@
   color: @color-secondary-black;
   font-size: 12px;
   line-height: 1;
-  background-color: #fff;
+  background-color: #ffffff;
   word-wrap: break-word;
-  transition: all .4s;
+  transition: all 0.4s;
   display: flex;
 
   &-left {
-    // background-color: @color-primary;
     min-width: 63px;
     display: flex;
     justify-content: center;
@@ -37,7 +28,8 @@
     background-size: cover;
   }
 
-  &-icon, &-emoji {
+  &-icon,
+  &-emoji {
     vertical-align: middle;
     font-size: 21px;
     color: #ffffff !important;
@@ -55,17 +47,4 @@
       margin-bottom: 10px;
     }
   }
-
-  // &--primary {
-  //   .set-type(@color-primary);
-  // }
-  // &--success {
-  //   .set-type(@color-success);
-  // }
-  // &--warning {
-  //   .set-type(@color-warning);
-  // }
-  // &--danger {
-  //   .set-type(@color-danger);
-  // }
 }

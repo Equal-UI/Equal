@@ -10,6 +10,7 @@ const _dbc3bf00 = () => interopDefault(import('../pages/components/avatar/index.
 const _4e1f339c = () => interopDefault(import('../pages/components/badge/index.vue' /* webpackChunkName: "pages/components/badge/index" */))
 const _152269ce = () => interopDefault(import('../pages/components/button/index.vue' /* webpackChunkName: "pages/components/button/index" */))
 const _6bf85b6a = () => interopDefault(import('../pages/components/checkbox/index.vue' /* webpackChunkName: "pages/components/checkbox/index" */))
+const _8ef8f5b0 = () => interopDefault(import('../pages/components/divider/index.vue' /* webpackChunkName: "pages/components/divider/index" */))
 const _1338fa38 = () => interopDefault(import('../pages/components/dropdown/index.vue' /* webpackChunkName: "pages/components/dropdown/index" */))
 const _57b996a0 = () => interopDefault(import('../pages/components/icon/index.vue' /* webpackChunkName: "pages/components/icon/index" */))
 const _19755d99 = () => interopDefault(import('../pages/components/input/index.vue' /* webpackChunkName: "pages/components/input/index" */))
@@ -74,6 +75,10 @@ export const routerOptions = {
     path: "/components/checkbox",
     component: _6bf85b6a,
     name: "components-checkbox"
+  }, {
+    path: "/components/divider",
+    component: _8ef8f5b0,
+    name: "components-divider"
   }, {
     path: "/components/dropdown",
     component: _1338fa38,

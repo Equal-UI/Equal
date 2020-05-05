@@ -1,6 +1,6 @@
 @import '../../styles/variables.less';
 
-.set-type (@bg-color) {
+.set-radio-type (@bg-color) {
   .it-radio-border:hover {
     border: 1px solid @bg-color;
   }
@@ -41,30 +41,34 @@
   &--disabled {
     .it-radio-circle, .it-radio-circle:hover {
       opacity: 0;
-      background-color: @color-neutral !important;
+      background-color: @color-disabled-border !important;
     }
     
     .it-radio-border, .it-radio-border:hover, .it-radio-border:active {
-      border: 1px solid @color-secondary-text !important;
+      border: 1px solid @color-disabled-border !important;
       background-color: @color-disabled-bg !important;
       cursor: not-allowed;
+    }
+
+    .it-radio-label {
+      color: @color-disabled-border
     }
   }
 
   &--primary {
-    .set-type(@color-primary);
+    .set-radio-type(@color-primary);
   }
   &--success {
-    .set-type(@color-success);
+    .set-radio-type(@color-success);
   }
   &--warning {
-    .set-type(@color-warning);
+    .set-radio-type(@color-warning);
   }
   &--danger {
-    .set-type(@color-danger);
+    .set-radio-type(@color-danger);
   }
   &--black {
-    .set-type(@color-secondary-black);
+    .set-radio-type(@color-secondary-black);
   }
 }
 
@@ -81,7 +85,7 @@
 }
 
 .it-radio-border {
-  box-shadow: 0px 1px 1px 0px #d3dae64d;
+  box-shadow: @input-shadow;
   margin: 0;
   padding: 0;
   position: relative;
@@ -128,4 +132,5 @@
 .it-radio-label {
   font-size: 14px;
   padding-left: 8px;
+  transition: all 0.2s ease;
 }

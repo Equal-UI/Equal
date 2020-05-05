@@ -38,12 +38,12 @@ export default {
     &-props {
       display: flex;
       flex-direction: column;
-      padding: 10px 15px;
+      padding: 12px 16px;
       flex: 2;
       border-left: 1px solid #D3DAE6;
     }
 
-    &-props > * {
+    &-props > *:not(.it-divider) {
       margin-bottom: 12px;
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <div class="it-dropdown" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+  <div class="it-dropdown" v-on="listeners" v-clickoutside="hidePopover">
     <div class="it-dropdown-trigger" ref="trigger">
       <slot></slot>
     </div>
@@ -20,13 +20,13 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import PopoverMixin from '../../mixins/popover'
-import './dropdown.less'
+import clickoutside from '../../directives/clickOutside'
 import { Positions } from '../../models'
 
 @Component({
-  mixins: [PopoverMixin]
+  directives: { clickoutside }
 })
-export default class ItDropdown extends Vue {
+export default class ItDropdown extends PopoverMixin {
   @Prop({
     default: Positions.B,
     validator: (value) =>
@@ -45,7 +45,35 @@ export default class ItDropdown extends Vue {
         Positions.TR
       ].includes(value)
   })
-  private placement!: string
+  public placement!: string
+
+  @Prop({ type: Boolean, default: false }) public clickable!: boolean
+
+  private toggleDropdown() {
+    if (this.disabled) {
+      return
+    }
+    if (this.show) {
+      this.hidePopover()
+    } else {
+      this.showPopover()
+    }
+  }
+
+  get listeners() {
+    const hvrbl = this.clickable
+      ? {
+          click: this.toggleDropdown
+        }
+      : {
+          mouseenter: this.handleMouseEnter,
+          mouseleave: this.handleMouseLeave
+        }
+    return {
+      ...hvrbl
+    }
+  }
+
   get transition() {
     return `drop-${this.placement}`
   }

@@ -14,22 +14,29 @@
   }
 
   &--disabled {
+    .it-slider-controller {
+      border-color: @color-disabled-border;
+    }
     .it-slider-bar {
-      background-color: @color-secondary-text;
+      background-color: @color-disabled-border;
       & ~ .it-slider-point--active {
         background-color: @color-secondary-text;
       }
     }
   }
+  &-label {
+  display: block;
+  font-size: 14px;
+  color: @color-secondary-black;
+  margin-bottom: 14px;
+  }
 
   &-line {
-    // width: 630px;
     background-color: @color-disabled-bg;
     height: 6px;
     border-radius: 2px;
     cursor: pointer;
     position: relative;
-    // overflow: hidden;
   }
 
   &-bar {
@@ -45,7 +52,6 @@
     width: 1px;
     top: 10px;
     height: 5px;
-    // z-index: -1;
     transform: translateX(-50%);
     transition: all 0.09s;
 
@@ -55,8 +61,8 @@
   }
 
   &-controller {
-    background: #ffffff;
-    border: 0.8px solid #dfdfdf;
+    background: #fff;
+    border: 0.8px solid @color-default-border;
     box-sizing: border-box;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border-radius: 2px;

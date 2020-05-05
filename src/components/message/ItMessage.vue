@@ -17,7 +17,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import './message.less'
 
 @Component
 export default class ItMessage extends Vue {

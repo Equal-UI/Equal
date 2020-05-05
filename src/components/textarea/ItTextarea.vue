@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Model } from 'vue-property-decorator'
-import './textarea.less'
 
 @Component
 export default class ItTextarea extends Vue {

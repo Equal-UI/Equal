@@ -1,9 +1,11 @@
 import Alert from './components/alert'
 import Avatar from './components/avatar'
+import AvatarGroup from './components/avatar-group'
 import Button from './components/button'
 import ButtonGroup from './components/button-group'
 import Badge from './components/badge'
 import Checkbox from './components/checkbox'
+import Divider from './components/divider'
 import Dropdown from './components/dropdown'
 import Icon from './components/icon'
 import Input from './components/input'
@@ -22,13 +24,17 @@ import Tag from './components/tag'
 import Textarea from './components/textarea'
 import Tooltip from './components/tooltip'
 
+import './styles/index.less'
+
 const components = {
   Alert,
   Avatar,
+  AvatarGroup,
   Button,
   ButtonGroup,
   Badge,
   Checkbox,
+  Divider,
   ...Dropdown,
   Icon,
   Input,
@@ -46,9 +52,8 @@ const components = {
 
 function install(Vue: any) {
   for (const component in components) {
-    if (components[component]) {
-      Vue.component(components[component].name, components[component])
-    }
+    // tslint:disable-next-line: forin
+    Vue.component(components[component].name, components[component])
   }
   Vue.prototype.$Message = Message
   Vue.prototype.$Modal = Modal

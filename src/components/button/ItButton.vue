@@ -2,12 +2,13 @@
   <Button
     class="it-btn"
     :class="[
-      type ? `it-btn--${type}` : 'it-btn--primary',
+      type ? `it-btn--${type}` : 'it-btn--neutral',
       outlined && `it-btn--outlined`,
       size && `it-btn--${size}`,
       round && 'round',
       (pulse && !disabled) && 'pulse',
-      block && 'it-btn--block'
+      block && 'it-btn--block',
+      text && 'it-btn--text'
     ]"
     :style="[!$slots.default && {padding: '9px 9px'}]"
     :disabled="disabled"
@@ -48,7 +49,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import './button.less'
 import { Sizes } from '../../models'
 import { Colors } from '../../models'
 
@@ -82,6 +82,7 @@ export default class ItButton extends Vue {
   @Prop({ type: Boolean, default: false }) private pulse!: boolean
   @Prop({ type: Boolean, default: false }) private loading!: boolean
   @Prop({ type: Boolean, default: false }) private block!: boolean
+  @Prop({ type: Boolean, default: false }) private text!: boolean
   @Prop() private icon!: string
 
   private marginStyle = this.iconAfter

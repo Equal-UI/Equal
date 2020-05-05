@@ -1,9 +1,22 @@
 @import '../../styles/variables.less';
 
+.it-number-field {
+  display: flex;
+
+  & .it-btn:first-child {
+    border-radius: 4px 0 0 4px;
+    border-right: 0;
+  }
+
+  & .it-btn:last-child {
+    border-radius: 0 4px 4px 0;
+    border-left: 0;
+  }
+}
+
 .it-number-input {
   border: 1px solid @color-secondary-text;
   display: inline-block;
-  border-radius: @border-radius-base;
   overflow: hidden;
   box-sizing: border-box;
   height: 34px;
@@ -11,7 +24,17 @@
   width: 100%;
   position: relative;
 
-  transition: border .15s;
+  transition: border 0.15s;
+
+  &--disabled {
+    border-color: @color-disabled-border !important;
+    background: @color-disabled-bg;
+    
+    & input {
+      color: @color-disabled-border;
+      cursor: not-allowed;
+    }
+  }
 
   &:focus-within {
     border: 1px solid @color-primary;
@@ -22,12 +45,10 @@
 
   &:hover {
     border: 1px solid darken(@color-secondary-text, 10);
-    .it-number-input-controller {
-      opacity: 1;
-    }
   }
 
   &-original {
+    font-size: 13px;
     display: block;
     background-color: transparent;
     width: 100%;
@@ -36,75 +57,14 @@
     line-height: 1.5;
     border: none;
     box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+      Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+    -webkit-font-smoothing: antialiased;
 
     &:focus {
       border: none;
       outline: none;
     }
-  }
-
-  &-controller {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 20px;
-    height: 100%;
-    color: @color-neutral;
-    opacity: 0;
-    transition: all 0.14s;
-    user-select: none;
-    cursor: pointer;
-
-    &-up,
-    &-down {
-      position: relative;
-      display: flex;
-      width: 100%;
-      // height: 16px;
-      align-items: center;
-      justify-content: center;
-      background-color: @color-disabled-bg;
-
-      &--disabled {
-        cursor: not-allowed;
-      }
-      transition: all 0.1s;
-
-      &:hover:not(.it-number-input-controller-up--disabled):not(.it-number-input-controller-down--disabled) {
-        background-color: @color-primary;
-        // height: 19px;
-        color: #ffffff;
-      }
-    }
-
-    &-up {
-      &:active:not(.it-number-input-controller-up--disabled):not(.it-number-input-controller-down--disabled) {
-        > .it-icon {
-          transition: all 0.15s;
-          transform: translateY(-1.5px) !important;
-        }
-      }
-    }
-
-    &-down {
-      &:active:not(.it-number-input-controller-up--disabled):not(.it-number-input-controller-down--disabled) {
-        > .it-icon {
-          transition: all 0.15s;
-          transform: translateY(1.5px) !important;
-        }
-      }
-
-      // &:hover {
-      //   margin-top: -3px;
-      //   .it-number-input-controller-up {
-      //     margin-top: -3px !important;
-      //   }
-      // }
-    }
-
-    // &-down {
-
-    // }
   }
 }
 

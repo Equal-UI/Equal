@@ -39,7 +39,7 @@
       <it-input prefix="https://" suffix=".com" v-model="inputValue" />
     </Box>
     <Box :code="codeDisabled" title="Disabled">
-      <it-input v-model="inputValue" disabled />
+      <it-input v-model="inputDisabledValue" message="I'm disabled" label-top="Disabled" disabled />
     </Box>
     <props-table :data-sheet="dataSheet" />
   </div>
@@ -61,6 +61,7 @@ export default class InputPage extends Vue {
   public inputValue: string = ''
   public inputTopLabel: string = 'Your input'
   public statusValue: string = 'Hello there'
+  public inputDisabledValue: string = 'Disabled input'
   public inputMessageText: string = ''
   public inputDisabled: boolean = false
   public inputStatus: string | null = null

@@ -1,7 +1,10 @@
 <template>
   <div>
     <span class="it-input-label">{{labelTop}}</span>
-    <div class="it-number-input">
+    <div class="it-number-field">
+      <it-button :disabled="this.disabled || disableController('minus')" @click="decrease" @mousedown="press('minus')" type="primary" icon="remove"></it-button>
+    
+    <div class="it-number-input" :class="[disabled && 'it-number-input--disabled']">
       <input
         type="number"
         :value="currentValue"
@@ -15,40 +18,14 @@
         @keydown.up.stop.prevent="increase"
         @keydown.down.stop.prevent="decrease"
       />
-
-      <div class="it-number-input-controller">
-        <span
-          @click="increase"
-          @mousedown="press('up')"
-          @mouseup="release"
-          @mouseenter="hover('up')"
-          @mouseleave="unhover"
-          :style="{height: topHeight+'%'}"
-          class="it-number-input-controller-up"
-          :class="{'it-number-input-controller-up--disabled': disabled}"
-        >
-          <it-icon name="keyboard_arrow_up" />
-        </span>
-        <span
-          @click="decrease"
-          @mousedown="press('down')"
-          @mouseup="release"
-          @mouseenter="hover('down')"
-          @mouseleave="unhover"
-          :style="{height: bottomHeight+'%'}"
-          class="it-number-input-controller-down"
-          :class="{'it-number-input-controller-down--disabled': disabled}"
-        >
-          <it-icon name="keyboard_arrow_down" />
-        </span>
-      </div>
+    </div>
+      <it-button :disabled="this.disabled || disableController('plus')" @click="increase" @mousedown="press('plus')" type="primary" icon="add"></it-button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Model, Vue, Watch } from 'vue-property-decorator'
-import './numberinput.less'
 
 @Component
 export default class ItNumberInput extends Vue {
@@ -77,33 +54,26 @@ export default class ItNumberInput extends Vue {
     this.onInput(null, val)
   }
 
-  private press(type: 'up' | 'down') {
+  private disableController(type: 'plus' | 'minus'): boolean {
+    if (this.value <= this.min && type === 'minus') {
+      return true
+    }
+    if (this.value >= this.max && type === 'plus') {
+      return true
+    }
+    return false
+  }
+
+  private press(type: 'plus' | 'minus') {
     (this.$refs.input as HTMLInputElement).focus()
 
     if (this.disabled) return
-    const handler = type === 'up' ? this.increase : this.decrease
+    const handler = type === 'plus' ? this.increase : this.decrease
     this.interval = setInterval(handler, 140)
-  }
 
-  private hover(type: 'up' | 'down') {
-    if (this.disabled) return
-    if (type === 'up') {
-      this.topHeight += 15
-      this.bottomHeight -= 15
-    } else {
-      this.topHeight -= 15
-      this.bottomHeight += 15
-    }
-  }
-
-  private unhover() {
-    if (this.disabled) return
-    this.topHeight = 50
-    this.bottomHeight = 50
-  }
-
-  private release() {
-    clearInterval(this.interval)
+    window.addEventListener('mouseup', (event) => {
+      clearInterval(this.interval)
+    })
   }
 
   private onInput(e: InputEvent, watchVal: number) {
@@ -127,7 +97,7 @@ export default class ItNumberInput extends Vue {
 
     const value = this.currentValue
     if (this.disabled || value >= this.max) return
-    this.calculateStep('up')
+    this.calculateStep('plus')
   }
 
   private decrease() {
@@ -135,20 +105,20 @@ export default class ItNumberInput extends Vue {
 
     const value = this.currentValue
     if (this.disabled || value <= this.min) return
-    this.calculateStep('down')
+    this.calculateStep('minus')
   }
 
-  private calculateStep(stepType: 'up' | 'down') {
+  private calculateStep(stepType: 'plus' | 'minus') {
     if (this.disabled) return
 
     let value = Number(this.currentValue)
     const step = Number(this.step)
 
     switch (stepType) {
-      case 'up':
+      case 'plus':
         value += step
         break
-      case 'down':
+      case 'minus':
         value -= step
         break
     }

@@ -11,66 +11,71 @@
     </div>
     <ul class="sidebar-menu">
       <li class="group-title-high">GENERAL</li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'introduction'
       }">
         <nuxt-link style="padding: 7px 0px 7px 30px;" to="/introduction">Introduction</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'start'
       }">
         <nuxt-link style="padding: 7px 0px 7px 30px;" to="/start">Getting started</nuxt-link>
       </li>
       <li class="group-title-high">COMPONENTS</li>
       <li class="group-title">Base</li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-button'
       }">
         <nuxt-link to="/components/button">Button</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-icon'
       }">
         <nuxt-link to="/components/icon">Icon</nuxt-link>
       </li>
+      <li @click="hideSidebar" :class="{
+        'active-menu-item': $route.name === 'components-divider'
+      }">
+        <nuxt-link to="/components/divider">Divider</nuxt-link>
+      </li>
 
       <li class="group-title">Form</li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-input'
       }">
         <nuxt-link to="/components/input">Input</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-numberinput'
       }">
         <nuxt-link to="/components/numberinput">Number Input</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-checkbox'
       }">
         <nuxt-link to="/components/checkbox">Checkbox</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-radio'
       }">
         <nuxt-link to="/components/radio">Radio</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-select'
       }">
         <nuxt-link to="/components/select">Select</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-slider'
       }">
         <nuxt-link to="/components/slider">Slider</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-switch'
       }">
         <nuxt-link to="/components/switch">Switch</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-textarea'
       }">
         <nuxt-link to="/components/textarea">Textarea</nuxt-link>
@@ -78,66 +83,66 @@
 
       <li class="group-title">Feedback</li>
 
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-alert'
       }">
         <nuxt-link to="/components/alert">Alert</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-loading'
       }">
         <nuxt-link to="/components/loading">Loading</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-loadingbar'
       }">
         <nuxt-link to="/components/loadingbar">Loading bar</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-message'
       }">
         <nuxt-link to="/components/message">Message</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-modal'
       }">
         <nuxt-link to="/components/modal">Modal</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-notification'
       }">
         <nuxt-link to="/components/notification">Notification</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-progressbar'
       }">
         <nuxt-link to="/components/progressbar">Progress Bar</nuxt-link>
       </li>
 
       <li class="group-title">Data Display</li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-avatar'
       }">
         <nuxt-link to="/components/avatar">Avatar</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-badge'
       }">
         <nuxt-link to="/components/badge">Badge</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-tag'
       }">
         <nuxt-link to="/components/tag">Tag</nuxt-link>
       </li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-tooltip'
       }">
         <nuxt-link to="/components/tooltip">Tooltip</nuxt-link>
       </li>
 
       <li class="group-title">Navigation</li>
-      <li :class="{
+      <li @click="hideSidebar" :class="{
         'active-menu-item': $route.name === 'components-dropdown'
       }">
         <nuxt-link to="/components/dropdown">Dropdown</nuxt-link>

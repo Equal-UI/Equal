@@ -33,24 +33,18 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import PopoverMixin from '../../mixins/popover'
-import './tooltip.less'
 
 @Component
 export default class ItTooltip extends PopoverMixin {
   // @Prop() private trigger!: string // TODO: implement triggerEvent
   @Prop() private content?: string
-  @Prop({ type: Boolean, default: false }) private permanent?: boolean
 
   private mouseEnter(e: Event) {
-    if (!this.permanent) {
-      this.handleMouseEnter(e)
-    }
+    this.handleMouseEnter(e)
   }
 
   private mouseLeave() {
-    if (!this.permanent) {
-      this.handleMouseLeave()
-    }
+    this.handleMouseLeave()
   }
 }
 </script>

@@ -3,8 +3,8 @@
     <h1>Dropdown</h1>
 
     <Demobox>
-      <it-dropdown :placement="dropdownType">
-        <it-button>Hover me</it-button>
+      <it-dropdown :clickable="clickable" :placement="dropdownType">
+        <it-button>{{clickable ? 'Click' : 'Hover'}} me</it-button>
         <it-dropdown-menu slot="menu">
           <it-dropdown-item>Hello</it-dropdown-item>
           <it-dropdown-item disabled>Disabled</it-dropdown-item>
@@ -20,6 +20,7 @@
         >
           <it-select-option :key="type" v-for="type in dropdownTypes" :value="type">{{type}}</it-select-option>
         </it-select>
+        <it-checkbox label="Clickable" v-model="clickable" />
       </template>
     </Demobox>
 
@@ -54,6 +55,7 @@ export default class DropdownPage extends Vue {
   // dropdownDisabled = false
 
   dropdownType = 'bottom'
+  clickable = false
   dropdownTypes = [
     'bottom',
     'bottom-left',
@@ -86,6 +88,13 @@ export default class DropdownPage extends Vue {
       default: 'bottom',
       values: this.dropdownTypes,
       description: 'Position of the dropdown'
+    },
+    {
+      property: 'clickable',
+      type: ['Boolean'],
+      default: 'false',
+      values: [],
+      description: 'Dropdown activates only on click'
     }
   ]
 

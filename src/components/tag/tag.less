@@ -1,6 +1,6 @@
 @import '../../styles/variables.less';
 
-.set-type (@color) {
+.set-tag-type (@color) {
   border: 1px solid @color;
   &--filled {
     background-color: @color;
@@ -17,7 +17,7 @@
   box-sizing: border-box;
   border-radius: @border-radius-base;
   font-weight: 500;
-  padding: 5px 10px;
+  padding: 4px 8px;
   color: @color-secondary-black;
   background-color: #ffffff;
 
@@ -34,18 +34,18 @@
   }
 
   &--primary {
-    .set-type(@color-primary);
+    .set-tag-type(@color-primary);
   }
   &--success {
-    .set-type(@color-success);
+    .set-tag-type(@color-success);
   }
   &--warning {
-    .set-type(@color-warning);
+    .set-tag-type(@color-warning);
   }
   &--danger {
-    .set-type(@color-danger);
+    .set-tag-type(@color-danger);
   }
   &--black {
-    .set-type(@color-secondary-black);
+    .set-tag-type(@color-secondary-black);
   }
 }

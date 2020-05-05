@@ -1,5 +1,7 @@
 @import '../../styles/variables.less';
 
+@select-option-hover: #f4f5f7;
+
 .it-select {
   display: inline-block;
   position: relative;
@@ -44,11 +46,11 @@
   justify-content: space-between;
   user-select: none;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #fff;
   position: relative;
   text-align: left;
-  border: 1px solid #d3dae6;
-  box-shadow: 0px 1px 1px 0px #d3dae64d;
+  border: 1px solid @color-default-border;
+  box-shadow: @input-shadow;
   box-sizing: border-box;
   border-radius: 4px;
   line-height: 1;
@@ -74,12 +76,16 @@
   }
 
   &--disabled {
-    border-color: @color-secondary-text;
+    border-color: @color-disabled-border;
     background: @color-disabled-bg;
-    color: @color-neutral;
+    color: @color-disabled-border;
     cursor: not-allowed;
+
+    .it-select-placeholder {
+      color: @color-disabled-border;
+    }
     &:hover {
-      border-color: @color-secondary-text;
+      border-color: @color-disabled-border;
     }
   }
 
@@ -109,19 +115,20 @@
   // position: absolute;
   // top: 8px;
   // right: 6.5px;
+  margin-left: 12px;
+  color: @color-black;
   font-size: @default-text-size+2;
-  color: inherit;
-  transition: all 0.27s;
-
-  &--active {
-    transform: rotate(-180deg);
-  }
+  transition: transform 0.27s;
 }
 
 .it-select-dropdown {
   margin-top: 6px;
   position: absolute;
   z-index: 9000;
+
+  &--divided .it-select-option:not(:first-child) {
+    border-top: 1px solid @color-default-border;
+  }
 }
 
 .it-select-list {
@@ -132,7 +139,7 @@
   font-size: 13px;
   width: inherit;
   overflow-y: scroll;
-  padding: 0px;
+  padding: 4px 0;
   margin: 0px;
   list-style: none;
   text-align: left;
@@ -143,7 +150,7 @@
 
 .it-select-option {
   position: relative;
-  padding: 11px 14px;
+  padding: 10px 12px;
   display: block;
   overflow: hidden;
   line-height: 1;
@@ -156,32 +163,23 @@
 
   &--focused,
   &:hover {
-    background: @color-primary;
-    color: #fff;
+    background: @select-option-hover;
     cursor: pointer;
-    .it-select-option-check {
-      background-color: #ffffff;
-    }
   }
 
   &--focused {
-    background: @color-primary;
-    color: #fff;
-    .it-select-option-check {
-      background-color: #ffffff;
-    }
+    background: @select-option-hover;
   }
 
-  &--divided {
-    border-top: 0.6px solid @color-secondary-text;
-    // margin-top: 3px;
-  }
+  // &--divided {
+  //   border-top: 0.6px solid @color-secondary-text;
+  // }
 
   &--disabled {
-    color: @color-neutral;
+    color: @color-disabled-border;
     &:hover {
       background-color: #fff;
-      color: @color-neutral;
+      color: @color-disabled-border;
       cursor: not-allowed;
     }
   }

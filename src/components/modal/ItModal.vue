@@ -30,7 +30,6 @@
 import { Component, Emit, Prop, Model, Vue } from 'vue-property-decorator'
 import { Colors } from '../../models'
 import FocusLock from 'vue-focus-lock'
-import './modal.less'
 
 @Component({
   components: {FocusLock}

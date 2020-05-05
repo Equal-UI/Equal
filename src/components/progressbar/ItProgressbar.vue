@@ -27,7 +27,6 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { Positions } from '../../models'
 import PopoverMixin from '../../mixins/popover'
-import './progressbar.less'
 
 @Component
 export default class ItProgressbar extends Vue {
@@ -42,7 +41,7 @@ export default class ItProgressbar extends Vue {
   @Prop({ type: Boolean, default: true }) private showTooltip?: boolean
 
   @Watch('tooltip')
-  @Watch('showTooltip')
+  @Watch('showPopover')
   private onTooltipChange() {
     if (!this.infinite) {
       (this.$refs.tooltip as PopoverMixin).setPopoverPosition()
@@ -64,7 +63,7 @@ export default class ItProgressbar extends Vue {
 
   private mounted() {
     if (!this.infinite) {
-      (this.$refs.tooltip as PopoverMixin).showTooltip()
+      (this.$refs.tooltip as PopoverMixin).showPopover()
     }
   }
 }

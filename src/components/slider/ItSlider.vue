@@ -8,6 +8,7 @@
     @keydown.down.left.stop.prevent="keyEvent('left')"
     @keydown.up.right.stop.prevent="keyEvent('right')"
   >
+  <span v-if="labelTop" class="it-slider-label">{{labelTop}}</span>
     <div
       class="it-slider-line"
       @mouseenter="handleMouseEnter"
@@ -47,13 +48,13 @@
 <script lang="ts">
 import { Component, Prop, Vue, Model, Watch } from 'vue-property-decorator'
 import PopoverMixin from '../../mixins/popover'
-import './slider.less'
 
 @Component
 export default class ItSlider extends Vue {
   @Prop({ type: Boolean, default: false }) private disabled?: boolean
   @Prop({ type: Boolean, default: false }) private stepPoints?: boolean
   @Prop({ type: Boolean, default: false }) private numbers?: boolean
+  @Prop() private labelTop?: string
   @Prop({ default: 0 }) private min?: number
   @Prop({ default: 100 }) private max?: number
   @Prop({ default: 1 }) private step?: number
@@ -126,7 +127,7 @@ export default class ItSlider extends Vue {
     this.dragging = true
     this.startX = e.clientX
     this.startPos = this.valuePosition;
-    (this.$refs.tooltip as PopoverMixin).showTooltip()
+    (this.$refs.tooltip as PopoverMixin).showPopover()
   }
 
   private onDragging(e: MouseEvent) {
