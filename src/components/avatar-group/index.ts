@@ -1,4 +1,4 @@
-import AvatarGroup from '../Avatar/ItAvatarGroup.vue'
+import AvatarGroup from '../avatar/ItAvatarGroup.vue'
 
 // @ts-ignore
 AvatarGroup.install = (Vue) => {
