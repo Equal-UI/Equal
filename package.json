@@ -44,7 +44,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "@nuxt/typescript-build": "^0.6.1",
-    "@types/jest": "^23.1.4",
+    "@types/jest": "^26.0.5",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-typescript": "^3.10.0",
     "@vue/cli-plugin-unit-jest": "^3.10.0",
