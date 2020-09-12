@@ -1,0 +1,94 @@
+@import '../../styles/variables.less';
+
+.fade-top-enter-active,
+.fade-top-leave-active {
+  transition: all 0.15s;
+  transform: translateY(0px) scale(1);
+}
+
+.fade-top-enter-from,
+.fade-top-leave-to {
+  transition: all 0.15s;
+  transform: translateY(8px) scale(0.9);
+  opacity: 0;
+}
+
+.fade-left-enter-active,
+.fade-left-leave-active {
+  transition: all 0.15s;
+  transform: translateX(0px) scale(1);
+}
+
+.fade-left-enter-from,
+.fade-left-leave-to {
+  transition: all 0.15s;
+  transform: translateX(8px) scale(0.9);
+  opacity: 0;
+}
+
+.fade-right-enter-active,
+.fade-right-leave-active {
+  transition: all 0.15s;
+  transform: translateX(0px) scale(1);
+}
+
+.fade-right-enter-from,
+.fade-right-leave-to {
+  transition: all 0.15s;
+  transform: translateX(-8px) scale(0.9);
+  opacity: 0;
+}
+
+.fade-bottom-enter-active,
+.fade-bottom-leave-active {
+  transition: all 0.15s;
+  transform: translateY(0px) scale(1);
+}
+
+.fade-bottom-enter-from,
+.fade-bottom-leave-to {
+  transition: all 0.15s;
+  transform: translateY(-8px) scale(0.9);
+  opacity: 0;
+}
+
+.it-tooltip {
+  display: inline-block;
+  z-index: 99999;
+  &__trigger {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+  }
+  &__popper {
+    position: absolute;
+    z-index: 9000;
+  }
+  &__content {
+    padding: 8px;
+    box-shadow: @popup-shadow;
+    width: max-content;
+    color: @color-secondary-black;
+    font-size: 13px;
+    line-height: 1;
+    border-radius: @border-radius-base;
+    background-color: #fff;
+    word-wrap: break-word;
+  }
+
+  &--top {
+    margin-top: -12px;
+  }
+
+  &--bottom {
+    margin-top: 12px;
+  }
+
+  &--left {
+    margin-left: -12px;
+  }
+
+  &--right {
+    margin-left: 12px;
+  }
+}

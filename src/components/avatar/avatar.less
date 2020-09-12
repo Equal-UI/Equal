@@ -1,0 +1,66 @@
+@import '../../styles/variables.less';
+
+.it-avatar {
+  border-radius: 50%;
+  // box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  background: @color-secondary-text;
+
+  &-max {
+    background: @color-primary;
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  & > span {
+    vertical-align: middle;
+    font-weight: 500;
+  }
+
+  &--square {
+    border-radius: 6px;
+  }
+
+  > svg {
+    vertical-align: middle;
+    display: inline-block;
+    fill: #fff;
+    margin-bottom: 4px;
+  }
+}
+
+.it-avatar-group {
+  display: flex;
+  > .it-avatar {
+    border: 2px solid #fff;
+  }
+  > .it-avatar + .it-avatar {
+    margin-left: -20px;
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    > .it-avatar {
+      border: 2px solid #fff;
+    }
+    > .it-avatar + .it-avatar {
+      margin-top: -20px;
+    }
+  }
+}

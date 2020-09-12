@@ -1,0 +1,43 @@
+@import '../../styles/variables.less';
+
+@keyframes infinite-load {
+  0% {
+    width: 20%;
+    margin-left: -20%;
+  }
+  // 50% {
+  //   width: 50%;
+  //   margin-left: 20%;
+  // }
+  100% {
+    width: 40%;
+    margin-left: 100%
+  }
+}
+
+.it-progress-wrapper {
+  display: inline-block;
+  width: 100%;
+}
+
+.it-progress-text {
+  display: inline-block;
+}
+
+.it-progress-bar {
+  background-color: @color-disabled-bg;
+  border-radius: 4px;
+  width: 100%;
+  overflow: hidden;
+  
+}
+.it-progress-line {
+  background-color: @color-primary;
+  transition: all .2s ease-out;
+  border-radius: 4px;
+  height: 100%;
+
+  &--infinite {
+    animation: infinite-load 1.15s ease-in-out infinite;
+  }
+}

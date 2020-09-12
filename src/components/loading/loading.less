@@ -1,0 +1,37 @@
+.it-loading {
+  animation: rotator 2s linear infinite;
+
+  &-circle {
+    stroke-dasharray: 100;
+    transform-origin: center;
+    animation: dash 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes dash {
+  0%,
+  25% {
+    stroke-dashoffset: 96;
+    transform: rotate(0);
+  }
+
+  50%,
+  75% {
+    stroke-dashoffset: 26;
+    transform: rotate(45deg);
+  }
+
+  100% {
+    stroke-dashoffset: 96;
+    transform: rotate(360deg);
+  }
+}
