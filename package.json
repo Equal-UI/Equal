@@ -54,7 +54,7 @@
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
     "closure-webpack-plugin": "^2.3.0",
-    "google-closure-compiler": "^20200224.0.0",
+    "google-closure-compiler": "^20200927.0.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "lint-staged": "^8.1.5",
