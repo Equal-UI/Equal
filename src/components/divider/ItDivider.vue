@@ -3,7 +3,8 @@
     class="it-divider"
     :class="{
     'it-divider--horizontal': !vertical,
-    'it-divider--vertical': vertical
+    'it-divider--vertical': vertical,
+    'it-divider--non-spaces': nonSpaces
   }"
     role="separator"
   ></div>
@@ -14,7 +15,14 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'it-divider',
-  props: { vertical: { type: Boolean } }
+  props: {
+    vertical: {
+      type: Boolean
+    },
+    nonSpaces: {
+      type: Boolean
+    }
+  }
 })
 </script>
 

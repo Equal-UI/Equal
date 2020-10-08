@@ -1,0 +1,13 @@
+@import '../../styles/variables.less';
+
+@card-x-padding: 20px;
+@card-y-padding: 10px;
+
+.it-card {
+  border-radius: @border-radius-base;
+  box-shadow: @popup-shadow;
+
+  &__title, &__text, &__actions {
+    padding: @card-y-padding @card-x-padding;
+  }
+}

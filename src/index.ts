@@ -4,6 +4,7 @@ import AvatarGroup from './components/avatar-group'
 import Button from './components/button'
 import ButtonGroup from './components/button-group'
 import Badge from './components/badge'
+import Card from  './components/card'
 import Checkbox from './components/checkbox'
 import Collapse from './components/collapse'
 import CollapseItem from './components/collapse-item'
@@ -41,6 +42,7 @@ const components = {
   // BreadcrumbsItem,
   Button,
   ButtonGroup,
+  Card,
   Checkbox,
   Collapse,
   CollapseItem,
@@ -87,6 +89,7 @@ export { default as AvatarGroup } from './components/avatar-group'
 export { default as Button } from './components/button'
 export { default as ButtonGroup } from './components/button-group'
 export { default as Badge } from './components/badge'
+export { default as Card } from './components/card'
 export { default as Checkbox } from './components/checkbox'
 export { default as Collapse } from './components/collapse'
 export { default as CollapseItem } from './components/collapse-item'

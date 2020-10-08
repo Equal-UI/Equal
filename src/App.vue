@@ -252,6 +252,21 @@
       })"
       >Bottom-right</it-button>
     </div>
+    <div>
+      <h3>Card</h3>
+      <it-card style="width: 75%">
+        <template #card-title>
+          <h3>Card component</h3>
+        </template>
+        <template #card-text>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, voluptates.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, quam.</p>
+        </template>
+        <template #card-actions>
+          <it-button>action</it-button>
+        </template>
+      </it-card>
+    </div>
   </div>
 </template>
 
