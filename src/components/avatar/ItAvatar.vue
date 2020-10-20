@@ -2,7 +2,7 @@
   <span
     class="it-avatar"
     :class="[(squaredGroup || square) && 'it-avatar--square']"
-    :style="{'background-color': color || '', width: _size, height: _size, 'line-height': _size}"
+    :style="{'background-color': color || '', width: computedSize, height: computedSize, 'line-height': computedSize}"
   >
     <img v-if="src" :src="src" />
     <span v-else-if="text">{{avatarText}}</span>
@@ -28,10 +28,10 @@ export default defineComponent({
     square: { type: Boolean }
   },
   setup(props) {
-    const squaredGroup = inject('square') 
-    const groupSize = inject('size')
-    const _size = computed(() => groupSize || props.size)
-    return { squaredGroup, _size }
+    const squaredGroup = inject('square', null) 
+    const groupSize = inject('size', null)
+    const computedSize = computed(() => groupSize || props.size)
+    return { squaredGroup, computedSize }
   }
 })
 </script>

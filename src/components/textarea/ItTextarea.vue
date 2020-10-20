@@ -14,7 +14,8 @@
       class="it-textarea"
       :placeholder="placeholder"
       :rows="rows"
-      >{{ valueModel }}</textarea
+      v-model="valueModel"
+      ></textarea
     >
   </div>
 </template>

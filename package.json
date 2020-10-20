@@ -7,10 +7,10 @@
     "docs:dev": "nuxt ./docs"
   },
   "dependencies": {
-    "vue": "^3.0.0-rc.1"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.0-rc.1",
+    "@vue/compiler-sfc": "^3.0.0",
     "less": "^3.12.2",
     "vite": "^1.0.0-rc.1"
   }

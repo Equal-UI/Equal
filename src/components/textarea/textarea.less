@@ -12,7 +12,7 @@
   z-index: 2;
   border-radius: @border-radius-base;
   box-sizing: border-box;
-  transition: border background-color 0.2s;
+  transition: all 0.2s;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,6 +32,7 @@
   &:focus {
     border: 1px solid @color-primary;
     outline: none;
+    box-shadow: 0px 2px 4px fade(@color-primary, 40%), 0 0 0 3px fade(@color-primary, 20%);
     &:hover {
       border-color: @color-primary;
     }

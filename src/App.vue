@@ -11,6 +11,8 @@
     <div>
       <h3>Button</h3>
 
+      <it-button @click="switchBtn = !switchBtn" :type="switchBtn ? 'primary' : 'neutral'">{{switchBtn ? 'Following' : 'Click to follow'}}</it-button>
+
       <it-button>Button</it-button>
       <it-button type="primary">Button</it-button>
       <it-button type="success">Button</it-button>
@@ -69,9 +71,19 @@
       <h3>Radio</h3>
 
       <it-radio v-model="radioValue" label="Primary" value="00" />
-      <it-radio v-model="radioValue" type="success" label="Success" value="11" />
+      <it-radio
+        v-model="radioValue"
+        type="success"
+        label="Success"
+        value="11"
+      />
       <it-radio v-model="radioValue" type="danger" label="Danger" value="22" />
-      <it-radio v-model="radioValue" type="warning" label="Warning" value="33" />
+      <it-radio
+        v-model="radioValue"
+        type="warning"
+        label="Warning"
+        value="33"
+      />
     </div>
 
     <div>
@@ -91,7 +103,7 @@
       <it-avatar />
       <it-avatar square />
 
-      <it-avatar-group :max="5">
+      <it-avatar-group square :max="5">
         <it-avatar />
         <it-avatar />
         <it-avatar />
@@ -105,31 +117,53 @@
       <h3>Collapse</h3>
 
       <it-collapse>
-        <it-collapse-item
-          title="Title 1"
-        >The First Things First manifesto was written 29 November 1963 and published in 1964 by Ken Garland. It was backed by over 400 graphic designers and artists and also received the backing of Tony Benn, radical left-wing MP and activist, who published it in its entirety in The Guardian newspaper.</it-collapse-item>
-        <it-collapse-item
-          title="Title 2"
-        >Reacting against a rich and affluent Britain of the 1960s, it tried to re-radicalise a design industry which the signatories felt had become lazy and uncritical. Drawing on ideas shared by critical theory, the Frankfurt School, and the counter-culture of the time, it explicitly reaffirmed the belief that design is not a neutral, value-free process.</it-collapse-item>
-        <it-collapse-item
-          title="Title 3"
-        >It rallied against the consumerist culture that was purely concerned with buying and selling things and tried to highlight a Humanist dimension to graphic design theory. It was later updated and republished with a new group of signatories as the First Things First 2000 manifesto.</it-collapse-item>
-        <it-collapse-item title="Title 4">Try Equal UI, you'll like it</it-collapse-item>
+        <it-collapse-item title="Title 1"
+          >The First Things First manifesto was written 29 November 1963 and
+          published in 1964 by Ken Garland. It was backed by over 400 graphic
+          designers and artists and also received the backing of Tony Benn,
+          radical left-wing MP and activist, who published it in its entirety in
+          The Guardian newspaper.</it-collapse-item
+        >
+        <it-collapse-item title="Title 2"
+          >Reacting against a rich and affluent Britain of the 1960s, it tried
+          to re-radicalise a design industry which the signatories felt had
+          become lazy and uncritical. Drawing on ideas shared by critical
+          theory, the Frankfurt School, and the counter-culture of the time, it
+          explicitly reaffirmed the belief that design is not a neutral,
+          value-free process.</it-collapse-item
+        >
+        <it-collapse-item title="Title 3"
+          >It rallied against the consumerist culture that was purely concerned
+          with buying and selling things and tried to highlight a Humanist
+          dimension to graphic design theory. It was later updated and
+          republished with a new group of signatories as the First Things First
+          2000 manifesto.</it-collapse-item
+        >
+        <it-collapse-item title="Title 4"
+          >Try Equal UI, you'll like it</it-collapse-item
+        >
       </it-collapse>
     </div>
 
     <div>
       <h3>Input</h3>
 
-      <it-input mask v-model="inputValue" suffix-icon="remove_red_eye" />
+      <it-input v-model="inputValue" suffix-icon="remove_red_eye" />
       <it-input v-model="inputValue" prefix-icon="cloud_queue" />
-      <it-input v-model="inputValue" suffix-icon="remove_red_eye" prefix-icon="cloud_queue" />
+      <it-input
+        v-model="inputValue"
+        suffix-icon="remove_red_eye"
+        prefix-icon="cloud_queue"
+      />
     </div>
 
     <div>
       <h3>Textarea</h3>
 
-      <it-textarea mask v-model="textareaValue" placeholder="Your placeholder"></it-textarea>
+      <it-textarea
+        v-model="textareaValue"
+        placeholder="Your placeholder"
+      ></it-textarea>
     </div>
 
     <div>
@@ -167,24 +201,23 @@
       <h3>Slider</h3>
       <it-slider v-model="stepSliderValue" :min="0" :max="100" />
     </div>
-    
-    
+
     <div>
       <h3>Progress bar</h3>
-      <div style="padding: 60px 0px; width: 100%">
-      <it-progressbar :progress="stepSliderValue" />
-      <it-progressbar :progress="stepSliderValue" tooltip="bottom" />
-
+      <div style="padding: 60px 0px; width: 100%;">
+        <it-progressbar :progress="stepSliderValue" />
+        <it-progressbar :progress="stepSliderValue" tooltip="bottom" />
       </div>
     </div>
 
     <div>
-        <it-select
-          labelTop="Label"
-          :options="selectOptions"
-          v-model="selectValue"
-        >
-        </it-select>
+      <h3>Select</h3>
+      <it-select
+        labelTop="Label"
+        :options="selectOptions"
+        v-model="selectValue"
+      >
+      </it-select>
     </div>
 
     <div>
@@ -200,82 +233,169 @@
         <it-button>Hover me</it-button>
 
         <template v-slot:menu>
-        <it-dropdown-menu>
-          <it-dropdown-item>Hello</it-dropdown-item>
-          <it-dropdown-item disabled>Disabled</it-dropdown-item>
-          <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
-          <it-dropdown-item divided>Divided</it-dropdown-item>
-        </it-dropdown-menu>
+          <it-dropdown-menu>
+            <it-dropdown-item>Hello</it-dropdown-item>
+            <it-dropdown-item disabled>Disabled</it-dropdown-item>
+            <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+            <it-dropdown-item divided>Divided</it-dropdown-item>
+          </it-dropdown-menu>
         </template>
       </it-dropdown>
     </div>
 
     <div>
       <h3>Message</h3>
-      <it-button @click="$Message({text: 'Primary message'})">Default</it-button>
-      <it-button @click="$Message.warning({text: 'Warnning message'})">Warning</it-button>
-      <it-button @click="$Message.danger({text: 'Danger message'})">Danger</it-button>
+      <it-button @click="$Message({ text: 'Primary message' })"
+        >Default</it-button
+      >
+      <it-button @click="$Message.warning({ text: 'Warnning message' })"
+        >Warning</it-button
+      >
+      <it-button @click="$Message.danger({ text: 'Danger message' })"
+        >Danger</it-button
+      >
+    </div>
+
+    <div>
+      <h3>Modal</h3>
+      <it-button @click="modal = !modal">Show modal</it-button>
+      <it-modal v-model="modal">
+        <template #image>
+          <img
+            src="https://images.unsplash.com/photo-1549277513-f1b32fe1f8f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+          />
+        </template>
+
+        <template #header>
+          <h3 style="margin: 0;">Header</h3>
+        </template>
+
+        <template #body>
+          <p>asdaadadasd asdaadadasdasd</p>
+        </template>
+        <template #actions>
+          <it-button @click="modal = false">Cancel</it-button>
+          <it-button
+            type="primary"
+            @click="$Message({ text: 'Created' }), (modal = false)"
+            >Create</it-button
+          >
+        </template>
+      </it-modal>
     </div>
 
     <div>
       <h3>Notification</h3>
       <it-button
-        @click="$Notification({
-      title: 'Top-left notification',
-      placement: 'top-left',
-      text:
-        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
-      })"
-      >Top-left</it-button>
+        @click="
+          $Notification({
+            title: 'Top-left notification',
+            placement: 'top-left',
+            text:
+              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+          })
+        "
+        >Top-left</it-button
+      >
       <it-button
-        @click="$Notification({
-      title: 'Top-right notification',
-      placement: 'top-right',
-      text:
-        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
-      })"
-      >Top-right</it-button>
+        @click="
+          $Notification({
+            title: 'Top-right notification',
+            placement: 'top-right',
+            text:
+              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+          })
+        "
+        >Top-right</it-button
+      >
       <it-button
-        @click="$Notification({
-      title: 'Bottom-left notification',
-      placement: 'bottom-left',
-      text:
-        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
-      })"
-      >Bottom-left</it-button>
+        @click="
+          $Notification({
+            title: 'Bottom-left notification',
+            placement: 'bottom-left',
+            text:
+              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+          })
+        "
+        >Bottom-left</it-button
+      >
       <it-button
-        @click="$Notification({
-      title: 'Top-right notification',
-      placement: 'bottom-right',
-      text:
-        'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet'
-      })"
-      >Bottom-right</it-button>
+        @click="
+          $Notification({
+            title: 'Top-right notification',
+            placement: 'bottom-right',
+            text:
+              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+          })
+        "
+        >Bottom-right</it-button
+      >
+    </div>
+
+    <div>
+      <h3>Drawer</h3>
+      <it-button @click="drawer = true">Show drawer</it-button>
+      <it-drawer v-model="drawer" />
+    </div>
+
+    <div>
+      <h3>Tabs</h3>
+      <div style="margin-bottom: 22px; border: 1px solid #D3DAE6; border-radius: 4px; box-shadow: 0px 1px 1px 0px rgb(228,231,230,1); width: 100%;">
+        <it-tabs>
+          <it-tab title="Tab 1">Hello From Tab 1</it-tab>
+          <it-tab title="Tab 2">Hello From Tab 2</it-tab>
+          <it-tab title="Tab 3">Hello From Tab 3</it-tab>
+          <it-tab title="Disabled" disabled>Hello From Tab 4</it-tab>
+        </it-tabs>
+      </div>
+
+      <div style="border: 1px solid #D3DAE6; border-radius: 4px; box-shadow: 0px 1px 1px 0px rgb(228,231,230,1); width: 100%;">
+        <it-tabs vertical>
+          <it-tab title="Tab 1">Hello From Tab 1</it-tab>
+          <it-tab title="Tab 2">Hello From Tab 2</it-tab>
+          <it-tab title="Tab 3">Hello From Tab 3</it-tab>
+          <it-tab title="Disabled" disabled>Hello From Tab 4</it-tab>
+        </it-tabs>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   data: () => ({
+    switchBtn: false,
     selectValue: '',
-    selectOptions: ['asdad', 'dsadad', '111111', 'qweddf', 'ewfrrtgfg', 'asddddd', 'effee', '34434', 435345, 43455],
-    alertTitle: "We think we know you",
+    selectOptions: [
+      'asdad',
+      'dsadad',
+      '111111',
+      'qweddf',
+      'ewfrrtgfg',
+      'asddddd',
+      'effee',
+      '34434',
+      435345,
+      43455,
+    ],
+    alertTitle: 'We think we know you',
     switchValue: false,
-    radioValue: "00",
+    radioValue: '00',
     checkboxValue: false,
-    inputValue: "",
-    textareaValue: "",
+    inputValue: '',
+    modal: false,
+    drawer: false,
+    textareaValue: '',
     numberInputValue: 1,
     stepSliderValue: 40,
     progressValue: 40,
   }),
   methods: {},
-};
+}
 </script>
 
-<style>
+<style lang="less">
 #grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -286,7 +406,17 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 1px solid grey;
+  margin: 5px;
+  border: 1px solid #d3dae6;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: 0.17s all ease-in-out;
+
+  &:hover {
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.05),
+      0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+  }
 }
 
 #grid > div > * {

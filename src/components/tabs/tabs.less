@@ -1,0 +1,96 @@
+@import '../../styles/variables.less';
+
+.it-tabs {
+  display: flex;
+  flex-direction: column;
+
+  &--vertical {
+    flex-direction: row;
+  }
+
+  &-header {
+    box-sizing: border-box;
+    box-shadow: inset 0 -1px 0 0 @color-default-border;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &--vertical {
+      flex-direction: column;
+      box-shadow: inset -1px 0 0 @color-default-border;
+      overflow-x: hidden;
+      overflow-y: scroll;
+
+      & > .it-tabs-tab {
+        &::after {
+          right: 0;
+          top: 0;
+          left: auto;
+          width: 2px;
+          height: 100%;
+          transform: scaleX(0);
+          transform-origin: right;
+        }
+      }
+
+      & > .it-tabs-tab--active {
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+
+      & > .it-tabs-tab + .it-tabs-tab {
+        margin-top: 8px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-body {
+    flex: 1;
+  }
+
+  &-tab {
+    position: relative;
+    padding: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    flex: 0 0 auto;
+    transition: all 0.2s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      background-color: @color-primary;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.2s;
+    }
+
+    & + & {
+      margin-left: 8px;
+    }
+  }
+
+  &-tab--active {
+    font-weight: 600;
+    &::after {
+      transform: scaleY(1);
+    }
+  }
+
+  &-tab--disabled {
+    color: @color-disabled-border;
+    cursor: not-allowed;
+  }
+}
