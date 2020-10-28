@@ -1,11 +1,28 @@
 <template>
-  <div class="it-tabs" :class="{ 'it-tabs--vertical': vertical }">
-    <ul
+  <div
+    role="tablist"
+    class="it-tabs"
+    :class="{ 'it-tabs--vertical': vertical }"
+  >
+    <div
       class="it-tabs-header"
       :class="{ 'it-tabs-header--vertical': vertical }"
+      :aria-orientation="vertical ? 'vertical' : 'horizontal'"
     >
-      <li
+      <button
         v-for="(tab, i) in tabs"
+        role="tab"
+        :ref="
+          (el) => {
+            if (el) tabsRefs[i] = el
+          }
+        "
+        @keydown.right.prevent="vertical ? null : focusNextTab(i + 1)"
+        @keydown.left.prevent="vertical ? null : focusPrevTab(i - 1)"
+        @keydown.down.prevent="vertical ? focusNextTab(i + 1) : null"
+        @keydown.up.prevent="vertical ? focusPrevTab(i - 1) : null"
+        :aria-selected="selectedIndex === i"
+        :tabindex="selectedIndex === i ? null : -1"
         :key="i"
         @click="selectTab(i)"
         class="it-tabs-tab"
@@ -13,16 +30,24 @@
           'it-tabs-tab--active': selectedIndex === i,
           'it-tabs-tab--disabled': tab.disabled,
         }"
+        :disabled="tab.disabled"
       >
         {{ tab.title }}
-      </li>
-    </ul>
+      </button>
+    </div>
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, nextTick, onMounted, ref } from 'vue'
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  onMounted,
+  provide,
+  ref,
+} from 'vue'
 
 export default defineComponent({
   name: 'it-tabs',
@@ -33,6 +58,9 @@ export default defineComponent({
   setup(props, { slots }) {
     const selectedIndex = ref(0)
     const tabs = ref([])
+    const tabsRefs = ref<HTMLElement[]>([])
+
+    provide('tabs', tabs)
 
     onMounted(async () => {
       await nextTick()
@@ -48,10 +76,39 @@ export default defineComponent({
       })
     }
 
+    function focusNextTab(i: number) {
+      if (!tabs.value[i]) {
+        tabsRefs.value[0].focus()
+        return
+      }
+      if (tabs.value[i].disabled) {
+        focusNextTab(i + 1)
+        return
+      }
+
+      tabsRefs.value[i].focus()
+    }
+
+    function focusPrevTab(i: number) {
+      if (!tabs.value[i]) {
+        tabsRefs.value[tabsRefs.value.length - 1].focus()
+        return
+      }
+      if (tabs.value[i].disabled) {
+        focusPrevTab(i - 1)
+        return
+      }
+
+      tabsRefs.value[i].focus()
+    }
+    
     return {
       selectedIndex,
       tabs,
       selectTab,
+      tabsRefs,
+      focusNextTab,
+      focusPrevTab,
     }
   },
 })

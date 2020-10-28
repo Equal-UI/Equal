@@ -28,6 +28,7 @@ import Tabs from './components/tabs'
 import Tab from './components/tab'
 import Tag from './components/tag'
 import Textarea from './components/textarea'
+import Toggle from './components/toggle'
 import Tooltip from './components/tooltip'
 
 import './styles/index.less'
@@ -61,6 +62,7 @@ const components = {
   Tab,
   Tag,
   Textarea,
+  Toggle,
   Tooltip
 }
 
@@ -113,4 +115,5 @@ export { default as Tabs } from './components/tabs'
 export { default as Tab } from './components/tab'
 export { default as Tag } from './components/tag'
 export { default as Textarea } from './components/textarea'
+export { default as Toggle } from './components/toggle'
 export { default as Tooltip } from './components/tooltip'

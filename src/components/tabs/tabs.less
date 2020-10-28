@@ -27,6 +27,7 @@
       overflow-x: hidden;
       overflow-y: scroll;
 
+
       & > .it-tabs-tab {
         &::after {
           right: 0;
@@ -37,6 +38,13 @@
           transform: scaleX(0);
           transform-origin: right;
         }
+
+
+      &:focus {
+        &::after {
+          transform: scaleX(2);
+        }
+      }
       }
 
       & > .it-tabs-tab--active {
@@ -63,6 +71,15 @@
     cursor: pointer;
     flex: 0 0 auto;
     transition: all 0.2s;
+    border: 0;
+    background: transparent;
+
+    &:focus {
+      outline: 0;
+      &::after {
+        transform: scaleY(2);
+      }
+    }
 
     &::after {
       content: '';

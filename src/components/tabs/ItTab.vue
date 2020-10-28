@@ -1,11 +1,11 @@
 <template>
-    <div class="it-tabs-body" v-if="isActive">
-      <slot></slot>
-    </div>
+  <div class="it-tabs-body" v-if="isActive">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, inject, ref } from 'vue'
 
 export default defineComponent({
   name: 'it-tab',
@@ -14,15 +14,14 @@ export default defineComponent({
       type: String,
       default: 'Tab',
     },
-    disabled: Boolean
+    disabled: Boolean,
   },
-  created() {
-    this.$parent.tabs.push(this)
-  },
-  data() {
-    return {
-      isActive: false,
-    }
+  setup(props, ctx) {
+    const tabs = inject('tabs', [])
+    const isActive = ref(false)
+    tabs.value.push({ ...props, isActive })
+
+    return { isActive }
   },
 })
 </script>
