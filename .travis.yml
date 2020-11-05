@@ -10,11 +10,12 @@ branches:
   only:
   - master
 
-before_install: cd project
+before_install: cd docs
 
 install:
   - npm install
   - npm run build
+  - sh 404.sh
 
 script:
   - echo "Skipping tests"
