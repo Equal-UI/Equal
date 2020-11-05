@@ -5,4 +5,5 @@ module.exports = {
     '/@equal/': path.resolve(__dirname, '../src'),
   },
   base: '/Equal/',
+  assetsDir: ''
 }
