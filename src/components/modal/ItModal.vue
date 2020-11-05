@@ -2,12 +2,12 @@
   <teleport to="body">
     <transition name="fade">
       <div
+        v-bind="$attrs"
         class="it-modal-mask"
         :style="{ cursor: closableMask ? 'pointer' : 'default' }"
-        v-if="modelValue"
+        v-show="modelValue"
         @click.self="maskClick"
       >
-        <!-- <focus-lock> -->
         <transition name="drop-top">
           <div v-show="modelValue" class="it-modal-body">
             <slot name="image"></slot>
@@ -23,7 +23,6 @@
             </div>
           </div>
         </transition>
-        <!-- </focus-lock> -->
       </div>
     </transition>
   </teleport>
@@ -36,8 +35,9 @@ import useCheckSlot from '../../api/useCheckSlot'
 
 export default defineComponent({
   name: 'it-modal',
+  inheritAttrs: false,
   props: {
-    modelValue: Boolean,
+    modelValue: { type: Boolean, default: false },
     closableMask: { type: Boolean, default: true },
     closeOnEsc: { type: Boolean, default: true },
   },
@@ -45,7 +45,6 @@ export default defineComponent({
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
     const itHasActions = useCheckSlot(slots, 'actions') !== null
-
 
     function close() {
       emit('update:modelValue', false)
@@ -62,37 +61,11 @@ export default defineComponent({
       itHasHeader,
       itHasBody,
       itHasActions,
+      close,
     }
   },
-  // public mounted() {
-  //   this.value = true
-  //   document.addEventListener('keydown', this.escEvt)
-  //   document.body.classList.add('stop-scroll')
-  //   // this.$refs.cancelButton.$el.focus()
-  // }
 
-  // public beforeDestroy() {
-  //   document.body.classList.remove('stop-scroll')
-  //   if (this.activeElement) {
-  //     this.activeElement.focus()
-  //   }
-  //   this.$el.remove()
-  // }
-
-  // public close() {
-  //   this.value = false
-  // }
-
-  // public maskClick() {
-  //   if (this.closableMask) {
-  //     this.close()
-  //   }
-  // }
-
-  // public terminateSelf() {
-  //   this.$destroy()
-  // }
-
+  // todo:
   // public escEvt(e: KeyboardEvent) {
   //   if (e.keyCode === 27 && this.closeOnEsc) {
   //     // 27 === Esc

@@ -7,7 +7,7 @@ export default defineComponent({
     vertical: { type: Boolean },
     square: { type: Boolean },
     max: { type: Number },
-    size: { type: String, default: '40px' }
+    size: { type: String, default: '40px' },
   },
   setup(props, { slots }) {
     provide('square', props.square)
@@ -26,30 +26,26 @@ export default defineComponent({
     return h(
       'div',
       {
-        class: `it-avatar-group${this.vertical ? '--vertical' : ''}`
+        class: `it-avatar-group${this.vertical ? '--vertical' : ''}`,
       },
       [
         this.avatars.slice(0, this.max || this.avatars.length),
-        this.max && (this.avatars.length > this.max)
+        this.max && this.avatars.length > this.max
           ? h(
               'span',
               {
-                class: [
-                  'it-avatar',
-                  'it-avatar-max',
-                  this.square && 'it-avatar--square' 
-                ],
+                class: ['it-avatar-max'],
                 style: {
-                  width: this.size,
-                  height: this.size,
-                  lineHeight: this.size
-                }
+                  // width: this.size,
+                  // height: this.size,
+                  lineHeight: this.size,
+                },
               },
               [h('span', `+${this.avatars.length - this.max}`)]
             )
-          : null
+          : null,
       ]
     )
-  }
+  },
 })
 </script>

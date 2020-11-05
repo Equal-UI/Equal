@@ -48,10 +48,15 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import ItIcon from '../icon'
 import { Sizes, Colors } from '../../models'
+
 
 export default defineComponent({
   name: 'it-button',
+  components: {
+    ItIcon
+  },
   props: {
     type: {
       type: String,
@@ -85,6 +90,7 @@ export default defineComponent({
     const marginStyle = computed(() => {
       return props.iconAfter ? { marginLeft: '6px' } : { marginRight: '6px' }
     })
+    return { marginStyle}
   }
 })
 </script>

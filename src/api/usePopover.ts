@@ -1,15 +1,14 @@
-import { ref, nextTick, computed, toRef } from 'vue'
+import { ref, nextTick, computed, toRef, watch } from 'vue'
 import { Positions } from '../models'
 
 interface IPopoverProps {
   placement?: string
-  asd: string
 }
 
 // tofix
-export default function(props: any) {
+export default function (props: any) {
   const show = ref(false)
-  const placement = ref<Positions>(props.placement || Positions.T)
+  const placement = toRef(props, 'placement') || ref<Positions>(Positions.T)
   // tofix
   const disabled = toRef(props, 'disabled') || ref(false)
   const clickable = toRef(props, 'hoverable') || ref(false)

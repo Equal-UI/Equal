@@ -9,13 +9,12 @@
       @focus="focus = true"
       @blur="focus = false"
       ref="textarea"
-      :style="{ resize }"
+      :style="{ resize, 'z-index': mask ? '100' : null }"
       :disabled="disabled"
       class="it-textarea"
       :placeholder="placeholder"
       :rows="rows"
-      v-model="valueModel"
-      ></textarea
+      >{{ modelValue }}</textarea
     >
   </div>
 </template>
@@ -32,7 +31,7 @@ export default defineComponent({
     resizeOnWrite: Boolean,
     labelTop: String,
     rows: { type: Number, default: 4 },
-    valueModel: String,
+    modelValue: String,
     mask: Boolean,
   },
   setup(props, { emit }) {
@@ -45,7 +44,7 @@ export default defineComponent({
 
     function onInput(e: InputEvent) {
       const target = e.target as HTMLTextAreaElement
-      emit('update:valueModel', target.value)
+      emit('update:modelValue', target.value)
 
       if (props.resizeOnWrite) {
         target.style.height = 'auto'

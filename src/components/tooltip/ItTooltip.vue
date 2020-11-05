@@ -12,9 +12,7 @@
     <transition :name="transition">
       <div
         class="it-tooltip__popper"
-        :class="[
-          placement && `it-tooltip--${placement}`
-        ]"
+        :class="[placement && `it-tooltip--${placement}`]"
         v-show="show"
         ref="popover"
         @mouseenter="handleMouseEnter"
@@ -22,7 +20,7 @@
       >
         <div class="it-tooltip__content">
           <slot name="content">
-            <div>{{content}}</div>
+            <div>{{ content }}</div>
           </slot>
         </div>
       </div>
@@ -33,6 +31,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue'
 import usePopover from '../../api/usePopover'
+import { Positions } from '../../models'
 
 export default defineComponent({
   name: 'it-tooltip',
@@ -41,8 +40,13 @@ export default defineComponent({
     disabled: Boolean,
     hoverable: Boolean,
     transition: String,
-    placement: String,
-    permanent: Boolean
+    placement: {
+      type: String,
+      default: Positions.T,
+      validator: (value: Positions) =>
+        [Positions.B, Positions.L, Positions.R, Positions.T].includes(value),
+    },
+    permanent: Boolean,
   },
   setup(props) {
     const {
@@ -60,10 +64,10 @@ export default defineComponent({
       handleMouseLeave,
       hidePopover,
       showPopover,
-      setPopoverPosition
+      setPopoverPosition,
     } = usePopover(props)
 
-    onMounted(()=> {
+    onMounted(() => {
       if (permanent.value) {
         showPopover()
       }
@@ -83,8 +87,8 @@ export default defineComponent({
       handleMouseLeave,
       hidePopover,
       showPopover,
-      setPopoverPosition
+      setPopoverPosition,
     }
-  }
+  },
 })
 </script>

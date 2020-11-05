@@ -25,11 +25,11 @@
         :placeholder="placeholder"
         v-model="search"
       />
-      <span class="it-select-placeholder" v-show="!selected && !filterable">{{
+      <span class="it-select-placeholder" v-show="!modelValue && !filterable">{{
         placeholder
       }}</span>
-      <span class="it-select-selected" v-if="!filterable && selected">{{
-        selected
+      <span class="it-select-selected" v-if="!filterable && modelValue">{{
+        modelValue
       }}</span>
       <i
         :class="[
@@ -52,7 +52,7 @@
         ]"
         v-show="show"
         ref="popover"
-        style="width:100%;"
+        style="width: 100%"
       >
         <ul class="it-select-list" ref="listRef">
           <li
@@ -67,10 +67,10 @@
             :class="[focusIndex === i && 'it-select-option--focused']"
             @click="selectOption(index ? option[index] : option)"
           >
-            {{ label ? option[label] : option }}
+            {{ index ? option[index] : option }}
             <transition name="fade-right">
               <span
-                v-if="selected === (index ? option[index] : option)"
+                v-if="modelValue === (index ? option[index] : option)"
                 class="it-select-option-check"
               ></span>
             </transition>
@@ -89,6 +89,7 @@ import {
   computed,
   onBeforeUpdate,
   nextTick,
+  toRef,
 } from 'vue'
 
 import { Positions } from '../../models'
@@ -104,14 +105,12 @@ export default defineComponent({
     divided: Boolean,
     filterable: Boolean,
     index: String,
-    label: String,
     labelTop: String,
     placeholder: { type: String, default: 'Select' },
     options: { type: Array, default: [] },
     modelValue: { type: [String, Number] },
   },
   setup(props, { emit }) {
-    const selected = ref(props.modelValue)
     const search = ref<string | number>('')
     const focusIndex = ref(-1)
     const optionsRefs = ref<HTMLElement[]>([])
@@ -138,9 +137,8 @@ export default defineComponent({
 
     // select logic
     function selectOption(value: string | number) {
-      selected.value = value
       search.value = props.filterable ? value : ''
-      emit('update:modelValue', selected.value)
+      emit('update:modelValue', value)
     }
 
     function unfocus() {
@@ -192,7 +190,7 @@ export default defineComponent({
 
     return {
       toggleList,
-      selected,
+      // selected,
       selectOption,
       search,
       show,

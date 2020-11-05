@@ -1,13 +1,19 @@
 @import '../../styles/variables.less';
 
 .it-toggle {
-  min-width: 200px;
-  width: 200px;
+  min-width: 120px;
+  // width: 200px;
   position: relative;
   display: flex;
-  background-color: @color-disabled-bg;
+  background-color: #F1F0F5;
   border-radius: @border-radius-base;
-  border: solid 2px @color-disabled-bg;
+  border: solid 3px #F1F0F5;
+  transition: all 0.2s ease-out;
+
+  &:focus {
+    box-shadow: 0 0 0 1px @color-primary, 0 0 0 4px fade(@color-primary, 20%);
+    outline: none;
+  }
 
   &--round {
     border-radius: @border-radius-round;
@@ -27,7 +33,12 @@
     line-height: 1;
     cursor: pointer;
 
+    &:not(&--selected) {
+      color: #6C6781;
+    }
+
     &--selected {
+      // color: @color-primary;
       & + .it-toggle-value::before {
         opacity: 0 !important;
       }
@@ -46,7 +57,7 @@
       }
     }
 
-    & > span {
+    & > span, & > i {
       position: relative;
       z-index: 5;
       font-size: @default-text-size;
@@ -61,7 +72,7 @@
     bottom: 0;
     top: 0;
     border-radius: inherit;
-    transition: all 0.2s ease-out;
-    box-shadow: @default-text-shadow;
+    transition: inherit;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px 1px 3px 0px;
   }
 }

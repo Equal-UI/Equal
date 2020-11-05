@@ -17,6 +17,7 @@
   }
 
   &-body {
+    transition-delay: .05s;
     position: relative;
     max-width: 90%;
     display: flex;
@@ -43,10 +44,14 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 1;
+
+    & + .it-modal-content {
+      padding-top: 0px;
+    }
   }
 
   &-content {
-    padding: 0px 24px 16px;
+    padding: 16px 24px;
     font-size: 14px;
     overflow: auto;
   }

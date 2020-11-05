@@ -2,10 +2,15 @@
   <span
     class="it-avatar"
     :class="[(squaredGroup || square) && 'it-avatar--square']"
-    :style="{'background-color': color || '', width: computedSize, height: computedSize, 'line-height': computedSize}"
+    :style="{
+      'background-color': color || '',
+      width: computedSize,
+      height: computedSize,
+      'line-height': computedSize,
+    }"
   >
     <img v-if="src" :src="src" />
-    <span v-else-if="text">{{avatarText}}</span>
+    <span v-else-if="text">{{ avatarText }}</span>
 
     <svg v-else viewBox="64 64 896 896" width="55%" height="55%">
       <path
@@ -25,13 +30,22 @@ export default defineComponent({
     text: { type: String },
     color: { type: String },
     size: { type: String, default: '40px' },
-    square: { type: Boolean }
+    square: { type: Boolean },
   },
   setup(props) {
-    const squaredGroup = inject('square', null) 
+    const squaredGroup = inject('square', null)
     const groupSize = inject('size', null)
     const computedSize = computed(() => groupSize || props.size)
-    return { squaredGroup, computedSize }
-  }
+    const avatarText = computed(() => {
+      if (!props.text) {
+        return
+      }
+      const splited = props.text.split(' ')
+      return splited.length > 1
+        ? splited[0][0].toUpperCase() + splited[1][0].toUpperCase()
+        : props.text[0].toUpperCase()
+    })
+    return { squaredGroup, computedSize, avatarText }
+  },
 })
 </script>

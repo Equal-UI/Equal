@@ -1,5 +1,153 @@
 @import 'variables.less';
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 2s ease;
+  opacity: 1;
+}
+.fade-enter,
+.fade-leave-to {
+  transition: opacity .2s ease;
+  opacity: 0;
+}
+
+
+.fade-top-enter-active,
+.fade-top-leave-active {
+  transition: all 0.15s;
+  transform: translateY(0px) scale(1);
+}
+
+.fade-top-enter-from,
+.fade-top-leave-to {
+  transition: all 0.15s;
+  transform: translateY(8px) scale(0.9);
+  opacity: 0;
+}
+
+.fade-left-enter-active,
+.fade-left-leave-active {
+  transition: all 0.15s;
+  transform: translateX(0px) scale(1);
+}
+
+.fade-left-enter-from,
+.fade-left-leave-to {
+  transition: all 0.15s;
+  transform: translateX(8px) scale(0.9);
+  opacity: 0;
+}
+
+.fade-right-enter-active,
+.fade-right-leave-active {
+  transition: all 0.15s;
+  transform: translateX(0px) scale(1);
+}
+
+.fade-right-enter-from,
+.fade-right-leave-to {
+  transition: all 0.15s;
+  transform: translateX(-8px) scale(0.9);
+  opacity: 0;
+}
+
+.fade-bottom-enter-active,
+.fade-bottom-leave-active {
+  transition: all 0.15s;
+  transform: translateY(0px) scale(1);
+}
+
+.fade-bottom-enter-from,
+.fade-bottom-leave-to {
+  transition: all 0.15s;
+  transform: translateY(-8px) scale(0.9);
+  opacity: 0;
+}
+
+.drop-top-enter-active,
+.drop-top-leave-active,
+.drop-top-left-enter-active,
+.drop-top-left-leave-active,
+.drop-top-right-enter-active,
+.drop-top-right-leave-active {
+  transition: all 0.15s;
+  transform: translateY(0px);
+}
+
+.drop-top-enter-from,
+.drop-top-leave-to,
+.drop-top-left-enter-from,
+.drop-top-left-leave-to,
+.drop-top-right-enter-from,
+.drop-top-right-leave-to {
+  transition: all 0.15s;
+  transform: translateY(6px);
+  opacity: 0;
+}
+
+.drop-left-enter-active,
+.drop-left-leave-active,
+.drop-left-top-enter-active,
+.drop-left-top-leave-active,
+.drop-left-bottom-enter-active,
+.drop-left-bottom-leave-active {
+  transition: all 0.15s;
+  transform: translateX(0px);
+}
+
+.drop-left-enter-from,
+.drop-left-leave-to,
+.drop-left-top-enter-from,
+.drop-left-top-leave-to,
+.drop-left-bottom-enter-from,
+.drop-left-bottom-leave-to {
+  transition: all 0.15s;
+  transform: translateX(6px);
+  opacity: 0;
+}
+
+.drop-right-enter-active,
+.drop-right-leave-active,
+.drop-right-top-enter-active,
+.drop-right-top-leave-active,
+.drop-right-bottom-enter-active,
+.drop-right-bottom-leave-active {
+  transition: all 0.15s;
+  transform: translateX(0px);
+}
+
+.drop-right-enter-from,
+.drop-right-leave-to,
+.drop-right-top-enter-from,
+.drop-right-top-leave-to,
+.drop-right-bottom-enter-from,
+.drop-right-bottom-leave-to {
+  transition: all 0.15s;
+  transform: translateX(-6px);
+  opacity: 0;
+}
+
+.drop-bottom-enter-active,
+.drop-bottom-leave-active,
+.drop-bottom-left-enter-active,
+.drop-bottom-left-leave-active,
+.drop-bottom-right-enter-active,
+.drop-bottom-right-leave-active {
+  transition: all 0.15s;
+  transform: translateY(0px);
+}
+
+.drop-bottom-enter-from,
+.drop-bottom-leave-to,
+.drop-bottom-left-enter-from,
+.drop-bottom-left-leave-to,
+.drop-bottom-right-enter-from,
+.drop-bottom-right-leave-to {
+  transition: all 0.15s;
+  transform: translateY(-6px);
+  opacity: 0;
+}
+
 .pulse::before {
   position: absolute;
   top: 0;

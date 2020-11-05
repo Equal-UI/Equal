@@ -1,11 +1,14 @@
 <template>
-  <div class="it-collapse-item" :class="[active && 'it-collapse-item--expanded']">
+  <div
+    class="it-collapse-item"
+    :class="[active && 'it-collapse-item--expanded']"
+  >
     <button
       class="it-collapse-item-title"
       :aria-expanded="active"
-      @click="active =!active"
+      @click="active = !active"
     >
-      <span>{{title}}</span>
+      <span>{{ title }}</span>
       <it-icon class="it-collapse-item-title-icon" name="unfold_more" />
     </button>
     <transition name="fade">
@@ -23,12 +26,11 @@ export default defineComponent({
   name: 'it-collapse-item',
   props: {
     title: { type: String },
-    opened: { type: Boolean }
+    opened: { type: Boolean },
   },
   setup(props) {
     const active = ref(props.opened)
     return { active }
-  }
+  },
 })
 </script>
-

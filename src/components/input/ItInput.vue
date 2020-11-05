@@ -4,7 +4,7 @@
       <div class="it-input-mask" v-show="focus && mask"></div>
     </transition>
     <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
-    <div class="it-input-prefix-wrapper">
+    <div class="it-input-prefix-wrapper" :style="{'z-index': mask ? '100' : null }">
       <div v-if="prefix" class="it-input-prefix">{{ prefix }}</div>
       <div
         class="it-input-wrapper"
@@ -13,7 +13,10 @@
           disabled && `it-input-wrapper--disabled`,
         ]"
       >
-        <span v-if="prefixIcon" class="it-input-icon-wrapper">
+        <span
+          v-if="prefixIcon"
+          class="it-input-icon-wrapper"
+        >
           <it-icon class="it-input-icon" :name="prefixIcon" />
         </span>
         <input
@@ -24,7 +27,6 @@
           @focus="focus = true"
           @blur="focus = false"
           :value="modelValue"
-          v-bind="$attrs"
           :placeholder="placeholder"
         />
         <span v-if="suffixIcon" class="it-input-icon-wrapper">

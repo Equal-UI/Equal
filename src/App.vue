@@ -342,7 +342,7 @@
       <h3>Tabs</h3>
       <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html" target="_blank" rel="noopener noreferrer">Make it accessible</a>
 
-      <div style="margin-bottom: 22px; border: 1px solid #D3DAE6; border-radius: 4px; box-shadow: 0px 1px 1px 0px rgb(228,231,230,1); width: 100%;">
+      <!-- <div style="margin-bottom: 22px; border: 1px solid #D3DAE6; border-radius: 4px; box-shadow: 0px 1px 1px 0px rgb(228,231,230,1); width: 100%;">
         <it-tabs>
           <it-tab title="Tab 1" style="padding: 12px;">Hello From Tab 1</it-tab>
           <it-tab title="Tab 2" style="padding: 12px;">Hello From Tab 2</it-tab>
@@ -360,11 +360,13 @@
           <it-tab title="Disabled" disabled style="padding: 12px;">Hello From Tab 4</it-tab>
           <it-tab title="Tab 5" style="padding: 12px;">Hello From Tab 5</it-tab>
         </it-tabs>
-      </div>
+      </div> -->
     </div>
 
     <div>
       <h3>Toggle</h3>
+      <it-toggle icons v-model="toggleIconsValue" :options="['wb_sunny', 'bedtime']" />
+      <it-toggle icons round v-model="toggleIconsValue" :options="['wb_sunny', 'bedtime']" />
       <it-toggle style="width: 100%" v-model="toggleValue" :options="['Light', 'Dark', 'Hollow', 'Orange']" />
       <it-toggle style="width: 100%" round v-model="toggleValue" :options="['Light', 'Dark', 'Hollow', 'Orange']" />
     </div>
@@ -372,10 +374,12 @@
 </template>
 
 <script>
+
 export default {
   name: 'App',
   data: () => ({
-    toggleValue: 'light',
+    toggleValue: 'Light',
+    toggleIconsValue: 'wb_sunny',
     switchBtn: false,
     selectValue: '',
     selectOptions: [

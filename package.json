@@ -1,17 +1,39 @@
 {
-  "name": "equal3",
-  "version": "0.0.0",
+  "name": "equal-vue",
+  "version": "0.7.0",
+  "description": "Equal is a Vue 3 UI library based on TypeScript",
+  "author": {
+    "name": "Yan Savinov",
+    "email": "yan.savinov.hire@gmail.com"
+  },
+  "private": false,
+  "license": "MIT",
+  "bugs": "https://github.com/quatrochan/Equal/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quatrochan/Equal"
+  },
+  "keywords": [
+    "equal",
+    "vue",
+    "vue3",
+    "vuejs",
+    "typescript",
+    "vue-components",
+    "ui",
+    "framework"
+  ],
+  "main": "./dist/equal.common.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "docs:dev": "nuxt ./docs"
+    "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.0.2"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.0.2",
     "less": "^3.12.2",
-    "vite": "^1.0.0-rc.4"
+    "vite": "^1.0.0-rc.8"
   }
 }

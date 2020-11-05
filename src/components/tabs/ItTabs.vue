@@ -2,7 +2,7 @@
   <div
     role="tablist"
     class="it-tabs"
-    :class="{ 'it-tabs--vertical': vertical }"
+    :class="{ 'it-tabs--vertical': vertical, 'it-tabs--boxed': box }"
   >
     <div
       class="it-tabs-header"
@@ -35,6 +35,7 @@
         {{ tab.title }}
       </button>
     </div>
+
     <slot></slot>
   </div>
 </template>
@@ -54,6 +55,7 @@ export default defineComponent({
   props: {
     initialTab: Number,
     vertical: Boolean,
+    box: Boolean,
   },
   setup(props, { slots }) {
     const selectedIndex = ref(0)
@@ -78,7 +80,7 @@ export default defineComponent({
 
     function focusNextTab(i: number) {
       if (!tabs.value[i]) {
-        tabsRefs.value[0].focus()
+        focusNextTab(0)
         return
       }
       if (tabs.value[i].disabled) {
@@ -91,7 +93,7 @@ export default defineComponent({
 
     function focusPrevTab(i: number) {
       if (!tabs.value[i]) {
-        tabsRefs.value[tabsRefs.value.length - 1].focus()
+        focusPrevTab(tabsRefs.value.length - 1)
         return
       }
       if (tabs.value[i].disabled) {
@@ -101,7 +103,7 @@ export default defineComponent({
 
       tabsRefs.value[i].focus()
     }
-    
+
     return {
       selectedIndex,
       tabs,

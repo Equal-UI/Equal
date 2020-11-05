@@ -43,10 +43,10 @@ export default defineComponent({
           Positions.RB,
           Positions.T,
           Positions.TL,
-          Positions.TR
-        ].includes(value)
+          Positions.TR,
+        ].includes(value),
     },
-    clickable: Boolean
+    clickable: Boolean,
   },
   setup(props) {
     const {
@@ -63,14 +63,15 @@ export default defineComponent({
       handleMouseLeave,
       hidePopover,
       showPopover,
-      setPopoverPosition
+      setPopoverPosition,
     } = usePopover(props)
 
     function toggleDropdown() {
-      if (disabled) {
+      if (disabled.value) {
         return
       }
-      if (show) {
+
+      if (show.value) {
         hidePopover()
       } else {
         showPopover()
@@ -80,17 +81,14 @@ export default defineComponent({
     const transition = computed(() => `drop-${placement.value}`)
     const placementSide = computed(() => placement.value.split('-')[0])
     const listeners = computed(() => {
-      const hvrbl = props.clickable
+      return props.clickable
         ? {
-            click: toggleDropdown
+            click: toggleDropdown,
           }
         : {
             mouseenter: handleMouseEnter,
-            mouseleave: handleMouseLeave
+            mouseleave: handleMouseLeave,
           }
-      return {
-        ...hvrbl
-      }
     })
 
     return {
@@ -102,9 +100,9 @@ export default defineComponent({
       hidePopover,
       placement,
       popover,
-      trigger
+      trigger,
     }
-  }
+  },
 })
 
 // get listeners() {
