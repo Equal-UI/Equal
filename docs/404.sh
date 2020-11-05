@@ -1,1 +1,1 @@
-cat ./docs/index.html > ./docs/404.html
+cat ./dist/index.html > ./dist/404.html
