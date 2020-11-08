@@ -117,10 +117,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import faker from 'faker'
 
 export default defineComponent({
   data: () => ({
-    husky: '/husky.jpg',
+    husky: faker.image.avatar(),
 
     avatarSquare: false,
     avatarImage: false,
