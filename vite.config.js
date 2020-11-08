@@ -5,11 +5,14 @@ export default {
     input: path.resolve(__dirname, 'src/index.ts'),
   },
   rollupOutputOptions: {
-    file: 'equal.common.js',
+    file: 'index.js',
     format: 'cjs',
+    dir: '/dist/cjs'
     // entryFileNames: 'equal.[extname]'
   },
   emitIndex: false,
-  assetsDir: '/'
+  assetsDir: '/',
+  sourcemap: true,
+
 }
 

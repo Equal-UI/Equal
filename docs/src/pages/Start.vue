@@ -12,7 +12,7 @@
 import Equal from 'equal-vue'
 import 'equal-vue/dist/equal.css'
 
-Vue.use(Equal)"
+Vue.createApp.use(Equal)"
         ></prism>
 
         <h2 style="margin: 20px 0px">Or individual components</h2>
@@ -22,9 +22,7 @@ Vue.use(Equal)"
 import { Button, Alert, Switch } from 'equal-vue'
 import 'equal-vue/dist/equal.css'
 
-Vue.use(Button)
-Vue.use(Alert)
-Vue.use(Switch)"
+Vue.createApp.use(Button).use(Alert).use(Switch)"
         ></prism>
 
         <h2 style="margin: 20px 0px">Add Material Icons and Inter font</h2>

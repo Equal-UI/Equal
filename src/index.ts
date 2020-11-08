@@ -19,6 +19,7 @@ import Message from './components/message'
 import Modal from './components/modal'
 import Notification from './components/notification'
 import NumberInput from './components/numberinput'
+import Popover from './components/popover'
 import Progressbar from './components/progressbar'
 import Radio from './components/radio'
 import Select from './components/select'
@@ -53,6 +54,7 @@ const components = {
   Loading,
   Modal,
   NumberInput,
+  Popover,
   Progressbar,
   Radio,
   Select,
@@ -63,7 +65,7 @@ const components = {
   Tag,
   Textarea,
   Toggle,
-  Tooltip
+  Tooltip,
 }
 
 function install(Vue: App) {
@@ -106,6 +108,7 @@ export { default as Message } from './components/message'
 export { default as Modal } from './components/modal'
 export { default as Notification } from './components/notification'
 export { default as NumberInput } from './components/numberinput'
+export { default as Popover } from './components/popover'
 export { default as Progressbar } from './components/progressbar'
 export { default as Radio } from './components/radio'
 export { default as Select } from './components/select'

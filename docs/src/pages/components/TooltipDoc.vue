@@ -91,6 +91,13 @@ export default defineComponent({
         description: 'Content of the tooltip',
       },
       {
+        property: 'placement',
+        type: ['String'],
+        default: 'top',
+        values: ['top', 'bottom', 'right', 'left'],
+        description: 'Position of the popover',
+      },
+      {
         property: 'disabled',
         type: ['Boolean'],
         default: 'false',
@@ -104,6 +111,7 @@ export default defineComponent({
         values: [],
         description: 'Makes tooltip hoverable',
       },
+
     ],
 
     slotSheet: [

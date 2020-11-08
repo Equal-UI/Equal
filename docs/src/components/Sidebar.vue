@@ -72,17 +72,6 @@
           >Getting started</router-link
         >
       </li>
-      <li
-        @click="hideSidebar"
-        :class="{
-          'active-menu-item': $route.path === '/resources',
-        }"
-      >
-        <router-link style="padding: 7px 7px 7px 30px" to="/resources"
-          >Resources
-          <it-tag type="primary" class="pulse">New</it-tag></router-link
-        >
-      </li>
       <li class="group-title-high">COMPONENTS</li>
       <li class="group-title">Base</li>
       <li
@@ -364,7 +353,7 @@
       >
         <router-link to="/components/dropdown">Dropdown</router-link>
       </li>
-      <li class="group-title-high">CSS</li>
+      <!-- <li class="group-title-high">CSS</li>
       <li
         @click="hideSidebar"
         :class="{
@@ -372,7 +361,7 @@
         }"
       >
         <router-link to="/css/hovup">Hovup</router-link>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>

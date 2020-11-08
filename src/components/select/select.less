@@ -94,7 +94,8 @@
 
   &:focus:not(&--disabled) {
     border-color: @color-primary;
-    box-shadow: 0px 2px 4px fade(@color-primary, 40%), 0 0 0 3px fade(@color-primary, 20%);
+    box-shadow: 0px 2px 4px fade(@color-primary, 40%),
+      0 0 0 3px fade(@color-primary, 20%);
   }
 }
 
@@ -136,7 +137,7 @@
 }
 
 .it-select-list {
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25), 0px 1.5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: @popup-shadow;
   border-radius: @border-radius-base;
   min-width: 130px;
   max-height: 200px;

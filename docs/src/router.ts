@@ -19,10 +19,6 @@ const routes = [
         component: Pages.Start,
       },
       {
-        path: 'resources',
-        component: Pages.Resources,
-      },
-      {
         path: 'components',
         component: Pages.Components,
         children: [
@@ -133,6 +129,10 @@ const routes = [
           {
             path: 'notification',
             component: Pages.NotificationDoc,
+          },
+          {
+            path: 'popover',
+            component: Pages.PopoverDoc,
           },
           {
             path: 'progressbar',

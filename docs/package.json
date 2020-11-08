@@ -6,6 +6,8 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@types/faker": "^5.1.4",
+    "faker": "^5.1.0",
     "prismjs": "^1.22.0",
     "vue": "^3.0.2",
     "vue-router": "^4.0.0-rc.1"

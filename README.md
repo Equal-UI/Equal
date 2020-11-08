@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://quatrochan.github.io/Equal/">
-    <img width="300" src="https://raw.githubusercontent.com/quatrochan/Equal/master/docs/assets/eqqqual.png">
+    <img width="300" src="https://quatrochan.github.io/Equal/eqqqual.png">
   </a>
 
 <p align="center">

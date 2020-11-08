@@ -53,7 +53,7 @@ export default function (props: any) {
   }
 
   function showPopover() {
-    if (!show.value) {
+    if (!show.value && !disabled.value) {
       show.value = true
       setPopoverPosition()
     }

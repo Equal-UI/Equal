@@ -2,7 +2,6 @@ import Home from './Home.vue'
 import Components from './Components.vue'
 import Landing from './Landing.vue'
 import Start from './Start.vue'
-import Resources from './Resources.vue'
 import Introduction from './Introduction.vue'
 
 import AvatarDoc from './components/AvatarDoc.vue'
@@ -23,6 +22,7 @@ import MessageDoc from './components/MessageDoc.vue'
 import ModalDoc from './components/ModalDoc.vue'
 import NotificationDoc from './components/NotificationDoc.vue'
 import NumberInputDoc from './components/NumberInputDoc.vue'
+import PopoverDoc from './components/PopoverDoc.vue'
 import ProgressbarDoc from './components/ProgressbarDoc.vue'
 import RadioDoc from './components/RadioDoc.vue'
 import SelectDoc from './components/SelectDoc.vue'
@@ -57,9 +57,9 @@ export default {
   ModalDoc,
   NotificationDoc,
   NumberInputDoc,
+  PopoverDoc,
   ProgressbarDoc,
   RadioDoc,
-  Resources,
   SelectDoc,
   SliderDoc,
   Start,

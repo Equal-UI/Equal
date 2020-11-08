@@ -3,16 +3,16 @@
 .it-tooltip {
   display: inline-block;
   z-index: 9;
-  &__trigger {
+  &-trigger {
     display: inline-block;
     position: relative;
     height: 100%;
   }
-  &__popper {
+  &-popper {
     position: absolute;
     z-index: 9000;
   }
-  &__content {
+  &-content {
     padding: 8px;
     box-shadow: @popup-shadow;
     width: max-content;
@@ -22,7 +22,14 @@
     border-radius: @border-radius-base;
     background-color: #fff;
     word-wrap: break-word;
+
+    &--borderless {
+      padding: 0;
+      overflow: hidden;
+    }
   }
+
+
 
   &--top {
     margin-top: -12px;

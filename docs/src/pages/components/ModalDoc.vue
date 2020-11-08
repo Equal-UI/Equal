@@ -16,14 +16,15 @@
         </template>
 
         <template #body>
-          <p>asdaadadasd asdaadadasdasd</p>
+          <p>
+            Modal body. You can put here whatever you want: forms, images, text
+          </p>
         </template>
         <template #actions>
-          <it-button @click="defaultModal = false">Cancel</it-button>
           <it-button
             type="primary"
-            @click="$Message({ text: 'Created' }), (defaultModal = false)"
-            >Create</it-button
+            @click="$Message({ text: 'You got it' }), (defaultModal = false)"
+            >Got it</it-button
           >
         </template>
       </it-modal>
@@ -81,7 +82,9 @@
       </it-modal>
     </Box>
     <Box :code="confirmCode" title="Confirmation modal">
-      <it-button @click="confirmModal = true" type="danger">Delete account</it-button>
+      <it-button @click="confirmModal = true" type="danger"
+        >Delete account</it-button
+      >
       <it-modal v-model="confirmModal">
         <template #header>
           <h3>Delete account</h3>
@@ -103,10 +106,14 @@
       </it-modal>
     </Box>
     <Box :code="imageCode" title="Image only modal">
-      <it-button @click="imageModal = true" type="primary">Show image</it-button>
+      <it-button @click="imageModal = true" type="primary"
+        >Show image</it-button
+      >
       <it-modal v-model="imageModal">
         <template #image>
-          <img src="http://localhost:3000/husky.jpg" />
+          <img
+            src="https://images.unsplash.com/photo-1570075842600-4fb332449e00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+          />
         </template>
       </it-modal>
     </Box>
@@ -116,8 +123,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
-// todo: add modal examples
 
 export default defineComponent({
   data: () => ({
@@ -129,7 +134,8 @@ export default defineComponent({
 
     imageCode: ``,
 
-    exampleCode: `<it-modal v-model="defaultModal">
+    exampleCode: `<it-button @click="defaultModal = true">Modal</it-button>
+<it-modal v-model="defaultModal">
   <template #image>
     <img
       src="https://images.unsplash.com/photo-1549277513-f1b32fe1f8f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
@@ -141,15 +147,13 @@ export default defineComponent({
   </template>
 
   <template #body>
-    <p>asdaadadasd asdaadadasdasd</p>
+    <p>Modal body. You can put here whatever you want: forms, images, text</p>
   </template>
-  
   <template #actions>
-    <it-button @click="defaultModal = false">Cancel</it-button>
     <it-button
       type="primary"
-      @click="$Message({ text: 'Created' }), (defaultModal = false)"
-      >Create</it-button
+      @click="$Message({ text: 'You got it' }), (defaultModal = false)"
+      >Got it</it-button
     >
   </template>
 </it-modal>`,
