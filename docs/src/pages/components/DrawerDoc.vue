@@ -17,17 +17,7 @@
 
       <it-drawer v-model="drawerVisible">
         <h3 style="margin: 24px">
-          <it-icon
-            style="
-              margin-right: 6px;
-              padding: 5px;
-              box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 6px,
-                rgba(50, 50, 93, 0.1) 0px 7px 14px,
-                rgba(50, 50, 93, 0.05) 0px 0px 0px 1px;
-            "
-            box
-            name="account_circle"
-          />
+          <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
         <it-divider />
@@ -62,17 +52,7 @@
       </it-drawer>
       <it-drawer placement="left" v-model="drawerLeftVisible">
         <h3 style="margin: 24px">
-          <it-icon
-            style="
-              margin-right: 6px;
-              padding: 5px;
-              box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 6px,
-                rgba(50, 50, 93, 0.1) 0px 7px 14px,
-                rgba(50, 50, 93, 0.05) 0px 0px 0px 1px;
-            "
-            box
-            name="account_circle"
-          />
+          <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
         <it-divider />
@@ -231,3 +211,12 @@ export default defineComponent({
   }),
 })
 </script>
+
+<style scoped>
+.contacts {
+  margin-right: 6px;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 6px,
+    rgba(50, 50, 93, 0.1) 0px 7px 14px, rgba(50, 50, 93, 0.05) 0px 0px 0px 1px;
+}
+</style>

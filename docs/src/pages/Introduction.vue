@@ -4,7 +4,7 @@
     <div class="it-text-box">
       <h2 style="margin-bottom: 20px">Hello!</h2>
       <p>
-        <b>Equal UI</b> is a components framework for Vue.js based on
+        <b>Equal UI</b> is a components framework for Vue 3 based on
         TypeScript. Right now we are in the middle of the road to the stable
         version. Our team really looking forward for the time when Equal UI
         could be used in the real projects and we would be really glad to see

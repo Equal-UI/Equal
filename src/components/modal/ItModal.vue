@@ -9,7 +9,7 @@
         @click.self="maskClick"
       >
         <transition name="drop-top">
-          <div v-show="modelValue" class="it-modal-body">
+          <div v-show="modelValue" class="it-modal-body" :style="{width}">
             <slot name="image"></slot>
             <slot></slot>
             <div v-if="itHasHeader" class="it-modal-header">
@@ -38,6 +38,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     modelValue: { type: Boolean, default: false },
+    width: { type: String, default: '500px' },
     closableMask: { type: Boolean, default: true },
     closeOnEsc: { type: Boolean, default: true },
   },

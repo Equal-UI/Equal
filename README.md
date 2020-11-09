@@ -26,7 +26,6 @@ Equal UI is a Vue 3 TypeScript components library with 30+ components
 
 # Links
 
-
 <b> Twitter: </b> [@Yan](https://twitter.com/k0mmsussertod)
 
 # Install
@@ -91,12 +90,10 @@ Vue.createApp.use(Button).use(Alert).use(Switch)
       <it-button type="primary">Quickstart</it-button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/equal-vue/dist/equal.umd.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/equal-vue"></script>
     <script>
-      new Vue({
-        el: '#app',
-      })
+      Vue.createApp()
     </script>
   </body>
 </html>

@@ -109,10 +109,11 @@
       <it-button @click="imageModal = true" type="primary"
         >Show image</it-button
       >
-      <it-modal v-model="imageModal">
+      <it-modal v-model="imageModal" width="auto">
         <template #image>
           <img
-            src="https://images.unsplash.com/photo-1570075842600-4fb332449e00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80"
+            src="https://pbs.twimg.com/media/EeQvsMiWsAIleas?format=png&name=large"
+            width="400"
           />
         </template>
       </it-modal>
@@ -132,7 +133,17 @@ export default defineComponent({
     confirmModal: false,
     imageModal: false,
 
-    imageCode: ``,
+    imageCode: `<it-button @click="imageModal = true" type="primary"
+  >Show image</it-button
+>
+<it-modal v-model="imageModal" width="auto">
+  <template #image>
+    <img
+      src="https://pbs.twimg.com/media/EeQvsMiWsAIleas?format=png&name=large"
+      width="400"
+    />
+  </template>
+</it-modal>`,
 
     exampleCode: `<it-button @click="defaultModal = true">Modal</it-button>
 <it-modal v-model="defaultModal">
@@ -219,6 +230,13 @@ export default defineComponent({
         default: 'true',
         values: [],
         description: 'Close modal on the mask click',
+      },
+      {
+        property: 'width',
+        type: ['String'],
+        default: '500px',
+        values: [],
+        description: 'Modal body width',
       },
       // todo:
       // {

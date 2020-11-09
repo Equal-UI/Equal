@@ -50,7 +50,7 @@ Vue.createApp.use(Button).use(Alert).use(Switch)"
             >@rsms</a
           >. The simplest way to add them via CDN:
         </p>
-        <!-- 
+<!--         
       <prism language="bash">npm install material-icons --save</prism>
       <p style="margin: 10px 0px">and import to your project</p>
       <prism language="js">import 'material-icons/iconfont/material-icons.css'</prism>

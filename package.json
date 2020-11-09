@@ -8,6 +8,8 @@
     "email": "yan.savinov.hire@gmail.com"
   },
   "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "unpkg": "./dist/umd/index.js",
   "private": false,
   "license": "MIT",
   "bugs": "https://github.com/quatrochan/Equal/issues",
