@@ -49,13 +49,15 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import ItIcon from '../icon'
+import ItLoading from '../loading'
 import { Sizes, Colors } from '../../models'
 
 
 export default defineComponent({
   name: 'it-button',
   components: {
-    ItIcon
+    ItIcon,
+    ItLoading
   },
   props: {
     type: {

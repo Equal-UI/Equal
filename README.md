@@ -19,16 +19,27 @@
 </h2>
 
 <div align="center">
-Equal UI is a Vue 3 TypeScript components library with 30+ components 
+Equal UI is a Vue 3 components library with 30+ components based on TypeScript and personal design system.
 <br>
   <a href="https://quatrochan.github.io/Equal/"><strong>Explore Equal UI docs</strong></a>
 </div>
+
+# Features
+  - Enterpise class UI based on Equal design system
+  - Supports [Material Design Icons](https://material.io/resources/icons/)
+  - Lightweight: 11KB brotli
+  - Includes 30+ components
+  - No external dependencies
+  - Based on TypeScript
+
 
 # Links
 
 <b> Twitter: </b> [@Yan](https://twitter.com/k0mmsussertod)
 
 # Install
+
+You need [Vue.js](https://v3.vuejs.org/) version 3.0+
 
 ```bash
 # npm
@@ -62,7 +73,7 @@ import 'equal-vue/dist/equal.css'
 Vue.createApp.use(Button).use(Alert).use(Switch)
 ```
 
-## Or start with CDN
+<!-- ## Or start with CDN
 
 ```html
 <!DOCTYPE html>
@@ -97,7 +108,7 @@ Vue.createApp.use(Button).use(Alert).use(Switch)
     </script>
   </body>
 </html>
-```
+``` -->
 
 # License
 
