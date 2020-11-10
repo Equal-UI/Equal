@@ -5,9 +5,9 @@ export default {
     input: path.resolve(__dirname, 'src/index.ts'),
   },
   rollupOutputOptions: {
-    file: 'index.js',
-    format: 'cjs',
-    dir: '/dist/cjs'
+    // file: 'index.js',
+    // format: 'cjs',
+    dir: './dist'
     // entryFileNames: 'equal.[extname]'
   },
   emitIndex: false,
