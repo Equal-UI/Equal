@@ -85,6 +85,15 @@
       }
     }
 
+    &::before {
+      display: block;
+      content: attr(data-content);
+      font-weight: 600;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+    }
+
     &::after {
       content: '';
       position: absolute;
