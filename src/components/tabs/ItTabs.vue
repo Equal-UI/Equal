@@ -31,6 +31,7 @@
           'it-tabs-tab--disabled': tab.disabled,
         }"
         :disabled="tab.disabled"
+        :data-content="tab.title"
       >
         {{ tab.title }}
       </button>

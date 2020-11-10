@@ -1,6 +1,6 @@
 @import '../../styles/variables.less';
 
-.it-tabs {
+.it-tabs {  
   display: flex;
   flex-direction: column;
 
@@ -83,6 +83,15 @@
       &::after {
         transform: scaleY(2);
       }
+    }
+
+    &::before {
+      display: block;
+      content: attr(data-content);
+      font-weight: 600;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
     }
 
     &::after {
