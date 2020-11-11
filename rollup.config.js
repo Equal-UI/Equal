@@ -39,7 +39,7 @@ export default () => {
       external: (id) => {
         return /core|^vue$/.test(id)
       },
-      plugins: [nodeResolve(), VuePlugin(), cjs(), less(), babel(), terser()],
+      plugins: [nodeResolve(), VuePlugin(), cjs(), babel(), terser()],
     },
     {
       input: 'src/index.ts',
@@ -53,7 +53,7 @@ export default () => {
         },
       },
       external: ['vue'],
-      plugins: [nodeResolve(), VuePlugin(), cjs(), less(), babel(false, true)],
+      plugins: [nodeResolve(), VuePlugin(), cjs(), babel(false, true)],
     },
   ]
 
