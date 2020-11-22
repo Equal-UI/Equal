@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Avatar from './ItAvatar.vue'
 
-// @ts-ignore
-Avatar.install = (Vue) => {
+Avatar.install = (Vue: App) => {
     Vue.component(Avatar.name, Avatar)
 }
 

@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Slider from './ItSlider.vue'
 
-// @ts-ignore
-Slider.install = (Vue) => {
+Slider.install = (Vue: App) => {
   Vue.component(Slider.name, Slider)
 }
 

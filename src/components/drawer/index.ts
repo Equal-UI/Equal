@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Drawer from './ItDrawer.vue'
 
-// @ts-ignore
-Drawer.install = (Vue) => {
+Drawer.install = (Vue: App) => {
   Vue.component(Drawer.name, Drawer)
 }
 

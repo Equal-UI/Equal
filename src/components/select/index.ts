@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Select from './ItSelect.vue'
 
-// @ts-ignore
-Select.install = (Vue) => {
+Select.install = (Vue: App) => {
   Vue.component(Select.name, Select)
 }
 

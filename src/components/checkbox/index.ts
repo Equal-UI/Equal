@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Checkbox from './ItCheckbox.vue'
 
-// @ts-ignore
-Checkbox.install = (Vue) => {
+Checkbox.install = (Vue: App) => {
   Vue.component(Checkbox.name, Checkbox)
 }
 

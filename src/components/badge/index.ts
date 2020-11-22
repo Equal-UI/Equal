@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Badge from './ItBadge.vue'
 
-// @ts-ignore
-Badge.install = (Vue) => {
+Badge.install = (Vue: App) => {
     Vue.component(Badge.name, Badge)
 }
 

@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Textarea from './ItTextarea.vue'
 
-// @ts-ignore
-Textarea.install = (Vue) => {
+Textarea.install = (Vue: App) => {
   Vue.component(Textarea.name, Textarea)
 }
 

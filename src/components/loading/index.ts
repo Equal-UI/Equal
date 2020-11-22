@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Loading from './ItLoading.vue'
 
-// @ts-ignore
-Loading.install = (Vue) => {
+Loading.install = (Vue: App) => {
   Vue.component(Loading.name, Loading)
 }
 

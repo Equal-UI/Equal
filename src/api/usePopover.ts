@@ -1,4 +1,4 @@
-import { ref, nextTick, computed, toRef, watch } from 'vue'
+import { ref, nextTick, computed, toRef } from 'vue'
 import { Positions } from '../models'
 
 interface IPopoverProps {

@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Tab from '../tabs/ItTab.vue'
 
-// @ts-ignore
-Tab.install = Vue => {
+Tab.install = (Vue: App) => {
   Vue.component(Tab.name, Tab)
 }
 

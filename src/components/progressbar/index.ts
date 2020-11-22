@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Progressbar from './ItProgressbar.vue'
 
-// @ts-ignore
-Progressbar.install = (Vue) => {
+Progressbar.install = (Vue: App) => {
   Vue.component(Progressbar.name, Progressbar)
 }
 

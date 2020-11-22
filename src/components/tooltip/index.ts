@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Tooltip from './ItTooltip.vue'
 
-// @ts-ignore
-Tooltip.install = (Vue) => {
+Tooltip.install = (Vue: App) => {
   Vue.component(Tooltip.name, Tooltip)
 }
 

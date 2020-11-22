@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Radio from './ItRadio.vue'
 
-// @ts-ignore
-Radio.install = (Vue) => {
+Radio.install = (Vue: App) => {
   Vue.component(Radio.name, Radio)
 }
 

@@ -7,6 +7,7 @@
 <img src="https://img.shields.io/npm/v/equal-vue?color=blue">
 <img src="https://img.shields.io/npm/l/equal-vue">
 <img src="https://img.shields.io/npm/dw/equal-vue">
+<img src="https://img.badgesize.io/https:/unpkg.com/equal-vue/?label=Brotli%20size%3A%20JS&compression=brotli">
 
 <a href="https://twitter.com/EqualVue">
     <img src="https://img.shields.io/twitter/follow/EqualVue?label=Equal%20Vue&style=social" alt="Twitter Follow">

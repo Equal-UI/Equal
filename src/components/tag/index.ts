@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Tag from './ItTag.vue'
 
-// @ts-ignore
-Tag.install = (Vue) => {
+Tag.install = (Vue: App) => {
   Vue.component(Tag.name, Tag)
 }
 

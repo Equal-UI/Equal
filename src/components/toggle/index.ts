@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Toggle from './ItToggle.vue'
 
-// @ts-ignore
-Toggle.install = (Vue) => {
+Toggle.install = (Vue: App) => {
   Vue.component(Toggle.name, Toggle)
 }
 

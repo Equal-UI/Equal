@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import ButtonGroup from '../button/ItButtonGroup.vue'
 
-// @ts-ignore
-ButtonGroup.install = Vue => {
+ButtonGroup.install = (Vue: App) => {
   Vue.component(ButtonGroup.name, ButtonGroup)
 }
 

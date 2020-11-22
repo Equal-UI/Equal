@@ -1,7 +1,7 @@
 import Alert from './ItAlert.vue'
+import { App } from 'vue'
 
-// @ts-ignore
-Alert.install = (Vue) => {
+Alert.install = (Vue: App) => {
   Vue.component(Alert.name, Alert)
 }
 

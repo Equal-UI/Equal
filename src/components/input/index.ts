@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Input from './ItInput.vue'
 
-// @ts-ignore
-Input.install = (Vue) => {
+Input.install = (Vue: App) => {
   Vue.component(Input.name, Input)
 }
 

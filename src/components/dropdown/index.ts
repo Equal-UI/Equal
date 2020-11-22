@@ -1,6 +1,7 @@
 import Dropdown from './ItDropdown.vue'
 import DropdownMenu from './ItDropdownMenu.vue'
 import DropdownItem from './ItDropdownItem.vue'
+import { App, DefineComponent } from 'vue'
 
 const dropdown = {
   Dropdown,
@@ -10,9 +11,9 @@ const dropdown = {
 
 for (const elem in dropdown) {
   if (dropdown.hasOwnProperty(elem)) {
-    const element = dropdown[elem]
     // @ts-ignore
-    element.install = (Vue) => {
+    const element = dropdown[elem]
+    element.install = (Vue: App) => {
       Vue.component(element.name, element)
     }
   }

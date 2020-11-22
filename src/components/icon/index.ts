@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Icon from './ItIcon.vue'
 
-// @ts-ignore
-Icon.install = (Vue) => {
+Icon.install = (Vue: App) => {
   Vue.component(Icon.name, Icon)
 }
 

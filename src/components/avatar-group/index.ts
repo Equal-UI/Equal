@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import AvatarGroup from '../avatar/ItAvatarGroup.vue'
 
-// @ts-ignore
-AvatarGroup.install = (Vue) => {
+AvatarGroup.install = (Vue: App) => {
   Vue.component(AvatarGroup.name, AvatarGroup)
 }
 

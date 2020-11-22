@@ -38,6 +38,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ItIcon from '../icon'
+import { Colors, Positions } from '../../models'
 
 export default defineComponent({
   name: 'it-notification',
@@ -53,16 +54,17 @@ export default defineComponent({
       icon: '',
       emoji: '',
       duration: 5000,
-      position: {},
-      placement: 'top-right',
-      type: 'primary',
+      position: {} as { [key: string]: string },
+      placement: Positions.TR,
+      type: Colors.PRIMARY,
       image: '',
       timer: setTimeout(() => {}),
+      onClose: () => {},
     }
   },
   computed: {
     backgroundImage() {
-      return this.image ? `url(${this.image})` : 'none'
+      return this.image ? `url(${this.image})` : ''
     },
     typeColor() {
       if (this.emoji) {
@@ -76,7 +78,7 @@ export default defineComponent({
       }
     },
     positionPx() {
-      const posPx = {}
+      const posPx: { [key: string]: string } = {}
       for (const key in this.position) {
         if (this.position.hasOwnProperty(key)) {
           posPx[key] = this.position[key] + 'px'
@@ -108,7 +110,7 @@ export default defineComponent({
           if (this.onClose) {
             this.onClose()
           }
-        }, this.duration)
+        }, this.duration) as any
       }
     },
 

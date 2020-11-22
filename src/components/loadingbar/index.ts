@@ -9,6 +9,12 @@ interface ILoading {
   finish(): void
 }
 
+interface ILoadingProps {
+  start: boolean
+  progress: number
+  height: number
+}
+
 class Loading implements ILoading {
   loadingInstance = createApp(LoadingVue)
   loadEl: ComponentPublicInstance
@@ -20,19 +26,19 @@ class Loading implements ILoading {
   }
 
   start() {
-    this.loadEl.$data.start = true
-    this.loadEl.$data.progress = 90
+    ;(this.loadEl.$data as ILoadingProps).start = true
+    ;(this.loadEl.$data as ILoadingProps).progress = 90
   }
 
   update(value: number) {
-    this.loadEl.$data.start = false
-    this.loadEl.$data.progress = value
+    ;(this.loadEl.$data as ILoadingProps).start = false
+    ;(this.loadEl.$data as ILoadingProps).progress = value
   }
 
   finish() {
-    this.loadEl.$data.start = false
-    this.loadEl.$data.progress = 100
-    this.loadEl.$data.height = 0
+    ;(this.loadEl.$data as ILoadingProps).start = false
+    ;(this.loadEl.$data as ILoadingProps).progress = 100
+    ;(this.loadEl.$data as ILoadingProps).height = 0
   }
 }
 

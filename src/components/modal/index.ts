@@ -1,7 +1,7 @@
+import { App } from 'vue'
 import Modal from './ItModal.vue'
 
-// @ts-ignore
-Modal.install = (Vue) => {
+Modal.install = (Vue: App) => {
   Vue.component(Modal.name, Modal)
 }
 
