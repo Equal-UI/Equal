@@ -10,5 +10,12 @@ module.exports = {
     '/@equal': path.resolve(__dirname, '../src'),
   },
   base: '/Equal/',
-  assetsDir: ''
+  assetsDir: '',
+  build: {
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ['vue'],
+    }
+  }
 }
