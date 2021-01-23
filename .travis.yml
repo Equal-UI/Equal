@@ -11,12 +11,12 @@ branches:
   - master
 
 before_install: 
-  - npm install
+  - cp -R /src /docs/src/equal
   - cd docs
 
 install:
   - npm install
-  - npm run build
+  - npm run build_prod
   - sh 404.sh
 
 script:

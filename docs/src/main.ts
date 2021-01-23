@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { router } from './router'
 import App from './App.vue'
-import equal from '/@equal/'
+import equal from '/@equal'
 import Prism from './components/Prism'
 
 import Col from './components/Col.vue'

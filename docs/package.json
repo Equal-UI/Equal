@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "build_prod": "vite build --config prod.config.js"
   },
   "dependencies": {
     "faker": "^5.1.0",
