@@ -79,12 +79,6 @@ function install(Vue: App) {
   Vue.config.globalProperties.$Loading = Loadingbar
 }
 
-// // @ts-expect-error
-// if (typeof window !== 'undefined' && window.Vue) {
-//   // @ts-expect-error
-//   install(window.Vue)
-// }
-
 export default { install }
 
 export { default as Alert } from './components/alert'

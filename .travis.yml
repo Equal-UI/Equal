@@ -10,7 +10,9 @@ branches:
   only:
   - master
 
-before_install: cd docs
+before_install: 
+  - npm install
+  - cd docs
 
 install:
   - npm install
