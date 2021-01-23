@@ -10,9 +10,6 @@ import Demobox from './components/Demobox.vue'
 import Box from './components/Box.vue'
 import PropsTable from './components/Table.vue'
 
-import 'prismjs/plugins/autolinker/prism-autolinker.min'
-import 'prismjs/plugins/autolinker/prism-autolinker.css'
-import 'prismjs/components/prism-bash.min.js'
 
 import './index.less'
 

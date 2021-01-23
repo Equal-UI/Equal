@@ -4,7 +4,11 @@ function _interopDefault(ex) {
   return ex && typeof ex === 'object' && 'default' in ex ? ex.default : ex
 }
 
-import Prism from 'prismjs'
+
+import 'prismjs'
+import 'prismjs/components/prism-bash.min.js'
+import 'prismjs/plugins/autolinker/prism-autolinker.min'
+import 'prismjs/plugins/autolinker/prism-autolinker.css'
 
 function assign(obj) {
   for (let i = 1; i < arguments.length; i++) {

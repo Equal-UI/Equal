@@ -35,8 +35,9 @@ export default defineComponent({
 <it-button @click="showMessage('Danger')" type="danger">Danger message</it-button>
 <it-button @click="showMessage('Warning')" type="warning">Warning message</it-button>
 
-<script>
-export default {
+` +
+
+`export default {
   methods: {
     showMessage(type) {
       switch (type) {
@@ -55,8 +56,7 @@ export default {
       }
     }
   }
-}
-<\/script>`,
+}`,
 
     durationCode: `<it-button @click="$Message({duration: 5000, text: 'I have 5000ms left'})">5000 ms</it-button>`,
 

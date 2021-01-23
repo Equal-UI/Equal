@@ -8,21 +8,21 @@
         <h2 style="margin: 20px 0px">Use all components</h2>
         <prism
           language="js"
-          code="import Vue from 'vue'
+          code="import { createApp } from 'vue'
 import Equal from 'equal-vue'
-import 'equal-vue/dist/equal.css'
+import 'equal-vue/dist/style.css'
 
-Vue.createApp.use(Equal)"
+createApp.use(Equal)"
         ></prism>
 
         <h2 style="margin: 20px 0px">Or individual components</h2>
         <prism
           language="js"
-          code="import Vue from 'vue'
+          code="import { createApp } from 'vue'
 import { Button, Alert, Switch } from 'equal-vue'
-import 'equal-vue/dist/equal.css'
+import 'equal-vue/dist/style.css'
 
-Vue.createApp.use(Button).use(Alert).use(Switch)"
+createApp.use(Button).use(Alert).use(Switch)"
         ></prism>
 
         <h2 style="margin: 20px 0px">Add Material Icons and Inter font</h2>

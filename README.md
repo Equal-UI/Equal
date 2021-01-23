@@ -57,21 +57,21 @@ yarn add equal-vue
 ## All components
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import Equal from 'equal-vue'
-import 'equal-vue/dist/equal.css'
+import 'equal-vue/dist/style.css'
 
-Vue.createApp.use(Equal)
+createApp.use(Equal)
 ```
 
 ## Or individual components
 
 ```js
-import Vue from 'vue'
+import { createApp } from 'vue'
 import { Button, Alert, Switch } from 'equal-vue'
-import 'equal-vue/dist/equal.css'
+import 'equal-vue/dist/style.css'
 
-Vue.createApp.use(Button).use(Alert).use(Switch)
+createApp.use(Button).use(Alert).use(Switch)
 ```
 
 <!-- ## Or start with CDN
@@ -81,7 +81,7 @@ Vue.createApp.use(Button).use(Alert).use(Switch)
 <html>
   <head>
     <link
-      href="https://cdn.jsdelivr.net/npm/equal-vue/dist/equal.css"
+      href="https://cdn.jsdelivr.net/npm/equal-vue/dist/style.css"
       rel="stylesheet"
     />
     <link

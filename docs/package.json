@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
@@ -8,13 +8,16 @@
   "dependencies": {
     "@types/faker": "^5.1.4",
     "faker": "^5.1.0",
-    "prismjs": "^1.22.0",
+    "prismjs": "^1.23.0",
     "vue": "^3.0.2",
     "vue-router": "^4.0.0-rc.1"
   },
   "devDependencies": {
+    "@types/prismjs": "^1.16.2",
+    "@vitejs/plugin-vue": "^1.1.0",
     "@vue/compiler-sfc": "^3.0.2",
     "less": "^3.12.2",
-    "vite": "^1.0.0-rc.8"
+    "vite": "^2.0.0-beta.44",
+    "vue-prism-component": "^2.0.0"
   }
 }
