@@ -48,7 +48,7 @@
     "@vitejs/plugin-vue": "^1.1.0",
     "@vue/babel-preset-app": "^4.5.6",
     "@vue/babel-preset-jsx": "^1.1.2",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/compiler-sfc": "^3.0.5",
     "babel-plugin-pure-calls-annotation": "^0.3.1",
     "babel-plugin-typescript-iife-enum": "^0.2.1",
     "clean-css": "^4.2.3",
@@ -57,6 +57,6 @@
     "vite": "^2.0.0-beta.40"
   },
   "dependencies": {
-    "vue": "^3.0.2"
+    "vue": "^3.0.5"
   }
 }

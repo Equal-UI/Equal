@@ -8,14 +8,14 @@
   "dependencies": {
     "faker": "^5.1.0",
     "prismjs": "^1.23.0",
-    "vue": "^3.0.2",
+    "vue": "^3.0.5",
     "vue-router": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@types/faker": "^5.1.4",
     "@types/prismjs": "^1.16.2",
     "@vitejs/plugin-vue": "^1.1.0",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/compiler-sfc": "^3.0.5",
     "less": "^3.12.2",
     "vite": "^2.0.0-beta.44",
     "vue-prism-component": "^2.0.0"
