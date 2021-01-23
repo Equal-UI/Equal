@@ -11,11 +11,10 @@ module.exports = {
   },
   base: '/Equal/',
   assetsDir: '',
-  build: {
-    rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['vue'],
-    }
-  }
+  // build: {
+  //   rollupOptions: {
+  //     // make sure to externalize deps that shouldn't be bundled
+  //     // into your library
+  //   }
+  // }
 }
