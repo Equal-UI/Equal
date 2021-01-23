@@ -11,7 +11,7 @@ branches:
   - master
 
 before_install: 
-  - cp -R /src /docs/src/equal
+  - cp -R ./src ./docs/src/equal
   - cd docs
 
 install:
