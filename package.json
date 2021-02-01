@@ -51,7 +51,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "babel-plugin-pure-calls-annotation": "^0.3.1",
     "babel-plugin-typescript-iife-enum": "^0.2.1",
-    "clean-css": "^4.2.3",
+    "clean-css": "^5.0.1",
     "core-js": "^3.6.5",
     "less": "^3.12.2",
     "vite": "^2.0.0-beta.40"
