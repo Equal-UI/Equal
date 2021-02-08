@@ -6,20 +6,24 @@
         class="it-modal-mask"
         :style="{ cursor: closableMask ? 'pointer' : 'default' }"
         v-show="modelValue"
-        @click.self="maskClick"
+        ref="modalRef"
       >
         <transition name="drop-top">
-          <div v-show="modelValue" class="it-modal-body" :style="{width}">
-            <slot name="image"></slot>
-            <slot></slot>
-            <div v-if="itHasHeader" class="it-modal-header">
-              <slot name="header"></slot>
-            </div>
-            <div v-if="itHasBody" class="it-modal-content">
-              <slot name="body"></slot>
-            </div>
-            <div v-if="itHasActions" class="it-modal-footer">
-              <slot name="actions"></slot>
+          <div v-show="modelValue" class="it-modal-wrap">
+            <div class="it-modal-wrap-inner" @click.self="maskClick">
+              <div class="it-modal-body" :style="{maxWidth: width}">
+                <slot name="image"></slot>
+                <slot></slot>
+                <div v-if="itHasHeader" class="it-modal-header">
+                  <slot name="header"></slot>
+                </div>
+                <div v-if="itHasBody" class="it-modal-content">
+                  <slot name="body"></slot>
+                </div>
+                <div v-if="itHasActions" class="it-modal-footer">
+                  <slot name="actions"></slot>
+                </div>
+              </div>
             </div>
           </div>
         </transition>
@@ -29,9 +33,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { defineComponent, onMounted, watch, ref } from 'vue'
 import ItButton from '../button'
 import useCheckSlot from '../../api/useCheckSlot'
+import { delay } from '../../helpers/common.helper'
 
 export default defineComponent({
   name: 'it-modal',
@@ -43,6 +49,7 @@ export default defineComponent({
     closeOnEsc: { type: Boolean, default: true },
   },
   setup(props, { emit, slots }) {
+    const modalRef = ref(null);
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
     const itHasActions = useCheckSlot(slots, 'actions') !== null
@@ -57,7 +64,15 @@ export default defineComponent({
       }
     }
 
+    watch(
+      () => props.modelValue,
+      (active: boolean) => active
+        ? disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
+        : delay(enableBodyScroll.bind(this, modalRef.value), 500),
+    )
+
     return {
+      modalRef,
       maskClick,
       itHasHeader,
       itHasBody,

@@ -10,29 +10,33 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.45);
     z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  &-wrap {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    display: table;
+    transition-delay: .05s;
+
+    &-inner {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 40px 0;
+    }
   }
 
   &-body {
-    transition-delay: .05s;
-    position: relative;
     max-width: 90%;
-    display: flex;
-    max-height: 100%;
-    flex-direction: column;
-    top: -40px;
-    // width: 500px;
     margin: 0 auto;
+    width: calc(100% - 30px);
+    background-color: #fff;
     border: none;
     border-radius: @border-radius-base;
-    background-color: #fff;
     outline: none;
     box-shadow: @popup-shadow;
     cursor: default;
-    overflow: hidden;
     > img {
       max-width: 100%;
     }
