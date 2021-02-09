@@ -1,40 +1,36 @@
 <template>
   <div class="it-progress-wrapper">
-    <div class="it-progress-bar" :style="{
-      height: height+'px'
-      }">
+    <div
+      class="it-progress-bar"
+      :class="[infinite && 'it-progress-bar--infinite']"
+      :style="{ height: `${height}px` }"
+    >
       <div
         class="it-progress-line"
-        :class="[
-        infinite && 'it-progress-line--infinite'
-      ]"
-        :style="{
-        width: infinite ? '' :  (progress + '%')
-      }"
+        :style="!infinite && { width: `${progress}%` }"
       >
-        <it-tooltip
-          v-if="!infinite"
-          v-show="showTooltip"
-          :style="{float: 'right', height: '100%'}"
-          :permanent="!infinite"
-          ref="tooltipRef"
-          :placement="tooltip"
-          :content="progress+'%'"
-        >&nbsp;</it-tooltip>
+        <span
+          v-if="showTooltip && !infinite"
+          class="it-progress-tooltip"
+          :class="[`it-progress-tooltip--${tooltip}`]"
+          v-html="`${progress}%`"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 import { Positions } from '../../models'
-import Tooltip from '../tooltip/ItTooltip.vue'
 
 export default defineComponent({
   name: 'it-progressbar',
   props: {
-    infinite: Boolean,
+    infinite: {
+      type: Boolean,
+      default: false,
+    },
     progress: {
       type: Number,
       default: 0,
@@ -50,34 +46,5 @@ export default defineComponent({
       default: true
     }
   },
-  setup(props) {
-    const tooltipRef = ref<typeof Tooltip | null>(null)
-    watch(
-      () => props.tooltip,
-      () => {
-        if (!props.infinite) {
-          tooltipRef.value!.setPopoverPosition()
-        }
-      }
-    )
-
-    watch(
-      () => props.progress,
-      () => {
-        if (!props.infinite) {
-          const ittt = setInterval(() => {
-            tooltipRef.value!.setPopoverPosition()
-          }, 20)
-          setTimeout(() => {
-            clearInterval(ittt)
-          }, 200)
-        }
-      }
-    )
-
-    return {
-      tooltipRef
-    }
-  }
 })
 </script>
