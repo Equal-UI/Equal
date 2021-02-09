@@ -49,7 +49,7 @@ export default defineComponent({
     closeOnEsc: { type: Boolean, default: true },
   },
   setup(props, { emit, slots }) {
-    const modalRef = ref(null);
+    const modalRef = ref<HTMLElement | null>(null);
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
     const itHasActions = useCheckSlot(slots, 'actions') !== null
@@ -66,9 +66,13 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (active: boolean) => active
-        ? disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
-        : delay(enableBodyScroll.bind(this, modalRef.value), 500),
+      (active: boolean) => {
+        if (modalRef.value) {
+          return active
+            ? disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
+            : delay(enableBodyScroll.bind(this, modalRef.value), 500);
+        }
+      }
     )
 
     return {
