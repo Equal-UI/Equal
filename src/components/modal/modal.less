@@ -17,20 +17,23 @@
     height: 100vh;
     width: 100%;
     overflow-y: scroll;
-    display: table;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition-delay: .05s;
 
     &-inner {
-      display: table-cell;
+      display: flex;
+      justify-content: center;
       vertical-align: middle;
       padding: 40px 0;
     }
   }
 
   &-body {
+    overflow: hidden;
     max-width: 90%;
     margin: 0 auto;
-    width: calc(100% - 30px);
     background-color: #fff;
     border: none;
     border-radius: @border-radius-base;
