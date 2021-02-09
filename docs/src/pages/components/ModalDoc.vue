@@ -109,7 +109,7 @@
       <it-button @click="imageModal = true" type="primary"
         >Show image</it-button
       >
-      <it-modal v-model="imageModal" width="auto">
+      <it-modal v-model="imageModal">
         <template #image>
           <img
             src="https://pbs.twimg.com/media/EeQvsMiWsAIleas?format=png&name=large"

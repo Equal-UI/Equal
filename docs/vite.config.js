@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 
 module.exports = {
   optimizeDeps: {
-    exclude: 'prismjs'
+    exclude: ['prismjs', 'body-scroll-lock']
   },
   plugins: [vue()],
   alias: {
