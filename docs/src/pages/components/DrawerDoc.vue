@@ -168,7 +168,7 @@ export default defineComponent({
       {
         property: 'width',
         type: ['String'],
-        default: '30vw',
+        default: '500px',
         values: [],
         description: 'Drawer width',
       },

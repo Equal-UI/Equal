@@ -29,7 +29,7 @@ export default defineComponent({
   name: 'it-drawer',
   props: {
     modelValue: Boolean,
-    width: { type: String, default: '30vw' },
+    width: { type: String, default: '500px' },
     closableMask: { type: Boolean, default: true },
     hideMask: Boolean,
     placement: {
