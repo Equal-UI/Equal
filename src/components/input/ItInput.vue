@@ -20,6 +20,7 @@
           <it-icon class="it-input-icon" :name="prefixIcon" />
         </span>
         <input
+          v-bind="$attrs"
           :type="type"
           class="it-input"
           :disabled="disabled"
@@ -51,10 +52,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Colors } from '../../models'
+import { Colors } from '@/models'
 
 export default defineComponent({
   name: 'it-input',
+  inheritAttrs: false,
   props: {
     status: {
       type: String,

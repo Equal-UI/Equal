@@ -8,6 +8,7 @@ module.exports = {
   plugins: [vue()],
   alias: {
     '/@equal': path.resolve(__dirname, '../src'),
+    '@': path.resolve(__dirname, '../src'),
   },
   base: '/Equal/',
   assetsDir: '',

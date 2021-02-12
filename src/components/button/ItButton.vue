@@ -50,7 +50,7 @@
 import { defineComponent, computed } from 'vue'
 import ItIcon from '../icon'
 import ItLoading from '../loading'
-import { Sizes, Colors } from '../../models'
+import { Sizes, Colors } from '@/models'
 
 
 export default defineComponent({

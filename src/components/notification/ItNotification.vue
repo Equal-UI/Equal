@@ -12,14 +12,14 @@
         class="it-notification-left"
         :style="{
           'background-image': backgroundImage,
-          'background-color': emoji || image ? '#fdfdfd' : typeColor[type],
+          'background-color': emoji || image ? '#fdfdfd' : typeColor,
           'border-right': (emoji || image) && '1px solid #dfdfdf',
         }"
       >
         <it-icon
           v-if="!image && !emoji"
           class="it-notification-icon"
-          :name="icon || typeIcon[type]"
+          :name="icon || typeIcon"
         />
         <span class="it-notification-emoji" v-if="emoji && !image">{{
           emoji
@@ -37,8 +37,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ItIcon from '../icon'
-import { Colors, Positions } from '../../models'
+import { Colors, Positions } from '@/models'
+import ItIcon from '@/components/icon'
+import { typeIcon } from '@/components/message/model'
+
+const colorTypes: { [key in Colors]?: string } = {
+  [Colors.PRIMARY]: '#3051ff',
+  [Colors.SUCCESS]: '#07d85b',
+  [Colors.DANGER]: '#F93155',
+  [Colors.WARNING]: '#ffba00',
+}
 
 export default defineComponent({
   name: 'it-notification',
@@ -53,29 +61,24 @@ export default defineComponent({
       title: '',
       icon: '',
       emoji: '',
+      image: '',
       duration: 5000,
       position: {} as { [key: string]: string },
       placement: Positions.TR,
       type: Colors.PRIMARY,
-      image: '',
-      timer: setTimeout(() => {}),
+      timer: (null as unknown) as NodeJS.Timeout,
       onClose: () => {},
     }
   },
   computed: {
-    backgroundImage() {
+    backgroundImage(): string {
       return this.image ? `url(${this.image})` : ''
     },
-    typeColor() {
+    typeColor(): string {
       if (this.emoji) {
         return '#fbfbfb'
       }
-      return {
-        primary: '#3051ff',
-        success: '#07d85b',
-        danger: '#F93155',
-        warning: '#ffba00',
-      }
+      return colorTypes[this.type]!
     },
     positionPx() {
       const posPx: { [key: string]: string } = {}
@@ -86,13 +89,8 @@ export default defineComponent({
       }
       return posPx
     },
-    typeIcon() {
-      return {
-        primary: 'info_outline',
-        success: 'done',
-        warning: 'error_outline',
-        danger: 'clear',
-      }
+    typeIcon(): string {
+      return typeIcon[this.type]!
     },
   },
   mounted() {

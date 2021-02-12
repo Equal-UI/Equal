@@ -51,6 +51,7 @@ import { defineComponent, watch, ref, nextTick, onMounted } from 'vue'
 
 export default defineComponent({
   name: 'it-number-input',
+  inheritAttrs: false,
   props: {
     resizeOnWrite: Boolean,
     disabled: Boolean,
@@ -90,7 +91,7 @@ export default defineComponent({
       interval.value = setInterval(handler, 140)
       window.addEventListener(
         'mouseup',
-        (event) => {
+        () => {
           clearInterval(interval.value!)
         },
         { once: true }

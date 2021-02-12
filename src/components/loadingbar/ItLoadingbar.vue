@@ -2,17 +2,17 @@
   <div
     class="it-loadingbar"
     :class="{
-      'it-loadingbar--start': start
+      'it-loadingbar--start': start,
     }"
     :style="{
-    width: progress + '%',
-    height: height + 'px'
-  }"
+      width: progress + '%',
+      height: height + 'px',
+    }"
   ></div>
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, onMounted } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'it-loading-bar',
@@ -20,18 +20,18 @@ export default defineComponent({
     return {
       progress: 0,
       height: 2,
-      start: false
+      start: false,
     }
   },
   watch: {
-    progress: function (newValue) {      
+    progress (newValue) {
       if (newValue === 100) {
         setTimeout(() => {
           this.progress = 0
           this.height = 2
         }, 600)
       }
-    }
-  }
+    },
+  },
 })
 </script>

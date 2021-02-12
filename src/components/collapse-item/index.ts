@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import CollapseItem from '../collapse/ItCollapseItem.vue'
+import CollapseItem from '@/components/collapse/ItCollapseItem.vue'
 
 CollapseItem.install = (Vue: App) => {
   Vue.component(CollapseItem.name, CollapseItem)

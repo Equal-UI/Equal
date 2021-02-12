@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { Colors, Positions } from '../../models'
+import { Colors, Positions } from '@/models'
 
 export default defineComponent({
   name: 'it-badge',

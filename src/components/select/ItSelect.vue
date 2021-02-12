@@ -85,16 +85,13 @@
 import {
   defineComponent,
   ref,
-  provide,
-  computed,
   onBeforeUpdate,
   nextTick,
-  toRef,
 } from 'vue'
 
-import { Positions } from '../../models'
-import clickoutside from '../../directives/clickOutside'
-import usePopover from '../../api/usePopover'
+import { Positions } from '@/models'
+import clickoutside from '@/directives/clickOutside'
+import usePopover from '@/api/usePopover'
 
 export default defineComponent({
   name: 'it-select',

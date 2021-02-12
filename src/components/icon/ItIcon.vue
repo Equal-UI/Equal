@@ -18,10 +18,10 @@ export default defineComponent({
   name: 'it-icon',
   props: {
     name: { type: String, required: true },
-    color: { type: String },
-    outlined: { type: Boolean },
-    box: { type: Boolean },
-    boxColor: { type: String },
+    color: { type: String, default: null },
+    outlined: { type: Boolean, default: false },
+    box: { type: Boolean, default: false },
+    boxColor: { type: String, default: null },
   },
 })
 </script>

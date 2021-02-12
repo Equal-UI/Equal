@@ -35,7 +35,7 @@
 <script lang="ts">
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { defineComponent, watch, ref } from 'vue'
-import useCheckSlot from '../../api/useCheckSlot'
+import useCheckSlot from '@/api/useCheckSlot'
 
 export default defineComponent({
   name: 'it-modal',
