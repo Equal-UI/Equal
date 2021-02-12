@@ -15,7 +15,7 @@
       <router-link to="/" class="logo-link">
         <img class="sidebar-logo" src="/eqqqual.png" />
       </router-link>
-      <div style="margin-top: 15px; display: flex; flex-direction:row">
+      <div style="margin-top: 15px; display: flex; flex-direction:column">
         
       <a
           target="_blank"
@@ -35,7 +35,7 @@
       <a
           target="_blank"
           class="github"
-          style="margin-left: 4px;"
+          style="margin-top: 8px;"
           rel="noopener noreferrer"
           href="https://twitter.com/k0mmsussertod"
         >
@@ -416,7 +416,7 @@ export default defineComponent({
   transition: all 0.18s;
 
   &-top {
-    padding: 20px 20px;
+    padding: 12px 20px;
     background-color: #ffffff;
     border-bottom: 1px solid #d3dae6;
   }
