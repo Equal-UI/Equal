@@ -8,12 +8,12 @@
     @keydown.down.left.stop.prevent="keyEvent('left')"
     @keydown.up.right.stop.prevent="keyEvent('right')"
   >
-    <span v-if="labelTop" class="it-slider-label">{{labelTop}}</span>
+    <span v-if="labelTop" class="it-slider-label">{{ labelTop }}</span>
     <div
       class="it-slider-line"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-      ref="sliderLine"
+      ref="sliderLineRef"
       @click="onSliderClick"
     >
       <div class="it-slider-bar" :style="{width: `${valuePosition}%`}"></div>
@@ -22,38 +22,34 @@
         :style="{ left: `${valuePosition}%` }"
         @mousedown="onMouseDown"
       >
-        <it-tooltip ref="tooltip" :content="modelValue">
+        <it-tooltip ref="tooltipRef" :content="modelValue">
           <div class="it-slider-controller"></div>
         </it-tooltip>
       </div>
     </div>
-    <div v-if="stepPoints && stepsArr.length" style="height: 8px">
+    <div v-if="stepPoints && stepsPoints.length" class="it-slider-wrap-points">
       <div
         class="it-slider-point"
-        v-for="stepp in stepsArr"
-        :key="stepp.left"
-        :style="{ left: `${stepp.left}%`, height: stepp.height }"
-        :class="{
-          'it-slider-point--active': stepp.active
-        }"
+        v-for="(step, index) in stepsPoints"
+        :key="step.left"
+        :style="getStepPointStyles({ step, index })"
+        :class="{'it-slider-point--active': step.active}"
       ></div>
     </div>
     <div v-if="numbers" class="it-slider-numbers">
-      <div>{{min}}</div>
-      <div style="left: 100%">{{max}}</div>
+      <div>{{ min }}</div>
+      <div style="left: 100%">{{ max }}</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, watch } from 'vue'
+import {defineComponent, ref, watch} from 'vue'
+import {TStepItem} from '@components/slider/types'
+import {DEFAULT_STEP_POINT_HEIGHT} from "./constants";
+import {useStepsPoints} from './hooks'
+import {getTotalPosition} from './helpers'
 import Tooltip from '../tooltip/ItTooltip.vue'
-
-interface ISteps {
-  left: number
-  height?: string
-  active: boolean
-}
 
 export default defineComponent({
   name: 'it-slider',
@@ -62,12 +58,15 @@ export default defineComponent({
     disabled: Boolean,
     stepPoints: Boolean,
     numbers: Boolean,
-    min: { type: Number, default: 0 },
-    max: { type: Number, default: 100 },
-    step: { type: Number, default: 1 },
-    modelValue: { type: Number, default: 0 }
+    min: {type: Number, default: 0},
+    max: {type: Number, default: 100},
+    step: {type: Number, default: 1},
+    modelValue: {type: Number, default: 0}
   },
-  setup(props, { emit }) {
+  setup(props, {emit}) {
+    const sliderLineRef = ref(null)
+    const tooltipRef = ref<typeof Tooltip | null>(null)
+
     const startX = ref(0)
     const currentX = ref(0)
 
@@ -75,39 +74,22 @@ export default defineComponent({
     const newPos = ref(0)
 
     const dragging = ref(false)
-    const valuePosition = ref(
-      ((props.modelValue - props.min) * 100) / (props.max - props.min)
-    )
 
-    const stepsArr = ref<ISteps[]>([])
+    const valuePosition = ref<number>(getTotalPosition({
+      value: props.modelValue,
+      min: props.min,
+      max: props.max,
+    }))
 
-    // $refs
-    const sliderLine = ref(null)
-    const tooltip = ref<typeof Tooltip | null>(null)
-
-    onMounted(() => {
-      const arr: ISteps[] = []
-      if (sliderLine) {
-        const count = (props.max - props.min) / props.step
-        let left: number = 0
-
-        arr.push({ left: 0, active: true })
-        const check = 100 / (props.max / props.step)
-        for (let i = 0; i < count; i++) {
-          let active
-          left += check
-          if (left <= valuePosition.value) {
-            active = true
-          } else {
-            active = false
-          }
-          arr.push({ left, active })
-        }
-        arr[0].height = '8px'
-        arr[arr.length - 1].height = '8px'
+    const stepsPoints: TStepItem[] = useStepsPoints(
+      [{left: 0, active: true}],
+      {
+        min: props.min,
+        max: props.max,
+        step: props.step,
+        valuePosition: valuePosition.value,
       }
-      stepsArr.value = arr
-    })
+    )
 
     watch(
       () => props.modelValue,
@@ -115,7 +97,7 @@ export default defineComponent({
         if (props.disabled) {
           return
         }
-        setPosition(((newVal - props.min) * 100) / (props.max - props.min))
+        setPosition(getTotalPosition({value: newVal, min: props.min, max: props.max}))
       }
     )
 
@@ -135,23 +117,14 @@ export default defineComponent({
           : parseFloat(value.toFixed(0))
 
       emit('update:modelValue', value)
-      const valPos = ((value - props.min) * 100) / (props.max - props.min)
-      valuePosition.value = valPos
-      stepsArr.value = stepsArr.value.map((i) => {
-        if (i.left <= valuePosition.value) {
-          i.active = true
-        } else {
-          i.active = false
-        }
-        return i
-      })
+      valuePosition.value = getTotalPosition({value, min: props.min, max: props.max})
     }
 
     function keyEvent(key: 'up' | 'right' | 'down' | 'left') {
       if (props.disabled) {
         return
       }
-      tooltip.value!.showPopover()
+      tooltipRef.value!.showPopover()
       if (['up', 'right'].includes(key)) {
         emit('update:modelValue', props.modelValue + props.step)
       } else if (['down', 'left'].includes(key)) {
@@ -173,7 +146,7 @@ export default defineComponent({
       startX.value = e.clientX
       startPos.value = valuePosition.value
 
-      tooltip.value!.showPopover()
+      tooltipRef.value!.showPopover()
     }
 
     function onDragging(e: MouseEvent) {
@@ -182,7 +155,7 @@ export default defineComponent({
         currentX.value = e.clientX
         diff =
           ((currentX.value - startX.value) * 100) /
-          (sliderLine.value! as HTMLElement).offsetWidth
+          (sliderLineRef.value! as HTMLElement).offsetWidth
 
         newPos.value = startPos.value + diff
 
@@ -203,37 +176,46 @@ export default defineComponent({
       if (props.disabled || dragging.value) {
         return
       }
-      const sliderOffsetLeft = (sliderLine.value! as HTMLElement).getBoundingClientRect()
+      const sliderOffsetLeft = (sliderLineRef.value! as HTMLElement).getBoundingClientRect()
         .left
       setPosition(
         ((e.clientX - sliderOffsetLeft) /
-          (sliderLine.value! as HTMLElement).offsetWidth) *
-          100
+          (sliderLineRef.value! as HTMLElement).offsetWidth) *
+        100
       )
     }
 
     function handleMouseEnter(e: Event) {
-      tooltip.value!.handleMouseEnter(e)
+      tooltipRef.value!.handleMouseEnter(e)
     }
 
     function handleMouseLeave() {
       if (dragging.value) {
         return
       }
-      tooltip.value!.handleMouseLeave()
+      tooltipRef.value!.handleMouseLeave()
+    }
+
+    function getStepPointStyles({step, index}: { step: TStepItem, index: number }): object {
+      const styles = {left: `${step.left}%`, height: null};
+      if (index === 0 || index === (stepsPoints.value.length - 1)) {
+        styles.height = `${DEFAULT_STEP_POINT_HEIGHT}px`
+      }
+      return styles
     }
 
     return {
       valuePosition,
-      stepsArr,
+      stepsPoints,
       setPosition,
       keyEvent,
       onMouseDown,
       onSliderClick,
       handleMouseEnter,
       handleMouseLeave,
-      sliderLine,
-      tooltip
+      sliderLineRef,
+      tooltipRef,
+      getStepPointStyles
     }
   }
 })

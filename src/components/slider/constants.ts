@@ -1,0 +1,1 @@
+export const DEFAULT_STEP_POINT_HEIGHT = 8;
