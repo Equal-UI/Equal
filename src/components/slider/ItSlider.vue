@@ -1,26 +1,26 @@
 <template>
   <div
     class="it-slider"
-    :class="{
-        'it-slider--disabled': disabled
-      }"
+    :class="{'it-slider--disabled': disabled}"
     :tabindex="disabled ? -1 : 0"
-    @keydown.down.left.stop.prevent="keyEvent('left')"
-    @keydown.up.right.stop.prevent="keyEvent('right')"
+    @keydown.down.left.stop.prevent="keyEvent(EKeyDirections.LEFT)"
+    @keydown.up.right.stop.prevent="keyEvent(EKeyDirections.RIGHT)"
   >
     <span v-if="labelTop" class="it-slider-label">{{ labelTop }}</span>
     <div
       class="it-slider-line"
+      ref="sliderLineRef"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-      ref="sliderLineRef"
       @click="onSliderClick"
+      @touchend="onSliderClick"
     >
       <div class="it-slider-bar" :style="{width: `${valuePosition}%`}"></div>
       <div
         class="it-slider-controller-wrapper"
         :style="{ left: `${valuePosition}%` }"
-        @mousedown="onMouseDown"
+        @mousedown="onMouseOrTouchDown"
+        @touchstart="onMouseOrTouchDown"
       >
         <it-tooltip ref="tooltipRef" :content="modelValue">
           <div class="it-slider-controller"></div>
@@ -44,12 +44,13 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, watch} from 'vue'
-import {TStepItem} from '@components/slider/types'
+import {ComputedRef, defineComponent, ref, watch} from 'vue'
+import {TStepItem, TKeyEvents} from '@components/slider/abstracts/types'
 import {DEFAULT_STEP_POINT_HEIGHT} from "./constants";
-import {useStepsPoints} from './hooks'
-import {getTotalPosition} from './helpers'
+import {useStepsPoints, useValuePosition} from './hooks'
+import {getTotalPosition, getCoordsByEvent} from './helpers'
 import Tooltip from '../tooltip/ItTooltip.vue'
+import {EKeyDirections} from "./abstracts/enums";
 
 export default defineComponent({
   name: 'it-slider',
@@ -75,114 +76,93 @@ export default defineComponent({
 
     const dragging = ref(false)
 
-    const valuePosition = ref<number>(getTotalPosition({
-      value: props.modelValue,
-      min: props.min,
-      max: props.max,
-    }))
+    const [valuePosition, setValuePosition] = useValuePosition(props, emit);
 
-    const stepsPoints: TStepItem[] = useStepsPoints(
+    const stepsPoints: ComputedRef<TStepItem[]> = useStepsPoints(
       [{left: 0, active: true}],
       {
         min: props.min,
         max: props.max,
         step: props.step,
-        valuePosition: valuePosition.value,
+        valuePosition,
       }
     )
 
     watch(
       () => props.modelValue,
       (newVal) => {
-        if (props.disabled) {
-          return
-        }
-        setPosition(getTotalPosition({value: newVal, min: props.min, max: props.max}))
+        if (props.disabled) return
+        const newValue = getTotalPosition({value: newVal, min: props.min, max: props.max})
+        setValuePosition(newValue)
       }
     )
 
-    function setPosition(pos: number) {
-      if (pos < 0) {
-        pos = 0
-      } else if (pos > 100) {
-        pos = 100
-      }
-      const lengthPerStep = 100 / ((props.max - props.min) / props.step)
-      const steps = Math.round(pos / lengthPerStep)
-      let value =
-        steps * lengthPerStep * (props.max - props.min) * 0.01 + props.min
-      value =
-        parseFloat(value.toFixed(0)) > props.max
-          ? props.max
-          : parseFloat(value.toFixed(0))
-
-      emit('update:modelValue', value)
-      valuePosition.value = getTotalPosition({value, min: props.min, max: props.max})
-    }
-
-    function keyEvent(key: 'up' | 'right' | 'down' | 'left') {
-      if (props.disabled) {
-        return
-      }
+    function keyEvent(key: TKeyEvents) {
+      if (props.disabled) return
       tooltipRef.value!.showPopover()
-      if (['up', 'right'].includes(key)) {
-        emit('update:modelValue', props.modelValue + props.step)
-      } else if (['down', 'left'].includes(key)) {
-        emit('update:modelValue', props.modelValue - props.step)
+
+      const moreValue = [EKeyDirections.UP, EKeyDirections.RIGHT].includes(key)
+      const lessValue = [EKeyDirections.DOWN, EKeyDirections.LEFT].includes(key)
+      const newValue = moreValue
+        ? (props.modelValue + props.step)
+        : lessValue ? (props.modelValue - props.step)
+        : props.modelValue
+
+      if (moreValue) {
+        emit('update:modelValue', newValue)
+      } else if (lessValue) {
+        emit('update:modelValue', newValue)
       }
     }
 
-    function onMouseDown(e: MouseEvent) {
-      if (props.disabled) {
-        return
-      }
+    function onMouseOrTouchDown(e: MouseEvent | TouchEvent) {
+      if (props.disabled) return
       onDragStart(e)
       window.addEventListener('mousemove', onDragging)
       window.addEventListener('mouseup', onDragEnd)
+      window.addEventListener('touchmove', onDragging)
+      window.addEventListener('touchend', onDragEnd)
     }
 
-    function onDragStart(e: MouseEvent) {
+    function onDragStart(e: MouseEvent | TouchEvent) {
       dragging.value = true
-      startX.value = e.clientX
+      startX.value = getCoordsByEvent(e).clientX
       startPos.value = valuePosition.value
-
       tooltipRef.value!.showPopover()
     }
 
-    function onDragging(e: MouseEvent) {
+    function onDragging(e: MouseEvent | TouchEvent) {
       if (dragging.value) {
         let diff = 0
-        currentX.value = e.clientX
+        currentX.value = getCoordsByEvent(e).clientX
         diff =
           ((currentX.value - startX.value) * 100) /
           (sliderLineRef.value! as HTMLElement).offsetWidth
 
         newPos.value = startPos.value + diff
-
-        setPosition(newPos.value)
+        setValuePosition(newPos.value)
       }
     }
 
     function onDragEnd() {
       if (dragging.value) {
         dragging.value = false
-        setPosition(newPos.value)
+        setValuePosition(newPos.value)
         window.removeEventListener('mousemove', onDragging)
         window.removeEventListener('mouseup', onDragEnd)
+        window.removeEventListener('touchmove', onDragging)
+        window.removeEventListener('touchend', onDragEnd)
       }
     }
 
-    function onSliderClick(e: any) {
-      if (props.disabled || dragging.value) {
-        return
-      }
-      const sliderOffsetLeft = (sliderLineRef.value! as HTMLElement).getBoundingClientRect()
-        .left
-      setPosition(
-        ((e.clientX - sliderOffsetLeft) /
-          (sliderLineRef.value! as HTMLElement).offsetWidth) *
+    function onSliderClick(e: MouseEvent) {
+      if (props.disabled || dragging.value) return
+      const sliderOffsetLeft = (sliderLineRef.value! as HTMLElement).getBoundingClientRect().left
+      const clientX = getCoordsByEvent(e).clientX;
+      const newValue = ((clientX - sliderOffsetLeft) /
+        (sliderLineRef.value! as HTMLElement).offsetWidth) *
         100
-      )
+      setValuePosition(newValue)
     }
 
     function handleMouseEnter(e: Event) {
@@ -190,9 +170,7 @@ export default defineComponent({
     }
 
     function handleMouseLeave() {
-      if (dragging.value) {
-        return
-      }
+      if (dragging.value) return
       tooltipRef.value!.handleMouseLeave()
     }
 
@@ -207,15 +185,15 @@ export default defineComponent({
     return {
       valuePosition,
       stepsPoints,
-      setPosition,
+      sliderLineRef,
+      tooltipRef,
       keyEvent,
-      onMouseDown,
+      onMouseOrTouchDown,
       onSliderClick,
       handleMouseEnter,
       handleMouseLeave,
-      sliderLineRef,
-      tooltipRef,
-      getStepPointStyles
+      getStepPointStyles,
+      EKeyDirections
     }
   }
 })
