@@ -106,7 +106,7 @@ export default defineComponent({
       const newValue = moreValue
         ? (props.modelValue + props.step)
         : lessValue ? (props.modelValue - props.step)
-        : props.modelValue
+          : props.modelValue
 
       if (moreValue) {
         emit('update:modelValue', newValue)
