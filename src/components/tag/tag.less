@@ -2,6 +2,9 @@
 
 .set-tag-type (@color) {
   border: 1px solid @color;
+  >.it-tag-close {
+    color: inherit;
+  }
   &--filled {
     background-color: @color;
     color: #fff;
@@ -26,12 +29,8 @@
     font-size: inherit;
     vertical-align: middle;
     cursor: pointer;
-    color: @color-neutral;
+    user-select: none;
     margin-left: 5px;
-
-    &:hover {
-      color: #919191;
-    }
   }
 
   &--primary {

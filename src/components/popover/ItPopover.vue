@@ -26,9 +26,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import usePopover from '../../api/usePopover'
-import clickoutside from '../../directives/clickOutside'
-import { Positions } from '../../models'
+import usePopover from '@/api/usePopover'
+import clickoutside from '@/directives/clickOutside'
+import { Positions } from '@/models'
 
 export default defineComponent({
   name: 'it-popover',
@@ -52,7 +52,6 @@ export default defineComponent({
       transition,
       popover,
       trigger,
-      permanent,
       position,
       hidePopover,
       showPopover,

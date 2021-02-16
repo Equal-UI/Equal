@@ -28,16 +28,46 @@
   background-color: @color-disabled-bg;
   border-radius: 4px;
   width: 100%;
-  overflow: hidden;
-  
+
+  &--infinite {
+    overflow: hidden;
+
+    .it-progress-line {
+      animation: infinite-load 1.15s ease-in-out infinite;
+    }
+  }
 }
+
 .it-progress-line {
   background-color: @color-primary;
   transition: all .2s ease-out;
   border-radius: 4px;
   height: 100%;
+  position: relative;
+}
 
-  &--infinite {
-    animation: infinite-load 1.15s ease-in-out infinite;
+.it-progress-tooltip {
+  position: absolute;
+  right: 0;
+  transform: translate(50%, 0);
+  z-index: 10;
+  padding: 8px;
+  box-shadow: @popup-shadow;
+  width: max-content;
+  color: @color-secondary-black;
+  font-size: 13px;
+  line-height: 1;
+  border-radius: @border-radius-base;
+  background-color: #fff;
+  word-wrap: break-word;
+
+  &--top {
+    margin-bottom: 12px;
+    bottom: 100%;
+  }
+
+  &--bottom {
+    margin-top: 12px;
+    top: 100%;
   }
 }

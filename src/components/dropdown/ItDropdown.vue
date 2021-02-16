@@ -18,10 +18,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted, watchEffect, watch } from 'vue'
-import { Positions } from '../../models'
-import usePopover from '../../api/usePopover'
-import clickoutside from '../../directives/clickOutside'
+import { defineComponent, computed } from 'vue'
+import { Positions } from '@/models'
+import usePopover from '@/api/usePopover'
+import clickoutside from '@/directives/clickOutside'
 
 export default defineComponent({
   name: 'it-dropdown',
@@ -53,17 +53,12 @@ export default defineComponent({
       show,
       placement,
       disabled,
-      clickable,
-      visionTimer,
       popover,
       trigger,
-      permanent,
-      position,
       handleMouseEnter,
       handleMouseLeave,
       hidePopover,
       showPopover,
-      setPopoverPosition,
     } = usePopover(props)
 
     function toggleDropdown() {
@@ -104,18 +99,4 @@ export default defineComponent({
     }
   },
 })
-
-// get listeners() {
-// const hvrbl = this.clickable
-//   ? {
-//       click: this.toggleDropdown
-//     }
-//   : {
-//       mouseenter: this.handleMouseEnter,
-//       mouseleave: this.handleMouseLeave
-//     }
-// return {
-//   ...hvrbl
-// }
-// }
 </script>

@@ -16,7 +16,7 @@ export default defineComponent({
     },
     disabled: Boolean,
   },
-  setup(props, ctx) {
+  setup(props) {
     const tabs = inject('tabs', [])
     const isActive = ref(false)
     tabs.value.push({ ...toRefs(props), isActive })

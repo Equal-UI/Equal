@@ -1,13 +1,6 @@
 import NotificationVue from './ItNotification.vue'
 import { createApp, ComponentPublicInstance } from 'vue'
-import { Colors, Positions } from '../../models'
-
-const notificationTypes = [
-  Colors.PRIMARY,
-  Colors.SUCCESS,
-  Colors.DANGER,
-  Colors.WARNING,
-]
+import { Colors, Positions } from '@/models'
 
 interface INotificationOptions {
   id: number | null
@@ -45,11 +38,11 @@ const Notification = (options: Partial<INotificationOptions> = {}) => {
 
   const newData = Object.assign(options, { id })
   for (const [key, value] of Object.entries(newData)) {
-    ;(instance.$data as INotificationOptions)[key] = value
+    (instance.$data as INotificationOptions)[key] = value
   }
 
   document.body.appendChild(instance.$el)
-  ;(instance.$data as INotificationOptions).show = true
+    ; (instance.$data as INotificationOptions).show = true
 
   const offsets: { [key: string]: number } = {
     [Positions.TR]: 0,
@@ -65,10 +58,10 @@ const Notification = (options: Partial<INotificationOptions> = {}) => {
     .forEach((el) => {
       offsets[options.placement!] += (el.$el as HTMLElement).offsetHeight + 6
     })
-  ;(instance.$data as INotificationOptions).position = {
-    [options.placement.split('-')[0]]: offsets[options.placement] + 6,
-    [options.placement.split('-')[1]]: 10,
-  }
+    ; (instance.$data as INotificationOptions).position = {
+      [options.placement.split('-')[0]]: offsets[options.placement] + 6,
+      [options.placement.split('-')[1]]: 10,
+    }
 
   notifications.push(instance)
 
@@ -102,7 +95,12 @@ Notification.close = (id: number, onClose?: () => void) => {
   notifications.splice(index, 1)
 }
 
-notificationTypes.forEach((type) => {
+[
+  Colors.PRIMARY,
+  Colors.SUCCESS,
+  Colors.DANGER,
+  Colors.WARNING,
+].forEach((type) => {
   // @ts-ignore
   Notification[type] = (options: INotificationOptions) =>
     Notification({ ...options, type })

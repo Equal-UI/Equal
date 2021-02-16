@@ -1,5 +1,5 @@
 import { ref, nextTick, computed, toRef } from 'vue'
-import { Positions } from '../models'
+import { Positions } from '@/models'
 
 interface IPopoverProps {
   placement?: string

@@ -1,7 +1,7 @@
 <template>
   <label class="it-checkbox-wrapper">
     <span class="it-checkbox-check-wrapper" :class="[(pulse && !disabled) && 'pulse']">
-      <input type="checkbox" class="it-checkbox-input" :disabled="disabled" @change="toggle" />
+      <input type="checkbox" v-bind="$attrs" class="it-checkbox-input" :disabled="disabled" @change="toggle" />
       <span
         class="it-checkbox"
         :class="[      
@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Colors } from '../../models'
+import { Colors } from '@/models'
 
 export default defineComponent({
   name: 'it-checkbox',

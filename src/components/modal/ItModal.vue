@@ -9,8 +9,8 @@
         ref="modalRef"
       >
         <transition name="drop-top">
-          <div v-show="modelValue" class="it-modal-wrap">
-            <div class="it-modal-wrap-inner" @click.self="maskClick">
+          <div v-show="modelValue" class="it-modal-wrap" @click.self="maskClick">
+            <div class="it-modal-wrap-inner">
               <div class="it-modal-body" :style="{maxWidth: width}">
                 <slot name="image"></slot>
                 <slot></slot>
@@ -34,10 +34,8 @@
 
 <script lang="ts">
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { defineComponent, onMounted, watch, ref } from 'vue'
-import ItButton from '../button'
-import useCheckSlot from '../../api/useCheckSlot'
-import { delay } from '../../helpers/common.helper'
+import { defineComponent, watch, ref } from 'vue'
+import useCheckSlot from '@/api/useCheckSlot'
 
 export default defineComponent({
   name: 'it-modal',
@@ -70,7 +68,7 @@ export default defineComponent({
         if (modalRef.value) {
           return active
             ? disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
-            : delay(enableBodyScroll.bind(this, modalRef.value), 500);
+            : setTimeout(enableBodyScroll.bind(this, modalRef.value), 500)
         }
       }
     )
