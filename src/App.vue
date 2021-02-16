@@ -199,7 +199,7 @@
 
     <div>
       <h3>Slider</h3>
-      <it-slider v-model="stepSliderValue" step-points :step="10" :min="0" :max="100" />
+      <it-slider v-model="stepSliderValue" :step="10" :min="0" :max="100" />
     </div>
 
     <div>
