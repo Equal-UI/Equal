@@ -14,16 +14,24 @@
   }
 
   &--disabled {
-    .it-slider-controller {
-      border-color: @color-disabled-border;
-    }
-    .it-slider-bar {
-      background-color: @color-disabled-border;
-      & ~ .it-slider-point--active {
-        background-color: @color-secondary-text;
+    .it-slider {
+      &-controller {
+        border-color: @color-disabled-border;
+      }
+
+      &-bar {
+        background-color: @color-disabled-border;
+        & ~ .it-slider-point--active {
+          background-color: @color-secondary-text;
+        }
+      }
+
+      &-point {
+        background-color: @color-grey-text;
       }
     }
   }
+
   &-label {
     display: block;
     font-size: 14px;
