@@ -13,8 +13,8 @@
             <div class="it-modal-wrap-inner" @click.self="maskClick">
               <div
                 class="it-modal-body"
-                :class="{'it-modal-body--has-image': itHasImage}"
-                :style="!itHasImage ? {maxWidth: width} : null"
+                :class="{'it-modal-body--has-image': onlyImageSlot}"
+                :style="!onlyImageSlot ? {maxWidth: width} : null"
               >
                 <slot name="image" />
                 <slot />
@@ -37,8 +37,8 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, watch, ref, computed } from 'vue'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { defineComponent, watch, ref } from 'vue'
 import useCheckSlot from '@/api/useCheckSlot'
 
 export default defineComponent({
@@ -78,6 +78,10 @@ export default defineComponent({
       }
     )
 
+    const onlyImageSlot = computed(() => {
+      return itHasImage && !itHasHeader && !itHasBody && !itHasActions
+    });
+
     return {
       modalRef,
       maskClick,
@@ -85,7 +89,7 @@ export default defineComponent({
       itHasBody,
       itHasActions,
       close,
-      itHasImage,
+      onlyImageSlot,
     }
   },
 
