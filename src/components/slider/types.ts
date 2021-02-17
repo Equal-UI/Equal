@@ -1,5 +1,5 @@
-import {Ref} from 'vue'
-import {Positions} from "@/models";
+import { Ref } from 'vue'
+import { Positions } from '@/models'
 
 export type TTotalValuePosition = {
   value: number

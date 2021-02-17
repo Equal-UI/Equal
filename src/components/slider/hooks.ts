@@ -1,16 +1,16 @@
-import {computed, ref, Ref, ComputedRef} from 'vue';
+import { computed, ref, Ref, ComputedRef } from 'vue'
 import {
   TDataByPreparedStepList,
   TResultUseValuePosition,
   TStepItem,
-  TTotalValuePosition
-} from '@/components/slider/types';
-import {getTotalPosition} from "./helpers";
+  TTotalValuePosition,
+} from '@/components/slider/types'
+import { getTotalPosition } from './helpers'
 
 export const useStepsPoints = (
   startValue: TStepItem[],
-  {max, min, step, valuePosition}: TDataByPreparedStepList
-): ComputedRef<TStepItem[]> => (
+  { max, min, step, valuePosition }: TDataByPreparedStepList
+): ComputedRef<TStepItem[]> =>
   computed<TStepItem[]>(() => {
     const resultStepsPoints: TStepItem[] = [...startValue]
     const countPoints = (max - min) / step
@@ -20,31 +20,31 @@ export const useStepsPoints = (
     for (let i = 0; i < countPoints; i++) {
       accumulatedLeft += distanceBetweenPoints
       const active = accumulatedLeft <= valuePosition.value
-      resultStepsPoints.push({left: accumulatedLeft, active})
+      resultStepsPoints.push({ left: accumulatedLeft, active })
     }
 
     return resultStepsPoints
   })
-);
 
 export const useValuePosition = (
-  props: {[key: string]: any},
+  props: { [key: string]: any },
   emit: (name: string, prop: any) => void
 ): TResultUseValuePosition => {
   const startValue = getTotalPosition({
     value: props.modelValue,
     min: props.min,
     max: props.max,
-  } as TTotalValuePosition);
-  const valuePosition: Ref<number> = ref<number>(startValue);
+  } as TTotalValuePosition)
+  const valuePosition: Ref<number> = ref<number>(startValue)
 
   const setValuePosition = (newValue: number) => {
-    newValue = (newValue < 0) ? 0 : (newValue > 100) ? 100 : newValue
+    newValue = newValue < 0 ? 0 : newValue > 100 ? 100 : newValue
 
     const lengthPerStep = 100 / ((props.max - props.min) / props.step)
     const steps = Math.round(newValue / lengthPerStep)
 
-    let totalValue = steps * lengthPerStep * (props.max - props.min) * 0.01 + props.min
+    let totalValue =
+      steps * lengthPerStep * (props.max - props.min) * 0.01 + props.min
     totalValue = parseFloat(totalValue.toFixed(0))
     totalValue = totalValue > props.max ? props.max : totalValue
 
@@ -54,7 +54,7 @@ export const useValuePosition = (
       min: props.min,
       max: props.max,
     })
-  };
+  }
 
-  return [valuePosition, setValuePosition];
-};
+  return [valuePosition, setValuePosition]
+}
