@@ -9,19 +9,23 @@
         ref="modalRef"
       >
         <transition name="drop-top">
-          <div v-show="modelValue" class="it-modal-wrap" @click.self="maskClick">
-            <div class="it-modal-wrap-inner">
-              <div class="it-modal-body" :style="{maxWidth: width}">
-                <slot name="image"></slot>
-                <slot></slot>
+          <div v-show="modelValue" class="it-modal-wrap">
+            <div class="it-modal-wrap-inner" @click.self="maskClick">
+              <div
+                class="it-modal-body"
+                :class="{'it-modal-body--has-image': itHasImage}"
+                :style="!itHasImage ? {maxWidth: width} : null"
+              >
+                <slot name="image" />
+                <slot />
                 <div v-if="itHasHeader" class="it-modal-header">
-                  <slot name="header"></slot>
+                  <slot name="header" />
                 </div>
                 <div v-if="itHasBody" class="it-modal-content">
-                  <slot name="body"></slot>
+                  <slot name="body" />
                 </div>
                 <div v-if="itHasActions" class="it-modal-footer">
-                  <slot name="actions"></slot>
+                  <slot name="actions" />
                 </div>
               </div>
             </div>
@@ -51,6 +55,7 @@ export default defineComponent({
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
     const itHasActions = useCheckSlot(slots, 'actions') !== null
+    const itHasImage = useCheckSlot(slots, 'image') !== null
 
     function close() {
       emit('update:modelValue', false)
@@ -80,6 +85,7 @@ export default defineComponent({
       itHasBody,
       itHasActions,
       close,
+      itHasImage,
     }
   },
 
