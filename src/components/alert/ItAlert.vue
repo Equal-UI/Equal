@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Colors } from '../../models'
+import { Colors } from '@/models'
 
 export default defineComponent({
   name: 'it-alert',

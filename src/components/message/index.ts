@@ -1,6 +1,6 @@
 import MessageVue from './ItMessage.vue'
 import { createApp, ComponentPublicInstance } from 'vue'
-import { Colors } from '../../models'
+import { Colors } from '@/models'
 
 interface IMessageOptions {
   text?: string | number

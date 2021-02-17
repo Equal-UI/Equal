@@ -23,13 +23,13 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { Positions } from '../../models'
+import { Positions } from '@/models'
 
 export default defineComponent({
   name: 'it-drawer',
   props: {
     modelValue: Boolean,
-    width: { type: String, default: '30vw' },
+    width: { type: String, default: '500px' },
     closableMask: { type: Boolean, default: true },
     hideMask: Boolean,
     placement: {

@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { Colors } from '../../models'
+import { Colors } from '@/models'
 import { defineComponent, computed } from 'vue'
 
 export default defineComponent({

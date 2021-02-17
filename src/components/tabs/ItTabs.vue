@@ -14,7 +14,7 @@
         role="tab"
         :ref="
           (el) => {
-            if (el) tabsRefs[i] = el
+            if (el) tabsRefs[i] = el;
           }
         "
         @keydown.right.prevent="vertical ? null : focusNextTab(i + 1)"
@@ -42,14 +42,7 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  nextTick,
-  onMounted,
-  provide,
-  ref,
-} from 'vue'
+import { defineComponent, nextTick, onMounted, provide, ref } from 'vue'
 
 export default defineComponent({
   name: 'it-tabs',

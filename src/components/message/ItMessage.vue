@@ -3,26 +3,35 @@
     <div
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
-      :style="{top: `${top}px`}"
+      :style="{ top: `${top}px` }"
       v-show="show"
       class="it-message"
       :class="[`it-message--${type}`]"
     >
-      <it-icon class="it-message-icon" :name="icon || typeIcon[type]" />
-      <span class="it-message-text">{{text}}</span>
+      <it-icon class="it-message-icon" :name="icon || computedIcon" />
+      <span class="it-message-text">{{ text }}</span>
     </div>
   </transition>
 </template>
 
 
+
 <script lang="ts">
+import { Colors } from '@/models'
 import { defineComponent } from 'vue'
 import ItIcon from '../icon'
+
+const typeIcon: { [key in Colors]?: string } = {
+  [Colors.PRIMARY]: 'info_outline',
+  [Colors.SUCCESS]: 'done',
+  [Colors.WARNING]: 'error_outline',
+  [Colors.DANGER]: 'clear',
+}
 
 export default defineComponent({
   name: 'it-message',
   components: {
-    'it-icon': ItIcon
+    'it-icon': ItIcon,
   },
   data() {
     return {
@@ -33,19 +42,14 @@ export default defineComponent({
       duration: 4000,
       onClose: () => {},
       top: 6,
-      type: 'primary',
-      timer: null
+      type: Colors.PRIMARY,
+      timer: (null as unknown) as NodeJS.Timeout,
     }
   },
   computed: {
-    typeIcon() {
-      return {
-        primary: 'info_outline',
-        success: 'done',
-        warning: 'error_outline',
-        danger: 'clear'
-      }
-    }
+    computedIcon(): Colors {
+      return typeIcon[this.type] as Colors
+    },
   },
   mounted() {
     this.startTimer()
@@ -67,8 +71,8 @@ export default defineComponent({
     },
 
     clearTimer() {
-      clearTimeout(this.timer)
-    }
-  }
+      clearTimeout(this.timer!)
+    },
+  },
 })
 </script>

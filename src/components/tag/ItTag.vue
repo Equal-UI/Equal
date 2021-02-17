@@ -1,16 +1,20 @@
 <template>
   <span
     v-show="show"
-    :class="['it-tag', type && `it-tag--${type}`, filled && `it-tag--${type}--filled`]"
+    :class="[
+      'it-tag',
+      type && `it-tag--${type}`,
+      filled && `it-tag--${type}--filled`,
+    ]"
   >
     <slot></slot>
-    <it-icon v-if="closable" @click="clickClose" name="clear" class="it-tag-close" />
+    <it-icon v-if="closable" @click="close" name="clear" class="it-tag-close" />
   </span>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Colors } from '../../models'
+import { Colors } from '@/models'
 
 export default defineComponent({
   name: 'it-tag',
@@ -24,11 +28,11 @@ export default defineComponent({
           Colors.DANGER,
           Colors.WARNING,
           Colors.BLACK,
-          Colors.NEUTRAL
-        ].includes(value)
+          Colors.NEUTRAL,
+        ].includes(value),
     },
     closable: { type: Boolean },
-    filled: { type: Boolean }
+    filled: { type: Boolean },
   },
   setup(props) {
     const show = ref(true)
@@ -40,7 +44,7 @@ export default defineComponent({
       show.value = false
     }
 
-    return {show, close}
-  }
+    return { show, close }
+  },
 })
 </script>

@@ -51,7 +51,8 @@
       <h3>Tag</h3>
 
       <it-tag>Neutral</it-tag>
-      <it-tag type="primary">Primary</it-tag>
+      <it-tag type="primary" closable>Primary</it-tag>
+      <it-tag type="primary" filled closable>Primary</it-tag>
       <it-tag type="success">Success</it-tag>
       <it-tag type="danger">Danger</it-tag>
       <it-tag type="warning">Warning</it-tag>
