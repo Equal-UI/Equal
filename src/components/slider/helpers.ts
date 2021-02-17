@@ -1,8 +1,4 @@
-type TTotalValuePosition = {
-  value: number
-  min: number
-  max: number
-}
+import {TTotalValuePosition} from "@/components/slider/types";
 
 export const getTotalPosition = ({value, min, max}: TTotalValuePosition): number => ((value - min) * 100) / (max - min)
 

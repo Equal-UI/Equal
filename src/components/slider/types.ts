@@ -1,5 +1,11 @@
 import {Ref} from 'vue'
-import {EKeyDirections} from "@components/slider/abstracts/enums";
+import {Positions} from "@/models";
+
+export type TTotalValuePosition = {
+  value: number
+  min: number
+  max: number
+}
 
 export type TStepItem = {
   left: number
@@ -13,6 +19,6 @@ export type TDataByPreparedStepList = {
   valuePosition: Ref<number>,
 }
 
-export type TKeyEvents = EKeyDirections.UP | EKeyDirections.RIGHT | EKeyDirections.DOWN | EKeyDirections.LEFT
+export type TKeyEvents = Positions.T | Positions.R | Positions.B | Positions.L
 
 export type TResultUseValuePosition = [Ref<number>, (newValue: number) => void]

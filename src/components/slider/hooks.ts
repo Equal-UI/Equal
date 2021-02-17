@@ -1,5 +1,10 @@
 import {computed, ref, Ref, ComputedRef} from 'vue';
-import {TDataByPreparedStepList, TResultUseValuePosition, TStepItem} from '@components/slider/abstracts/types';
+import {
+  TDataByPreparedStepList,
+  TResultUseValuePosition,
+  TStepItem,
+  TTotalValuePosition
+} from '@/components/slider/types';
 import {getTotalPosition} from "./helpers";
 
 export const useStepsPoints = (
@@ -30,22 +35,18 @@ export const useValuePosition = (
     value: props.modelValue,
     min: props.min,
     max: props.max,
-  });
+  } as TTotalValuePosition);
   const valuePosition: Ref<number> = ref<number>(startValue);
 
   const setValuePosition = (newValue: number) => {
-    if (newValue < 0) {
-      newValue = 0
-    } else if (newValue > 100) {
-      newValue = 100
-    }
+    newValue = (newValue < 0) ? 0 : (newValue > 100) ? 100 : newValue
 
     const lengthPerStep = 100 / ((props.max - props.min) / props.step)
     const steps = Math.round(newValue / lengthPerStep)
+
     let totalValue = steps * lengthPerStep * (props.max - props.min) * 0.01 + props.min
-    totalValue = parseFloat(totalValue.toFixed(0)) > props.max
-      ? props.max
-      : parseFloat(totalValue.toFixed(0))
+    totalValue = parseFloat(totalValue.toFixed(0))
+    totalValue = totalValue > props.max ? props.max : totalValue
 
     emit('update:modelValue', totalValue)
     valuePosition.value = getTotalPosition({

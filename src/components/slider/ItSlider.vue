@@ -3,8 +3,8 @@
     class="it-slider"
     :class="{'it-slider--disabled': disabled}"
     :tabindex="disabled ? -1 : 0"
-    @keydown.down.left.stop.prevent="keyEvent(EKeyDirections.LEFT)"
-    @keydown.up.right.stop.prevent="keyEvent(EKeyDirections.RIGHT)"
+    @keydown.down.left.stop.prevent="keyEvent(Positions.L)"
+    @keydown.up.right.stop.prevent="keyEvent(Positions.R)"
   >
     <span v-if="labelTop" class="it-slider-label">{{ labelTop }}</span>
     <div
@@ -45,12 +45,12 @@
 
 <script lang="ts">
 import {ComputedRef, defineComponent, ref, watch} from 'vue'
-import {TStepItem, TKeyEvents} from '@components/slider/abstracts/types'
-import {DEFAULT_STEP_POINT_HEIGHT} from "./constants";
+import {TStepItem, TKeyEvents, TTotalValuePosition} from '@/components/slider/types'
+import {DEFAULT_STEP_POINT_HEIGHT, DEFAULT_PROPS} from "./constants";
 import {useStepsPoints, useValuePosition} from './hooks'
 import {getTotalPosition, getCoordsByEvent} from './helpers'
-import Tooltip from '../tooltip/ItTooltip.vue'
-import {EKeyDirections} from "./abstracts/enums";
+import Tooltip from '@/components/tooltip/ItTooltip.vue'
+import {Positions} from '@/models/Positions'
 
 export default defineComponent({
   name: 'it-slider',
@@ -59,10 +59,10 @@ export default defineComponent({
     disabled: Boolean,
     stepPoints: Boolean,
     numbers: Boolean,
-    min: {type: Number, default: 0},
-    max: {type: Number, default: 100},
-    step: {type: Number, default: 1},
-    modelValue: {type: Number, default: 0}
+    min: {type: Number, default: DEFAULT_PROPS.MIN},
+    max: {type: Number, default: DEFAULT_PROPS.MAX},
+    step: {type: Number, default: DEFAULT_PROPS.STEP},
+    modelValue: {type: Number, default: DEFAULT_PROPS.VALUE}
   },
   setup(props, {emit}) {
     const sliderLineRef = ref(null)
@@ -92,7 +92,11 @@ export default defineComponent({
       () => props.modelValue,
       (newVal) => {
         if (props.disabled) return
-        const newValue = getTotalPosition({value: newVal, min: props.min, max: props.max})
+        const newValue = getTotalPosition({
+          value: newVal,
+          min: props.min,
+          max: props.max,
+        } as TTotalValuePosition)
         setValuePosition(newValue)
       }
     )
@@ -101,8 +105,8 @@ export default defineComponent({
       if (props.disabled) return
       tooltipRef.value!.showPopover()
 
-      const moreValue = [EKeyDirections.UP, EKeyDirections.RIGHT].includes(key)
-      const lessValue = [EKeyDirections.DOWN, EKeyDirections.LEFT].includes(key)
+      const moreValue = [Positions.T, Positions.R].includes(key)
+      const lessValue = [Positions.B, Positions.L].includes(key)
       const newValue = moreValue
         ? (props.modelValue + props.step)
         : lessValue ? (props.modelValue - props.step)
@@ -175,7 +179,7 @@ export default defineComponent({
     }
 
     function getStepPointStyles({step, index}: { step: TStepItem, index: number }): object {
-      const styles = {left: `${step.left}%`, height: null};
+      const styles: { [key: string]: any } = {left: `${step.left}%`, height: null};
       if (index === 0 || index === (stepsPoints.value.length - 1)) {
         styles.height = `${DEFAULT_STEP_POINT_HEIGHT}px`
       }
@@ -193,7 +197,7 @@ export default defineComponent({
       handleMouseEnter,
       handleMouseLeave,
       getStepPointStyles,
-      EKeyDirections
+      Positions
     }
   }
 })
