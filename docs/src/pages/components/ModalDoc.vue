@@ -41,14 +41,14 @@
               type="email"
               placeholder="yourmail@gmail.com"
             />
-            <div style="display: flex; flex-direction: row">
+            <div class="signupmodal-wrap-inputs" style="display: flex; flex-direction: row">
               <it-input
                 style="flex: 1"
                 labelTop="First Name"
                 placeholder="John"
               />
               <it-input
-                style="flex: 1; margin-left: 12px"
+                style="flex: 1"
                 labelTop="Second Name"
                 placeholder="Doe"
               />
@@ -64,10 +64,12 @@
               type="password"
               placeholder="Must have at least 6 characters"
             />
-            <it-checkbox
-              v-model="signincheckbox"
-              label="I agree to our Terms of Service"
-            />
+            <div class="signupmodal-wrap-checkbox">
+              <it-checkbox
+                v-model="signincheckbox"
+                label="I agree to our Terms of Service"
+              />
+            </div>
             <it-button
               block
               size="big"
@@ -175,14 +177,15 @@ export default defineComponent({
     <div class="signupmodal">
     <h2>Sign up</h2>
     <it-input labelTop="Email" prefix-icon="email" type="email" placeholder="yourmail@gmail.com" />
-      <div style="display:flex; flex-direction: row">
-      <it-input style="flex:1" labelTop="First Name" placeholder="John" />
-      <it-input style="flex:1; margin-left:12px" labelTop="Second Name" placeholder="Doe" />
-
+      <div class="signupmodal-wrap-inputs" style="display:flex;">
+        <it-input style="flex:1" labelTop="Second Name" placeholder="Doe" />
+        <it-input style="flex:1" labelTop="First Name" placeholder="John" />
       </div>
       <it-input labelTop="Username" prefix-icon="account_circle" placeholder="Unique Username" />
       <it-input labelTop="Password" prefix-icon="lock" type="password" placeholder="Must have at least 6 characters" />
-      <it-checkbox v-model="signincheckbox" label="I agree to our Terms of Service" />
+      <div class="signupmodal-wrap-checkbox">
+        <it-checkbox v-model="signincheckbox" label="I agree to our Terms of Service" />
+      </div>
       <it-button
         block
         size="big"
@@ -277,8 +280,18 @@ export default defineComponent({
 <style lang="less">
 .signupmodal {
   padding: 12px;
+
   & > * + * {
     margin: 16px 0;
+  }
+
+  &-wrap-inputs {
+    margin-left: -6px;
+    margin-right: -6px;
+
+    > div {
+      padding: 0 6px;
+    }
   }
 }
 </style>
