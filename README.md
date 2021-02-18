@@ -28,7 +28,7 @@ Equal UI is a Vue 3 components library with 30+ components based on TypeScript a
 # Features
   - Enterpise class UI based on Equal design system
   - Supports [Material Design Icons](https://material.io/resources/icons/)
-  - Lightweight: 11KB brotli
+  - Lightweight: 12KB brotli
   - Includes 30+ components
   - No external dependencies
   - Based on TypeScript
