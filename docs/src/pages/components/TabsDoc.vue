@@ -12,9 +12,9 @@
       </it-tabs>
 
       <template #props>
-        <it-checkbox label="Vertical" v-model="verticalTab" />
-        <it-checkbox label="Tab Box" v-model="boxTab" />
-        <it-checkbox label="Disabled Tab" v-model="disabledTab" />
+        <it-checkbox v-model="verticalTab" label="Vertical" />
+        <it-checkbox v-model="boxTab" label="Tab Box" />
+        <it-checkbox v-model="disabledTab" label="Disabled Tab" />
       </template>
     </Demobox>
     <Box :code="boxedCode" title="Tabs in box">
@@ -53,21 +53,29 @@
         </it-tabs>
       </div>
     </Box>
-    <props-table tag-name="it-tabs" :data-sheet="dataSheet" :slot-sheet="slotSheet"/>
-    <props-table tag-name="it-tab" :data-sheet="dataSheet2" :slot-sheet="slotSheet2" />
+    <props-table
+      tag-name="it-tabs"
+      :data-sheet="dataSheet"
+      :slot-sheet="slotSheet"
+    />
+    <props-table
+      tag-name="it-tab"
+      :data-sheet="dataSheet2"
+      :slot-sheet="slotSheet2"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: () => ({
-    verticalTab: false,
-    boxTab: true,
-    disabledTab: false,
+  export default defineComponent({
+    data: () => ({
+      verticalTab: false,
+      boxTab: true,
+      disabledTab: false,
 
-    boxedCode: `<div style="display: flex; flex-direction: column; flex: 1">
+      boxedCode: `<div style="display: flex; flex-direction: column; flex: 1">
   <it-tabs box style="flex: 1">
     <it-tab title="Tab 1">First tab</it-tab>
     <it-tab title="Tab 2">Second tab</it-tab>
@@ -81,7 +89,7 @@ export default defineComponent({
   </it-tabs>
 </div>`,
 
-    notboxedCode: `<div style="display: flex; flex-direction: column; flex: 1">
+      notboxedCode: `<div style="display: flex; flex-direction: column; flex: 1">
   <it-tabs style="flex: 1">
     <it-tab title="Tab 1">First tab</it-tab>
     <it-tab title="Tab 2">Second tab</it-tab>
@@ -95,51 +103,47 @@ export default defineComponent({
   </it-tabs>
 </div>`,
 
-    dataSheet: [
-      {
-        property: 'initial-tab',
-        type: ['Number'],
-        default: '0',
-        values: [],
-        description: 'Selected tab index',
-      },
-      {
-        property: 'vertical',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Makes tabs vertical',
-      },
-      {
-        property: 'box',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Show tabs in box',
-      },
-    ],
-    slotSheet: [
-      {name: 'default', description: 'Slot for it-tab'}
-    ],
-    dataSheet2: [
-      {
-        property: 'title',
-        type: ['String'],
-        default: '',
-        values: [],
-        description: 'Tab title',
-      },
-      {
-        property: 'disabled',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Makes tab disabled',
-      }
-    ],
-    slotSheet2: [
-      {name: 'default', description: 'it-tab content'}
-    ]
-  }),
-})
+      dataSheet: [
+        {
+          property: 'initial-tab',
+          type: ['Number'],
+          default: '0',
+          values: [],
+          description: 'Selected tab index',
+        },
+        {
+          property: 'vertical',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Makes tabs vertical',
+        },
+        {
+          property: 'box',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Show tabs in box',
+        },
+      ],
+      slotSheet: [{ name: 'default', description: 'Slot for it-tab' }],
+      dataSheet2: [
+        {
+          property: 'title',
+          type: ['String'],
+          default: '',
+          values: [],
+          description: 'Tab title',
+        },
+        {
+          property: 'disabled',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Makes tab disabled',
+        },
+      ],
+      slotSheet2: [{ name: 'default', description: 'it-tab content' }],
+    }),
+  })
 </script>

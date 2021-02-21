@@ -1,0 +1,6 @@
+{
+  "extends": ["stylelint-config-recommended", "stylelint-config-standard"],
+  "ignoreFiles": [
+    "node_modules/**/*"
+  ]
+}

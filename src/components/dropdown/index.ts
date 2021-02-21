@@ -6,7 +6,7 @@ import { App, DefineComponent } from 'vue'
 const dropdown = {
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 }
 
 for (const elem in dropdown) {

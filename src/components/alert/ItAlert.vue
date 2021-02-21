@@ -24,55 +24,55 @@
       </div>
       <it-icon
         v-if="closable"
-        @click="clickCross"
         name="clear"
         class="it-alert-close"
+        @click="clickCross"
       />
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Colors } from '@/models/enums'
+  import { defineComponent } from 'vue'
+  import { Colors } from '@/models/enums'
 
-export default defineComponent({
-  name: 'it-alert',
-  props: {
-    type: {
-      type: String,
-      default: Colors.PRIMARY,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-        ].includes(value),
+  export default defineComponent({
+    name: 'ItAlert',
+    props: {
+      type: {
+        type: String,
+        default: Colors.PRIMARY,
+        validator: (value: Colors) =>
+          [
+            Colors.PRIMARY,
+            Colors.SUCCESS,
+            Colors.DANGER,
+            Colors.WARNING,
+          ].includes(value),
+      },
+      showIcon: { type: Boolean, default: true },
+      closable: { type: Boolean, default: false },
+      iconbox: { type: Boolean, default: false },
+      visible: { type: Boolean, default: true },
+      title: { type: String },
+      body: { type: String },
     },
-    showIcon: { type: Boolean, default: true },
-    closable: { type: Boolean, default: false },
-    iconbox: { type: Boolean, default: false },
-    visible: { type: Boolean, default: true },
-    title: { type: String },
-    body: { type: String },
-  },
-  methods: {
-    clickCross() {
-      this.$emit('on-close')
+    computed: {
+      typeIcon(): {
+        [key: string]: string
+      } {
+        return {
+          primary: 'info_outline',
+          success: 'done',
+          warning: 'error_outline',
+          danger: 'clear',
+        }
+      },
     },
-  },
-  computed: {
-    typeIcon(): {
-      [key: string]: string
-    } {
-      return {
-        primary: 'info_outline',
-        success: 'done',
-        warning: 'error_outline',
-        danger: 'clear',
-      }
+    methods: {
+      clickCross() {
+        this.$emit('on-close')
+      },
     },
-  },
-})
+  })
 </script>

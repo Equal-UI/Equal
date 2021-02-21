@@ -4,7 +4,6 @@ function _interopDefault(ex) {
   return ex && typeof ex === 'object' && 'default' in ex ? ex.default : ex
 }
 
-
 import 'prismjs'
 import 'prismjs/components/prism-bash.min.js'
 import 'prismjs/plugins/autolinker/prism-autolinker.min'
@@ -49,8 +48,8 @@ export default defineComponent({
       throw new Error(
         'Prism component for language "'.concat(
           language,
-          '" was not found, did you forget to register it? See all available ones: https://cdn.jsdelivr.net/npm/prismjs/components/'
-        )
+          '" was not found, did you forget to register it? See all available ones: https://cdn.jsdelivr.net/npm/prismjs/components/',
+        ),
       )
     }
 
@@ -62,7 +61,7 @@ export default defineComponent({
           domProps: assign({}, ctx.$data.domProps, {
             innerHTML: Prism.highlight(code, prismLanguage),
           }),
-        })
+        }),
       )
     }
 
@@ -76,7 +75,7 @@ export default defineComponent({
           class: className,
           innerHTML: Prism.highlight(code, prismLanguage),
         }),
-      ]
+      ],
     )
   },
 })

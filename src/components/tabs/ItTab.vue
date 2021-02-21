@@ -1,27 +1,27 @@
 <template>
-  <div class="it-tabs-body" :key="title" v-show="isActive">
+  <div v-show="isActive" :key="title" class="it-tabs-body">
     <slot></slot>
   </div>
 </template>
 
 <script>
-import { defineComponent, inject, ref, toRefs } from 'vue'
+  import { defineComponent, inject, ref, toRefs } from 'vue'
 
-export default defineComponent({
-  name: 'it-tab',
-  props: {
-    title: {
-      type: String,
-      default: '',
+  export default defineComponent({
+    name: 'ItTab',
+    props: {
+      title: {
+        type: String,
+        default: '',
+      },
+      disabled: Boolean,
     },
-    disabled: Boolean,
-  },
-  setup(props) {
-    const tabs = inject('tabs', [])
-    const isActive = ref(false)
-    tabs.value.push({ ...toRefs(props), isActive })
+    setup(props) {
+      const tabs = inject('tabs', [])
+      const isActive = ref(false)
+      tabs.value.push({ ...toRefs(props), isActive })
 
-    return { isActive }
-  },
-})
+      return { isActive }
+    },
+  })
 </script>

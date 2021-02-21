@@ -2,9 +2,11 @@
 
 .set-tag-type (@color) {
   border: 1px solid @color;
-  >.it-tag-close {
+
+  > .it-tag-close {
     color: inherit;
   }
+
   &--filled {
     background-color: @color;
     color: #fff;
@@ -23,7 +25,7 @@
   font-weight: 500;
   padding: 4px 8px;
   color: @color-secondary-black;
-  background-color: #ffffff;
+  background-color: #fff;
 
   &-close {
     font-size: inherit;
@@ -36,15 +38,19 @@
   &--primary {
     .set-tag-type(@color-primary);
   }
+
   &--success {
     .set-tag-type(@color-success);
   }
+
   &--warning {
     .set-tag-type(@color-warning);
   }
+
   &--danger {
     .set-tag-type(@color-danger);
   }
+
   &--black {
     .set-tag-type(@color-secondary-black);
   }

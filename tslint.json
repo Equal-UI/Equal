@@ -1,17 +1,25 @@
 {
-  "defaultSeverity": "warning",
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
   "extends": [
-    "tslint:recommended"
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended"
   ],
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "plugins": [],
   "linterOptions": {
-    "exclude": [
-      "node_modules/**",
-      "tests/**"
-    ]
+    "exclude": ["node_modules/**", "tests/**"]
   },
   "rules": {
     "indent": [true, "spaces", 2],
-    "trailing-comma": [false, {"multiline": "never", "singleline": "never"}],
+    "trailing-comma": [false, { "multiline": "never", "singleline": "never" }],
     "interface-name": false,
     "no-consecutive-blank-lines": false,
     "object-literal-sort-keys": false,

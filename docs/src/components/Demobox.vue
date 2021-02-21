@@ -4,22 +4,22 @@
       <slot></slot>
     </div>
     <div class="it-demobox-props">
-      <h3 style="margin-top: 0px;">Props</h3>
+      <h3 style="margin-top: 0">Props</h3>
       <slot name="props"></slot>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'demobox'
-}
+  export default {
+    name: 'Demobox',
+  }
 </script>
 
 <style lang="less">
   .it-demobox {
-    background: #ffffff;
-    border: 1px solid #D3DAE6;
+    background: #fff;
+    border: 1px solid #d3dae6;
     border-radius: 4px;
     display: flex;
     width: 100%;
@@ -40,7 +40,7 @@ export default {
       flex-direction: column;
       padding: 12px 16px;
       flex: 2;
-      border-left: 1px solid #D3DAE6;
+      border-left: 1px solid #d3dae6;
     }
 
     &-props > *:not(.it-divider) {
@@ -51,15 +51,17 @@ export default {
   .it-demobox + .table-box {
     margin-top: 30px;
   }
+
   @media only screen and (max-width: 600px) {
     .it-demobox {
       flex-direction: column;
+
       &-scene {
-        padding: 20px 0px;
+        padding: 20px 0;
       }
 
       &-props {
-        border-top: 1px solid #D3DAE6;
+        border-top: 1px solid #d3dae6;
         border-left: none;
       }
     }

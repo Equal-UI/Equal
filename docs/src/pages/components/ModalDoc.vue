@@ -30,36 +30,39 @@
       </it-modal>
     </Box>
     <Box :code="signinCode" title="Sign Up modal">
-      <it-button @click="signinModal = true" type="primary">Sign up</it-button>
+      <it-button type="primary" @click="signinModal = true">Sign up</it-button>
       <it-modal v-model="signinModal">
         <template #body>
           <div class="signupmodal">
             <h2>Sign up</h2>
             <it-input
-              labelTop="Email"
+              label-top="Email"
               prefix-icon="email"
               type="email"
               placeholder="yourmail@gmail.com"
             />
-            <div class="signupmodal-wrap-inputs" style="display: flex; flex-direction: row">
+            <div
+              class="signupmodal-wrap-inputs"
+              style="display: flex; flex-direction: row"
+            >
               <it-input
                 style="flex: 1"
-                labelTop="First Name"
+                label-top="First Name"
                 placeholder="John"
               />
               <it-input
                 style="flex: 1"
-                labelTop="Second Name"
+                label-top="Second Name"
                 placeholder="Doe"
               />
             </div>
             <it-input
-              labelTop="Username"
+              label-top="Username"
               prefix-icon="account_circle"
               placeholder="Unique Username"
             />
             <it-input
-              labelTop="Password"
+              label-top="Password"
               prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
@@ -84,7 +87,7 @@
       </it-modal>
     </Box>
     <Box :code="confirmCode" title="Confirmation modal">
-      <it-button @click="confirmModal = true" type="danger"
+      <it-button type="danger" @click="confirmModal = true"
         >Delete account</it-button
       >
       <it-modal v-model="confirmModal">
@@ -108,7 +111,7 @@
       </it-modal>
     </Box>
     <Box :code="imageCode" title="Image only modal">
-      <it-button @click="imageModal = true" type="primary"
+      <it-button type="primary" @click="imageModal = true"
         >Show image</it-button
       >
       <it-modal v-model="imageModal">
@@ -125,17 +128,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: () => ({
-    defaultModal: false,
-    signinModal: false,
-    signincheckbox: false,
-    confirmModal: false,
-    imageModal: false,
+  export default defineComponent({
+    data: () => ({
+      defaultModal: false,
+      signinModal: false,
+      signincheckbox: false,
+      confirmModal: false,
+      imageModal: false,
 
-    imageCode: `<it-button @click="imageModal = true" type="primary"
+      imageCode: `<it-button @click="imageModal = true" type="primary"
   >Show image</it-button
 >
 <it-modal v-model="imageModal" width="auto">
@@ -147,7 +150,7 @@ export default defineComponent({
   </template>
 </it-modal>`,
 
-    exampleCode: `<it-button @click="defaultModal = true">Modal</it-button>
+      exampleCode: `<it-button @click="defaultModal = true">Modal</it-button>
 <it-modal v-model="defaultModal">
   <template #image>
     <img
@@ -171,7 +174,7 @@ export default defineComponent({
   </template>
 </it-modal>`,
 
-    signinCode: `<it-button @click="signinModal = true" type="primary">Sign up</it-button>
+      signinCode: `<it-button @click="signinModal = true" type="primary">Sign up</it-button>
 <it-modal v-model="signinModal">
   <template #body>
     <div class="signupmodal">
@@ -199,7 +202,7 @@ export default defineComponent({
   </template>
 </it-modal>`,
 
-    confirmCode: `<it-button @click="confirmModal = true" type="danger">Delete account</it-button>
+      confirmCode: `<it-button @click="confirmModal = true" type="danger">Delete account</it-button>
 <it-modal v-model="confirmModal">
   <template #header>
     <h3>Delete account</h3>
@@ -219,79 +222,79 @@ export default defineComponent({
     >
   </template>
 </it-modal>`,
-    dataSheet: [
-      {
-        property: 'value (v-model)',
-        type: ['Boolean'],
-        default: '',
-        values: [],
-        description: 'v-model value of the modal',
-      },
-      {
-        property: 'closable-mask',
-        type: ['Boolean'],
-        default: 'true',
-        values: [],
-        description: 'Close modal on the mask click',
-      },
-      {
-        property: 'width',
-        type: ['String'],
-        default: '500px',
-        values: [],
-        description: 'Modal body width',
-      },
-      // todo:
-      // {
-      //   property: 'close-on-esc',
-      //   type: ['Boolean'],
-      //   default: 'true',
-      //   values: [],
-      //   description: 'Close modal on esc',
-      // },
-    ],
+      dataSheet: [
+        {
+          property: 'value (v-model)',
+          type: ['Boolean'],
+          default: '',
+          values: [],
+          description: 'v-model value of the modal',
+        },
+        {
+          property: 'closable-mask',
+          type: ['Boolean'],
+          default: 'true',
+          values: [],
+          description: 'Close modal on the mask click',
+        },
+        {
+          property: 'width',
+          type: ['String'],
+          default: '500px',
+          values: [],
+          description: 'Modal body width',
+        },
+        // todo:
+        // {
+        //   property: 'close-on-esc',
+        //   type: ['Boolean'],
+        //   default: 'true',
+        //   values: [],
+        //   description: 'Close modal on esc',
+        // },
+      ],
 
-    slotSheet: [
-      {
-        name: 'default',
-        description: 'Modal body without padding',
-      },
-      {
-        name: 'image',
-        description: 'Modal image',
-      },
-      {
-        name: 'header',
-        description: 'Modal header',
-      },
-      {
-        name: 'body',
-        description: 'Modal body',
-      },
-      {
-        name: 'actions',
-        description: 'Modal action buttons',
-      },
-    ],
-  }),
-})
+      slotSheet: [
+        {
+          name: 'default',
+          description: 'Modal body without padding',
+        },
+        {
+          name: 'image',
+          description: 'Modal image',
+        },
+        {
+          name: 'header',
+          description: 'Modal header',
+        },
+        {
+          name: 'body',
+          description: 'Modal body',
+        },
+        {
+          name: 'actions',
+          description: 'Modal action buttons',
+        },
+      ],
+    }),
+  })
 </script>
 
 <style lang="less">
-.signupmodal {
-  padding: 12px;
+  .signupmodal {
+    padding: 12px;
 
-  & > * + * {
-    margin: 16px 0;
-  }
+    & > * + * {
+      margin: 16px 0;
+    }
 
-  &-wrap-inputs {
-    margin-left: -6px;
-    margin-right: -6px;
+    &-wrap-inputs {
+      margin-left: -6px;
+      margin-right: -6px;
 
-    > div {
-      padding: 0 6px;
+      > div {
+        padding: 0 6px;
+      }
     }
   }
-}
 </style>

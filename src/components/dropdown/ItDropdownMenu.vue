@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: 'it-dropdown-menu'
-})
+  export default defineComponent({
+    name: 'ItDropdownMenu',
+  })
 </script>

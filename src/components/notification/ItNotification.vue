@@ -1,12 +1,12 @@
 <template>
   <transition name="fade-bottom" @after-leave="destroy">
     <div
-      @mouseleave="startTimer"
-      @mouseenter="clearTimer"
-      :style="positionPx"
       v-show="show"
+      :style="positionPx"
       class="it-notification"
       :class="[`it-notification--${type}`]"
+      @mouseleave="startTimer"
+      @mouseenter="clearTimer"
     >
       <div
         class="it-notification-left"
@@ -21,12 +21,12 @@
           class="it-notification-icon"
           :name="icon || typeIcon"
         />
-        <span class="it-notification-emoji" v-if="emoji && !image">{{
+        <span v-if="emoji && !image" class="it-notification-emoji">{{
           emoji
         }}</span>
       </div>
       <div class="it-notification-text-block">
-        <span class="it-notification-text-block-title" v-if="title">{{
+        <span v-if="title" class="it-notification-text-block-title">{{
           title
         }}</span>
         <span>{{ text }}</span>
@@ -36,85 +36,85 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Colors, Positions } from '@/models/enums'
-import ItIcon from '@/components/icon'
-import { typeIcon } from '@/components/message/model'
+  import { defineComponent } from 'vue'
+  import { Colors, Positions } from '@/models/enums'
+  import ItIcon from '@/components/icon'
+  import { typeIcon } from '@/components/message/model'
 
-const colorTypes: { [key in Colors]?: string } = {
-  [Colors.PRIMARY]: '#3051ff',
-  [Colors.SUCCESS]: '#07d85b',
-  [Colors.DANGER]: '#F93155',
-  [Colors.WARNING]: '#ffba00',
-}
+  const colorTypes: { [key in Colors]?: string } = {
+    [Colors.PRIMARY]: '#3051ff',
+    [Colors.SUCCESS]: '#07d85b',
+    [Colors.DANGER]: '#F93155',
+    [Colors.WARNING]: '#ffba00',
+  }
 
-export default defineComponent({
-  name: 'it-notification',
-  components: {
-    'it-icon': ItIcon,
-  },
-  data() {
-    return {
-      id: null,
-      show: false,
-      text: '',
-      title: '',
-      icon: '',
-      emoji: '',
-      image: '',
-      duration: 5000,
-      position: {} as { [key: string]: string },
-      placement: Positions.TR,
-      type: Colors.PRIMARY,
-      timer: (null as unknown) as NodeJS.Timeout,
-      onClose: () => {},
-    }
-  },
-  computed: {
-    backgroundImage(): string {
-      return this.image ? `url(${this.image})` : ''
+  export default defineComponent({
+    name: 'ItNotification',
+    components: {
+      'it-icon': ItIcon,
     },
-    typeColor(): string {
-      if (this.emoji) {
-        return '#fbfbfb'
+    data() {
+      return {
+        id: null,
+        show: false,
+        text: '',
+        title: '',
+        icon: '',
+        emoji: '',
+        image: '',
+        duration: 5000,
+        position: {} as { [key: string]: string },
+        placement: Positions.TR,
+        type: Colors.PRIMARY,
+        timer: (null as unknown) as NodeJS.Timeout,
+        onClose: () => {},
       }
-      return colorTypes[this.type]!
     },
-    positionPx() {
-      const posPx: { [key: string]: string } = {}
-      for (const key in this.position) {
-        if (this.position.hasOwnProperty(key)) {
-          posPx[key] = this.position[key] + 'px'
+    computed: {
+      backgroundImage(): string {
+        return this.image ? `url(${this.image})` : ''
+      },
+      typeColor(): string {
+        if (this.emoji) {
+          return '#fbfbfb'
         }
-      }
-      return posPx
-    },
-    typeIcon(): string {
-      return typeIcon[this.type]!
-    },
-  },
-  mounted() {
-    this.startTimer()
-  },
-  methods: {
-    destroy() {
-      this.$el.parentNode!.removeChild(this.$el)
-    },
-
-    startTimer() {
-      if (this.duration > 0) {
-        this.timer = setTimeout(() => {
-          this.show = false
-          if (this.onClose) {
-            this.onClose()
+        return colorTypes[this.type]!
+      },
+      positionPx() {
+        const posPx: { [key: string]: string } = {}
+        for (const key in this.position) {
+          if (this.position.hasOwnProperty(key)) {
+            posPx[key] = this.position[key] + 'px'
           }
-        }, this.duration) as any
-      }
+        }
+        return posPx
+      },
+      typeIcon(): string {
+        return typeIcon[this.type]!
+      },
     },
+    mounted() {
+      this.startTimer()
+    },
+    methods: {
+      destroy() {
+        this.$el.parentNode!.removeChild(this.$el)
+      },
 
-    clearTimer() {
-      clearTimeout(this.timer)
+      startTimer() {
+        if (this.duration > 0) {
+          this.timer = setTimeout(() => {
+            this.show = false
+            if (this.onClose) {
+              this.onClose()
+            }
+          }, this.duration) as any
+        }
+      },
+
+      clearTimer() {
+        clearTimeout(this.timer)
+      },
     },
-  },
-})
+  })
 </script>

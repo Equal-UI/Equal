@@ -5,15 +5,17 @@ import vue from '@vitejs/plugin-vue'
  * type {import('vite').UserConfig}
  */
 export default {
-  alias: [{
-    find: "@",
-    replacement: path.resolve(__dirname, 'src')
-  }],
+  alias: [
+    {
+      find: '@',
+      replacement: path.resolve(__dirname, 'src'),
+    },
+  ],
   plugins: [vue()],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'Equal'
+      name: 'Equal',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -23,9 +25,9 @@ export default {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
-  }
+          vue: 'Vue',
+        },
+      },
+    },
+  },
 }

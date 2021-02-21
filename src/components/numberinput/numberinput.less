@@ -2,6 +2,7 @@
 
 .it-number-field {
   display: flex;
+
   & .it-btn:first-child {
     border-radius: 4px 0 0 4px;
     border-right: 0;
@@ -26,7 +27,7 @@
   &--disabled {
     border-color: @color-disabled-border !important;
     background: @color-disabled-bg;
-    
+
     & input {
       color: @color-disabled-border;
       cursor: not-allowed;
@@ -35,7 +36,9 @@
 
   &:focus-within {
     border: 1px solid @color-primary;
-    box-shadow: 0px 2px 4px fade(@color-primary, 40%), 0 0 0 3px fade(@color-primary, 20%);
+    box-shadow: 0 2px 4px fade(@color-primary, 40%),
+      0 0 0 3px fade(@color-primary, 20%);
+
     &:hover {
       border-color: @color-primary;
     }
@@ -45,19 +48,19 @@
     border: 1px solid darken(@color-secondary-text, 10);
   }
 
-&-original {
-  padding: 0;
-  -moz-appearance: textfield;
-}
+  &-original {
+    padding: 0;
+    -moz-appearance: textfield;
+  }
 
-  &-original, &-buffer {
+  &-original,
+  &-buffer {
     font-size: 13px;
     background-color: transparent;
     // min-width: 16px;
     height: 100%;
     line-height: 1.5;
     border: none;
-    
     box-sizing: border-box;
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
       Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;

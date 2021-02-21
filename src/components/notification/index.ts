@@ -38,11 +38,11 @@ const Notification = (options: Partial<INotificationOptions> = {}) => {
 
   const newData = Object.assign(options, { id })
   for (const [key, value] of Object.entries(newData)) {
-    (instance.$data as INotificationOptions)[key] = value
+    ;(instance.$data as INotificationOptions)[key] = value
   }
 
   document.body.appendChild(instance.$el)
-    ; (instance.$data as INotificationOptions).show = true
+  ;(instance.$data as INotificationOptions).show = true
 
   const offsets: { [key: string]: number } = {
     [Positions.TR]: 0,
@@ -53,15 +53,16 @@ const Notification = (options: Partial<INotificationOptions> = {}) => {
 
   notifications
     .filter(
-      (el) => (el.$data as INotificationOptions).placement === options.placement
+      (el) =>
+        (el.$data as INotificationOptions).placement === options.placement,
     )
     .forEach((el) => {
       offsets[options.placement!] += (el.$el as HTMLElement).offsetHeight + 6
     })
-    ; (instance.$data as INotificationOptions).position = {
-      [options.placement.split('-')[0]]: offsets[options.placement] + 6,
-      [options.placement.split('-')[1]]: 10,
-    }
+  ;(instance.$data as INotificationOptions).position = {
+    [options.placement.split('-')[0]]: offsets[options.placement] + 6,
+    [options.placement.split('-')[1]]: 10,
+  }
 
   notifications.push(instance)
 
@@ -70,7 +71,7 @@ const Notification = (options: Partial<INotificationOptions> = {}) => {
 
 Notification.close = (id: number, onClose?: () => void) => {
   const index = notifications.findIndex(
-    (el) => (el.$data as INotificationOptions).id === id
+    (el) => (el.$data as INotificationOptions).id === id,
   )
   const height = (notifications[index].$el as HTMLElement).offsetHeight
   if (onClose) {
@@ -80,7 +81,7 @@ Notification.close = (id: number, onClose?: () => void) => {
     .filter(
       (el) =>
         (el.$data as INotificationOptions).placement ===
-        (notifications[index].$data as INotificationOptions).placement
+        (notifications[index].$data as INotificationOptions).placement,
     )
     .forEach((el) => {
       const data = el.$data as INotificationOptions
@@ -94,16 +95,12 @@ Notification.close = (id: number, onClose?: () => void) => {
     })
   notifications.splice(index, 1)
 }
-
-[
-  Colors.PRIMARY,
-  Colors.SUCCESS,
-  Colors.DANGER,
-  Colors.WARNING,
-].forEach((type) => {
-  // @ts-ignore
-  Notification[type] = (options: INotificationOptions) =>
-    Notification({ ...options, type })
-})
+;[Colors.PRIMARY, Colors.SUCCESS, Colors.DANGER, Colors.WARNING].forEach(
+  (type) => {
+    // @ts-ignore
+    Notification[type] = (options: INotificationOptions) =>
+      Notification({ ...options, type })
+  },
+)
 
 export default Notification

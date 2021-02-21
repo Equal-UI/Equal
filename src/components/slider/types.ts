@@ -13,10 +13,10 @@ export type TStepItem = {
 }
 
 export type TDataByPreparedStepList = {
-  max: number,
-  min: number,
-  step: number,
-  valuePosition: Ref<number>,
+  max: number
+  min: number
+  step: number
+  valuePosition: Ref<number>
 }
 
 export type TKeyEvents = Positions.T | Positions.R | Positions.B | Positions.L

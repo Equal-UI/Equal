@@ -17,9 +17,9 @@
       </div>
 
       <template #props>
-        <it-input v-model="radioLabel" labelTop="Radio label" />
-        <it-checkbox label="Pulse" v-model="radioPulse" />
-        <it-checkbox label="Disabled" v-model="radioDisabled" />
+        <it-input v-model="radioLabel" label-top="Radio label" />
+        <it-checkbox v-model="radioPulse" label="Pulse" />
+        <it-checkbox v-model="radioDisabled" label="Disabled" />
       </template>
     </Demobox>
 
@@ -50,22 +50,20 @@
 
     <Box :code="codeSublabel" title="Sublabel">
       <div style="width: 60%">
-        <it-radio type="primary" v-model="subradio" :value="1"
+        <it-radio v-model="subradio" type="primary" :value="1"
           >By signing this I agree with Terms and Conditions</it-radio
         >
         <br />
-        <it-radio type="primary" v-model="subradio" :value="2">
-          <template v-slot:default>Subscribe for updates</template>
-          <template v-slot:sublabel>Get notified when you get updates</template>
+        <it-radio v-model="subradio" type="primary" :value="2">
+          <template #default>Subscribe for updates</template>
+          <template #sublabel>Get notified when you get updates</template>
         </it-radio>
       </div>
     </Box>
 
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-      <p style="padding: 0px 24px">
-        Pulse helps you to catch user's attention
-      </p>
+        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
       </template>
       <it-radio v-model="pulseValue" pulse label="Look at me" value="42" />
     </Box>
@@ -77,89 +75,89 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: () => ({
-    radioValue: '1',
-    radioLabel: 'Edit me',
-    radioPulse: false,
-    radioDisabled: false,
-    pulseValue: false,
-    typeValue: false,
-    subradio: 1,
+  export default defineComponent({
+    data: () => ({
+      radioValue: '1',
+      radioLabel: 'Edit me',
+      radioPulse: false,
+      radioDisabled: false,
+      pulseValue: false,
+      typeValue: false,
+      subradio: 1,
 
-    typeCode: `<it-radio v-model="typeValue" label="Primary" value="00"/>
+      typeCode: `<it-radio v-model="typeValue" label="Primary" value="00"/>
 <it-radio v-model="typeValue" type="success" label="Success" value="11"/>
 <it-radio v-model="typeValue" type="danger" label="Danger" value="22"/>
 <it-radio v-model="typeValue" type="warning" label="Warning" value="33"/>`,
 
-    pulseCode: `<it-radio v-model="pulseValue" pulse label="Look at me" value="42"/>`,
+      pulseCode: `<it-radio v-model="pulseValue" pulse label="Look at me" value="42"/>`,
 
-    disabledCode: `<it-radio v-model="pulseValue" disabled label="I'm disabled" value="42"/>`,
+      disabledCode: `<it-radio v-model="pulseValue" disabled label="I'm disabled" value="42"/>`,
 
-    codeSublabel: `<it-radio type="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
+      codeSublabel: `<it-radio type="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
 
 <it-radio type="primary" v-model="subradio" :value="2">
   <template v-slot:default>Subscribe for updates</template>
   <template v-slot:sublabel>Get notified when you get updates</template>
 </it-radio>`,
 
-    dataSheet: [
-      {
-        property: 'type',
-        type: ['String'],
-        default: 'primary',
-        values: ['primary', 'success', 'danger', 'warning'],
-        description: 'Type of the radio',
-      },
-      {
-        property: 'label',
-        type: ['String'],
-        default: '-',
-        values: [],
-        description: 'Label of the radio',
-      },
-      {
-        property: 'sub-label',
-        type: ['String'],
-        default: '',
-        values: [],
-        description: 'Sub label of the radio',
-      },
-      {
-        property: 'value',
-        type: ['String', 'Number'],
-        default: '-',
-        values: [],
-        description: 'Value of the radio',
-      },
-      {
-        property: 'pulse',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Pulse of the radio',
-      },
-      {
-        property: 'disabled',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Makes radio disabled',
-      },
-    ],
-  }),
-})
+      dataSheet: [
+        {
+          property: 'type',
+          type: ['String'],
+          default: 'primary',
+          values: ['primary', 'success', 'danger', 'warning'],
+          description: 'Type of the radio',
+        },
+        {
+          property: 'label',
+          type: ['String'],
+          default: '-',
+          values: [],
+          description: 'Label of the radio',
+        },
+        {
+          property: 'sub-label',
+          type: ['String'],
+          default: '',
+          values: [],
+          description: 'Sub label of the radio',
+        },
+        {
+          property: 'value',
+          type: ['String', 'Number'],
+          default: '-',
+          values: [],
+          description: 'Value of the radio',
+        },
+        {
+          property: 'pulse',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Pulse of the radio',
+        },
+        {
+          property: 'disabled',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Makes radio disabled',
+        },
+      ],
+    }),
+  })
 </script>
 
 <style lang="less">
-.radios {
-  display: flex;
-  flex-direction: column;
+  .radios {
+    display: flex;
+    flex-direction: column;
 
-  & > label + label {
-    margin-top: 10px;
+    & > label + label {
+      margin-top: 10px;
+    }
   }
-}
 </style>

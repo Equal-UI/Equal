@@ -12,21 +12,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  name: 'Row',
-  props: {
-    width: {default: 12},
-    justify: String,
-    align: String,
-  },
-})
+  export default defineComponent({
+    name: 'Row',
+    props: {
+      width: { default: 12 },
+      justify: String,
+      align: String,
+    },
+  })
 </script>
 
 <style lang="css">
-.it-row {
-  clear: both;
-  flex-flow: wrap;
-}
+  .it-row {
+    clear: both;
+    flex-flow: wrap;
+  }
 </style>

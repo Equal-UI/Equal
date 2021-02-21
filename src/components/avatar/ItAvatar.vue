@@ -21,31 +21,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, inject } from 'vue'
+  import { defineComponent, computed, inject } from 'vue'
 
-export default defineComponent({
-  name: 'it-avatar',
-  props: {
-    src: { type: String },
-    text: { type: String },
-    color: { type: String },
-    size: { type: String, default: '40px' },
-    square: { type: Boolean },
-  },
-  setup(props) {
-    const squaredGroup = inject('square', null)
-    const groupSize = inject('size', null)
-    const computedSize = computed(() => groupSize || props.size)
-    const avatarText = computed(() => {
-      if (!props.text) {
-        return
-      }
-      const splited = props.text.split(' ')
-      return splited.length > 1
-        ? splited[0][0].toUpperCase() + splited[1][0].toUpperCase()
-        : props.text[0].toUpperCase()
-    })
-    return { squaredGroup, computedSize, avatarText }
-  },
-})
+  export default defineComponent({
+    name: 'ItAvatar',
+    props: {
+      src: { type: String },
+      text: { type: String },
+      color: { type: String },
+      size: { type: String, default: '40px' },
+      square: { type: Boolean },
+    },
+    setup(props) {
+      const squaredGroup = inject('square', null)
+      const groupSize = inject('size', null)
+      const computedSize = computed(() => groupSize || props.size)
+      const avatarText = computed(() => {
+        if (!props.text) {
+          return
+        }
+        const splited = props.text.split(' ')
+        return splited.length > 1
+          ? splited[0][0].toUpperCase() + splited[1][0].toUpperCase()
+          : props.text[0].toUpperCase()
+      })
+      return { squaredGroup, computedSize, avatarText }
+    },
+  })
 </script>

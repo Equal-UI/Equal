@@ -13,18 +13,18 @@
       </div>
 
       <template #props>
-        <it-slider v-model="progressValue" labelTop="Progress" />
+        <it-slider v-model="progressValue" label-top="Progress" />
         <it-number-input
-          :min="1"
           v-model="progressHeight"
-          labelTop="Progress bar height"
+          :min="1"
+          label-top="Progress bar height"
         />
-        <it-checkbox label="Show tooltip" v-model="progressShowTooltip" />
+        <it-checkbox v-model="progressShowTooltip" label="Show tooltip" />
         <it-select
-          placeholder="Select tooltip"
-          labelTop="Tooltip position"
-          :disabled="!progressShowTooltip"
           v-model="progressTooltip"
+          placeholder="Select tooltip"
+          label-top="Tooltip position"
+          :disabled="!progressShowTooltip"
           :options="tooltipTypes"
         >
         </it-select>
@@ -55,75 +55,76 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: () => ({
-    progressValue: 42,
-    progressHeight: 7,
-    tooltipTypes: ['top', 'bottom'],
-    progressTooltip: 'top',
-    progressShowTooltip: true,
-    progressValue42: 42,
+  export default defineComponent({
+    data: () => ({
+      progressValue: 42,
+      progressHeight: 7,
+      tooltipTypes: ['top', 'bottom'],
+      progressTooltip: 'top',
+      progressShowTooltip: true,
+      progressValue42: 42,
 
-    infiniteCode: `<it-progressbar infinite />`,
+      infiniteCode: `<it-progressbar infinite />`,
 
-    heightCode: `<it-progressbar :height="3" :progress="progressValue" />
+      heightCode: `<it-progressbar :height="3" :progress="progressValue" />
 <it-progressbar :height="5" :progress="progressValue" />
 <it-progressbar :height="7" :progress="progressValue" />
 <it-progressbar :height="10" :progress="progressValue" />
 <it-progressbar :height="13" :progress="progressValue" />`,
 
-    tooltipCode: `<it-progressbar :progress="progressValue" />
+      tooltipCode: `<it-progressbar :progress="progressValue" />
 <it-progressbar :progress="progressValue" tooltip="bottom" />`,
 
-    dataSheet: [
-      {
-        property: 'progress',
-        type: ['Number', 'String'],
-        default: '0',
-        values: ['0-100'],
-        description: 'Progress value',
-      },
-      {
-        property: 'infinite',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Makes progress infinite',
-      },
-      {
-        property: 'height',
-        type: ['Number', 'String'],
-        default: '7',
-        values: [],
-        description: 'Height of the progressbar',
-      },
-      {
-        property: 'tooltip',
-        type: ['String'],
-        default: 'top',
-        values: ['top', 'bottom'],
-        description: 'Position of the tooltip',
-      },
-      {
-        property: 'show-tooltip',
-        type: ['Boolean'],
-        default: 'true',
-        values: [],
-        description: 'Show tooltip',
-      },
-    ],
-  }),
-})
+      dataSheet: [
+        {
+          property: 'progress',
+          type: ['Number', 'String'],
+          default: '0',
+          values: ['0-100'],
+          description: 'Progress value',
+        },
+        {
+          property: 'infinite',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Makes progress infinite',
+        },
+        {
+          property: 'height',
+          type: ['Number', 'String'],
+          default: '7',
+          values: [],
+          description: 'Height of the progressbar',
+        },
+        {
+          property: 'tooltip',
+          type: ['String'],
+          default: 'top',
+          values: ['top', 'bottom'],
+          description: 'Position of the tooltip',
+        },
+        {
+          property: 'show-tooltip',
+          type: ['Boolean'],
+          default: 'true',
+          values: [],
+          description: 'Show tooltip',
+        },
+      ],
+    }),
+  })
 </script>
 
 <style lang="less">
-.heights-progress {
-  position: relative;
-  width: 100%;
-  .it-progress-wrapper + .it-progress-wrapper {
-    margin-top: 30px;
+  .heights-progress {
+    position: relative;
+    width: 100%;
+
+    .it-progress-wrapper + .it-progress-wrapper {
+      margin-top: 30px;
+    }
   }
-}
 </style>

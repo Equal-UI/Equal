@@ -15,24 +15,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Sidebar from '../components/Sidebar.vue'
+  import { defineComponent } from 'vue'
+  import Sidebar from '../components/Sidebar.vue'
 
-export default defineComponent({
-  components: { Sidebar },
-  name: 'Home',
-})
+  export default defineComponent({
+    name: 'Home',
+    components: { Sidebar },
+  })
 </script>
 
 <style lang="less">
-.page {
-  padding-left: 14rem;
-  left: 0;
-}
-
-@media only screen and (max-width: 900px) {
   .page {
-    padding-left: 0px;
+    padding-left: 14rem;
+    left: 0;
   }
-}
+
+  @media only screen and (max-width: 900px) {
+    .page {
+      padding-left: 0;
+    }
+  }
 </style>

@@ -7,24 +7,24 @@
         <it-divider :vertical="dividerVertical" />
       </div>
       <template #props>
-        <it-checkbox label="Vertical" v-model="dividerVertical" />
+        <it-checkbox v-model="dividerVertical" label="Vertical" />
       </template>
     </Demobox>
 
     <Box :code="codeHorizontal" title="Horizontal">
-      <p style="font-size: 14px; margin: 0px">
+      <p style="font-size: 14px; margin: 0">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
         gone to waste until...well, let's just say your hour has come again.
       </p>
       <it-divider style="margin-left: 0" />
-      <p style="font-size: 14px; margin: 0px">
+      <p style="font-size: 14px; margin: 0">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
         gone to waste until...well, let's just say your hour has come again.
       </p>
       <it-divider style="margin-left: 0" />
-      <p style="font-size: 14px; margin: 0px">
+      <p style="font-size: 14px; margin: 0">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
         gone to waste until...well, let's just say your hour has come again.
@@ -32,7 +32,7 @@
     </Box>
 
     <Box :code="codeVertical" title="Vertical">
-      <div style="font-size: 14px; margin: 0px">
+      <div style="font-size: 14px; margin: 0">
         Still
         <it-divider vertical />
         Sane
@@ -46,19 +46,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: () => ({
-    dividerVertical: false,
+  export default defineComponent({
+    data: () => ({
+      dividerVertical: false,
 
-    codeHorizontal: `<p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>
+      codeHorizontal: `<p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>
 <it-divider />
 <p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>
 <it-divider />
 <p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>`,
 
-    codeVertical: `<div>
+      codeVertical: `<div>
   Still
   <it-divider vertical />
   Sane
@@ -66,15 +66,15 @@ export default defineComponent({
   Exile
 </div>`,
 
-    dataSheet: [
-      {
-        property: 'vertical',
-        type: ['Boolean'],
-        default: false,
-        values: [],
-        description: 'Makes divider vertical',
-      },
-    ],
-  }),
-})
+      dataSheet: [
+        {
+          property: 'vertical',
+          type: ['Boolean'],
+          default: false,
+          values: [],
+          description: 'Makes divider vertical',
+        },
+      ],
+    }),
+  })
 </script>

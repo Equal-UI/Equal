@@ -4,26 +4,26 @@
 
     <Demobox>
       <it-toggle
-        style="width: 80%"
         v-model="toggleValue"
+        style="width: 80%"
         :round="toggleRound"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
 
       <template #props>
-        <it-checkbox label="Round" v-model="toggleRound" />
+        <it-checkbox v-model="toggleRound" label="Round" />
       </template>
     </Demobox>
     <Box :code="exampleCode" title="Types">
       <div style="width: 100%">
         <it-toggle
-          style="width: 100%; margin-bottom: 16px"
           v-model="toggleValue"
+          style="width: 100%; margin-bottom: 16px"
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
         <it-toggle
-          style="width: 100%"
           v-model="toggleValue"
+          style="width: 100%"
           round
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
@@ -31,7 +31,7 @@
     </Box>
     <Box :code="iconsCode" title="Icons">
       <template #description>
-        <p style="padding: 0px 24px">
+        <p style="padding: 0 24px">
           You can use
           <a
             style="color: #3051ff"
@@ -45,15 +45,15 @@
       </template>
       <div>
         <it-toggle
+          v-model="toggleIconsValue"
           icons
           style="margin-bottom: 16px"
-          v-model="toggleIconsValue"
           :options="['wb_sunny', 'bedtime']"
         />
         <it-toggle
+          v-model="toggleIconsValue"
           icons
           round
-          v-model="toggleIconsValue"
           :options="['wb_sunny', 'bedtime']"
         />
       </div>
@@ -63,15 +63,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
-export default defineComponent({
-  data: () => ({
-    toggleValue: 'Light',
-    toggleRound: false,
-    toggleIconsValue: 'wb_sunny',
+  export default defineComponent({
+    data: () => ({
+      toggleValue: 'Light',
+      toggleRound: false,
+      toggleIconsValue: 'wb_sunny',
 
-    exampleCode: `<it-toggle
+      exampleCode: `<it-toggle
   style="width: 100%"
   v-model="toggleValue"
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
@@ -83,7 +83,7 @@ export default defineComponent({
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />`,
 
-    iconsCode: `<it-toggle
+      iconsCode: `<it-toggle
   icons
   v-model="toggleIconsValue"
   :options="['wb_sunny', 'bedtime']"
@@ -95,36 +95,36 @@ export default defineComponent({
   :options="['wb_sunny', 'bedtime']"
 />`,
 
-    dataSheet: [
-      {
-        property: 'options',
-        type: ['Array'],
-        default: '[]',
-        values: [],
-        description: 'Array of option strings or material icon names',
-      },
-      {
-        property: 'round',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Makes toggle round',
-      },
-      {
-        property: 'icons',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Use Material Icons as options',
-      },
-      {
-        property: 'value (v-model)',
-        type: ['String'],
-        default: '-',
-        values: [],
-        description: 'Value of the toggle',
-      },
-    ],
-  }),
-})
+      dataSheet: [
+        {
+          property: 'options',
+          type: ['Array'],
+          default: '[]',
+          values: [],
+          description: 'Array of option strings or material icon names',
+        },
+        {
+          property: 'round',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Makes toggle round',
+        },
+        {
+          property: 'icons',
+          type: ['Boolean'],
+          default: 'false',
+          values: [],
+          description: 'Use Material Icons as options',
+        },
+        {
+          property: 'value (v-model)',
+          type: ['String'],
+          default: '-',
+          values: [],
+          description: 'Value of the toggle',
+        },
+      ],
+    }),
+  })
 </script>
