@@ -4,7 +4,7 @@
     <span
       class="it-badge-body"
       :class="[
-        $slots.default && `it-badge-body--corner-${position}`, 
+        $slots.default && `it-badge-body--corner-${position}`,
         point && 'it-badge-body--point',
         square && 'it-badge-body--square',
         `it-badge-body--${type}`
@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { Colors, Positions } from '@/models'
+import { Colors, Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-badge',

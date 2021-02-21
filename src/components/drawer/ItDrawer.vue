@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { Positions } from '@/models'
+import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-drawer',

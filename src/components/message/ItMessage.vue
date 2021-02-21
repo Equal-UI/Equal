@@ -17,7 +17,7 @@
 
 
 <script lang="ts">
-import { Colors } from '@/models'
+import { Colors } from '@/models/enums'
 import { defineComponent } from 'vue'
 import ItIcon from '../icon'
 

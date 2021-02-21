@@ -89,13 +89,15 @@ import {
   nextTick,
 } from 'vue'
 
-import { Positions } from '@/models'
-import clickoutside from '@/directives/clickOutside'
-import usePopover from '@/api/usePopover'
+import { Positions } from '@/models/enums'
+import { usePopover } from '@/hooks'
+import { clickOutside } from '@/directives'
 
 export default defineComponent({
   name: 'it-select',
-  directives: { clickoutside },
+  directives: {
+    clickoutside: clickOutside,
+  },
   props: {
     placement: { type: String, default: Positions.B },
     disabled: Boolean,
