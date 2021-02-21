@@ -7,10 +7,10 @@
     "build_prod": "vite build --config prod.config.js"
   },
   "dependencies": {
+    "body-scroll-lock": "^3.1.5",
     "faker": "^5.1.0",
     "prismjs": "^1.23.0",
     "vue": "^3.0.5",
-    "body-scroll-lock": "^3.1.5",
     "vue-router": "^4.0.0-rc.1"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "@types/prismjs": "^1.16.2",
     "@vitejs/plugin-vue": "^1.1.0",
     "@vue/compiler-sfc": "^3.0.5",
-    "less": "^3.12.2",
+    "less": "^4.1.1",
     "vite": "^2.0.0-beta.44",
     "vue-prism-component": "^2.0.0"
   }

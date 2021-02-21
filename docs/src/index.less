@@ -1,4 +1,9 @@
-body, h1, h2, h3, h4, h5 {
+body,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0px;
 }
 
@@ -6,6 +11,12 @@ h1 {
   font-size: 38px;
   margin-bottom: 32px;
   line-height: 38px;
+}
+
+a {
+  text-decoration: inherit;
+  color: #3051ff;
+  font-weight: 500;
 }
 
 .margins > * + * {
@@ -19,9 +30,12 @@ Author:     Christopher Corley (http://cscorley.github.io/)
 Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
 Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
 */
-code[class*="language-"],
-pre[class*="language-"] {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+code[class*='language-'],
+pre[class*='language-'] {
+  font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
+    'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
+    'Courier New', Courier, monospace;
   font-size: 14px;
   line-height: 1.375;
   direction: ltr;
@@ -37,40 +51,43 @@ pre[class*="language-"] {
   hyphens: none;
   background: #f6f9ff;
   color: #303030;
-
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
   text-shadow: none;
-  background: #E0E0E0;
+  background: #e0e0e0;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
   text-shadow: none;
   background: #3051ff;
   color: #ffffff;
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
   padding: 1em;
   margin: 0px;
   overflow: auto;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #B0B0B0;
+  color: #b0b0b0;
 }
 
 .token.punctuation {
@@ -78,22 +95,22 @@ pre[class*="language-"] {
 }
 
 .token.namespace {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .token.operator,
 .token.function,
 .token.boolean,
 .token.number {
-  color: #FD8900;
+  color: #fd8900;
 }
 
 .token.property {
-  color: #ABA800;
+  color: #aba800;
 }
 
 .token.tag {
-  color: #3777E6;
+  color: #3777e6;
 }
 
 .token.string {
@@ -101,11 +118,11 @@ pre[class*="language-"] {
 }
 
 .token.selector {
-  color: #AD00A1;
+  color: #ad00a1;
 }
 
 .token.attr-name {
-  color: #FD8900;
+  color: #fd8900;
 }
 
 .token.entity,
@@ -120,7 +137,7 @@ pre[class*="language-"] {
 .token.control,
 .token.directive,
 .token.unit {
-  color: #00C918;
+  color: #00c918;
 }
 
 .token.statement,
@@ -131,7 +148,7 @@ pre[class*="language-"] {
 
 .token.placeholder,
 .token.variable {
-  color: #3777E6;
+  color: #3777e6;
 }
 
 .token.deleted {
@@ -153,7 +170,7 @@ pre[class*="language-"] {
 }
 
 .token.important {
-  color: #FF0086;
+  color: #ff0086;
 }
 
 .token.entity {
@@ -161,20 +178,28 @@ pre[class*="language-"] {
 }
 
 pre > code.highlight {
-  outline: 0.4em solid #FF0086;
-  outline-offset: .4em;
+  outline: 0.4em solid #ff0086;
+  outline-offset: 0.4em;
 }
 
 .line-numbers .line-numbers-rows {
-  border-right-color: #E0E0E0 !important;
+  border-right-color: #e0e0e0 !important;
 }
 
 .line-numbers-rows > span:before {
-  color: #D0D0D0 !important;
+  color: #d0d0d0 !important;
 }
 
 .line-highlight {
   background: rgba(21, 21, 21, 0.2) !important;
-  background: -webkit-linear-gradient(left, rgba(21, 21, 21, 0.2) 70%, rgba(21, 21, 21, 0)) !important;
-  background: linear-gradient(to right, rgba(21, 21, 21, 0.2) 70%, rgba(21, 21, 21, 0)) !important;
+  background: -webkit-linear-gradient(
+    left,
+    rgba(21, 21, 21, 0.2) 70%,
+    rgba(21, 21, 21, 0)
+  ) !important;
+  background: linear-gradient(
+    to right,
+    rgba(21, 21, 21, 0.2) 70%,
+    rgba(21, 21, 21, 0)
+  ) !important;
 }
