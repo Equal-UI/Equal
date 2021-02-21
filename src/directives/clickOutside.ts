@@ -1,6 +1,6 @@
 import { Directive } from 'vue'
 
-const directive: Directive = {
+export const clickOutside: Directive = {
   beforeMount(elem, binding) {
     elem.clickOutsideHandler = (e: Event) => {
       if (!elem.contains(e.target) && binding.value) {
@@ -14,5 +14,3 @@ const directive: Directive = {
     document.removeEventListener('click', elem.clickOutsideHandler)
   },
 }
-
-export default directive

@@ -4,7 +4,7 @@
       <input type="checkbox" v-bind="$attrs" class="it-checkbox-input" :disabled="disabled" @change="toggle" />
       <span
         class="it-checkbox"
-        :class="[      
+        :class="[
       `it-checkbox--${type}`,
       modelValue && `it-checkbox--${type}--checked`,
       disabled && 'it-checkbox--disabled'
@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Colors } from '@/models'
+import { Colors } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-checkbox',
@@ -85,4 +85,3 @@ export default defineComponent({
   }
 })
 </script>
-

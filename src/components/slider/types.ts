@@ -1,5 +1,5 @@
 import { Ref } from 'vue'
-import { Positions } from '@/models'
+import { Positions } from '@/models/enums'
 
 export type TTotalValuePosition = {
   value: number

@@ -30,8 +30,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue'
-import usePopover from '@/api/usePopover'
-import { Positions } from '@/models'
+import { usePopover } from '@/hooks'
+import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-tooltip',

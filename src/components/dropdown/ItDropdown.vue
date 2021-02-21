@@ -19,13 +19,15 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { Positions } from '@/models'
-import usePopover from '@/api/usePopover'
-import clickoutside from '@/directives/clickOutside'
+import { Positions } from '@/models/enums'
+import { usePopover } from '@/hooks'
+import { clickOutside } from '@/directives'
 
 export default defineComponent({
   name: 'it-dropdown',
-  directives: { clickoutside },
+  directives: {
+    clickoutside: clickOutside,
+  },
   props: {
     placement: {
       default: Positions.B,
