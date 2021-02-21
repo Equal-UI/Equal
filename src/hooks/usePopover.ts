@@ -1,12 +1,8 @@
 import { ref, nextTick, computed, toRef } from 'vue'
-import { Positions } from '@/models'
-
-interface IPopoverProps {
-  placement?: string
-}
+import { Positions } from '@/models/enums'
 
 // tofix
-export default function (props: any) {
+export const usePopover = (props: any) => {
   const show = ref(false)
   const placement = toRef(props, 'placement') || ref<Positions>(Positions.T)
   // tofix

@@ -16,7 +16,7 @@
         <img class="sidebar-logo" src="/eqqqual.png" />
       </router-link>
       <div style="margin-top: 15px; display: flex; flex-direction:column">
-        
+
       <a
           target="_blank"
           class="github"
@@ -368,16 +368,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import clickoutside from '/@equal/directives/clickOutside'
+import { clickOutside } from '/@equal/directives'
 
 export default defineComponent({
   // @ts-ignore
   layout: 'components',
-  directives: { clickoutside },
-  // mounted() {
-  //   console.log(this.$route);
-
-  // },
+  directives: {
+    clickoutside: clickOutside,
+  },
   setup() {
     const left = ref('inherit')
 

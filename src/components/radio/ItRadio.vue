@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { Colors } from '@/models'
+import { Colors } from '@/models/enums'
 import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
@@ -88,4 +88,3 @@ export default defineComponent({
   }
 })
 </script>
-

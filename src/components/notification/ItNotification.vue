@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Colors, Positions } from '@/models'
+import { Colors, Positions } from '@/models/enums'
 import ItIcon from '@/components/icon'
 import { typeIcon } from '@/components/message/model'
 
