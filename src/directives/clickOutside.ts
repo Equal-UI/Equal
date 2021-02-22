@@ -2,7 +2,7 @@ import { Directive } from 'vue'
 
 let startedSource = false
 
-const directive: Directive = {
+export const clickOutside: Directive = {
   beforeMount(elem, binding) {
     elem.clickStarted = (e: Event) => {
       if (elem.contains(e.target)) {
@@ -25,5 +25,3 @@ const directive: Directive = {
     document.removeEventListener('mousedown', elem.clickOutsideHandler)
   },
 }
-
-export default directive

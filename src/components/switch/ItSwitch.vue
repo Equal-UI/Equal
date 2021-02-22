@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Colors } from '@/models'
+import { Colors } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-switch',
@@ -88,4 +88,3 @@ export default defineComponent({
   },
 })
 </script>
-

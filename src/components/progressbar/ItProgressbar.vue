@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Positions } from '@/models'
+import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-progressbar',

@@ -1,6 +1,6 @@
 import NotificationVue from './ItNotification.vue'
 import { createApp, ComponentPublicInstance } from 'vue'
-import { Colors, Positions } from '@/models'
+import { Colors, Positions } from '@/models/enums'
 
 interface INotificationOptions {
   id: number | null

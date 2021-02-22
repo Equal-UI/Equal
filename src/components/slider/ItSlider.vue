@@ -54,7 +54,7 @@ import { DEFAULT_STEP_POINT_HEIGHT, DEFAULT_PROPS } from './constants'
 import { useStepsPoints, useValuePosition } from './hooks'
 import { getTotalPosition, getCoordsByEvent } from './helpers'
 import Tooltip from '@/components/tooltip/ItTooltip.vue'
-import { Positions } from '@/models/Positions'
+import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-slider',

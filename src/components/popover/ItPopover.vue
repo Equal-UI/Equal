@@ -26,13 +26,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import usePopover from '@/api/usePopover'
-import clickoutside from '@/directives/clickOutside'
-import { Positions } from '@/models'
+import { usePopover } from '@/hooks'
+import { clickOutside } from '@/directives'
+import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-popover',
-  directives: { clickoutside },
+  directives: {
+    clickoutside: clickOutside,
+  },
   props: {
     disabled: Boolean,
     borderless: Boolean,

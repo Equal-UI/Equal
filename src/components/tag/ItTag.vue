@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Colors } from '@/models'
+import { Colors } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-tag',
