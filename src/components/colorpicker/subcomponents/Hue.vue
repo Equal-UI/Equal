@@ -1,5 +1,5 @@
 <template>
-  <div :class="['it-hue', 'it-hue--horizontal']">
+  <div class="it-hue it-hue--horizontal">
     <div
       class="it-hue-container"
       role="slider"
@@ -30,7 +30,7 @@ import { computed, defineComponent } from 'vue'
 import { hue } from '../hooks'
 
 export default defineComponent({
-  name: 'Hue',
+  name: 'hue',
   props: {
     modelValue: Object,
   },
@@ -63,46 +63,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-.it-hue {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
-}
-.it-hue--horizontal {
-  background: linear-gradient(
-    to right,
-    #f00 0%,
-    #ff0 17%,
-    #0f0 33%,
-    #0ff 50%,
-    #00f 67%,
-    #f0f 83%,
-    #f00 100%
-  );
-}
-.it-hue-container {
-  cursor: pointer;
-  margin: 0 6px;
-  position: relative;
-  height: 100%;
-}
-.it-hue-pointer {
-  z-index: 2;
-  height: 100%;
-  position: absolute;
-}
-.it-hue-picker {
-  height: 100%;
-  cursor: ew-resize;
-  width: 12px;
-  border-radius: 2px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12);
-  border: 2px solid #fff;
-  transform: translate(-50%, -8%);
-}
-</style>

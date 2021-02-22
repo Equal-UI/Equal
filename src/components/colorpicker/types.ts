@@ -1,6 +1,6 @@
 import { ColorFormats } from 'tinycolor2'
 
-export interface IColorData {
+export interface TColorData {
   hsl: ColorFormats.HSL
   hsv: ColorFormats.HSV
   hex: string

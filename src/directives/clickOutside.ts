@@ -1,9 +1,13 @@
 import { Directive } from 'vue'
 
-let startedSource = false
+// let startedSource = false
 
 export const clickOutside: Directive = {
   beforeMount(elem, binding) {
+
+    // Used to prevent clickOutsideHandle to fire if mousedown started on element
+    let startedSource = false
+
     elem.clickStarted = (e: Event) => {
       if (elem.contains(e.target)) {
         startedSource = true

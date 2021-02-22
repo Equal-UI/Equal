@@ -24,7 +24,7 @@ import checkboard from './Checkboard.vue'
 import { alpha } from '../hooks'
 
 export default defineComponent({
-  name: 'Alpha',
+  name: 'alpha',
   props: {
     modelValue: Object,
   },
@@ -63,56 +63,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-.it-alpha {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-.it-alpha-checkboard-wrap {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  overflow: hidden;
-  border-radius: 0 0 4px 4px;
-}
-.it-alpha-gradient {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  border-radius: 0 0 4px 4px;
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
-}
-.it-alpha-container {
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  margin: 0 6px;
-}
-.it-alpha-pointer {
-  z-index: 2;
-  position: absolute;
-  height: 100%;
-}
-.it-alpha-picker {
-  height: 100%;
-  cursor: ew-resize;
-  /* margin-top: 1px; */
-  width: 12px;
-  border-radius: 2px;
-
-  /* height: 8px; */
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12);
-  /* background: #fff; */
-  border: 2px solid #fff;
-  transform: translate(-50%, -7%);
-}
-</style>

@@ -2,8 +2,10 @@ import { computed, ref } from 'vue'
 import { _colorChange } from './helpers'
 import { clamp } from '@/helpers/clamp'
 import { ColorFormats } from 'tinycolor2'
+import { Positions } from '@/models/enums'
 
-export function colorpicker(props: any, emit: any) {
+export const colorpicker = (props: { [key: string]: any },
+    emit: (name: string, prop: any) => void) => {
     const val = ref(_colorChange(props.value))
     const colors = computed({
         get: () => {
@@ -15,7 +17,7 @@ export function colorpicker(props: any, emit: any) {
         }
     })
 
-    function colorChange(data: any): void {
+    function colorChange(data: any) {
         colors.value = _colorChange(data)
     }
 
@@ -23,12 +25,12 @@ export function colorpicker(props: any, emit: any) {
         val,
         colors,
         colorChange,
-        _colorChange
     }
 
 }
 
-export function saturation(props: any, emit: any) {
+export const saturation = (props: { [key: string]: any },
+    emit: (name: string, prop: any) => void) => {
 
     const showTooltip = ref(false)
     const colors = computed(() => props.modelValue)
@@ -94,7 +96,8 @@ export function saturation(props: any, emit: any) {
 
 }
 
-export function alpha(props: any, emit: any) {
+export const alpha = (props: { [key: string]: any },
+    emit: (name: string, prop: any) => void) => {
     const colors = computed(() => props.modelValue)
     const container = ref<HTMLElement | null>(null)
 
@@ -153,14 +156,15 @@ export function alpha(props: any, emit: any) {
     }
 }
 
-export function hue(props: any, emit: any) {
+export const hue = (props: { [key: string]: any },
+    emit: (name: string, prop: any) => void) => {
     const oldHue = ref(0)
     const pullDirection = ref('')
     const container = ref<HTMLElement | null>(null)
     const colors = computed(() => {
         const h = props.modelValue.hsl.h
-        if (h !== 0 && h - oldHue.value > 0) pullDirection.value = 'right'
-        if (h !== 0 && h - oldHue.value < 0) pullDirection.value = 'left'
+        if (h !== 0 && h - oldHue.value > 0) pullDirection.value = Positions.R
+        if (h !== 0 && h - oldHue.value < 0) pullDirection.value = Positions.L
         oldHue.value = h
 
         return props.modelValue

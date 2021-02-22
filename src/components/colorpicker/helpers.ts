@@ -1,7 +1,7 @@
 import tinycolor from 'tinycolor2'
-import { IColorData } from './types'
+import { TColorData } from './types'
 
-export function _colorChange(data: any): IColorData {
+export function _colorChange(data: any): TColorData {
   const alpha = data && data.a
   const color = tinycolor(data)
 
@@ -12,10 +12,12 @@ export function _colorChange(data: any): IColorData {
   const hsl = color.toHsl()
   const hsv = color.toHsv()
 
-  // if (hsl.s === 0) {
-  //     hsv.h = hsl.h = data.h || (data.hsl && data.hsl.h) || 0
-  // }
+  // prevents color change when cursor is on max left position
+  if (hsl.s === 0) {
+      hsv.h = hsl.h = data.h || (data.hsl && data.hsl.h) || 0
+  }
 
+  // prevents color change when cursor is on max bottom position
   if (hsv.v < 0.0164) {
     hsv.h = data.h || (data.hsv && data.hsv.h) || 0
     hsv.s = data.s || (data.hsv && data.hsv.s) || 0

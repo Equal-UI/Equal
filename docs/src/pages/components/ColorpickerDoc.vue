@@ -3,36 +3,44 @@
     <h1>Colorpicker</h1>
 
     <Demobox>
-      <div>
-      <it-colorpicker />
-
+      <div class="py-12">
+        <it-colorpicker :showTooltip="colorTooltip" :disableAlpha="hideAlpha" />
       </div>
       <template #props>
-        <!-- <it-select
-          placeholder="Select type"
-          labelTop="Alert type"
-          v-model="alertType"
-          :options="alertTypes"
-        />
-        <it-input v-model="alertTitle" labelTop="Alert title" />
-        <it-input v-model="alertBody" labelTop="Alert Body" />
-        <it-checkbox label="Icon" v-model="alertShowIcon" />
-        <it-checkbox label="Icon box" v-model="alertIconBox" />
-        <it-checkbox label="Closable" v-model="alertClosable" />
-        <it-checkbox label="Visible" v-model="alertVisible" /> -->
+        <it-checkbox label="Tooltip on move" v-model="colorTooltip" />
+        <it-checkbox label="Hide alpha" v-model="hideAlpha" />
       </template>
     </Demobox>
 
-    <Box :code="typesCode" title="Default">
-      <div class="flex flex-col">
+    <Box :code="tooltipCode" title="With Tooltip">
+      <div class="flex flex-col items-center">
         <it-colorpicker showTooltip :value="color" @change="updateColor" />
 
-        <!-- <pre>{{ JSON.stringify(color, null, 2) }}</pre> -->
+        <h5 class="mt-6">Returned value:</h5>
+        <pre>{{ JSON.stringify(color, null, 2) }}</pre>
+      </div>
+    </Box>
+
+    <Box :code="popoverCode" title="Use with it-popover">
+      <div class="flex flex-col">
+        <it-popover borderless>
+          <it-button>Choose color</it-button>
+
+          <template #content>
+            <it-colorpicker :value="color" @change="updateColor" />
+          </template>
+        </it-popover>
+      </div>
+    </Box>
+
+    <Box :code="usageCode" title="Use example">
+      <div class="flex flex-col items-center">
+        <it-colorpicker :value="exampleColor" @change="updateExampleColor" />
+        <it-loading class="mt-4" :color="exampleColor"></it-loading>
       </div>
     </Box>
 
     <props-table
-      :slot-sheet="slotSheet"
       :event-sheet="eventSheet"
       :data-sheet="dataSheet"
     />
@@ -46,100 +54,71 @@ const defaultColors = 'rgb(48, 81, 255)'
 
 export default defineComponent({
   data: () => ({
+    exampleColor: 'rgba(49,81,254,1)',
     color: defaultColors,
-    alertTitle: 'Alert title',
-    alertBody: 'We think we know you',
-    alertShowIcon: true,
-    alertClosable: false,
-    alertType: 'primary',
-    alertTypes: ['primary', 'success', 'danger', 'warning'],
-    alertIconBox: false,
+    colorTooltip: true,
+    hideAlpha: false,
 
-    typesCode: `<it-alert type="primary" :title="alertTitle" :body="alertBody"/>
-<it-alert type="success" :title="alertTitle" :body="alertBody"/>
-<it-alert type="danger" :title="alertTitle" :body="alertBody"/>
-<it-alert type="warning" :title="alertTitle" :body="alertBody"/>`,
+    tooltipCode: `<it-colorpicker showTooltip :value="color" @change="updateColor" />`,
 
-    typesBox: `<it-alert iconbox type="primary" :title="alertTitle" :body="alertBody"/>
-<it-alert iconbox type="success" :title="alertTitle" :body="alertBody"/>
-<it-alert iconbox type="danger" :title="alertTitle" :body="alertBody"/>
-<it-alert iconbox type="warning" :title="alertTitle" :body="alertBody"/>`,
+    popoverCode: `<it-popover borderless>
+  <it-button>Choose color</it-button>
 
-    slotCode: `<it-alert type="primary" title="Alert with slot body">
-  You can put whatever you want here, I'd put a <it-tag type="primary">Tag</it-tag>
-</it-alert>`,
+  <template #content>
+    <it-colorpicker :value="color" @change="updateColor" />
+  </template>
+</it-popover>`,
+
+    usageCode: `<it-colorpicker :value="exampleColor" @change="updateExampleColor" />
+<it-loading class="mt-4" :color="exampleColor"></it-loading>
+
+updateExampleColor(val) {
+  const {r,g,b,a} = val.rgba
+
+  this.exampleColor = \`rgba(\${r}, \${g}, \${b}, \${a})\`
+}`,
 
     dataSheet: [
       {
-        property: 'type',
-        type: ['String'],
-        default: 'primary',
-        values: ['primary', 'success', 'danger', 'warning', 'black'],
-        description: 'Type of the alert',
-      },
-      {
-        property: 'title',
-        type: ['String'],
-        default: '-',
-        values: [],
-        description: 'Title of the alert',
-      },
-      {
-        property: 'body',
-        type: ['String'],
-        default: '-',
-        values: [],
-        description: 'Body of the alert',
-      },
-      {
-        property: 'show-icon',
-        type: ['Boolean'],
-        default: 'true',
-        values: [],
-        description: 'Show icon',
-      },
-      {
-        property: 'iconbox',
+        property: 'disableAlpha',
         type: ['Boolean'],
         default: 'false',
         values: [],
-        description: 'Show icon in the box',
+        description: 'Hides alpha',
       },
       {
-        property: 'closable',
+        property: 'showTooltip',
         type: ['Boolean'],
         default: 'false',
         values: [],
-        description: 'Makes alert closable',
+        description: 'Show tooltip over saturation cursor on move. Useful for mobile devices',
       },
       {
-        property: 'visible',
-        type: ['Boolean'],
-        default: 'true',
-        values: [],
-        description: 'Visibility of the alert',
+        property: 'value',
+        type: ['String', 'Object'],
+        default: '#000',
+        values: ['rgb', 'rgba', 'hex', 'hex8', 'hsv', 'hsl'],
+        description: 'Initial color value',
       },
     ],
 
     eventSheet: [
       {
-        event: '@on-close',
+        event: '@change',
         description:
-          'The event function triggered when user clicks on close icon',
-        arguments: 'function(e: Event)',
-      },
-    ],
-
-    slotSheet: [
-      {
-        name: 'default',
-        description: 'Alert body',
+          'The event function fires on color change, emits object with color values in different format',
+        arguments: 'function(val: TColorData)',
       },
     ],
   }),
   methods: {
     updateColor(val) {
       this.color = val
+    },
+    updateExampleColor(val) {
+      const { r, g, b, a } = val.rgba
+
+      this.exampleColor = `rgba(${r}, ${g}, ${b}, ${a})`
     },
   },
 })

@@ -1,13 +1,15 @@
 <template>
-  <div class="it-box">
-    <h2 class="it-box-title">{{ title }}</h2>
+  <div
+    class="it-box bg-white rounded flex flex-col overflow-hidden my-10 box-border w-full"
+  >
+    <h2 class="it-box-title py-4 px-6 leading-none">{{ title }}</h2>
     <slot name="description"></slot>
-    <div class="it-box-scene">
+    <div class="it-box-scene w-full py-10 px-6 flex-wrap leading-none flex justify-center items-center box-border">
       <slot></slot>
     </div>
 
     <div
-      class="it-box-code"
+      class="it-box-code w-full relative overflow-auto"
       :style="{
         'max-height': expandHeight,
       }"
@@ -31,7 +33,7 @@
       icon="code"
       type="neutral"
       @click="toggleExpand"
-      >{{ expanded ? 'Hide code' : 'Show code' }}</it-button
+      >{{ expanded ? "Hide code" : "Show code" }}</it-button
     >
   </div>
 </template>
@@ -67,52 +69,28 @@ export default defineComponent({
 
 <style lang="less">
 .it-box {
-  background: #ffffff;
   border: 1px solid #d3dae6;
-  border-radius: 4px;
-  display: flex;
-  width: 100%;
   min-height: 150px;
-  flex-direction: column;
-  overflow: hidden;
-  margin: 40px 0px;
-  box-sizing: border-box;
 
   &-title {
-    padding: 16px 24px;
-    line-height: 1;
-
     .it-tag {
-      margin-left: 6px;
+      @apply ml-2;
     }
   }
 
   &-scene {
-    width: 100%;
-    padding: 40px 24px;
-    flex-wrap: wrap;
-    line-height: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-
     & > * + * {
-      margin-left: 16px;
+      @apply ml-4;
     }
 
     & > * {
-      margin-bottom: 16px;
+      @apply mb-4;
     }
   }
 
   &-code {
     border-bottom: 1px solid #d3dae6;
     transition: max-height 0.4s;
-    width: 100%;
-    position: relative;
-    overflow: auto;
-    // height: 0;
 
     &-copy {
       position: absolute !important;
