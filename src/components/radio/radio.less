@@ -79,13 +79,13 @@
 
 .it-radio-circle {
   transition: all 0.15s ease;
-  transform: scale(1.5);
+  transform: translate(50%, 50%) scale(0);
   width: 8px;
   height: 8px;
   border-radius: 100%;
   position: absolute;
-  left: 4px;
-  top: 4px;
+  // left: 5px;
+  // top: 5px;
   opacity: 0;
 }
 
@@ -94,7 +94,7 @@
   margin: 0;
   padding: 0;
   position: relative;
-  display: inline-table;
+  // display: inline-table;
   border: 1px solid @color-secondary-text;
   width: 18px;
   height: 18px;
@@ -128,7 +128,7 @@
       }
     }
     + .it-radio-border > .it-radio-circle {
-      transform: scale(1);
+      transform: translate(50%, 50%) scale(1);
       opacity: 1;
     }
   }

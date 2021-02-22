@@ -55,8 +55,8 @@ const routes = [
             component: Pages.DropdownDoc,
           },
           {
-            path: 'input',
-            component: Pages.InputDoc,
+            path: 'colorpicker',
+            component: Pages.ColorpickerDoc,
           },
           {
             path: 'input',

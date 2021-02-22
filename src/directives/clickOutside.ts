@@ -1,17 +1,28 @@
 import { Directive } from 'vue'
 
+let startedSource = false
+
 const directive: Directive = {
   beforeMount(elem, binding) {
-    elem.clickOutsideHandler = (e: Event) => {
-      if (!elem.contains(e.target) && binding.value) {
-        binding.value(e)
+    elem.clickStarted = (e: Event) => {
+      if (elem.contains(e.target)) {
+        startedSource = true
       }
     }
 
-    document.addEventListener('click', elem.clickOutsideHandler)
+    elem.clickOutsideHandler = (e: Event) => {
+      if (!elem.contains(e.target) && binding.value && !startedSource) {
+        binding.value(e)
+      }
+      startedSource = false
+    }
+
+    document.addEventListener('mousedown', elem.clickStarted)
+    document.addEventListener('mouseup', elem.clickOutsideHandler)
   },
   unmounted(elem) {
-    document.removeEventListener('click', elem.clickOutsideHandler)
+    document.removeEventListener('mouseup', elem.clickOutsideHandler)
+    document.removeEventListener('mousedown', elem.clickOutsideHandler)
   },
 }
 
