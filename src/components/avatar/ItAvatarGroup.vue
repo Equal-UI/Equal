@@ -41,10 +41,10 @@ export default defineComponent({
                   lineHeight: this.size,
                 },
               },
-              [h('span', `+${this.avatars.length - this.max}`)]
+              [h('span', `+${this.avatars.length - this.max}`)],
             )
           : null,
-      ]
+      ],
     )
   },
 })

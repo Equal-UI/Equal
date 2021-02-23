@@ -3,9 +3,11 @@
 .set-alert-type (@color) {
   border: 1px solid @color;
   background-color: tint(@color, 93%);
+
   .it-alert-icon {
     color: @color;
   }
+
   .it-icon--box {
     background-color: @color;
     color: #fff;
@@ -49,6 +51,7 @@
     color: @color-neutral;
     cursor: pointer;
     user-select: none;
+
     &:hover {
       color: darken(@color-neutral, 20);
     }
@@ -56,6 +59,7 @@
 
   &--small {
     align-items: center;
+
     .it-alert-icon {
       font-size: 20px;
     }
@@ -64,17 +68,16 @@
   &--primary {
     .set-alert-type(@color-primary);
   }
+
   &--success {
     .set-alert-type(@color-success);
   }
+
   &--warning {
     .set-alert-type(@color-warning);
   }
+
   &--danger {
     .set-alert-type(@color-danger);
   }
 }
-
-// .it-alert-iconbox {
-//   display: flex;
-// }

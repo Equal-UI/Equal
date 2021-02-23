@@ -8,10 +8,10 @@
           This component is intended to be used only with wide screens
         </p>
       </template>
-      <it-button @click="drawerLeftVisible = true" type="primary"
+      <it-button type="primary" @click="drawerLeftVisible = true"
         >Left drawer</it-button
       >
-      <it-button @click="drawerVisible = true" type="primary"
+      <it-button type="primary" @click="drawerVisible = true"
         >Right drawer</it-button
       >
 
@@ -50,7 +50,7 @@
           <it-divider />
         </template>
       </it-drawer>
-      <it-drawer placement="left" v-model="drawerLeftVisible">
+      <it-drawer v-model="drawerLeftVisible" placement="left">
         <h3 class="m-6">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
@@ -94,21 +94,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  async mounted () {
-    const reqNames = await fetch(
-      'https://randomuser.me/api/?inc=picture,name,login&results=12'
-    )
-    const data = await reqNames.json()
-
-    this.fakeUsers = data.results.map((el: any) => {
-      const { first, last } = el.name
-      return {
-        name: `${first} ${last}`,
-        avatar: el.picture.medium,
-        username: el.login.username,
-      }
-    })
-  },
   data: () => ({
     drawerVisible: false,
     drawerLeftVisible: false,
@@ -214,6 +199,21 @@ export default defineComponent({
       },
     ],
   }),
+  async mounted() {
+    const reqNames = await fetch(
+      'https://randomuser.me/api/?inc=picture,name,login&results=12',
+    )
+    const data = await reqNames.json()
+
+    this.fakeUsers = data.results.map((el: any) => {
+      const { first, last } = el.name
+      return {
+        name: `${first} ${last}`,
+        avatar: el.picture.medium,
+        username: el.login.username,
+      }
+    })
+  },
 })
 </script>
 

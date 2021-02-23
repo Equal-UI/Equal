@@ -8,7 +8,7 @@
   min-width: 100px;
 
   &-input {
-    padding: 0px;
+    padding: 0;
     display: inline-block;
     width: auto;
     height: 100%;
@@ -21,7 +21,7 @@
 
     &::placeholder {
       color: @color-neutral;
-      text-indent: 0px;
+      text-indent: 0;
       transition: text-indent 0.27s ease;
     }
 
@@ -67,9 +67,11 @@
 
   &--active {
     border-color: @color-primary;
+
     & > .it-select-arrow {
       color: @color-primary;
     }
+
     &:hover {
       border-color: @color-primary;
     }
@@ -84,9 +86,11 @@
     .it-select-placeholder {
       color: @color-disabled-border;
     }
+
     .it-select-arrow {
       color: @color-disabled-border;
     }
+
     &:hover {
       border-color: @color-disabled-border;
     }
@@ -94,7 +98,8 @@
 
   &:focus:not(&--disabled) {
     border-color: @color-primary;
-    box-shadow: 0px 2px 4px fade(@color-primary, 40%),
+    box-shadow:
+      0 2px 4px fade(@color-primary, 40%),
       0 0 0 3px fade(@color-primary, 20%);
   }
 }
@@ -111,6 +116,7 @@
 
 .it-select-placeholder {
   color: @color-neutral;
+
   & + .it-icon {
     margin-left: 10px;
   }
@@ -146,7 +152,7 @@
   width: inherit;
   overflow-y: auto;
   padding: 4px 0;
-  margin: 0px;
+  margin: 0;
   list-style: none;
   text-align: left;
   background-color: #fff;
@@ -183,6 +189,7 @@
 
   &--disabled {
     color: @color-disabled-border;
+
     &:hover {
       background-color: #fff;
       color: @color-disabled-border;

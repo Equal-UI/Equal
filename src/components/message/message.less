@@ -7,7 +7,6 @@
 }
 
 .it-message {
-
   z-index: 99999;
   position: fixed;
   right: 0;
@@ -25,7 +24,7 @@
   line-height: 1;
   background-color: #fff;
   word-wrap: break-word;
-  transition: all .4s;
+  transition: all 0.4s;
   display: inline-block;
 
   &-icon {
@@ -40,12 +39,15 @@
   &--primary {
     .set-message-type(@color-primary);
   }
+
   &--success {
     .set-message-type(@color-success);
   }
+
   &--warning {
     .set-message-type(@color-warning);
   }
+
   &--danger {
     .set-message-type(@color-danger);
   }

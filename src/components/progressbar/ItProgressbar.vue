@@ -34,17 +34,17 @@ export default defineComponent({
     progress: {
       type: Number,
       default: 0,
-      validator: (val: number) => val >= 0 && val <= 100
+      validator: (val: number) => val >= 0 && val <= 100,
     },
-    height: { type: Number, default: 7, validator: (val: Number) => val > 0 },
+    height: { type: Number, default: 7, validator: (val: number) => val > 0 },
     tooltip: {
       default: Positions.T,
-      validator: (val: Positions) => [Positions.T, Positions.B].includes(val)
+      validator: (val: Positions) => [Positions.T, Positions.B].includes(val),
     },
     showTooltip: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
 })
 </script>

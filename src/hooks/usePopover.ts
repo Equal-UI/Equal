@@ -1,11 +1,11 @@
 import { ref, nextTick, computed, toRef } from 'vue'
 import { Positions } from '@/models/enums'
 
-// tofix
+// REFACTOR HOOK
+
 export const usePopover = (props: any) => {
   const show = ref(false)
   const placement = toRef(props, 'placement') || ref<Positions>(Positions.T)
-  // tofix
   const disabled = toRef(props, 'disabled') || ref(false)
   const clickable = toRef(props, 'hoverable') || ref(false)
   const transition = computed(() => `fade-${placement.value}`)

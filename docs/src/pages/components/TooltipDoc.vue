@@ -11,13 +11,13 @@
 
       <template #props>
         <it-select
-          placeholder="Select position"
-          labelTop="Tag position"
           v-model="tooltipPlacement"
+          placeholder="Select position"
+          label-top="Tag position"
           :options="tooltipPlacements"
         >
         </it-select>
-        <it-input v-model="tooltipContent" labelTop="Tooltip text" />
+        <it-input v-model="tooltipContent" label-top="Tooltip text" />
       </template>
     </Demobox>
     <Box :code="positionCode" title="Position">
@@ -111,7 +111,6 @@ export default defineComponent({
         values: [],
         description: 'Makes tooltip hoverable',
       },
-
     ],
 
     slotSheet: [

@@ -1,5 +1,5 @@
 <template>
-  <div class="it-tabs-body" :key="title" v-show="isActive">
+  <div v-show="isActive" :key="title" class="it-tabs-body">
     <slot></slot>
   </div>
 </template>

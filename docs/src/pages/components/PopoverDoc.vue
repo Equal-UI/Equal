@@ -40,7 +40,7 @@
 
     <Box :code="positionsCode" title="Positions">
       <template #description>
-        <p style="padding: 0px 24px">Click to see the popover</p>
+        <p style="padding: 0 24px">Click to see the popover</p>
       </template>
 
       <it-button-group vertical>
@@ -69,7 +69,7 @@
 
     <Box :code="imageCode" title="Image">
       <template #description>
-        <p style="padding: 0px 24px">
+        <p style="padding: 0 24px">
           You can disable paddings inside popover and show image
         </p>
       </template>
@@ -86,7 +86,7 @@
       </it-popover>
     </Box>
     <props-table
-      tagName="it-popover"
+      tag-name="it-popover"
       :data-sheet="dataSheet"
       :slot-sheet="slotSheet"
     />

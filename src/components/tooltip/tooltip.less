@@ -3,15 +3,18 @@
 .it-tooltip {
   display: inline-block;
   z-index: 9;
+
   &-trigger {
     display: inline-block;
     position: relative;
     height: 100%;
   }
+
   &-popper {
     position: absolute;
     z-index: 9000;
   }
+
   &-content {
     padding: 8px;
     box-shadow: @popup-shadow;
@@ -28,8 +31,6 @@
       // overflow: hidden;
     }
   }
-
-
 
   &--top {
     margin-top: -12px;

@@ -13,18 +13,18 @@
       </div>
 
       <template #props>
-        <it-slider v-model="progressValue" labelTop="Progress" />
+        <it-slider v-model="progressValue" label-top="Progress" />
         <it-number-input
-          :min="1"
           v-model="progressHeight"
-          labelTop="Progress bar height"
+          :min="1"
+          label-top="Progress bar height"
         />
-        <it-checkbox label="Show tooltip" v-model="progressShowTooltip" />
+        <it-checkbox v-model="progressShowTooltip" label="Show tooltip" />
         <it-select
-          placeholder="Select tooltip"
-          labelTop="Tooltip position"
-          :disabled="!progressShowTooltip"
           v-model="progressTooltip"
+          placeholder="Select tooltip"
+          label-top="Tooltip position"
+          :disabled="!progressShowTooltip"
           :options="tooltipTypes"
         >
         </it-select>
@@ -122,6 +122,7 @@ export default defineComponent({
 .heights-progress {
   position: relative;
   width: 100%;
+
   .it-progress-wrapper + .it-progress-wrapper {
     margin-top: 30px;
   }

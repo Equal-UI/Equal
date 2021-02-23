@@ -1,20 +1,20 @@
 <template>
   <div class="it-tooltip">
     <span
+      ref="trigger"
       class="it-tooltip-trigger"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
-      ref="trigger"
     >
       <slot></slot>
     </span>
 
     <transition :name="transition">
       <div
-        class="it-tooltip-popper"
-        :class="[placement && `it-tooltip--${placement}`]"
         v-show="show"
         ref="popover"
+        class="it-tooltip-popper"
+        :class="[placement && `it-tooltip--${placement}`]"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
       >

@@ -5,10 +5,10 @@
       <it-button
         v-if="!hideControls"
         :disabled="this.disabled || disableController('minus')"
-        @click="decrease"
-        @mousedown="press('minus')"
         type="primary"
         icon="remove"
+        @click="decrease"
+        @mousedown="press('minus')"
       ></it-button>
 
       <div
@@ -19,28 +19,28 @@
         ]"
       >
         <input
+          ref="input"
           type="number"
           :value="modelValue"
           class="it-number-input-original"
           :disabled="disabled"
           :max="max"
           :min="min"
-          ref="input"
-          @input="onInput"
           :style="{ width: width + 'px' }"
           v-bind="$attrs"
+          @input="onInput"
           @keydown.up.stop.prevent="increase"
           @keydown.down.stop.prevent="decrease"
         />
-        <div class="it-number-input-buffer" ref="buffer">{{ modelValue }}</div>
+        <div ref="buffer" class="it-number-input-buffer">{{ modelValue }}</div>
       </div>
       <it-button
         v-if="!hideControls"
         :disabled="this.disabled || disableController('plus')"
-        @click="increase"
-        @mousedown="press('plus')"
         type="primary"
         icon="add"
+        @click="increase"
+        @mousedown="press('plus')"
       ></it-button>
     </div>
   </div>
@@ -77,7 +77,7 @@ export default defineComponent({
           await nextTick()
           width.value = (buffer.value! as HTMLDivElement).clientWidth
         }
-      }
+      },
     )
 
     // controllers +/-
@@ -94,7 +94,7 @@ export default defineComponent({
         () => {
           clearInterval(interval.value!)
         },
-        { once: true }
+        { once: true },
       )
     }
 

@@ -10,22 +10,26 @@
         :label="switchLabel"
         :pulse="switchPulse"
       >
-      <template #sublabel>{{sublabel}}</template>
+        <template #sublabel>{{ sublabel }}</template>
       </it-switch>
 
       <template #props>
         <it-select
-          placeholder="Select type"
-          labelTop="Button type"
           v-model="switchType"
+          placeholder="Select type"
+          label-top="Button type"
           :options="switchTypes"
         >
           >
         </it-select>
-        <it-input v-model="switchLabel" labelTop="Switch label" />
-        <it-textarea labelTop="Switch sublabel" placeholder="Additional information" v-model="sublabel"></it-textarea>
-        <it-checkbox label="Pulse" v-model="switchPulse" />
-        <it-checkbox label="Disabled" v-model="switchDisabled" />
+        <it-input v-model="switchLabel" label-top="Switch label" />
+        <it-textarea
+          v-model="sublabel"
+          label-top="Switch sublabel"
+          placeholder="Additional information"
+        ></it-textarea>
+        <it-checkbox v-model="switchPulse" label="Pulse" />
+        <it-checkbox v-model="switchDisabled" label="Disabled" />
       </template>
     </Demobox>
     <Box :code="typesCode" title="Types">
@@ -36,19 +40,16 @@
     </Box>
     <Box :code="sublabelCode" title="Types">
       <div style="display: flex; flex-direction: column">
-
-      <it-switch v-model="sublabel1" label="Label only" />
-      <br />
-      <it-switch v-model="sublabel2" label="Show ">
-        <template #sublabel>Send notifications</template>
-      </it-switch>
+        <it-switch v-model="sublabel1" label="Label only" />
+        <br />
+        <it-switch v-model="sublabel2" label="Show ">
+          <template #sublabel>Send notifications</template>
+        </it-switch>
       </div>
     </Box>
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-        <p style="padding: 0px 24px">
-          Pulse helps you to catch user's attention
-        </p>
+        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
       </template>
       <it-switch v-model="pulseValue" pulse label="Look at me" />
     </Box>
@@ -76,8 +77,6 @@ export default defineComponent({
 
     pulseValue: false,
     typeValue: true,
-
-    
 
     typesCode: `<it-switch v-model="typeValue" label="Primary" />
 <it-switch v-model="typeValue" type="success" label="Success" />

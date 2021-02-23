@@ -11,20 +11,15 @@
     >
       <button
         v-for="(tab, i) in tabs"
-        role="tab"
         :ref="
           (el) => {
-            if (el) tabsRefs[i] = el;
+            if (el) tabsRefs[i] = el
           }
         "
-        @keydown.right.prevent="vertical ? null : focusNextTab(i + 1)"
-        @keydown.left.prevent="vertical ? null : focusPrevTab(i - 1)"
-        @keydown.down.prevent="vertical ? focusNextTab(i + 1) : null"
-        @keydown.up.prevent="vertical ? focusPrevTab(i - 1) : null"
+        :key="i"
+        role="tab"
         :aria-selected="selectedIndex === i"
         :tabindex="selectedIndex === i ? null : -1"
-        :key="i"
-        @click="selectTab(i)"
         class="it-tabs-tab"
         :class="{
           'it-tabs-tab--active': selectedIndex === i,
@@ -32,6 +27,11 @@
         }"
         :disabled="tab.disabled"
         :data-content="tab.title"
+        @keydown.right.prevent="vertical ? null : focusNextTab(i + 1)"
+        @keydown.left.prevent="vertical ? null : focusPrevTab(i - 1)"
+        @keydown.down.prevent="vertical ? focusNextTab(i + 1) : null"
+        @keydown.up.prevent="vertical ? focusPrevTab(i - 1) : null"
+        @click="selectTab(i)"
       >
         {{ tab.title }}
       </button>

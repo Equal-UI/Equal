@@ -4,7 +4,6 @@ import { Directive } from 'vue'
 
 export const clickOutside: Directive = {
   beforeMount(elem, binding) {
-
     // Used to prevent clickOutsideHandle to fire if mousedown started on element
     let startedSource = false
 

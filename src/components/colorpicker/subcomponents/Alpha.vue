@@ -5,8 +5,8 @@
     </div>
     <div class="it-alpha-gradient" :style="{ background: gradientColor }"></div>
     <div
-      class="it-alpha-container"
       ref="container"
+      class="it-alpha-container"
       @mousedown="handleMouseDown"
       @touchmove="handleChange"
       @touchstart="handleChange"
@@ -25,11 +25,11 @@ import { alpha } from '../hooks'
 
 export default defineComponent({
   name: 'alpha',
-  props: {
-    modelValue: Object,
-  },
   components: {
     checkboard,
+  },
+  props: {
+    modelValue: Object,
   },
   setup(props, { emit }) {
     const {

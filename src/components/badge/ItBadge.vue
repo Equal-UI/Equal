@@ -1,16 +1,17 @@
 <template>
   <span class="it-badge" :class="[square && 'it-badge--square']">
-    <slot></slot>
+    <slot />
     <span
+      v-show="show"
       class="it-badge-body"
       :class="[
         $slots.default && `it-badge-body--corner-${position}`,
         point && 'it-badge-body--point',
         square && 'it-badge-body--square',
-        `it-badge-body--${type}`
+        `it-badge-body--${type}`,
       ]"
-      v-show="show"
-    >{{contentValue}}</span>
+      >{{ contentValue }}</span
+    >
   </span>
 </template>
 
@@ -29,32 +30,32 @@ export default defineComponent({
           Colors.PRIMARY,
           Colors.SUCCESS,
           Colors.DANGER,
-          Colors.WARNING
-        ].includes(value)
+          Colors.WARNING,
+        ].includes(value),
     },
     value: { type: [String, Number] },
     position: {
       type: String,
       default: Positions.TR,
       validator: (value: Positions) =>
-        [Positions.TL, Positions.TR, Positions.BL, Positions.BR].includes(value)
+        [Positions.TL, Positions.TR, Positions.BL, Positions.BR].includes(
+          value,
+        ),
     },
     show: { type: Boolean, default: true },
     point: { type: Boolean },
     square: { type: Boolean },
-    maxValue: { type: Number }
+    maxValue: { type: Number },
   },
   setup(props) {
     const contentValue = computed(() => {
       if (props.point) {
         return
       }
-      return props.value! > props.maxValue!
-        ? `${props.maxValue}+`
-        : props.value
+      return props.value! > props.maxValue! ? `${props.maxValue}+` : props.value
     })
 
     return { contentValue }
-  }
+  },
 })
 </script>

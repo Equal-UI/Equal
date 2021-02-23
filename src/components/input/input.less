@@ -4,13 +4,16 @@
   &:hover {
     border-color: @bg-color !important;
   }
+
   &:focus-within {
     border-color: @bg-color !important;
-    box-shadow: 0px 2px 4px fade(@bg-color, 40%), 0 0 0 3px fade(@bg-color, 20%);
+    box-shadow: 0 2px 4px fade(@bg-color, 40%), 0 0 0 3px fade(@bg-color, 20%);
   }
+
   &:disabled {
     border-color: @color-disabled-border !important;
   }
+
   border-color: @bg-color;
 }
 
@@ -40,7 +43,8 @@
 
   &:focus-within {
     border: 1px solid @color-primary;
-    box-shadow: 0px 2px 4px fade(@color-primary, 40%),
+    box-shadow:
+      0 2px 4px fade(@color-primary, 40%),
       0 0 0 3px fade(@color-primary, 20%);
 
     &:hover {
@@ -57,10 +61,12 @@
     border-color: @color-disabled-border !important;
     background: @color-disabled-bg;
     cursor: not-allowed;
+
     .it-input:disabled {
       cursor: not-allowed;
       color: @color-disabled-border;
     }
+
     .it-input-icon {
       cursor: not-allowed;
     }
@@ -69,9 +75,11 @@
   &--success {
     .set-status(@color-success);
   }
+
   &--warning {
     .set-status(@color-warning);
   }
+
   &--danger {
     .set-status(@color-danger);
   }
@@ -85,8 +93,17 @@
   box-sizing: border-box;
   outline: none;
   border: none;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   padding: 4px 10px;
   background: transparent;
@@ -126,12 +143,12 @@
   }
 
   .it-input-icon-wrapper + & {
-    padding: 4px 0px;
+    padding: 4px 0;
   }
 
   &::placeholder {
     color: @color-neutral;
-    text-indent: 0px;
+    text-indent: 0;
     transition: text-indent 0.27s ease;
   }
 
@@ -164,12 +181,15 @@
   &--success {
     .set-message-status(@color-success);
   }
+
   &--warning {
     .set-message-status(@color-warning);
   }
+
   &--danger {
     .set-message-status(@color-danger);
   }
+
   &--disabled {
     color: @color-disabled-border;
   }
@@ -178,7 +198,7 @@
 .it-input-icon {
   color: @color-default-border;
   cursor: default;
-  margin: 0px 8px;
+  margin: 0 8px;
   vertical-align: middle;
 }
 

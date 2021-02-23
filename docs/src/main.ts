@@ -10,7 +10,6 @@ import Demobox from './components/Demobox.vue'
 import Box from './components/Box.vue'
 import PropsTable from './components/Table.vue'
 
-
 import './index.less'
 
 createApp(App)

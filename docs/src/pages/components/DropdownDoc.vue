@@ -16,13 +16,12 @@
       </it-dropdown>
       <template #props>
         <it-select
-          placeholder="Select placement"
-          labelTop="Dropdown placement"
           v-model="dropdownType"
+          placeholder="Select placement"
+          label-top="Dropdown placement"
           :options="dropdownTypes"
-
         />
-        <it-checkbox label="Clickable" v-model="clickable" />
+        <it-checkbox v-model="clickable" label="Clickable" />
       </template>
     </Demobox>
 
@@ -39,8 +38,8 @@
         </template>
       </it-dropdown>
     </Box>
-    <props-table tagName="it-dropdown" :data-sheet="dataSheet" />
-    <props-table tagName="it-dropdown-item" :data-sheet="dataSheet2" />
+    <props-table tag-name="it-dropdown" :data-sheet="dataSheet" />
+    <props-table tag-name="it-dropdown-item" :data-sheet="dataSheet2" />
   </div>
 </template>
 

@@ -6,7 +6,7 @@
       <it-input
         v-model="inputValue"
         :placeholder="inputPlaceholder"
-        :labelTop="inputTopLabel"
+        :label-top="inputTopLabel"
         :disabled="inputDisabled"
         :message="inputMessageText"
         :status="inputStatus"
@@ -14,22 +14,22 @@
       />
 
       <template #props>
-        <it-input v-model="inputPlaceholder" labelTop="Input placeholder" />
-        <it-input v-model="inputTopLabel" labelTop="Top label" />
+        <it-input v-model="inputPlaceholder" label-top="Input placeholder" />
+        <it-input v-model="inputTopLabel" label-top="Top label" />
         <it-input
           v-model="inputMessageText"
           placeholder="Write something"
-          labelTop="Message text"
+          label-top="Message text"
         />
         <it-select
-          placeholder="Select status"
-          labelTop="Status"
           v-model="inputStatus"
+          placeholder="Select status"
+          label-top="Status"
           :options="statuses"
         >
         </it-select>
-        <it-checkbox label="Mask" v-model="inputMask" />
-        <it-checkbox label="Disabled" v-model="inputDisabled" />
+        <it-checkbox v-model="inputMask" label="Mask" />
+        <it-checkbox v-model="inputDisabled" label="Disabled" />
       </template>
     </Demobox>
     <Box :code="codeStatus" title="Status">
@@ -47,12 +47,17 @@
       />
     </Box>
     <Box :code="codeSuffix" title="Prefix / suffix">
-      <it-input prefix="https://" v-model="inputValue" />
-      <it-input suffix=".com" v-model="inputValue" />
-      <it-input prefix="https://" suffix=".com" v-model="inputValue" />
+      <it-input v-model="inputValue" prefix="https://" />
+      <it-input v-model="inputValue" suffix=".com" />
+      <it-input v-model="inputValue" prefix="https://" suffix=".com" />
     </Box>
     <Box :code="codeMask" title="Masked">
-      <it-input v-model="inputValue" label-top="Click me" placeholder="I feel darkness" mask />
+      <it-input
+        v-model="inputValue"
+        label-top="Click me"
+        placeholder="I feel darkness"
+        mask
+      />
     </Box>
     <Box :code="codeDisabled" title="Disabled">
       <it-input

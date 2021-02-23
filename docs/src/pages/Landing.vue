@@ -1,11 +1,6 @@
 <template>
   <Row style="border-bottom: 1px solid #e2e2e2" class="flex" justify="center">
-    <Col
-      class="mainpage-col flex flex-col mx-14 mb-8"
-      lg="12"
-      sm="12"
-      xs="12"
-    >
+    <Col class="mainpage-col flex flex-col mx-14 mb-8" lg="12" sm="12" xs="12">
       <p class="main-title"><img width="150" src="/logo.png" /></p>
       <h4 class="sub-title">
         <b>Equal UI</b> – open-source Vue 3 components system for your next

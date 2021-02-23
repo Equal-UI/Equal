@@ -1,15 +1,15 @@
 <template>
-  <div class="it-dropdown" v-on="listeners" v-clickoutside="hidePopover">
-    <div class="it-dropdown-trigger" ref="trigger">
+  <div v-clickoutside="hidePopover" class="it-dropdown" v-on="listeners">
+    <div ref="trigger" class="it-dropdown-trigger">
       <slot></slot>
     </div>
 
     <transition :name="transition">
       <div
+        v-show="show"
+        ref="popover"
         class="it-dropdown-slot"
         :class="[placement && `it-dropdown-slot--${placementSide}`]"
-        ref="popover"
-        v-show="show"
       >
         <slot name="menu"></slot>
       </div>

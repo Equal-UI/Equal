@@ -4,6 +4,7 @@
 
     <Box :code="typesCode" title="Notification types">
       <it-button
+        type="primary"
         @click="
           $Notification({
             title: 'Primary notification',
@@ -11,7 +12,6 @@
               'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
-        type="primary"
         >Primary notification</it-button
       >
       <it-button

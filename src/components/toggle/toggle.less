@@ -5,9 +5,9 @@
   // width: 200px;
   position: relative;
   display: flex;
-  background-color: #F1F0F5;
+  background-color: #f1f0f5;
   border-radius: @border-radius-base;
-  border: solid 3px #F1F0F5;
+  border: solid 3px #f1f0f5;
   transition: all 0.2s ease-out;
 
   &:focus {
@@ -17,9 +17,10 @@
 
   &--round {
     border-radius: @border-radius-round;
+
     & > .it-toggle-value {
       &::before {
-        width:0 !important;
+        width: 0 !important;
       }
     }
   }
@@ -34,7 +35,7 @@
     cursor: pointer;
 
     &:not(&--selected) {
-      color: #6C6781;
+      color: #6c6781;
     }
 
     &--selected {
@@ -57,7 +58,8 @@
       }
     }
 
-    & > span, & > i {
+    & > span,
+    & > i {
       position: relative;
       z-index: 5;
       font-size: @default-text-size;
@@ -73,6 +75,6 @@
     top: 0;
     border-radius: inherit;
     transition: inherit;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px 1px 3px 0px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0 1px 3px 0;
   }
 }

@@ -2,15 +2,15 @@
   <div :class="['it-select']">
     <span class="it-input-label">{{ labelTop }}</span>
     <div
+      ref="trigger"
+      v-clickoutside="hidePopover"
       :tabindex="disabled ? -1 : 0"
       class="it-select-selection"
       :class="[
         disabled && 'it-select-selection--disabled',
         show && 'it-select-selection--active',
       ]"
-      ref="trigger"
       @click="toggleList"
-      v-clickoutside="hidePopover"
       @keydown.down.stop.prevent="handleKey('down')"
       @keydown.up.stop.prevent="handleKey('up')"
       @keydown.esc.stop.prevent="hidePopover"
@@ -18,17 +18,17 @@
     >
       <input
         v-if="filterable"
+        v-model="search"
         :readonly="!filterable"
         class="it-select-input"
         type="text"
         :disabled="disabled"
         :placeholder="placeholder"
-        v-model="search"
       />
-      <span class="it-select-placeholder" v-show="!modelValue && !filterable">{{
+      <span v-show="!modelValue && !filterable" class="it-select-placeholder">{{
         placeholder
       }}</span>
-      <span class="it-select-selected" v-if="!filterable && modelValue">{{
+      <span v-if="!filterable && modelValue" class="it-select-selected">{{
         modelValue
       }}</span>
       <i
@@ -43,6 +43,8 @@
 
     <transition name="drop-bottom">
       <div
+        v-show="show"
+        ref="popover"
         class="it-select-dropdown"
         :class="[
           placement
@@ -50,13 +52,10 @@
             : 'it-select-dropdown--bottom',
           divided && 'it-select-dropdown--divided',
         ]"
-        v-show="show"
-        ref="popover"
         style="width: 100%"
       >
-        <ul class="it-select-list" ref="listRef">
+        <ul ref="listRef" class="it-select-list">
           <li
-            class="it-select-option"
             v-for="(option, i) in options"
             :key="i"
             :ref="
@@ -64,6 +63,7 @@
                 if (el) optionsRefs[i] = el
               }
             "
+            class="it-select-option"
             :class="[focusIndex === i && 'it-select-option--focused']"
             @click="selectOption(index ? option[index] : option)"
           >
@@ -82,12 +82,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  onBeforeUpdate,
-  nextTick,
-} from 'vue'
+import { defineComponent, ref, onBeforeUpdate, nextTick } from 'vue'
 
 import { Positions } from '@/models/enums'
 import { usePopover } from '@/hooks'
@@ -171,7 +166,7 @@ export default defineComponent({
       // Scroll to focused element
       await nextTick()
       const selectedEl = optionsRefs.value.find((r) =>
-        r.className.includes('focused')
+        r.className.includes('focused'),
       )
       if (selectedEl) {
         selectedEl.scrollIntoView({ block: 'nearest', inline: 'start' })

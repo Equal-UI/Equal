@@ -2,19 +2,19 @@
   <teleport to="body">
     <transition name="fade">
       <div
+        v-show="modelValue"
         v-bind="$attrs"
+        ref="modalRef"
         class="it-modal-mask"
         :style="{ cursor: closableMask ? 'pointer' : 'default' }"
-        v-show="modelValue"
-        ref="modalRef"
       >
         <transition name="drop-top">
           <div v-show="modelValue" class="it-modal-wrap">
             <div class="it-modal-wrap-inner" @click.self="maskClick">
               <div
                 class="it-modal-body"
-                :class="{'it-modal-body--has-image': onlyImageSlot}"
-                :style="!onlyImageSlot ? {maxWidth: width} : null"
+                :class="{ 'it-modal-body--has-image': onlyImageSlot }"
+                :style="!onlyImageSlot ? { maxWidth: width } : null"
               >
                 <slot name="image" />
                 <slot />
@@ -51,7 +51,7 @@ export default defineComponent({
     closeOnEsc: { type: Boolean, default: true },
   },
   setup(props, { emit, slots }) {
-    const modalRef = ref<HTMLElement | null>(null);
+    const modalRef = ref<HTMLElement | null>(null)
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
     const itHasActions = useCheckSlot(slots, 'actions') !== null
@@ -75,12 +75,12 @@ export default defineComponent({
             ? disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
             : setTimeout(enableBodyScroll.bind(this, modalRef.value), 500)
         }
-      }
+      },
     )
 
     const onlyImageSlot = computed(() => {
       return itHasImage && !itHasHeader && !itHasBody && !itHasActions
-    });
+    })
 
     return {
       modalRef,

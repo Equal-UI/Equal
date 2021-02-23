@@ -1,2 +1,2 @@
-export { useCheckSlot } from './useCheckSlot';
-export { usePopover } from './usePopover';
+export { useCheckSlot } from './useCheckSlot'
+export { usePopover } from './usePopover'

@@ -5,7 +5,7 @@
     <Demobox>
       <it-number-input
         v-model="inputValue"
-        :labelTop="inputTopLabel"
+        :label-top="inputTopLabel"
         :step="inputStep"
         :resize-on-write="resizeOnChange"
         :min="inputMin"
@@ -15,14 +15,14 @@
       />
 
       <template #props>
-        <it-input v-model="inputTopLabel" labelTop="Top label" />
-        <it-number-input v-model="inputMin" labelTop="Min" />
-        <it-number-input v-model="inputMax" labelTop="Max" />
-        <it-number-input :min="0" v-model="inputStep" labelTop="Step" />
+        <it-input v-model="inputTopLabel" label-top="Top label" />
+        <it-number-input v-model="inputMin" label-top="Min" />
+        <it-number-input v-model="inputMax" label-top="Max" />
+        <it-number-input v-model="inputStep" :min="0" label-top="Step" />
         <it-divider />
-        <it-checkbox label="Resize on change" v-model="resizeOnChange" />
-        <it-checkbox label="Hide controls" v-model="controlsDisabled" />
-        <it-checkbox label="Disabled" v-model="inputDisabled" />
+        <it-checkbox v-model="resizeOnChange" label="Resize on change" />
+        <it-checkbox v-model="controlsDisabled" label="Hide controls" />
+        <it-checkbox v-model="inputDisabled" label="Disabled" />
       </template>
     </Demobox>
     <props-table :data-sheet="dataSheet" />

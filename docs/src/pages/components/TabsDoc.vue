@@ -12,9 +12,9 @@
       </it-tabs>
 
       <template #props>
-        <it-checkbox label="Vertical" v-model="verticalTab" />
-        <it-checkbox label="Tab Box" v-model="boxTab" />
-        <it-checkbox label="Disabled Tab" v-model="disabledTab" />
+        <it-checkbox v-model="verticalTab" label="Vertical" />
+        <it-checkbox v-model="boxTab" label="Tab Box" />
+        <it-checkbox v-model="disabledTab" label="Disabled Tab" />
       </template>
     </Demobox>
     <Box :code="boxedCode" title="Tabs in box">
@@ -53,8 +53,16 @@
         </it-tabs>
       </div>
     </Box>
-    <props-table tag-name="it-tabs" :data-sheet="dataSheet" :slot-sheet="slotSheet"/>
-    <props-table tag-name="it-tab" :data-sheet="dataSheet2" :slot-sheet="slotSheet2" />
+    <props-table
+      tag-name="it-tabs"
+      :data-sheet="dataSheet"
+      :slot-sheet="slotSheet"
+    />
+    <props-table
+      tag-name="it-tab"
+      :data-sheet="dataSheet2"
+      :slot-sheet="slotSheet2"
+    />
   </div>
 </template>
 
@@ -118,9 +126,7 @@ export default defineComponent({
         description: 'Show tabs in box',
       },
     ],
-    slotSheet: [
-      {name: 'default', description: 'Slot for it-tab'}
-    ],
+    slotSheet: [{ name: 'default', description: 'Slot for it-tab' }],
     dataSheet2: [
       {
         property: 'title',
@@ -135,11 +141,9 @@ export default defineComponent({
         default: 'false',
         values: [],
         description: 'Makes tab disabled',
-      }
+      },
     ],
-    slotSheet2: [
-      {name: 'default', description: 'it-tab content'}
-    ]
+    slotSheet2: [{ name: 'default', description: 'it-tab content' }],
   }),
 })
 </script>

@@ -8,7 +8,7 @@
     ]"
   >
     <slot></slot>
-    <it-icon v-if="closable" @click="close" name="clear" class="it-tag-close" />
+    <it-icon v-if="closable" name="clear" class="it-tag-close" @click="close" />
   </span>
 </template>
 

@@ -26,40 +26,40 @@
       />
 
       <template #props>
-        <it-input v-model="iconName" labelTop="Icon name" />
-        <it-input type="color" v-model="iconColor" labelTop="Icon color" />
+        <it-input v-model="iconName" label-top="Icon name" />
+        <it-input v-model="iconColor" type="color" label-top="Icon color" />
         <it-slider
+          v-model="iconSize"
           :min="10"
           :max="30"
-          v-model="iconSize"
-          labelTop="Icon size"
+          label-top="Icon size"
         />
         <it-checkbox
-          style="margin: 0px !important"
-          label="Outline"
           v-model="iconOutlined"
+          style="margin: 0 !important"
+          label="Outline"
         />
         <it-divider style="margin: 20x 0 !important" />
-        <it-checkbox label="Box" v-model="iconBox" />
+        <it-checkbox v-model="iconBox" label="Box" />
         <it-input
+          v-model="iconBoxColor"
           :disabled="!iconBox"
           type="color"
-          v-model="iconBoxColor"
-          labelTop="Icon box color"
+          label-top="Icon box color"
         />
         <it-slider
+          v-model="iconBoxPadding"
           :disabled="!iconBox"
           :min="0"
           :max="30"
-          v-model="iconBoxPadding"
-          labelTop="Icon box padding"
+          label-top="Icon box padding"
         />
         <it-slider
+          v-model="iconBoxRadius"
           :disabled="!iconBox"
           :min="0"
           :max="50"
-          v-model="iconBoxRadius"
-          labelTop="Icon box border-radius"
+          label-top="Icon box border-radius"
         />
       </template>
     </Demobox>
@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   data: () => ({

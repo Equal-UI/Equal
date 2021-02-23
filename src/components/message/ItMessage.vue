@@ -1,20 +1,18 @@
 <template>
   <transition name="fade-bottom" @after-leave="destroy">
     <div
-      @mouseleave="startTimer"
-      @mouseenter="clearTimer"
-      :style="{ top: `${top}px` }"
       v-show="show"
+      :style="{ top: `${top}px` }"
       class="it-message"
       :class="[`it-message--${type}`]"
+      @mouseleave="startTimer"
+      @mouseenter="clearTimer"
     >
       <it-icon class="it-message-icon" :name="icon || computedIcon" />
       <span class="it-message-text">{{ text }}</span>
     </div>
   </transition>
 </template>
-
-
 
 <script lang="ts">
 import { Colors } from '@/models/enums'

@@ -4,26 +4,26 @@
 
     <Demobox>
       <it-toggle
-        style="width: 80%"
         v-model="toggleValue"
+        style="width: 80%"
         :round="toggleRound"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
 
       <template #props>
-        <it-checkbox label="Round" v-model="toggleRound" />
+        <it-checkbox v-model="toggleRound" label="Round" />
       </template>
     </Demobox>
     <Box :code="exampleCode" title="Types">
       <div style="width: 100%">
         <it-toggle
-          style="width: 100%; margin-bottom: 16px"
           v-model="toggleValue"
+          style="width: 100%; margin-bottom: 16px"
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
         <it-toggle
-          style="width: 100%"
           v-model="toggleValue"
+          style="width: 100%"
           round
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
@@ -31,7 +31,7 @@
     </Box>
     <Box :code="iconsCode" title="Icons">
       <template #description>
-        <p style="padding: 0px 24px">
+        <p style="padding: 0 24px">
           You can use
           <a
             style="color: #3051ff"
@@ -45,15 +45,15 @@
       </template>
       <div>
         <it-toggle
+          v-model="toggleIconsValue"
           icons
           style="margin-bottom: 16px"
-          v-model="toggleIconsValue"
           :options="['wb_sunny', 'bedtime']"
         />
         <it-toggle
+          v-model="toggleIconsValue"
           icons
           round
-          v-model="toggleIconsValue"
           :options="['wb_sunny', 'bedtime']"
         />
       </div>

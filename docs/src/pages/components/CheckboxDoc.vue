@@ -16,70 +16,70 @@
       </it-checkbox>
       <template #props>
         <it-select
-          placeholder="Select type"
-          labelTop="Checkbox type"
           v-model="checkboxType"
+          placeholder="Select type"
+          label-top="Checkbox type"
           :options="checkboxTypes"
         >
           >
         </it-select>
-        <it-input v-model="checkboxLabel" labelTop="Checkbox label" />
+        <it-input v-model="checkboxLabel" label-top="Checkbox label" />
         <it-textarea
           v-model="checkboxSubLabel"
           placeholder="Additional information"
-          resizeOnWrite
-          labelTop="Checkbox sublabel"
+          resize-on-write
+          label-top="Checkbox sublabel"
         />
-        <it-checkbox label="Line through" v-model="lineCheck" />
-        <it-input v-model="checkboxIcon" labelTop="Checkbox icon" />
-        <it-checkbox label="Pulse" v-model="checkboxPulse" />
-        <it-checkbox label="Disabled" v-model="checkboxDisabled" />
+        <it-checkbox v-model="lineCheck" label="Line through" />
+        <it-input v-model="checkboxIcon" label-top="Checkbox icon" />
+        <it-checkbox v-model="checkboxPulse" label="Pulse" />
+        <it-checkbox v-model="checkboxDisabled" label="Disabled" />
       </template>
     </Demobox>
 
     <Box :code="codeType" title="Type">
-      <it-checkbox type="primary" label="Primary" v-model="typesCheck" />
-      <it-checkbox type="success" label="Success" v-model="typesCheck" />
-      <it-checkbox type="danger" label="Danger" v-model="typesCheck" />
-      <it-checkbox type="warning" label="Warning" v-model="typesCheck" />
-      <it-checkbox type="black" label="Black" v-model="typesCheck" />
-      <it-checkbox type="neutral" label="Neutral" v-model="typesCheck" />
+      <it-checkbox v-model="typesCheck" type="primary" label="Primary" />
+      <it-checkbox v-model="typesCheck" type="success" label="Success" />
+      <it-checkbox v-model="typesCheck" type="danger" label="Danger" />
+      <it-checkbox v-model="typesCheck" type="warning" label="Warning" />
+      <it-checkbox v-model="typesCheck" type="black" label="Black" />
+      <it-checkbox v-model="typesCheck" type="neutral" label="Neutral" />
     </Box>
 
     <Box :code="codeLine" title="LineThrough">
       <div class="flex flex-col">
         <it-checkbox
+          v-model="lineCheck0"
           type="primary"
           label="It's time"
-          v-model="lineCheck0"
           line-through
         />
         <br />
         <it-checkbox
+          v-model="lineCheck1"
           type="primary"
           label="For"
-          v-model="lineCheck1"
           line-through
         />
         <br />
         <it-checkbox
+          v-model="lineCheck2"
           type="primary"
           label="One more"
-          v-model="lineCheck2"
           line-through
         />
         <br />
         <it-checkbox
+          v-model="lineCheck3"
           type="primary"
           label="To Do"
-          v-model="lineCheck3"
           line-through
         />
         <br />
         <it-checkbox
+          v-model="lineCheck4"
           type="primary"
           label="App"
-          v-model="lineCheck4"
           line-through
         />
       </div>
@@ -87,67 +87,65 @@
 
     <Box :code="codeSublabel" title="Sublabel">
       <div class="w-3/5">
-        <it-checkbox type="primary" v-model="lineCheckSub1"
+        <it-checkbox v-model="lineCheckSub1" type="primary"
           >By signing this I agree with Terms and Conditions</it-checkbox
         >
         <br />
-        <it-checkbox type="primary" v-model="lineCheckSub2">
-          <template v-slot:default>Subscribe for updates</template>
-          <template v-slot:sublabel>Get notified when you get updates</template>
+        <it-checkbox v-model="lineCheckSub2" type="primary">
+          <template #default>Subscribe for updates</template>
+          <template #sublabel>Get notified when you get updates</template>
         </it-checkbox>
       </div>
     </Box>
 
     <Box :code="codeIcon" title="Icon">
       <it-checkbox
+        v-model="iconsCheck"
         type="primary"
         label="Primary"
         icon="visibility"
-        v-model="iconsCheck"
       />
       <it-checkbox
+        v-model="iconsCheck"
         type="success"
         label="Success"
         icon="room"
-        v-model="iconsCheck"
       />
       <it-checkbox
+        v-model="iconsCheck"
         type="danger"
         label="Danger"
         icon="favorite"
-        v-model="iconsCheck"
       />
       <it-checkbox
+        v-model="iconsCheck"
         type="warning"
         label="Warning"
         icon="alarm_on"
-        v-model="iconsCheck"
       />
       <it-checkbox
+        v-model="iconsCheck"
         type="black"
         label="Black"
         icon="verified_user"
-        v-model="iconsCheck"
       />
       <it-checkbox
+        v-model="iconsCheck"
         type="neutral"
         label="Neutral"
         icon="refresh"
-        v-model="iconsCheck"
       />
     </Box>
 
     <Box :code="codePulse" title="Pulse">
       <template #description>
-        <p class="mx-6">
-          Pulse helps you to catch user's attention
-        </p>
+        <p class="mx-6">Pulse helps you to catch user's attention</p>
       </template>
       <it-checkbox
+        v-model="pulseValue"
         type="primary"
         pulse
         label="Look at me"
-        v-model="pulseValue"
       />
     </Box>
 
