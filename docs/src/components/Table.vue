@@ -1,6 +1,6 @@
 <template>
   <div class="table-box">
-    <h2 v-if="dataSheet" class="it-box-title">
+    <h2 v-if="dataSheet" class="py-4 px-6 leading-none">
       Props <it-tag v-if="tagName">{{ tagName }}</it-tag>
     </h2>
     <table v-if="dataSheet" class="table">
@@ -31,7 +31,7 @@
       </tbody>
     </table>
 
-    <h2 v-if="slotSheet" class="it-box-title">Slots</h2>
+    <h2 v-if="slotSheet" class="py-4 px-6 leading-none">Slots</h2>
     <table v-if="slotSheet" class="table">
       <thead>
         <tr>
@@ -48,7 +48,7 @@
       </tbody>
     </table>
 
-    <h2 v-if="methodSheet" class="it-box-title">Methods</h2>
+    <h2 v-if="methodSheet" class="py-4 px-6 leading-none">Methods</h2>
     <table v-if="methodSheet" class="table">
       <thead>
         <tr>
@@ -66,7 +66,7 @@
       </tbody>
     </table>
 
-    <h2 v-if="eventSheet" class="it-box-title">Events</h2>
+    <h2 v-if="eventSheet" class="py-4 px-6 leading-none">Events</h2>
     <table v-if="eventSheet" class="table">
       <thead>
         <tr>

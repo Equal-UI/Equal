@@ -49,7 +49,7 @@ import {
   TStepItem,
   TKeyEvents,
   TTotalValuePosition,
-} from '@/components/slider/types'
+} from './types'
 import { DEFAULT_STEP_POINT_HEIGHT, DEFAULT_PROPS } from './constants'
 import { useStepsPoints, useValuePosition } from './hooks'
 import { getTotalPosition, getCoordsByEvent } from './helpers'
@@ -58,6 +58,9 @@ import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-slider',
+  components: {
+    'it-tooltip': Tooltip
+  },
   props: {
     labelTop: String,
     disabled: Boolean,
@@ -124,7 +127,7 @@ export default defineComponent({
       }
     }
 
-    function onMouseOrTouchDown(e: MouseEvent | TouchEvent) {
+    function onMouseOrTouchDown(e: MouseEvent & TouchEvent) {
       if (props.disabled) return
       onDragStart(e)
       window.addEventListener('mousemove', onDragging)
@@ -133,7 +136,7 @@ export default defineComponent({
       window.addEventListener('touchend', onDragEnd)
     }
 
-    function onDragStart(e: MouseEvent | TouchEvent) {
+    function onDragStart(e: MouseEvent & TouchEvent) {
       dragging.value = true
       startX.value = getCoordsByEvent(e).clientX
       startPos.value = valuePosition.value
@@ -164,7 +167,7 @@ export default defineComponent({
       }
     }
 
-    function onSliderClick(e: MouseEvent) {
+    function onSliderClick(e: MouseEvent & TouchEvent) {
       if (props.disabled || dragging.value) return
       const sliderOffsetLeft = (sliderLineRef.value! as HTMLElement).getBoundingClientRect()
         .left

@@ -2,10 +2,10 @@
   <div>
     <h1>Getting started</h1>
     <div class="it-text-box">
-      <h2 style="margin-bottom: 20px">Install with NPM or Yarn</h2>
+      <h2 class="mb-5">Install with NPM or Yarn</h2>
       <prism language="bash" :code="installCode"></prism>
 
-      <h2 style="margin: 20px 0px">Use all components</h2>
+      <h2 class="my-5">Use all components</h2>
       <prism
         language="js"
         code="import { createApp } from 'vue'
@@ -15,7 +15,7 @@ import 'equal-vue/dist/style.css'
 createApp.use(Equal)"
       ></prism>
 
-      <h2 style="margin: 20px 0px">Or individual components</h2>
+      <h2 class="my-5">Or individual components</h2>
       <prism
         language="js"
         code="import { createApp } from 'vue'
@@ -25,8 +25,8 @@ import 'equal-vue/dist/style.css'
 createApp.use(Button).use(Alert).use(Switch)"
       ></prism>
 
-      <h2 style="margin: 20px 0px">Add Material Icons and Inter font</h2>
-      <p style="margin: 0px 0px 10px 0px">
+      <h2 class="my-5">Add Material Icons and Inter font</h2>
+      <p class="mb-2">
         Equal UI uses
         <a
           style="color: #3051ff"
@@ -50,13 +50,6 @@ createApp.use(Button).use(Alert).use(Switch)"
           >@rsms</a
         >. The simplest way to add them via CDN:
       </p>
-      <!--         
-      <prism language="bash">npm install material-icons --save</prism>
-      <p style="margin: 10px 0px">and import to your project</p>
-      <prism language="js">import 'material-icons/iconfont/material-icons.css'</prism>
-  <p style="margin: 10px 0px">
-      Or add via link in the head of the page
-  </p> -->
       <prism language="html" :code="headLink"></prism>
     </div>
   </div>

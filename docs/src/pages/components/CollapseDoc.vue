@@ -32,7 +32,7 @@
     </Box>
 
     <Box :code="singleCode" title="Single">
-      <div style="width: 100%; display: flex; flex-direction: column">
+      <div class="flex flex-col w-full">
         <it-collapse>
           <it-collapse-item title="Article">Hello there</it-collapse-item>
         </it-collapse>

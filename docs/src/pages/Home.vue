@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <Sidebar />
-    <Row style="display: flex" justify="center">
+    <Row class="flex" justify="center">
       <Col
-        style="display: flex; flex-direction: column; margin: 50px 15px"
+        class="flex flex-col my-12 mx-4"
         lg="9"
         sm="10"
         xs="11"

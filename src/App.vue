@@ -1,6 +1,23 @@
 <template>
   <div id="grid">
     <div>
+      <h3>Button</h3>
+
+      <it-button
+        @click="switchBtn = !switchBtn"
+        :type="switchBtn ? 'primary' : 'neutral'"
+        >{{ switchBtn ? "Following" : "Click to follow" }}</it-button
+      >
+
+      <it-button>Button</it-button>
+      <it-button type="primary">Button</it-button>
+      <it-button type="success">Button</it-button>
+      <it-button type="danger">Button</it-button>
+      <it-button type="warning">Button</it-button>
+      <it-button type="black">Button</it-button>
+    </div>
+
+    <div>
       <h3>Icon</h3>
 
       <it-icon box box-color="#3051ff" color="#fff" name="info" />
@@ -9,16 +26,22 @@
     </div>
 
     <div>
-      <h3>Button</h3>
+      <h3>Colorpicker</h3>
 
-      <it-button @click="switchBtn = !switchBtn" :type="switchBtn ? 'primary' : 'neutral'">{{switchBtn ? 'Following' : 'Click to follow'}}</it-button>
+      <it-popover borderless>
+        <it-button>Delete</it-button>
+        <template #content>
+          <div>
+            <it-colorpicker show-tooltip v-model="color" />
+          </div>
+        </template>
+      </it-popover>
 
-      <it-button>Button</it-button>
-      <it-button type="primary">Button</it-button>
-      <it-button type="success">Button</it-button>
-      <it-button type="danger">Button</it-button>
-      <it-button type="warning">Button</it-button>
-      <it-button type="black">Button</it-button>
+      <!-- <div class="demo-list">
+        <div class="demo-item">
+          <it-colorpicker v-model="color" />
+        </div>
+      </div> -->
     </div>
 
     <div>
@@ -205,7 +228,7 @@
 
     <div>
       <h3>Progress bar</h3>
-      <div style="padding: 60px 0px; width: 100%;">
+      <div style="padding: 60px 0px; width: 100%">
         <it-progressbar :progress="stepSliderValue" />
         <it-progressbar :progress="stepSliderValue" tooltip="bottom" />
       </div>
@@ -268,7 +291,7 @@
         </template>
 
         <template #header>
-          <h3 style="margin: 0;">Header</h3>
+          <h3 style="margin: 0">Header</h3>
         </template>
 
         <template #body>
@@ -341,7 +364,12 @@
 
     <div>
       <h3>Tabs</h3>
-      <a href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html" target="_blank" rel="noopener noreferrer">Make it accessible</a>
+      <a
+        href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Make it accessible</a
+      >
 
       <!-- <div style="margin-bottom: 22px; border: 1px solid #D3DAE6; border-radius: 4px; box-shadow: 0px 1px 1px 0px rgb(228,231,230,1); width: 100%;">
         <it-tabs>
@@ -366,19 +394,60 @@
 
     <div>
       <h3>Toggle</h3>
-      <it-toggle icons v-model="toggleIconsValue" :options="['wb_sunny', 'bedtime']" />
-      <it-toggle icons round v-model="toggleIconsValue" :options="['wb_sunny', 'bedtime']" />
-      <it-toggle style="width: 100%" v-model="toggleValue" :options="['Light', 'Dark', 'Hollow', 'Orange']" />
-      <it-toggle style="width: 100%" round v-model="toggleValue" :options="['Light', 'Dark', 'Hollow', 'Orange']" />
+      <it-toggle
+        icons
+        v-model="toggleIconsValue"
+        :options="['wb_sunny', 'bedtime']"
+      />
+      <it-toggle
+        icons
+        round
+        v-model="toggleIconsValue"
+        :options="['wb_sunny', 'bedtime']"
+      />
+      <it-toggle
+        style="width: 100%"
+        v-model="toggleValue"
+        :options="['Light', 'Dark', 'Hollow', 'Orange']"
+      />
+      <it-toggle
+        style="width: 100%"
+        round
+        v-model="toggleValue"
+        :options="['Light', 'Dark', 'Hollow', 'Orange']"
+      />
     </div>
   </div>
 </template>
 
 <script>
+const defaultColors = {
+  hex: '#194d33e6',
+  hsl: {
+    h: 150,
+    s: 0.5,
+    l: 0.2,
+    a: 0.9
+  },
+  hsv: {
+    h: 150,
+    s: 0.66,
+    v: 0.30,
+    a: 0.9
+  },
+  rgba: {
+    r: 159,
+    g: 96,
+    b: 43,
+    a: 0.9
+  },
+  a: 0.9
+}
 
 export default {
   name: 'App',
   data: () => ({
+    color: defaultColors,
     toggleValue: 'Light',
     toggleIconsValue: 'wb_sunny',
     switchBtn: false,
@@ -412,6 +481,17 @@ export default {
 </script>
 
 <style lang="less">
+.demo-list {
+  display: flex;
+  margin-bottom: 20px;
+}
+.demo-item {
+  position: relative;
+  margin-bottom: 10px;
+  margin: 0 10px 0 10px;
+  z-index: 2;
+}
+
 #grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

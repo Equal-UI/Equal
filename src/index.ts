@@ -7,6 +7,7 @@ import Badge from './components/badge'
 import Checkbox from './components/checkbox'
 import Collapse from './components/collapse'
 import CollapseItem from './components/collapse-item'
+import ColorPicker from './components/colorpicker'
 // import Breadcrumbs from './components/breadcrumbs/'
 import Divider from './components/divider'
 import Drawer from './components/drawer'
@@ -46,6 +47,7 @@ const components = {
   Checkbox,
   Collapse,
   CollapseItem,
+  ColorPicker,
   Divider,
   Drawer,
   ...Dropdown,
@@ -91,6 +93,7 @@ export { default as Badge } from './components/badge'
 export { default as Checkbox } from './components/checkbox'
 export { default as Collapse } from './components/collapse'
 export { default as CollapseItem } from './components/collapse-item'
+export { default as ColorPicker } from './components/colorpicker'
 export { default as Divider } from './components/divider'
 export { default as Drawer } from './components/drawer'
 export { default as Dropdown } from './components/dropdown'

@@ -76,7 +76,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="positionsCode" title="Positions" style="">
+    <Box :code="positionsCode" title="Positions">
       <it-badge point :value="12">
         <it-button>Top-right</it-button>
       </it-badge>

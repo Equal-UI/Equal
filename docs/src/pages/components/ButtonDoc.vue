@@ -65,7 +65,7 @@
     <Box :code="codeBlock" title="Block">
       <it-button block>Button</it-button>
       <br />
-      <it-button style="margin-left: 0" type="primary" block>Button</it-button>
+      <it-button class="ml-0" type="primary" block>Button</it-button>
     </Box>
     <Box :code="codeSize" title="Size">
       <it-button size="small">Button</it-button>
@@ -91,7 +91,7 @@
     </Box>
     <Box :code="codePulse" title="Pulse">
       <template #description>
-        <p style="padding: 0px 24px">
+        <p class="mx-6">
           Pulse helps you to catch user's attention
         </p>
       </template>

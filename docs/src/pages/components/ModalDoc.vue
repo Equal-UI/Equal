@@ -41,28 +41,26 @@
               type="email"
               placeholder="yourmail@gmail.com"
             />
-            <div class="signupmodal-wrap-inputs" style="display: flex; flex-direction: row">
-              <it-input
-                style="flex: 1"
-                labelTop="First Name"
-                placeholder="John"
-              />
-              <it-input
-                style="flex: 1"
-                labelTop="Second Name"
-                placeholder="Doe"
-              />
+            <div class="signupmodal-wrap-inputs flex flex-row">
+              <div class="flex-1">
+                <it-input labelTop="First Name" placeholder="John" />
+              </div>
+              <div class="flex-1">
+                <it-input labelTop="Second Name" placeholder="Doe" />
+              </div>
             </div>
             <it-input
               labelTop="Username"
               prefix-icon="account_circle"
               placeholder="Unique Username"
+              autocomplete="false"
             />
             <it-input
               labelTop="Password"
               prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
+              autocomplete="false"
             />
             <div class="signupmodal-wrap-checkbox">
               <it-checkbox

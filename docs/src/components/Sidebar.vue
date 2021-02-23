@@ -1,51 +1,31 @@
 <template>
-  <div
-    class="sidebar"
-    :style="{
-      left,
-    }"
-    v-clickoutside="hideSidebar"
-  >
-    <it-button
-      @click="toggleSidebar"
-      class="burger"
-      :icon="left === 'inherit' ? 'menu' : 'close'"
-    />
+  <div class="sidebar" :style="{
+    left,
+  }" v-clickoutside="hideSidebar">
+    <it-button @click="toggleSidebar" class="burger" :icon="left === 'inherit' ? 'menu' : 'close'" />
     <div class="sidebar-top">
       <router-link to="/" class="logo-link">
         <img class="sidebar-logo" src="/eqqqual.png" />
       </router-link>
-      <div style="margin-top: 15px; display: flex; flex-direction:column">
-
-      <a
+      <div class="mt-4 flex flex-col">
+        <a
           target="_blank"
-          class="github"
+          class="flex"
           rel="noopener noreferrer"
           href="https://github.com/quatrochan/Equal"
         >
           <it-button size="small" block>
-            <img
-              src="/github-logo.svg"
-              style="margin-right: 5px; height: 1em;"
-              alt
-              srcset
-            />Github
+            <img src="/github-logo.svg" class="mr-2 h-3" alt srcset />Github
           </it-button>
         </a>
-      <a
+        <a
           target="_blank"
-          class="github"
-          style="margin-top: 8px;"
+          class="flex mt-2"
           rel="noopener noreferrer"
           href="https://twitter.com/k0mmsussertod"
         >
           <it-button size="small" block>
-            <img
-              src="/twitter-logo.svg"
-              style="margin-right: 5px; height: 1em"
-              alt
-              srcset
-            />Twitter
+            <img src="/twitter-logo.svg" class="mr-2 h-3" alt srcset />Twitter
           </it-button>
         </a>
       </div>
@@ -58,9 +38,7 @@
           'active-menu-item': $route.path === '/introduction',
         }"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/introduction"
-          >Introduction</router-link
-        >
+        <router-link style="padding: 7px 0px 7px 30px" to="/introduction">Introduction</router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -68,9 +46,7 @@
           'active-menu-item': $route.path === '/start',
         }"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/start"
-          >Getting started</router-link
-        >
+        <router-link style="padding: 7px 0px 7px 30px" to="/start">Getting started</router-link>
       </li>
       <li class="group-title-high">COMPONENTS</li>
       <li class="group-title">Base</li>
@@ -103,13 +79,33 @@
       <li
         @click="hideSidebar"
         :class="{
+          'active-menu-item': $route.path === '/components/checkbox',
+        }"
+      >
+        <router-link to="/components/checkbox">
+          Checkbox
+        </router-link>
+      </li>
+      <li
+        @click="hideSidebar"
+        :class="{
+          'active-menu-item': $route.path === '/components/colorpicker',
+        }"
+      >
+        <router-link to="/components/colorpicker">
+          Colorpicker
+          <it-tag type="primary">New</it-tag>
+        </router-link>
+      </li>
+      <li
+        @click="hideSidebar"
+        :class="{
           'active-menu-item': $route.path === '/components/input',
         }"
       >
-        <router-link to="/components/input"
-          >Input
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/input">
+          Input
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -117,21 +113,9 @@
           'active-menu-item': $route.path === '/components/numberinput',
         }"
       >
-        <router-link to="/components/numberinput"
-          >Number Input
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
-      </li>
-      <li
-        @click="hideSidebar"
-        :class="{
-          'active-menu-item': $route.path === '/components/checkbox',
-        }"
-      >
-        <router-link to="/components/checkbox"
-          >Checkbox
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/numberinput">
+          Number Input
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -139,10 +123,9 @@
           'active-menu-item': $route.path === '/components/radio',
         }"
       >
-        <router-link to="/components/radio"
-          >Radio
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/radio">
+          Radio
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -150,10 +133,9 @@
           'active-menu-item': $route.path === '/components/select',
         }"
       >
-        <router-link to="/components/select"
-          >Select
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/select">
+          Select
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -169,10 +151,9 @@
           'active-menu-item': $route.path === '/components/switch',
         }"
       >
-        <router-link to="/components/switch"
-          >Switch<it-tag type="primary">Updated</it-tag
-          ></router-link
-        >
+        <router-link to="/components/switch">
+          Switch
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -180,10 +161,9 @@
           'active-menu-item': $route.path === '/components/textarea',
         }"
       >
-        <router-link to="/components/textarea"
-          >Textarea
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/textarea">
+          Textarea
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -191,9 +171,9 @@
           'active-menu-item': $route.path === '/components/toggle',
         }"
       >
-        <router-link to="/components/toggle"
-          >Toggle <it-tag type="primary" class="pulse">New</it-tag></router-link
-        >
+        <router-link to="/components/toggle">
+          Toggle
+        </router-link>
       </li>
 
       <li class="group-title">Feedback</li>
@@ -212,9 +192,9 @@
           'active-menu-item': $route.path === '/components/drawer',
         }"
       >
-        <router-link to="/components/drawer"
-          >Drawer <it-tag type="primary" class="pulse">New</it-tag></router-link
-        >
+        <router-link to="/components/drawer">
+          Drawer
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -246,10 +226,10 @@
           'active-menu-item': $route.path === '/components/modal',
         }"
       >
-        <router-link to="/components/modal"
-          >Modal
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/modal">
+          Modal
+          <it-tag type="primary">Updated</it-tag>
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -265,7 +245,9 @@
           'active-menu-item': $route.path === '/components/popover',
         }"
       >
-        <router-link to="/components/popover">Popover <it-tag type="primary" class="pulse">New</it-tag></router-link>
+        <router-link to="/components/popover">
+          Popover
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -283,10 +265,9 @@
           'active-menu-item': $route.path === '/components/avatar',
         }"
       >
-        <router-link to="/components/avatar"
-          >Avatar
-          <it-tag type="primary" >Updated</it-tag></router-link
-        >
+        <router-link to="/components/avatar">
+          Avatar
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -294,10 +275,9 @@
           'active-menu-item': $route.path === '/components/collapse',
         }"
       >
-        <router-link to="/components/collapse"
-          >Collapse
-          <it-tag type="primary" class="pulse">New</it-tag></router-link
-        >
+        <router-link to="/components/collapse">
+          Collapse
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -321,9 +301,9 @@
           'active-menu-item': $route.path === '/components/tabs',
         }"
       >
-        <router-link to="/components/tabs"
-          >Tabs <it-tag type="primary" class="pulse">New</it-tag></router-link
-        >
+        <router-link to="/components/tabs">
+          Tabs
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -341,9 +321,10 @@
           'active-menu-item': $route.path === '/components/breadcrumbs',
         }"
       >
-        <router-link to="/components/breadcrumbs"
-          >Breadcrumbs <it-tag type="warning">WIP</it-tag></router-link
-        >
+        <router-link to="/components/breadcrumbs">
+          Breadcrumbs
+          <it-tag type="warning">WIP</it-tag>
+        </router-link>
       </li>
       <li
         @click="hideSidebar"
@@ -361,7 +342,7 @@
         }"
       >
         <router-link to="/css/hovup">Hovup</router-link>
-      </li> -->
+      </li>-->
     </ul>
   </div>
 </template>
@@ -395,9 +376,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-.github {
-  flex: 1;
-}
 
 .sidebar {
   position: fixed;
