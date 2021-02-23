@@ -1,12 +1,7 @@
 <template>
-  <Row style="display: flex; border-bottom: 1px solid #e2e2e2" justify="center">
+  <Row style="border-bottom: 1px solid #e2e2e2" class="flex" justify="center">
     <Col
-      style="
-        display: flex;
-        flex-direction: column;
-        margin: 0px 60px 30px 60px;
-      "
-      class="mainpage-col"
+      class="mainpage-col flex flex-col mx-14 mb-8"
       lg="12"
       sm="12"
       xs="12"

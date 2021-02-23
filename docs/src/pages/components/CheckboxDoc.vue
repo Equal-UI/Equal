@@ -12,7 +12,7 @@
         :icon="checkboxIcon"
         :label="checkboxLabel"
       >
-        <template #sublabel>{{checkboxSubLabel}}</template>
+        <template #sublabel>{{ checkboxSubLabel }}</template>
       </it-checkbox>
       <template #props>
         <it-select
@@ -47,7 +47,7 @@
     </Box>
 
     <Box :code="codeLine" title="LineThrough">
-      <div style="display: flex; flex-direction: column">
+      <div class="flex flex-col">
         <it-checkbox
           type="primary"
           label="It's time"
@@ -86,7 +86,7 @@
     </Box>
 
     <Box :code="codeSublabel" title="Sublabel">
-      <div style="width: 60%">
+      <div class="w-3/5">
         <it-checkbox type="primary" v-model="lineCheckSub1"
           >By signing this I agree with Terms and Conditions</it-checkbox
         >
@@ -139,9 +139,9 @@
 
     <Box :code="codePulse" title="Pulse">
       <template #description>
-      <p style="padding: 0px 24px">
-        Pulse helps you to catch user's attention
-      </p>
+        <p class="mx-6">
+          Pulse helps you to catch user's attention
+        </p>
       </template>
       <it-checkbox
         type="primary"

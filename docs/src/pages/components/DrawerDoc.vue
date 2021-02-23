@@ -4,7 +4,7 @@
 
     <Box :code="exampleCode" title="Drawer">
       <template #description>
-        <p style="padding: 0px 24px">
+        <p class="mx-6">
           This component is intended to be used only with wide screens
         </p>
       </template>
@@ -16,7 +16,7 @@
       >
 
       <it-drawer v-model="drawerVisible">
-        <h3 style="margin: 24px">
+        <h3 class="m-6">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
@@ -51,7 +51,7 @@
         </template>
       </it-drawer>
       <it-drawer placement="left" v-model="drawerLeftVisible">
-        <h3 style="margin: 24px">
+        <h3 class="m-6">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
@@ -92,17 +92,22 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import faker from 'faker'
 
 export default defineComponent({
-  mounted: function () {
-    for (let i = 0; i < 12; i++) {
-      this.fakeUsers.push({
-        name: faker.name.findName(),
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-      })
-    }
+  async mounted () {
+    const reqNames = await fetch(
+      'https://randomuser.me/api/?inc=picture,name,login&results=12'
+    )
+    const data = await reqNames.json()
+
+    this.fakeUsers = data.results.map((el: any) => {
+      const { first, last } = el.name
+      return {
+        name: `${first} ${last}`,
+        avatar: el.picture.medium,
+        username: el.login.username,
+      }
+    })
   },
   data: () => ({
     drawerVisible: false,
@@ -115,7 +120,7 @@ export default defineComponent({
 <it-button @click="drawerVisible = true" type="primary">
   Right drawer
 </it-button>
-      
+
 <it-drawer v-model="drawerVisible">
   <h3 style="margin: 24px">
     <it-icon
