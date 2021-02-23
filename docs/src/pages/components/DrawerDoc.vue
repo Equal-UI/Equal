@@ -4,19 +4,19 @@
 
     <Box :code="exampleCode" title="Drawer">
       <template #description>
-        <p style="padding: 0 24px;">
+        <p class="mx-6">
           This component is intended to be used only with wide screens
         </p>
       </template>
-      <it-button type="primary" @click="drawerLeftVisible = true"
+      <it-button @click="drawerLeftVisible = true" type="primary"
         >Left drawer</it-button
       >
-      <it-button type="primary" @click="drawerVisible = true"
+      <it-button @click="drawerVisible = true" type="primary"
         >Right drawer</it-button
       >
 
       <it-drawer v-model="drawerVisible">
-        <h3 style="margin: 24px;">
+        <h3 class="m-6">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
@@ -28,7 +28,7 @@
               flex-direction: row;
               padding: 0 24px;
               justify-content: space-between;
-"
+            "
           >
             <it-avatar :src="user.avatar" />
             <div
@@ -38,10 +38,10 @@
                 flex: 1;
                 flex-direction: column;
                 padding-left: 12px;
-"
+              "
             >
-              <p style="font-weight: 500;">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a;">
+              <p style="font-weight: 500">{{ user.name }}</p>
+              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
                 @{{ user.username }}
               </p>
             </div>
@@ -50,8 +50,8 @@
           <it-divider />
         </template>
       </it-drawer>
-      <it-drawer v-model="drawerLeftVisible" placement="left">
-        <h3 style="margin: 24px;">
+      <it-drawer placement="left" v-model="drawerLeftVisible">
+        <h3 class="m-6">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
@@ -63,7 +63,7 @@
               flex-direction: row;
               padding: 0 24px;
               justify-content: space-between;
-"
+            "
           >
             <it-avatar :src="user.avatar" />
             <div
@@ -73,10 +73,10 @@
                 flex: 1;
                 flex-direction: column;
                 padding-left: 12px;
-"
+              "
             >
-              <p style="font-weight: 500;">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a;">
+              <p style="font-weight: 500">{{ user.name }}</p>
+              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
                 @{{ user.username }}
               </p>
             </div>
@@ -91,22 +91,36 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import faker from 'faker'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      drawerVisible: false,
-      drawerLeftVisible: false,
-      fakeUsers: [],
-      exampleCode: `<it-button @click="drawerLeftVisible = true" type="primary">
+export default defineComponent({
+  async mounted () {
+    const reqNames = await fetch(
+      'https://randomuser.me/api/?inc=picture,name,login&results=12'
+    )
+    const data = await reqNames.json()
+
+    this.fakeUsers = data.results.map((el: any) => {
+      const { first, last } = el.name
+      return {
+        name: `${first} ${last}`,
+        avatar: el.picture.medium,
+        username: el.login.username,
+      }
+    })
+  },
+  data: () => ({
+    drawerVisible: false,
+    drawerLeftVisible: false,
+    fakeUsers: [],
+    exampleCode: `<it-button @click="drawerLeftVisible = true" type="primary">
     Left drawer
     </it-button>
 
 <it-button @click="drawerVisible = true" type="primary">
   Right drawer
 </it-button>
-      
+
 <it-drawer v-model="drawerVisible">
   <h3 style="margin: 24px">
     <it-icon
@@ -155,70 +169,59 @@
   </template>
 </it-drawer>`,
 
-      dataSheet: [
-        {
-          property: 'width',
-          type: ['String'],
-          default: '500px',
-          values: [],
-          description: 'Drawer width',
-        },
-        {
-          property: 'placement',
-          type: ['String'],
-          default: 'right',
-          values: ['right', 'left'],
-          description: 'Drawer position',
-        },
-        {
-          property: 'closable-mask',
-          type: ['Boolean'],
-          default: 'true',
-          values: [],
-          description: 'Close drawer on the mask click',
-        },
-        {
-          property: 'hide-mask',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Hides drawer mask',
-        },
-        {
-          property: 'v-model',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Drawer v-model value',
-        },
-      ],
+    dataSheet: [
+      {
+        property: 'width',
+        type: ['String'],
+        default: '500px',
+        values: [],
+        description: 'Drawer width',
+      },
+      {
+        property: 'placement',
+        type: ['String'],
+        default: 'right',
+        values: ['right', 'left'],
+        description: 'Drawer position',
+      },
+      {
+        property: 'closable-mask',
+        type: ['Boolean'],
+        default: 'true',
+        values: [],
+        description: 'Close drawer on the mask click',
+      },
+      {
+        property: 'hide-mask',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Hides drawer mask',
+      },
+      {
+        property: 'v-model',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Drawer v-model value',
+      },
+    ],
 
-      slotSheet: [
-        {
-          name: 'default',
-          description: 'Drawer body',
-        },
-      ],
-    }),
-    mounted: function () {
-      for (let i = 0; i < 12; i++) {
-        this.fakeUsers.push({
-          name: faker.name.findName(),
-          avatar: faker.image.avatar(),
-          username: faker.internet.userName(),
-        })
-      }
-    },
-  })
+    slotSheet: [
+      {
+        name: 'default',
+        description: 'Drawer body',
+      },
+    ],
+  }),
+})
 </script>
 
 <style scoped>
-  .contacts {
-    margin-right: 6px;
-    padding: 5px;
-    box-shadow:
-      rgba(0, 0, 0, 0.07) 0 3px 6px,
-      rgba(50, 50, 93, 0.1) 0 7px 14px,
-      rgba(50, 50, 93, 0.05) 0 0 0 1px;
-  }
+.contacts {
+  margin-right: 6px;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 6px,
+    rgba(50, 50, 93, 0.1) 0px 7px 14px, rgba(50, 50, 93, 0.05) 0px 0px 0px 1px;
+}
 </style>

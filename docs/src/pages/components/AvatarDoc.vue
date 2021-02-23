@@ -9,9 +9,9 @@
         :square="avatarSquare"
       ></it-avatar>
       <template #props>
-        <it-checkbox v-model="avatarSquare" label="Square" />
-        <it-checkbox v-model="avatarImage" label="Image" />
-        <it-checkbox v-model="avatarText" label="Text" />
+        <it-checkbox label="Square" v-model="avatarSquare" />
+        <it-checkbox label="Image" v-model="avatarImage" />
+        <it-checkbox label="Text" v-model="avatarText" />
       </template>
     </Demobox>
 
@@ -110,52 +110,51 @@
       </it-avatar-group>
     </Box>
 
-    <props-table tag-name="it-avatar" :data-sheet="dataSheet" />
-    <props-table tag-name="it-avatar-group" :data-sheet="dataSheetGroup" />
+    <props-table tagName="it-avatar" :data-sheet="dataSheet" />
+    <props-table tagName="it-avatar-group" :data-sheet="dataSheetGroup" />
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import faker from 'faker'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      husky: faker.image.avatar(),
+export default defineComponent({
+  data: () => ({
+    husky: 'https://randomuser.me/api/portraits/women/72.jpg',
 
-      avatarSquare: false,
-      avatarImage: false,
-      avatarText: false,
+    avatarSquare: false,
+    avatarImage: false,
+    avatarText: false,
 
-      alertType: 'primary',
-      alertTypes: ['primary', 'success', 'danger', 'warning'],
+    alertType: 'primary',
+    alertTypes: ['primary', 'success', 'danger', 'warning'],
 
-      typesCode: `<it-avatar />
+    typesCode: `<it-avatar />
 <it-avatar square />`,
 
-      colorCode: `<it-avatar color="#3051ff" />
+    colorCode: `<it-avatar color="#3051ff" />
 <it-avatar color="#f93155" />
 <it-avatar color="#131313" />`,
 
-      imageCode: `<it-avatar src="husky" />
+    imageCode: `<it-avatar src="husky" />
 <it-avatar src="husky" square />`,
 
-      textCode: `<it-avatar color="#3051ff" text="Yan" />
+    textCode: `<it-avatar color="#3051ff" text="Yan" />
 <it-avatar color="#3051ff" text="Yan Savinov" />`,
 
-      sizeCode: `<it-avatar />
+    sizeCode: `<it-avatar />
 <it-avatar size="50px" />
 <it-avatar size="60px" />
 <it-avatar size="70px" />`,
 
-      badgeCode: `<it-badge value="1">
+    badgeCode: `<it-badge value="1">
   <it-avatar square />
 </it-badge>
 <it-badge point>
   <it-avatar square />
 </it-badge>`,
 
-      groupCode: `<it-avatar-group>
+    groupCode: `<it-avatar-group>
   <it-avatar :src="husky" />
   <it-avatar :src="husky" />
   <it-avatar :src="husky" />
@@ -189,7 +188,7 @@
   <it-avatar :src="husky" />
 </it-avatar-group>`,
 
-      groupMaxCode: `<it-avatar-group :max="3">
+    groupMaxCode: `<it-avatar-group :max="3">
   <it-avatar :src="husky" />
   <it-avatar :src="husky" />
   <it-avatar :src="husky" />
@@ -209,67 +208,67 @@
   <it-avatar :src="husky" />
 </it-avatar-group>`,
 
-      dataSheet: [
-        {
-          property: 'src',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Src of avatar image',
-        },
-        {
-          property: 'text',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Avatar text',
-        },
-        {
-          property: 'color',
-          type: ['String'],
-          default: '-',
-          values: ['hex', 'rgb', 'hsl'],
-          description: 'Avatar color',
-        },
-        {
-          property: 'size',
-          type: ['String'],
-          default: '40px',
-          values: [],
-          description: 'Avatar size',
-        },
-        {
-          property: 'square',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes avatar square',
-        },
-      ],
+    dataSheet: [
+      {
+        property: 'src',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Src of avatar image',
+      },
+      {
+        property: 'text',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Avatar text',
+      },
+      {
+        property: 'color',
+        type: ['String'],
+        default: '-',
+        values: ['hex', 'rgb', 'hsl'],
+        description: 'Avatar color',
+      },
+      {
+        property: 'size',
+        type: ['String'],
+        default: '40px',
+        values: [],
+        description: 'Avatar size',
+      },
+      {
+        property: 'square',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes avatar square',
+      },
+    ],
 
-      dataSheetGroup: [
-        {
-          property: 'size',
-          type: ['String'],
-          default: '40px',
-          values: [],
-          description: 'Avatar size for all avatars in group',
-        },
-        {
-          property: 'square',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes avatars square in group',
-        },
-        {
-          property: 'max',
-          type: ['Number'],
-          default: '-',
-          values: [],
-          description: 'Limit the maximum amount of visible avatars',
-        },
-      ],
-    }),
-  })
+    dataSheetGroup: [
+      {
+        property: 'size',
+        type: ['String'],
+        default: '40px',
+        values: [],
+        description: 'Avatar size for all avatars in group',
+      },
+      {
+        property: 'square',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes avatars square in group',
+      },
+      {
+        property: 'max',
+        type: ['Number'],
+        default: '-',
+        values: [],
+        description: 'Limit the maximum amount of visible avatars',
+      },
+    ],
+  }),
+})
 </script>

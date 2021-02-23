@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <Sidebar />
-    <Row style="display: flex;" justify="center">
+    <Row class="flex" justify="center">
       <Col
-        style="display: flex; flex-direction: column; margin: 50px 15px;"
+        class="flex flex-col my-12 mx-4"
         lg="9"
         sm="10"
         xs="11"
@@ -15,24 +15,24 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import Sidebar from '../components/Sidebar.vue'
+import { defineComponent } from 'vue'
+import Sidebar from '../components/Sidebar.vue'
 
-  export default defineComponent({
-    name: 'home',
-    components: { Sidebar },
-  })
+export default defineComponent({
+  components: { Sidebar },
+  name: 'Home',
+})
 </script>
 
 <style lang="less">
-  .page {
-    padding-left: 14rem;
-    left: 0;
-  }
+.page {
+  padding-left: 14rem;
+  left: 0;
+}
 
-  @media only screen and (max-width: 900px) {
-    .page {
-      padding-left: 0;
-    }
+@media only screen and (max-width: 900px) {
+  .page {
+    padding-left: 0px;
   }
+}
 </style>

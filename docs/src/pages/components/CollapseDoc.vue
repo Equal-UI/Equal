@@ -32,7 +32,7 @@
     </Box>
 
     <Box :code="singleCode" title="Single">
-      <div style="width: 100%; display: flex; flex-direction: column;">
+      <div class="flex flex-col w-full">
         <it-collapse>
           <it-collapse-item title="Article">Hello there</it-collapse-item>
         </it-collapse>
@@ -60,7 +60,7 @@
       </it-collapse>
     </Box>
     <props-table
-      tag-name="it-collapse-item"
+      tagName="it-collapse-item"
       :data-sheet="dataSheet"
       :slot-sheet="slotSheet"
     />
@@ -68,11 +68,11 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      collapseCode: `<it-collapse>
+export default defineComponent({
+  data: () => ({
+    collapseCode: `<it-collapse>
   <it-collapse-item title="Title 1"
     >The First Things First manifesto was written 29 November 1963 and
     published in 1964 by Ken Garland. It was backed by over 400 graphic
@@ -100,7 +100,7 @@
   >
 </it-collapse>`,
 
-      singleCode: `<it-collapse>
+    singleCode: `<it-collapse>
   <it-collapse-item title="Article"
     >Hello there</it-collapse-item
   >
@@ -118,7 +118,7 @@
   >
 </it-collapse>`,
 
-      nestedCode: `<it-collapse>
+    nestedCode: `<it-collapse>
   <it-collapse-item title="Question">
     Why would you use nested collapse components?
 
@@ -128,28 +128,28 @@
   </it-collapse-item>
 </it-collapse>`,
 
-      dataSheet: [
-        {
-          property: 'opened',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Opened state',
-        },
-        {
-          property: 'title',
-          type: ['String'],
-          default: '',
-          values: [],
-          description: 'Title of the collapse item',
-        },
-      ],
-      slotSheet: [
-        {
-          name: 'default',
-          description: 'Collapse item body',
-        },
-      ],
-    }),
-  })
+    dataSheet: [
+      {
+        property: 'opened',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Opened state',
+      },
+      {
+        property: 'title',
+        type: ['String'],
+        default: '',
+        values: [],
+        description: 'Title of the collapse item',
+      },
+    ],
+    slotSheet: [
+      {
+        name: 'default',
+        description: 'Collapse item body',
+      },
+    ],
+  }),
+})
 </script>

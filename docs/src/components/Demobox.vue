@@ -1,50 +1,37 @@
 <template>
-  <div class="it-demobox">
-    <div class="it-demobox-scene">
+  <div class="it-demobox flex border border-solid bg-white rounded">
+    <div class="it-demobox-scene flex justify-center items-center flex-wrap">
       <slot></slot>
     </div>
-    <div class="it-demobox-props">
-      <h3 style="margin-top: 0;">Props</h3>
+    <div class="it-demobox-props flex flex-col px-4 py-5">
+      <h3>Props</h3>
       <slot name="props"></slot>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'demobox',
-  }
+export default {
+  name: 'demobox'
+}
 </script>
 
 <style lang="less">
   .it-demobox {
-    background: #fff;
-    border: 1px solid #d3dae6;
-    border-radius: 4px;
-    display: flex;
-    width: 100%;
+    border-color: #D3DAE6;
     min-height: 200px;
 
     &-scene {
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
       flex: 5;
-      display: flex;
-      overflow: scroll;
-      overflow: hidden;
     }
 
     &-props {
-      display: flex;
-      flex-direction: column;
-      padding: 12px 16px;
       flex: 2;
-      border-left: 1px solid #d3dae6;
+      border-left: 1px solid #D3DAE6;
     }
 
     &-props > *:not(.it-divider) {
-      margin-bottom: 12px;
+      @apply mb-3;
     }
   }
 
@@ -54,14 +41,15 @@
 
   @media only screen and (max-width: 600px) {
     .it-demobox {
-      flex-direction: column;
+      @apply flex-col;
 
       &-scene {
-        padding: 20px 0;
+        @apply py-5; 
+        @apply px-0;
       }
 
       &-props {
-        border-top: 1px solid #d3dae6;
+        border-top: 1px solid #D3DAE6;
         border-left: none;
       }
     }

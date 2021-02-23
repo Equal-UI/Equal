@@ -10,6 +10,7 @@ import BadgeDoc from './components/BadgeDoc.vue'
 import BreadcrumbsDoc from './components/BreadcrumbsDoc.vue'
 import ButtonDoc from './components/ButtonDoc.vue'
 import CollapseDoc from './components/CollapseDoc.vue'
+import ColorpickerDoc from './components/ColorpickerDoc.vue'
 import CheckboxDoc from './components/CheckboxDoc.vue'
 import DividerDoc from './components/DividerDoc.vue'
 import DrawerDoc from './components/DrawerDoc.vue'
@@ -41,6 +42,7 @@ export default {
   BreadcrumbsDoc,
   ButtonDoc,
   CollapseDoc,
+  ColorpickerDoc,
   CheckboxDoc,
   Components,
   DividerDoc,

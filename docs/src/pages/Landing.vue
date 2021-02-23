@@ -1,8 +1,7 @@
 <template>
-  <Row style="display: flex; border-bottom: 1px solid #e2e2e2;" justify="center">
+  <Row style="border-bottom: 1px solid #e2e2e2" class="flex" justify="center">
     <Col
-      style="display: flex; flex-direction: column; margin: 0 60px 30px 60px;"
-      class="mainpage-col"
+      class="mainpage-col flex flex-col mx-14 mb-8"
       lg="12"
       sm="12"
       xs="12"
@@ -29,35 +28,33 @@
 </template>
 
 <style lang="less">
-  .button-logo {
-    height: 15px;
-    margin-right: 10px;
-  }
+.button-logo {
+  height: 15px;
+  margin-right: 10px;
+}
+.main-title {
+  font-size: 60px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
 
-  .main-title {
-    font-size: 60px;
-    margin-bottom: 12px;
-    line-height: 1;
-  }
+.sub-title {
+  font-size: 17px;
+  font-weight: normal;
+  margin-bottom: 42px;
+}
 
-  .sub-title {
-    font-size: 17px;
-    font-weight: normal;
-    margin-bottom: 42px;
+.buttons-group {
+  display: flex;
+  flex-direction: row;
+  & a + a {
+    margin-left: 22px;
   }
+}
 
-  .buttons-group {
-    display: flex;
-    flex-direction: row;
-
-    & a + a {
-      margin-left: 22px;
-    }
+@media only screen and (max-width: 600px) {
+  .mainpage-col {
+    margin: 120px 30px 30px !important;
   }
-
-  @media only screen and (max-width: 600px) {
-    .mainpage-col {
-      margin: 120px 30px 30px !important;
-    }
-  }
+}
 </style>

@@ -5,7 +5,6 @@
     <Demobox>
       <it-alert
         :iconbox="alertIconBox"
-        :visible="alertVisible"
         :type="alertType"
         :show-icon="alertShowIcon"
         :closable="alertClosable"
@@ -30,7 +29,7 @@
     </Demobox>
 
     <Box :code="typesCode" title="Type">
-      <div style="flex-direction: column; flex: 1;">
+      <div class="flex flex-col flex-1">
         <it-alert type="primary" :title="alertTitle" :body="alertBody" />
         <it-alert type="success" :title="alertTitle" :body="alertBody" />
         <it-alert type="danger" :title="alertTitle" :body="alertBody" />
@@ -39,7 +38,7 @@
     </Box>
 
     <Box :code="typesBox" title="Icon in box">
-      <div style="flex-direction: column; flex: 1;">
+      <div class="flex flex-col flex-1">
         <it-alert
           iconbox
           type="primary"
@@ -63,7 +62,7 @@
     </Box>
 
     <Box :code="slotCode" title="Slot">
-      <div style="flex-direction: column; flex: 1;">
+      <div class="flex flex-col flex-1;">
         <it-alert type="primary" title="Alert with slot body">
           You can put whatever you want here, I'd put a
           <it-tag type="primary">Tag</it-tag>

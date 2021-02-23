@@ -2,15 +2,15 @@
   <div>
     <h1>Introduction</h1>
     <div class="it-text-box">
-      <h2 style="margin-bottom: 20px;">Hello!</h2>
+      <h2 class="mb-4">Hello!</h2>
       <p>
-        <b>Equal UI</b> is a components framework for Vue 3 based on TypeScript.
-        Right now we are in the middle of the road to the stable version. Our
-        team really looking forward for the time when Equal UI could be used in
-        the real projects and we would be really glad to see you contribute to
-        the project.
+        <b>Equal UI</b> is a components framework for Vue 3 based on
+        TypeScript. Right now we are in the middle of the road to the stable
+        version. Our team really looking forward for the time when Equal UI
+        could be used in the real projects and we would be really glad to see
+        you contribute to the project.
       </p>
-      <h2 style="margin-top: 22px; margin-bottom: 20px;">How to Contribute</h2>
+      <h2 class="my-5">How to Contribute</h2>
       <p>
         Contributions to Equal UI on Github are appreciated! Whether you have
         questions, concerns, or suggestions for improving Equal UI - please

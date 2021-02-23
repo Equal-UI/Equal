@@ -1,6 +1,23 @@
 <template>
   <div id="grid">
     <div>
+      <h3>Button</h3>
+
+      <it-button
+        @click="switchBtn = !switchBtn"
+        :type="switchBtn ? 'primary' : 'neutral'"
+        >{{ switchBtn ? "Following" : "Click to follow" }}</it-button
+      >
+
+      <it-button>Button</it-button>
+      <it-button type="primary">Button</it-button>
+      <it-button type="success">Button</it-button>
+      <it-button type="danger">Button</it-button>
+      <it-button type="warning">Button</it-button>
+      <it-button type="black">Button</it-button>
+    </div>
+
+    <div>
       <h3>Icon</h3>
 
       <it-icon box box-color="#3051ff" color="#fff" name="info" />
@@ -9,21 +26,22 @@
     </div>
 
     <div>
-      <h3>Button</h3>
+      <h3>Colorpicker</h3>
 
-      <it-button
-        :type="switchBtn ? 'primary' : 'neutral'"
-        @click="switchBtn = !switchBtn"
-      >
-        {{ switchBtn ? 'Following' : 'Click to follow' }}
-      </it-button>
+      <it-popover borderless>
+        <it-button>Delete</it-button>
+        <template #content>
+          <div>
+            <it-colorpicker show-tooltip v-model="color" />
+          </div>
+        </template>
+      </it-popover>
 
-      <it-button>Button</it-button>
-      <it-button type="primary">Button</it-button>
-      <it-button type="success">Button</it-button>
-      <it-button type="danger">Button</it-button>
-      <it-button type="warning">Button</it-button>
-      <it-button type="black">Button</it-button>
+      <!-- <div class="demo-list">
+        <div class="demo-item">
+          <it-colorpicker v-model="color" />
+        </div>
+      </div> -->
     </div>
 
     <div>
@@ -95,12 +113,12 @@
     <div>
       <h3>Checkbox</h3>
 
-      <it-checkbox v-model="checkboxValue" type="primary" label="Primary" />
-      <it-checkbox v-model="checkboxValue" type="success" label="Success" />
-      <it-checkbox v-model="checkboxValue" type="danger" label="Danger" />
-      <it-checkbox v-model="checkboxValue" type="warning" label="Warning" />
-      <it-checkbox v-model="checkboxValue" type="black" label="Black" />
-      <it-checkbox v-model="checkboxValue" type="neutral" label="Neutral" />
+      <it-checkbox type="primary" label="Primary" v-model="checkboxValue" />
+      <it-checkbox type="success" label="Success" v-model="checkboxValue" />
+      <it-checkbox type="danger" label="Danger" v-model="checkboxValue" />
+      <it-checkbox type="warning" label="Warning" v-model="checkboxValue" />
+      <it-checkbox type="black" label="Black" v-model="checkboxValue" />
+      <it-checkbox type="neutral" label="Neutral" v-model="checkboxValue" />
     </div>
 
     <div>
@@ -123,31 +141,31 @@
       <h3>Collapse</h3>
 
       <it-collapse>
-        <it-collapse-item title="Title 1">
-          The First Things First manifesto was written 29 November 1963 and
+        <it-collapse-item title="Title 1"
+          >The First Things First manifesto was written 29 November 1963 and
           published in 1964 by Ken Garland. It was backed by over 400 graphic
           designers and artists and also received the backing of Tony Benn,
           radical left-wing MP and activist, who published it in its entirety in
-          The Guardian newspaper.
-        </it-collapse-item>
+          The Guardian newspaper.</it-collapse-item
+        >
         <it-collapse-item title="Title 2"
           >Reacting against a rich and affluent Britain of the 1960s, it tried
           to re-radicalise a design industry which the signatories felt had
           become lazy and uncritical. Drawing on ideas shared by critical
           theory, the Frankfurt School, and the counter-culture of the time, it
           explicitly reaffirmed the belief that design is not a neutral,
-          value-free process.
-        </it-collapse-item>
+          value-free process.</it-collapse-item
+        >
         <it-collapse-item title="Title 3"
           >It rallied against the consumerist culture that was purely concerned
           with buying and selling things and tried to highlight a Humanist
           dimension to graphic design theory. It was later updated and
           republished with a new group of signatories as the First Things First
-          2000 manifesto.
-        </it-collapse-item>
-        <it-collapse-item title="Title 4">
-          Try Equal UI, you'll like it
-        </it-collapse-item>
+          2000 manifesto.</it-collapse-item
+        >
+        <it-collapse-item title="Title 4"
+          >Try Equal UI, you'll like it</it-collapse-item
+        >
       </it-collapse>
     </div>
 
@@ -177,7 +195,7 @@
 
       <it-number-input
         v-model="numberInputValue"
-        label-top="Zdarova"
+        labelTop="Zdarova"
         resize-on-write
         :min="0"
         :max="100"
@@ -210,7 +228,7 @@
 
     <div>
       <h3>Progress bar</h3>
-      <div style="padding: 60px 0; width: 100%;">
+      <div style="padding: 60px 0px; width: 100%">
         <it-progressbar :progress="stepSliderValue" />
         <it-progressbar :progress="stepSliderValue" tooltip="bottom" />
       </div>
@@ -219,9 +237,9 @@
     <div>
       <h3>Select</h3>
       <it-select
-        v-model="selectValue"
-        label-top="Label"
+        labelTop="Label"
         :options="selectOptions"
+        v-model="selectValue"
       >
       </it-select>
     </div>
@@ -238,7 +256,7 @@
       <it-dropdown>
         <it-button>Hover me</it-button>
 
-        <template #menu>
+        <template v-slot:menu>
           <it-dropdown-menu>
             <it-dropdown-item>Hello</it-dropdown-item>
             <it-dropdown-item disabled>Disabled</it-dropdown-item>
@@ -273,7 +291,7 @@
         </template>
 
         <template #header>
-          <h3 style="margin: 0;">Header</h3>
+          <h3 style="margin: 0">Header</h3>
         </template>
 
         <template #body>
@@ -377,25 +395,25 @@
     <div>
       <h3>Toggle</h3>
       <it-toggle
-        v-model="toggleIconsValue"
         icons
+        v-model="toggleIconsValue"
         :options="['wb_sunny', 'bedtime']"
       />
       <it-toggle
-        v-model="toggleIconsValue"
         icons
         round
+        v-model="toggleIconsValue"
         :options="['wb_sunny', 'bedtime']"
       />
       <it-toggle
+        style="width: 100%"
         v-model="toggleValue"
-        style="width: 100%;"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
       <it-toggle
-        v-model="toggleValue"
-        style="width: 100%;"
+        style="width: 100%"
         round
+        v-model="toggleValue"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
     </div>
@@ -403,71 +421,101 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+const defaultColors = {
+  hex: '#194d33e6',
+  hsl: {
+    h: 150,
+    s: 0.5,
+    l: 0.2,
+    a: 0.9
+  },
+  hsv: {
+    h: 150,
+    s: 0.66,
+    v: 0.30,
+    a: 0.9
+  },
+  rgba: {
+    r: 159,
+    g: 96,
+    b: 43,
+    a: 0.9
+  },
+  a: 0.9
+}
 
-  export default defineComponent({
-    name: 'app',
-    data() {
-      return {
-        toggleValue: 'Light',
-        toggleIconsValue: 'wb_sunny',
-        switchBtn: false,
-        selectValue: '',
-        selectOptions: [
-          'asdad',
-          'dsadad',
-          '111111',
-          'qweddf',
-          'ewfrrtgfg',
-          'asddddd',
-          'effee',
-          '34434',
-          435345,
-          43455,
-        ],
-        alertTitle: 'We think we know you',
-        switchValue: false,
-        radioValue: '00',
-        checkboxValue: false,
-        inputValue: '',
-        modal: false,
-        drawer: false,
-        textareaValue: '',
-        numberInputValue: 1,
-        stepSliderValue: 40,
-        progressValue: 40,
-      }
-    },
-  })
+export default {
+  name: 'App',
+  data: () => ({
+    color: defaultColors,
+    toggleValue: 'Light',
+    toggleIconsValue: 'wb_sunny',
+    switchBtn: false,
+    selectValue: '',
+    selectOptions: [
+      'asdad',
+      'dsadad',
+      '111111',
+      'qweddf',
+      'ewfrrtgfg',
+      'asddddd',
+      'effee',
+      '34434',
+      435345,
+      43455,
+    ],
+    alertTitle: 'We think we know you',
+    switchValue: false,
+    radioValue: '00',
+    checkboxValue: false,
+    inputValue: '',
+    modal: false,
+    drawer: false,
+    textareaValue: '',
+    numberInputValue: 1,
+    stepSliderValue: 40,
+    progressValue: 40,
+  }),
+  methods: {},
+}
 </script>
 
 <style lang="less">
-  #grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
+.demo-list {
+  display: flex;
+  margin-bottom: 20px;
+}
+.demo-item {
+  position: relative;
+  margin-bottom: 10px;
+  margin: 0 10px 0 10px;
+  z-index: 2;
+}
 
-  #grid > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #d3dae6;
-    border-radius: 6px;
-    box-sizing: border-box;
-    transition: 0.17s all ease-in-out;
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
-    &:hover {
-      border: 1px solid #fff;
-      box-shadow:
-        0 0 0 1px rgba(50, 50, 93, 0.05),
-        0 7px 14px 0 rgba(50, 50, 93, 0.1),
-        0 3px 6px 0 rgba(0, 0, 0, 0.07);
-    }
-  }
+#grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #d3dae6;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: 0.17s all ease-in-out;
 
-  #grid > div > * {
-    margin: 5px;
+  &:hover {
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.05),
+      0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
   }
+}
+
+#grid > div > * {
+  margin: 5px;
+}
 </style>
