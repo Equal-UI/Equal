@@ -50,7 +50,7 @@
   import { defineComponent, watch, ref, nextTick, onMounted } from 'vue'
 
   export default defineComponent({
-    name: 'ItNumberInput',
+    name: 'it-number-input',
     inheritAttrs: false,
     props: {
       resizeOnWrite: Boolean,

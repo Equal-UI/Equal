@@ -8,6 +8,6 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'ItDropdownMenu',
+    name: 'it-dropdown-menu',
   })
 </script>

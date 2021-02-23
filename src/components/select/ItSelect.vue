@@ -52,7 +52,7 @@
             : 'it-select-dropdown--bottom',
           divided && 'it-select-dropdown--divided',
         ]"
-        style="width: 100%"
+        style="width: 100%;"
       >
         <ul ref="listRef" class="it-select-list">
           <li
@@ -89,7 +89,7 @@
   import { clickOutside } from '@/directives'
 
   export default defineComponent({
-    name: 'ItSelect',
+    name: 'it-select',
     directives: {
       clickoutside: clickOutside,
     },

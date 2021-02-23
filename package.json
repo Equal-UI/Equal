@@ -36,9 +36,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint:scripts": "eslint src/**/*.{js,ts,vue} docs/src/**/*.{js,ts,vue}",
-    "lint:styles": "stylelint **/*.{less,vue}",
-    "prettier:fix": "prettier -w -u src/**/*.{ts,vue} docs/src/**/*.{ts,vue}"
+    "lint:eslint": "eslint src/**/*.{js,ts,vue} docs/src/**/*.{js,ts,vue}",
+    "lint:prettier": "prettier -w -u src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
+    "lint:stylelint": "stylelint **/*.{less,vue}"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
@@ -71,15 +71,11 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
     "typescript": "^4.1.5",
-    "vite": "^2.0.0-beta.40"
+    "vite": "^2.0.0-beta.40",
+    "vue-eslint-parser": "^7.5.0"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
     "vue": "^3.0.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint:scripts && yarn lint:styles && yarn prettier:fix"
-    }
   }
 }

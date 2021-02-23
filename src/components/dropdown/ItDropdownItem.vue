@@ -17,7 +17,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'ItDropdownItem',
+    name: 'it-dropdown-item',
     props: {
       disabled: Boolean,
       divided: Boolean,

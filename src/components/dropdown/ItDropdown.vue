@@ -24,7 +24,7 @@
   import { clickOutside } from '@/directives'
 
   export default defineComponent({
-    name: 'ItDropdown',
+    name: 'it-dropdown',
     directives: {
       clickoutside: clickOutside,
     },

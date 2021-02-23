@@ -13,7 +13,7 @@
         type="checkbox"
         class="it-switch-input"
         :disabled="disabled"
-        style="z-index: 10"
+        style="z-index: 10;"
         v-bind="$attrs"
         @change="toggle"
       />
@@ -54,7 +54,7 @@
   import { Colors } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItSwitch',
+    name: 'it-switch',
     inheritAttrs: false,
     props: {
       type: {

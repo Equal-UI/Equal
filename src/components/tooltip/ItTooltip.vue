@@ -34,7 +34,7 @@
   import { Positions } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItTooltip',
+    name: 'it-tooltip',
     props: {
       content: [String, Number],
       disabled: Boolean,

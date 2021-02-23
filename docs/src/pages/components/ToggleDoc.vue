@@ -5,7 +5,7 @@
     <Demobox>
       <it-toggle
         v-model="toggleValue"
-        style="width: 80%"
+        style="width: 80%;"
         :round="toggleRound"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
@@ -15,15 +15,15 @@
       </template>
     </Demobox>
     <Box :code="exampleCode" title="Types">
-      <div style="width: 100%">
+      <div style="width: 100%;">
         <it-toggle
           v-model="toggleValue"
-          style="width: 100%; margin-bottom: 16px"
+          style="width: 100%; margin-bottom: 16px;"
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
         <it-toggle
           v-model="toggleValue"
-          style="width: 100%"
+          style="width: 100%;"
           round
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
@@ -31,10 +31,10 @@
     </Box>
     <Box :code="iconsCode" title="Icons">
       <template #description>
-        <p style="padding: 0 24px">
+        <p style="padding: 0 24px;">
           You can use
           <a
-            style="color: #3051ff"
+            style="color: #3051ff;"
             target="_blank"
             rel="noopener noreferrer"
             href="https://material.io/resources/icons/"
@@ -47,7 +47,7 @@
         <it-toggle
           v-model="toggleIconsValue"
           icons
-          style="margin-bottom: 16px"
+          style="margin-bottom: 16px;"
           :options="['wb_sunny', 'bedtime']"
         />
         <it-toggle

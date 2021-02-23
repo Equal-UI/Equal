@@ -59,7 +59,7 @@
   import { Sizes, Colors } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItButton',
+    name: 'it-button',
     components: {
       ItIcon,
       ItLoading,

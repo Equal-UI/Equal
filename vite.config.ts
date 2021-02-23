@@ -1,10 +1,8 @@
-const path = require('path')
+import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+const path = require('path')
 
-/**
- * type {import('vite').UserConfig}
- */
-export default {
+const config: UserConfig = {
   alias: [
     {
       find: '@',
@@ -31,3 +29,5 @@ export default {
     },
   },
 }
+
+export default config

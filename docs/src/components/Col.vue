@@ -18,7 +18,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'Col',
+    name: 'col',
     props: {
       width: { default: 12 },
       xs: [Number, String],

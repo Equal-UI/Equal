@@ -1,6 +1,6 @@
 <template>
   <span class="it-badge" :class="[square && 'it-badge--square']">
-    <slot></slot>
+    <slot />
     <span
       v-show="show"
       class="it-badge-body"
@@ -20,7 +20,7 @@
   import { Colors, Positions } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItBadge',
+    name: 'it-badge',
     props: {
       type: {
         type: String,

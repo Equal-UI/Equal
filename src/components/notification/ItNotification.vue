@@ -49,7 +49,7 @@
   }
 
   export default defineComponent({
-    name: 'ItNotification',
+    name: 'it-notification',
     components: {
       'it-icon': ItIcon,
     },

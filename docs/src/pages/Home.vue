@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <Sidebar />
-    <Row style="display: flex" justify="center">
+    <Row style="display: flex;" justify="center">
       <Col
-        style="display: flex; flex-direction: column; margin: 50px 15px"
+        style="display: flex; flex-direction: column; margin: 50px 15px;"
         lg="9"
         sm="10"
         xs="11"
@@ -19,7 +19,7 @@
   import Sidebar from '../components/Sidebar.vue'
 
   export default defineComponent({
-    name: 'Home',
+    name: 'home',
     components: { Sidebar },
   })
 </script>

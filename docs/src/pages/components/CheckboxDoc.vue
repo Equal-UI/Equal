@@ -47,7 +47,7 @@
     </Box>
 
     <Box :code="codeLine" title="LineThrough">
-      <div style="display: flex; flex-direction: column">
+      <div style="display: flex; flex-direction: column;">
         <it-checkbox
           v-model="lineCheck0"
           type="primary"
@@ -86,7 +86,7 @@
     </Box>
 
     <Box :code="codeSublabel" title="Sublabel">
-      <div style="width: 60%">
+      <div style="width: 60%;">
         <it-checkbox v-model="lineCheckSub1" type="primary"
           >By signing this I agree with Terms and Conditions</it-checkbox
         >
@@ -139,7 +139,7 @@
 
     <Box :code="codePulse" title="Pulse">
       <template #description>
-        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
+        <p style="padding: 0 24px;">Pulse helps you to catch user's attention</p>
       </template>
       <it-checkbox
         v-model="pulseValue"

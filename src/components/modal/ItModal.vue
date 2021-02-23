@@ -42,7 +42,7 @@
   import { useCheckSlot } from '@/hooks'
 
   export default defineComponent({
-    name: 'ItModal',
+    name: 'it-modal',
     inheritAttrs: false,
     props: {
       modelValue: { type: Boolean, default: false },

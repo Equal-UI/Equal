@@ -15,7 +15,7 @@
       <router-link to="/" class="logo-link">
         <img class="sidebar-logo" src="/eqqqual.png" />
       </router-link>
-      <div style="margin-top: 15px; display: flex; flex-direction: column">
+      <div style="margin-top: 15px; display: flex; flex-direction: column;">
         <a
           target="_blank"
           class="github"
@@ -25,7 +25,7 @@
           <it-button size="small" block>
             <img
               src="/github-logo.svg"
-              style="margin-right: 5px; height: 1em"
+              style="margin-right: 5px; height: 1em;"
               alt
               srcset
             />Github
@@ -34,14 +34,14 @@
         <a
           target="_blank"
           class="github"
-          style="margin-top: 8px"
+          style="margin-top: 8px;"
           rel="noopener noreferrer"
           href="https://twitter.com/k0mmsussertod"
         >
           <it-button size="small" block>
             <img
               src="/twitter-logo.svg"
-              style="margin-right: 5px; height: 1em"
+              style="margin-right: 5px; height: 1em;"
               alt
               srcset
             />Twitter
@@ -57,7 +57,7 @@
         }"
         @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0 7px 30px" to="/introduction"
+        <router-link style="padding: 7px 0 7px 30px;" to="/introduction"
           >Introduction</router-link
         >
       </li>
@@ -67,7 +67,7 @@
         }"
         @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0 7px 30px" to="/start"
+        <router-link style="padding: 7px 0 7px 30px;" to="/start"
           >Getting started</router-link
         >
       </li>

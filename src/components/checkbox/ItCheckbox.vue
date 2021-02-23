@@ -19,7 +19,7 @@
           disabled && 'it-checkbox--disabled',
         ]"
       >
-        <it-icon style="font-size: 16px" :name="icon" />
+        <it-icon style="font-size: 16px;" :name="icon" />
       </span>
     </span>
     <span class="it-checkbox-label-group">
@@ -65,7 +65,7 @@
   import { Colors } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItCheckbox',
+    name: 'it-checkbox',
     inheritAttrs: false,
     props: {
       type: {

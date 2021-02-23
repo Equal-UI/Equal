@@ -210,7 +210,7 @@
 
     <div>
       <h3>Progress bar</h3>
-      <div style="padding: 60px 0; width: 100%">
+      <div style="padding: 60px 0; width: 100%;">
         <it-progressbar :progress="stepSliderValue" />
         <it-progressbar :progress="stepSliderValue" tooltip="bottom" />
       </div>
@@ -273,7 +273,7 @@
         </template>
 
         <template #header>
-          <h3 style="margin: 0">Header</h3>
+          <h3 style="margin: 0;">Header</h3>
         </template>
 
         <template #body>
@@ -389,12 +389,12 @@
       />
       <it-toggle
         v-model="toggleValue"
-        style="width: 100%"
+        style="width: 100%;"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
       <it-toggle
         v-model="toggleValue"
-        style="width: 100%"
+        style="width: 100%;"
         round
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
@@ -403,14 +403,14 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+  import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'App',
+    name: 'app',
     data() {
       return {
         toggleValue: 'Light',
-          toggleIconsValue: "wb_sunny",
+        toggleIconsValue: 'wb_sunny',
         switchBtn: false,
         selectValue: '',
         selectOptions: [
@@ -460,8 +460,10 @@ import { defineComponent } from 'vue'
 
     &:hover {
       border: 1px solid #fff;
-      box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.05),
-        0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);
+      box-shadow:
+        0 0 0 1px rgba(50, 50, 93, 0.05),
+        0 7px 14px 0 rgba(50, 50, 93, 0.1),
+        0 3px 6px 0 rgba(0, 0, 0, 0.07);
     }
   }
 

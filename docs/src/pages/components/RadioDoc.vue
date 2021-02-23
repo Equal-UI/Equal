@@ -49,7 +49,7 @@
     </Box>
 
     <Box :code="codeSublabel" title="Sublabel">
-      <div style="width: 60%">
+      <div style="width: 60%;">
         <it-radio v-model="subradio" type="primary" :value="1"
           >By signing this I agree with Terms and Conditions</it-radio
         >
@@ -63,7 +63,7 @@
 
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
+        <p style="padding: 0 24px;">Pulse helps you to catch user's attention</p>
       </template>
       <it-radio v-model="pulseValue" pulse label="Look at me" value="42" />
     </Box>

@@ -26,7 +26,7 @@
   import { Positions } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItDrawer',
+    name: 'it-drawer',
     props: {
       modelValue: Boolean,
       width: { type: String, default: '500px' },

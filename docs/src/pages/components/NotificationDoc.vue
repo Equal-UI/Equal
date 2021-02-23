@@ -76,14 +76,14 @@
       >
     </Box>
     <Box :code="placementCode" title="Notification position">
-      <div style="flex-direction: column; display: flex">
+      <div style="flex-direction: column; display: flex;">
         <div
           style="
             margin-bottom: 12px;
             flex-direction: row;
             display: flex;
             justify-content: center;
-          "
+"
         >
           <it-button
             @click="
@@ -116,7 +116,7 @@
             flex-direction: row;
             display: flex;
             justify-content: center;
-          "
+"
         >
           <it-button
             @click="

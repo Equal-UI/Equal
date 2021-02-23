@@ -24,7 +24,7 @@
   import { defineComponent, computed, inject } from 'vue'
 
   export default defineComponent({
-    name: 'ItAvatar',
+    name: 'it-avatar',
     props: {
       src: { type: String },
       text: { type: String },

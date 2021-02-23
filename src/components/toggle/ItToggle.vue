@@ -34,7 +34,7 @@
   import ItIcon from '../icon'
 
   export default defineComponent({
-    name: 'ItToggle',
+    name: 'it-toggle',
     components: {
       ItIcon,
     },

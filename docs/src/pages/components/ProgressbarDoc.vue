@@ -3,7 +3,7 @@
     <h1>Progress Bar</h1>
 
     <Demobox>
-      <div style="width: 70%">
+      <div style="width: 70%;">
         <it-progressbar
           :show-tooltip="progressShowTooltip"
           :height="progressHeight"

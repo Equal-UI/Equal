@@ -21,7 +21,7 @@ function assign(obj) {
 }
 
 export default defineComponent({
-  name: 'Prism',
+  name: 'prism',
   props: {
     code: {
       type: String,

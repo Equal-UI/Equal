@@ -24,7 +24,7 @@
   import { defineComponent, computed } from 'vue'
 
   export default defineComponent({
-    name: 'ItLoading',
+    name: 'it-loading',
     props: {
       stroke: { default: 6, type: Number },
       radius: { default: 32, type: Number },

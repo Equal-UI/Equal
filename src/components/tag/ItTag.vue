@@ -17,7 +17,7 @@
   import { Colors } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItTag',
+    name: 'it-tag',
     props: {
       type: {
         default: Colors.NEUTRAL,

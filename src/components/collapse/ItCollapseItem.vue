@@ -23,7 +23,7 @@
   import { defineComponent, ref } from 'vue'
 
   export default defineComponent({
-    name: 'ItCollapseItem',
+    name: 'it-collapse-item',
     props: {
       title: { type: String },
       opened: { type: Boolean },

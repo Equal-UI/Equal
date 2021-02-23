@@ -12,7 +12,7 @@
         </template>
 
         <template #header>
-          <h3 style="margin: 0">Header</h3>
+          <h3 style="margin: 0;">Header</h3>
         </template>
 
         <template #body>
@@ -43,15 +43,15 @@
             />
             <div
               class="signupmodal-wrap-inputs"
-              style="display: flex; flex-direction: row"
+              style="display: flex; flex-direction: row;"
             >
               <it-input
-                style="flex: 1"
+                style="flex: 1;"
                 label-top="First Name"
                 placeholder="John"
               />
               <it-input
-                style="flex: 1"
+                style="flex: 1;"
                 label-top="Second Name"
                 placeholder="Doe"
               />

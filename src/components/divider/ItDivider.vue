@@ -13,7 +13,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'ItDivider',
+    name: 'it-divider',
     props: { vertical: { type: Boolean } },
   })
 </script>

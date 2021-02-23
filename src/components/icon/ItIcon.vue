@@ -15,7 +15,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'ItIcon',
+    name: 'it-icon',
     props: {
       name: { type: String, required: true },
       color: { type: String, default: null },

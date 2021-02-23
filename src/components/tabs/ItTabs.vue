@@ -45,7 +45,7 @@
   import { defineComponent, nextTick, onMounted, provide, ref } from 'vue'
 
   export default defineComponent({
-    name: 'ItTabs',
+    name: 'it-tabs',
     props: {
       initialTab: Number,
       vertical: Boolean,

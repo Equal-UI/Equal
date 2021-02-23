@@ -25,7 +25,7 @@
   import { Positions } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItProgressbar',
+    name: 'it-progressbar',
     props: {
       infinite: {
         type: Boolean,

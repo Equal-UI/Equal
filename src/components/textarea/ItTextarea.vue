@@ -28,7 +28,7 @@
 */
 
   export default defineComponent({
-    name: 'ItTextarea',
+    name: 'it-textarea',
     props: {
       placeholder: String,
       disabled: Boolean,

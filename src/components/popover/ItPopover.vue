@@ -31,7 +31,7 @@
   import { Positions } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItPopover',
+    name: 'it-popover',
     directives: {
       clickoutside: clickOutside,
     },

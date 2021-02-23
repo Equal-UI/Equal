@@ -1,7 +1,8 @@
-const path = require('path')
+import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+const path = require('path')
 
-module.exports = {
+const config: UserConfig = {
   optimizeDeps: {
     exclude: ['prismjs', 'body-scroll-lock'],
   },
@@ -11,5 +12,9 @@ module.exports = {
     '@': path.resolve(__dirname, '../src'),
   },
   base: '/Equal/',
-  assetsDir: '',
+  build: {
+    assetsDir: '',
+  },
 }
+
+export default config

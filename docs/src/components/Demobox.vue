@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
     <div class="it-demobox-props">
-      <h3 style="margin-top: 0">Props</h3>
+      <h3 style="margin-top: 0;">Props</h3>
       <slot name="props"></slot>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'Demobox',
+    name: 'demobox',
   }
 </script>
 

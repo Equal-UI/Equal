@@ -27,7 +27,7 @@
   }
 
   export default defineComponent({
-    name: 'ItMessage',
+    name: 'it-message',
     components: {
       'it-icon': ItIcon,
     },

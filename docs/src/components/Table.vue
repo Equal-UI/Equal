@@ -21,7 +21,7 @@
                 !['description', 'property'].includes(name) &&
                 Array.isArray(col)
               "
-              style="line-height: 2"
+              style="line-height: 2;"
             >
               <it-tag v-for="i in col" :key="i">{{ i }}</it-tag>
             </div>

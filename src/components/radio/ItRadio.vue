@@ -56,7 +56,7 @@
   import { defineComponent, computed } from 'vue'
 
   export default defineComponent({
-    name: 'ItRadio',
+    name: 'it-radio',
     inheritAttrs: false,
     props: {
       type: {

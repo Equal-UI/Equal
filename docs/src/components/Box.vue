@@ -21,13 +21,13 @@
         <it-button icon="file_copy" @click="clickCopy" />
       </it-tooltip>
       <prism
-        style="border-top: 1px solid #d3dae6"
+        style="border-top: 1px solid #d3dae6;"
         language="html"
         :code="code"
       ></prism>
     </div>
     <it-button
-      style="border: none; border-radius: 0"
+      style="border: none; border-radius: 0;"
       icon="code"
       type="neutral"
       @click="toggleExpand"
@@ -40,7 +40,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'Box',
+    name: 'box',
     props: {
       code: String,
       title: String,

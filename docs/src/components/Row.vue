@@ -15,7 +15,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'Row',
+    name: 'row',
     props: {
       width: { default: 12 },
       justify: String,

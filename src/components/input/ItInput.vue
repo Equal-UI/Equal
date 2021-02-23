@@ -55,7 +55,7 @@
   import { Colors } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItInput',
+    name: 'it-input',
     inheritAttrs: false,
     props: {
       status: {

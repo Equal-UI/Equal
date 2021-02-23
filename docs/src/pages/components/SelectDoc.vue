@@ -3,7 +3,7 @@
     <h1>Select</h1>
 
     <Demobox>
-      <div style="padding: 130px 0">
+      <div style="padding: 130px 0;">
         <it-select
           v-model="selectValue"
           :placeholder="selectPlaceholder"
@@ -23,12 +23,12 @@
     </Demobox>
 
     <Box :code="exampleCode" title="Example">
-      <div style="margin-bottom: 90px">
+      <div style="margin-bottom: 90px;">
         <it-select v-model="exampleValue" :options="exampleOptions" />
 
         <it-select
           v-model="exampleValue"
-          style="margin-left: 12px"
+          style="margin-left: 12px;"
           index="city"
           :options="exampleIndexOptions"
         />

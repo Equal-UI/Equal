@@ -9,7 +9,7 @@
   // import Row from '../components/Row.vue'
 
   export default defineComponent({
-    name: 'Components',
+    name: 'components',
     // components: { Col, Row },
   })
 </script>

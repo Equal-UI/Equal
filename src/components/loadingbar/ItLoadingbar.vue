@@ -15,7 +15,7 @@
   import { defineComponent } from 'vue'
 
   export default defineComponent({
-    name: 'ItLoadingBar',
+    name: 'it-loading-bar',
     data() {
       return {
         progress: 0,

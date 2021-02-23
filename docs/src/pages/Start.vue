@@ -2,10 +2,10 @@
   <div>
     <h1>Getting started</h1>
     <div class="it-text-box">
-      <h2 style="margin-bottom: 20px">Install with NPM or Yarn</h2>
+      <h2 style="margin-bottom: 20px;">Install with NPM or Yarn</h2>
       <prism language="bash" :code="installCode"></prism>
 
-      <h2 style="margin: 20px 0">Use all components</h2>
+      <h2 style="margin: 20px 0;">Use all components</h2>
       <prism
         language="js"
         code="import { createApp } from 'vue'
@@ -15,7 +15,7 @@ import 'equal-vue/dist/style.css'
 createApp.use(Equal)"
       ></prism>
 
-      <h2 style="margin: 20px 0">Or individual components</h2>
+      <h2 style="margin: 20px 0;">Or individual components</h2>
       <prism
         language="js"
         code="import { createApp } from 'vue'
@@ -25,11 +25,11 @@ import 'equal-vue/dist/style.css'
 createApp.use(Button).use(Alert).use(Switch)"
       ></prism>
 
-      <h2 style="margin: 20px 0">Add Material Icons and Inter font</h2>
-      <p style="margin: 0 0 10px 0">
+      <h2 style="margin: 20px 0;">Add Material Icons and Inter font</h2>
+      <p style="margin: 0 0 10px 0;">
         Equal UI uses
         <a
-          style="color: #3051ff"
+          style="color: #3051ff;"
           target="_blank"
           rel="noopener noreferrer"
           href="https://material.io/resources/icons/"

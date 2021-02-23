@@ -8,7 +8,7 @@
   import { defineComponent, inject, ref, toRefs } from 'vue'
 
   export default defineComponent({
-    name: 'ItTab',
+    name: 'it-tab',
     props: {
       title: {
         type: String,

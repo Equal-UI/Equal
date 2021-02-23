@@ -3,7 +3,7 @@
     <h1>Slider</h1>
 
     <Demobox>
-      <div style="width: 70%">
+      <div style="width: 70%;">
         <it-slider
           v-model="sliderValue"
           :step-points="sliderStepPoints"

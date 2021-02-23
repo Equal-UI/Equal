@@ -20,11 +20,11 @@
         <it-button>Delete</it-button>
         <template #content>
           <div>
-            <p style="margin-bottom: 8px">Please confirm deletion</p>
-            <div style="display: flex; justify-content: flex-end">
+            <p style="margin-bottom: 8px;">Please confirm deletion</p>
+            <div style="display: flex; justify-content: flex-end;">
               <it-button size="small">No</it-button>
               <it-button
-                style="margin-left: 8px"
+                style="margin-left: 8px;"
                 size="small"
                 type="danger"
                 @click="
@@ -40,7 +40,7 @@
 
     <Box :code="positionsCode" title="Positions">
       <template #description>
-        <p style="padding: 0 24px">Click to see the popover</p>
+        <p style="padding: 0 24px;">Click to see the popover</p>
       </template>
 
       <it-button-group vertical>
@@ -69,7 +69,7 @@
 
     <Box :code="imageCode" title="Image">
       <template #description>
-        <p style="padding: 0 24px">
+        <p style="padding: 0 24px;">
           You can disable paddings inside popover and show image
         </p>
       </template>

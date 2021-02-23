@@ -37,7 +37,7 @@
   import { Colors } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItAlert',
+    name: 'it-alert',
     props: {
       type: {
         type: String,

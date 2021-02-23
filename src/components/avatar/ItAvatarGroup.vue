@@ -2,7 +2,7 @@
   import { VNode, defineComponent, provide, computed, h } from 'vue'
 
   export default defineComponent({
-    name: 'ItAvatarGroup',
+    name: 'it-avatar-group',
     props: {
       vertical: { type: Boolean },
       square: { type: Boolean },

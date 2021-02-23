@@ -38,7 +38,7 @@
     </div>
     <div v-if="numbers" class="it-slider-numbers">
       <div>{{ min }}</div>
-      <div style="left: 100%">{{ max }}</div>
+      <div style="left: 100%;">{{ max }}</div>
     </div>
   </div>
 </template>
@@ -57,7 +57,7 @@
   import { Positions } from '@/models/enums'
 
   export default defineComponent({
-    name: 'ItSlider',
+    name: 'it-slider',
     props: {
       labelTop: String,
       disabled: Boolean,

@@ -4,7 +4,7 @@
 
     <Box :code="exampleCode" title="Drawer">
       <template #description>
-        <p style="padding: 0 24px">
+        <p style="padding: 0 24px;">
           This component is intended to be used only with wide screens
         </p>
       </template>
@@ -16,7 +16,7 @@
       >
 
       <it-drawer v-model="drawerVisible">
-        <h3 style="margin: 24px">
+        <h3 style="margin: 24px;">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
@@ -28,7 +28,7 @@
               flex-direction: row;
               padding: 0 24px;
               justify-content: space-between;
-            "
+"
           >
             <it-avatar :src="user.avatar" />
             <div
@@ -38,10 +38,10 @@
                 flex: 1;
                 flex-direction: column;
                 padding-left: 12px;
-              "
+"
             >
-              <p style="font-weight: 500">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
+              <p style="font-weight: 500;">{{ user.name }}</p>
+              <p style="font-size: 14px; font-weight: 500; color: #787f8a;">
                 @{{ user.username }}
               </p>
             </div>
@@ -51,7 +51,7 @@
         </template>
       </it-drawer>
       <it-drawer v-model="drawerLeftVisible" placement="left">
-        <h3 style="margin: 24px">
+        <h3 style="margin: 24px;">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
@@ -63,7 +63,7 @@
               flex-direction: row;
               padding: 0 24px;
               justify-content: space-between;
-            "
+"
           >
             <it-avatar :src="user.avatar" />
             <div
@@ -73,10 +73,10 @@
                 flex: 1;
                 flex-direction: column;
                 padding-left: 12px;
-              "
+"
             >
-              <p style="font-weight: 500">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
+              <p style="font-weight: 500;">{{ user.name }}</p>
+              <p style="font-size: 14px; font-weight: 500; color: #787f8a;">
                 @{{ user.username }}
               </p>
             </div>
@@ -216,7 +216,9 @@
   .contacts {
     margin-right: 6px;
     padding: 5px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0 3px 6px, rgba(50, 50, 93, 0.1) 0 7px 14px,
+    box-shadow:
+      rgba(0, 0, 0, 0.07) 0 3px 6px,
+      rgba(50, 50, 93, 0.1) 0 7px 14px,
       rgba(50, 50, 93, 0.05) 0 0 0 1px;
   }
 </style>
