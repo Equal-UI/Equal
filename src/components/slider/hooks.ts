@@ -1,5 +1,5 @@
-import { DEFAULT_PROPS } from './constants';
-import { clamp } from './../../helpers/clamp';
+import { DEFAULT_PROPS } from './constants'
+import { clamp } from './../../helpers/clamp'
 import { computed, ref, Ref, ComputedRef } from 'vue'
 import {
   TDataByPreparedStepList,
@@ -41,7 +41,6 @@ export const useValuePosition = (
 
   const setValuePosition = (newValue: number) => {
     newValue = clamp(newValue, DEFAULT_PROPS.MIN, DEFAULT_PROPS.MAX)
-
 
     const lengthPerStep = 100 / ((props.max - props.min) / props.step)
     const steps = Math.round(newValue / lengthPerStep)

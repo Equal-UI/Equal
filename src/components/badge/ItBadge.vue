@@ -16,48 +16,46 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed } from 'vue'
-  import { Colors, Positions } from '@/models/enums'
+import { defineComponent, computed } from 'vue'
+import { Colors, Positions } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-badge',
-    props: {
-      type: {
-        type: String,
-        default: Colors.DANGER,
-        validator: (value: Colors) =>
-          [
-            Colors.PRIMARY,
-            Colors.SUCCESS,
-            Colors.DANGER,
-            Colors.WARNING,
-          ].includes(value),
-      },
-      value: { type: [String, Number] },
-      position: {
-        type: String,
-        default: Positions.TR,
-        validator: (value: Positions) =>
-          [Positions.TL, Positions.TR, Positions.BL, Positions.BR].includes(
-            value,
-          ),
-      },
-      show: { type: Boolean, default: true },
-      point: { type: Boolean },
-      square: { type: Boolean },
-      maxValue: { type: Number },
+export default defineComponent({
+  name: 'it-badge',
+  props: {
+    type: {
+      type: String,
+      default: Colors.DANGER,
+      validator: (value: Colors) =>
+        [
+          Colors.PRIMARY,
+          Colors.SUCCESS,
+          Colors.DANGER,
+          Colors.WARNING,
+        ].includes(value),
     },
-    setup(props) {
-      const contentValue = computed(() => {
-        if (props.point) {
-          return
-        }
-        return props.value! > props.maxValue!
-          ? `${props.maxValue}+`
-          : props.value
-      })
+    value: { type: [String, Number] },
+    position: {
+      type: String,
+      default: Positions.TR,
+      validator: (value: Positions) =>
+        [Positions.TL, Positions.TR, Positions.BL, Positions.BR].includes(
+          value,
+        ),
+    },
+    show: { type: Boolean, default: true },
+    point: { type: Boolean },
+    square: { type: Boolean },
+    maxValue: { type: Number },
+  },
+  setup(props) {
+    const contentValue = computed(() => {
+      if (props.point) {
+        return
+      }
+      return props.value! > props.maxValue! ? `${props.maxValue}+` : props.value
+    })
 
-      return { contentValue }
-    },
-  })
+    return { contentValue }
+  },
+})
 </script>

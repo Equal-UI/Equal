@@ -1,6 +1,5 @@
 {
   "trailingComma": "all",
   "singleQuote": true,
-  "semi": false,
-  "vueIndentScriptAndStyle": true
+  "semi": false
 }

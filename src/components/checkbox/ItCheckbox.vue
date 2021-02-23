@@ -19,7 +19,7 @@
           disabled && 'it-checkbox--disabled',
         ]"
       >
-        <it-icon style="font-size: 16px;" :name="icon" />
+        <it-icon style="font-size: 16px" :name="icon" />
       </span>
     </span>
     <span class="it-checkbox-label-group">
@@ -61,44 +61,44 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import { Colors } from '@/models/enums'
+import { defineComponent } from 'vue'
+import { Colors } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-checkbox',
-    inheritAttrs: false,
-    props: {
-      type: {
-        default: Colors.PRIMARY,
-        type: String,
-        validator: (value: Colors) =>
-          [
-            Colors.PRIMARY,
-            Colors.SUCCESS,
-            Colors.DANGER,
-            Colors.WARNING,
-            Colors.BLACK,
-            Colors.NEUTRAL,
-          ].includes(value),
-      },
-      label: { type: String },
-      subLabel: { type: String },
-      pulse: { type: Boolean },
-      disabled: { type: Boolean },
-      lineThrough: { type: Boolean },
-      icon: { type: String, default: 'check' },
-      color: { type: String },
-      modelValue: {},
+export default defineComponent({
+  name: 'it-checkbox',
+  inheritAttrs: false,
+  props: {
+    type: {
+      default: Colors.PRIMARY,
+      type: String,
+      validator: (value: Colors) =>
+        [
+          Colors.PRIMARY,
+          Colors.SUCCESS,
+          Colors.DANGER,
+          Colors.WARNING,
+          Colors.BLACK,
+          Colors.NEUTRAL,
+        ].includes(value),
     },
-    setup(props, { emit }) {
-      function toggle() {
-        if (props.disabled) {
-          return
-        }
-        const newValue = !props.modelValue
-        emit('update:modelValue', newValue)
+    label: { type: String },
+    subLabel: { type: String },
+    pulse: { type: Boolean },
+    disabled: { type: Boolean },
+    lineThrough: { type: Boolean },
+    icon: { type: String, default: 'check' },
+    color: { type: String },
+    modelValue: {},
+  },
+  setup(props, { emit }) {
+    function toggle() {
+      if (props.disabled) {
+        return
       }
-      return { toggle }
-    },
-  })
+      const newValue = !props.modelValue
+      emit('update:modelValue', newValue)
+    }
+    return { toggle }
+  },
+})
 </script>

@@ -21,7 +21,7 @@
                 !['description', 'property'].includes(name) &&
                 Array.isArray(col)
               "
-              style="line-height: 2;"
+              style="line-height: 2"
             >
               <it-tag v-for="i in col" :key="i">{{ i }}</it-tag>
             </div>
@@ -87,75 +87,75 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    props: {
-      tagName: String,
-      dataSheet: Array,
-      eventSheet: Array,
-      methodSheet: Array,
-      slotSheet: Array,
-    },
-  })
+export default defineComponent({
+  props: {
+    tagName: String,
+    dataSheet: Array,
+    eventSheet: Array,
+    methodSheet: Array,
+    slotSheet: Array,
+  },
+})
 </script>
 
 <style lang="less">
-  .table-box {
-    border: 1px solid #d3dae6;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-sizing: border-box;
-    overflow-x: auto;
+.table-box {
+  border: 1px solid #d3dae6;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  overflow-x: auto;
 
-    & + & {
-      margin-top: 40px;
-    }
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+
+  & thead {
+    background-color: #fafbfd;
+    border-bottom: 1px solid #d3dae6;
+    border-top: 1px solid #d3dae6;
   }
 
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
+  & th,
+  td {
+    line-height: 1;
+    text-align: left;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+  }
 
-    & thead {
-      background-color: #fafbfd;
-      border-bottom: 1px solid #d3dae6;
-      border-top: 1px solid #d3dae6;
-    }
+  & td {
+    font-size: 13px;
+    font-weight: normal;
 
-    & th,
-    td {
-      line-height: 1;
-      text-align: left;
-      padding: 10px 16px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    & td {
-      font-size: 13px;
+    & > .it-tag {
+      font-size: 12px !important;
       font-weight: normal;
-
-      & > .it-tag {
-        font-size: 12px !important;
-        font-weight: normal;
-      }
-
-      & .it-tag + .it-tag {
-        margin-left: 4px;
-      }
     }
 
-    & tr {
-      border-top: 1px solid #d3dae6;
-      border-bottom: 1px solid #d3dae6;
-    }
-
-    tr:last-child {
-      border-bottom: none;
+    & .it-tag + .it-tag {
+      margin-left: 4px;
     }
   }
+
+  & tr {
+    border-top: 1px solid #d3dae6;
+    border-bottom: 1px solid #d3dae6;
+  }
+
+  tr:last-child {
+    border-bottom: none;
+  }
+}
 </style>

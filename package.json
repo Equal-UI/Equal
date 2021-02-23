@@ -36,7 +36,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint:eslint": "eslint src/**/*.{js,ts,vue} docs/src/**/*.{js,ts,vue}",
+    "lint:eslint": "eslint src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
     "lint:prettier": "prettier -w -u src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
     "lint:stylelint": "stylelint **/*.{less,vue}"
   },

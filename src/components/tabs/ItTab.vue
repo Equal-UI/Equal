@@ -5,23 +5,23 @@
 </template>
 
 <script>
-  import { defineComponent, inject, ref, toRefs } from 'vue'
+import { defineComponent, inject, ref, toRefs } from 'vue'
 
-  export default defineComponent({
-    name: 'it-tab',
-    props: {
-      title: {
-        type: String,
-        default: '',
-      },
-      disabled: Boolean,
+export default defineComponent({
+  name: 'it-tab',
+  props: {
+    title: {
+      type: String,
+      default: '',
     },
-    setup(props) {
-      const tabs = inject('tabs', [])
-      const isActive = ref(false)
-      tabs.value.push({ ...toRefs(props), isActive })
+    disabled: Boolean,
+  },
+  setup(props) {
+    const tabs = inject('tabs', [])
+    const isActive = ref(false)
+    tabs.value.push({ ...toRefs(props), isActive })
 
-      return { isActive }
-    },
-  })
+    return { isActive }
+  },
+})
 </script>

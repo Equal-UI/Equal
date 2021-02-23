@@ -53,51 +53,51 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed } from 'vue'
-  import ItIcon from '../icon'
-  import ItLoading from '../loading'
-  import { Sizes, Colors } from '@/models/enums'
+import { defineComponent, computed } from 'vue'
+import ItIcon from '../icon'
+import ItLoading from '../loading'
+import { Sizes, Colors } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-button',
-    components: {
-      ItIcon,
-      ItLoading,
+export default defineComponent({
+  name: 'it-button',
+  components: {
+    ItIcon,
+    ItLoading,
+  },
+  props: {
+    type: {
+      type: String,
+      validator: (value: Colors) =>
+        [
+          Colors.PRIMARY,
+          Colors.SUCCESS,
+          Colors.DANGER,
+          Colors.WARNING,
+          Colors.BLACK,
+          Colors.NEUTRAL,
+        ].includes(value),
     },
-    props: {
-      type: {
-        type: String,
-        validator: (value: Colors) =>
-          [
-            Colors.PRIMARY,
-            Colors.SUCCESS,
-            Colors.DANGER,
-            Colors.WARNING,
-            Colors.BLACK,
-            Colors.NEUTRAL,
-          ].includes(value),
-      },
-      size: {
-        type: String,
-        default: Sizes.NORMAL,
-        validator: (value: Sizes) =>
-          [Sizes.SMALL, Sizes.NORMAL, Sizes.BIG].includes(value),
-      },
-      iconAfter: { type: Boolean },
-      disabled: { type: Boolean },
-      outlined: { type: Boolean },
-      round: { type: Boolean },
-      pulse: { type: Boolean },
-      loading: { type: Boolean },
-      block: { type: Boolean },
-      text: { type: Boolean },
-      icon: { type: String },
+    size: {
+      type: String,
+      default: Sizes.NORMAL,
+      validator: (value: Sizes) =>
+        [Sizes.SMALL, Sizes.NORMAL, Sizes.BIG].includes(value),
     },
-    setup(props) {
-      const marginStyle = computed(() => {
-        return props.iconAfter ? { marginLeft: '6px' } : { marginRight: '6px' }
-      })
-      return { marginStyle }
-    },
-  })
+    iconAfter: { type: Boolean },
+    disabled: { type: Boolean },
+    outlined: { type: Boolean },
+    round: { type: Boolean },
+    pulse: { type: Boolean },
+    loading: { type: Boolean },
+    block: { type: Boolean },
+    text: { type: Boolean },
+    icon: { type: String },
+  },
+  setup(props) {
+    const marginStyle = computed(() => {
+      return props.iconAfter ? { marginLeft: '6px' } : { marginRight: '6px' }
+    })
+    return { marginStyle }
+  },
+})
 </script>

@@ -107,22 +107,22 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      badgeValue: 97,
-      badgePoint: false,
-      badgeSquare: false,
-      badgeShow: true,
-      badgeMax: 99,
-      badgeType: 'danger',
-      badgeTypes: ['primary', 'success', 'danger', 'warning'],
+export default defineComponent({
+  data: () => ({
+    badgeValue: 97,
+    badgePoint: false,
+    badgeSquare: false,
+    badgeShow: true,
+    badgeMax: 99,
+    badgeType: 'danger',
+    badgeTypes: ['primary', 'success', 'danger', 'warning'],
 
-      badgePosition: 'top-right',
-      badgePositions: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+    badgePosition: 'top-right',
+    badgePositions: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
 
-      typesCode: `<it-badge value="12" type="primary">
+    typesCode: `<it-badge value="12" type="primary">
   <it-button>Primary</it-button>
 </it-badge>
 <it-badge value="new" type="danger">
@@ -135,7 +135,7 @@
   <it-button>Warning</it-button>
 </it-badge>`,
 
-      pointCode: `<it-badge type="primary" point>,
+    pointCode: `<it-badge type="primary" point>,
   <it-button>Primary</it-button>
 </it-badge>
 <it-badge type="danger" point>
@@ -148,18 +148,18 @@
   <it-button icon="error_outline"></it-button>
 </it-badge>`,
 
-      maxvalCode: `<it-badge :value="110" :max-value="99">
+    maxvalCode: `<it-badge :value="110" :max-value="99">
   <it-tag type="danger">Maximum</it-tag>
 </it-badge>`,
 
-      squareCode: `<it-badge type="primary" :value="12" square>
+    squareCode: `<it-badge type="primary" :value="12" square>
 <it-button>Square</it-button>
   </it-badge>
 <it-badge type="success" point square>
   <it-button icon="thumb_up"></it-button>
 </it-badge>`,
 
-      positionsCode: `<it-badge point :value="12">
+    positionsCode: `<it-badge point :value="12">
   <it-button>Top-right</it-button>
 </it-badge>
 <it-badge point position="bottom-right" :value="12">
@@ -172,60 +172,60 @@
   <it-button>Top-left</it-button>
 </it-badge>`,
 
-      standaloneCode: `<it-badge :value="101" />
+    standaloneCode: `<it-badge :value="101" />
 <it-badge :value="101" square />`,
 
-      dataSheet: [
-        {
-          property: 'type',
-          type: ['String'],
-          default: 'danger',
-          values: ['primary', 'success', 'danger', 'warning'],
-          description: 'Type of the badge',
-        },
-        {
-          property: 'value',
-          type: ['Number', 'String'],
-          default: '',
-          values: [],
-          description: 'Value of the badge',
-        },
-        {
-          property: 'max-value',
-          type: ['Number'],
-          default: '',
-          values: [],
-          description: 'Max value of the badge',
-        },
-        {
-          property: 'position',
-          type: ['String'],
-          default: 'top-right',
-          values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
-          description: 'Set position of the badge',
-        },
-        {
-          property: 'show',
-          type: ['Boolean'],
-          default: 'true',
-          values: [],
-          description: 'Show badge',
-        },
-        {
-          property: 'point',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Show badge as point',
-        },
-        {
-          property: 'square',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Make badge squared',
-        },
-      ],
-    }),
-  })
+    dataSheet: [
+      {
+        property: 'type',
+        type: ['String'],
+        default: 'danger',
+        values: ['primary', 'success', 'danger', 'warning'],
+        description: 'Type of the badge',
+      },
+      {
+        property: 'value',
+        type: ['Number', 'String'],
+        default: '',
+        values: [],
+        description: 'Value of the badge',
+      },
+      {
+        property: 'max-value',
+        type: ['Number'],
+        default: '',
+        values: [],
+        description: 'Max value of the badge',
+      },
+      {
+        property: 'position',
+        type: ['String'],
+        default: 'top-right',
+        values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+        description: 'Set position of the badge',
+      },
+      {
+        property: 'show',
+        type: ['Boolean'],
+        default: 'true',
+        values: [],
+        description: 'Show badge',
+      },
+      {
+        property: 'point',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Show badge as point',
+      },
+      {
+        property: 'square',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Make badge squared',
+      },
+    ],
+  }),
+})
 </script>

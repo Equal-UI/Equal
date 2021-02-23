@@ -41,24 +41,24 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      tagText: 'Tag',
-      tagClosable: false,
-      tagFilled: false,
-      tagType: 'neutral',
-      tagTypes: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
+export default defineComponent({
+  data: () => ({
+    tagText: 'Tag',
+    tagClosable: false,
+    tagFilled: false,
+    tagType: 'neutral',
+    tagTypes: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
 
-      typesCode: `<it-tag>Neutral</it-tag>
+    typesCode: `<it-tag>Neutral</it-tag>
 <it-tag type="primary">Primary</it-tag>
 <it-tag type="success">Success</it-tag>
 <it-tag type="danger">Danger</it-tag>
 <it-tag type="warning">Warning</it-tag>
 <it-tag type="black">Black</it-tag>`,
 
-      filledCode: `<it-tag>Neutral</it-tag>
+    filledCode: `<it-tag>Neutral</it-tag>
 <it-tag type="primary" filled >Primary</it-tag>
 <it-tag type="success" filled >Success</it-tag>
 <it-tag type="danger" filled >Danger</it-tag>
@@ -66,36 +66,29 @@
 <it-tag type="black" filled >Black</it-tag>
 `,
 
-      dataSheet: [
-        {
-          property: 'type',
-          type: ['String'],
-          default: 'neutral',
-          values: [
-            'primary',
-            'success',
-            'danger',
-            'warning',
-            'black',
-            'neutral',
-          ],
-          description: 'Type of the tag',
-        },
-        {
-          property: 'filled',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes tag filled',
-        },
-        {
-          property: 'closable',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes tag closable',
-        },
-      ],
-    }),
-  })
+    dataSheet: [
+      {
+        property: 'type',
+        type: ['String'],
+        default: 'neutral',
+        values: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
+        description: 'Type of the tag',
+      },
+      {
+        property: 'filled',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes tag filled',
+      },
+      {
+        property: 'closable',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes tag closable',
+      },
+    ],
+  }),
+})
 </script>

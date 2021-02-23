@@ -52,7 +52,7 @@
             : 'it-select-dropdown--bottom',
           divided && 'it-select-dropdown--divided',
         ]"
-        style="width: 100%;"
+        style="width: 100%"
       >
         <ul ref="listRef" class="it-select-list">
           <li
@@ -82,119 +82,119 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref, onBeforeUpdate, nextTick } from 'vue'
+import { defineComponent, ref, onBeforeUpdate, nextTick } from 'vue'
 
-  import { Positions } from '@/models/enums'
-  import { usePopover } from '@/hooks'
-  import { clickOutside } from '@/directives'
+import { Positions } from '@/models/enums'
+import { usePopover } from '@/hooks'
+import { clickOutside } from '@/directives'
 
-  export default defineComponent({
-    name: 'it-select',
-    directives: {
-      clickoutside: clickOutside,
-    },
-    props: {
-      placement: { type: String, default: Positions.B },
-      disabled: Boolean,
-      divided: Boolean,
-      filterable: Boolean,
-      index: String,
-      labelTop: String,
-      placeholder: { type: String, default: 'Select' },
-      options: { type: Array, default: [] },
-      modelValue: { type: [String, Number] },
-    },
-    setup(props, { emit }) {
-      const search = ref<string | number>('')
-      const focusIndex = ref(-1)
-      const optionsRefs = ref<HTMLElement[]>([])
-      const listRef = ref<HTMLElement | null>(null)
+export default defineComponent({
+  name: 'it-select',
+  directives: {
+    clickoutside: clickOutside,
+  },
+  props: {
+    placement: { type: String, default: Positions.B },
+    disabled: Boolean,
+    divided: Boolean,
+    filterable: Boolean,
+    index: String,
+    labelTop: String,
+    placeholder: { type: String, default: 'Select' },
+    options: { type: Array, default: [] },
+    modelValue: { type: [String, Number] },
+  },
+  setup(props, { emit }) {
+    const search = ref<string | number>('')
+    const focusIndex = ref(-1)
+    const optionsRefs = ref<HTMLElement[]>([])
+    const listRef = ref<HTMLElement | null>(null)
 
-      onBeforeUpdate(() => {
-        optionsRefs.value = []
-      })
+    onBeforeUpdate(() => {
+      optionsRefs.value = []
+    })
 
-      // Dropdown logic
-      const { show, hidePopover, showPopover } = usePopover(props)
+    // Dropdown logic
+    const { show, hidePopover, showPopover } = usePopover(props)
 
-      function toggleList() {
-        if (props.disabled) {
-          return
-        }
-        if (show.value) {
-          hidePopover()
-        } else {
-          unfocus()
-          showPopover()
-        }
+    function toggleList() {
+      if (props.disabled) {
+        return
       }
-
-      // select logic
-      function selectOption(value: string | number) {
-        search.value = props.filterable ? value : ''
-        emit('update:modelValue', value)
-      }
-
-      function unfocus() {
-        if (focusIndex.value === -1) {
-          return
-        }
-        focusIndex.value = -1
-      }
-
-      // const searched = computed(() => {
-      //   return slots.default!().filter!((i) => i.$data.visible === true)
-      // })
-
-      async function handleKey(type: 'up' | 'down') {
-        if (!show.value || !props.options.length) {
-          return
-        }
-
-        if (type === 'up') {
-          focusIndex.value =
-            focusIndex.value <= 0
-              ? props.options.length - 1
-              : focusIndex.value - 1
-        } else if (type === 'down') {
-          focusIndex.value =
-            focusIndex.value === props.options.length - 1
-              ? 0
-              : focusIndex.value + 1
-        }
-
-        // Scroll to focused element
-        await nextTick()
-        const selectedEl = optionsRefs.value.find((r) =>
-          r.className.includes('focused'),
-        )
-        if (selectedEl) {
-          selectedEl.scrollIntoView({ block: 'nearest', inline: 'start' })
-        }
-      }
-
-      function enterKey() {
-        if (!show.value || focusIndex.value === -1) {
-          return
-        }
-        const option = props.options[focusIndex.value]
-        selectOption(props.index ? option[props.index] : option)
+      if (show.value) {
         hidePopover()
+      } else {
+        unfocus()
+        showPopover()
+      }
+    }
+
+    // select logic
+    function selectOption(value: string | number) {
+      search.value = props.filterable ? value : ''
+      emit('update:modelValue', value)
+    }
+
+    function unfocus() {
+      if (focusIndex.value === -1) {
+        return
+      }
+      focusIndex.value = -1
+    }
+
+    // const searched = computed(() => {
+    //   return slots.default!().filter!((i) => i.$data.visible === true)
+    // })
+
+    async function handleKey(type: 'up' | 'down') {
+      if (!show.value || !props.options.length) {
+        return
       }
 
-      return {
-        toggleList,
-        // selected,
-        selectOption,
-        search,
-        show,
-        hidePopover,
-        showPopover,
-        handleKey,
-        focusIndex,
-        enterKey,
-        optionsRefs,
+      if (type === 'up') {
+        focusIndex.value =
+          focusIndex.value <= 0
+            ? props.options.length - 1
+            : focusIndex.value - 1
+      } else if (type === 'down') {
+        focusIndex.value =
+          focusIndex.value === props.options.length - 1
+            ? 0
+            : focusIndex.value + 1
       }
-    },
-  })
+
+      // Scroll to focused element
+      await nextTick()
+      const selectedEl = optionsRefs.value.find((r) =>
+        r.className.includes('focused'),
+      )
+      if (selectedEl) {
+        selectedEl.scrollIntoView({ block: 'nearest', inline: 'start' })
+      }
+    }
+
+    function enterKey() {
+      if (!show.value || focusIndex.value === -1) {
+        return
+      }
+      const option = props.options[focusIndex.value]
+      selectOption(props.index ? option[props.index] : option)
+      hidePopover()
+    }
+
+    return {
+      toggleList,
+      // selected,
+      selectOption,
+      search,
+      show,
+      hidePopover,
+      showPopover,
+      handleKey,
+      focusIndex,
+      enterKey,
+      optionsRefs,
+    }
+  },
+})
 </script>

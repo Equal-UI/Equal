@@ -3,7 +3,7 @@
     <h1>Select</h1>
 
     <Demobox>
-      <div style="padding: 130px 0;">
+      <div style="padding: 130px 0">
         <it-select
           v-model="selectValue"
           :placeholder="selectPlaceholder"
@@ -23,12 +23,12 @@
     </Demobox>
 
     <Box :code="exampleCode" title="Example">
-      <div style="margin-bottom: 90px;">
+      <div style="margin-bottom: 90px">
         <it-select v-model="exampleValue" :options="exampleOptions" />
 
         <it-select
           v-model="exampleValue"
-          style="margin-left: 12px;"
+          style="margin-left: 12px"
           index="city"
           :options="exampleIndexOptions"
         />
@@ -40,26 +40,26 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      selectValue: '',
-      selectLabel: 'Select me',
-      selectPlaceholder: 'Select me',
-      selectDisabled: false,
-      selectDivided: false,
+export default defineComponent({
+  data: () => ({
+    selectValue: '',
+    selectLabel: 'Select me',
+    selectPlaceholder: 'Select me',
+    selectDisabled: false,
+    selectDivided: false,
 
-      exampleOptions: ['New York', 'Paris', 'Moscow'],
-      exampleIndexOptions: [
-        { city: 'New York' },
-        { city: 'Paris' },
-        { city: 'Moscow' },
-      ],
+    exampleOptions: ['New York', 'Paris', 'Moscow'],
+    exampleIndexOptions: [
+      { city: 'New York' },
+      { city: 'Paris' },
+      { city: 'Moscow' },
+    ],
 
-      exampleValue: 'Moscow',
+    exampleValue: 'Moscow',
 
-      exampleCode: `
+    exampleCode: `
   <template>
     <it-select v-model="exampleValue" :options="exampleOptions" />
     
@@ -76,71 +76,71 @@
   }
   `,
 
-      dataSheet: [
-        {
-          property: 'label-top',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Top label',
-        },
-        {
-          property: 'options',
-          type: ['Array', 'Object[]'],
-          default: '-',
-          values: [],
-          description:
-            'Array of options, or array of option object used with index prop',
-        },
-        {
-          property: 'index',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Index of the object key',
-        },
-        {
-          property: 'placeholder',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Select area placeholder',
-        },
-        {
-          property: 'placement',
-          type: ['String'],
-          default: 'bottom',
-          values: [
-            'bottom',
-            'bottom-left',
-            'bottom-right',
-            'left',
-            'left-top',
-            'left-bottom',
-            'right',
-            'right-top',
-            'right-bottom',
-            'top',
-            'top-left',
-            'top-right',
-          ],
-          description: 'Select list position',
-        },
-        {
-          property: 'divided',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes select options divided by line',
-        },
-        {
-          property: 'disabled',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes select disabled',
-        },
-      ],
-    }),
-  })
+    dataSheet: [
+      {
+        property: 'label-top',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Top label',
+      },
+      {
+        property: 'options',
+        type: ['Array', 'Object[]'],
+        default: '-',
+        values: [],
+        description:
+          'Array of options, or array of option object used with index prop',
+      },
+      {
+        property: 'index',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Index of the object key',
+      },
+      {
+        property: 'placeholder',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Select area placeholder',
+      },
+      {
+        property: 'placement',
+        type: ['String'],
+        default: 'bottom',
+        values: [
+          'bottom',
+          'bottom-left',
+          'bottom-right',
+          'left',
+          'left-top',
+          'left-bottom',
+          'right',
+          'right-top',
+          'right-bottom',
+          'top',
+          'top-left',
+          'top-right',
+        ],
+        description: 'Select list position',
+      },
+      {
+        property: 'divided',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes select options divided by line',
+      },
+      {
+        property: 'disabled',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes select disabled',
+      },
+    ],
+  }),
+})
 </script>

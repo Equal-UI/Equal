@@ -44,30 +44,30 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      // dropdownDisabled = false
+export default defineComponent({
+  data: () => ({
+    // dropdownDisabled = false
 
-      dropdownType: 'bottom',
-      clickable: false,
-      dropdownTypes: [
-        'bottom',
-        'bottom-left',
-        'bottom-right',
-        'left',
-        'left-top',
-        'left-bottom',
-        'right',
-        'right-top',
-        'right-bottom',
-        'top',
-        'top-left',
-        'top-right',
-      ],
+    dropdownType: 'bottom',
+    clickable: false,
+    dropdownTypes: [
+      'bottom',
+      'bottom-left',
+      'bottom-right',
+      'left',
+      'left-top',
+      'left-bottom',
+      'right',
+      'right-top',
+      'right-bottom',
+      'top',
+      'top-left',
+      'top-right',
+    ],
 
-      codeExample: `<it-dropdown>
+    codeExample: `<it-dropdown>
   <it-button>Hover me</it-button>
   <it-dropdown-menu slot="menu">
     <it-dropdown-item>Hello</it-dropdown-item>
@@ -77,59 +77,59 @@
   </it-dropdown-menu>
 </it-dropdown>`,
 
-      dataSheet: [
-        {
-          property: 'placement',
-          type: ['String'],
-          default: 'bottom',
-          values: [
-            'bottom',
-            'bottom-left',
-            'bottom-right',
-            'left',
-            'left-top',
-            'left-bottom',
-            'right',
-            'right-top',
-            'right-bottom',
-            'top',
-            'top-left',
-            'top-right',
-          ],
-          description: 'Position of the dropdown',
-        },
-        {
-          property: 'clickable',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Dropdown activates only on click',
-        },
-      ],
+    dataSheet: [
+      {
+        property: 'placement',
+        type: ['String'],
+        default: 'bottom',
+        values: [
+          'bottom',
+          'bottom-left',
+          'bottom-right',
+          'left',
+          'left-top',
+          'left-bottom',
+          'right',
+          'right-top',
+          'right-bottom',
+          'top',
+          'top-left',
+          'top-right',
+        ],
+        description: 'Position of the dropdown',
+      },
+      {
+        property: 'clickable',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Dropdown activates only on click',
+      },
+    ],
 
-      dataSheet2: [
-        {
-          property: 'disabled',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Disabled menu item',
-        },
-        {
-          property: 'divided',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Divides menu item from previous item',
-        },
-        {
-          property: 'icon',
-          type: ['String'],
-          default: '',
-          values: ['Material Icon'],
-          description: 'Adds icon to the mmenu item',
-        },
-      ],
-    }),
-  })
+    dataSheet2: [
+      {
+        property: 'disabled',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Disabled menu item',
+      },
+      {
+        property: 'divided',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Divides menu item from previous item',
+      },
+      {
+        property: 'icon',
+        type: ['String'],
+        default: '',
+        values: ['Material Icon'],
+        description: 'Adds icon to the mmenu item',
+      },
+    ],
+  }),
+})
 </script>

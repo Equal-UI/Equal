@@ -13,38 +13,38 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue'
-  import { Colors } from '@/models/enums'
+import { defineComponent, ref } from 'vue'
+import { Colors } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-tag',
-    props: {
-      type: {
-        default: Colors.NEUTRAL,
-        validator: (value: Colors) =>
-          [
-            Colors.PRIMARY,
-            Colors.SUCCESS,
-            Colors.DANGER,
-            Colors.WARNING,
-            Colors.BLACK,
-            Colors.NEUTRAL,
-          ].includes(value),
-      },
-      closable: { type: Boolean },
-      filled: { type: Boolean },
+export default defineComponent({
+  name: 'it-tag',
+  props: {
+    type: {
+      default: Colors.NEUTRAL,
+      validator: (value: Colors) =>
+        [
+          Colors.PRIMARY,
+          Colors.SUCCESS,
+          Colors.DANGER,
+          Colors.WARNING,
+          Colors.BLACK,
+          Colors.NEUTRAL,
+        ].includes(value),
     },
-    setup(props) {
-      const show = ref(true)
+    closable: { type: Boolean },
+    filled: { type: Boolean },
+  },
+  setup(props) {
+    const show = ref(true)
 
-      function close() {
-        if (!props.closable) {
-          return
-        }
-        show.value = false
+    function close() {
+      if (!props.closable) {
+        return
       }
+      show.value = false
+    }
 
-      return { show, close }
-    },
-  })
+    return { show, close }
+  },
+})
 </script>

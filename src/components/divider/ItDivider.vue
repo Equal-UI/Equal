@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    name: 'it-divider',
-    props: { vertical: { type: Boolean } },
-  })
+export default defineComponent({
+  name: 'it-divider',
+  props: { vertical: { type: Boolean } },
+})
 </script>

@@ -8,8 +8,8 @@
   >
     <span v-if="labelTop" class="it-slider-label">{{ labelTop }}</span>
     <div
-      class="it-slider-line"
       ref="sliderLineRef"
+      class="it-slider-line"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
       @click="onSliderClick"
@@ -29,9 +29,9 @@
     </div>
     <div v-if="stepPoints && stepsPoints.length" class="it-slider-wrap-points">
       <div
-        class="it-slider-point"
         v-for="(step, index) in stepsPoints"
         :key="step.left"
+        class="it-slider-point"
         :style="getStepPointStyles({ step, index })"
         :class="{ 'it-slider-point--active': step.active }"
       ></div>
@@ -45,11 +45,7 @@
 
 <script lang="ts">
 import { ComputedRef, defineComponent, ref, watch } from 'vue'
-import {
-  TStepItem,
-  TKeyEvents,
-  TTotalValuePosition,
-} from './types'
+import { TStepItem, TKeyEvents, TTotalValuePosition } from './types'
 import { DEFAULT_STEP_POINT_HEIGHT, DEFAULT_PROPS } from './constants'
 import { useStepsPoints, useValuePosition } from './hooks'
 import { getTotalPosition, getCoordsByEvent } from './helpers'
@@ -59,7 +55,7 @@ import { Positions } from '@/models/enums'
 export default defineComponent({
   name: 'it-slider',
   components: {
-    'it-tooltip': Tooltip
+    'it-tooltip': Tooltip,
   },
   props: {
     labelTop: String,
@@ -92,7 +88,7 @@ export default defineComponent({
         max: props.max,
         step: props.step,
         valuePosition,
-      }
+      },
     )
 
     watch(
@@ -105,7 +101,7 @@ export default defineComponent({
           max: props.max,
         } as TTotalValuePosition)
         setValuePosition(newValue)
-      }
+      },
     )
 
     function keyEvent(key: TKeyEvents) {
@@ -192,8 +188,8 @@ export default defineComponent({
       step,
       index,
     }: {
-      step: TStepItem;
-      index: number;
+      step: TStepItem
+      index: number
     }): object {
       const styles: { [key: string]: any } = {
         left: `${step.left}%`,

@@ -52,43 +52,43 @@
 </template>
 
 <script lang="ts">
-  import { Colors } from '@/models/enums'
-  import { defineComponent, computed } from 'vue'
+import { Colors } from '@/models/enums'
+import { defineComponent, computed } from 'vue'
 
-  export default defineComponent({
-    name: 'it-radio',
-    inheritAttrs: false,
-    props: {
-      type: {
-        default: Colors.PRIMARY,
-        type: String,
-        validator: (value: Colors) =>
-          [
-            Colors.PRIMARY,
-            Colors.SUCCESS,
-            Colors.DANGER,
-            Colors.WARNING,
-            Colors.BLACK,
-          ].includes(value),
-      },
-      label: { type: String },
-      subLabel: { type: String },
-      pulse: { type: Boolean },
-      disabled: { type: Boolean },
-      modelValue: {},
-      value: {},
+export default defineComponent({
+  name: 'it-radio',
+  inheritAttrs: false,
+  props: {
+    type: {
+      default: Colors.PRIMARY,
+      type: String,
+      validator: (value: Colors) =>
+        [
+          Colors.PRIMARY,
+          Colors.SUCCESS,
+          Colors.DANGER,
+          Colors.WARNING,
+          Colors.BLACK,
+        ].includes(value),
     },
-    setup(props, { emit }) {
-      function check() {
-        if (props.disabled) {
-          return
-        }
-
-        emit('update:modelValue', props.value)
+    label: { type: String },
+    subLabel: { type: String },
+    pulse: { type: Boolean },
+    disabled: { type: Boolean },
+    modelValue: {},
+    value: {},
+  },
+  setup(props, { emit }) {
+    function check() {
+      if (props.disabled) {
+        return
       }
 
-      const isChecked = computed(() => props.modelValue === props.value)
-      return { check, isChecked }
-    },
-  })
+      emit('update:modelValue', props.value)
+    }
+
+    const isChecked = computed(() => props.modelValue === props.value)
+    return { check, isChecked }
+  },
+})
 </script>

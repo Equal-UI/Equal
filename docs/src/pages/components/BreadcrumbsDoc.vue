@@ -24,16 +24,16 @@
 </template>
 
 <script>
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    mounted() {
-      twttr.widgets.load(document.getElementsByClassName('wip'))
-    },
-  })
+export default defineComponent({
+  mounted() {
+    twttr.widgets.load(document.getElementsByClassName('wip'))
+  },
+})
 </script>
 
 <style lang="less">
-  .wip {
-  }
+.wip {
+}
 </style>

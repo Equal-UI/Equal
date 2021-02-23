@@ -4,17 +4,20 @@
 
     <Demobox>
       <div class="py-12">
-        <it-colorpicker :showTooltip="colorTooltip" :disableAlpha="hideAlpha" />
+        <it-colorpicker
+          :show-tooltip="colorTooltip"
+          :disable-alpha="hideAlpha"
+        />
       </div>
       <template #props>
-        <it-checkbox label="Tooltip on move" v-model="colorTooltip" />
-        <it-checkbox label="Hide alpha" v-model="hideAlpha" />
+        <it-checkbox v-model="colorTooltip" label="Tooltip on move" />
+        <it-checkbox v-model="hideAlpha" label="Hide alpha" />
       </template>
     </Demobox>
 
     <Box :code="tooltipCode" title="With Tooltip">
       <div class="flex flex-col items-center">
-        <it-colorpicker showTooltip :value="color" @change="updateColor" />
+        <it-colorpicker show-tooltip :value="color" @change="updateColor" />
 
         <h5 class="mt-6">Returned value:</h5>
         <pre>{{ JSON.stringify(color, null, 2) }}</pre>
@@ -40,10 +43,7 @@
       </div>
     </Box>
 
-    <props-table
-      :event-sheet="eventSheet"
-      :data-sheet="dataSheet"
-    />
+    <props-table :event-sheet="eventSheet" :data-sheet="dataSheet" />
   </div>
 </template>
 
@@ -91,7 +91,8 @@ updateExampleColor(val) {
         type: ['Boolean'],
         default: 'false',
         values: [],
-        description: 'Show tooltip over saturation cursor on move. Useful for mobile devices',
+        description:
+          'Show tooltip over saturation cursor on move. Useful for mobile devices',
       },
       {
         property: 'value',

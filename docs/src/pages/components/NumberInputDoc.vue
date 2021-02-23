@@ -30,76 +30,76 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  export default defineComponent({
-    data: () => ({
-      inputMin: 0,
-      inputMax: 100,
-      inputStep: 1,
-      inputValue: 0,
-      inputTopLabel: 'Your input',
-      inputDisabled: false,
-      controlsDisabled: false,
-      resizeOnChange: false,
+import { defineComponent } from 'vue'
+export default defineComponent({
+  data: () => ({
+    inputMin: 0,
+    inputMax: 100,
+    inputStep: 1,
+    inputValue: 0,
+    inputTopLabel: 'Your input',
+    inputDisabled: false,
+    controlsDisabled: false,
+    resizeOnChange: false,
 
-      dataSheet: [
-        {
-          property: 'min',
-          type: ['Number'],
-          default: -Infinity,
-          values: [],
-          description: 'Minimal value',
-        },
-        {
-          property: 'max',
-          type: ['Number'],
-          default: Infinity,
-          values: [],
-          description: 'Maximal value',
-        },
-        {
-          property: 'step',
-          type: ['Number'],
-          default: '1',
-          values: [],
-          description: 'Step value',
-        },
-        {
-          property: 'label-top',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Top label',
-        },
-        {
-          property: 'value (v-model)',
-          type: ['Number'],
-          default: 1,
-          values: [],
-          description: 'Number input value',
-        },
-        {
-          property: 'resize-on-write',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Resizes on input',
-        },
-        {
-          property: 'hide-controls',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Hides control +/- buttons',
-        },
-        {
-          property: 'disabled',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Disabled number input',
-        },
-      ],
-    }),
-  })
+    dataSheet: [
+      {
+        property: 'min',
+        type: ['Number'],
+        default: -Infinity,
+        values: [],
+        description: 'Minimal value',
+      },
+      {
+        property: 'max',
+        type: ['Number'],
+        default: Infinity,
+        values: [],
+        description: 'Maximal value',
+      },
+      {
+        property: 'step',
+        type: ['Number'],
+        default: '1',
+        values: [],
+        description: 'Step value',
+      },
+      {
+        property: 'label-top',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Top label',
+      },
+      {
+        property: 'value (v-model)',
+        type: ['Number'],
+        default: 1,
+        values: [],
+        description: 'Number input value',
+      },
+      {
+        property: 'resize-on-write',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Resizes on input',
+      },
+      {
+        property: 'hide-controls',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Hides control +/- buttons',
+      },
+      {
+        property: 'disabled',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Disabled number input',
+      },
+    ],
+  }),
+})
 </script>

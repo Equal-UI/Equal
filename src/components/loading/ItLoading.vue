@@ -21,19 +21,19 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 
-  export default defineComponent({
-    name: 'it-loading',
-    props: {
-      stroke: { default: 6, type: Number },
-      radius: { default: 32, type: Number },
-      color: { default: '#3051ff', type: String },
-    },
-    setup(props) {
-      const normalizedRadius = computed(() => props.radius - props.stroke / 2)
+export default defineComponent({
+  name: 'it-loading',
+  props: {
+    stroke: { default: 6, type: Number },
+    radius: { default: 32, type: Number },
+    color: { default: '#3051ff', type: String },
+  },
+  setup(props) {
+    const normalizedRadius = computed(() => props.radius - props.stroke / 2)
 
-      return { normalizedRadius }
-    },
-  })
+    return { normalizedRadius }
+  },
+})
 </script>

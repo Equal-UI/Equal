@@ -25,54 +25,54 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import { usePopover } from '@/hooks'
-  import { clickOutside } from '@/directives'
-  import { Positions } from '@/models/enums'
+import { defineComponent } from 'vue'
+import { usePopover } from '@/hooks'
+import { clickOutside } from '@/directives'
+import { Positions } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-popover',
-    directives: {
-      clickoutside: clickOutside,
+export default defineComponent({
+  name: 'it-popover',
+  directives: {
+    clickoutside: clickOutside,
+  },
+  props: {
+    disabled: Boolean,
+    borderless: Boolean,
+    placement: {
+      type: String,
+      default: Positions.T,
+      validator: (value: Positions) =>
+        [Positions.B, Positions.L, Positions.R, Positions.T].includes(value),
     },
-    props: {
-      disabled: Boolean,
-      borderless: Boolean,
-      placement: {
-        type: String,
-        default: Positions.T,
-        validator: (value: Positions) =>
-          [Positions.B, Positions.L, Positions.R, Positions.T].includes(value),
-      },
-    },
-    setup(props) {
-      const {
-        show,
-        placement,
-        disabled,
-        clickable,
-        transition,
-        popover,
-        trigger,
-        position,
-        hidePopover,
-        showPopover,
-        setPopoverPosition,
-      } = usePopover(props)
+  },
+  setup(props) {
+    const {
+      show,
+      placement,
+      disabled,
+      clickable,
+      transition,
+      popover,
+      trigger,
+      position,
+      hidePopover,
+      showPopover,
+      setPopoverPosition,
+    } = usePopover(props)
 
-      return {
-        show,
-        placement,
-        disabled,
-        clickable,
-        transition,
-        popover,
-        trigger,
-        position,
-        hidePopover,
-        showPopover,
-        setPopoverPosition,
-      }
-    },
-  })
+    return {
+      show,
+      placement,
+      disabled,
+      clickable,
+      transition,
+      popover,
+      trigger,
+      position,
+      hidePopover,
+      showPopover,
+      setPopoverPosition,
+    }
+  },
+})
 </script>

@@ -51,41 +51,41 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue'
-  import { Colors } from '@/models/enums'
+import { defineComponent, ref } from 'vue'
+import { Colors } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-input',
-    inheritAttrs: false,
-    props: {
-      status: {
-        type: String,
-        validator: (value: Colors) =>
-          [Colors.SUCCESS, Colors.WARNING, Colors.DANGER].includes(value),
-      },
-      type: {
-        type: String,
-        default: 'text',
-      },
-      placeholder: String,
-      labelTop: String,
-      prefix: String,
-      suffix: String,
-      message: String,
-      mask: Boolean,
-      suffixIcon: String,
-      prefixIcon: String,
-      disabled: Boolean,
-      modelValue: String,
+export default defineComponent({
+  name: 'it-input',
+  inheritAttrs: false,
+  props: {
+    status: {
+      type: String,
+      validator: (value: Colors) =>
+        [Colors.SUCCESS, Colors.WARNING, Colors.DANGER].includes(value),
     },
-    setup(props, { emit }) {
-      const focus = ref(false)
-
-      function input(e: Event) {
-        emit('update:modelValue', (e.target as HTMLInputElement).value)
-      }
-
-      return { input, focus }
+    type: {
+      type: String,
+      default: 'text',
     },
-  })
+    placeholder: String,
+    labelTop: String,
+    prefix: String,
+    suffix: String,
+    message: String,
+    mask: Boolean,
+    suffixIcon: String,
+    prefixIcon: String,
+    disabled: Boolean,
+    modelValue: String,
+  },
+  setup(props, { emit }) {
+    const focus = ref(false)
+
+    function input(e: Event) {
+      emit('update:modelValue', (e.target as HTMLInputElement).value)
+    }
+
+    return { input, focus }
+  },
+})
 </script>

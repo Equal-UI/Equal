@@ -20,17 +20,17 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 
-  export default defineComponent({
-    name: 'it-collapse-item',
-    props: {
-      title: { type: String },
-      opened: { type: Boolean },
-    },
-    setup(props) {
-      const active = ref(props.opened)
-      return { active }
-    },
-  })
+export default defineComponent({
+  name: 'it-collapse-item',
+  props: {
+    title: { type: String },
+    opened: { type: Boolean },
+  },
+  setup(props) {
+    const active = ref(props.opened)
+    return { active }
+  },
+})
 </script>

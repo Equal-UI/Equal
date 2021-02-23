@@ -39,7 +39,7 @@
       <it-switch v-model="typeValue" type="warning" label="Warning" />
     </Box>
     <Box :code="sublabelCode" title="Types">
-      <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; flex-direction: column">
         <it-switch v-model="sublabel1" label="Label only" />
         <br />
         <it-switch v-model="sublabel2" label="Show ">
@@ -49,7 +49,7 @@
     </Box>
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-        <p style="padding: 0 24px;">Pulse helps you to catch user's attention</p>
+        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
       </template>
       <it-switch v-model="pulseValue" pulse label="Look at me" />
     </Box>
@@ -61,75 +61,75 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      switchValue: true,
-      switchLabel: 'Switch',
-      switchPulse: false,
-      switchDisabled: false,
-      switchType: 'primary',
-      switchTypes: ['primary', 'success', 'danger', 'warning', 'black'],
-      sublabel: '',
-      sublabel1: true,
-      sublabel2: false,
+export default defineComponent({
+  data: () => ({
+    switchValue: true,
+    switchLabel: 'Switch',
+    switchPulse: false,
+    switchDisabled: false,
+    switchType: 'primary',
+    switchTypes: ['primary', 'success', 'danger', 'warning', 'black'],
+    sublabel: '',
+    sublabel1: true,
+    sublabel2: false,
 
-      pulseValue: false,
-      typeValue: true,
+    pulseValue: false,
+    typeValue: true,
 
-      typesCode: `<it-switch v-model="typeValue" label="Primary" />
+    typesCode: `<it-switch v-model="typeValue" label="Primary" />
 <it-switch v-model="typeValue" type="success" label="Success" />
 <it-switch v-model="typeValue" type="danger" label="Danger" />
 <it-switch v-model="typeValue" type="warning" label="Warning" />`,
 
-      pulseCode: `<it-switch v-model="pulseValue" pulse label="Look at me" />`,
+    pulseCode: `<it-switch v-model="pulseValue" pulse label="Look at me" />`,
 
-      sublabelCode: `<it-switch v-model="sublabel1" label="Label only" />
+    sublabelCode: `<it-switch v-model="sublabel1" label="Label only" />
 
 <it-switch v-model="sublabel2" label="Show ">
   <template #sublabel>Send notifications</template>
 </it-switch>`,
 
-      disabledCode: `<it-switch v-model="pulseValue" disabled label="I'm disabled"/>`,
+    disabledCode: `<it-switch v-model="pulseValue" disabled label="I'm disabled"/>`,
 
-      dataSheet: [
-        {
-          property: 'type',
-          type: ['String'],
-          default: 'primary',
-          values: ['primary', 'success', 'danger', 'warning'],
-          description: 'Type of the switch',
-        },
-        {
-          property: 'label',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Label of the switch',
-        },
-        {
-          property: 'disabled',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Makes switch disabled',
-        },
-        {
-          property: 'pulse',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Adds pulse to switch',
-        },
-        {
-          property: 'value (v-model)',
-          type: ['Boolean'],
-          default: 'false',
-          values: [],
-          description: 'Switch value',
-        },
-      ],
-    }),
-  })
+    dataSheet: [
+      {
+        property: 'type',
+        type: ['String'],
+        default: 'primary',
+        values: ['primary', 'success', 'danger', 'warning'],
+        description: 'Type of the switch',
+      },
+      {
+        property: 'label',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Label of the switch',
+      },
+      {
+        property: 'disabled',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes switch disabled',
+      },
+      {
+        property: 'pulse',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Adds pulse to switch',
+      },
+      {
+        property: 'value (v-model)',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Switch value',
+      },
+    ],
+  }),
+})
 </script>

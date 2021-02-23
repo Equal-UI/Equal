@@ -1,8 +1,16 @@
 <template>
-  <div class="sidebar" :style="{
-    left,
-  }" v-clickoutside="hideSidebar">
-    <it-button @click="toggleSidebar" class="burger" :icon="left === 'inherit' ? 'menu' : 'close'" />
+  <div
+    v-clickoutside="hideSidebar"
+    class="sidebar"
+    :style="{
+      left,
+    }"
+  >
+    <it-button
+      class="burger"
+      :icon="left === 'inherit' ? 'menu' : 'close'"
+      @click="toggleSidebar"
+    />
     <div class="sidebar-top">
       <router-link to="/" class="logo-link">
         <img class="sidebar-logo" src="/eqqqual.png" />
@@ -33,64 +41,66 @@
     <ul class="sidebar-menu">
       <li class="group-title-high">GENERAL</li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/introduction',
         }"
+        @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/introduction">Introduction</router-link>
+        <router-link style="padding: 7px 0px 7px 30px" to="/introduction"
+          >Introduction</router-link
+        >
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/start',
         }"
+        @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/start">Getting started</router-link>
+        <router-link style="padding: 7px 0px 7px 30px" to="/start"
+          >Getting started</router-link
+        >
       </li>
       <li class="group-title-high">COMPONENTS</li>
       <li class="group-title">Base</li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/button',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/button">Button</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/icon',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/icon">Icon</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/divider',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/divider">Divider</router-link>
       </li>
 
       <li class="group-title">Form</li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/checkbox',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/checkbox">
-          Checkbox
-        </router-link>
+        <router-link to="/components/checkbox"> Checkbox </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/colorpicker',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/colorpicker">
           Colorpicker
@@ -98,133 +108,117 @@
         </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/input',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/input">
-          Input
-        </router-link>
+        <router-link to="/components/input"> Input </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/numberinput',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/numberinput">
-          Number Input
-        </router-link>
+        <router-link to="/components/numberinput"> Number Input </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/radio',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/radio">
-          Radio
-        </router-link>
+        <router-link to="/components/radio"> Radio </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/select',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/select">
-          Select
-        </router-link>
+        <router-link to="/components/select"> Select </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/slider',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/slider">Slider</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/switch',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/switch">
-          Switch
-        </router-link>
+        <router-link to="/components/switch"> Switch </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/textarea',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/textarea">
-          Textarea
-        </router-link>
+        <router-link to="/components/textarea"> Textarea </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/toggle',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/toggle">
-          Toggle
-        </router-link>
+        <router-link to="/components/toggle"> Toggle </router-link>
       </li>
 
       <li class="group-title">Feedback</li>
 
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/alert',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/alert">Alert</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/drawer',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/drawer">
-          Drawer
-        </router-link>
+        <router-link to="/components/drawer"> Drawer </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/loading',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/loading">Loading</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/loadingbar',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/loadingbar">Loading bar</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/message',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/message">Message</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/modal',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/modal">
           Modal
@@ -232,94 +226,86 @@
         </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/notification',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/notification">Notification</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/popover',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/popover">
-          Popover
-        </router-link>
+        <router-link to="/components/popover"> Popover </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/progressbar',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/progressbar">Progress Bar</router-link>
       </li>
 
       <li class="group-title">Data Display</li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/avatar',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/avatar">
-          Avatar
-        </router-link>
+        <router-link to="/components/avatar"> Avatar </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/collapse',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/collapse">
-          Collapse
-        </router-link>
+        <router-link to="/components/collapse"> Collapse </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/badge',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/badge">Badge</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/tag',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/tag">Tag</router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/tabs',
         }"
+        @click="hideSidebar"
       >
-        <router-link to="/components/tabs">
-          Tabs
-        </router-link>
+        <router-link to="/components/tabs"> Tabs </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/tooltip',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/tooltip">Tooltip</router-link>
       </li>
 
       <li class="group-title">Navigation</li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/breadcrumbs',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/breadcrumbs">
           Breadcrumbs
@@ -327,10 +313,10 @@
         </router-link>
       </li>
       <li
-        @click="hideSidebar"
         :class="{
           'active-menu-item': $route.path === '/components/dropdown',
         }"
+        @click="hideSidebar"
       >
         <router-link to="/components/dropdown">Dropdown</router-link>
       </li>
@@ -352,11 +338,11 @@ import { defineComponent, ref } from 'vue'
 import { clickOutside } from '/@equal/directives'
 
 export default defineComponent({
-  // @ts-ignore
-  layout: 'components',
   directives: {
     clickoutside: clickOutside,
   },
+  // @ts-ignore
+  layout: 'components',
   setup() {
     const left = ref('inherit')
 
@@ -376,7 +362,6 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-
 .sidebar {
   position: fixed;
   left: 0px;

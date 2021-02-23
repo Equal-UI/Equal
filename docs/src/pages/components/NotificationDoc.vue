@@ -76,14 +76,14 @@
       >
     </Box>
     <Box :code="placementCode" title="Notification position">
-      <div style="flex-direction: column; display: flex;">
+      <div style="flex-direction: column; display: flex">
         <div
           style="
             margin-bottom: 12px;
             flex-direction: row;
             display: flex;
             justify-content: center;
-"
+          "
         >
           <it-button
             @click="
@@ -116,7 +116,7 @@
             flex-direction: row;
             display: flex;
             justify-content: center;
-"
+          "
         >
           <it-button
             @click="
@@ -150,11 +150,11 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-  export default defineComponent({
-    data: () => ({
-      typesCode: `
+export default defineComponent({
+  data: () => ({
+    typesCode: `
 <it-button
   @click="$Notification({
   title: 'Primary notification',
@@ -187,7 +187,7 @@
   })"
 >Warning notification</it-button>`,
 
-      emojiCode: `
+    emojiCode: `
 <it-button
   outlined
   @click="$Notification({
@@ -198,7 +198,7 @@
   })"
 >🧬 Emoji notification</it-button>`,
 
-      imageCode: `
+    imageCode: `
 <it-button
   @click="$Notification({
   title: 'Image notification',
@@ -208,7 +208,7 @@
   })"
 >Click me</it-button>`,
 
-      placementCode: `
+    placementCode: `
 <it-button
   @click="$Notification({
   title: 'Top-left notification',
@@ -246,72 +246,72 @@
   })"
 >Bottom-right</it-button>`,
 
-      dataSheet: [
-        {
-          property: 'type',
-          type: ['String'],
-          default: 'primary',
-          values: ['primary', 'success', 'danger', 'warning'],
-          description: 'Type of the notification',
-        },
-        {
-          property: 'title',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Title of the notification',
-        },
-        {
-          property: 'text',
-          type: ['String'],
-          default: '-',
-          values: [],
-          description: 'Content of the notification',
-        },
-        {
-          property: 'placeennt',
-          type: ['String'],
-          default: 'top-right',
-          values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
-          description: 'Position of the notification',
-        },
-        {
-          property: 'duration',
-          type: ['Number'],
-          default: '5000',
-          values: [],
-          description: 'Duration of the notification',
-        },
-        {
-          property: 'icon',
-          type: ['String'],
-          default: 'Depends on notifcation type',
-          values: ['Material Icons'],
-          description: 'Icon of the notification',
-        },
-        {
-          property: 'image',
-          type: ['String'],
-          default: '-',
-          values: ['url'],
-          description: 'Image of the notification',
-        },
+    dataSheet: [
+      {
+        property: 'type',
+        type: ['String'],
+        default: 'primary',
+        values: ['primary', 'success', 'danger', 'warning'],
+        description: 'Type of the notification',
+      },
+      {
+        property: 'title',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Title of the notification',
+      },
+      {
+        property: 'text',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Content of the notification',
+      },
+      {
+        property: 'placeennt',
+        type: ['String'],
+        default: 'top-right',
+        values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+        description: 'Position of the notification',
+      },
+      {
+        property: 'duration',
+        type: ['Number'],
+        default: '5000',
+        values: [],
+        description: 'Duration of the notification',
+      },
+      {
+        property: 'icon',
+        type: ['String'],
+        default: 'Depends on notifcation type',
+        values: ['Material Icons'],
+        description: 'Icon of the notification',
+      },
+      {
+        property: 'image',
+        type: ['String'],
+        default: '-',
+        values: ['url'],
+        description: 'Image of the notification',
+      },
 
-        {
-          property: 'emoji',
-          type: ['String'],
-          default: '-',
-          values: ['emoji'],
-          description: 'Emoji of the notification',
-        },
-        {
-          property: 'on-close',
-          type: ['Function'],
-          default: '() => void',
-          values: [],
-          description: 'Callback triggers when notification hides',
-        },
-      ],
-    }),
-  })
+      {
+        property: 'emoji',
+        type: ['String'],
+        default: '-',
+        values: ['emoji'],
+        description: 'Emoji of the notification',
+      },
+      {
+        property: 'on-close',
+        type: ['Function'],
+        default: '() => void',
+        values: [],
+        description: 'Callback triggers when notification hides',
+      },
+    ],
+  }),
+})
 </script>

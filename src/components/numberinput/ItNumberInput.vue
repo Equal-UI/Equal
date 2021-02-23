@@ -47,128 +47,128 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, watch, ref, nextTick, onMounted } from 'vue'
+import { defineComponent, watch, ref, nextTick, onMounted } from 'vue'
 
-  export default defineComponent({
-    name: 'it-number-input',
-    inheritAttrs: false,
-    props: {
-      resizeOnWrite: Boolean,
-      disabled: Boolean,
-      min: { type: Number, default: -Infinity },
-      max: { type: Number, default: Infinity },
-      step: { type: Number, default: 1 },
-      hideControls: Boolean,
-      labelTop: String,
-      modelValue: { type: [Number, String], default: 0 },
-    },
-    setup(props, { emit }) {
-      const width = ref<number | null>(null)
-      const buffer = ref(null)
+export default defineComponent({
+  name: 'it-number-input',
+  inheritAttrs: false,
+  props: {
+    resizeOnWrite: Boolean,
+    disabled: Boolean,
+    min: { type: Number, default: -Infinity },
+    max: { type: Number, default: Infinity },
+    step: { type: Number, default: 1 },
+    hideControls: Boolean,
+    labelTop: String,
+    modelValue: { type: [Number, String], default: 0 },
+  },
+  setup(props, { emit }) {
+    const width = ref<number | null>(null)
+    const buffer = ref(null)
 
-      onMounted(() => {
-        width.value = (buffer.value! as HTMLDivElement).clientWidth
-      })
+    onMounted(() => {
+      width.value = (buffer.value! as HTMLDivElement).clientWidth
+    })
 
-      watch(
-        () => props.modelValue,
-        async () => {
-          if (props.resizeOnWrite) {
-            await nextTick()
-            width.value = (buffer.value! as HTMLDivElement).clientWidth
-          }
+    watch(
+      () => props.modelValue,
+      async () => {
+        if (props.resizeOnWrite) {
+          await nextTick()
+          width.value = (buffer.value! as HTMLDivElement).clientWidth
+        }
+      },
+    )
+
+    // controllers +/-
+
+    const interval = ref<NodeJS.Timeout | null>(null)
+
+    function press(type: 'plus' | 'minus') {
+      if (props.disabled || disableController(type)) return
+
+      const handler = type === 'plus' ? increase : decrease
+      interval.value = setInterval(handler, 140)
+      window.addEventListener(
+        'mouseup',
+        () => {
+          clearInterval(interval.value!)
         },
+        { once: true },
       )
+    }
 
-      // controllers +/-
+    function disableController(type: 'plus' | 'minus'): boolean {
+      if (props.modelValue <= props.min && type === 'minus') {
+        return true
+      }
+      if (props.modelValue >= props.max && type === 'plus') {
+        return true
+      }
+      return false
+    }
 
-      const interval = ref<NodeJS.Timeout | null>(null)
+    // common behavior
 
-      function press(type: 'plus' | 'minus') {
-        if (props.disabled || disableController(type)) return
+    function calculateStep(stepType: 'plus' | 'minus') {
+      if (props.disabled) return
 
-        const handler = type === 'plus' ? increase : decrease
-        interval.value = setInterval(handler, 140)
-        window.addEventListener(
-          'mouseup',
-          () => {
-            clearInterval(interval.value!)
-          },
-          { once: true },
-        )
+      let value = Number(props.modelValue)
+      const step = Number(props.step)
+
+      switch (stepType) {
+        case 'plus':
+          value += step
+          break
+        case 'minus':
+          value -= step
+          break
       }
 
-      function disableController(type: 'plus' | 'minus'): boolean {
-        if (props.modelValue <= props.min && type === 'minus') {
-          return true
-        }
-        if (props.modelValue >= props.max && type === 'plus') {
-          return true
-        }
-        return false
+      if (value > props.max) {
+        value = props.max
+      }
+      if (value < props.min) {
+        value = props.min
       }
 
-      // common behavior
+      emit('update:modelValue', Number(value.toFixed(10)))
+    }
 
-      function calculateStep(stepType: 'plus' | 'minus') {
-        if (props.disabled) return
+    function increase() {
+      if (props.disabled || props.modelValue >= props.max) return
+      calculateStep('plus')
+    }
 
-        let value = Number(props.modelValue)
-        const step = Number(props.step)
+    function decrease() {
+      if (props.disabled || props.modelValue <= props.min) return
+      calculateStep('minus')
+    }
 
-        switch (stepType) {
-          case 'plus':
-            value += step
-            break
-          case 'minus':
-            value -= step
-            break
-        }
+    // input behavior
 
-        if (value > props.max) {
-          value = props.max
-        }
-        if (value < props.min) {
-          value = props.min
-        }
+    function onInput(e: InputEvent, watchVal: number) {
+      const newVal = watchVal ?? Number((e.target as HTMLInputElement).value)
 
-        emit('update:modelValue', Number(value.toFixed(10)))
+      if (newVal > props.max) {
+        emit('update:modelValue', props.max)
+        return
+      } else if (newVal < props.min) {
+        emit('update:modelValue', props.min)
+        return
       }
+      emit('update:modelValue', newVal)
+    }
 
-      function increase() {
-        if (props.disabled || props.modelValue >= props.max) return
-        calculateStep('plus')
-      }
-
-      function decrease() {
-        if (props.disabled || props.modelValue <= props.min) return
-        calculateStep('minus')
-      }
-
-      // input behavior
-
-      function onInput(e: InputEvent, watchVal: number) {
-        const newVal = watchVal ?? Number((e.target as HTMLInputElement).value)
-
-        if (newVal > props.max) {
-          emit('update:modelValue', props.max)
-          return
-        } else if (newVal < props.min) {
-          emit('update:modelValue', props.min)
-          return
-        }
-        emit('update:modelValue', newVal)
-      }
-
-      return {
-        onInput,
-        increase,
-        decrease,
-        disableController,
-        press,
-        width,
-        buffer,
-      }
-    },
-  })
+    return {
+      onInput,
+      increase,
+      decrease,
+      disableController,
+      press,
+      width,
+      buffer,
+    }
+  },
+})
 </script>

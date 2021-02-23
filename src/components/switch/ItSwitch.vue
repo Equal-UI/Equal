@@ -13,7 +13,7 @@
         type="checkbox"
         class="it-switch-input"
         :disabled="disabled"
-        style="z-index: 10;"
+        style="z-index: 10"
         v-bind="$attrs"
         @change="toggle"
       />
@@ -50,41 +50,41 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue'
-  import { Colors } from '@/models/enums'
+import { defineComponent } from 'vue'
+import { Colors } from '@/models/enums'
 
-  export default defineComponent({
-    name: 'it-switch',
-    inheritAttrs: false,
-    props: {
-      type: {
-        default: Colors.PRIMARY,
-        type: String,
-        validator: (value: Colors) =>
-          [
-            Colors.PRIMARY,
-            Colors.SUCCESS,
-            Colors.DANGER,
-            Colors.WARNING,
-            Colors.BLACK,
-          ].includes(value),
-      },
-      label: { type: String },
-      subLabel: { type: String },
-      pulse: { type: Boolean },
-      disabled: { type: Boolean },
-      modelValue: { type: Boolean, default: false },
+export default defineComponent({
+  name: 'it-switch',
+  inheritAttrs: false,
+  props: {
+    type: {
+      default: Colors.PRIMARY,
+      type: String,
+      validator: (value: Colors) =>
+        [
+          Colors.PRIMARY,
+          Colors.SUCCESS,
+          Colors.DANGER,
+          Colors.WARNING,
+          Colors.BLACK,
+        ].includes(value),
     },
-    setup(props, { emit }) {
-      function toggle() {
-        if (props.disabled) {
-          return
-        }
-        const newValue = !props.modelValue
-        emit('update:modelValue', newValue)
+    label: { type: String },
+    subLabel: { type: String },
+    pulse: { type: Boolean },
+    disabled: { type: Boolean },
+    modelValue: { type: Boolean, default: false },
+  },
+  setup(props, { emit }) {
+    function toggle() {
+      if (props.disabled) {
+        return
       }
+      const newValue = !props.modelValue
+      emit('update:modelValue', newValue)
+    }
 
-      return { toggle }
-    },
-  })
+    return { toggle }
+  },
+})
 </script>
