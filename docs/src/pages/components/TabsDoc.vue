@@ -4,9 +4,9 @@
 
     <Demobox>
       <it-tabs :vertical="verticalTab" :box="boxTab">
-        <it-tab title="Tab 1" style="padding: 16px">First tab</it-tab>
-        <it-tab title="Tab 2" style="padding: 16px">Second tab</it-tab>
-        <it-tab title="Tab 3" :disabled="disabledTab" style="padding: 16px"
+        <it-tab title="Tab 1" class="p-4">First tab</it-tab>
+        <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
+        <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
           >Third tab</it-tab
         >
       </it-tabs>
@@ -18,36 +18,36 @@
       </template>
     </Demobox>
     <Box :code="boxedCode" title="Tabs in box">
-      <div style="display: flex; flex-direction: column; flex: 1">
-        <it-tabs box style="flex: 1">
-          <it-tab title="Tab 1" style="padding: 16px">First tab</it-tab>
-          <it-tab title="Tab 2" style="padding: 16px">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" style="padding: 16px"
+      <div class="flex flex-col flex-1">
+        <it-tabs box class="flex-1">
+          <it-tab title="Tab 1" class="p-4">First tab</it-tab>
+          <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
             >Third tab</it-tab
           >
         </it-tabs>
-        <it-tabs vertical box style="flex: 1; margin-top: 12px">
-          <it-tab title="Tab 1" style="padding: 16px">First tab</it-tab>
-          <it-tab title="Tab 2" style="padding: 16px">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" style="padding: 16px"
+        <it-tabs vertical box class="flex-1 mt-3">
+          <it-tab title="Tab 1" class="p-4">First tab</it-tab>
+          <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
             >Third tab</it-tab
           >
         </it-tabs>
       </div>
     </Box>
     <Box :code="notboxedCode" title="Tabs without box">
-      <div style="display: flex; flex-direction: column; flex: 1">
-        <it-tabs style="flex: 1">
-          <it-tab title="Tab 1" style="padding: 16px">First tab</it-tab>
-          <it-tab title="Tab 2" style="padding: 16px">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" style="padding: 16px"
+      <div class="flex flex-col flex-1">
+        <it-tabs class="flex-1">
+          <it-tab title="Tab 1" class="p-4">First tab</it-tab>
+          <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
             >Third tab</it-tab
           >
         </it-tabs>
-        <it-tabs vertical style="flex: 1; margin-top: 16px">
-          <it-tab title="Tab 1" style="padding: 16px">First tab</it-tab>
-          <it-tab title="Tab 2" style="padding: 16px">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" style="padding: 16px"
+        <it-tabs vertical class="flex-1 mt-4">
+          <it-tab title="Tab 1" class="p-4">First tab</it-tab>
+          <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
             >Third tab</it-tab
           >
         </it-tabs>

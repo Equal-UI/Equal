@@ -76,15 +76,8 @@
       >
     </Box>
     <Box :code="placementCode" title="Notification position">
-      <div style="flex-direction: column; display: flex">
-        <div
-          style="
-            margin-bottom: 12px;
-            flex-direction: row;
-            display: flex;
-            justify-content: center;
-          "
-        >
+      <div class="flex flex-col">
+        <div class="mb-3 flex flex-row justify-center">
           <it-button
             @click="
               $Notification({
@@ -110,14 +103,7 @@
             >Top-right</it-button
           >
         </div>
-        <div
-          style="
-            margin-bottom: 12px;
-            flex-direction: row;
-            display: flex;
-            justify-content: center;
-          "
-        >
+        <div class="mb-3 flex flex-row justify-center">
           <it-button
             @click="
               $Notification({

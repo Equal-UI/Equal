@@ -62,7 +62,7 @@
     </Box>
 
     <Box :code="slotCode" title="Slot">
-      <div class="flex flex-col flex-1;">
+      <div class="flex flex-col flex-1">
         <it-alert type="primary" title="Alert with slot body">
           You can put whatever you want here, I'd put a
           <it-tag type="primary">Tag</it-tag>

@@ -1,30 +1,16 @@
 <template>
   <div>
     <h1>Popover</h1>
-
-    <!-- <Demobox>
-      <it-avatar
-        :text="avatarText ? 'Yan Savinov' : null"
-        :src="avatarImage ? husky : null"
-        :square="avatarSquare"
-      ></it-avatar>
-      <template #props>
-        <it-checkbox label="Square" v-model="avatarSquare" />
-        <it-checkbox label="Image" v-model="avatarImage" />
-        <it-checkbox label="Text" v-model="avatarText" />
-      </template>
-    </Demobox> -->
-
     <Box :code="exampleCode" title="Example">
       <it-popover :disabled="removed">
         <it-button>Delete</it-button>
         <template #content>
           <div>
-            <p style="margin-bottom: 8px">Please confirm deletion</p>
-            <div style="display: flex; justify-content: flex-end">
+            <p class="mb-2">Please confirm deletion</p>
+            <div class="flex justify-end">
               <it-button size="small">No</it-button>
               <it-button
-                style="margin-left: 8px"
+                class="ml-2"
                 size="small"
                 type="danger"
                 @click="
@@ -40,7 +26,7 @@
 
     <Box :code="positionsCode" title="Positions">
       <template #description>
-        <p style="padding: 0 24px">Click to see the popover</p>
+        <p class="px-6">Click to see the popover</p>
       </template>
 
       <it-button-group vertical>
@@ -69,7 +55,7 @@
 
     <Box :code="imageCode" title="Image">
       <template #description>
-        <p style="padding: 0 24px">
+        <p class="px-6">
           You can disable paddings inside popover and show image
         </p>
       </template>

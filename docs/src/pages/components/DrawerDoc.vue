@@ -22,26 +22,11 @@
         </h3>
         <it-divider />
         <template v-for="(user, i) in fakeUsers" :key="i">
-          <div
-            style="
-              display: flex;
-              flex-direction: row;
-              padding: 0 24px;
-              justify-content: space-between;
-            "
-          >
+          <div class="flex flex-row px-6 justify-between">
             <it-avatar :src="user.avatar" />
-            <div
-              style="
-                justify-content: space-between;
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                padding-left: 12px;
-              "
-            >
-              <p style="font-weight: 500">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
+            <div class="justify-between flex flex-1 flex-col pl-3">
+              <p class="font-medium">{{ user.name }}</p>
+              <p style="color: #787f8a" class="font-medium text-sm">
                 @{{ user.username }}
               </p>
             </div>
@@ -57,26 +42,11 @@
         </h3>
         <it-divider />
         <template v-for="(user, i) in fakeUsers" :key="i">
-          <div
-            style="
-              display: flex;
-              flex-direction: row;
-              padding: 0 24px;
-              justify-content: space-between;
-            "
-          >
+          <div class="flex flex-row px-6 justify-between">
             <it-avatar :src="user.avatar" />
-            <div
-              style="
-                justify-content: space-between;
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                padding-left: 12px;
-              "
-            >
-              <p style="font-weight: 500">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
+            <div class="flex flex-1 flex-col pl-3 justify-between">
+              <p class="font-medium">{{ user.name }}</p>
+              <p style="color: #787f8a;" class="text-sm font-medium">
                 @{{ user.username }}
               </p>
             </div>
