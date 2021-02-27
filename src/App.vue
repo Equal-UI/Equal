@@ -48,9 +48,9 @@
       <h3>Alert</h3>
 
       <it-alert iconbox type="primary" :title="alertTitle" :body="alertTitle" />
-      <it-alert iconbox type="success" :title="alertTitle" :body="alertTitle" />
-      <it-alert iconbox type="danger" :title="alertTitle" :body="alertTitle" />
-      <it-alert iconbox type="warning" :title="alertTitle" :body="alertTitle" />
+      <it-alert iconbox type="success" :title="alertTitle" />
+      <it-alert type="danger" :title="alertTitle" :body="alertTitle" />
+      <it-alert type="warning" :title="alertTitle" />
     </div>
 
     <div>
