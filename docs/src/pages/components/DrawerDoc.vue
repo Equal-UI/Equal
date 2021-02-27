@@ -46,7 +46,7 @@
             <it-avatar :src="user.avatar" />
             <div class="flex flex-1 flex-col pl-3 justify-between">
               <p class="font-medium">{{ user.name }}</p>
-              <p style="color: #787f8a;" class="text-sm font-medium">
+              <p style="color: #787f8a" class="text-sm font-medium">
                 @{{ user.username }}
               </p>
             </div>
