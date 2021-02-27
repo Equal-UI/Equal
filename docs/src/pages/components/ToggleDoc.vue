@@ -33,7 +33,7 @@
         <p class="px-6">
           You can use
           <a
-            style="color: #3051ff;"
+            style="color: #3051ff"
             target="_blank"
             rel="noopener noreferrer"
             href="https://material.io/resources/icons/"

@@ -38,7 +38,7 @@
     "build": "vite build",
     "lint:eslint": "eslint src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
     "lint:prettier": "prettier -w -u src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
-    "lint:stylelint": "stylelint **/*.{less,vue}"
+    "lint:stylelint": "stylelint **/*.{less,vue} --syntax less"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
