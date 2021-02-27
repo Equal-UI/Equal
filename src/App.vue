@@ -228,7 +228,7 @@
 
     <div>
       <h3>Progress bar</h3>
-      <div style="padding: 60px 0px; width: 100%">
+      <div style="padding: 60px 0; width: 100%">
         <it-progressbar :progress="stepSliderValue" />
         <it-progressbar :progress="stepSliderValue" tooltip="bottom" />
       </div>
@@ -485,6 +485,7 @@ export default {
   display: flex;
   margin-bottom: 20px;
 }
+
 .demo-item {
   position: relative;
   margin-bottom: 10px;

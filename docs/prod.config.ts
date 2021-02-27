@@ -8,8 +8,8 @@ const config: UserConfig = {
   },
   plugins: [vue()],
   alias: {
-    '/@equal': path.resolve(__dirname, '../src'),
-    '@': path.resolve(__dirname, '../src'),
+    '/@equal': path.resolve(__dirname, './src/equal'),
+    '@': path.resolve(__dirname, './src/equal'),
   },
   base: '/Equal/',
   build: {

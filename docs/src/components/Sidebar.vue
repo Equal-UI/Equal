@@ -46,7 +46,7 @@
         }"
         @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/introduction"
+        <router-link style="padding: 7px 0 7px 30px" to="/introduction"
           >Introduction</router-link
         >
       </li>
@@ -56,7 +56,7 @@
         }"
         @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/start"
+        <router-link style="padding: 7px 0 7px 30px" to="/start"
           >Getting started</router-link
         >
       </li>
@@ -364,7 +364,7 @@ export default defineComponent({
 <style lang="less">
 .sidebar {
   position: fixed;
-  left: 0px;
+  left: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -373,12 +373,11 @@ export default defineComponent({
   border-right: 1px solid #d3dae6;
   height: 100%;
   z-index: 9;
-
   transition: all 0.18s;
 
   &-top {
     padding: 12px 20px;
-    background-color: #ffffff;
+    background-color: #fff;
     border-bottom: 1px solid #d3dae6;
   }
 
@@ -390,8 +389,8 @@ export default defineComponent({
     width: 100%;
     box-sizing: border-box;
     list-style: none;
-    padding: 10px 0px 20px;
-    margin: 0px;
+    padding: 10px 0 20px;
+    margin: 0;
     font-size: 14px;
     // height: 100%;
     overflow-y: auto;
@@ -423,13 +422,13 @@ export default defineComponent({
 
     li.group-title {
       color: #131313;
-      padding: 16px 0px 5px 30px;
+      padding: 16px 0 5px 30px;
       font-weight: 600;
       font-size: 1rem;
 
       &-high {
         color: #131313;
-        padding: 20px 0px 5px 30px;
+        padding: 20px 0 5px 30px;
         font-weight: 600;
         font-size: 1rem;
         letter-spacing: 1px;

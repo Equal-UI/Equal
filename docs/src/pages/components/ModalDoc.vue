@@ -33,7 +33,7 @@
       <it-button type="primary" @click="signinModal = true">Sign up</it-button>
       <it-modal v-model="signinModal">
         <template #body>
-          <div class="signupmodal">
+          <div class="signupmodal p-3">
             <h2>Sign up</h2>
             <it-input
               label-top="Email"
@@ -277,8 +277,6 @@ export default defineComponent({
 
 <style lang="less">
 .signupmodal {
-  padding: 12px;
-
   & > * + * {
     margin: 16px 0;
   }

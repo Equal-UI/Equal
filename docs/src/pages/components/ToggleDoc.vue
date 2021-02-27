@@ -5,7 +5,7 @@
     <Demobox>
       <it-toggle
         v-model="toggleValue"
-        style="width: 80%"
+        class="w-full mx-4"
         :round="toggleRound"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
@@ -15,15 +15,14 @@
       </template>
     </Demobox>
     <Box :code="exampleCode" title="Types">
-      <div style="width: 100%">
+      <div class="w-full">
         <it-toggle
           v-model="toggleValue"
-          style="width: 100%; margin-bottom: 16px"
+          class="mb-4"
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
         <it-toggle
           v-model="toggleValue"
-          style="width: 100%"
           round
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
@@ -31,7 +30,7 @@
     </Box>
     <Box :code="iconsCode" title="Icons">
       <template #description>
-        <p style="padding: 0 24px">
+        <p class="px-6">
           You can use
           <a
             style="color: #3051ff"
@@ -47,7 +46,7 @@
         <it-toggle
           v-model="toggleIconsValue"
           icons
-          style="margin-bottom: 16px"
+          class="mb-4"
           :options="['wb_sunny', 'bedtime']"
         />
         <it-toggle
@@ -72,13 +71,11 @@ export default defineComponent({
     toggleIconsValue: 'wb_sunny',
 
     exampleCode: `<it-toggle
-  style="width: 100%"
   v-model="toggleValue"
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />
 <it-toggle
   round
-  style="width: 100%"
   v-model="toggleValue"
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />`,

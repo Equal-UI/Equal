@@ -2,7 +2,7 @@
   <div class="page">
     <Sidebar />
     <Row class="flex" justify="center">
-      <Col class="flex flex-col my-12 mx-4" lg="9" sm="10" xs="11">
+      <Col class="flex flex-col my-12" lg="9" sm="10" xs="11">
         <router-view />
       </Col>
     </Row>
@@ -27,7 +27,7 @@ export default defineComponent({
 
 @media only screen and (max-width: 900px) {
   .page {
-    padding-left: 0px;
+    padding-left: 0;
   }
 }
 </style>

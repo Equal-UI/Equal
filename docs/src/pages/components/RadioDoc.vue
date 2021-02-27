@@ -49,7 +49,7 @@
     </Box>
 
     <Box :code="codeSublabel" title="Sublabel">
-      <div style="width: 60%">
+      <div>
         <it-radio v-model="subradio" type="primary" :value="1"
           >By signing this I agree with Terms and Conditions</it-radio
         >
@@ -63,7 +63,7 @@
 
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
+        <p class="px-6">Pulse helps you to catch user's attention</p>
       </template>
       <it-radio v-model="pulseValue" pulse label="Look at me" value="42" />
     </Box>
@@ -99,8 +99,8 @@ export default defineComponent({
     codeSublabel: `<it-radio type="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
 
 <it-radio type="primary" v-model="subradio" :value="2">
-  <template v-slot:default>Subscribe for updates</template>
-  <template v-slot:sublabel>Get notified when you get updates</template>
+  <template #default>Subscribe for updates</template>
+  <template #sublabel>Get notified when you get updates</template>
 </it-radio>`,
 
     dataSheet: [

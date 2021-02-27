@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Icon</h1>
-    <p style="margin-bottom: 10px">
+    <p class="mb-3">
       Equal UI uses
       <a
         href="https://material.io/resources/icons/?style=baseline"
@@ -34,12 +34,8 @@
           :max="30"
           label-top="Icon size"
         />
-        <it-checkbox
-          v-model="iconOutlined"
-          style="margin: 0 !important"
-          label="Outline"
-        />
-        <it-divider style="margin: 20x 0 !important" />
+        <it-checkbox v-model="iconOutlined" class="mb-0" label="Outline" />
+        <it-divider class="my-5" />
         <it-checkbox v-model="iconBox" label="Box" />
         <it-input
           v-model="iconBoxColor"

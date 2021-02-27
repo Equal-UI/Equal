@@ -39,7 +39,7 @@
       <it-switch v-model="typeValue" type="warning" label="Warning" />
     </Box>
     <Box :code="sublabelCode" title="Types">
-      <div style="display: flex; flex-direction: column">
+      <div class="flex flex-col">
         <it-switch v-model="sublabel1" label="Label only" />
         <br />
         <it-switch v-model="sublabel2" label="Show ">
@@ -49,7 +49,7 @@
     </Box>
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-        <p style="padding: 0 24px">Pulse helps you to catch user's attention</p>
+        <p class="px-6">Pulse helps you to catch user's attention</p>
       </template>
       <it-switch v-model="pulseValue" pulse label="Look at me" />
     </Box>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Tooltip</h1>
-    <p style="margin-bottom: 10px">
+    <p class="mb-4">
       It-tooltip is a HOC, use it to show tooltip over the slot
     </p>
     <Demobox>
@@ -21,7 +21,7 @@
       </template>
     </Demobox>
     <Box :code="positionCode" title="Position">
-      <div style="display: flex; flex-direction: column; align-items: center">
+      <div class="flex flex-col items-center">
         <it-button-group vertical>
           <it-tooltip content="Top" placement="top">
             <it-button>Top</it-button>
@@ -39,7 +39,7 @@
       </div>
     </Box>
     <Box :code="slotCode" title="Content Slot">
-      <div style="display: flex; flex-direction: column; align-items: center">
+      <div class="flex flex-col items-center">
         <it-tooltip placement="top">
           <template #content>
             <span

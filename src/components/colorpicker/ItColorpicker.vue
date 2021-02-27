@@ -31,7 +31,6 @@ import { ColorInput } from 'tinycolor2'
 import saturation from './subcomponents/Saturation.vue'
 import hue from './subcomponents/Hue.vue'
 import alpha from './subcomponents/Alpha.vue'
-import checkboard from './subcomponents/Checkboard.vue'
 import { colorpicker } from './hooks'
 
 export default defineComponent({
@@ -40,7 +39,6 @@ export default defineComponent({
     saturation,
     hue,
     alpha,
-    checkboard,
   },
   props: {
     disableAlpha: {

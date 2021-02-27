@@ -31,7 +31,7 @@
       ></prism>
     </div>
     <it-button
-      style="border: none; border-radius: 0px"
+      style="border: none; border-radius: 0"
       icon="code"
       type="neutral"
       @click="toggleExpand"

@@ -73,7 +73,7 @@ yarn add equal-vue`,
 
 <style>
 .it-text-box {
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #d3dae6;
   border-radius: 4px;
   display: flex;

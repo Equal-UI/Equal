@@ -27,6 +27,7 @@
   height: 15px;
   margin-right: 10px;
 }
+
 .main-title {
   font-size: 60px;
   margin-bottom: 12px;
@@ -42,6 +43,7 @@
 .buttons-group {
   display: flex;
   flex-direction: row;
+
   & a + a {
     margin-left: 22px;
   }
