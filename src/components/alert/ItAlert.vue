@@ -1,25 +1,14 @@
 <template>
   <transition name="fade">
-    <div
-      v-show="visible"
-      :class="[
-        'it-alert',
-        `it-alert--${type}`,
-        !body && !$slots.default && 'it-alert--small',
-      ]"
-    >
+    <div v-show="visible" :class="rootClasses">
       <div v-if="showIcon" class="it-alert-iconbox">
-        <it-icon
-          :box="iconbox"
-          class="it-alert-icon"
-          :name="typeIcon[`${type}`]"
-        />
+        <it-icon :box="iconbox" class="it-alert-icon" :name="iconType" />
       </div>
       <div>
         <p class="it-alert-title">{{ title }}</p>
-        <p v-if="!$slots.default && body" class="it-alert-slot">{{ body }}</p>
-        <p v-if="$slots.default" class="it-alert-slot">
-          <slot></slot>
+        <p v-if="!defaultSlot && body" class="it-alert-slot">{{ body }}</p>
+        <p v-if="defaultSlot" class="it-alert-slot">
+          <slot />
         </p>
       </div>
       <it-icon
@@ -33,8 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 import { Colors } from '@/models/enums'
+import { useCheckSlot } from '@/hooks'
+import { ICON_NAME_BY_COLOR, ALLOWED_TYPES } from '@/components/alert/constants'
 
 export default defineComponent({
   name: 'it-alert',
@@ -42,37 +33,33 @@ export default defineComponent({
     type: {
       type: String,
       default: Colors.PRIMARY,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-        ].includes(value),
+      validator: (value: Colors) => ALLOWED_TYPES.includes(value),
     },
     showIcon: { type: Boolean, default: true },
     closable: { type: Boolean, default: false },
     iconbox: { type: Boolean, default: false },
     visible: { type: Boolean, default: true },
-    title: { type: String },
-    body: { type: String },
+    title: { type: String, default: null },
+    body: { type: String, default: null },
   },
-  computed: {
-    typeIcon(): {
-      [key: string]: string
-    } {
-      return {
-        primary: 'info_outline',
-        success: 'done',
-        warning: 'error_outline',
-        danger: 'clear',
-      }
-    },
-  },
-  methods: {
-    clickCross() {
-      this.$emit('on-close')
-    },
+  emits: ['on-close'],
+  setup(props, { emit, slots }) {
+    const defaultSlot = useCheckSlot(slots, 'default')
+
+    const clickCross = () => emit('on-close')
+    const iconType = computed(() => ICON_NAME_BY_COLOR[props.type as Colors])
+    const rootClasses = computed(() => [
+      'it-alert',
+      `it-alert--${props.type}`,
+      !props.body && !defaultSlot?.value && 'it-alert--small',
+    ])
+
+    return {
+      defaultSlot,
+      clickCross,
+      iconType,
+      rootClasses,
+    }
   },
 })
 </script>
