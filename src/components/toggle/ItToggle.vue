@@ -2,18 +2,18 @@
   <div
     class="it-toggle"
     tabindex="0"
+    :class="{ 'it-toggle--round': round }"
     @keyup.left.prevent="selectPrev"
     @keyup.right.prevent="selectNext"
-    :class="{ 'it-toggle--round': round }"
   >
     <label
-      @click="selectValue(i)"
+      v-for="(option, i) in options"
+      :key="i"
       class="it-toggle-value"
       :class="{
         'it-toggle-value--selected': option === modelValue,
       }"
-      v-for="(option, i) in options"
-      :key="i"
+      @click="selectValue(i)"
     >
       <span v-if="!icons">{{ option }}</span>
       <it-icon v-else :name="String(option)" />
@@ -73,7 +73,7 @@ export default defineComponent({
 
     const width = computed(() => (100 / props.options.length).toFixed(2))
     const opacity = computed(() =>
-      props.options.includes(props.modelValue!) ? 1 : 0
+      props.options.includes(props.modelValue!) ? 1 : 0,
     )
     const sliderPosition = computed(() => {
       const pos = props.options.findIndex((v) => v === props.modelValue)

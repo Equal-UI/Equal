@@ -26,7 +26,7 @@ html {
 }
 
 h5 {
-  margin: 0px;
+  margin: 0;
 }
 
 h1 {
@@ -59,10 +59,21 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
 */
 code[class*='language-'],
 pre[class*='language-'] {
-  font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
-    'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-    'Courier New', Courier, monospace;
+  font-family:
+    Consolas,
+    Menlo,
+    Monaco,
+    'Andale Mono WT',
+    'Andale Mono',
+    'Lucida Console',
+    'Lucida Sans Typewriter',
+    'DejaVu Sans Mono',
+    'Bitstream Vera Sans Mono',
+    'Liberation Mono',
+    'Nimbus Mono L',
+    'Courier New',
+    Courier,
+    monospace;
   font-size: 14px;
   line-height: 1.375;
   direction: ltr;
@@ -94,13 +105,13 @@ code[class*='language-']::selection,
 code[class*='language-'] ::selection {
   text-shadow: none;
   background: #3051ff;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Code blocks */
 pre[class*='language-'] {
   padding: 1em;
-  margin: 0px;
+  margin: 0;
   overflow: auto;
 }
 
@@ -213,20 +224,22 @@ pre > code.highlight {
   border-right-color: #e0e0e0 !important;
 }
 
-.line-numbers-rows > span:before {
+.line-numbers-rows > span::before {
   color: #d0d0d0 !important;
 }
 
 .line-highlight {
   background: rgba(21, 21, 21, 0.2) !important;
-  background: -webkit-linear-gradient(
-    left,
-    rgba(21, 21, 21, 0.2) 70%,
-    rgba(21, 21, 21, 0)
-  ) !important;
-  background: linear-gradient(
-    to right,
-    rgba(21, 21, 21, 0.2) 70%,
-    rgba(21, 21, 21, 0)
-  ) !important;
+  background:
+    -webkit-linear-gradient(
+      left,
+      rgba(21, 21, 21, 0.2) 70%,
+      rgba(21, 21, 21, 0)
+    ) !important;
+  background:
+    linear-gradient(
+      to right,
+      rgba(21, 21, 21, 0.2) 70%,
+      rgba(21, 21, 21, 0)
+    ) !important;
 }

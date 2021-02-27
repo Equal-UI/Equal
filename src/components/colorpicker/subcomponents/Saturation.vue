@@ -1,8 +1,8 @@
 <template>
   <div
+    ref="container"
     class="it-saturation"
     :style="{ background: bgColor }"
-    ref="container"
     @mousedown="handleMouseDown"
     @touchmove="handleChange"
     @touchstart="handleChange"
@@ -12,8 +12,8 @@
     <div class="it-saturation--black"></div>
     <transition name="drop-top">
       <div
-        class="it-color-tooltip"
         v-show="showTooltip"
+        class="it-color-tooltip"
         :style="{
           top: pointerTop - 60 + '%',
           left: pointerLeft - 14 + '%',

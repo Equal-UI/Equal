@@ -9,15 +9,15 @@
 
       <template #props>
         <it-select
-          placeholder="Select type"
-          labelTop="Tag type"
           v-model="tagType"
+          placeholder="Select type"
+          label-top="Tag type"
           :options="tagTypes"
         >
         </it-select>
-        <it-input v-model="tagText" labelTop="Tag text" />
-        <it-checkbox label="Filled" v-model="tagFilled" />
-        <it-checkbox label="Closable" v-model="tagClosable" />
+        <it-input v-model="tagText" label-top="Tag text" />
+        <it-checkbox v-model="tagFilled" label="Filled" />
+        <it-checkbox v-model="tagClosable" label="Closable" />
       </template>
     </Demobox>
     <Box :code="typesCode" title="Types">

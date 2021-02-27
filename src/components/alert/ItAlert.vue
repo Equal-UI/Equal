@@ -24,9 +24,9 @@
       </div>
       <it-icon
         v-if="closable"
-        @click="clickCross"
         name="clear"
         class="it-alert-close"
+        @click="clickCross"
       />
     </div>
   </transition>
@@ -57,11 +57,6 @@ export default defineComponent({
     title: { type: String },
     body: { type: String },
   },
-  methods: {
-    clickCross() {
-      this.$emit('on-close')
-    },
-  },
   computed: {
     typeIcon(): {
       [key: string]: string
@@ -72,6 +67,11 @@ export default defineComponent({
         warning: 'error_outline',
         danger: 'clear',
       }
+    },
+  },
+  methods: {
+    clickCross() {
+      this.$emit('on-close')
     },
   },
 })

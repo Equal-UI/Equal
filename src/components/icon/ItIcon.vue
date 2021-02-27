@@ -3,11 +3,11 @@
     class="material-icons it-icon"
     :class="[outlined && 'material-icons-outlined', box && 'it-icon--box']"
     :style="{
-    color,
-    'background-color': (box && boxColor) ? boxColor : ''
+      color,
+      'background-color': box && boxColor ? boxColor : '',
     }"
   >
-    <slot>{{name ? name : ''}}</slot>
+    <slot>{{ name ? name : '' }}</slot>
   </i>
 </template>
 
@@ -25,4 +25,3 @@ export default defineComponent({
   },
 })
 </script>
-

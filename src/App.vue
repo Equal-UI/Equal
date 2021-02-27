@@ -4,9 +4,9 @@
       <h3>Button</h3>
 
       <it-button
-        @click="switchBtn = !switchBtn"
         :type="switchBtn ? 'primary' : 'neutral'"
-        >{{ switchBtn ? "Following" : "Click to follow" }}</it-button
+        @click="switchBtn = !switchBtn"
+        >{{ switchBtn ? 'Following' : 'Click to follow' }}</it-button
       >
 
       <it-button>Button</it-button>
@@ -32,7 +32,7 @@
         <it-button>Delete</it-button>
         <template #content>
           <div>
-            <it-colorpicker show-tooltip v-model="color" />
+            <it-colorpicker v-model="color" show-tooltip />
           </div>
         </template>
       </it-popover>
@@ -113,12 +113,12 @@
     <div>
       <h3>Checkbox</h3>
 
-      <it-checkbox type="primary" label="Primary" v-model="checkboxValue" />
-      <it-checkbox type="success" label="Success" v-model="checkboxValue" />
-      <it-checkbox type="danger" label="Danger" v-model="checkboxValue" />
-      <it-checkbox type="warning" label="Warning" v-model="checkboxValue" />
-      <it-checkbox type="black" label="Black" v-model="checkboxValue" />
-      <it-checkbox type="neutral" label="Neutral" v-model="checkboxValue" />
+      <it-checkbox v-model="checkboxValue" type="primary" label="Primary" />
+      <it-checkbox v-model="checkboxValue" type="success" label="Success" />
+      <it-checkbox v-model="checkboxValue" type="danger" label="Danger" />
+      <it-checkbox v-model="checkboxValue" type="warning" label="Warning" />
+      <it-checkbox v-model="checkboxValue" type="black" label="Black" />
+      <it-checkbox v-model="checkboxValue" type="neutral" label="Neutral" />
     </div>
 
     <div>
@@ -195,7 +195,7 @@
 
       <it-number-input
         v-model="numberInputValue"
-        labelTop="Zdarova"
+        label-top="Zdarova"
         resize-on-write
         :min="0"
         :max="100"
@@ -237,9 +237,9 @@
     <div>
       <h3>Select</h3>
       <it-select
-        labelTop="Label"
-        :options="selectOptions"
         v-model="selectValue"
+        label-top="Label"
+        :options="selectOptions"
       >
       </it-select>
     </div>
@@ -256,7 +256,7 @@
       <it-dropdown>
         <it-button>Hover me</it-button>
 
-        <template v-slot:menu>
+        <template #menu>
           <it-dropdown-menu>
             <it-dropdown-item>Hello</it-dropdown-item>
             <it-dropdown-item disabled>Disabled</it-dropdown-item>
@@ -395,25 +395,25 @@
     <div>
       <h3>Toggle</h3>
       <it-toggle
-        icons
         v-model="toggleIconsValue"
+        icons
         :options="['wb_sunny', 'bedtime']"
       />
       <it-toggle
+        v-model="toggleIconsValue"
         icons
         round
-        v-model="toggleIconsValue"
         :options="['wb_sunny', 'bedtime']"
       />
       <it-toggle
-        style="width: 100%"
         v-model="toggleValue"
+        style="width: 100%"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
       <it-toggle
+        v-model="toggleValue"
         style="width: 100%"
         round
-        v-model="toggleValue"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
     </div>
@@ -427,25 +427,25 @@ const defaultColors = {
     h: 150,
     s: 0.5,
     l: 0.2,
-    a: 0.9
+    a: 0.9,
   },
   hsv: {
     h: 150,
     s: 0.66,
-    v: 0.30,
-    a: 0.9
+    v: 0.3,
+    a: 0.9,
   },
   rgba: {
     r: 159,
     g: 96,
     b: 43,
-    a: 0.9
+    a: 0.9,
   },
-  a: 0.9
+  a: 0.9,
 }
 
 export default {
-  name: 'App',
+  name: 'app',
   data: () => ({
     color: defaultColors,
     toggleValue: 'Light',

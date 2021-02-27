@@ -2,9 +2,9 @@
   <div
     class="it-divider"
     :class="{
-    'it-divider--horizontal': !vertical,
-    'it-divider--vertical': vertical
-  }"
+      'it-divider--horizontal': !vertical,
+      'it-divider--vertical': vertical,
+    }"
     role="separator"
   ></div>
 </template>
@@ -14,7 +14,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'it-divider',
-  props: { vertical: { type: Boolean } }
+  props: { vertical: { type: Boolean } },
 })
 </script>
-

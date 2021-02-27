@@ -1,15 +1,15 @@
 <template>
-  <div class="it-tooltip" v-clickoutside="hidePopover">
-    <span class="it-tooltip-trigger" @click="showPopover" ref="trigger">
+  <div v-clickoutside="hidePopover" class="it-tooltip">
+    <span ref="trigger" class="it-tooltip-trigger" @click="showPopover">
       <slot></slot>
     </span>
 
     <transition :name="transition">
       <div
-        class="it-tooltip-popper"
-        :class="[placement && `it-tooltip--${placement}`]"
         v-show="show && !disabled"
         ref="popover"
+        class="it-tooltip-popper"
+        :class="[placement && `it-tooltip--${placement}`]"
       >
         <div
           class="it-tooltip-content"

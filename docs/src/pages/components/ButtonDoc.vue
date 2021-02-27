@@ -16,20 +16,20 @@
       >
       <template #props>
         <it-select
-          placeholder="Select type"
-          labelTop="Button type"
-          :options="buttonTypes"
           v-model="buttonType"
+          placeholder="Select type"
+          label-top="Button type"
+          :options="buttonTypes"
         >
         </it-select>
-        <it-input v-model="buttonText" labelTop="Button text" />
-        <it-checkbox label="Outline" v-model="buttonOutlined" />
-        <it-checkbox label="Round" v-model="buttonRound" />
-        <it-checkbox label="Icon" v-model="buttonIcon" />
-        <it-checkbox label="Loading" v-model="buttonLoading" />
-        <it-checkbox label="Pulse" v-model="buttonPulse" />
-        <it-checkbox label="Block" v-model="buttonBlock" />
-        <it-checkbox label="Disabled" v-model="buttonDisabled" />
+        <it-input v-model="buttonText" label-top="Button text" />
+        <it-checkbox v-model="buttonOutlined" label="Outline" />
+        <it-checkbox v-model="buttonRound" label="Round" />
+        <it-checkbox v-model="buttonIcon" label="Icon" />
+        <it-checkbox v-model="buttonLoading" label="Loading" />
+        <it-checkbox v-model="buttonPulse" label="Pulse" />
+        <it-checkbox v-model="buttonBlock" label="Block" />
+        <it-checkbox v-model="buttonDisabled" label="Disabled" />
       </template>
     </Demobox>
     <Box :code="codeType" title="Type">
@@ -75,13 +75,13 @@
     <Box :code="codeIcon" title="With icon">
       <it-button icon="face">Button</it-button>
       <it-button icon="face" />
-      <it-button icon="face" iconAfter>Button</it-button>
+      <it-button icon="face" icon-after>Button</it-button>
     </Box>
     <Box :code="toggleCode" title="Toggle">
       <it-button
-        @click="following = !following"
         :icon="following ? 'done' : 'person'"
         :type="following ? 'primary' : 'neutral'"
+        @click="following = !following"
         >{{ following ? 'Following' : 'Follow' }}</it-button
       >
     </Box>
@@ -91,9 +91,7 @@
     </Box>
     <Box :code="codePulse" title="Pulse">
       <template #description>
-        <p class="mx-6">
-          Pulse helps you to catch user's attention
-        </p>
+        <p class="mx-6">Pulse helps you to catch user's attention</p>
       </template>
       <it-button type="primary" pulse>Look at me</it-button>
       <it-button type="primary" pulse outlined>Look at me</it-button>
@@ -133,8 +131,8 @@
       </div>
     </Box>
 
-    <props-table tagName="it-button" :data-sheet="dataSheet" />
-    <props-table tagName="it-button-group" :data-sheet="dataSheetGroup" />
+    <props-table tag-name="it-button" :data-sheet="dataSheet" />
+    <props-table tag-name="it-button-group" :data-sheet="dataSheetGroup" />
   </div>
 </template>
 

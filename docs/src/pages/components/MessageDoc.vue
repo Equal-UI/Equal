@@ -3,14 +3,14 @@
     <h1>Message</h1>
 
     <Box :code="messagesCode" title="Message types">
-      <it-button @click="showMessage" type="primary">Primary message</it-button>
-      <it-button @click="showMessage('success')" type="success"
+      <it-button type="primary" @click="showMessage">Primary message</it-button>
+      <it-button type="success" @click="showMessage('success')"
         >Success message</it-button
       >
-      <it-button @click="showMessage('danger')" type="danger"
+      <it-button type="danger" @click="showMessage('danger')"
         >Danger message</it-button
       >
-      <it-button @click="showMessage('warning')" type="warning"
+      <it-button type="warning" @click="showMessage('warning')"
         >Warning message</it-button
       >
     </Box>
@@ -30,14 +30,14 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   data: () => ({
-    messagesCode: `<it-button @click="showMessage()">Primary message</it-button>
+    messagesCode:
+      `<it-button @click="showMessage()">Primary message</it-button>
 <it-button @click="showMessage('Success')" type="success">Success message</it-button>
 <it-button @click="showMessage('Danger')" type="danger">Danger message</it-button>
 <it-button @click="showMessage('Warning')" type="warning">Warning message</it-button>
 
 ` +
-
-`export default {
+      `export default {
   methods: {
     showMessage(type) {
       switch (type) {

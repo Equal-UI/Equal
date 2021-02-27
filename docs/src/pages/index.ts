@@ -70,5 +70,5 @@ export default {
   TagDoc,
   TextareaDoc,
   TooltipDoc,
-  ToggleDoc
+  ToggleDoc,
 }

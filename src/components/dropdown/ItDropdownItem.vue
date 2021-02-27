@@ -3,10 +3,10 @@
     class="it-dropdown-item"
     :class="[
       disabled && 'it-dropdown-item--disabled',
-      divided && 'it-dropdown-item--divided'
+      divided && 'it-dropdown-item--divided',
     ]"
   >
-    <it-icon class="it-dropdown-icon" v-if="icon" :name="icon"></it-icon>
+    <it-icon v-if="icon" class="it-dropdown-icon" :name="icon"></it-icon>
     <span class="it-dropdown-text">
       <slot></slot>
     </span>
@@ -21,7 +21,7 @@ export default defineComponent({
   props: {
     disabled: Boolean,
     divided: Boolean,
-    icon: String
-  }
+    icon: String,
+  },
 })
 </script>

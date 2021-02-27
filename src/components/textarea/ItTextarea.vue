@@ -1,19 +1,19 @@
 <template>
   <div>
     <transition name="fade">
-      <div class="it-textarea-mask" v-show="focus && mask"></div>
+      <div v-show="focus && mask" class="it-textarea-mask"></div>
     </transition>
     <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
     <textarea
-      @input="onInput"
-      @focus="focus = true"
-      @blur="focus = false"
       ref="textarea"
       :style="{ resize, 'z-index': mask ? '100' : null }"
       :disabled="disabled"
       class="it-textarea"
       :placeholder="placeholder"
       :rows="rows"
+      @input="onInput"
+      @focus="focus = true"
+      @blur="focus = false"
       >{{ modelValue }}</textarea
     >
   </div>
@@ -44,7 +44,7 @@ export default defineComponent({
     const focus = ref(false)
 
     const resize = computed(() =>
-      props.resizable === true ? 'vertical' : 'none'
+      props.resizable === true ? 'vertical' : 'none',
     )
 
     function onInput(e: InputEvent) {

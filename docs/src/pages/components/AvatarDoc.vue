@@ -9,9 +9,9 @@
         :square="avatarSquare"
       ></it-avatar>
       <template #props>
-        <it-checkbox label="Square" v-model="avatarSquare" />
-        <it-checkbox label="Image" v-model="avatarImage" />
-        <it-checkbox label="Text" v-model="avatarText" />
+        <it-checkbox v-model="avatarSquare" label="Square" />
+        <it-checkbox v-model="avatarImage" label="Image" />
+        <it-checkbox v-model="avatarText" label="Text" />
       </template>
     </Demobox>
 
@@ -110,8 +110,8 @@
       </it-avatar-group>
     </Box>
 
-    <props-table tagName="it-avatar" :data-sheet="dataSheet" />
-    <props-table tagName="it-avatar-group" :data-sheet="dataSheetGroup" />
+    <props-table tag-name="it-avatar" :data-sheet="dataSheet" />
+    <props-table tag-name="it-avatar-group" :data-sheet="dataSheetGroup" />
   </div>
 </template>
 

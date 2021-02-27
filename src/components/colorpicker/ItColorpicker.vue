@@ -2,8 +2,8 @@
   <div aria-label="Color picker" class="it-colorpicker">
     <div class="it-colorpicker-saturation-wrap">
       <saturation
-        :tooltip="showTooltip"
         v-model="colors"
+        :tooltip="showTooltip"
         @change="colorChange"
       ></saturation>
     </div>
@@ -12,11 +12,11 @@
         <div class="it-colorpicker-hue-wrap">
           <hue
             v-model="colors"
-            @change="colorChange"
             :class="{ 'it-colorpicker-bottom': disableAlpha }"
+            @change="colorChange"
           ></hue>
         </div>
-        <div class="it-colorpicker-alpha-wrap" v-if="!disableAlpha">
+        <div v-if="!disableAlpha" class="it-colorpicker-alpha-wrap">
           <alpha v-model="colors" @change="colorChange"></alpha>
         </div>
       </div>
@@ -31,7 +31,6 @@ import { ColorInput } from 'tinycolor2'
 import saturation from './subcomponents/Saturation.vue'
 import hue from './subcomponents/Hue.vue'
 import alpha from './subcomponents/Alpha.vue'
-import checkboard from './subcomponents/Checkboard.vue'
 import { colorpicker } from './hooks'
 
 export default defineComponent({
@@ -40,7 +39,6 @@ export default defineComponent({
     saturation,
     hue,
     alpha,
-    checkboard,
   },
   props: {
     disableAlpha: {

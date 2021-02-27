@@ -56,7 +56,7 @@ createApp.use(Button).use(Alert).use(Switch)"
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   data: () => ({
@@ -68,7 +68,7 @@ yarn add equal-vue`,
     headLink:
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined">\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">',
   }),
-});
+})
 </script>
 
 <style>

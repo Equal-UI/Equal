@@ -14,7 +14,7 @@ export function _colorChange(data: any): TColorData {
 
   // prevents color change when cursor is on max left position
   if (hsl.s === 0) {
-      hsv.h = hsl.h = data.h || (data.hsl && data.hsl.h) || 0
+    hsv.h = hsl.h = data.h || (data.hsl && data.hsl.h) || 0
   }
 
   // prevents color change when cursor is on max bottom position

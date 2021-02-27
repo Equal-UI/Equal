@@ -24,7 +24,7 @@ export default defineComponent({
     }
   },
   watch: {
-    progress (newValue) {
+    progress(newValue) {
       if (newValue === 100) {
         setTimeout(() => {
           this.progress = 0

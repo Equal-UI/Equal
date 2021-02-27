@@ -14,8 +14,8 @@
         class="it-switch-input"
         :disabled="disabled"
         style="z-index: 10"
-        @change="toggle"
         v-bind="$attrs"
+        @change="toggle"
       />
       <span class="it-switch-circle"></span>
     </span>

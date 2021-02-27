@@ -4,22 +4,22 @@
 
     <Demobox>
       <it-textarea
+        v-model="textareaValue"
         :resizable="textareaResizable"
         :resize-on-write="textareaResizeWrite"
         :disabled="textareaDisabled"
         :label-top="textareaTopLabel"
-        v-model="textareaValue"
         :placeholder="textareaPlaceholder"
         :mask="mask"
       ></it-textarea>
 
       <template #props>
-        <it-input v-model="textareaPlaceholder" labelTop="Placeholder text" />
-        <it-input v-model="textareaTopLabel" labelTop="Label" />
-        <it-checkbox label="Resizable" v-model="textareaResizable" />
-        <it-checkbox label="Resize on write" v-model="textareaResizeWrite" />
-        <it-checkbox label="Mask" v-model="mask" />
-        <it-checkbox label="Disabled" v-model="textareaDisabled" />
+        <it-input v-model="textareaPlaceholder" label-top="Placeholder text" />
+        <it-input v-model="textareaTopLabel" label-top="Label" />
+        <it-checkbox v-model="textareaResizable" label="Resizable" />
+        <it-checkbox v-model="textareaResizeWrite" label="Resize on write" />
+        <it-checkbox v-model="mask" label="Mask" />
+        <it-checkbox v-model="textareaDisabled" label="Disabled" />
       </template>
     </Demobox>
     <Box :code="disabledCode" title="Types">

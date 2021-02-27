@@ -12,7 +12,7 @@
       <it-icon class="it-collapse-item-title-icon" name="unfold_more" />
     </button>
     <transition name="fade">
-      <div class="it-collapse-item-body" v-show="active">
+      <div v-show="active" class="it-collapse-item-body">
         <slot></slot>
       </div>
     </transition>

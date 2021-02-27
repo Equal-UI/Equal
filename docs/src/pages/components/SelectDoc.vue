@@ -3,39 +3,39 @@
     <h1>Select</h1>
 
     <Demobox>
-      <div style="padding: 130px 0px">
+      <div>
         <it-select
+          v-model="selectValue"
           :placeholder="selectPlaceholder"
           :disabled="selectDisabled"
-          :labelTop="selectLabel"
+          :label-top="selectLabel"
           :divided="selectDivided"
-          v-model="selectValue"
           :options="['One', 'Two', 'Three']"
         >
         </it-select>
       </div>
       <template #props>
-        <it-input v-model="selectLabel" labelTop="Select label" />
-        <it-input v-model="selectPlaceholder" labelTop="Select placeholder" />
-        <it-checkbox label="Divided" v-model="selectDivided" />
-        <it-checkbox label="Disabled" v-model="selectDisabled" />
+        <it-input v-model="selectLabel" label-top="Select label" />
+        <it-input v-model="selectPlaceholder" label-top="Select placeholder" />
+        <it-checkbox v-model="selectDivided" label="Divided" />
+        <it-checkbox v-model="selectDisabled" label="Disabled" />
       </template>
     </Demobox>
 
     <Box :code="exampleCode" title="Example">
-      <div style="margin-bottom: 90px">
+      <div class="mb-20">
         <it-select v-model="exampleValue" :options="exampleOptions" />
 
         <it-select
-          style="margin-left: 12px"
           v-model="exampleValue"
+          class="ml-3"
           index="city"
           :options="exampleIndexOptions"
         />
       </div>
     </Box>
 
-    <props-table tagName="it-select" :data-sheet="dataSheet" />
+    <props-table tag-name="it-select" :data-sheet="dataSheet" />
   </div>
 </template>
 

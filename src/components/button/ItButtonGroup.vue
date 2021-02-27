@@ -10,7 +10,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'it-button-group',
   props: {
-    vertical: { type: Boolean }
-  }
+    vertical: { type: Boolean },
+  },
 })
 </script>

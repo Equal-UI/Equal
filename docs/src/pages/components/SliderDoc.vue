@@ -3,10 +3,10 @@
     <h1>Slider</h1>
 
     <Demobox>
-      <div style="width: 70%">
+      <div class="w-full px-10">
         <it-slider
           v-model="sliderValue"
-          :stepPoints="sliderStepPoints"
+          :step-points="sliderStepPoints"
           :disabled="sliderDisabled"
           :min="sliderMin"
           :max="sliderMax"
@@ -16,18 +16,18 @@
       </div>
 
       <template #props>
-        <it-number-input v-model="sliderMin" labelTop="Min" />
-        <it-number-input v-model="sliderMax" labelTop="Max" />
-        <it-number-input v-model="sliderStep" labelTop="Step" />
-        <it-checkbox label="Numbers" v-model="sliderNumbers" />
-        <it-checkbox label="Step points" v-model="sliderStepPoints" />
-        <it-checkbox label="Disabled" v-model="sliderDisabled" />
+        <it-number-input v-model="sliderMin" label-top="Min" />
+        <it-number-input v-model="sliderMax" label-top="Max" />
+        <it-number-input v-model="sliderStep" label-top="Step" />
+        <it-checkbox v-model="sliderNumbers" label="Numbers" />
+        <it-checkbox v-model="sliderStepPoints" label="Step points" />
+        <it-checkbox v-model="sliderDisabled" label="Disabled" />
       </template>
     </Demobox>
     <Box :code="stepCode" title="Step points">
       <it-slider
         v-model="stepSliderValue"
-        :stepPoints="true"
+        :step-points="true"
         :min="0"
         :max="20"
         :step="2"

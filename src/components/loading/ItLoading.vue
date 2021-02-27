@@ -2,9 +2,9 @@
   <svg
     class="it-loading"
     :style="{
-    'max-width': `${radius * 2}px`,
-    'max-height': `${radius * 2}px`
-  }"
+      'max-width': `${radius * 2}px`,
+      'max-height': `${radius * 2}px`,
+    }"
   >
     <circle
       class="it-loading-circle"
@@ -28,12 +28,12 @@ export default defineComponent({
   props: {
     stroke: { default: 6, type: Number },
     radius: { default: 32, type: Number },
-    color: { default: '#3051ff', type: String }
+    color: { default: '#3051ff', type: String },
   },
   setup(props) {
     const normalizedRadius = computed(() => props.radius - props.stroke / 2)
 
     return { normalizedRadius }
-  }
+  },
 })
 </script>

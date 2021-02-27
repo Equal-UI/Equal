@@ -4,7 +4,7 @@
   width: 100%;
   border-radius: @border-radius-base;
   border: 1px solid @color-default-border;
-  box-shadow: #e4e7eb 0px 1px 1px 0px;
+  box-shadow: #e4e7eb 0 1px 1px 0;
 
   &-item {
     display: flex;
@@ -29,15 +29,18 @@
       transition: all 0.2s;
       cursor: pointer;
       outline: none;
+
       &:focus {
         box-shadow: 0 0 0 3px fade(#a6b0bb, 20%);
         z-index: 100;
       }
+
       &-icon {
         font-size: 17px !important;
         user-select: none;
       }
     }
+
     &-body {
       border-top: 1px solid @color-default-border;
       padding: 14px 16px 24px;
@@ -46,7 +49,6 @@
       will-change: height;
       line-height: 1.2;
     }
-
 
     &:first-child > &-title {
       border-top-left-radius: 4px;

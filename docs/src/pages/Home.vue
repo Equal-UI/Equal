@@ -2,12 +2,7 @@
   <div class="page">
     <Sidebar />
     <Row class="flex" justify="center">
-      <Col
-        class="flex flex-col my-12 mx-4"
-        lg="9"
-        sm="10"
-        xs="11"
-      >
+      <Col class="flex flex-col my-12" lg="9" sm="10" xs="11">
         <router-view />
       </Col>
     </Row>
@@ -19,8 +14,8 @@ import { defineComponent } from 'vue'
 import Sidebar from '../components/Sidebar.vue'
 
 export default defineComponent({
+  name: 'home',
   components: { Sidebar },
-  name: 'Home',
 })
 </script>
 

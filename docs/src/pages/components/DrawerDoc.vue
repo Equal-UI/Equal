@@ -8,10 +8,10 @@
           This component is intended to be used only with wide screens
         </p>
       </template>
-      <it-button @click="drawerLeftVisible = true" type="primary"
+      <it-button type="primary" @click="drawerLeftVisible = true"
         >Left drawer</it-button
       >
-      <it-button @click="drawerVisible = true" type="primary"
+      <it-button type="primary" @click="drawerVisible = true"
         >Right drawer</it-button
       >
 
@@ -22,26 +22,11 @@
         </h3>
         <it-divider />
         <template v-for="(user, i) in fakeUsers" :key="i">
-          <div
-            style="
-              display: flex;
-              flex-direction: row;
-              padding: 0 24px;
-              justify-content: space-between;
-            "
-          >
+          <div class="flex flex-row px-6 justify-between">
             <it-avatar :src="user.avatar" />
-            <div
-              style="
-                justify-content: space-between;
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                padding-left: 12px;
-              "
-            >
-              <p style="font-weight: 500">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
+            <div class="justify-between flex flex-1 flex-col pl-3">
+              <p class="font-medium">{{ user.name }}</p>
+              <p style="color: #787f8a" class="font-medium text-sm">
                 @{{ user.username }}
               </p>
             </div>
@@ -50,33 +35,18 @@
           <it-divider />
         </template>
       </it-drawer>
-      <it-drawer placement="left" v-model="drawerLeftVisible">
+      <it-drawer v-model="drawerLeftVisible" placement="left">
         <h3 class="m-6">
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
         <it-divider />
         <template v-for="(user, i) in fakeUsers" :key="i">
-          <div
-            style="
-              display: flex;
-              flex-direction: row;
-              padding: 0 24px;
-              justify-content: space-between;
-            "
-          >
+          <div class="flex flex-row px-6 justify-between">
             <it-avatar :src="user.avatar" />
-            <div
-              style="
-                justify-content: space-between;
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                padding-left: 12px;
-              "
-            >
-              <p style="font-weight: 500">{{ user.name }}</p>
-              <p style="font-size: 14px; font-weight: 500; color: #787f8a">
+            <div class="flex flex-1 flex-col pl-3 justify-between">
+              <p class="font-medium">{{ user.name }}</p>
+              <p style="color: #787f8a;" class="text-sm font-medium">
                 @{{ user.username }}
               </p>
             </div>
@@ -94,21 +64,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  async mounted () {
-    const reqNames = await fetch(
-      'https://randomuser.me/api/?inc=picture,name,login&results=12'
-    )
-    const data = await reqNames.json()
-
-    this.fakeUsers = data.results.map((el: any) => {
-      const { first, last } = el.name
-      return {
-        name: `${first} ${last}`,
-        avatar: el.picture.medium,
-        username: el.login.username,
-      }
-    })
-  },
   data: () => ({
     drawerVisible: false,
     drawerLeftVisible: false,
@@ -214,6 +169,21 @@ export default defineComponent({
       },
     ],
   }),
+  async mounted() {
+    const reqNames = await fetch(
+      'https://randomuser.me/api/?inc=picture,name,login&results=12',
+    )
+    const data = await reqNames.json()
+
+    this.fakeUsers = data.results.map((el: any) => {
+      const { first, last } = el.name
+      return {
+        name: `${first} ${last}`,
+        avatar: el.picture.medium,
+        username: el.login.username,
+      }
+    })
+  },
 })
 </script>
 

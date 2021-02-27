@@ -5,27 +5,26 @@
     <Demobox>
       <it-alert
         :iconbox="alertIconBox"
-        :visible="alertVisible"
-        @on-close="alertVisible = false"
         :type="alertType"
-        :showIcon="alertShowIcon"
+        :show-icon="alertShowIcon"
         :closable="alertClosable"
         :title="alertTitle"
         :body="alertBody"
+        @on-close="alertVisible = false"
       />
       <template #props>
         <it-select
-          placeholder="Select type"
-          labelTop="Alert type"
           v-model="alertType"
+          placeholder="Select type"
+          label-top="Alert type"
           :options="alertTypes"
         />
-        <it-input v-model="alertTitle" labelTop="Alert title" />
-        <it-input v-model="alertBody" labelTop="Alert Body" />
-        <it-checkbox label="Icon" v-model="alertShowIcon" />
-        <it-checkbox label="Icon box" v-model="alertIconBox" />
-        <it-checkbox label="Closable" v-model="alertClosable" />
-        <it-checkbox label="Visible" v-model="alertVisible" />
+        <it-input v-model="alertTitle" label-top="Alert title" />
+        <it-input v-model="alertBody" label-top="Alert Body" />
+        <it-checkbox v-model="alertShowIcon" label="Icon" />
+        <it-checkbox v-model="alertIconBox" label="Icon box" />
+        <it-checkbox v-model="alertClosable" label="Closable" />
+        <it-checkbox v-model="alertVisible" label="Visible" />
       </template>
     </Demobox>
 

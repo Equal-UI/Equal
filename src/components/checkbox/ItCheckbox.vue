@@ -1,14 +1,23 @@
 <template>
   <label class="it-checkbox-wrapper">
-    <span class="it-checkbox-check-wrapper" :class="[(pulse && !disabled) && 'pulse']">
-      <input type="checkbox" v-bind="$attrs" class="it-checkbox-input" :disabled="disabled" @change="toggle" />
+    <span
+      class="it-checkbox-check-wrapper"
+      :class="[pulse && !disabled && 'pulse']"
+    >
+      <input
+        type="checkbox"
+        v-bind="$attrs"
+        class="it-checkbox-input"
+        :disabled="disabled"
+        @change="toggle"
+      />
       <span
         class="it-checkbox"
         :class="[
-      `it-checkbox--${type}`,
-      modelValue && `it-checkbox--${type}--checked`,
-      disabled && 'it-checkbox--disabled'
-      ]"
+          `it-checkbox--${type}`,
+          modelValue && `it-checkbox--${type}--checked`,
+          disabled && 'it-checkbox--disabled',
+        ]"
       >
         <it-icon style="font-size: 16px" :name="icon" />
       </span>
@@ -17,18 +26,26 @@
       <span
         v-if="label && !$slots.default"
         class="it-checkbox-label"
-        :class="[(lineThrough && modelValue) && 'it-checkbox-label--linethrough', disabled && 'it-checkbox-label--disabled']"
-      >{{label}}</span>
+        :class="[
+          lineThrough && modelValue && 'it-checkbox-label--linethrough',
+          disabled && 'it-checkbox-label--disabled',
+        ]"
+        >{{ label }}</span
+      >
       <span
         v-if="subLabel && !$slots.sublabel"
         class="it-checkbox-label it-checkbox-label--sub"
         :class="[disabled && 'it-checkbox-label--disabled']"
-      >{{subLabel}}</span>
+        >{{ subLabel }}</span
+      >
 
       <span
         v-if="$slots.default"
         class="it-checkbox-label"
-        :class="[(lineThrough && modelValue) && 'it-checkbox-label--linethrough', disabled && 'it-checkbox-label--disabled']"
+        :class="[
+          lineThrough && modelValue && 'it-checkbox-label--linethrough',
+          disabled && 'it-checkbox-label--disabled',
+        ]"
       >
         <slot></slot>
       </span>
@@ -61,8 +78,8 @@ export default defineComponent({
           Colors.DANGER,
           Colors.WARNING,
           Colors.BLACK,
-          Colors.NEUTRAL
-        ].includes(value)
+          Colors.NEUTRAL,
+        ].includes(value),
     },
     label: { type: String },
     subLabel: { type: String },
@@ -71,7 +88,7 @@ export default defineComponent({
     lineThrough: { type: Boolean },
     icon: { type: String, default: 'check' },
     color: { type: String },
-    modelValue: {}
+    modelValue: {},
   },
   setup(props, { emit }) {
     function toggle() {
@@ -82,6 +99,6 @@ export default defineComponent({
       emit('update:modelValue', newValue)
     }
     return { toggle }
-  }
+  },
 })
 </script>

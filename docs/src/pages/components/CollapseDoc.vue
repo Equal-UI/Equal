@@ -60,7 +60,7 @@
       </it-collapse>
     </Box>
     <props-table
-      tagName="it-collapse-item"
+      tag-name="it-collapse-item"
       :data-sheet="dataSheet"
       :slot-sheet="slotSheet"
     />

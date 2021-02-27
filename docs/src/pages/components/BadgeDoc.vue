@@ -7,7 +7,7 @@
         :value="badgeValue"
         :show="badgeShow"
         :type="badgeType"
-        :maxValue="badgeMax"
+        :max-value="badgeMax"
         :point="badgePoint"
         :square="badgeSquare"
         :position="badgePosition"
@@ -16,24 +16,24 @@
       </it-badge>
       <template #props>
         <it-select
-          placeholder="Select type"
-          labelTop="Badge type"
           v-model="badgeType"
+          placeholder="Select type"
+          label-top="Badge type"
           :options="badgeTypes"
         >
         </it-select>
         <it-select
-          placeholder="Select position"
-          labelTop="Badge position"
           v-model="badgePosition"
+          placeholder="Select position"
+          label-top="Badge position"
           :options="badgePositions"
         >
         </it-select>
-        <it-checkbox label="Point" v-model="badgePoint" />
-        <it-checkbox label="Square" v-model="badgeSquare" />
-        <it-checkbox label="Show" v-model="badgeShow" />
-        <it-number-input v-model="badgeMax" labelTop="Max value" />
-        <it-number-input v-model="badgeValue" labelTop="Badge value" />
+        <it-checkbox v-model="badgePoint" label="Point" />
+        <it-checkbox v-model="badgeSquare" label="Square" />
+        <it-checkbox v-model="badgeShow" label="Show" />
+        <it-number-input v-model="badgeMax" label-top="Max value" />
+        <it-number-input v-model="badgeValue" label-top="Badge value" />
       </template>
     </Demobox>
 

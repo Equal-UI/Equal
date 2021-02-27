@@ -4,7 +4,9 @@
   >
     <h2 class="it-box-title py-4 px-6 leading-none">{{ title }}</h2>
     <slot name="description"></slot>
-    <div class="it-box-scene w-full py-10 px-6 flex-wrap leading-none flex justify-center items-center box-border">
+    <div
+      class="it-box-scene w-full py-10 px-6 flex-wrap leading-none flex justify-center items-center box-border"
+    >
       <slot></slot>
     </div>
 
@@ -20,7 +22,7 @@
         class="it-box-code-copy"
         placement="left"
       >
-        <it-button @click="clickCopy" icon="file_copy" />
+        <it-button icon="file_copy" @click="clickCopy" />
       </it-tooltip>
       <prism
         style="border-top: 1px solid #d3dae6"
@@ -33,7 +35,7 @@
       icon="code"
       type="neutral"
       @click="toggleExpand"
-      >{{ expanded ? "Hide code" : "Show code" }}</it-button
+      >{{ expanded ? 'Hide code' : 'Show code' }}</it-button
     >
   </div>
 </template>
@@ -42,7 +44,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Box',
+  name: 'box',
   props: {
     code: String,
     title: String,

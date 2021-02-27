@@ -1,12 +1,12 @@
 <template>
   <transition name="fade-bottom" @after-leave="destroy">
     <div
-      @mouseleave="startTimer"
-      @mouseenter="clearTimer"
-      :style="positionPx"
       v-show="show"
+      :style="positionPx"
       class="it-notification"
       :class="[`it-notification--${type}`]"
+      @mouseleave="startTimer"
+      @mouseenter="clearTimer"
     >
       <div
         class="it-notification-left"
@@ -21,12 +21,12 @@
           class="it-notification-icon"
           :name="icon || typeIcon"
         />
-        <span class="it-notification-emoji" v-if="emoji && !image">{{
+        <span v-if="emoji && !image" class="it-notification-emoji">{{
           emoji
         }}</span>
       </div>
       <div class="it-notification-text-block">
-        <span class="it-notification-text-block-title" v-if="title">{{
+        <span v-if="title" class="it-notification-text-block-title">{{
           title
         }}</span>
         <span>{{ text }}</span>

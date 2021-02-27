@@ -30,33 +30,33 @@
       </it-modal>
     </Box>
     <Box :code="signinCode" title="Sign Up modal">
-      <it-button @click="signinModal = true" type="primary">Sign up</it-button>
+      <it-button type="primary" @click="signinModal = true">Sign up</it-button>
       <it-modal v-model="signinModal">
         <template #body>
-          <div class="signupmodal">
+          <div class="signupmodal p-3">
             <h2>Sign up</h2>
             <it-input
-              labelTop="Email"
+              label-top="Email"
               prefix-icon="email"
               type="email"
               placeholder="yourmail@gmail.com"
             />
             <div class="signupmodal-wrap-inputs flex flex-row">
               <div class="flex-1">
-                <it-input labelTop="First Name" placeholder="John" />
+                <it-input label-top="First Name" placeholder="John" />
               </div>
               <div class="flex-1">
-                <it-input labelTop="Second Name" placeholder="Doe" />
+                <it-input label-top="Second Name" placeholder="Doe" />
               </div>
             </div>
             <it-input
-              labelTop="Username"
+              label-top="Username"
               prefix-icon="account_circle"
               placeholder="Unique Username"
               autocomplete="false"
             />
             <it-input
-              labelTop="Password"
+              label-top="Password"
               prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
@@ -82,7 +82,7 @@
       </it-modal>
     </Box>
     <Box :code="confirmCode" title="Confirmation modal">
-      <it-button @click="confirmModal = true" type="danger"
+      <it-button type="danger" @click="confirmModal = true"
         >Delete account</it-button
       >
       <it-modal v-model="confirmModal">
@@ -106,7 +106,7 @@
       </it-modal>
     </Box>
     <Box :code="imageCode" title="Image only modal">
-      <it-button @click="imageModal = true" type="primary"
+      <it-button type="primary" @click="imageModal = true"
         >Show image</it-button
       >
       <it-modal v-model="imageModal">
@@ -277,8 +277,6 @@ export default defineComponent({
 
 <style lang="less">
 .signupmodal {
-  padding: 12px;
-
   & > * + * {
     margin: 16px 0;
   }

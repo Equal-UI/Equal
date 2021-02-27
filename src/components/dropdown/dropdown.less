@@ -37,7 +37,7 @@
   width: inherit;
   overflow: hidden;
   // padding: 0px;
-  margin: 0px;
+  margin: 0;
   list-style: none;
   text-align: left;
   background-color: #fff;
@@ -77,6 +77,7 @@
     color: #fff;
     cursor: pointer;
   }
+
   &--divided:not(:first-child) {
     border-top: 0.6px solid @color-secondary-text;
     // margin-top: 3px;
@@ -84,6 +85,7 @@
 
   &--disabled {
     color: @color-neutral;
+
     &:hover {
       background-color: #fff;
       color: @color-neutral;

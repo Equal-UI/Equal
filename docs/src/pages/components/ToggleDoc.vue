@@ -4,25 +4,24 @@
 
     <Demobox>
       <it-toggle
-        style="width: 80%"
         v-model="toggleValue"
+        class="w-full mx-4"
         :round="toggleRound"
         :options="['Light', 'Dark', 'Hollow', 'Orange']"
       />
 
       <template #props>
-        <it-checkbox label="Round" v-model="toggleRound" />
+        <it-checkbox v-model="toggleRound" label="Round" />
       </template>
     </Demobox>
     <Box :code="exampleCode" title="Types">
-      <div style="width: 100%">
+      <div class="w-full">
         <it-toggle
-          style="width: 100%; margin-bottom: 16px"
           v-model="toggleValue"
+          class="mb-4"
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
         />
         <it-toggle
-          style="width: 100%"
           v-model="toggleValue"
           round
           :options="['Light', 'Dark', 'Hollow', 'Orange']"
@@ -31,10 +30,10 @@
     </Box>
     <Box :code="iconsCode" title="Icons">
       <template #description>
-        <p style="padding: 0px 24px">
+        <p class="px-6">
           You can use
           <a
-            style="color: #3051ff"
+            style="color: #3051ff;"
             target="_blank"
             rel="noopener noreferrer"
             href="https://material.io/resources/icons/"
@@ -45,15 +44,15 @@
       </template>
       <div>
         <it-toggle
-          icons
-          style="margin-bottom: 16px"
           v-model="toggleIconsValue"
+          icons
+          class="mb-4"
           :options="['wb_sunny', 'bedtime']"
         />
         <it-toggle
+          v-model="toggleIconsValue"
           icons
           round
-          v-model="toggleIconsValue"
           :options="['wb_sunny', 'bedtime']"
         />
       </div>
@@ -72,13 +71,11 @@ export default defineComponent({
     toggleIconsValue: 'wb_sunny',
 
     exampleCode: `<it-toggle
-  style="width: 100%"
   v-model="toggleValue"
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />
 <it-toggle
   round
-  style="width: 100%"
   v-model="toggleValue"
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />`,

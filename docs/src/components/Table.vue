@@ -17,11 +17,11 @@
         <tr v-for="item in dataSheet" :key="item.property">
           <td v-for="(col, name) in item">
             <div
-              style="line-height: 2"
               v-if="
                 !['description', 'property'].includes(name) &&
                 Array.isArray(col)
               "
+              style="line-height: 2"
             >
               <it-tag v-for="i in col" :key="i">{{ i }}</it-tag>
             </div>
@@ -118,7 +118,7 @@ export default defineComponent({
 .table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #ffffff;
+  background-color: #fff;
 
   & thead {
     background-color: #fafbfd;
@@ -138,6 +138,7 @@ export default defineComponent({
   & td {
     font-size: 13px;
     font-weight: normal;
+
     & > .it-tag {
       font-size: 12px !important;
       font-weight: normal;

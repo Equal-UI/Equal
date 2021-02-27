@@ -17,9 +17,9 @@
       </div>
 
       <template #props>
-        <it-input v-model="radioLabel" labelTop="Radio label" />
-        <it-checkbox label="Pulse" v-model="radioPulse" />
-        <it-checkbox label="Disabled" v-model="radioDisabled" />
+        <it-input v-model="radioLabel" label-top="Radio label" />
+        <it-checkbox v-model="radioPulse" label="Pulse" />
+        <it-checkbox v-model="radioDisabled" label="Disabled" />
       </template>
     </Demobox>
 
@@ -49,23 +49,21 @@
     </Box>
 
     <Box :code="codeSublabel" title="Sublabel">
-      <div style="width: 60%">
-        <it-radio type="primary" v-model="subradio" :value="1"
+      <div>
+        <it-radio v-model="subradio" type="primary" :value="1"
           >By signing this I agree with Terms and Conditions</it-radio
         >
         <br />
-        <it-radio type="primary" v-model="subradio" :value="2">
-          <template v-slot:default>Subscribe for updates</template>
-          <template v-slot:sublabel>Get notified when you get updates</template>
+        <it-radio v-model="subradio" type="primary" :value="2">
+          <template #default>Subscribe for updates</template>
+          <template #sublabel>Get notified when you get updates</template>
         </it-radio>
       </div>
     </Box>
 
     <Box :code="pulseCode" title="Pulse">
       <template #description>
-      <p style="padding: 0px 24px">
-        Pulse helps you to catch user's attention
-      </p>
+        <p class="px-6">Pulse helps you to catch user's attention</p>
       </template>
       <it-radio v-model="pulseValue" pulse label="Look at me" value="42" />
     </Box>
@@ -101,8 +99,8 @@ export default defineComponent({
     codeSublabel: `<it-radio type="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
 
 <it-radio type="primary" v-model="subradio" :value="2">
-  <template v-slot:default>Subscribe for updates</template>
-  <template v-slot:sublabel>Get notified when you get updates</template>
+  <template #default>Subscribe for updates</template>
+  <template #sublabel>Get notified when you get updates</template>
 </it-radio>`,
 
     dataSheet: [

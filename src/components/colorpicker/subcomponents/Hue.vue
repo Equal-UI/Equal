@@ -1,12 +1,12 @@
 <template>
   <div class="it-hue it-hue--horizontal">
     <div
+      ref="container"
       class="it-hue-container"
       role="slider"
       :aria-valuenow="colors.hsl.h"
       aria-valuemin="0"
       aria-valuemax="360"
-      ref="container"
       @mousedown="handleMouseDown"
       @touchmove="handleChange"
       @touchstart="handleChange"
