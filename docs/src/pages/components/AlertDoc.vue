@@ -4,6 +4,7 @@
 
     <Demobox>
       <it-alert
+        v-show="alertVisible"
         :iconbox="alertIconBox"
         :type="alertType"
         :show-icon="alertShowIcon"
