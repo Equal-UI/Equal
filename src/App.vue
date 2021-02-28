@@ -127,12 +127,27 @@
       <it-avatar />
       <it-avatar square />
 
-      <it-avatar-group square :max="5">
+      <it-avatar-group square :max="15">
+        <it-avatar v-for="i in 10" :key="i" />
         <it-avatar />
         <it-avatar />
         <it-avatar />
         <it-avatar />
         <it-avatar />
+        <it-avatar />
+        <it-avatar />
+        <it-avatar />
+        <it-avatar />
+      </it-avatar-group>
+
+      <it-avatar-group vertical :max="10">
+        <it-avatar v-for="i in 2" :key="i" />
+        <it-avatar v-for="i in 2" :key="i" />
+        <it-avatar v-for="i in 2" :key="i" />
+        <it-avatar v-for="i in 2" :key="i" />
+        <it-avatar v-for="i in 2" :key="i" />
+        <it-avatar v-for="i in 2" :key="i" />
+        <it-avatar v-for="i in 2" :key="i" />
         <it-avatar />
       </it-avatar-group>
     </div>

@@ -1,0 +1,23 @@
+@import '../../styles/variables.less';
+
+.it-avatar-group {
+  display: flex;
+  align-items: center;
+
+  > .it-avatar {
+    border: 2px solid #fff;
+  }
+
+  > .it-avatar + .it-avatar {
+    margin: 0 0 0 -20px;
+  }
+
+  &--vertical {
+    align-items: flex-start;
+    flex-direction: column;
+
+    > .it-avatar + .it-avatar {
+      margin: -20px 0 0 0;
+    }
+  }
+}
