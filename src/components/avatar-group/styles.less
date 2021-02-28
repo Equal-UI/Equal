@@ -8,8 +8,13 @@
     border: 2px solid #fff;
   }
 
-  > .it-avatar + .it-avatar {
-    margin: 0 0 0 -20px;
+  &--horizontal {
+    flex-wrap: wrap;
+    padding-left: 20px;
+
+    > .it-avatar {
+      margin: 0 0 0  -20px;
+    }
   }
 
   &--vertical {
@@ -19,5 +24,12 @@
     > .it-avatar + .it-avatar {
       margin: -20px 0 0 0;
     }
+  }
+
+  &-max {
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

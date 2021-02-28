@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent, provide, h, computed } from 'vue'
 import { useAvatarGroup } from '@/components/avatar-group/hooks'
-import { renderLabel } from '@/components/avatar-group/helpers'
 import { TUseAvatarGroup } from '@/components/avatar-group/types'
 
 export default defineComponent({
@@ -24,6 +23,7 @@ export default defineComponent({
     const classes = computed(() => ({
       'it-avatar-group': true,
       'it-avatar-group--vertical': props.vertical,
+      'it-avatar-group--horizontal': !props.vertical,
     }))
 
     return () =>
@@ -34,7 +34,16 @@ export default defineComponent({
         },
         [
           totalChildrenVNodes.value,
-          label.value.show ? renderLabel(`+${label.value.count}`) : null,
+          label.value.show
+            ? h(
+                'div',
+                {
+                  class: ['it-avatar-group-max'],
+                  style: { width: props.size, height: props.size },
+                },
+                [h('span', `+${label.value.count}`)],
+              )
+            : null,
         ],
       )
   },
