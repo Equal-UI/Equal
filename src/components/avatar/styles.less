@@ -15,26 +15,28 @@
   vertical-align: middle;
   background: @color-secondary-text;
 
-  & > img {
+  &-img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
   }
 
-  & > span {
+  &-text {
     vertical-align: middle;
     font-weight: 500;
   }
 
-  &--square {
-    border-radius: 6px;
-  }
-
-  > svg {
+  &-icon {
     vertical-align: middle;
     display: inline-block;
     fill: #fff;
     margin-bottom: 4px;
+    width: 55%;
+    height: 55%;
+  }
+
+  &--square {
+    border-radius: 6px;
   }
 }
