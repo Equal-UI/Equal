@@ -1,13 +1,8 @@
 {
   "src/**/*.{ts,vue}": [
-    "lint:eslint --fix",
-    "lint:prettier"
+    "yarn lint:prettier"
   ],
   "docs/src/**/*.{ts,vue}": [
-    "lint:eslint --fix",
-    "lint:prettier"
-  ],
-  "**/*.{less,vue}": [
-    "lint:stylelint"
+    "yarn lint:prettier"
   ]
 }
