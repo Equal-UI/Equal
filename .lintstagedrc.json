@@ -1,0 +1,8 @@
+{
+  "src/**/*.{ts,vue}": [
+    "yarn lint:prettier"
+  ],
+  "docs/src/**/*.{ts,vue}": [
+    "yarn lint:prettier"
+  ]
+}
