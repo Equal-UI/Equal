@@ -1,23 +1,16 @@
 <template>
-  <span class="it-badge" :class="[square && 'it-badge--square']">
+  <span class="it-badge" :class="rootClasses">
     <slot />
-    <span
-      v-show="show"
-      class="it-badge-body"
-      :class="[
-        $slots.default && `it-badge-body--corner-${position}`,
-        point && 'it-badge-body--point',
-        square && 'it-badge-body--square',
-        `it-badge-body--${type}`,
-      ]"
-      >{{ contentValue }}</span
-    >
+    <span v-if="show" class="it-badge-body" :class="bodyClasses">
+      {{ contentValue }}
+    </span>
   </span>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { Colors, Positions } from '@/models/enums'
+import { ALLOWED_COLORS, ALLOWED_POSITIONS } from '@/components/badge/constants'
 
 export default defineComponent({
   name: 'it-badge',
@@ -25,37 +18,43 @@ export default defineComponent({
     type: {
       type: String,
       default: Colors.DANGER,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-        ].includes(value),
+      validator: (value: Colors) => ALLOWED_COLORS.includes(value),
     },
-    value: { type: [String, Number] },
     position: {
       type: String,
       default: Positions.TR,
-      validator: (value: Positions) =>
-        [Positions.TL, Positions.TR, Positions.BL, Positions.BR].includes(
-          value,
-        ),
+      validator: (value: Positions) => ALLOWED_POSITIONS.includes(value),
     },
+    value: { type: [String, Number], default: null },
+    maxValue: { type: Number, default: null },
     show: { type: Boolean, default: true },
     point: { type: Boolean },
     square: { type: Boolean },
-    maxValue: { type: Number },
   },
-  setup(props) {
+  setup(props, { slots }) {
     const contentValue = computed(() => {
-      if (props.point) {
-        return
-      }
-      return props.value! > props.maxValue! ? `${props.maxValue}+` : props.value
+      if (props.point || !props.value) return
+      return props.maxValue !== null
+        ? Number(props.value) > props.maxValue
+          ? `${props.maxValue}+`
+          : props.value
+        : props.value
     })
 
-    return { contentValue }
+    const rootClasses = computed(() => ({
+      'it-badge--square': props.square,
+    }))
+
+    const bodyClasses = computed(() => ({
+      ...(slots.default
+        ? { [`it-badge-body--corner-${props.position}`]: true }
+        : null),
+      'it-badge-body--square': props.square,
+      'it-badge-body--point': props.point,
+      [`it-badge-body--${props.type}`]: true,
+    }))
+
+    return { contentValue, rootClasses, bodyClasses }
   },
 })
 </script>
