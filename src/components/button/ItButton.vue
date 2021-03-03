@@ -1,54 +1,12 @@
 <template>
-  <button
-    class="it-btn"
-    :class="[
-      type ? `it-btn--${type}` : 'it-btn--neutral',
-      outlined && `it-btn--outlined`,
-      size && `it-btn--${size}`,
-      round && 'round',
-      pulse && !disabled && 'pulse',
-      block && 'it-btn--block',
-      text && 'it-btn--text',
-    ]"
-    :style="[!$slots.default && { padding: '9px 9px' }]"
-    :disabled="disabled"
-  >
-    <it-icon
-      v-if="icon && !iconAfter"
-      :name="icon"
-      :style="{
-        visibility: loading ? 'hidden' : 'visible',
-        ...($slots.default && marginStyle),
-      }"
-    />
-    <span
-      v-if="$slots.default"
-      :style="{ visibility: loading ? 'hidden' : 'visible' }"
-      class="it-btn-text"
-    >
+  <button class="it-btn" :class="rootClasses" :disabled="disabled">
+    <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
+    <span v-if="$slots.default" class="it-btn-text">
       <slot />
     </span>
-    <it-icon
-      v-if="icon && iconAfter"
-      :name="icon"
-      :style="{
-        visibility: loading ? 'hidden' : 'visible',
-        ...($slots.default && marginStyle),
-      }"
-    />
-    <it-loading
-      v-if="loading"
-      color="#fff"
-      :radius="10"
-      :style="{
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        marginLeft: '-10px',
-        marginTop: '-10px',
-      }"
-      :stroke="3"
-    ></it-loading>
+    <span class="it-btn-wrap-loading">
+      <it-loading v-if="loading" color="#fff" :radius="10" :stroke="3" />
+    </span>
   </button>
 </template>
 
@@ -67,21 +25,13 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-          Colors.BLACK,
-          Colors.NEUTRAL,
-        ].includes(value),
+      default: Colors.NEUTRAL,
+      validator: (value: Colors) => Object.values(Colors).includes(value),
     },
     size: {
       type: String,
       default: Sizes.NORMAL,
-      validator: (value: Sizes) =>
-        [Sizes.SMALL, Sizes.NORMAL, Sizes.BIG].includes(value),
+      validator: (value: Sizes) => Object.values(Sizes).includes(value),
     },
     iconAfter: { type: Boolean },
     disabled: { type: Boolean },
@@ -91,13 +41,32 @@ export default defineComponent({
     loading: { type: Boolean },
     block: { type: Boolean },
     text: { type: Boolean },
-    icon: { type: String },
+    icon: { type: String, default: null },
   },
-  setup(props) {
-    const marginStyle = computed(() => {
-      return props.iconAfter ? { marginLeft: '6px' } : { marginRight: '6px' }
-    })
-    return { marginStyle }
+  setup(props, { slots }) {
+    const rootClasses = computed(() => [
+      {
+        pulse: props.pulse,
+        'it-btn--empty': !slots.default,
+        'it-btn--outlined': props.outlined,
+        'it-btn--round': props.round,
+        'it-btn--block': props.block,
+        'it-btn--text': props.text,
+        'it-btn--loading': props.loading,
+        [`it-btn--${props.size}`]: props.size,
+        ...(props.type
+          ? { [`it-btn--${props.type}`]: true }
+          : { 'it-btn--neutral': true }),
+        ...(props.icon
+          ? {
+              [props.iconAfter
+                ? 'it-btn--icon-right'
+                : 'it-btn--icon-left']: true,
+            }
+          : null),
+      },
+    ])
+    return { rootClasses }
   },
 })
 </script>
