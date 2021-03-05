@@ -2,7 +2,6 @@
 
 .it-avatar {
   border-radius: 50%;
-  // box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-variant: tabular-nums;
@@ -16,56 +15,28 @@
   vertical-align: middle;
   background: @color-secondary-text;
 
-  &-max {
-    margin-left: 8px;
-  }
-
-  & > img {
+  &-img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
   }
 
-  & > span {
+  &-text {
     vertical-align: middle;
     font-weight: 500;
   }
 
-  &--square {
-    border-radius: 6px;
-  }
-
-  > svg {
+  &-icon {
     vertical-align: middle;
     display: inline-block;
     fill: #fff;
     margin-bottom: 4px;
-  }
-}
-
-.it-avatar-group {
-  display: flex;
-  align-items: center;
-
-  > .it-avatar {
-    border: 2px solid #fff;
+    width: 55%;
+    height: 55%;
   }
 
-  > .it-avatar + .it-avatar {
-    margin-left: -20px;
-  }
-
-  &--vertical {
-    display: flex;
-    flex-direction: column;
-
-    > .it-avatar {
-      border: 2px solid #fff;
-    }
-
-    > .it-avatar + .it-avatar {
-      margin-top: -20px;
-    }
+  &--square {
+    border-radius: 6px;
   }
 }

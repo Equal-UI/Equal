@@ -1,0 +1,35 @@
+@import '../../styles/variables.less';
+
+.it-avatar-group {
+  display: flex;
+  align-items: center;
+
+  > .it-avatar {
+    border: 2px solid #fff;
+  }
+
+  &--horizontal {
+    flex-wrap: wrap;
+    padding-left: 20px;
+
+    > .it-avatar {
+      margin: 0 0 0  -20px;
+    }
+  }
+
+  &--vertical {
+    align-items: flex-start;
+    flex-direction: column;
+
+    > .it-avatar + .it-avatar {
+      margin: -20px 0 0 0;
+    }
+  }
+
+  &-max {
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

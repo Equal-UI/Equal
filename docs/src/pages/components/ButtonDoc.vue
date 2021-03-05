@@ -249,7 +249,7 @@ export default defineComponent({
       {
         property: 'type',
         type: ['String'],
-        default: 'primary',
+        default: 'neutral',
         values: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
         description: 'Type of the button',
       },

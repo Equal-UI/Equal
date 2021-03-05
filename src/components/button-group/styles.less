@@ -1,0 +1,120 @@
+.it-button-group {
+  display: flex;
+  align-items: center;
+
+  .it-btn {
+    border-radius: 0;
+    z-index: 2;
+
+    &:focus {
+      z-index: 1;
+    }
+  }
+
+  &--horizontal {
+    justify-content: stretch;
+
+    .it-tooltip:first-child .it-btn,
+    & > .it-btn:first-child {
+      border-radius: 4px 0 0 4px;
+      border-right-width: 0;
+    }
+
+    .it-tooltip:first-child .it-btn--outlined,
+    & > .it-btn--outlined:first-child {
+      border-right-width: 1px !important;
+    }
+
+    .it-tooltip:last-child .it-btn,
+    & > .it-btn:last-of-type {
+      border-radius: 0 4px 4px 0;
+    }
+
+    .it-tooltip:not(:last-of-type) .it-btn--neutral,
+    & > .it-btn--neutral:not(:last-of-type) {
+      border-right-width: 0;
+    }
+
+    .it-tooltip:last-child .it-btn--outlined,
+    & > .it-btn + .it-btn--outlined:last-child {
+      border-left-width: 1px;
+    }
+
+    & > .it-btn--neutral:not(:last-of-type):not(:first-of-type) {
+      border-right-width: 0 !important;
+    }
+
+    & > .it-btn--outlined:not(:last-of-type):not(:first-of-type) {
+      border-right-width: 0 !important;
+    }
+
+    .it-tooltip + .it-tooltip .it-btn--outlined,
+    & > .it-btn--outlined + .it-btn {
+      border-left-width: 0;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    justify-content: center;
+
+    .it-btn {
+      border-radius: 0;
+      z-index: 2;
+      width: 100%;
+
+      &:focus {
+        z-index: 1;
+      }
+    }
+
+    .it-tooltip,
+    .it-tooltip-trigger {
+      width: 100%;
+    }
+
+    .it-tooltip:first-child .it-btn,
+    & > .it-btn:first-child {
+      border-radius: 4px 4px 0 0;
+      border-bottom-width: 0;
+    }
+
+    .it-tooltip:first-child .it-btn--outlined,
+    & > .it-btn--outlined:first-child {
+      border-bottom-width: 1px !important;
+    }
+
+    .it-tooltip:last-child .it-btn,
+    & > .it-btn:last-child {
+      border-radius: 0 0 4px 4px;
+    }
+
+    .it-tooltip:not(:last-of-type) .it-btn--neutral,
+    & > .it-btn--neutral:not(:last-of-type) {
+      border-bottom-width: 0;
+      box-shadow: none;
+
+      &:focus {
+        box-shadow: 0 0 0 3px fade(#a6b0bb, 20%);
+      }
+    }
+
+    .it-tooltip:last-child .it-btn--outlined,
+    .it-btn + .it-btn--outlined:last-child {
+      border-top-width: 1px !important;
+    }
+
+    .it-btn--neutral:not(:last-of-type):not(:first-of-type) {
+      border-bottom-width: 0 !important;
+    }
+
+    .it-btn--outlined:not(:last-of-type):not(:first-of-type) {
+      border-bottom-width: 0 !important;
+    }
+
+    .it-tooltip + .it-tooltip .it-btn--outlined,
+    .it-btn--outlined + .it-btn {
+      border-top-width: 0 !important;
+    }
+  }
+}
