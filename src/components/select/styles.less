@@ -138,11 +138,20 @@
 .it-select-dropdown {
   position: absolute;
   z-index: @dropdown-z-index;
-  min-width: calc(100% + 30px);
+  min-width: 130px;
   width: 100%;
 
   &--divided .it-select-option:not(:first-child) {
     border-top: 1px solid @color-default-border;
+  }
+
+  &--bottom-left,
+  &--top-left,
+  &--bottom-right,
+  &--top-right,
+  &--left,
+  &--right {
+    width: auto;
   }
 
   &--bottom,
@@ -225,7 +234,7 @@
 
 .it-select-option {
   position: relative;
-  padding: 10px 24px 10px 12px;
+  padding: 10px 28px 10px 12px;
   display: block;
   overflow: hidden;
   line-height: 1;

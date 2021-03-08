@@ -10,3 +10,5 @@ export const ALLOWED_POSITION = [
   Positions.BL,
   Positions.BR,
 ]
+
+export const CLASS_SELECTED_OPTION = 'it-select-option--focused'

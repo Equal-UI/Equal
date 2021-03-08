@@ -11,7 +11,7 @@
           :placement="selectPlacement"
           :label-top="selectLabel"
           :divided="selectDivided"
-          :options="['One', 'Two', 'Three']"
+          :options="firstSelectOptions"
         />
       </div>
       <template #props>
@@ -30,11 +30,10 @@
 
     <Box :code="exampleCode" title="Example">
       <div class="mb-20">
-        <it-select v-model="exampleValue" :options="exampleOptions" />
+        <it-select v-model="exampleValue" :options="exampleIndexOptions" />
         <it-select
           v-model="exampleValue"
           class="ml-3"
-          index="city"
           :options="exampleIndexOptions"
         />
       </div>
@@ -58,12 +57,19 @@ export default defineComponent({
     exampleOptions: ['New York', 'Paris', 'Moscow'],
     selectPlacement: null,
     placementOptions: ALLOWED_POSITION,
-    exampleIndexOptions: [
-      { city: 'New York' },
-      { city: 'Paris' },
-      { city: 'Moscow' },
+    firstSelectOptions: [
+      'Lorem ipsum dolor sit amet consectetur',
+      'Dolor',
+      'Lorem ipsum',
+      'Lorem ipsum dolor',
+      'Lorem ipsum dolor iste nam quidem',
     ],
-    exampleValue: 'Moscow',
+    exampleIndexOptions: [
+      { name: 'New York', value: 'nwrk' },
+      { name: 'Paris', value: 'prs' },
+      { name: 'Moscow', value: 'mscw' },
+    ],
+    exampleValue: { name: 'Paris', value: 'prs' },
     exampleCode: `
   <template>
     <it-select v-model="exampleValue" :options="exampleOptions" />

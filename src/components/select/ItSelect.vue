@@ -15,14 +15,14 @@
         :class="selectionClasses"
         @click="toggleDropdown"
         @keydown.tab="() => setOpen(false)"
-        @keydown.down.stop.prevent="handleKey('down')"
-        @keydown.up.stop.prevent="handleKey('up')"
+        @keydown.down.stop.prevent="handleKey(EDirections.DOWN)"
+        @keydown.up.stop.prevent="handleKey(EDirections.UP)"
         @keydown.esc.stop.prevent="() => setOpen(false)"
         @keydown.enter.stop.prevent="handleEnterKey"
       >
-        <span v-if="modelValue" class="it-select-selected">
+        <span v-if="wrappedValue.value" class="it-select-selected">
           <slot name="selectedOption" :data="dataForSlots">
-            {{ modelValue }}
+            {{ wrappedValue.name }}
           </slot>
         </span>
 
@@ -43,25 +43,25 @@
       </div>
 
       <transition name="drop-bottom">
-        <div v-show="show" class="it-select-dropdown" :class="dropdownClasses">
+        <div v-if="show" class="it-select-dropdown" :class="dropdownClasses">
           <ul class="it-select-list">
             <li
               v-for="(option, i) in options"
               :key="i"
-              :ref="(el) => setOptionRef.bind(null, [el, i])"
+              :ref="(el) => setOptionRef(el, i)"
               class="it-select-option"
-              :class="indexFocusedOption === i && 'it-select-option--focused'"
-              @click="selectOption(index ? option[index] : option)"
+              :class="indexFocusedOption === i && CLASS_SELECTED_OPTION"
+              @click="selectOption(option)"
             >
-              <slot name="option">
-                {{ index ? option[index] : option }}
+              <slot name="option" :data="dataForSlots">
+                {{ getOptionName(option) }}
+                <transition name="fade-right">
+                  <span
+                    v-if="wrappedValue.value === getOptionValue(option)"
+                    class="it-select-option-check"
+                  />
+                </transition>
               </slot>
-              <transition name="fade-right">
-                <span
-                  v-if="modelValue === (index ? option[index] : option)"
-                  class="it-select-option-check"
-                ></span>
-              </transition>
             </li>
           </ul>
         </div>
@@ -77,7 +77,12 @@ import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
 import { TEmit } from '@/types'
 import { TProps } from '@/types/global'
-import { ALLOWED_POSITION } from '@/components/select/constants'
+import {
+  ALLOWED_POSITION,
+  CLASS_SELECTED_OPTION,
+} from '@/components/select/constants'
+import { TSelectProps } from './types'
+import { EDirections } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-select',
@@ -92,15 +97,18 @@ export default defineComponent({
     },
     disabled: { type: Boolean, default: false },
     divided: { type: Boolean, default: false },
-    index: { type: String, default: null },
+    trackBy: { type: String, default: 'value' },
     labelTop: { type: String, default: null },
     placeholder: { type: String, default: 'Select' },
-    options: { type: Array, default: [] },
-    modelValue: { type: [String, Number], default: null },
+    options: { type: Array, default: () => [] },
+    modelValue: { type: [String, Number, Object], default: null },
   },
   emits: ['update:modelValue'],
   setup(props: TProps, { emit }) {
     const {
+      wrappedValue,
+      getOptionName,
+      getOptionValue,
       setOptionRef,
       indexFocusedOption,
       optionsRefs,
@@ -110,7 +118,7 @@ export default defineComponent({
       toggleDropdown,
       selectOption,
       handleKey,
-    } = useSelect(props, emit as TEmit)
+    } = useSelect(props as TSelectProps, emit as TEmit)
 
     const selectionClasses = computed(() => ({
       'it-select-selection--disabled': props.disabled,
@@ -133,6 +141,10 @@ export default defineComponent({
     }))
 
     return {
+      CLASS_SELECTED_OPTION,
+      wrappedValue,
+      getOptionName,
+      getOptionValue,
       setOptionRef,
       indexFocusedOption,
       optionsRefs,
@@ -145,6 +157,7 @@ export default defineComponent({
       selectionClasses,
       dropdownClasses,
       dataForSlots,
+      EDirections,
     }
   },
 })

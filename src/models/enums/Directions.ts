@@ -1,4 +1,4 @@
-export enum EKeys {
+export enum EDirections {
   UP = 'up',
   DOWN = 'down',
 }

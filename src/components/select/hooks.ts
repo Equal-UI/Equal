@@ -1,15 +1,26 @@
-import { ref, onBeforeUpdate, nextTick } from 'vue'
-import { EKeys } from '@/components/select/enums'
+import { ref, onBeforeUpdate, nextTick, computed } from 'vue'
+import { EDirections } from '@/models/enums'
 import { TEmit } from '@/types'
+import { TOption, TSelect, TSelectProps } from '@/components/select/types'
+import { getArrayIndexByDuration } from './helpers'
+import { CLASS_SELECTED_OPTION } from './constants'
 
-export const useSelect = (props: any, emit: TEmit) => {
+export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   const indexFocusedOption = ref(-1)
   const optionsRefs = ref<HTMLElement[]>([])
   const show = ref(false)
 
-  onBeforeUpdate(() => {
-    optionsRefs.value = []
-  })
+  onBeforeUpdate(() => (optionsRefs.value = []))
+
+  const scrollToSelectedOption = () => {
+    console.log('scrollToSelectedOption')
+  }
+
+  const getOptionName = (option: TOption) =>
+    typeof option === 'object' ? option.name : option
+
+  const getOptionValue = (option: TOption) =>
+    typeof option === 'object' ? option.value : option
 
   const setOptionRef = (el: HTMLElement, i: number) => {
     if (el) {
@@ -19,19 +30,21 @@ export const useSelect = (props: any, emit: TEmit) => {
 
   const setOpen = (state = false) => (show.value = state)
 
-  const toggleDropdown = () => {
+  const toggleDropdown = async () => {
     if (props.disabled) {
       setOpen(false)
       return
-    }
-    if (show.value) setOpen(false)
-    else {
+    } else if (show.value) {
+      setOpen(false)
+    } else {
       unfocusOption()
       setOpen(true)
+      await nextTick()
+      if (props.modelValue) scrollToSelectedOption()
     }
   }
 
-  const selectOption = (value: string | number) => {
+  const selectOption = (value: TOption) => {
     emit('update:modelValue', value)
   }
 
@@ -40,23 +53,18 @@ export const useSelect = (props: any, emit: TEmit) => {
     indexFocusedOption.value = -1
   }
 
-  const handleKey = async (type: EKeys) => {
+  const handleKey = async (duration: EDirections) => {
     if (!show.value || !props.options.length) return
-    if (type === EKeys.UP) {
-      indexFocusedOption.value =
-        indexFocusedOption.value <= 0
-          ? props.options.length - 1
-          : indexFocusedOption.value - 1
-    } else if (type === EKeys.DOWN) {
-      indexFocusedOption.value =
-        indexFocusedOption.value === props.options.length - 1
-          ? 0
-          : indexFocusedOption.value + 1
-    }
+    indexFocusedOption.value = getArrayIndexByDuration({
+      duration,
+      array: props.options as [],
+      curIndex: indexFocusedOption.value,
+    })
     await nextTick()
     const selectedEl = optionsRefs.value.find((r) =>
-      r.className.includes('focused'),
+      r.className.includes(CLASS_SELECTED_OPTION),
     )
+    console.log('selectedEl', selectedEl)
     selectedEl?.scrollIntoView({ block: 'nearest', inline: 'start' })
   }
 
@@ -65,12 +73,23 @@ export const useSelect = (props: any, emit: TEmit) => {
       toggleDropdown()
       return
     }
-    const option = props.options[indexFocusedOption.value]
-    selectOption(props.index ? option[props.index] : option)
+    selectOption(props.options[indexFocusedOption.value])
     setOpen(false)
   }
 
+  const wrappedValue = computed(() => {
+    const result: TOption = { name: '', value: '' }
+    if (props.modelValue === null) return result
+    if (typeof props.modelValue === 'object') return props.modelValue as TOption
+    result.name = props.modelValue
+    result.value = props.modelValue
+    return result
+  })
+
   return {
+    wrappedValue,
+    getOptionValue,
+    getOptionName,
     setOptionRef,
     indexFocusedOption,
     optionsRefs,
