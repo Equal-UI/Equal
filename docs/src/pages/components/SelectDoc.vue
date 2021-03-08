@@ -31,7 +31,6 @@
     <Box :code="exampleCode" title="Example">
       <div class="mb-20">
         <it-select v-model="exampleValue" :options="exampleOptions" />
-
         <it-select
           v-model="exampleValue"
           class="ml-3"

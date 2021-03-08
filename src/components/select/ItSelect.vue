@@ -1,6 +1,10 @@
 <template>
   <div class="it-select">
-    <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
+    <span v-if="labelTop" class="it-input-label">
+      <slot name="label-top" :data="dataForSlots">
+        {{ labelTop }}
+      </slot>
+    </span>
 
     <div class="it-select-inner">
       <div
@@ -17,17 +21,25 @@
         @keydown.enter.stop.prevent="handleEnterKey"
       >
         <span v-if="modelValue" class="it-select-selected">
-          {{ modelValue }}
+          <slot name="selectedOption" :data="dataForSlots">
+            {{ modelValue }}
+          </slot>
         </span>
+
         <span v-else class="it-select-placeholder">
-          {{ placeholder }}
+          <slot name="placeholder" :data="dataForSlots">
+            {{ placeholder }}
+          </slot>
         </span>
-        <i
-          class="it-select-arrow material-icons"
-          :class="show && 'it-select-arrow--active'"
-        >
-          unfold_more
-        </i>
+
+        <slot name="icon" :data="dataForSlots">
+          <i
+            class="it-select-arrow material-icons"
+            :class="show && 'it-select-arrow--active'"
+          >
+            unfold_more
+          </i>
+        </slot>
       </div>
 
       <transition name="drop-bottom">
@@ -41,7 +53,9 @@
               :class="indexFocusedOption === i && 'it-select-option--focused'"
               @click="selectOption(index ? option[index] : option)"
             >
-              {{ index ? option[index] : option }}
+              <slot name="option">
+                {{ index ? option[index] : option }}
+              </slot>
               <transition name="fade-right">
                 <span
                   v-if="modelValue === (index ? option[index] : option)"
@@ -110,6 +124,14 @@ export default defineComponent({
       'it-select-dropdown--divided': props.divided,
     }))
 
+    const dataForSlots = computed(() => ({
+      placement: props.placement,
+      disabled: props.disabled,
+      placeholder: props.placeholder,
+      value: props.modelValue,
+      labelTop: props.labelTop,
+    }))
+
     return {
       setOptionRef,
       indexFocusedOption,
@@ -122,6 +144,7 @@ export default defineComponent({
       handleKey,
       selectionClasses,
       dropdownClasses,
+      dataForSlots,
     }
   },
 })
