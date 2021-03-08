@@ -63,6 +63,7 @@ import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
 import { TEmit } from '@/types'
 import { TProps } from '@/types/global'
+import { ALLOWED_POSITION } from '@/components/select/constants'
 
 export default defineComponent({
   name: 'it-select',
@@ -73,7 +74,7 @@ export default defineComponent({
     placement: {
       type: String,
       default: Positions.B,
-      validator: (value: Positions) => Object.values(Positions).includes(value),
+      validator: (value: Positions) => ALLOWED_POSITION.includes(value),
     },
     disabled: { type: Boolean, default: false },
     divided: { type: Boolean, default: false },
@@ -103,7 +104,9 @@ export default defineComponent({
     }))
 
     const dropdownClasses = computed(() => ({
-      [`it-select-dropdown--${props.placement}`]: true,
+      [props.placement
+        ? `it-select-dropdown--${props.placement}`
+        : `it-select-dropdown--${Positions.B}`]: true,
       'it-select-dropdown--divided': props.divided,
     }))
 

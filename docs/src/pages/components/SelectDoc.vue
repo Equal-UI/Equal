@@ -8,15 +8,21 @@
           v-model="selectValue"
           :placeholder="selectPlaceholder"
           :disabled="selectDisabled"
+          :placement="selectPlacement"
           :label-top="selectLabel"
           :divided="selectDivided"
           :options="['One', 'Two', 'Three']"
-        >
-        </it-select>
+        />
       </div>
       <template #props>
         <it-input v-model="selectLabel" label-top="Select label" />
         <it-input v-model="selectPlaceholder" label-top="Select placeholder" />
+        <it-select
+          v-model="selectPlacement"
+          placeholder="Placement"
+          label-top="Placement"
+          :options="placementOptions"
+        />
         <it-checkbox v-model="selectDivided" label="Divided" />
         <it-checkbox v-model="selectDisabled" label="Disabled" />
       </template>
@@ -41,6 +47,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { ALLOWED_POSITION } from '../../../../src/components/select/constants'
 
 export default defineComponent({
   data: () => ({
@@ -49,20 +56,19 @@ export default defineComponent({
     selectPlaceholder: 'Select me',
     selectDisabled: false,
     selectDivided: false,
-
     exampleOptions: ['New York', 'Paris', 'Moscow'],
+    selectPlacement: null,
+    placementOptions: ALLOWED_POSITION,
     exampleIndexOptions: [
       { city: 'New York' },
       { city: 'Paris' },
       { city: 'Moscow' },
     ],
-
     exampleValue: 'Moscow',
-
     exampleCode: `
   <template>
     <it-select v-model="exampleValue" :options="exampleOptions" />
-    
+
     <it-select v-model="exampleValue" index="city" :options="exampleIndexOptions" />
   </template>
 
@@ -110,20 +116,7 @@ export default defineComponent({
         property: 'placement',
         type: ['String'],
         default: 'bottom',
-        values: [
-          'bottom',
-          'bottom-left',
-          'bottom-right',
-          'left',
-          'left-top',
-          'left-bottom',
-          'right',
-          'right-top',
-          'right-bottom',
-          'top',
-          'top-left',
-          'top-right',
-        ],
+        values: ALLOWED_POSITION,
         description: 'Select list position',
       },
       {
