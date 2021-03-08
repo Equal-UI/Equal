@@ -250,11 +250,60 @@
     <div>
       <h3>Select</h3>
       <it-select
-        v-model="selectValue"
+        :model-value="selectValue"
         label-top="Label"
         :options="selectOptions"
-      >
-      </it-select>
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label top"
+        :options="selectOptions"
+        placement="top"
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label left"
+        :options="selectOptions"
+        placement="left"
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label right"
+        :options="selectOptions"
+        placement="right"
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label top-left"
+        :options="selectOptions"
+        placement="top-left"
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label top-right"
+        :options="selectOptions"
+        placement="top-right"
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label bottom-left"
+        :options="selectOptions"
+        placement="bottom-left"
+        @update:model-value="handleChangeSelect"
+      />
+      <it-select
+        :model-value="selectValue"
+        label-top="Label bottom-right"
+        :options="selectOptions"
+        placement="bottom-right"
+        @update:model-value="handleChangeSelect"
+      />
     </div>
 
     <div>
@@ -489,7 +538,11 @@ export default {
     stepSliderValue: 40,
     progressValue: 40,
   }),
-  methods: {},
+  methods: {
+    handleChangeSelect(e) {
+      this.selectValue = e
+    },
+  },
 }
 </script>
 

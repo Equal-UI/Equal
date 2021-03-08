@@ -1,92 +1,68 @@
 <template>
-  <div :class="['it-select']">
-    <span class="it-input-label">{{ labelTop }}</span>
-    <div
-      ref="trigger"
-      v-clickoutside="hidePopover"
-      :tabindex="disabled ? -1 : 0"
-      class="it-select-selection"
-      :class="[
-        disabled && 'it-select-selection--disabled',
-        show && 'it-select-selection--active',
-      ]"
-      @click="toggleList"
-      @keydown.down.stop.prevent="handleKey('down')"
-      @keydown.up.stop.prevent="handleKey('up')"
-      @keydown.esc.stop.prevent="hidePopover"
-      @keydown.enter.stop.prevent="enterKey"
-    >
-      <input
-        v-if="filterable"
-        v-model="search"
-        :readonly="!filterable"
-        class="it-select-input"
-        type="text"
-        :disabled="disabled"
-        :placeholder="placeholder"
-      />
-      <span v-show="!modelValue && !filterable" class="it-select-placeholder">{{
-        placeholder
-      }}</span>
-      <span v-if="!filterable && modelValue" class="it-select-selected">{{
-        modelValue
-      }}</span>
-      <i
-        :class="[
-          'material-icons',
-          'it-select-arrow',
-          show && 'it-select-arrow--active',
-        ]"
-        >unfold_more</i
-      >
-    </div>
+  <div class="it-select">
+    <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
 
-    <transition name="drop-bottom">
+    <div class="it-select-inner">
       <div
-        v-show="show"
-        ref="popover"
-        class="it-select-dropdown"
-        :class="[
-          placement
-            ? `it-select-dropdown--${placement}`
-            : 'it-select-dropdown--bottom',
-          divided && 'it-select-dropdown--divided',
-        ]"
-        style="width: 100%"
+        ref="trigger"
+        v-clickoutside="() => setOpen(false)"
+        :tabindex="disabled ? -1 : 0"
+        class="it-select-selection"
+        :class="selectionClasses"
+        @click="toggleDropdown"
+        @keydown.tab="() => setOpen(false)"
+        @keydown.down.stop.prevent="handleKey('down')"
+        @keydown.up.stop.prevent="handleKey('up')"
+        @keydown.esc.stop.prevent="() => setOpen(false)"
+        @keydown.enter.stop.prevent="handleEnterKey"
       >
-        <ul ref="listRef" class="it-select-list">
-          <li
-            v-for="(option, i) in options"
-            :key="i"
-            :ref="
-              (el) => {
-                if (el) optionsRefs[i] = el
-              }
-            "
-            class="it-select-option"
-            :class="[focusIndex === i && 'it-select-option--focused']"
-            @click="selectOption(index ? option[index] : option)"
-          >
-            {{ index ? option[index] : option }}
-            <transition name="fade-right">
-              <span
-                v-if="modelValue === (index ? option[index] : option)"
-                class="it-select-option-check"
-              ></span>
-            </transition>
-          </li>
-        </ul>
+        <span v-if="modelValue" class="it-select-selected">
+          {{ modelValue }}
+        </span>
+        <span v-else class="it-select-placeholder">
+          {{ placeholder }}
+        </span>
+        <i
+          class="it-select-arrow material-icons"
+          :class="show && 'it-select-arrow--active'"
+        >
+          unfold_more
+        </i>
       </div>
-    </transition>
+
+      <transition name="drop-bottom">
+        <div v-show="show" class="it-select-dropdown" :class="dropdownClasses">
+          <ul class="it-select-list">
+            <li
+              v-for="(option, i) in options"
+              :key="i"
+              :ref="(el) => setOptionRef.bind(null, [el, i])"
+              class="it-select-option"
+              :class="indexFocusedOption === i && 'it-select-option--focused'"
+              @click="selectOption(index ? option[index] : option)"
+            >
+              {{ index ? option[index] : option }}
+              <transition name="fade-right">
+                <span
+                  v-if="modelValue === (index ? option[index] : option)"
+                  class="it-select-option-check"
+                ></span>
+              </transition>
+            </li>
+          </ul>
+        </div>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onBeforeUpdate, nextTick } from 'vue'
-
+import { defineComponent, computed } from 'vue'
 import { Positions } from '@/models/enums'
-import { usePopover } from '@/hooks'
 import { clickOutside } from '@/directives'
+import { useSelect } from '@/components/select/hooks'
+import { TEmit } from '@/types'
+import { TProps } from '@/types/global'
 
 export default defineComponent({
   name: 'it-select',
@@ -94,106 +70,55 @@ export default defineComponent({
     clickoutside: clickOutside,
   },
   props: {
-    placement: { type: String, default: Positions.B },
-    disabled: Boolean,
-    divided: Boolean,
-    filterable: Boolean,
-    index: String,
-    labelTop: String,
+    placement: {
+      type: String,
+      default: Positions.B,
+      validator: (value: Positions) => Object.values(Positions).includes(value),
+    },
+    disabled: { type: Boolean, default: false },
+    divided: { type: Boolean, default: false },
+    index: { type: String, default: null },
+    labelTop: { type: String, default: null },
     placeholder: { type: String, default: 'Select' },
     options: { type: Array, default: [] },
-    modelValue: { type: [String, Number] },
+    modelValue: { type: [String, Number], default: null },
   },
-  setup(props, { emit }) {
-    const search = ref<string | number>('')
-    const focusIndex = ref(-1)
-    const optionsRefs = ref<HTMLElement[]>([])
-    const listRef = ref<HTMLElement | null>(null)
+  emits: ['update:modelValue'],
+  setup(props: TProps, { emit }) {
+    const {
+      setOptionRef,
+      indexFocusedOption,
+      optionsRefs,
+      show,
+      handleEnterKey,
+      setOpen,
+      toggleDropdown,
+      selectOption,
+      handleKey,
+    } = useSelect(props, emit as TEmit)
 
-    onBeforeUpdate(() => {
-      optionsRefs.value = []
-    })
+    const selectionClasses = computed(() => ({
+      'it-select-selection--disabled': props.disabled,
+      'it-select-selection--active': show.value,
+    }))
 
-    // Dropdown logic
-    const { show, hidePopover, showPopover } = usePopover(props)
-
-    function toggleList() {
-      if (props.disabled) {
-        return
-      }
-      if (show.value) {
-        hidePopover()
-      } else {
-        unfocus()
-        showPopover()
-      }
-    }
-
-    // select logic
-    function selectOption(value: string | number) {
-      search.value = props.filterable ? value : ''
-      emit('update:modelValue', value)
-    }
-
-    function unfocus() {
-      if (focusIndex.value === -1) {
-        return
-      }
-      focusIndex.value = -1
-    }
-
-    // const searched = computed(() => {
-    //   return slots.default!().filter!((i) => i.$data.visible === true)
-    // })
-
-    async function handleKey(type: 'up' | 'down') {
-      if (!show.value || !props.options.length) {
-        return
-      }
-
-      if (type === 'up') {
-        focusIndex.value =
-          focusIndex.value <= 0
-            ? props.options.length - 1
-            : focusIndex.value - 1
-      } else if (type === 'down') {
-        focusIndex.value =
-          focusIndex.value === props.options.length - 1
-            ? 0
-            : focusIndex.value + 1
-      }
-
-      // Scroll to focused element
-      await nextTick()
-      const selectedEl = optionsRefs.value.find((r) =>
-        r.className.includes('focused'),
-      )
-      if (selectedEl) {
-        selectedEl.scrollIntoView({ block: 'nearest', inline: 'start' })
-      }
-    }
-
-    function enterKey() {
-      if (!show.value || focusIndex.value === -1) {
-        return
-      }
-      const option = props.options[focusIndex.value]
-      selectOption(props.index ? option[props.index] : option)
-      hidePopover()
-    }
+    const dropdownClasses = computed(() => ({
+      [`it-select-dropdown--${props.placement}`]: true,
+      'it-select-dropdown--divided': props.divided,
+    }))
 
     return {
-      toggleList,
-      // selected,
-      selectOption,
-      search,
-      show,
-      hidePopover,
-      showPopover,
-      handleKey,
-      focusIndex,
-      enterKey,
+      setOptionRef,
+      indexFocusedOption,
       optionsRefs,
+      show,
+      handleEnterKey,
+      setOpen,
+      toggleDropdown,
+      selectOption,
+      handleKey,
+      selectionClasses,
+      dropdownClasses,
     }
   },
 })
