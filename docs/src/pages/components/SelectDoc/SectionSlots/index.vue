@@ -4,25 +4,24 @@
       <Col class="flex flex-col my-4 px-4" lg="3" sm="12">
         <it-select v-model="exampleValue" :options="exampleOptions">
           <template v-slot:label-top="{ props }">
-            <strong>Placement prop: {{ props.placement }}</strong>
+            Placement prop: {{ props.placement }}
           </template>
           <template v-slot:placeholder="{ props }">
             <div class="items-center" :style="{ display: 'flex' }">
-              <it-icon class="mr-2" name="unfold_more" />
               <span>{{ props.placeholder }} - custom</span>
             </div>
           </template>
           <template v-slot:selected-option="{ props }">
-            Selected option value: {{ props.modelValue.value }}
+            Selected value: {{ props.modelValue.value }}
           </template>
           <template v-slot:option="{ props, option }">
             <div class="items-center" :style="{ display: 'flex' }">
-              <img src="/github-logo.svg" class="mr-2 h-5" alt srcset />
+              <img src="/github-logo.svg" class="mr-2 h-4" alt srcset />
               {{ option.name }}
             </div>
           </template>
           <template v-slot:icon>
-            <img src="/twitter-logo.svg" class="h-4" alt srcset />
+            <img src="/twitter-logo.svg" class="h-3 mr-2" alt srcset />
           </template>
         </it-select>
       </Col>
@@ -53,7 +52,7 @@ export default defineComponent({
           :options="exampleOptions"
         >
           <template v-slot:label-top="{ props }">
-            <strong>Placement prop: {{ props.placement }}</strong>
+            Placement prop: {{ props.placement }}
           </template>
           <template v-slot:placeholder="{ props }">
             <div class="items-center" :style="{ display: 'flex' }">
@@ -62,16 +61,16 @@ export default defineComponent({
             </div>
           </template>
           <template v-slot:selected-option="{ props }">
-            Selected option value: {{ props.modelValue.value }}
+            Selected value: {{ props.modelValue.value }}
           </template>
           <template v-slot:option="{ props, option }">
             <div class="items-center" :style="{ display: 'flex' }">
-              <img src="/github-logo.svg" class="mr-2 h-5" alt srcset />
+              <img src="/github-logo.svg" class="mr-2 h-4" alt srcset />
               {{ option.name }}
             </div>
           </template>
           <template v-slot:icon>
-            <img src="/twitter-logo.svg" class="h-4" alt srcset />
+            <img src="/twitter-logo.svg" class="h-3 mr-2" alt srcset />
           </template>
         </it-select>
       </template>

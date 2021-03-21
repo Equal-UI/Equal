@@ -137,7 +137,9 @@
         }"
         @click="hideSidebar"
       >
-        <router-link to="/components/select"> Select </router-link>
+        <router-link to="/components/select">
+          Select <it-tag type="primary" class="pulse">Updated</it-tag>
+        </router-link>
       </li>
       <li
         :class="{

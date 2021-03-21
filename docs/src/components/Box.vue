@@ -1,7 +1,7 @@
 <template>
   <div
     class="it-box bg-white rounded flex flex-col my-10 box-border w-full"
-    :class="overflowHidden ? overflow - hidden : ''"
+    :class="{ 'overflow-hidden': overflowHidden }"
   >
     <h2 class="it-box-title py-4 px-6 leading-none">{{ title }}</h2>
     <slot name="description"></slot>
