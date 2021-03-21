@@ -64,7 +64,6 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     const selectedEl = optionsRefs.value.find((r) =>
       r.className.includes(CLASS_SELECTED_OPTION),
     )
-    console.log('selectedEl', selectedEl)
     selectedEl?.scrollIntoView({ block: 'nearest', inline: 'start' })
   }
 
@@ -79,10 +78,18 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
 
   const wrappedValue = computed(() => {
     const result: TOption = { name: '', [props.trackBy]: '' }
-    if (props.modelValue === null) return result
-    if (typeof props.modelValue === 'object') return props.modelValue as TOption
+
+    if (props.modelValue === null) {
+      return result
+    }
+
+    if (typeof props.modelValue === 'object') {
+      return props.modelValue as TOption
+    }
+
     result.name = props.modelValue
     result[props.trackBy] = props.modelValue
+
     return result
   })
 

@@ -1,6 +1,6 @@
 import { ALLOWED_POSITION } from '../../../../../src/components/select/constants'
 
-export const DATA_SHEET_PROPS = [
+export const DATA_SHEET = [
   {
     property: 'label-top',
     type: ['String'],
@@ -57,5 +57,28 @@ export const DATA_SHEET_PROPS = [
     default: 'false',
     values: [],
     description: 'Makes select disabled',
+  },
+]
+
+export const SLOT_SHEET = [
+  {
+    property: 'label-top',
+    description: 'Label top text',
+  },
+  {
+    property: 'selected-option',
+    description: 'Selected option',
+  },
+  {
+    property: 'placeholder',
+    description: 'Placeholder text',
+  },
+  {
+    property: 'option',
+    description: 'Option',
+  },
+  {
+    property: 'icon',
+    description: 'Icon',
   },
 ]

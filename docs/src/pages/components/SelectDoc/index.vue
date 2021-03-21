@@ -1,9 +1,14 @@
 <template>
   <div>
     <h1>Select</h1>
-    <SectionDemo />
-    <SectionExamples />
-    <props-table tag-name="it-select" :data-sheet="dataSheet" />
+    <section-demo />
+    <section-examples />
+    <section-slots />
+    <props-table
+      tag-name="it-select"
+      :data-sheet="dataSheet"
+      :slot-sheet="slotSheet"
+    />
   </div>
 </template>
 
@@ -11,16 +16,19 @@
 import { defineComponent } from 'vue'
 import SectionDemo from './SectionDemo/index.vue'
 import SectionExamples from './SectionExamples/index.vue'
-import { DATA_SHEET_PROPS } from './constants'
+import SectionSlots from './SectionSlots/index.vue'
+import { DATA_SHEET, SLOT_SHEET } from './constants'
 
 export default defineComponent({
   components: {
     SectionDemo,
     SectionExamples,
+    SectionSlots,
   },
   setup() {
     return {
-      dataSheet: DATA_SHEET_PROPS,
+      dataSheet: DATA_SHEET,
+      slotSheet: SLOT_SHEET,
     }
   },
 })

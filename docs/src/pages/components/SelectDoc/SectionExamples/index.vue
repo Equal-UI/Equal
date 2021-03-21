@@ -80,19 +80,19 @@ const exampleTrackByOptions3 = new Array(7)
 export default defineComponent({
   name: 'SectionExamples',
   data: () => ({
-    exampleStringValue: exampleStringOptions[0],
+    exampleStringValue: null,
     exampleStringOptions: exampleStringOptions,
 
     exampleNumberValue: exampleNumberOptions[0],
     exampleNumberOptions: exampleNumberOptions,
 
-    exampleTrackByValue1: exampleTrackByOptions1[0],
+    exampleTrackByValue1: null,
     exampleTrackByOptions1: exampleTrackByOptions1,
 
     exampleTrackByValue2: exampleTrackByOptions2[0],
     exampleTrackByOptions2: exampleTrackByOptions2,
 
-    exampleTrackByValue3: exampleTrackByOptions3[0],
+    exampleTrackByValue3: null,
     exampleTrackByOptions3: exampleTrackByOptions3,
 
     codeSectionExamples: `
@@ -132,13 +132,13 @@ export default defineComponent({
 
       export default {
         data: () => ({
-          exampleStringValue: "${exampleStringOptions[0]}",
+          exampleStringValue: null,
           exampleStringOptions: [${exampleStringOptions.map((a) => `"${a}"`)}],
 
           exampleNumberValue: ${exampleNumberOptions[0]},
           exampleNumberOptions: [${exampleNumberOptions}],
 
-          exampleTrackByValue1: exampleTrackByOptions1[0],
+          exampleTrackByValue1: null,
           exampleTrackByOptions1: [${exampleTrackByOptions1.map((a) =>
             JSON.stringify(a),
           )}],
@@ -148,7 +148,7 @@ export default defineComponent({
             JSON.stringify(a),
           )}],
 
-          exampleTrackByValue3: ${JSON.stringify(exampleTrackByOptions3[0])},
+          exampleTrackByValue3: null,
           exampleTrackByOptions3: [${exampleTrackByOptions3.map((a) =>
             JSON.stringify(a),
           )}],

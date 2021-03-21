@@ -1,7 +1,7 @@
 <template>
   <div class="it-select">
-    <span v-if="labelTop" class="it-input-label">
-      <slot name="label-top" :data="dataForSlots">
+    <span v-if="labelTop || labelTopSlotExist" class="it-input-label">
+      <slot name="label-top" :props="props">
         {{ labelTop }}
       </slot>
     </span>
@@ -21,18 +21,18 @@
         @keydown.enter.stop.prevent="handleEnterKey"
       >
         <span v-if="wrappedValue[trackBy]" class="it-select-selected">
-          <slot name="selectedOption" :data="dataForSlots">
+          <slot name="selected-option" :props="props">
             {{ wrappedValue.name }}
           </slot>
         </span>
 
         <span v-else class="it-select-placeholder">
-          <slot name="placeholder" :data="dataForSlots">
+          <slot name="placeholder" :props="props">
             {{ placeholder }}
           </slot>
         </span>
 
-        <slot name="icon" :data="dataForSlots">
+        <slot name="icon" :props="props">
           <i
             class="it-select-arrow material-icons"
             :class="show && 'it-select-arrow--active'"
@@ -53,7 +53,7 @@
               :class="indexFocusedOption === i && CLASS_SELECTED_OPTION"
               @click="selectOption(option)"
             >
-              <slot name="option" :data="dataForSlots">
+              <slot name="option" :props="props" :option="option">
                 {{ getOptionName(option) }}
                 <transition name="fade-right">
                   <span
@@ -83,6 +83,7 @@ import {
 } from '@/components/select/constants'
 import { TSelectProps } from './types'
 import { EDirections } from '@/models/enums'
+import { useCheckSlot } from '@/hooks'
 
 export default defineComponent({
   name: 'it-select',
@@ -99,12 +100,14 @@ export default defineComponent({
     divided: { type: Boolean, default: false },
     trackBy: { type: String, default: 'value' },
     labelTop: { type: String, default: null },
-    placeholder: { type: String, default: 'Select' },
+    placeholder: { type: String, default: 'Select option' },
     options: { type: Array, default: () => [] },
     modelValue: { type: [String, Number, Object], default: null },
   },
   emits: ['update:modelValue'],
-  setup(props: TProps, { emit }) {
+  setup(props: TProps, { emit, slots }) {
+    const labelTopSlotExist = useCheckSlot(slots, 'label-top') !== null
+
     const {
       wrappedValue,
       getOptionName,
@@ -132,15 +135,8 @@ export default defineComponent({
       'it-select-dropdown--divided': props.divided,
     }))
 
-    const dataForSlots = computed(() => ({
-      placement: props.placement,
-      disabled: props.disabled,
-      placeholder: props.placeholder,
-      [props.trackBy]: props.modelValue,
-      labelTop: props.labelTop,
-    }))
-
     return {
+      labelTopSlotExist,
       CLASS_SELECTED_OPTION,
       wrappedValue,
       getOptionName,
@@ -156,7 +152,7 @@ export default defineComponent({
       handleKey,
       selectionClasses,
       dropdownClasses,
-      dataForSlots,
+      props,
       EDirections,
     }
   },

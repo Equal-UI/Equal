@@ -254,7 +254,11 @@
         label-top="Label"
         :options="selectOptions"
         @update:model-value="handleChangeSelect"
-      />
+      >
+        <template v-slot:label-top="{ data }">
+          {{ data }}
+        </template>
+      </it-select>
       <it-select
         :model-value="selectValue"
         label-top="Label top"
