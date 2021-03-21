@@ -20,7 +20,7 @@
         @keydown.esc.stop.prevent="() => setOpen(false)"
         @keydown.enter.stop.prevent="handleEnterKey"
       >
-        <span v-if="wrappedValue.value" class="it-select-selected">
+        <span v-if="wrappedValue[trackBy]" class="it-select-selected">
           <slot name="selectedOption" :data="dataForSlots">
             {{ wrappedValue.name }}
           </slot>
@@ -57,7 +57,7 @@
                 {{ getOptionName(option) }}
                 <transition name="fade-right">
                   <span
-                    v-if="wrappedValue.value === getOptionValue(option)"
+                    v-if="wrappedValue[trackBy] === getOptionValue(option)"
                     class="it-select-option-check"
                   />
                 </transition>
@@ -136,7 +136,7 @@ export default defineComponent({
       placement: props.placement,
       disabled: props.disabled,
       placeholder: props.placeholder,
-      value: props.modelValue,
+      [props.trackBy]: props.modelValue,
       labelTop: props.labelTop,
     }))
 

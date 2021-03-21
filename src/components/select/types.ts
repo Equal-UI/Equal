@@ -5,7 +5,7 @@ export type TOption =
   | string
   | number
   | {
-      value: string | number
+      [trackBy: string]: string | number
       name: string | number
     }
 

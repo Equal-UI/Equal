@@ -20,7 +20,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     typeof option === 'object' ? option.name : option
 
   const getOptionValue = (option: TOption) =>
-    typeof option === 'object' ? option.value : option
+    typeof option === 'object' ? option[props.trackBy] : option
 
   const setOptionRef = (el: HTMLElement, i: number) => {
     if (el) {
@@ -78,11 +78,11 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   }
 
   const wrappedValue = computed(() => {
-    const result: TOption = { name: '', value: '' }
+    const result: TOption = { name: '', [props.trackBy]: '' }
     if (props.modelValue === null) return result
     if (typeof props.modelValue === 'object') return props.modelValue as TOption
     result.name = props.modelValue
-    result.value = props.modelValue
+    result[props.trackBy] = props.modelValue
     return result
   })
 
