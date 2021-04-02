@@ -41,7 +41,7 @@
       </thead>
       <tbody>
         <tr v-for="item in slotSheet" :key="item.property">
-          <td v-for="(col, name) in item">
+          <td v-for="col in item">
             <span>{{ col }}</span>
           </td>
         </tr>
@@ -59,7 +59,7 @@
       </thead>
       <tbody>
         <tr v-for="item in methodSheet" :key="item.property">
-          <td v-for="(col, name) in item">
+          <td v-for="col in item">
             <span>{{ col }}</span>
           </td>
         </tr>

@@ -1,6 +1,7 @@
 <template>
   <div
-    class="it-box bg-white rounded flex flex-col overflow-hidden my-10 box-border w-full"
+    class="it-box bg-white rounded flex flex-col my-10 box-border w-full"
+    :class="{ 'overflow-hidden': overflowHidden }"
   >
     <h2 class="it-box-title py-4 px-6 leading-none">{{ title }}</h2>
     <slot name="description"></slot>
@@ -48,6 +49,10 @@ export default defineComponent({
   props: {
     code: String,
     title: String,
+    overflowHidden: {
+      type: Boolean,
+      default: true,
+    },
   },
   data: () => ({
     expandHeight: '0px',
