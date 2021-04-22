@@ -16,6 +16,7 @@
     }
   },
   "unpkg": "dist/equal.umd.min.js",
+  "types": "src/types/index.d.ts",
   "private": false,
   "license": "MIT",
   "bugs": "https://github.com/quatrochan/Equal/issues",
@@ -23,6 +24,10 @@
     "type": "git",
     "url": "https://github.com/quatrochan/Equal"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "keywords": [
     "equal",
     "vue",
