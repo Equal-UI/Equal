@@ -1,1 +1,1 @@
-declare module 'equal-vue';
+declare module 'equal-vue'
