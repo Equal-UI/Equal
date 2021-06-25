@@ -27,7 +27,19 @@
 
       <template #props>
         <it-input v-model="iconName" label-top="Icon name" />
-        <it-input v-model="iconColor" type="color" label-top="Icon color" />
+        <it-popover borderless>
+          <it-button
+            >Icon color
+            <span
+              :style="{ 'background-color': iconColor }"
+              class="w-4 ml-2 rounded"
+            ></span>
+          </it-button>
+
+          <template #content>
+            <it-colorpicker :value="iconColor" @change="updateIconColor" />
+          </template>
+        </it-popover>
         <it-slider
           v-model="iconSize"
           :min="10"
@@ -37,12 +49,20 @@
         <it-checkbox v-model="iconOutlined" class="mb-0" label="Outline" />
         <it-divider class="my-5" />
         <it-checkbox v-model="iconBox" label="Box" />
-        <it-input
-          v-model="iconBoxColor"
-          :disabled="!iconBox"
-          type="color"
-          label-top="Icon box color"
-        />
+
+        <it-popover :disabled="!iconBox" borderless>
+          <it-button :disabled="!iconBox"
+            >Background color
+            <span
+              :style="{ 'background-color': iconBoxColor }"
+              class="w-4 ml-2 rounded"
+            ></span>
+          </it-button>
+
+          <template #content>
+            <it-colorpicker :value="iconBoxColor" @change="updateColor" />
+          </template>
+        </it-popover>
         <it-slider
           v-model="iconBoxPadding"
           :disabled="!iconBox"
@@ -128,5 +148,17 @@ export default defineComponent({
       },
     ],
   }),
+  methods: {
+    updateColor(val) {
+      const { r, g, b, a } = val.rgba
+
+      this.iconBoxColor = `rgba(${r}, ${g}, ${b}, ${a})`
+    },
+    updateIconColor(val) {
+      const { r, g, b, a } = val.rgba
+
+      this.iconColor = `rgba(${r}, ${g}, ${b}, ${a})`
+    },
+  },
 })
 </script>

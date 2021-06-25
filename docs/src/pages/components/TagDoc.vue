@@ -3,7 +3,13 @@
     <h1>Tag</h1>
 
     <Demobox>
-      <it-tag :filled="tagFilled" :closable="tagClosable" :type="tagType">
+      <it-tag
+        v-show="show"
+        :filled="tagFilled"
+        :closable="tagClosable"
+        :type="tagType"
+        @close="onClose"
+      >
         <span>{{ tagText }}</span>
       </it-tag>
 
@@ -36,7 +42,7 @@
       <it-tag type="warning" filled>Warning</it-tag>
       <it-tag type="black" filled>Black</it-tag>
     </Box>
-    <props-table :data-sheet="dataSheet" />
+    <props-table :data-sheet="dataSheet" :event-sheet="eventSheet" />
   </div>
 </template>
 
@@ -45,6 +51,8 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   data: () => ({
+    show: true,
+
     tagText: 'Tag',
     tagClosable: false,
     tagFilled: false,
@@ -65,6 +73,15 @@ export default defineComponent({
 <it-tag type="warning" filled >Warning</it-tag>
 <it-tag type="black" filled >Black</it-tag>
 `,
+
+    eventSheet: [
+      {
+        event: '@close',
+        description:
+          'The event function triggered when user clicks on close icon',
+        arguments: 'function(e: Event)',
+      },
+    ],
 
     dataSheet: [
       {
@@ -90,5 +107,10 @@ export default defineComponent({
       },
     ],
   }),
+  methods: {
+    onClose() {
+      this.show = false
+    },
+  },
 })
 </script>

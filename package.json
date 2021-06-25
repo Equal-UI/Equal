@@ -1,6 +1,6 @@
 {
   "name": "equal-vue",
-  "version": "0.75.0",
+  "version": "0.77.0",
   "homepage": "https://quatrochan.github.io/Equal/",
   "description": "Equal is a Vue 3 UI library based on TypeScript",
   "author": {
@@ -83,6 +83,8 @@
     "vue-eslint-parser": "^7.5.0"
   },
   "dependencies": {
+    "@vueuse/core": "^5.0.3",
+    "@vueuse/integrations": "^5.0.3",
     "body-scroll-lock": "^3.1.5",
     "tinycolor2": "^1.4.2",
     "vue": "^3.0.5"

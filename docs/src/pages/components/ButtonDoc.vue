@@ -316,9 +316,5 @@ export default defineComponent({
       return this.buttonIcon ? 'favorite' : null
     },
   },
-
-  // mounted() {
-  //   console.log(this.$route)
-  // }
 })
 </script>

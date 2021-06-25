@@ -10,7 +10,11 @@
       >
         <transition name="drop-top">
           <div v-show="modelValue" class="it-modal-wrap">
-            <div class="it-modal-wrap-inner" @click.self="maskClick">
+            <div
+              class="it-modal-wrap-inner"
+              tabindex="0"
+              @click.self="maskClick"
+            >
               <div
                 class="it-modal-body"
                 :class="{ 'it-modal-body--has-image': onlyImageSlot }"
@@ -37,8 +41,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, computed } from 'vue'
+import { defineComponent, watch, ref, computed, nextTick } from 'vue'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
 import { useCheckSlot } from '@/hooks'
 
 export default defineComponent({
@@ -51,11 +56,13 @@ export default defineComponent({
     closeOnEsc: { type: Boolean, default: true },
   },
   setup(props, { emit, slots }) {
-    const modalRef = ref<HTMLElement | null>(null)
+    const modalRef = ref<HTMLElement | null>()
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
     const itHasActions = useCheckSlot(slots, 'actions') !== null
     const itHasImage = useCheckSlot(slots, 'image') !== null
+
+    const { hasFocus, activate, deactivate } = useFocusTrap(modalRef)
 
     function close() {
       emit('update:modelValue', false)
@@ -67,13 +74,26 @@ export default defineComponent({
       }
     }
 
+    function pressEsc(e: KeyboardEvent) {
+      e.code === 'Escape' && close()
+    }
+
     watch(
       () => props.modelValue,
-      (active: boolean) => {
+      async (active: boolean) => {
+        await nextTick()
         if (modalRef.value) {
-          return active
-            ? disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
-            : setTimeout(enableBodyScroll.bind(this, modalRef.value), 500)
+          if (active) {
+            disableBodyScroll(modalRef.value, { reserveScrollBarGap: true })
+            if (props.closeOnEsc) {
+              document.addEventListener('keydown', pressEsc)
+            }
+            activate()
+          } else {
+            deactivate()
+            setTimeout(enableBodyScroll.bind(this, modalRef.value), 500)
+            document.removeEventListener('keydown', pressEsc)
+          }
         }
       },
     )
@@ -85,6 +105,7 @@ export default defineComponent({
     return {
       modalRef,
       maskClick,
+      hasFocus,
       itHasHeader,
       itHasBody,
       itHasActions,
@@ -92,13 +113,5 @@ export default defineComponent({
       onlyImageSlot,
     }
   },
-
-  // todo:
-  // public escEvt(e: KeyboardEvent) {
-  //   if (e.keyCode === 27 && this.closeOnEsc) {
-  //     // 27 === Esc
-  //     this.cancelHandler()
-  //   }
-  // }
 })
 </script>

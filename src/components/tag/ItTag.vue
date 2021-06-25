@@ -1,6 +1,5 @@
 <template>
   <span
-    v-show="show"
     :class="[
       'it-tag',
       type && `it-tag--${type}`,
@@ -13,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { Colors } from '@/models/enums'
 
 export default defineComponent({
@@ -34,17 +33,16 @@ export default defineComponent({
     closable: { type: Boolean },
     filled: { type: Boolean },
   },
-  setup(props) {
-    const show = ref(true)
-
+  emits: ['close'],
+  setup(props, { emit }) {
     function close() {
       if (!props.closable) {
         return
       }
-      show.value = false
+      emit('close')
     }
 
-    return { show, close }
+    return { close }
   },
 })
 </script>

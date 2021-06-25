@@ -2,11 +2,12 @@
   "name": "docs",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "build_prod": "vite build --config prod.config.ts"
   },
   "dependencies": {
+    "@vueuse/integrations": "^5.0.3",
     "body-scroll-lock": "^3.1.5",
     "faker": "^5.1.0",
     "prismjs": "^1.23.0",

@@ -43,6 +43,8 @@
   cursor: pointer;
 
   &--disabled {
+    cursor: not-allowed;
+
     .it-radio-circle,
     .it-radio-circle:hover {
       opacity: 0;
@@ -52,9 +54,9 @@
     .it-radio-border,
     .it-radio-border:hover,
     .it-radio-border:active {
+      cursor: not-allowed;
       border: 1px solid @color-disabled-border !important;
       background-color: @color-disabled-bg !important;
-      cursor: not-allowed;
     }
 
     .it-radio-label {
@@ -103,7 +105,9 @@
   // display: inline-table;
   border: 1px solid @color-secondary-text;
   width: 18px;
+  min-width: 18px;
   height: 18px;
+  min-height: 18px;
   border-radius: 50%;
   line-height: 1;
   box-sizing: border-box;

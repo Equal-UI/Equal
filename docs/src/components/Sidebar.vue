@@ -46,8 +46,11 @@
         }"
         @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/introduction"
-          >Introduction</router-link
+        <router-link to="/introduction">
+          <span class="flex p-2">
+            <it-icon outlined name="emoji_people" class="mr-2"></it-icon>
+            Introduction
+          </span></router-link
         >
       </li>
       <li
@@ -56,297 +59,77 @@
         }"
         @click="hideSidebar"
       >
-        <router-link style="padding: 7px 0px 7px 30px" to="/start"
-          >Getting started</router-link
+        <router-link to="/start"
+          ><span class="flex p-2">
+            <it-icon outlined name="whatshot" class="mr-2"></it-icon>
+            Getting started
+          </span></router-link
         >
       </li>
       <li class="group-title-high">COMPONENTS</li>
-      <li class="group-title">Base</li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/button',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/button">Button</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/icon',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/icon">Icon</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/divider',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/divider">Divider</router-link>
-      </li>
-
-      <li class="group-title">Form</li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/checkbox',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/checkbox"> Checkbox </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/colorpicker',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/colorpicker">
-          Colorpicker
-          <it-tag type="primary">New</it-tag>
-        </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/input',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/input"> Input </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/numberinput',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/numberinput"> Number Input </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/radio',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/radio"> Radio </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/select',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/select">
-          Select <it-tag type="primary" class="pulse">Updated</it-tag>
-        </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/slider',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/slider">Slider</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/switch',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/switch"> Switch </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/textarea',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/textarea"> Textarea </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/toggle',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/toggle"> Toggle </router-link>
-      </li>
-
-      <li class="group-title">Feedback</li>
-
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/alert',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/alert">Alert</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/drawer',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/drawer"> Drawer </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/loading',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/loading">Loading</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/loadingbar',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/loadingbar">Loading bar</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/message',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/message">Message</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/modal',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/modal">
-          Modal
-          <it-tag type="primary">Updated</it-tag>
-        </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/notification',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/notification">Notification</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/popover',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/popover"> Popover </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/progressbar',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/progressbar">Progress Bar</router-link>
-      </li>
-
-      <li class="group-title">Data Display</li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/avatar',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/avatar"> Avatar </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/collapse',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/collapse"> Collapse </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/badge',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/badge">Badge</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/tag',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/tag">Tag</router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/tabs',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/tabs"> Tabs </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/tooltip',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/tooltip">Tooltip</router-link>
-      </li>
-
-      <li class="group-title">Navigation</li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/breadcrumbs',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/breadcrumbs">
-          Breadcrumbs
-          <it-tag type="warning">WIP</it-tag>
-        </router-link>
-      </li>
-      <li
-        :class="{
-          'active-menu-item': $route.path === '/components/dropdown',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/components/dropdown">Dropdown</router-link>
-      </li>
-      <!-- <li class="group-title-high">CSS</li>
-      <li
-        @click="hideSidebar"
-        :class="{
-          'active-menu-item': $route.path === 'css-hovup',
-        }"
-      >
-        <router-link to="/css/hovup">Hovup</router-link>
-      </li>-->
+      <template v-for="(item, key) in componentGroups" :key="key">
+        <li class="group-title">{{ key }}</li>
+        <template v-for="(component, i) in item" :key="i">
+          <li
+            :class="{
+              'active-menu-item': $route.path === component.route,
+            }"
+            @click="hideSidebar"
+          >
+            <router-link :to="component.route">
+              <span class="flex p-2">
+                <it-icon
+                  :outlined="component.icon_outlined"
+                  :name="component.icon"
+                  class="mr-2"
+                ></it-icon>
+                {{ component.name }}
+              </span>
+            </router-link>
+          </li>
+        </template>
+      </template>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { clickOutside } from '/@equal/directives'
+import { IComponentListItem, componentGroup } from '../types'
+import { componentsList } from '../data/components'
+import { router } from '../router'
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   directives: {
     clickoutside: clickOutside,
   },
-  // @ts-ignore
   layout: 'components',
   setup() {
+    const route = useRoute()
     const left = ref('inherit')
+
+    const components = ref<IComponentListItem[]>(componentsList)
+
+    const componentGroups = computed(() => {
+      return Object.values(componentGroup).reduce((el, next) => {
+        return {
+          ...el,
+          [next]: components.value
+            .map((el) => {
+              if (el.name === 'Switch') {
+                el.icon =
+                  route.path === '/components/switch'
+                    ? 'toggle_on'
+                    : 'toggle_off'
+              }
+              return el
+            })
+            .filter((comp) => comp.group === next),
+        }
+      }, {})
+    })
 
     function toggleSidebar() {
       left.value = left.value === 'inherit' ? '0px !important' : 'inherit'
@@ -358,7 +141,7 @@ export default defineComponent({
       left.value = 'inherit'
     }
 
-    return { left, toggleSidebar, hideSidebar }
+    return { left, toggleSidebar, hideSidebar, componentGroups }
   },
 })
 </script>
@@ -370,7 +153,7 @@ export default defineComponent({
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 14rem;
+  width: 15rem;
   background-color: #fafbfd;
   border-right: 1px solid #d3dae6;
   height: 100%;
@@ -409,7 +192,7 @@ export default defineComponent({
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 7px 7px 7px 30px;
+      padding: 4px 7px 4px 30px;
       width: 100%;
       box-sizing: border-box;
       font-weight: 500;
@@ -449,24 +232,29 @@ export default defineComponent({
 }
 
 .active-menu-item {
-  // border-left: 3px solid #3051FF;
   font-weight: 500;
   transition: all 0.3s;
 
   > a {
-    background-color: #e8ebff;
-    color: #3051ff !important;
-    border-radius: 6px;
-
+    color: #131313 !important;
+    // padding: 4px 0 4px 30px !important;
     &:hover {
       transform: none !important;
     }
+  }
+
+  span {
+    @apply rounded;
+    @apply p-2;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 6px,
+      rgba(50, 50, 93, 0.1) 0px 7px 14px, rgba(50, 50, 93, 0.05) 0px 0px 0px 1px;
   }
 }
 
 @media only screen and (max-width: 900px) {
   .sidebar {
-    left: -14rem !important;
+    left: -15rem !important;
 
     &-menu {
       height: 93%;
@@ -478,3 +266,5 @@ export default defineComponent({
   }
 }
 </style>
+
+function useRoute() { throw new Error('Function not implemented.') }
