@@ -1,5 +1,5 @@
 <template>
-  <button class="it-btn" :class="rootClasses" :disabled="disabled">
+  <button class="it-btn" :class="rootClasses" :disabled="disabled" :type="htmlType">
     <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
     <span v-if="$slots.default" class="it-btn-text">
       <slot />
@@ -27,6 +27,10 @@ export default defineComponent({
       type: String,
       default: Colors.NEUTRAL,
       validator: (value: Colors) => Object.values(Colors).includes(value),
+    },
+    htmlType: {
+      type: String,
+      default: ''
     },
     size: {
       type: String,
