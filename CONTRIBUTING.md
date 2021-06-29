@@ -28,8 +28,8 @@ It takes a lot of courage to even visit this section. I sincerely appreciate it.
 
 ## Development 👨‍💻
 
-1. Install dependencies: `npm i`
-2. Run the dev server: `npm run dev`
+1. Install dependencies: `npm i` or `yarn`
+2. Run the dev server: `npm run dev` or `yarn dev` it will show all components list on `localhost:3000`; For full docs go to `/docs`, run `npm i && npm run dev`
 3. Edit the source code within `/src`
-4. Compile: `npm run build`. This will output a new minified bundle; lite-server will listen and refresh the browser.
-5. Commit your work `git commit -m "feat( fun ): add a party" for more details check [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification
+4. Check changes on `localhost:3000`
+5. Commit your work `git commit -m "feat( fun ): add a party"` for more details check [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification
