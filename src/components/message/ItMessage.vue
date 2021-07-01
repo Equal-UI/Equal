@@ -41,7 +41,7 @@ export default defineComponent({
       onClose: () => {},
       top: 6,
       type: Colors.PRIMARY,
-      timer: (null as unknown) as NodeJS.Timeout,
+      timer: null as unknown as NodeJS.Timeout,
     }
   },
   computed: {

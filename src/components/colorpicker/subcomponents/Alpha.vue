@@ -32,13 +32,8 @@ export default defineComponent({
     modelValue: Object,
   },
   setup(props, { emit }) {
-    const {
-      colors,
-      container,
-      handleChange,
-      handleMouseDown,
-      handleMouseUp,
-    } = alpha(props, emit)
+    const { colors, container, handleChange, handleMouseDown, handleMouseUp } =
+      alpha(props, emit)
 
     const gradientColor = computed(() => {
       const { r, g, b } = colors.value.rgba

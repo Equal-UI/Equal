@@ -59,9 +59,8 @@ export default defineComponent({
           : { 'it-btn--neutral': true }),
         ...(props.icon
           ? {
-              [props.iconAfter
-                ? 'it-btn--icon-right'
-                : 'it-btn--icon-left']: true,
+              [props.iconAfter ? 'it-btn--icon-right' : 'it-btn--icon-left']:
+                true,
             }
           : null),
       },

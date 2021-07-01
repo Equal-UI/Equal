@@ -66,7 +66,7 @@ export default defineComponent({
       position: {} as { [key: string]: string },
       placement: Positions.TR,
       type: Colors.PRIMARY,
-      timer: (null as unknown) as NodeJS.Timeout,
+      timer: null as unknown as NodeJS.Timeout,
       onClose: () => {},
     }
   },

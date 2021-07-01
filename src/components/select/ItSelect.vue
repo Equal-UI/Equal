@@ -44,14 +44,19 @@
 
       <transition name="drop-bottom">
         <div v-if="show" class="it-select-dropdown" :class="dropdownClasses">
-          <ul class="it-select-list">
+          <ul
+            class="it-select-list"
+            :ref="(dropdown) => setSelectListRef(dropdown)"
+          >
             <li
-              v-for="(option, i) in options"
-              :key="i"
-              :ref="(el) => setOptionRef(el, i)"
+              v-for="(option, optionIndex) in options"
+              :key="optionIndex"
+              :ref="(el) => setOptionRef(el, optionIndex)"
               class="it-select-option"
-              :class="indexFocusedOption === i && CLASS_SELECTED_OPTION"
-              @click="selectOption(option)"
+              :class="
+                indexFocusedOption === optionIndex && CLASS_SELECTED_OPTION
+              "
+              @click="selectOption(optionIndex)"
             >
               <slot name="option" :props="props" :option="option">
                 {{ getOptionName(option) }}
@@ -118,6 +123,7 @@ export default defineComponent({
       show,
       handleEnterKey,
       setOpen,
+      setSelectListRef,
       toggleDropdown,
       selectOption,
       handleKey,
@@ -147,6 +153,7 @@ export default defineComponent({
       show,
       handleEnterKey,
       setOpen,
+      setSelectListRef,
       toggleDropdown,
       selectOption,
       handleKey,
