@@ -165,8 +165,9 @@ export default defineComponent({
 
     function onSliderClick(e: MouseEvent & TouchEvent) {
       if (props.disabled || dragging.value) return
-      const sliderOffsetLeft = (sliderLineRef.value! as HTMLElement).getBoundingClientRect()
-        .left
+      const sliderOffsetLeft = (
+        sliderLineRef.value! as HTMLElement
+      ).getBoundingClientRect().left
       const clientX = getCoordsByEvent(e).clientX
       const newValue =
         ((clientX - sliderOffsetLeft) /

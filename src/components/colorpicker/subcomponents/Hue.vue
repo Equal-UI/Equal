@@ -35,13 +35,8 @@ export default defineComponent({
     modelValue: Object,
   },
   setup(props, { emit }) {
-    const {
-      container,
-      colors,
-      pullDirection,
-      handleChange,
-      handleMouseDown,
-    } = hue(props, emit)
+    const { container, colors, pullDirection, handleChange, handleMouseDown } =
+      hue(props, emit)
 
     const pointerLeft = computed(() => {
       if (colors.value.hsl.h === 0 && pullDirection.value === 'right') {

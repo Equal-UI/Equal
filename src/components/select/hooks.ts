@@ -8,12 +8,18 @@ import { CLASS_SELECTED_OPTION } from './constants'
 export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   const indexFocusedOption = ref(-1)
   const optionsRefs = ref<HTMLElement[]>([])
+  const selectListRef = ref<HTMLElement | undefined>(undefined)
+  let selectedOptionIndex: number = -1
   const show = ref(false)
 
   onBeforeUpdate(() => (optionsRefs.value = []))
 
   const scrollToSelectedOption = () => {
-    console.log('scrollToSelectedOption')
+    const selectedOption: HTMLElement | null =
+      optionsRefs.value[selectedOptionIndex]
+
+    if (selectListRef.value !== undefined)
+      selectListRef.value.scrollTop = selectedOption?.offsetTop
   }
 
   const getOptionName = (option: TOption) =>
@@ -25,6 +31,12 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   const setOptionRef = (el: HTMLElement, i: number) => {
     if (el) {
       optionsRefs.value[i] = el
+    }
+  }
+
+  const setSelectListRef = (dropdown: HTMLElement) => {
+    if (dropdown) {
+      selectListRef.value = dropdown
     }
   }
 
@@ -44,8 +56,10 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     }
   }
 
-  const selectOption = (value: TOption) => {
-    emit('update:modelValue', value)
+  const selectOption = (optionIndex: number) => {
+    const option = props.options[optionIndex]
+    selectedOptionIndex = optionIndex
+    emit('update:modelValue', option)
   }
 
   const unfocusOption = () => {
@@ -72,7 +86,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
       toggleDropdown()
       return
     }
-    selectOption(props.options[indexFocusedOption.value])
+    selectOption(indexFocusedOption.value)
     setOpen(false)
   }
 
@@ -105,6 +119,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     setOpen,
     toggleDropdown,
     selectOption,
+    setSelectListRef,
     handleKey,
   }
 }

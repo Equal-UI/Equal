@@ -8,8 +8,7 @@
         @click="
           $Notification({
             title: 'Primary notification',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Primary notification</it-button
@@ -19,8 +18,7 @@
         @click="
           $Notification.success({
             title: 'Success notification',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Success notification</it-button
@@ -30,8 +28,7 @@
         @click="
           $Notification.danger({
             title: 'Danger notification',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Danger notification</it-button
@@ -41,8 +38,7 @@
         @click="
           $Notification.warning({
             title: 'Warning notification',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Warning notification</it-button
@@ -55,8 +51,7 @@
           $Notification({
             title: 'Emoji notification',
             emoji: '🧬',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >🧬 Emoji notification</it-button
@@ -68,8 +63,7 @@
           $Notification({
             title: 'Image notification',
             image: '/Equal/husky.jpg',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Click me</it-button
@@ -84,8 +78,7 @@
                 title: 'Top-left notification',
                 image: '/Equal/husky.jpg',
                 placement: 'top-left',
-                text:
-                  'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+                text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
               })
             "
             >Top-left</it-button
@@ -96,8 +89,7 @@
                 title: 'Top-right notification',
                 image: '/Equal/husky.jpg',
                 placement: 'top-right',
-                text:
-                  'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+                text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
               })
             "
             >Top-right</it-button
@@ -110,8 +102,7 @@
                 title: 'Bottom-left notification',
                 image: '/Equal/husky.jpg',
                 placement: 'bottom-left',
-                text:
-                  'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+                text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
               })
             "
             >Bottom-left</it-button
@@ -122,8 +113,7 @@
                 title: 'Top-right notification',
                 image: '/Equal/husky.jpg',
                 placement: 'bottom-right',
-                text:
-                  'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+                text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
               })
             "
             >Bottom-right</it-button

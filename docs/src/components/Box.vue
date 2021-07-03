@@ -6,7 +6,18 @@
     <h2 class="it-box-title py-4 px-6 leading-none">{{ title }}</h2>
     <slot name="description"></slot>
     <div
-      class="it-box-scene w-full py-10 px-6 flex-wrap leading-none flex justify-center items-center box-border"
+      class="
+        it-box-scene
+        w-full
+        py-10
+        px-6
+        flex-wrap
+        leading-none
+        flex
+        justify-center
+        items-center
+        box-border
+      "
     >
       <slot></slot>
     </div>

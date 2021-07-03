@@ -27,6 +27,7 @@ export type TSelect = {
   handleEnterKey: () => void
   setOpen: (state: boolean) => void
   toggleDropdown: () => void
-  selectOption: (value: TOption) => void
+  selectOption: (optionIndex: number) => void
+  setSelectListRef: (dropdown: HTMLElement) => void
   handleKey: (type: EDirections) => void
 }

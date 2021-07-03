@@ -381,8 +381,7 @@
           $Notification({
             title: 'Top-left notification',
             placement: 'top-left',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Top-left</it-button
@@ -392,8 +391,7 @@
           $Notification({
             title: 'Top-right notification',
             placement: 'top-right',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Top-right</it-button
@@ -403,8 +401,7 @@
           $Notification({
             title: 'Bottom-left notification',
             placement: 'bottom-left',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Bottom-left</it-button
@@ -414,8 +411,7 @@
           $Notification({
             title: 'Top-right notification',
             placement: 'bottom-right',
-            text:
-              'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
         >Bottom-right</it-button
