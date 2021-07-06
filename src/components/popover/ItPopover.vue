@@ -44,6 +44,7 @@ export default defineComponent({
       validator: (value: Positions) =>
         [Positions.B, Positions.L, Positions.R, Positions.T].includes(value),
     },
+    autoposition: { type: Boolean, default: true },
   },
   setup(props) {
     const {

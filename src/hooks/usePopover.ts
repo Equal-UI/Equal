@@ -1,16 +1,20 @@
 import { ref, nextTick, computed, toRef } from 'vue'
 import { Positions } from '@/models/enums'
+import { Ref } from 'vue'
 
 // REFACTOR HOOK
 
 export const usePopover = (props: any) => {
   const show = ref(false)
-  const placement = toRef(props, 'placement') || ref<Positions>(Positions.T)
+  const placement: Ref<Positions> = ref<Positions>(
+    props.placement || Positions.T,
+  )
   const disabled = toRef(props, 'disabled') || ref(false)
   const clickable = toRef(props, 'hoverable') || ref(false)
-  const transition = computed(() => `fade-${placement.value}`)
+  const transition = computed(() => `fade-${placement.value.split('-')[0]}`)
   const visionTimer = ref<NodeJS.Timeout | null>(null)
   const permanent = ref(false || props.permanent)
+  const autoPosition = ref(props.autoposition)
 
   // Template Refs
   const popover = ref(null)
@@ -62,6 +66,54 @@ export const usePopover = (props: any) => {
 
     if (!popoverTemp) {
       return
+    }
+
+    if (autoPosition.value) {
+      // preferred position direction
+      const preferredPos = props.placement as Positions
+      const predefPositions = [
+        ...new Set([
+          preferredPos,
+          Positions.T,
+          Positions.B,
+          Positions.R,
+          Positions.L,
+          ...Object.values(Positions),
+        ]),
+      ]
+
+      const triggerTempGBCR = triggerTemp.getBoundingClientRect().toJSON()
+      const popoverTempGBCR = popoverTemp.getBoundingClientRect()
+
+      for (const pos of predefPositions) {
+        const posSide = pos.split('-')[0]
+
+        const PosIsVertical = [Positions.T, Positions.B].includes(
+          posSide as Positions,
+        )
+
+        let searchPredicate = triggerTempGBCR[posSide as keyof DOMRect]
+
+        if (posSide === Positions.B) {
+          searchPredicate =
+            window.innerHeight - triggerTempGBCR[posSide as keyof DOMRect]
+        }
+
+        if (posSide === Positions.R) {
+          searchPredicate =
+            window.innerWidth - triggerTempGBCR[posSide as keyof DOMRect]
+        }
+
+        console.log(searchPredicate)
+
+        if (
+          searchPredicate >=
+          popoverTempGBCR[PosIsVertical ? 'height' : 'width'] + 24
+        ) {
+          placement.value = pos
+          break
+        }
+      }
     }
 
     switch (placement.value) {

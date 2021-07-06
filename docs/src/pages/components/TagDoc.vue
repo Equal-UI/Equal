@@ -35,8 +35,8 @@
       <it-tag type="black">Black</it-tag>
     </Box>
     <Box :code="filledCode" title="Filled">
-      <it-tag>Neutral</it-tag>
-      <it-tag type="primary" filled>Primary</it-tag>
+      <it-tag> <it-icon name="face" color="#3051FF" />Neutral</it-tag>
+      <it-tag type="primary" filled> Primary</it-tag>
       <it-tag type="success" filled>Success</it-tag>
       <it-tag type="danger" filled>Danger</it-tag>
       <it-tag type="warning" filled>Warning</it-tag>

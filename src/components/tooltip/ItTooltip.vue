@@ -14,7 +14,7 @@
         v-show="show"
         ref="popover"
         class="it-tooltip-popper"
-        :class="[placement && `it-tooltip--${placement}`]"
+        :class="[placement && `it-tooltip--${placement.split('-')[0]}`]"
         @mouseenter="handleMouseEnter"
         @mouseleave="handleMouseLeave"
       >
@@ -39,14 +39,13 @@ export default defineComponent({
     content: [String, Number],
     disabled: Boolean,
     hoverable: Boolean,
-    transition: String,
     placement: {
       type: String,
       default: Positions.T,
-      validator: (value: Positions) =>
-        [Positions.B, Positions.L, Positions.R, Positions.T].includes(value),
+      validator: (value: Positions) => Object.values(Positions).includes(value),
     },
     permanent: Boolean,
+    autoposition: { type: Boolean, default: true },
   },
   setup(props) {
     const {

@@ -26,7 +26,10 @@
 
     <Box :code="positionsCode" title="Positions">
       <template #description>
-        <p class="px-6">Click to see the popover</p>
+        <p class="px-6">
+          Click to see the popover. There are 12 positions available for
+          popover, most used are shown in the example
+        </p>
       </template>
 
       <it-button-group vertical>
@@ -137,7 +140,20 @@ export default defineComponent({
         property: 'placement',
         type: ['String'],
         default: 'top',
-        values: ['top', 'bottom', 'right', 'left'],
+        values: [
+          'top',
+          'bottom',
+          'right',
+          'left',
+          'bottom-left',
+          'bottom-right',
+          'left-top',
+          'left-bottom',
+          'right-top',
+          'right-bottom',
+          'top-left',
+          'top-right',
+        ],
         description: 'Position of the popover',
       },
       {

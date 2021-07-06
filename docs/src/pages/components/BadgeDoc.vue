@@ -95,6 +95,10 @@
       <it-badge :value="110" :max-value="99">
         <it-tag type="danger">Maximum</it-tag>
       </it-badge>
+
+      <it-tag type="success">
+        <it-badge type="success" point class="mr-1" /> In range</it-tag
+      >
     </Box>
 
     <Box :code="standaloneCode" title="Standalone">

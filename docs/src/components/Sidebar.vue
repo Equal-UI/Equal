@@ -4,6 +4,7 @@
     class="sidebar"
     :style="{
       left,
+      zIndex,
     }"
   >
     <it-button
@@ -109,6 +110,7 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const left = ref('inherit')
+    const zIndex = ref(0)
 
     const components = ref<IComponentListItem[]>(componentsList)
 
@@ -133,15 +135,17 @@ export default defineComponent({
 
     function toggleSidebar() {
       left.value = left.value === 'inherit' ? '0px !important' : 'inherit'
+      zIndex.value = zIndex.value === 0 ? 1 : 0
     }
     function hideSidebar() {
       if (left.value === 'inherit') {
         return
       }
       left.value = 'inherit'
+      zIndex.value = 0
     }
 
-    return { left, toggleSidebar, hideSidebar, componentGroups }
+    return { left, zIndex, toggleSidebar, hideSidebar, componentGroups }
   },
 })
 </script>
@@ -157,7 +161,7 @@ export default defineComponent({
   background-color: #fafbfd;
   border-right: 1px solid #d3dae6;
   height: 100%;
-  z-index: 9;
+  // z-index: 9;
 
   transition: all 0.18s;
 

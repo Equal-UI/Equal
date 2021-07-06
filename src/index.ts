@@ -1,3 +1,4 @@
+import { IEqual } from './types/global'
 import Alert from './components/alert'
 import Avatar from './components/avatar'
 import AvatarGroup from './components/avatar-group'
@@ -79,6 +80,10 @@ function install(Vue: App) {
   Vue.config.globalProperties.$Message = Message
   Vue.config.globalProperties.$Notification = Notification
   Vue.config.globalProperties.$Loading = Loadingbar
+  Vue.config.globalProperties.$Equal = {
+    drawers: [],
+    modals: [],
+  } as IEqual
 }
 
 export default { install }

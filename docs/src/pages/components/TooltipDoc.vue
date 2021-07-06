@@ -21,6 +21,12 @@
       </template>
     </Demobox>
     <Box :code="positionCode" title="Position">
+      <template #description>
+        <p class="mx-6">
+          There are 12 positions available for tooltip, most used are shown in
+          the example
+        </p>
+      </template>
       <div class="flex flex-col items-center">
         <it-button-group vertical>
           <it-tooltip content="Top" placement="top">
@@ -47,6 +53,16 @@
             >
           </template>
           <it-button>Slot content</it-button>
+        </it-tooltip>
+      </div>
+    </Box>
+    <Box :code="slotCode" title="Autoposition">
+      <div class="flex flex-col items-center">
+        <it-tooltip placement="bottom">
+          <template #content>
+            <span>Autopos</span>
+          </template>
+          <it-button>Autoposition</it-button>
         </it-tooltip>
       </div>
     </Box>
@@ -94,7 +110,20 @@ export default defineComponent({
         property: 'placement',
         type: ['String'],
         default: 'top',
-        values: ['top', 'bottom', 'right', 'left'],
+        values: [
+          'top',
+          'bottom',
+          'right',
+          'left',
+          'bottom-left',
+          'bottom-right',
+          'left-top',
+          'left-bottom',
+          'right-top',
+          'right-bottom',
+          'top-left',
+          'top-right',
+        ],
         description: 'Position of the popover',
       },
       {
@@ -110,6 +139,14 @@ export default defineComponent({
         default: 'false',
         values: [],
         description: 'Makes tooltip hoverable',
+      },
+      {
+        property: 'autoposition',
+        type: ['Boolean'],
+        default: 'true',
+        values: [],
+        description:
+          "Tooltip will choose position to always fit in screen taking into account the chosen position in 'placement' property",
       },
     ],
 

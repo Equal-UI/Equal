@@ -56,6 +56,74 @@
         </template>
       </it-drawer>
     </Box>
+
+    <Box :code="nestedCode" title="Nested Drawers">
+      <template #description>
+        <p class="mx-6">
+          Nested drawers isn't a good idea for your interface, but we
+          implemented it anyway
+        </p>
+      </template>
+
+      <it-button type="primary" @click="nestedDrawer = true"
+        >Left Nested drawer</it-button
+      >
+
+      <it-button type="primary" @click="nestedDrawerR = true"
+        >Right Nested drawers</it-button
+      >
+
+      <it-drawer v-model="nestedDrawer" placement="left">
+        <div class="mt-12 flex justify-center">
+          <it-button size="big" @click="nestedDrawer2 = true"
+            >Show nested</it-button
+          >
+        </div>
+      </it-drawer>
+      <it-drawer v-model="nestedDrawer2" placement="left">
+        <div class="mt-12 flex justify-center">
+          <it-button size="big" @click="nestedDrawer3 = true"
+            >Show nested</it-button
+          >
+        </div>
+      </it-drawer>
+      <it-drawer v-model="nestedDrawer3" placement="left">
+        <div class="mt-12 flex justify-center">
+          <it-button size="big" @click="nestedDrawer4 = true"
+            >Show nested</it-button
+          >
+        </div>
+      </it-drawer>
+      <it-drawer v-model="nestedDrawer4" placement="left">
+        <img class="w-full" src="/finally.png" />
+      </it-drawer>
+
+      <it-drawer v-model="nestedDrawerR">
+        <div class="mt-12 flex justify-center">
+          <it-button size="big" @click="nestedDrawerR2 = true"
+            >Show nested</it-button
+          >
+        </div>
+      </it-drawer>
+      <it-drawer v-model="nestedDrawerR2">
+        <div class="mt-12 flex justify-center">
+          <it-button size="big" @click="nestedDrawerR3 = true"
+            >Show nested</it-button
+          >
+        </div>
+      </it-drawer>
+      <it-drawer v-model="nestedDrawerR3">
+        <div class="mt-12 flex justify-center">
+          <it-button size="big" @click="nestedDrawerR4 = true"
+            >Show nested</it-button
+          >
+        </div>
+      </it-drawer>
+      <it-drawer v-model="nestedDrawerR4">
+        <img class="w-full" src="/finally.png" />
+      </it-drawer>
+    </Box>
+
     <props-table :data-sheet="dataSheet" :slot-sheet="slotSheet" />
   </div>
 </template>
@@ -67,7 +135,45 @@ export default defineComponent({
   data: () => ({
     drawerVisible: false,
     drawerLeftVisible: false,
+    nestedDrawer: false,
+    nestedDrawer2: false,
+    nestedDrawer3: false,
+    nestedDrawer4: false,
+    nestedDrawerR: false,
+    nestedDrawerR2: false,
+    nestedDrawerR3: false,
+    nestedDrawerR4: false,
     fakeUsers: [],
+
+    nestedCode: `
+<it-button type="primary" @click="nestedDrawer = true">Left Nested drawer</it-button>
+<it-button type="primary" @click="nestedDrawerR = true">Right Nested drawers</it-button>
+
+<it-drawer v-model="nestedDrawer" placement="left">
+  <it-button @click="nestedDrawer2 = true">Show nested</it-button>
+</it-drawer>
+<it-drawer v-model="nestedDrawer2" placement="left">
+  <it-button @click="nestedDrawer3 = true">Show nested</it-button>
+</it-drawer>
+<it-drawer v-model="nestedDrawer3" placement="left">
+  <it-button @click="nestedDrawer4 = true">Show nested</it-button>
+</it-drawer>
+<it-drawer v-model="nestedDrawer4" placement="left">
+  <img class="w-full" src="/finally.png" />
+</it-drawer>
+<it-drawer v-model="nestedDrawerR">
+  <it-button @click="nestedDrawerR2 = true">Show nested</it-button>
+</it-drawer>
+<it-drawer v-model="nestedDrawerR2">
+  <it-button @click="nestedDrawerR3 = true">Show nested</it-button>
+</it-drawer>
+<it-drawer v-model="nestedDrawerR3">
+  <it-button @click="nestedDrawerR4 = true">Show nested</it-button>
+</it-drawer>
+<it-drawer v-model="nestedDrawerR4">
+  <img class="w-full" src="/finally.png" />
+</it-drawer>`,
+
     exampleCode: `<it-button @click="drawerLeftVisible = true" type="primary">
     Left drawer
     </it-button>
