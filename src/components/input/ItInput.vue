@@ -76,7 +76,7 @@ export default defineComponent({
     suffixIcon: String,
     prefixIcon: String,
     disabled: Boolean,
-    modelValue: String,
+    modelValue: String || Number,
   },
   setup(props, { emit }) {
     const focus = ref(false)
