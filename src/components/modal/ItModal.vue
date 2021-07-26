@@ -95,7 +95,7 @@ export default defineComponent({
       async (active: boolean) => {
         await nextTick()
         const modalsList =
-          Equal!.appContext.config.globalProperties.$Equal.drawers
+          Equal!.appContext.config.globalProperties.$Equal.modals
         if (modalRef.value) {
           if (active) {
             modalsList.push(modalBody.value)
