@@ -6,6 +6,7 @@
     <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
     <textarea
       ref="textarea"
+      :value="modelValue"
       :style="{ resize, 'z-index': mask ? '100' : null }"
       :disabled="disabled"
       class="it-textarea"
@@ -14,8 +15,7 @@
       @input="onInput"
       @focus="focus = true"
       @blur="focus = false"
-      >{{ modelValue }}</textarea
-    >
+    ></textarea>
   </div>
 </template>
 
@@ -39,6 +39,7 @@ export default defineComponent({
     modelValue: String,
     mask: Boolean,
   },
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
     const textarea = ref(null)
     const focus = ref(false)
