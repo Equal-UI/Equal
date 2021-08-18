@@ -104,8 +104,6 @@ export const usePopover = (props: any) => {
             window.innerWidth - triggerTempGBCR[posSide as keyof DOMRect]
         }
 
-        console.log(searchPredicate)
-
         if (
           searchPredicate >=
           popoverTempGBCR[PosIsVertical ? 'height' : 'width'] + 24

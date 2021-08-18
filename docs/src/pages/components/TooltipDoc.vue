@@ -15,8 +15,7 @@
           placeholder="Select position"
           label-top="Tag position"
           :options="tooltipPlacements"
-        >
-        </it-select>
+        ></it-select>
         <it-input v-model="tooltipContent" label-top="Tooltip text" />
       </template>
     </Demobox>
@@ -48,15 +47,15 @@
       <div class="flex flex-col items-center">
         <it-tooltip placement="top">
           <template #content>
-            <span
-              ><it-tag type="primary">Wow</it-tag> &nbsp; I came from slot</span
-            >
+            <span>
+              <it-tag type="primary">Wow</it-tag>&nbsp; I came from slot
+            </span>
           </template>
           <it-button>Slot content</it-button>
         </it-tooltip>
       </div>
     </Box>
-    <Box :code="slotCode" title="Autoposition">
+    <Box :code="autopositionCode" title="Autoposition">
       <div class="flex flex-col items-center">
         <it-tooltip placement="bottom">
           <template #content>
@@ -92,6 +91,14 @@ export default defineComponent({
 <it-tooltip content="Bottom" placement="bottom">
   <it-button>Bottom</it-button>
 </it-tooltip>`,
+
+    autopositionCode: `
+  <it-tooltip placement="bottom">
+      <template #content>
+        <span>Autopos</span>
+      </template>
+      <it-button>Autoposition</it-button>
+  </it-tooltip>`,
 
     slotCode: `<it-tooltip placement="top">
   <span slot="content"><it-tag type="primary">Wow</it-tag> &nbsp; I came from slot</span>
