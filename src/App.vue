@@ -421,7 +421,8 @@
     <div>
       <h3>Drawer</h3>
       <it-button @click="drawer = true">Show drawer</it-button>
-      <it-drawer v-model="drawer" />
+      <it-switch v-model="toggleDrawerFixed" label="Fixed" />
+      <it-drawer v-model="drawer" :fixed="toggleDrawerFixed" />
     </div>
 
     <div>
@@ -512,6 +513,7 @@ export default {
     color: defaultColors,
     toggleValue: 'Light',
     toggleIconsValue: 'wb_sunny',
+    toggleDrawerFixed: false,
     switchBtn: false,
     selectValue: '',
     selectOptions: [

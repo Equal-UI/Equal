@@ -16,7 +16,7 @@
           ref="drawerRef"
           :style="{ width }"
           class="it-drawer-body"
-          :class="`it-drawer-body--${placement}`"
+          :class="`it-drawer-body--${placement}${fixed ? '--fixed' : ''}`"
         >
           <slot></slot>
         </div>
@@ -52,6 +52,7 @@ export default defineComponent({
       validator: (value: Positions) =>
         [Positions.L, Positions.R].includes(value),
     },
+    fixed: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
     let { modelValue } = toRefs(props)
@@ -112,7 +113,9 @@ export default defineComponent({
             }%)`
           })
 
-          drawerRef.value.style.transform = ''
+          if (drawerRef.value) {
+            drawerRef.value.style.transform = ''
+          }
 
           if (!props.hideMask) {
             enableBodyScroll(focusRef.value!)
