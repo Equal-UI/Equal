@@ -16,7 +16,9 @@
           ref="drawerRef"
           :style="{ width }"
           class="it-drawer-body"
-          :class="`it-drawer-body--${placement}${fixed ? '--fixed' : ''}`"
+          :class="`it-drawer-body--${placement}${
+            fixed ? '--fixed' : ''
+          } it-drawer-body--${small ? 'small' : ''}`"
         >
           <slot></slot>
         </div>
@@ -53,6 +55,7 @@ export default defineComponent({
         [Positions.L, Positions.R].includes(value),
     },
     fixed: { type: Boolean, default: false },
+    small: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
     let { modelValue } = toRefs(props)

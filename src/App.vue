@@ -422,7 +422,14 @@
       <h3>Drawer</h3>
       <it-button @click="drawer = true">Show drawer</it-button>
       <it-switch v-model="toggleDrawerFixed" label="Fixed" />
-      <it-drawer v-model="drawer" :fixed="toggleDrawerFixed" />
+      <it-switch v-model="toggleDrawerSmall" label="Small" />
+      <it-toggle v-model="drawerPlacement" :options="['left', 'right']" />
+      <it-drawer
+        v-model="drawer"
+        :fixed="toggleDrawerFixed"
+        :small="toggleDrawerSmall"
+        :placement="drawerPlacement"
+      />
     </div>
 
     <div>
@@ -484,6 +491,7 @@
 </template>
 
 <script>
+import ItToggle from './components/toggle/ItToggle.vue'
 const defaultColors = {
   hex: '#194d33e6',
   hsl: {
@@ -508,12 +516,14 @@ const defaultColors = {
 }
 
 export default {
+  components: { ItToggle },
   name: 'app',
   data: () => ({
     color: defaultColors,
     toggleValue: 'Light',
     toggleIconsValue: 'wb_sunny',
     toggleDrawerFixed: false,
+    toggleDrawerSmall: false,
     switchBtn: false,
     selectValue: '',
     selectOptions: [
@@ -535,6 +545,7 @@ export default {
     inputValue: '',
     modal: false,
     drawer: false,
+    drawerPlacement: 'left',
     textareaValue: '',
     numberInputValue: 1,
     stepSliderValue: 40,
