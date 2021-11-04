@@ -245,7 +245,7 @@ export default defineComponent({
         description: 'Content of the notification',
       },
       {
-        property: 'placeennt',
+        property: 'placement',
         type: ['String'],
         default: 'top-right',
         values: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
