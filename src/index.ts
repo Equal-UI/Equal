@@ -35,14 +35,14 @@ import Toggle from './components/toggle'
 import Tooltip from './components/tooltip'
 
 import './styles/index.less'
-import { App } from 'vue'
+import { App, defineComponent } from 'vue'
+import { EqualUIConfiguration } from './types/variant'
 
-const components = {
+const components: Record<string, ReturnType<typeof defineComponent>> = {
   Alert,
   Avatar,
   AvatarGroup,
   Badge,
-  // Breadcrumbs,
   Button,
   ButtonGroup,
   Checkbox,
@@ -71,10 +71,8 @@ const components = {
   Tooltip,
 }
 
-function install(Vue: App) {
-  // tslint:disable-next-line: forin
+function install(Vue: App, configuration: EqualUIConfiguration) {
   for (const component in components) {
-    // @ts-expect-error
     Vue.component(components[component].name, components[component])
   }
   Vue.config.globalProperties.$Message = Message
@@ -84,6 +82,7 @@ function install(Vue: App) {
     drawers: [],
     modals: [],
   } as IEqual
+  Vue.provide('config', configuration)
 }
 
 export default { install }
@@ -94,7 +93,6 @@ export { default as AvatarGroup } from './components/avatar-group'
 export { default as Button } from './components/button'
 export { default as ButtonGroup } from './components/button-group'
 export { default as Badge } from './components/badge'
-// export { default as Breadcrumbs } from './components/breadcrumbs'
 export { default as Checkbox } from './components/checkbox'
 export { default as Collapse } from './components/collapse'
 export { default as CollapseItem } from './components/collapse-item'

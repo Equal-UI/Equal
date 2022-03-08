@@ -1,40 +1,43 @@
 <template>
   <span
     :class="[
-      'it-tag',
-      type && `it-tag--${type}`,
-      filled && `it-tag--${type}--filled`,
+      variant.root,
+      {
+        [variant.filled]: filled,
+      },
     ]"
   >
     <slot></slot>
-    <it-icon v-if="closable" name="clear" class="it-tag-close" @click="close" />
+    <it-icon
+      :variants="{ tagClose: { root: variant.closeIcon } }"
+      variant="tagClose"
+      v-if="closable"
+      name="clear"
+      @click="close"
+    />
   </span>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Colors } from '@/models/enums'
+import { computed, defineComponent } from 'vue'
+import { Components } from '@/models/enums'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { ITTagOptions } from '@/types/components/components'
 
 export default defineComponent({
   name: 'it-tag',
   props: {
-    type: {
-      default: Colors.NEUTRAL,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-          Colors.BLACK,
-          Colors.NEUTRAL,
-        ].includes(value),
-    },
+    ...getVariantPropsWithClassesList<ITTagOptions>(),
     closable: { type: Boolean },
     filled: { type: Boolean },
   },
   emits: ['close'],
   setup(props, { emit }) {
+    const variant = computed(() =>
+      useVariants<ITTagOptions>(Components.ITTag, props),
+    )
+
     function close() {
       if (!props.closable) {
         return
@@ -42,7 +45,7 @@ export default defineComponent({
       emit('close')
     }
 
-    return { close }
+    return { close, variant }
   },
 })
 </script>

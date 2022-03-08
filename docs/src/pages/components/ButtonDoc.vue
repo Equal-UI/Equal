@@ -4,7 +4,7 @@
 
     <Demobox>
       <it-button
-        :type="buttonType"
+        :variant="buttonType"
         :outlined="buttonOutlined"
         :round="buttonRound"
         :pulse="buttonPulse"
@@ -34,38 +34,34 @@
     </Demobox>
     <Box :code="codeType" title="Type">
       <it-button>Button</it-button>
-      <it-button type="primary">Button</it-button>
-      <it-button type="success">Button</it-button>
-      <it-button type="danger">Button</it-button>
-      <it-button type="warning">Button</it-button>
-      <it-button type="black">Button</it-button>
+      <it-button variant="primary">Button</it-button>
+      <it-button variant="success">Button</it-button>
+      <it-button variant="danger">Button</it-button>
+      <it-button variant="warning">Button</it-button>
     </Box>
     <Box :code="codeOutline" title="Outline">
-      <it-button type="primary" outlined>Button</it-button>
-      <it-button type="success" outlined>Button</it-button>
-      <it-button type="danger" outlined>Button</it-button>
-      <it-button type="warning" outlined>Button</it-button>
-      <it-button type="black" outlined>Button</it-button>
+      <it-button variant="primary" outlined>Button</it-button>
+      <it-button variant="success" outlined>Button</it-button>
+      <it-button variant="danger" outlined>Button</it-button>
+      <it-button variant="warning" outlined>Button</it-button>
     </Box>
     <Box :code="codeText" title="Text type">
       <it-button text>Button</it-button>
-      <it-button type="primary" text>Button</it-button>
-      <it-button type="success" text>Button</it-button>
-      <it-button type="danger" text>Button</it-button>
-      <it-button type="warning" text>Button</it-button>
+      <it-button variant="primary" text>Button</it-button>
+      <it-button variant="success" text>Button</it-button>
+      <it-button variant="danger" text>Button</it-button>
+      <it-button variant="warning" text>Button</it-button>
     </Box>
     <Box :code="codeRound" title="Round">
       <it-button round>Button</it-button>
-      <it-button type="primary" round>Button</it-button>
-      <it-button type="success" round>Button</it-button>
-      <it-button type="danger" round>Button</it-button>
-      <it-button type="warning" round>Button</it-button>
-      <it-button type="black" round>Button</it-button>
+      <it-button variant="primary" round>Button</it-button>
+      <it-button variant="success" round>Button</it-button>
+      <it-button variant="danger" round>Button</it-button>
+      <it-button variant="warning" round>Button</it-button>
     </Box>
     <Box :code="codeBlock" title="Block">
-      <it-button block>Button</it-button>
-      <br />
-      <it-button class="ml-0" type="primary" block>Button</it-button>
+      <it-button class="w-full">Button</it-button>
+      <it-button class="w-full" variant="primary" block>Button</it-button>
     </Box>
     <Box :code="codeSize" title="Size">
       <it-button size="small">Button</it-button>
@@ -80,21 +76,21 @@
     <Box :code="toggleCode" title="Toggle">
       <it-button
         :icon="following ? 'done' : 'person'"
-        :type="following ? 'primary' : 'neutral'"
+        :variant="following ? 'primary' : 'neutral'"
         @click="following = !following"
         >{{ following ? 'Following' : 'Follow' }}</it-button
       >
     </Box>
     <Box :code="codeLoading" title="Loading">
-      <it-button type="primary" loading>Loading</it-button>
-      <it-button type="primary" loading outlined>Loading</it-button>
+      <it-button variant="primary" loading>Loading</it-button>
+      <it-button variant="primary" loading outlined>Loading</it-button>
     </Box>
     <Box :code="codePulse" title="Pulse">
       <template #description>
         <p class="mx-6">Pulse helps you to catch user's attention</p>
       </template>
-      <it-button type="primary" pulse>Look at me</it-button>
-      <it-button type="primary" pulse outlined>Look at me</it-button>
+      <it-button variant="primary" pulse>Look at me</it-button>
+      <it-button variant="primary" pulse outlined>Look at me</it-button>
     </Box>
     <Box :code="codeDisabled" title="Disabled">
       <it-button size="small" disabled>Button</it-button>
@@ -109,9 +105,9 @@
           <it-button>Right</it-button>
         </it-button-group>
         <it-button-group>
-          <it-button type="primary" outlined>Left</it-button>
-          <it-button type="primary" outlined>Middle</it-button>
-          <it-button type="primary" outlined>Right</it-button>
+          <it-button variant="primary" outlined>Left</it-button>
+          <it-button variant="primary" outlined>Middle</it-button>
+          <it-button variant="primary" outlined>Right</it-button>
         </it-button-group>
       </div>
     </Box>
@@ -124,9 +120,9 @@
           <it-button>Bottom</it-button>
         </it-button-group>
         <it-button-group vertical>
-          <it-button type="primary" outlined>Top</it-button>
-          <it-button type="primary" outlined>Middle</it-button>
-          <it-button type="primary" outlined>Bottom</it-button>
+          <it-button variant="primary" outlined>Top</it-button>
+          <it-button variant="primary" outlined>Middle</it-button>
+          <it-button variant="primary" outlined>Bottom</it-button>
         </it-button-group>
       </div>
     </Box>
@@ -150,39 +146,29 @@ export default defineComponent({
     buttonPulse: false,
     buttonBlock: false,
     buttonType: 'primary',
-    buttonTypes: [
-      'neutral',
-      'primary',
-      'success',
-      'danger',
-      'warning',
-      'black',
-    ],
+    buttonTypes: ['neutral', 'primary', 'success', 'danger', 'warning'],
     buttonIcon: false,
 
     codeType: `<it-button>Button</it-button>
-<it-button type="primary">Button</it-button>
-<it-button type="success">Button</it-button>
-<it-button type="danger">Button</it-button>
-<it-button type="warning">Button</it-button>
-<it-button type="black">Button</it-button>
+<it-button variant="primary">Button</it-button>
+<it-button variant="success">Button</it-button>
+<it-button variant="danger">Button</it-button>
+<it-button variant="warning">Button</it-button>
 `,
     codeSize: `<it-button size="small">Button</it-button>
 <it-button size="normal">Button</it-button>
 <it-button size="big">Button</it-button>`,
 
-    codeOutline: `<it-button type="primary" outlined>Button</it-button>
-<it-button type="success" outlined>Button</it-button>
-<it-button type="danger" outlined>Button</it-button>
-<it-button type="warning" outlined>Button</it-button>
-<it-button type="black" outlined>Button</it-button>`,
+    codeOutline: `<it-button variant="primary" outlined>Button</it-button>
+<it-button variant="success" outlined>Button</it-button>
+<it-button variant="danger" outlined>Button</it-button>
+<it-button variant="warning" outlined>Button</it-button>`,
 
     codeRound: `<it-button round>Button</it-button>
-<it-button type="primary" round>Button</it-button>
-<it-button type="success" round>Button</it-button>
-<it-button type="danger" round>Button</it-button>
-<it-button type="warning" round>Button</it-button>
-<it-button type="black" round>Button</it-button>`,
+<it-button variant="primary" round>Button</it-button>
+<it-button variant="success" round>Button</it-button>
+<it-button variant="danger" round>Button</it-button>
+<it-button variant="warning" round>Button</it-button>`,
 
     codeIcon: `<it-button icon="face">Button</it-button>
 <it-button icon="face" />
@@ -191,21 +177,21 @@ export default defineComponent({
     toggleCode: `<it-button
   @click="following = !following"
   :icon="following ? 'done' : 'person'"
-  :type="following ? 'primary' : 'neutral'"
+  :variant="following ? 'primary' : 'neutral'"
   >{{ following ? 'Following' : 'Follow' }}</it-button>`,
 
-    codeLoading: `<it-button type="primary" loading>Loading</it-button>
-<it-button type="primary" loading outlined>Loading</it-button>`,
+    codeLoading: `<it-button variant="primary" loading>Loading</it-button>
+<it-button variant="primary" loading outlined>Loading</it-button>`,
 
-    codePulse: `<it-button type="primary" pulse>Look at me</it-button>
-<it-button type="primary" pulse outlined>Look at me</it-button>`,
+    codePulse: `<it-button variant="primary" pulse>Look at me</it-button>
+<it-button variant="primary" pulse outlined>Look at me</it-button>`,
 
     codeDisabled: `<it-button size="small" disabled>Button</it-button>
 <it-button size="normal" disabled>Button</it-button>
 <it-button size="big" disabled>Button</it-button>`,
 
-    codeBlock: `<it-button block>Button</it-button>
-<it-button type="primary" block>Button</it-button>`,
+    codeBlock: `<it-button class="w-full">Button</it-button>
+<it-button class="w-full" variant="primary" block>Button</it-button>`,
 
     codeGroup: `<it-button-group>
   <it-button>Left</it-button>
@@ -213,9 +199,9 @@ export default defineComponent({
   <it-button>Right</it-button>
 </it-button-group>
 <it-button-group>
-  <it-button type="primary" outlined>Left</it-button>
-  <it-button type="primary" outlined>Middle</it-button>
-  <it-button type="primary" outlined>Right</it-button>
+  <it-button variant="primary" outlined>Left</it-button>
+  <it-button variant="primary" outlined>Middle</it-button>
+  <it-button variant="primary" outlined>Right</it-button>
 </it-button-group>`,
 
     codeVerticalGroup: `<it-button-group vertical>
@@ -224,16 +210,16 @@ export default defineComponent({
   <it-button>Right</it-button>
 </it-button-group>
 <it-button-group vertical>
-  <it-button type="primary" outlined>Left</it-button>
-  <it-button type="primary" outlined>Middle</it-button>
-  <it-button type="primary" outlined>Right</it-button>
+  <it-button variant="primary" outlined>Left</it-button>
+  <it-button variant="primary" outlined>Middle</it-button>
+  <it-button variant="primary" outlined>Right</it-button>
 </it-button-group>`,
 
     codeText: `<it-button text>Button</it-button>
-<it-button type="primary" text>Button</it-button>
-<it-button type="success" text>Button</it-button>
-<it-button type="danger" text>Button</it-button>
-<it-button type="warning" text>Button</it-button>`,
+<it-button variant="primary" text>Button</it-button>
+<it-button variant="success" text>Button</it-button>
+<it-button variant="danger" text>Button</it-button>
+<it-button variant="warning" text>Button</it-button>`,
 
     dataSheetGroup: [
       {
@@ -247,11 +233,11 @@ export default defineComponent({
 
     dataSheet: [
       {
-        property: 'type',
+        property: 'Variant',
         type: ['String'],
         default: 'neutral',
-        values: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
-        description: 'Type of the button',
+        values: ['primary', 'success', 'danger', 'warning', 'neutral'],
+        description: 'Variant of the button',
       },
       {
         property: 'outlined',

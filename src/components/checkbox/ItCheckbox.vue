@@ -1,96 +1,84 @@
 <template>
-  <label class="it-checkbox-wrapper">
-    <span
-      class="it-checkbox-check-wrapper"
-      :class="[pulse && !disabled && 'pulse']"
-    >
+  <label :class="variant.root">
+    <span>
       <input
         type="checkbox"
         v-bind="$attrs"
-        class="it-checkbox-input"
+        class="absolute inset-0 m-0 w-full h-full opacity-0 cursor-pointer peer"
         :disabled="disabled"
         @change="toggle"
+        :checked="modelValue"
       />
-      <span
-        class="it-checkbox"
-        :class="[
-          `it-checkbox--${type}`,
-          modelValue && `it-checkbox--${type}--checked`,
-          disabled && 'it-checkbox--disabled',
-        ]"
-      >
-        <it-icon style="font-size: 16px" :name="icon" />
+      <span :class="variant.checkbox">
+        <it-icon
+          :variants="{
+            custom: {
+              root: [
+                variant.checkIcon,
+                {
+                  [variant.checkIconActive]: modelValue,
+                },
+              ],
+            },
+          }"
+          variant="custom"
+          :name="icon"
+        />
       </span>
     </span>
-    <span class="it-checkbox-label-group">
+    <span
+      v-if="label || subLabel || $slots.default || $slots.sublabel"
+      :class="variant.labelGroup"
+    >
       <span
-        v-if="label && !$slots.default"
-        class="it-checkbox-label"
+        v-if="label || $slots.default"
         :class="[
-          lineThrough && modelValue && 'it-checkbox-label--linethrough',
-          disabled && 'it-checkbox-label--disabled',
+          variant.label,
+          { [variant.lineThrough]: lineThrough && modelValue },
         ]"
-        >{{ label }}</span
-      >
-      <span
-        v-if="subLabel && !$slots.sublabel"
-        class="it-checkbox-label it-checkbox-label--sub"
-        :class="[disabled && 'it-checkbox-label--disabled']"
-        >{{ subLabel }}</span
-      >
-
-      <span
-        v-if="$slots.default"
-        class="it-checkbox-label"
-        :class="[
-          lineThrough && modelValue && 'it-checkbox-label--linethrough',
-          disabled && 'it-checkbox-label--disabled',
-        ]"
-      >
-        <slot></slot>
+        ><slot>{{ label }}</slot>
       </span>
-      <span
-        v-if="$slots.sublabel"
-        class="it-checkbox-label it-checkbox-label--sub"
-        :class="[disabled && 'it-checkbox-label--disabled']"
-      >
-        <slot name="sublabel"></slot>
+      <span v-if="subLabel || $slots.sublabel" :class="variant.subLabel">
+        <slot name="sublabel">{{ subLabel }}</slot>
       </span>
     </span>
   </label>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Colors } from '@/models/enums'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITCheckboxOptions } from '@/types/components/components'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'it-checkbox',
+  name: Components.ITCheckbox,
   inheritAttrs: false,
   props: {
-    type: {
-      default: Colors.PRIMARY,
-      type: String,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-          Colors.BLACK,
-          Colors.NEUTRAL,
-        ].includes(value),
-    },
+    ...getVariantPropsWithClassesList<ITCheckboxOptions>(),
     label: { type: String },
     subLabel: { type: String },
     pulse: { type: Boolean },
     disabled: { type: Boolean },
     lineThrough: { type: Boolean },
     icon: { type: String, default: 'check' },
-    color: { type: String },
     modelValue: {},
   },
   setup(props, { emit }) {
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+      return useVariants<ITCheckboxOptions>(
+        Components.ITCheckbox,
+        <VariantJSWithClassesListProps<ITCheckboxOptions>>customProps,
+      )
+    })
     function toggle() {
       if (props.disabled) {
         return
@@ -98,7 +86,7 @@ export default defineComponent({
       const newValue = !props.modelValue
       emit('update:modelValue', newValue)
     }
-    return { toggle }
+    return { toggle, variant }
   },
 })
 </script>

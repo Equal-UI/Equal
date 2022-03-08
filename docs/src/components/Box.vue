@@ -8,6 +8,7 @@
     <div
       class="
         it-box-scene
+        gap-4
         w-full
         py-10
         px-6
@@ -96,15 +97,15 @@ export default defineComponent({
     }
   }
 
-  &-scene {
-    & > * + * {
-      @apply ml-4;
-    }
+  // &-scene {
+  //   & > * + * {
+  //     @apply ml-4;
+  //   }
 
-    & > * {
-      @apply mb-4;
-    }
-  }
+  //   & > * {
+  //     @apply mb-4;
+  //   }
+  // }
 
   &-code {
     border-bottom: 1px solid #d3dae6;

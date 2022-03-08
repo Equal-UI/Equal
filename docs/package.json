@@ -23,7 +23,7 @@
     "autoprefixer": "^10.2.4",
     "less": "^3.12.2",
     "postcss": "^8.2.6",
-    "tailwindcss": "^2.0.3",
+    "tailwindcss": "^3.0.23",
     "vite": "^2.0.0-beta.44",
     "vue-prism-component": "^2.0.0"
   }

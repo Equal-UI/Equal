@@ -12,19 +12,19 @@
     </Demobox>
 
     <Box :code="codeHorizontal" title="Horizontal">
-      <p class="m-0 text-sm">
+      <p class="text-sm">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
         gone to waste until...well, let's just say your hour has come again.
       </p>
-      <it-divider class="ml-0" />
-      <p class="m-0 text-sm">
+      <it-divider />
+      <p class="text-sm">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
         gone to waste until...well, let's just say your hour has come again.
       </p>
-      <it-divider class="ml-0" />
-      <p class="m-0 text-sm">
+      <it-divider />
+      <p class="text-sm">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
         gone to waste until...well, let's just say your hour has come again.

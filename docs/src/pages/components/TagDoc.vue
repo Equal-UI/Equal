@@ -7,7 +7,7 @@
         v-show="show"
         :filled="tagFilled"
         :closable="tagClosable"
-        :type="tagType"
+        :variant="tagvariant"
         @close="onClose"
       >
         <span>{{ tagText }}</span>
@@ -15,10 +15,10 @@
 
       <template #props>
         <it-select
-          v-model="tagType"
-          placeholder="Select type"
-          label-top="Tag type"
-          :options="tagTypes"
+          v-model="tagvariant"
+          placeholder="Select variant"
+          label-top="Tag variant"
+          :options="tagvariants"
         >
         </it-select>
         <it-input v-model="tagText" label-top="Tag text" />
@@ -26,21 +26,19 @@
         <it-checkbox v-model="tagClosable" label="Closable" />
       </template>
     </Demobox>
-    <Box :code="typesCode" title="Types">
+    <Box :code="variantsCode" title="variants">
       <it-tag>Neutral</it-tag>
-      <it-tag type="primary">Primary</it-tag>
-      <it-tag type="success">Success</it-tag>
-      <it-tag type="danger">Danger</it-tag>
-      <it-tag type="warning">Warning</it-tag>
-      <it-tag type="black">Black</it-tag>
+      <it-tag variant="primary">Primary</it-tag>
+      <it-tag variant="success">Success</it-tag>
+      <it-tag variant="danger">Danger</it-tag>
+      <it-tag variant="warning">Warning</it-tag>
     </Box>
     <Box :code="filledCode" title="Filled">
       <it-tag>Neutral</it-tag>
-      <it-tag type="primary" filled> Primary</it-tag>
-      <it-tag type="success" filled>Success</it-tag>
-      <it-tag type="danger" filled>Danger</it-tag>
-      <it-tag type="warning" filled>Warning</it-tag>
-      <it-tag type="black" filled>Black</it-tag>
+      <it-tag variant="primary" filled> Primary</it-tag>
+      <it-tag variant="success" filled>Success</it-tag>
+      <it-tag variant="danger" filled>Danger</it-tag>
+      <it-tag variant="warning" filled>Warning</it-tag>
     </Box>
     <props-table :data-sheet="dataSheet" :event-sheet="eventSheet" />
   </div>
@@ -56,22 +54,20 @@ export default defineComponent({
     tagText: 'Tag',
     tagClosable: false,
     tagFilled: false,
-    tagType: 'neutral',
-    tagTypes: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
+    tagvariant: 'neutral',
+    tagvariants: ['primary', 'success', 'danger', 'warning', 'neutral'],
 
-    typesCode: `<it-tag>Neutral</it-tag>
-<it-tag type="primary">Primary</it-tag>
-<it-tag type="success">Success</it-tag>
-<it-tag type="danger">Danger</it-tag>
-<it-tag type="warning">Warning</it-tag>
-<it-tag type="black">Black</it-tag>`,
+    variantsCode: `<it-tag>Neutral</it-tag>
+<it-tag variant="primary">Primary</it-tag>
+<it-tag variant="success">Success</it-tag>
+<it-tag variant="danger">Danger</it-tag>
+<it-tag variant="warning">Warning</it-tag>`,
 
     filledCode: `<it-tag>Neutral</it-tag>
-<it-tag type="primary" filled >Primary</it-tag>
-<it-tag type="success" filled >Success</it-tag>
-<it-tag type="danger" filled >Danger</it-tag>
-<it-tag type="warning" filled >Warning</it-tag>
-<it-tag type="black" filled >Black</it-tag>
+<it-tag variant="primary" filled>Primary</it-tag>
+<it-tag variant="success" filled>Success</it-tag>
+<it-tag variant="danger" filled>Danger</it-tag>
+<it-tag variant="warning" filled>Warning</it-tag>
 `,
 
     eventSheet: [
@@ -85,11 +81,11 @@ export default defineComponent({
 
     dataSheet: [
       {
-        property: 'type',
+        property: 'variant',
         type: ['String'],
         default: 'neutral',
-        values: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
-        description: 'Type of the tag',
+        values: ['primary', 'success', 'danger', 'warning', 'neutral'],
+        description: 'variant of the tag',
       },
       {
         property: 'filled',

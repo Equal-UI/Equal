@@ -5,6 +5,12 @@
     "es2021": true,
     "node": true
   },
+  "prettier/prettier": [
+    "error",
+    {
+      "endOfLine": "auto"
+    }
+  ],
   "extends": [
     "plugin:vue/vue3-recommended",
     "eslint:recommended",

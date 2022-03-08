@@ -1,6 +1,9 @@
 <template>
-  <div id="grid">
-    <div>
+  <div class="absolute bottom-2 right-2 p-4 border bg-white">
+    <it-switch v-model="dark" label="Dark theme" />
+  </div>
+  <div id="grid" :class="{ dark }" class="bg-white dark:bg-stone-900">
+    <div class="bg-white dark:bg-stone-900">
       <h3>Button</h3>
 
       <it-button
@@ -20,9 +23,12 @@
     <div>
       <h3>Icon</h3>
 
-      <it-icon box box-color="#3051ff" color="#fff" name="info" />
-      <it-icon box box-color="#07d85b" color="#fff" name="room" />
-      <it-icon box box-color="#ff45c0" color="#fff" name="favorite" />
+      <it-icon
+        name="info"
+        box
+        variant="test"
+        :variants="{ test: { box: 'bg-blue-600 text-white' } }"
+      />
     </div>
 
     <div>
@@ -47,10 +53,41 @@
     <div>
       <h3>Alert</h3>
 
-      <it-alert iconbox type="primary" :title="alertTitle" :body="alertTitle" />
-      <it-alert iconbox type="success" :title="alertTitle" :body="alertTitle" />
-      <it-alert iconbox type="danger" :title="alertTitle" :body="alertTitle" />
-      <it-alert iconbox type="warning" :title="alertTitle" :body="alertTitle" />
+      <it-alert variant="primary" :title="alertTitle" :body="alertTitle" />
+      <it-alert
+        iconbox
+        variant="primary"
+        :title="alertTitle"
+        :body="alertTitle"
+      />
+      <it-alert
+        iconbox
+        iconboxRounded
+        variant="primary"
+        :title="alertTitle"
+        :body="alertTitle"
+      />
+      <it-alert variant="success" :title="alertTitle" :body="alertTitle" />
+      <it-alert
+        iconbox
+        variant="success"
+        :title="alertTitle"
+        :body="alertTitle"
+      />
+      <it-alert variant="danger" :title="alertTitle" :body="alertTitle" />
+      <it-alert
+        iconbox
+        variant="danger"
+        :title="alertTitle"
+        :body="alertTitle"
+      />
+      <it-alert variant="warning" :title="alertTitle" :body="alertTitle" />
+      <it-alert
+        iconbox
+        variant="warning"
+        :title="alertTitle"
+        :body="alertTitle"
+      />
     </div>
 
     <div>
@@ -74,12 +111,14 @@
       <h3>Tag</h3>
 
       <it-tag>Neutral</it-tag>
-      <it-tag type="primary" closable>Primary</it-tag>
-      <it-tag type="primary" filled closable>Primary</it-tag>
-      <it-tag type="success">Success</it-tag>
-      <it-tag type="danger">Danger</it-tag>
-      <it-tag type="warning">Warning</it-tag>
-      <it-tag type="black">Black</it-tag>
+      <it-tag variant="primary" closable>Primary</it-tag>
+      <it-tag variant="primary" filled closable>Primary</it-tag>
+      <it-tag variant="success">Success</it-tag>
+      <it-tag variant="success" filled>Success</it-tag>
+      <it-tag variant="danger">Danger</it-tag>
+      <it-tag variant="danger" filled>Danger</it-tag>
+      <it-tag variant="warning">Warning</it-tag>
+      <it-tag variant="warning" filled>Warning</it-tag>
     </div>
 
     <div>
@@ -113,12 +152,11 @@
     <div>
       <h3>Checkbox</h3>
 
-      <it-checkbox v-model="checkboxValue" type="primary" label="Primary" />
-      <it-checkbox v-model="checkboxValue" type="success" label="Success" />
-      <it-checkbox v-model="checkboxValue" type="danger" label="Danger" />
-      <it-checkbox v-model="checkboxValue" type="warning" label="Warning" />
-      <it-checkbox v-model="checkboxValue" type="black" label="Black" />
-      <it-checkbox v-model="checkboxValue" type="neutral" label="Neutral" />
+      <it-checkbox v-model="checkboxValue" variant="primary" label="Primary" />
+      <it-checkbox v-model="checkboxValue" variant="success" label="Success" />
+      <it-checkbox v-model="checkboxValue" variant="danger" label="Danger" />
+      <it-checkbox v-model="checkboxValue" variant="warning" label="Warning" />
+      <it-checkbox v-model="checkboxValue" variant="neutral" label="Neutral" />
     </div>
 
     <div>
@@ -482,7 +520,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 const defaultColors = {
   hex: '#194d33e6',
   hsl: {
@@ -509,6 +547,7 @@ const defaultColors = {
 export default {
   name: 'app',
   data: () => ({
+    dark: false,
     color: defaultColors,
     toggleValue: 'Light',
     toggleIconsValue: 'wb_sunny',

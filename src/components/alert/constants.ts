@@ -6,10 +6,3 @@ export const ICON_NAME_BY_COLOR: Partial<Record<Colors, string>> = {
   [Colors.WARNING]: 'error_outline',
   [Colors.DANGER]: 'clear',
 }
-
-export const ALLOWED_TYPES = [
-  Colors.PRIMARY,
-  Colors.SUCCESS,
-  Colors.DANGER,
-  Colors.WARNING,
-]

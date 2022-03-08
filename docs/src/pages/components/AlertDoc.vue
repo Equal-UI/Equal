@@ -6,7 +6,7 @@
       <it-alert
         v-show="alertVisible"
         :iconbox="alertIconBox"
-        :type="alertType"
+        :variant="alertType"
         :show-icon="alertShowIcon"
         :closable="alertClosable"
         :title="alertTitle"
@@ -30,45 +30,44 @@
     </Demobox>
 
     <Box :code="typesCode" title="Type">
-      <div class="flex flex-col flex-1">
-        <it-alert type="primary" :title="alertTitle" :body="alertBody" />
-        <it-alert type="success" :title="alertTitle" :body="alertBody" />
-        <it-alert type="danger" :title="alertTitle" :body="alertBody" />
-        <it-alert type="warning" :title="alertTitle" :body="alertBody" />
-      </div>
+      <it-alert variant="primary" :title="alertTitle" :body="alertBody" />
+      <it-alert variant="success" :title="alertTitle" :body="alertBody" />
+      <it-alert variant="danger" :title="alertTitle" :body="alertBody" />
+      <it-alert variant="warning" :title="alertTitle" :body="alertBody" />
     </Box>
 
     <Box :code="typesBox" title="Icon in box">
-      <div class="flex flex-col flex-1">
-        <it-alert
-          iconbox
-          type="primary"
-          :title="alertTitle"
-          :body="alertBody"
-        />
-        <it-alert
-          iconbox
-          type="success"
-          :title="alertTitle"
-          :body="alertBody"
-        />
-        <it-alert iconbox type="danger" :title="alertTitle" :body="alertBody" />
-        <it-alert
-          iconbox
-          type="warning"
-          :title="alertTitle"
-          :body="alertBody"
-        />
-      </div>
+      <it-alert
+        iconbox
+        variant="primary"
+        :title="alertTitle"
+        :body="alertBody"
+      />
+      <it-alert
+        iconbox
+        variant="success"
+        :title="alertTitle"
+        :body="alertBody"
+      />
+      <it-alert
+        iconbox
+        variant="danger"
+        :title="alertTitle"
+        :body="alertBody"
+      />
+      <it-alert
+        iconbox
+        variant="warning"
+        :title="alertTitle"
+        :body="alertBody"
+      />
     </Box>
 
     <Box :code="slotCode" title="Slot">
-      <div class="flex flex-col flex-1">
-        <it-alert type="primary" title="Alert with slot body">
-          You can put whatever you want here, I'd put a
-          <it-tag type="primary">Tag</it-tag>
-        </it-alert>
-      </div>
+      <it-alert variant="primary" title="Alert with slot body">
+        You can put whatever you want here, I'd put a
+        <it-tag variant="primary">Tag</it-tag>
+      </it-alert>
     </Box>
 
     <props-table
@@ -93,18 +92,18 @@ export default defineComponent({
     alertTypes: ['primary', 'success', 'danger', 'warning'],
     alertIconBox: false,
 
-    typesCode: `<it-alert type="primary" :title="alertTitle" :body="alertBody"/>
-<it-alert type="success" :title="alertTitle" :body="alertBody"/>
-<it-alert type="danger" :title="alertTitle" :body="alertBody"/>
-<it-alert type="warning" :title="alertTitle" :body="alertBody"/>`,
+    typesCode: `<it-alert variant="primary" :title="alertTitle" :body="alertBody"/>
+<it-alert variant="success" :title="alertTitle" :body="alertBody"/>
+<it-alert variant="danger" :title="alertTitle" :body="alertBody"/>
+<it-alert variant="warning" :title="alertTitle" :body="alertBody"/>`,
 
-    typesBox: `<it-alert iconbox type="primary" :title="alertTitle" :body="alertBody"/>
-<it-alert iconbox type="success" :title="alertTitle" :body="alertBody"/>
-<it-alert iconbox type="danger" :title="alertTitle" :body="alertBody"/>
-<it-alert iconbox type="warning" :title="alertTitle" :body="alertBody"/>`,
+    typesBox: `<it-alert iconbox variant="primary" :title="alertTitle" :body="alertBody"/>
+<it-alert iconbox variant="success" :title="alertTitle" :body="alertBody"/>
+<it-alert iconbox variant="danger" :title="alertTitle" :body="alertBody"/>
+<it-alert iconbox variant="warning" :title="alertTitle" :body="alertBody"/>`,
 
-    slotCode: `<it-alert type="primary" title="Alert with slot body">
-  You can put whatever you want here, I'd put a <it-tag type="primary">Tag</it-tag>
+    slotCode: `<it-alert variant="primary" title="Alert with slot body">
+  You can put whatever you want here, I'd put a <it-tag variant="primary">Tag</it-tag>
 </it-alert>`,
 
     dataSheet: [

@@ -1,19 +1,34 @@
 <template>
   <div
-    class="it-divider"
-    :class="{
-      'it-divider--horizontal': !vertical,
-      'it-divider--vertical': vertical,
-    }"
+    :class="[
+      variant.root,
+      {
+        [variant.vertical]: vertical,
+      },
+    ]"
     role="separator"
   ></div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums/Components'
+import { ITDividerOptions } from '@/types/components/components'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'it-divider',
-  props: { vertical: { type: Boolean } },
+  name: Components.ITDivider,
+  props: {
+    ...getVariantPropsWithClassesList<ITDividerOptions>(),
+    vertical: { type: Boolean },
+  },
+  setup(props) {
+    const variant = computed(() =>
+      useVariants<ITDividerOptions>(Components.ITDivider, props),
+    )
+
+    return { variant }
+  },
 })
 </script>

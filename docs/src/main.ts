@@ -10,6 +10,7 @@ import ItCode from './components/ItCode.vue'
 import Demobox from './components/Demobox.vue'
 import Box from './components/Box.vue'
 import PropsTable from './components/Table.vue'
+import equalConfig from '/@equal/theme/light'
 
 import './index.less'
 
@@ -22,5 +23,5 @@ createApp(App)
   .component('Box', Box)
   .component('PropsTable', PropsTable)
   .use(router)
-  .use(equal)
+  .use(equal, equalConfig)
   .mount('#app')

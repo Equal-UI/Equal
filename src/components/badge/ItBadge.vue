@@ -1,7 +1,15 @@
 <template>
-  <span class="it-badge" :class="rootClasses">
+  <span :class="variant.root">
     <slot />
-    <span v-if="show" class="it-badge-body" :class="bodyClasses">
+    <span
+      v-if="show"
+      :class="{
+        [variant.body]: true,
+        [variant[position]]: $slots.default,
+        [variant.point]: point,
+        [variant.square]: square,
+      }"
+    >
       {{ contentValue }}
     </span>
   </span>
@@ -9,17 +17,16 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { Colors, Positions } from '@/models/enums'
-import { ALLOWED_COLORS, ALLOWED_POSITIONS } from '@/components/badge/constants'
+import { Components, Positions } from '@/models/enums'
+import { ALLOWED_POSITIONS } from '@/components/badge/constants'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { ITBadgeOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
-  name: 'it-badge',
+  name: Components.ITBadge,
   props: {
-    type: {
-      type: String,
-      default: Colors.DANGER,
-      validator: (value: Colors) => ALLOWED_COLORS.includes(value),
-    },
+    ...getVariantPropsWithClassesList<ITBadgeOptions>(),
     position: {
       type: String,
       default: Positions.TR,
@@ -31,7 +38,11 @@ export default defineComponent({
     point: { type: Boolean },
     square: { type: Boolean },
   },
-  setup(props, { slots }) {
+  setup(props) {
+    const variant = computed(() =>
+      useVariants<ITBadgeOptions>(Components.ITBadge, props),
+    )
+
     const contentValue = computed(() => {
       if (props.point || !props.value) return
       return props.maxValue !== null
@@ -41,20 +52,7 @@ export default defineComponent({
         : props.value
     })
 
-    const rootClasses = computed(() => ({
-      'it-badge--square': props.square,
-    }))
-
-    const bodyClasses = computed(() => ({
-      ...(slots.default
-        ? { [`it-badge-body--corner-${props.position}`]: true }
-        : null),
-      'it-badge-body--square': props.square,
-      'it-badge-body--point': props.point,
-      [`it-badge-body--${props.type}`]: true,
-    }))
-
-    return { contentValue, rootClasses, bodyClasses }
+    return { contentValue, variant }
   },
 })
 </script>
