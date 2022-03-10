@@ -11,20 +11,25 @@
     ]"
     :disabled="disabled"
   >
-    <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
-    <span v-if="$slots.default" :class="variant.text">
-      <slot />
+    <span :style="{ opacity: loading ? 0 : 1 }">
+      <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
+      <span v-if="$slots.default" :class="variant.text">
+        <slot />
+      </span>
     </span>
-    <span class="it-btn-wrap-loading">
-      <it-loading v-if="loading" color="#fff" :radius="10" :stroke="3" />
-    </span>
+    <it-spinner
+      :class="variant.loading"
+      v-if="loading"
+      :radius="10"
+      :stroke="3"
+    />
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import ItIcon from '@/components/icon'
-import ItLoading from '@/components/loading'
+import ItSpinner from '@/components/spinner'
 import { Components, Sizes } from '@/models/enums'
 import { useVariants } from '@/hooks/useVariants'
 import {
@@ -37,7 +42,7 @@ export default defineComponent({
   name: Components.ITButton,
   components: {
     ItIcon,
-    ItLoading,
+    ItSpinner,
   },
   props: {
     ...getVariantPropsWithClassesList<ITButtonOptions>(),

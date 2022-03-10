@@ -7,4 +7,5 @@ export enum Components {
   ITDivider = 'it-divider',
   ITBadge = 'it-badge',
   ITButton = 'it-button',
+  ITSpinner = 'it-spinner',
 }

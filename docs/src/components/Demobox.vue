@@ -1,6 +1,27 @@
 <template>
-  <div class="it-demobox flex border border-solid bg-white rounded">
-    <div class="it-demobox-scene flex justify-center items-center flex-wrap">
+  <div
+    class="it-demobox flex border border-solid bg-white rounded"
+    :class="{ dark: dark === 'bedtime' }"
+  >
+    <div
+      class="
+        it-demobox-scene
+        flex
+        justify-center
+        items-center
+        flex-wrap
+        dark:bg-neutral-800
+        relative
+      "
+    >
+      <div class="absolute top-5 right-5">
+        <it-toggle
+          round
+          v-model="dark"
+          icons
+          :options="['wb_sunny', 'bedtime']"
+        />
+      </div>
       <slot></slot>
     </div>
     <div class="it-demobox-props flex flex-col px-4 py-5">
@@ -13,6 +34,9 @@
 <script>
 export default {
   name: 'demobox',
+  data() {
+    return { dark: 'wb_sunny' }
+  },
 }
 </script>
 

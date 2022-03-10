@@ -114,9 +114,9 @@ export const componentsList = [
     group: componentGroup.Feedback,
   },
   {
-    name: 'Loading',
+    name: 'Spinner',
     icon: 'loop',
-    route: '/components/loading',
+    route: '/components/spinner',
     examples: 1,
     group: componentGroup.Feedback,
   },

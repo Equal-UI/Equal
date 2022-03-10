@@ -176,6 +176,7 @@ export default <EqualUIConfiguration>(<unknown>{
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base',
       empty: '!p-2',
+      loading: 'absolute',
     },
     classes: {
       root: 'active:shadow-none',
@@ -186,28 +187,33 @@ export default <EqualUIConfiguration>(<unknown>{
           'bg-blue-600 shadow-md hover:bg-blue-500 hover:!border-blue-500 !shadow-blue-600/40 !border-blue-600',
           'active:bg-blue-700 active:!border-blue-700 focus-visible:border-blue-600 !text-white',
         ],
-        outlined: '!text-blue-600 hover:bg-blue-400/10',
+        outlined: '!text-blue-600 hover:bg-blue-400/10 active:bg-blue-400/20',
       },
       success: {
         root: [
           'bg-green-500 shadow-md hover:bg-green-400 hover:!border-green-400 !shadow-green-500/40 !border-green-500',
           'active:bg-green-600 active:!border-green-600 focus-visible:border-green-500 !text-white',
         ],
-        outlined: '!text-green-500 hover:bg-green-400/10',
+        outlined:
+          '!text-green-500 hover:bg-green-400/10 active:bg-green-400/20',
+        loading: 'stroke-white',
       },
       warning: {
         root: [
           'bg-yellow-500 shadow-md hover:bg-yellow-400 hover:!border-yellow-400 !shadow-yellow-500/40 !border-yellow-500',
           'active:bg-yellow-600 active:!border-yellow-600 focus-visible:border-yellow-500 !text-white',
         ],
-        outlined: '!text-yellow-500 hover:bg-yellow-400/10',
+        outlined:
+          '!text-yellow-500 hover:bg-yellow-400/10 active:bg-yellow-400/20',
+        loading: 'stroke-white',
       },
       danger: {
         root: [
           'bg-red-500 shadow-md hover:bg-red-400 hover:!border-red-400 !shadow-red-500/40 !border-red-500',
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 !text-white',
         ],
-        outlined: '!text-red-500 hover:bg-red-400/10',
+        outlined: '!text-red-500 hover:bg-red-400/10 active:bg-red-400/20',
+        loading: 'stroke-white',
       },
       disabled: {
         root: [
@@ -217,5 +223,12 @@ export default <EqualUIConfiguration>(<unknown>{
         outlined: '!bg-gray-100',
       },
     },
+  },
+  'it-spinner': {
+    fixedClasses: {
+      root: 'border-black !border-r-transparent bg-transparent animate-spin w-8 h-8 border-4 rounded-full',
+    },
+    classes: {},
+    variants: {},
   },
 })

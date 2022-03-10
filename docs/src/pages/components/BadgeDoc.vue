@@ -125,6 +125,16 @@
       >
         <it-button>🪄🎩</it-button>
       </it-badge>
+
+      <it-badge
+        :show="cstmShow"
+        value="🐇"
+        variant="violet"
+        :variants="{ violet: { body: 'bg-violet-600' } }"
+        @click="cstmShow = !cstmShow"
+      >
+        <it-button>🪄🎩</it-button>
+      </it-badge>
     </Box>
 
     <props-table :data-sheet="dataSheet" />
@@ -141,6 +151,7 @@ export default defineComponent({
     badgeSquare: false,
     badgeShow: true,
     badgeMax: 99,
+    cstmShow: false,
     badgeType: 'danger',
     badgeTypes: ['primary', 'success', 'danger', 'warning'],
 

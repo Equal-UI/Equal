@@ -41,7 +41,6 @@ export var useVariants = <T>(
   name: Components,
   props: VariantJSWithClassesListProps<T> = {},
 ): CSSRawClassesList<T> => {
-  // TODO: merge global and local class props
   const config = inject<EqualUIConfiguration>('config', {})
   const globalVariant = config[name]
 

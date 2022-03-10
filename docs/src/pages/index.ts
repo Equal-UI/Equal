@@ -17,7 +17,7 @@ import DrawerDoc from './components/DrawerDoc.vue'
 import DropdownDoc from './components/DropdownDoc.vue'
 import IconDoc from './components/IconDoc.vue'
 import InputDoc from './components/InputDoc.vue'
-import LoadingDoc from './components/LoadingDoc.vue'
+import SpinnerDoc from './components/SpinnerDoc.vue'
 import LoadingbarDoc from './components/LoadingbarDoc.vue'
 import MessageDoc from './components/MessageDoc.vue'
 import ModalDoc from './components/ModalDoc.vue'
@@ -53,7 +53,7 @@ export default {
   InputDoc,
   Introduction,
   Landing,
-  LoadingDoc,
+  SpinnerDoc,
   LoadingbarDoc,
   MessageDoc,
   ModalDoc,

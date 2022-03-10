@@ -67,6 +67,11 @@ export interface ITButtonOptions extends IComponentWithRoot {
   small?: string
   round?: string
   empty?: string
+  loading?: string
 }
 
 export type ITButtonVariants = WithVariantProps<ITButtonOptions>
+
+export interface ITSpinnerOptions extends IComponentWithRoot {}
+
+export type ITSpinnerVariants = WithVariantProps<ITSpinnerOptions>

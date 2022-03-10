@@ -15,7 +15,7 @@ import Drawer from './components/drawer'
 import Dropdown from './components/dropdown'
 import Icon from './components/icon'
 import Input from './components/input'
-import Loading from './components/loading'
+import Spinner from './components/spinner'
 import Loadingbar from './components/loadingbar'
 import Message from './components/message'
 import Modal from './components/modal'
@@ -54,7 +54,7 @@ const components: Record<string, ReturnType<typeof defineComponent>> = {
   ...Dropdown,
   Icon,
   Input,
-  Loading,
+  Spinner,
   Modal,
   NumberInput,
   Popover,
@@ -102,7 +102,7 @@ export { default as Drawer } from './components/drawer'
 export { default as Dropdown } from './components/dropdown'
 export { default as Icon } from './components/icon'
 export { default as Input } from './components/input'
-export { default as Loading } from './components/loading'
+export { default as Spinner } from './components/spinner'
 export { default as Loadingbar } from './components/loadingbar'
 export { default as Message } from './components/message'
 export { default as Modal } from './components/modal'

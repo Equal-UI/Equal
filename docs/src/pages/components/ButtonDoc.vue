@@ -12,13 +12,14 @@
         :disabled="buttonDisabled"
         :icon="buttonIconValue"
         :block="buttonBlock"
+        :size="buttonSize"
         >{{ buttonText }}</it-button
       >
       <template #props>
         <it-select
           v-model="buttonType"
           placeholder="Select type"
-          label-top="Button type"
+          label-top="Button variant"
           :options="buttonTypes"
         >
         </it-select>
@@ -32,7 +33,7 @@
         <it-checkbox v-model="buttonDisabled" label="Disabled" />
       </template>
     </Demobox>
-    <Box :code="codeType" title="Type">
+    <Box :code="codeType" title="Variants">
       <it-button>Button</it-button>
       <it-button variant="primary">Button</it-button>
       <it-button variant="success">Button</it-button>
@@ -146,6 +147,7 @@ export default defineComponent({
     buttonPulse: false,
     buttonBlock: false,
     buttonType: 'primary',
+    buttonSize: '',
     buttonTypes: ['neutral', 'primary', 'success', 'danger', 'warning'],
     buttonIcon: false,
 

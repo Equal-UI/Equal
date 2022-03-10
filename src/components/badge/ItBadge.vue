@@ -1,17 +1,24 @@
 <template>
   <span :class="variant.root">
     <slot />
-    <span
-      v-if="show"
-      :class="{
-        [variant.body]: true,
-        [variant[position]]: $slots.default,
-        [variant.point]: point,
-        [variant.square]: square,
-      }"
+    <Transition
+      enter-active-class="duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.475)]"
+      enter-from-class="transform scale-0"
+      leave-active-class="duration-200 ease-in]"
+      leave-to-class="transform scale-0"
     >
-      {{ contentValue }}
-    </span>
+      <span
+        v-if="show"
+        :class="{
+          [variant.body]: true,
+          [variant[position]]: $slots.default,
+          [variant.point]: point,
+          [variant.square]: square,
+        }"
+      >
+        {{ contentValue }}
+      </span>
+    </Transition>
   </span>
 </template>
 

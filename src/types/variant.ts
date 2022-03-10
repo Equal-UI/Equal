@@ -7,6 +7,7 @@ import {
   ITDividerVariants,
   ITBadgeVariants,
   ITButtonVariants,
+  ITSpinnerVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -46,4 +47,5 @@ export type EqualUIConfiguration = {
   [Components.ITDivider]?: ITDividerVariants
   [Components.ITBadge]?: ITBadgeVariants
   [Components.ITButton]?: ITButtonVariants
+  [Components.ITSpinner]?: ITSpinnerVariants
 }

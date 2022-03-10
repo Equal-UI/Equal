@@ -111,8 +111,8 @@ const routes = [
             component: Pages.DrawerDoc,
           },
           {
-            path: 'loading',
-            component: Pages.LoadingDoc,
+            path: 'spinner',
+            component: Pages.SpinnerDoc,
           },
           {
             path: 'loadingbar',
