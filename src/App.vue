@@ -7,17 +7,17 @@
       <h3>Button</h3>
 
       <it-button
-        :type="switchBtn ? 'primary' : 'neutral'"
+        :variant="switchBtn ? 'primary' : 'neutral'"
         @click="switchBtn = !switchBtn"
         >{{ switchBtn ? 'Following' : 'Click to follow' }}</it-button
       >
 
       <it-button>Button</it-button>
-      <it-button type="primary">Button</it-button>
-      <it-button type="success">Button</it-button>
-      <it-button type="danger">Button</it-button>
-      <it-button type="warning">Button</it-button>
-      <it-button type="black">Button</it-button>
+      <it-button variant="primary">Button</it-button>
+      <it-button variant="success">Button</it-button>
+      <it-button variant="danger">Button</it-button>
+      <it-button variant="warning">Button</it-button>
+      <it-button variant="black">Button</it-button>
     </div>
 
     <div>
@@ -93,16 +93,16 @@
     <div>
       <h3>Badge</h3>
 
-      <it-badge type="primary" point>
+      <it-badge variant="primary" point>
         <it-button>Primary</it-button>
       </it-badge>
-      <it-badge type="danger" point>
+      <it-badge variant="danger" point>
         <it-button icon="mail_outline"></it-button>
       </it-badge>
-      <it-badge type="success" point>
+      <it-badge variant="success" point>
         <it-button icon="thumb_up"></it-button>
       </it-badge>
-      <it-badge type="warning" point>
+      <it-badge variant="warning" point>
         <it-button icon="error_outline"></it-button>
       </it-badge>
     </div>
@@ -125,9 +125,9 @@
       <h3>Switch</h3>
 
       <it-switch v-model="switchValue" label="Primary" />
-      <it-switch v-model="switchValue" type="success" label="Success" />
-      <it-switch v-model="switchValue" type="danger" label="Danger" />
-      <it-switch v-model="switchValue" type="warning" label="Warning" />
+      <it-switch v-model="switchValue" variant="success" label="Success" />
+      <it-switch v-model="switchValue" variant="danger" label="Danger" />
+      <it-switch v-model="switchValue" variant="warning" label="Warning" />
     </div>
 
     <div>
@@ -136,14 +136,19 @@
       <it-radio v-model="radioValue" label="Primary" value="00" />
       <it-radio
         v-model="radioValue"
-        type="success"
+        variant="success"
         label="Success"
         value="11"
       />
-      <it-radio v-model="radioValue" type="danger" label="Danger" value="22" />
       <it-radio
         v-model="radioValue"
-        type="warning"
+        variant="danger"
+        label="Danger"
+        value="22"
+      />
+      <it-radio
+        v-model="radioValue"
+        variant="warning"
         label="Warning"
         value="33"
       />
@@ -404,7 +409,7 @@
         <template #actions>
           <it-button @click="modal = false">Cancel</it-button>
           <it-button
-            type="primary"
+            variant="primary"
             @click="$Message({ text: 'Created' }), (modal = false)"
             >Create</it-button
           >

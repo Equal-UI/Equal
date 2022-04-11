@@ -3,7 +3,7 @@
     :class="[
       {
         [variant.outlined]: outlined,
-        [`${variant[size]}`]: size,
+        [`${variant[size] ?? ''}`]: size,
         [variant.round]: round,
         [variant.empty]: !$slots.default,
       },
@@ -11,14 +11,17 @@
     ]"
     :disabled="disabled"
   >
-    <span :style="{ opacity: loading ? 0 : 1 }">
-      <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
-      <span v-if="$slots.default" :class="variant.text">
+    <span :style="{ opacity: loading ? 0 : 1 }" :class="variant.text">
+      <slot name="icon">
+        <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
+      </slot>
+      <span v-if="$slots.default">
         <slot />
       </span>
     </span>
     <it-spinner
-      :class="variant.loading"
+      variant="$"
+      :variants="{ $: { root: variant.loading } }"
       v-if="loading"
       :radius="10"
       :stroke="3"
@@ -57,11 +60,9 @@ export default defineComponent({
     round: { type: Boolean },
     pulse: { type: Boolean },
     loading: { type: Boolean },
-    block: { type: Boolean },
-    text: { type: Boolean },
     icon: { type: String, default: null },
   },
-  setup(props, { slots }) {
+  setup(props) {
     const variant = computed(() => {
       const customProps = {
         ...props,
@@ -73,35 +74,11 @@ export default defineComponent({
       )
     })
 
-    const rootClasses = computed(() => [
-      {
-        ...sizeClasses,
-
-        pulse: props.pulse,
-        'p-2': !slots.default,
-        'shadow-sm': hasBoxShadow,
-        'it-btn--outlined': props.outlined,
-        'rounded-full': props.round,
-        'it-btn--block': props.block,
-        'it-btn--text': props.text,
-        'it-btn--loading': props.loading,
-        // ...(props.type
-        //   ? { [`it-btn--${props.type}`]: true }
-        //   : { 'it-btn--neutral': true }),
-        ...(props.icon
-          ? {
-              [props.iconAfter ? 'it-btn--icon-right' : 'it-btn--icon-left']:
-                true,
-            }
-          : null),
-      },
-    ])
-
     const hasBoxShadow = computed(
       () => !props.outlined && !props.disabled && !props.block && !props.text,
     )
 
-    return { rootClasses, variant }
+    return { variant }
   },
 })
 </script>

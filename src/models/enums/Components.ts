@@ -8,4 +8,7 @@ export enum Components {
   ITBadge = 'it-badge',
   ITButton = 'it-button',
   ITSpinner = 'it-spinner',
+  ITCollapse = 'it-collapse',
+  ITCollapseItem = 'it-collapse-item',
+  ITTextarea = 'it-textarea',
 }

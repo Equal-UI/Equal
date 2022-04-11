@@ -75,3 +75,24 @@ export type ITButtonVariants = WithVariantProps<ITButtonOptions>
 export interface ITSpinnerOptions extends IComponentWithRoot {}
 
 export type ITSpinnerVariants = WithVariantProps<ITSpinnerOptions>
+
+export interface ITCollapseOptions extends IComponentWithRoot {}
+
+export type ITCollapseVariants = WithVariantProps<ITCollapseOptions>
+
+export interface ITCollapseItemOptions extends IComponentWithRoot {
+  body?: string
+  icon?: string
+  expanded?: string
+  activator?: string
+}
+
+export type ITCollapseItemVariants = WithVariantProps<ITCollapseItemOptions>
+
+export interface ITTextareaOptions extends IComponentWithRoot {
+  label?: string
+  textarea?: string
+  mask?: string
+}
+
+export type ITTextareaVariants = WithVariantProps<ITTextareaOptions>

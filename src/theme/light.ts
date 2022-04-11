@@ -40,7 +40,7 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-icon': {
     fixedClasses: {
-      root: 'text-base leading-none',
+      root: 'text-base leading-none select-none',
       box: 'rounded p-2',
     },
     classes: { root: 'leading-none' },
@@ -79,7 +79,7 @@ export default <EqualUIConfiguration>(<unknown>{
       root: 'relative flex cursor-pointer',
       checkbox: [
         'relative flex  items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden',
-        'border shadow-sm shadow-gray-100 rounded-sm bg-white hover:border-blue-600 active:peer-checked:pt-3',
+        'border shadow-sm shadow-slate-600/10 border-slate-300 rounded-sm bg-white hover:border-blue-600 active:peer-checked:pt-3',
         'active:bg-blue-100 active:border-blue-600 peer-checked:border-blue-600',
         'peer-focus-visible:border-blue-600 peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] peer-focus-visible:shadow-blue-600/30',
       ],
@@ -165,18 +165,18 @@ export default <EqualUIConfiguration>(<unknown>{
   'it-button': {
     fixedClasses: {
       root: [
-        'py-2 px-5 text-slate-900 shadow-sm shadow-gray-200 active:bg-gray-100',
-        'focus-visible:border-slate-400 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60',
+        'py-2 px-5 text-slate-900 shadow-sm shadow-slate-600/10 active:bg-gray-100',
+        'focus-visible:border-slate-400 focus-visible:outline-none focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60',
         'border border-slate-300 bg-white',
         'max-w-full relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans',
       ],
       outlined: 'bg-transparent hover:bg-transparent active:bg-transparent',
-      text: 'empty:!hidden',
+      text: 'empty:!hidden flex flex-row space-x-2',
       round: 'rounded-3xl',
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base',
       empty: '!p-2',
-      loading: 'absolute',
+      loading: 'absolute !w-6 !h-6',
     },
     classes: {
       root: 'active:shadow-none',
@@ -188,6 +188,19 @@ export default <EqualUIConfiguration>(<unknown>{
           'active:bg-blue-700 active:!border-blue-700 focus-visible:border-blue-600 !text-white',
         ],
         outlined: '!text-blue-600 hover:bg-blue-400/10 active:bg-blue-400/20',
+        loading: '!border-r-white !border-blue-600',
+      },
+      'primary-text': {
+        root: [
+          'bg-transparent shadow-none !shadow-blue-600/40 !text-blue-600 hover:bg-blue-400/10 !border-none hover:!border-none',
+          'active:bg-blue-400/20 focus-visible:border-none',
+        ],
+      },
+      text: {
+        root: [
+          'bg-transparent shadow-none hover:bg-gray-400/10 !border-none hover:!border-none',
+          'active:bg-gray-400/20 focus-visible:border-none',
+        ],
       },
       success: {
         root: [
@@ -196,7 +209,13 @@ export default <EqualUIConfiguration>(<unknown>{
         ],
         outlined:
           '!text-green-500 hover:bg-green-400/10 active:bg-green-400/20',
-        loading: 'stroke-white',
+        loading: '!border-r-white !border-green-500',
+      },
+      'success-text': {
+        root: [
+          'bg-transparent shadow-none !shadow-green-500/40 !text-green-500 hover:bg-green-400/10 !border-none hover:!border-none',
+          'active:bg-green-400/20 focus-visible:border-none',
+        ],
       },
       warning: {
         root: [
@@ -205,7 +224,13 @@ export default <EqualUIConfiguration>(<unknown>{
         ],
         outlined:
           '!text-yellow-500 hover:bg-yellow-400/10 active:bg-yellow-400/20',
-        loading: 'stroke-white',
+        loading: '!border-r-white !border-yellow-500',
+      },
+      'warning-text': {
+        root: [
+          'bg-transparent shadow-none !shadow-yellow-500/40 !text-yellow-500 hover:bg-yellow-400/10 !border-none hover:!border-none',
+          'active:bg-yellow-400/20 focus-visible:border-none',
+        ],
       },
       danger: {
         root: [
@@ -213,7 +238,13 @@ export default <EqualUIConfiguration>(<unknown>{
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 !text-white',
         ],
         outlined: '!text-red-500 hover:bg-red-400/10 active:bg-red-400/20',
-        loading: 'stroke-white',
+        loading: '!border-r-white !border-red-500',
+      },
+      'danger-text': {
+        root: [
+          'bg-transparent shadow-none !shadow-red-500/40 !text-red-500 hover:bg-red-400/10 !border-none hover:!border-none',
+          'active:bg-red-400/20 focus-visible:border-none',
+        ],
       },
       disabled: {
         root: [
@@ -221,12 +252,44 @@ export default <EqualUIConfiguration>(<unknown>{
           '!text-gray-300',
         ],
         outlined: '!bg-gray-100',
+        loading: '!border-r-slate-300',
       },
     },
   },
   'it-spinner': {
     fixedClasses: {
-      root: 'border-black !border-r-transparent bg-transparent animate-spin w-8 h-8 border-4 rounded-full',
+      root: 'border-transparent border-r-black bg-transparent animate-spin w-8 h-8 border-4 rounded-full',
+    },
+    classes: {},
+    variants: {},
+  },
+  'it-collapse': {
+    fixedClasses: {
+      root: 'w-full flex flex-col',
+    },
+    classes: {},
+    variants: {},
+  },
+  'it-collapse-item': {
+    fixedClasses: {
+      root: 'first:rounded-tl first:rounded-tr last:shadow-sm last:rounded-bl last:rounded-br border-r border-l border-t first:border-b-none last:border border-slate-300',
+      expanded: '',
+      activator:
+        'flex rounded-[inherit] px-4 py-3 bg-gray-50 w-full focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60 outline-none justify-between text-sm font-medium',
+      body: 'text-sm border-t border-slate-300 px-4 py-4',
+    },
+    classes: {},
+    variants: {},
+  },
+  'it-textarea': {
+    fixedClasses: {
+      label: 'flex text-sm mb-1.5',
+      textarea: [
+        'relative focus:z-10 appearance-none w-full placeholder:duration-200 duration-150 transition-all placeholder:transition-all focus:placeholder:indent-1.5 placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm border-slate-300 shadow-slate-600/10 rounded outline-none',
+        'hover:border-slate-400 disabled:hover:border-slate-300 focus-visible:border-blue-600 disabled:cursor-not-allowed',
+        'focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-blue-600/30',
+      ],
+      mask: 'fixed inset-0 z-50 bg-gray-900/40',
     },
     classes: {},
     variants: {},

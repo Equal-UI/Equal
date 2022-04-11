@@ -8,6 +8,9 @@ import {
   ITBadgeVariants,
   ITButtonVariants,
   ITSpinnerVariants,
+  ITCollapseVariants,
+  ITCollapseItemVariants,
+  ITTextareaVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -43,9 +46,13 @@ export type EqualUIConfiguration = {
   [Components.ITAvatar]?: ITAvatarVariants
   [Components.ITIcon]?: ITIconVariants
   [Components.ITTag]?: ITTagVariants
+  [Components.ITCollapse]?: ITCollapseVariants
+  [Components.ITCollapseItem]?: ITCollapseItemVariants
+  [Components.ITCheckbox]?: ITTagVariants
   [Components.ITCheckbox]?: ITTagVariants
   [Components.ITDivider]?: ITDividerVariants
   [Components.ITBadge]?: ITBadgeVariants
   [Components.ITButton]?: ITButtonVariants
   [Components.ITSpinner]?: ITSpinnerVariants
+  [Components.ITTextarea]?: ITTextareaVariants
 }

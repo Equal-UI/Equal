@@ -1,15 +1,15 @@
 <template>
   <div>
     <transition name="fade">
-      <div v-show="focus && mask" class="it-textarea-mask"></div>
+      <div v-show="focus && mask" :class="variant.mask"></div>
     </transition>
-    <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
+    <span v-if="labelTop" :class="variant.label">{{ labelTop }}</span>
     <textarea
       ref="textarea"
       :value="modelValue"
       :style="{ resize, 'z-index': mask ? '100' : null }"
       :disabled="disabled"
-      class="it-textarea"
+      :class="[variant.textarea]"
       :placeholder="placeholder"
       :rows="rows"
       @input="onInput"
@@ -20,16 +20,19 @@
 </template>
 
 <script lang="ts">
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITTextareaOptions } from '@/types/components/components'
 import { defineComponent, onMounted, nextTick, ref, computed } from 'vue'
 
-/* 
-  todo:
-  [] consider this https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
-*/
-
 export default defineComponent({
-  name: 'it-textarea',
+  name: Components.ITTextarea,
   props: {
+    ...getVariantPropsWithClassesList<ITTextareaOptions>(),
     placeholder: String,
     disabled: Boolean,
     resizable: Boolean,
@@ -41,6 +44,13 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
+    const variant = computed(() =>
+      useVariants<ITTextareaOptions>(
+        Components.ITTextarea,
+        <VariantJSWithClassesListProps<ITTextareaOptions>>props,
+      ),
+    )
+
     const textarea = ref(null)
     const focus = ref(false)
 
@@ -66,7 +76,7 @@ export default defineComponent({
       }
     })
 
-    return { textarea, onInput, resize, focus }
+    return { textarea, onInput, resize, focus, variant }
   },
 })
 </script>
