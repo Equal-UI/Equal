@@ -58,9 +58,9 @@ export default defineComponent({
     sliderDisabled: false,
     sliderNumbers: false,
 
-    stepCode: `<it-slider v-model="stepSliderValue" :stepPoints="true" :min="0" :max="12" :step="2" />`,
-    disabledCode: `<it-slider v-model="stepSliderValue" disabled :min="0" :max="20" />`,
-    numbersCode: `<it-slider v-model="numberSliderValue" numbers :min="0" :max="42"/>`,
+    stepCode: `<it-slider v-model="stepSliderValue" ||| :stepPoints="true" ||| :min="0" :max="12" :step="2" />`,
+    disabledCode: `<it-slider v-model="stepSliderValue" ||| disabled ||| :min="0" :max="20" />`,
+    numbersCode: `<it-slider v-model="numberSliderValue" ||| numbers ||| :min="0" :max="42"/>`,
 
     dataSheet: [
       {

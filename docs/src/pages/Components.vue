@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <div class="px-28 pb-20">
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">

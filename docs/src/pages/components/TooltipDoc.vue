@@ -79,26 +79,25 @@ export default defineComponent({
     tooltipPlacement: 'top',
     tooltipPlacements: ['top', 'right', 'bottom', 'left'],
 
-    positionCode: `<it-tooltip content="Top" placement="top">
+    positionCode: `<it-tooltip content="Top" ||| placement="top" |||>
   <it-button>Top</it-button>
 </it-tooltip>
-<it-tooltip content="Right" placement="right">
+<it-tooltip content="Right" ||| placement="right" |||>
   <it-button>Right</it-button>
 </it-tooltip>
-<it-tooltip content="Left" placement="left">
+<it-tooltip content="Left" ||| placement="left" |||>
   <it-button>Left</it-button>
 </it-tooltip>
-<it-tooltip content="Bottom" placement="bottom">
+<it-tooltip content="Bottom" ||| placement="bottom" |||>
   <it-button>Bottom</it-button>
 </it-tooltip>`,
 
-    autopositionCode: `
-  <it-tooltip placement="bottom">
-      <template #content>
-        <span>Autopos</span>
-      </template>
-      <it-button>Autoposition</it-button>
-  </it-tooltip>`,
+    autopositionCode: `<it-tooltip placement="bottom">
+    <template #content>
+      <span>Autopos</span>
+    </template>
+    <it-button>Autoposition</it-button>
+</it-tooltip>`,
 
     slotCode: `<it-tooltip placement="top">
   <span slot="content"><it-tag type="primary">Wow</it-tag> &nbsp; I came from slot</span>

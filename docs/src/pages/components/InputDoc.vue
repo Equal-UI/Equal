@@ -87,21 +87,21 @@ export default defineComponent({
     inputMask: false,
     statuses: ['default', 'success', 'danger', 'warning'],
 
-    codeDisabled: `<it-input v-model="inputValue" disabled />`,
+    codeDisabled: `<it-input v-model="inputValue" ||| disabled |||/>`,
 
-    codeMask: `<it-input v-model="inputValue" label-top="Click me" placeholder="I feel darkness" mask />`,
+    codeMask: `<it-input v-model="inputValue" label-top="Click me" placeholder="I feel darkness" ||| mask |||/>`,
 
-    codeIcon: `<it-input v-model="inputValue" suffix-icon="remove_red_eye" />
-<it-input v-model="inputValue" prefix-icon="cloud_queue" />
-<it-input v-model="inputValue" suffix-icon="remove_red_eye" prefix-icon="cloud_queue" />`,
+    codeIcon: `<it-input v-model="inputValue" ||| suffix-icon="remove_red_eye" |||/>
+<it-input v-model="inputValue" ||| prefix-icon="cloud_queue" |||/>
+<it-input v-model="inputValue" ||| suffix-icon="remove_red_eye" prefix-icon="cloud_queue" |||/>`,
 
-    codeStatus: `<it-input v-model="statusValue" status="success" message="Success"/>
-<it-input v-model="statusValue" status="danger" message="Danger"/>
-<it-input v-model="statusValue" status="warning" message="Warning"/>`,
+    codeStatus: `<it-input v-model="statusValue" ||| status="success" ||| message="Success"/>
+<it-input v-model="statusValue" ||| status="danger" ||| message="Danger"/>
+<it-input v-model="statusValue" ||| status="warning" ||| message="Warning"/>`,
 
-    codeSuffix: `<it-input prefix="https://" v-model="inputValue" />
-<it-input suffix=".com" v-model="inputValue" />
-<it-input prefix="https://" suffix=".com" v-model="inputValue" />`,
+    codeSuffix: `<it-input ||| prefix="https://" ||| v-model="inputValue" />
+<it-input ||| suffix=".com" ||| v-model="inputValue" />
+<it-input ||| prefix="https://" suffix=".com" ||| v-model="inputValue" />`,
 
     dataSheet: [
       {

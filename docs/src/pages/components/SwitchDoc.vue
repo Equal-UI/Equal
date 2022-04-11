@@ -79,19 +79,19 @@ export default defineComponent({
     typeValue: true,
 
     typesCode: `<it-switch v-model="typeValue" label="Primary" />
-<it-switch v-model="typeValue" type="success" label="Success" />
-<it-switch v-model="typeValue" type="danger" label="Danger" />
-<it-switch v-model="typeValue" type="warning" label="Warning" />`,
+<it-switch v-model="typeValue" ||| variant="success" ||| label="Success" />
+<it-switch v-model="typeValue" ||| variant="danger" ||| label="Danger" />
+<it-switch v-model="typeValue" ||| variant="warning" ||| label="Warning" />`,
 
     pulseCode: `<it-switch v-model="pulseValue" pulse label="Look at me" />`,
 
     sublabelCode: `<it-switch v-model="sublabel1" label="Label only" />
 
 <it-switch v-model="sublabel2" label="Show ">
-  <template #sublabel>Send notifications</template>
+ ||| <template #sublabel>Send notifications</template> |||
 </it-switch>`,
 
-    disabledCode: `<it-switch v-model="pulseValue" disabled label="I'm disabled"/>`,
+    disabledCode: `<it-switch v-model="pulseValue" ||| disabled ||| label="I'm disabled"/>`,
 
     dataSheet: [
       {

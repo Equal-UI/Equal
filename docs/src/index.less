@@ -1,258 +1,150 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+// font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 
-blockquote,
-dl,
-dd,
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-  margin: 0;
+@font-face {
+  font-family: 'Fira Code VF';
+  src: url('./assets/FiraCode-VariableFont.ttf') format('truetype');
 }
 
-html {
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Helvetica Neue,
-    Arial,
-    Noto Sans,
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
+.highlight-range {
+  @apply rounded-md px-1;
+  background: rgba(125, 211, 252, 0.15);
 }
 
-h5 {
-  margin: 0;
-}
+/**
+ * Dracula Theme originally by Zeno Rocha [@zenorocha]
+ * https://draculatheme.com/
+ *
+ * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ */
 
-h1 {
-  font-size: 38px;
-
-  @apply font-bold;
-
-  margin-bottom: 32px;
-  line-height: 38px;
-}
-
-h2 {
-  font-size: 1.2em;
-
-  @apply font-bold;
-}
-
-a {
-  text-decoration: inherit;
-  color: #3051ff;
-  font-weight: 500;
-}
-
-.margins > * + * {
-  margin-top: 22px;
-}
-
-/*
-Name:       Base16 Summerfruit Light
-Author:     Christopher Corley (http://cscorley.github.io/)
-
-Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
-Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
-*/
 code[class*='language-'],
 pre[class*='language-'] {
-  font-family:
-    Consolas,
-    Menlo,
-    Monaco,
-    'Andale Mono WT',
-    'Andale Mono',
-    'Lucida Console',
-    'Lucida Sans Typewriter',
-    'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono',
-    'Liberation Mono',
-    'Nimbus Mono L',
-    'Courier New',
-    Courier,
-    monospace;
   font-size: 14px;
-  line-height: 1.375;
-  direction: ltr;
+  color: #f8f8f2;
+  background: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, Liberation Mono, Courier New, monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
   -webkit-hyphens: none;
+  -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  background: #f6f9ff;
-  color: #303030;
-}
-
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
-  text-shadow: none;
-  background: #e0e0e0;
-}
-
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
-  text-shadow: none;
-  background: #3051ff;
-  color: #fff;
 }
 
 /* Code blocks */
 pre[class*='language-'] {
   padding: 1em;
-  margin: 0;
   overflow: auto;
+  // border-radius: 0.3em;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #1e293b;
 }
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
   padding: 0.1em;
   border-radius: 0.3em;
+  white-space: normal;
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: #b0b0b0;
+.token.tag,
+.token.class-name,
+.token.selector,
+.token.selector .class,
+.token.selector.class,
+.token.function {
+  @apply text-pink-400;
 }
 
-.token.punctuation {
-  color: #303030;
-}
-
-.token.namespace {
-  opacity: 0.7;
-}
-
-.token.operator,
-.token.function,
-.token.boolean,
-.token.number {
-  color: #fd8900;
-}
-
-.token.property {
-  color: #aba800;
-}
-
-.token.tag {
-  color: #3777e6;
-}
-
-.token.string {
-  color: #1faaaa;
-}
-
-.token.selector {
-  color: #ad00a1;
-}
-
-.token.attr-name {
-  color: #fd8900;
-}
-
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  color: #1faaaa;
+.token.attr-name,
+.token.keyword,
+.token.rule,
+.token.pseudo-class,
+.token.important {
+  @apply text-slate-300;
 }
 
 .token.attr-value,
-.token.keyword,
-.token.control,
-.token.directive,
+.token.class,
+.token.string {
+  @apply text-sky-300;
+}
+
+.token.punctuation,
+.token.attr-equals {
+  @apply text-slate-500;
+}
+
+.token.attr-value * {
+  @apply text-sky-300;
+}
+
+.token.attr-value .attr-equals,
+.token.attr-value .attr-equals + .punctuation,
+.token.attr-value > .punctuation:last-child {
+  @apply text-slate-500;
+}
+
+.token.property {
+  @apply text-sky-300;
+}
+
 .token.unit {
-  color: #00c918;
+  @apply text-teal-200;
 }
 
-.token.statement,
-.token.regex,
-.token.atrule {
-  color: #1faaaa;
+.language-shell .token:not(.comment),
+.token.atapply .token:not(.rule):not(.important):not(.punctuation) {
+  color: inherit;
 }
 
-.token.placeholder,
-.token.variable {
-  color: #3777e6;
+.language-css .token.function {
+  @apply text-teal-200;
 }
 
-.token.deleted {
-  text-decoration: line-through;
+.token.comment,
+.token.module,
+.token.operator,
+.token.combinator {
+  @apply text-slate-400;
+}
+
+.token.unchanged {
+  @apply block;
+}
+
+.token.deleted,
+.token.inserted {
+  @apply block relative -mx-9 pl-8 pr-5 border-l-4 before:absolute before:top-0 before:left-4;
 }
 
 .token.inserted {
-  border-bottom: 1px dotted #151515;
-  text-decoration: none;
+  @apply bg-teal-400/[0.15] border-teal-400 before:content-['+'] before:text-teal-400;
 }
 
-.token.italic {
-  font-style: italic;
+.token.deleted {
+  @apply bg-rose-500/[0.15] border-rose-400 before:content-['-'] before:text-rose-400;
 }
 
-.token.important,
-.token.bold {
-  font-weight: bold;
+pre[class^='language-diff-'] {
+  @apply flex px-9;
 }
 
-.token.important {
-  color: #ff0086;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-pre > code.highlight {
-  outline: 0.4em solid #ff0086;
-  outline-offset: 0.4em;
-}
-
-.line-numbers .line-numbers-rows {
-  border-right-color: #e0e0e0 !important;
-}
-
-.line-numbers-rows > span::before {
-  color: #d0d0d0 !important;
-}
-
-.line-highlight {
-  background: rgba(21, 21, 21, 0.2) !important;
-  background:
-    -webkit-linear-gradient(
-      left,
-      rgba(21, 21, 21, 0.2) 70%,
-      rgba(21, 21, 21, 0)
-    ) !important;
-  background:
-    linear-gradient(
-      to right,
-      rgba(21, 21, 21, 0.2) 70%,
-      rgba(21, 21, 21, 0)
-    ) !important;
+pre[class^='language-diff-'] > code {
+  @apply flex-none min-w-full;
 }

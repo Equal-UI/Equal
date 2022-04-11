@@ -158,33 +158,33 @@ export default defineComponent({
     badgePosition: 'top-right',
     badgePositions: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
 
-    typesCode: `<it-badge value="12" variant="primary">
+    typesCode: `<it-badge value="12" ||| variant="primary" |||>
   <it-button>Primary</it-button>
 </it-badge>
-<it-badge value="new" variant="danger">
+<it-badge value="new" ||| variant="danger" |||>
   <it-button>Default</it-button>
 </it-badge>
-<it-badge value="12" variant="success">
+<it-badge value="12" ||| variant="success" |||>
   <it-button>Success</it-button>
 </it-badge>
-<it-badge value="12" variant="warning">
+<it-badge value="12" ||| variant="warning" |||>
   <it-button>Warning</it-button>
 </it-badge>`,
 
-    pointCode: `<it-badge variant="primary" point>,
+    pointCode: `<it-badge variant="primary" ||| point |||>
   <it-button>Primary</it-button>
 </it-badge>
-<it-badge variant="danger" point>
+<it-badge variant="danger" ||| point |||>
   <it-button icon="mail_outline"></it-button>
 </it-badge>
-<it-badge variant="success" point>
+<it-badge variant="success" ||| point |||>
   <it-button icon="thumb_up"></it-button>
 </it-badge>
-<it-badge variant="warning" point>
+<it-badge variant="warning" ||| point |||>
   <it-button icon="error_outline"></it-button>
 </it-badge>`,
 
-    maxvalCode: `<it-badge :value="110" :max-value="99">
+    maxvalCode: `<it-badge :value="110" ||| :max-value="99" |||>
   <it-tag variant="danger">Maximum</it-tag>
 </it-badge>
 
@@ -193,23 +193,23 @@ export default defineComponent({
   In range
 </it-tag>`,
 
-    squareCode: `<it-badge variant="primary" :value="12" square>
+    squareCode: `<it-badge variant="primary" :value="12" ||| square |||>
 <it-button>Square</it-button>
   </it-badge>
-<it-badge variant="success" point square>
+<it-badge variant="success" point ||| square |||>
   <it-button icon="thumb_up"></it-button>
 </it-badge>`,
 
     positionsCode: `<it-badge point :value="12">
   <it-button>Top-right</it-button>
 </it-badge>
-<it-badge point position="bottom-right" :value="12">
+<it-badge point ||| position="bottom-right" ||| :value="12">
   <it-button>Bottom-right</it-button>
 </it-badge>
-<it-badge point position="bottom-left" :value="12">
+<it-badge point ||| position="bottom-left" ||| :value="12">
   <it-button>Bottom-left</it-button>
 </it-badge>
-<it-badge point position="top-left" :value="12">
+<it-badge point ||| position="top-left" ||| :value="12">
   <it-button>Top-left</it-button>
 </it-badge>`,
 

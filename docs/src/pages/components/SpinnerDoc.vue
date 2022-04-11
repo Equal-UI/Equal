@@ -5,15 +5,15 @@
       <it-spinner />
       <it-spinner
         variant="red"
-        :variants="{ red: { root: '!border-red-500' } }"
+        :variants="{ red: { root: '!border-r-red-500' } }"
       />
       <it-spinner
         variant="blue"
-        :variants="{ blue: { root: '!border-blue-600' } }"
+        :variants="{ blue: { root: '!border-r-blue-600' } }"
       />
       <it-spinner
         variant="yellow"
-        :variants="{ yellow: { root: '!border-yellow-500' } }"
+        :variants="{ yellow: { root: '!border-r-yellow-500' } }"
       />
     </Box>
     <props-table :data-sheet="dataSheet" />
@@ -28,15 +28,15 @@ export default defineComponent({
     spinnerCode: `<it-spinner />
 <it-spinner
   variant="red"
-  :variants="{ red: { root: '!border-red-500' } }"
+  :variants="{ red: { root: '!border-r-red-500' } }"
 />
 <it-spinner
   variant="blue"
-  :variants="{ blue: { root: '!border-blue-600' } }"
+  :variants="{ blue: { root: '!border-r-blue-600' } }"
 />
 <it-spinner
   variant="yellow"
-  :variants="{ yellow: { root: '!border-yellow-500' } }"
+  :variants="{ yellow: { root: '!border-r-yellow-500' } }"
 />`,
 
     dataSheet: [],

@@ -66,7 +66,7 @@ export default defineComponent({
     progressShowTooltip: true,
     progressValue42: 42,
 
-    infiniteCode: `<it-progressbar infinite />`,
+    infiniteCode: `<it-progressbar ||| infinite ||| />`,
 
     heightCode: `<it-progressbar :height="3" :progress="progressValue" />
 <it-progressbar :height="5" :progress="progressValue" />
@@ -75,7 +75,7 @@ export default defineComponent({
 <it-progressbar :height="13" :progress="progressValue" />`,
 
     tooltipCode: `<it-progressbar :progress="progressValue" />
-<it-progressbar :progress="progressValue" tooltip="bottom" />`,
+<it-progressbar :progress="progressValue" ||| tooltip="bottom" ||| />`,
 
     dataSheet: [
       {

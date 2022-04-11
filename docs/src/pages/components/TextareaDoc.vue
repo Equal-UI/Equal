@@ -48,7 +48,7 @@ export default defineComponent({
     textareaResizeWrite: false,
     mask: false,
 
-    disabledCode: `<it-textarea v-model="disabledValue" disabled></it-textarea>`,
+    disabledCode: `<it-textarea v-model="disabledValue" ||| disabled |||></it-textarea>`,
 
     dataSheet: [
       {

@@ -7,6 +7,7 @@
     "build_prod": "vite build --config prod.config.ts"
   },
   "dependencies": {
+    "@docsearch/js": "3",
     "@vueuse/integrations": "^5.0.3",
     "body-scroll-lock": "^3.1.5",
     "faker": "^5.1.0",

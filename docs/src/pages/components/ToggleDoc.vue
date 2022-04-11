@@ -75,21 +75,21 @@ export default defineComponent({
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />
 <it-toggle
-  round
+ ||| round |||
   v-model="toggleValue"
   :options="['Light', 'Dark', 'Hollow', 'Orange']"
 />`,
 
     iconsCode: `<it-toggle
-  icons
+ ||| icons |||
   v-model="toggleIconsValue"
-  :options="['wb_sunny', 'bedtime']"
+ ||| :options="['wb_sunny', 'bedtime']" |||
 />
 <it-toggle
-  icons
+ ||| icons |||
   round
   v-model="toggleIconsValue"
-  :options="['wb_sunny', 'bedtime']"
+ |||  :options="['wb_sunny', 'bedtime']" |||
 />`,
 
     dataSheet: [

@@ -13,6 +13,7 @@ import PropsTable from './components/Table.vue'
 import equalConfig from '/@equal/theme/light'
 
 import './index.less'
+import '@docsearch/css'
 
 createApp(App)
   .component('prism', Prism)

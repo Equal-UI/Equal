@@ -8,6 +8,20 @@ import 'prismjs'
 import 'prismjs/components/prism-bash.min.js'
 import 'prismjs/plugins/autolinker/prism-autolinker.min'
 import 'prismjs/plugins/autolinker/prism-autolinker.css'
+import 'prismjs/plugins/keep-markup/prism-keep-markup'
+
+function substrPositions(str, substr) {
+  const indices = []
+
+  let indexOccurence = str.indexOf(substr, 0)
+
+  while (indexOccurence >= 0) {
+    indices.push(indexOccurence)
+
+    indexOccurence = str.indexOf(substr, indexOccurence + 1)
+  }
+  return indices
+}
 
 function assign(obj) {
   for (let i = 1; i < arguments.length; i++) {
@@ -18,6 +32,25 @@ function assign(obj) {
   }
 
   return obj
+}
+
+function mark(str: string) {
+  let newstr = str
+
+  while (newstr.includes('<span class="token attr-name">|||</span>')) {
+    newstr = newstr
+      .replace(
+        '<span class="token attr-name">|||</span> ',
+        '<span class="highlight-range">',
+      )
+      .replace(' <span class="token attr-name">|||</span>', '</span>')
+  }
+  while (newstr.includes(' ||| ')) {
+    newstr = newstr
+      .replace('||| ', '<span class="highlight-range">')
+      .replace(' |||', '</span>')
+  }
+  return newstr
 }
 
 export default defineComponent({
@@ -43,7 +76,6 @@ export default defineComponent({
     const language = ctx.$props.language
     const prismLanguage = Prism.languages[language]
     const className = 'language-'.concat(language)
-
     if (process.env.NODE_ENV === 'development' && !prismLanguage) {
       throw new Error(
         'Prism component for language "'.concat(
@@ -59,7 +91,7 @@ export default defineComponent({
         assign({}, ctx.$data, {
           class: [ctx.$data.class, className],
           domProps: assign({}, ctx.$data.domProps, {
-            innerHTML: Prism.highlight(code, prismLanguage),
+            innerHTML: mark(Prism.highlight(code, prismLanguage)),
           }),
         }),
       )
@@ -73,7 +105,7 @@ export default defineComponent({
       [
         h('code', {
           class: className,
-          innerHTML: Prism.highlight(code, prismLanguage),
+          innerHTML: mark(Prism.highlight(code, prismLanguage)),
         }),
       ],
     )

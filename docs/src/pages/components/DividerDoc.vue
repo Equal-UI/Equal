@@ -53,16 +53,16 @@ export default defineComponent({
     dividerVertical: false,
 
     codeHorizontal: `<p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>
-<it-divider />
+ ||| <it-divider /> |||
 <p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>
-<it-divider />
+ ||| <it-divider /> |||
 <p>Not that I wish to imply you have been sleeping on the job. No one is more deserving of a rest. And all the effort in the world would have gone to waste until...well, let's just say your hour has come again.</p>`,
 
     codeVertical: `<div>
   Still
-  <it-divider vertical />
+ ||| <it-divider vertical /> |||
   Sane
-  <it-divider vertical />
+ ||| <it-divider vertical /> |||
   Exile
 </div>`,
 

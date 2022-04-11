@@ -92,10 +92,10 @@ export default defineComponent({
     alertTypes: ['primary', 'success', 'danger', 'warning'],
     alertIconBox: false,
 
-    typesCode: `<it-alert variant="primary" :title="alertTitle" :body="alertBody"/>
-<it-alert variant="success" :title="alertTitle" :body="alertBody"/>
-<it-alert variant="danger" :title="alertTitle" :body="alertBody"/>
-<it-alert variant="warning" :title="alertTitle" :body="alertBody"/>`,
+    typesCode: `<it-alert ||| variant="primary" ||| :title="alertTitle" :body="alertBody"/>
+<it-alert ||| variant="success" ||| :title="alertTitle" :body="alertBody"/>
+<it-alert ||| variant="danger" ||| :title="alertTitle" :body="alertBody"/>
+<it-alert ||| variant="warning" ||| :title="alertTitle" :body="alertBody"/>`,
 
     typesBox: `<it-alert iconbox variant="primary" :title="alertTitle" :body="alertBody"/>
 <it-alert iconbox variant="success" :title="alertTitle" :body="alertBody"/>
@@ -103,7 +103,7 @@ export default defineComponent({
 <it-alert iconbox variant="warning" :title="alertTitle" :body="alertBody"/>`,
 
     slotCode: `<it-alert variant="primary" title="Alert with slot body">
-  You can put whatever you want here, I'd put a <it-tag variant="primary">Tag</it-tag>
+  You can put whatever you want here, I'd put a ||| <it-tag variant="primary">Tag</it-tag> |||
 </it-alert>`,
 
     dataSheet: [

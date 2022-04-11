@@ -191,32 +191,32 @@ export default defineComponent({
 
     pulseValue: false,
 
-    codeType: `<it-checkbox variant="primary" label="Primary" v-model="typesCheck" />
-<it-checkbox variant="success" label="Success" v-model="typesCheck" />
-<it-checkbox variant="danger" label="Danger" v-model="typesCheck" />
-<it-checkbox variant="warning" label="Warning" v-model="typesCheck" />
-<it-checkbox variant="black" label="Black" v-model="typesCheck" />
-<it-checkbox variant="neutral" label="Neutral" v-model="typesCheck" />`,
+    codeType: `<it-checkbox ||| variant="primary" ||| label="Primary" v-model="typesCheck" />
+<it-checkbox ||| variant="success" ||| label="Success" v-model="typesCheck" />
+<it-checkbox ||| variant="danger" ||| label="Danger" v-model="typesCheck" />
+<it-checkbox ||| variant="warning" ||| label="Warning" v-model="typesCheck" />
+<it-checkbox ||| variant="black" ||| label="Black" v-model="typesCheck" />
+<it-checkbox ||| variant="neutral" ||| label="Neutral" v-model="typesCheck" />`,
 
-    codeIcon: `<it-checkbox variant="primary" label="Primary" icon="visibility" v-model="iconsCheck" />
-<it-checkbox variant="success" label="Success" icon="room" v-model="iconsCheck" />
-<it-checkbox variant="danger" label="Danger" icon="favorite" v-model="iconsCheck" />
-<it-checkbox variant="warning" label="Warning" icon="alarm_on" v-model="iconsCheck" />
-<it-checkbox variant="black" label="Black" icon="verified_user" v-model="iconsCheck" />
-<it-checkbox variant="neutral" label="Neutral" icon="refresh" v-model="iconsCheck" />`,
+    codeIcon: `<it-checkbox variant="primary" label="Primary" ||| icon="visibility" ||| v-model="iconsCheck" />
+<it-checkbox variant="success" label="Success" ||| icon="room" ||| v-model="iconsCheck" />
+<it-checkbox variant="danger" label="Danger" ||| icon="favorite" ||| v-model="iconsCheck" />
+<it-checkbox variant="warning" label="Warning" ||| icon="alarm_on" ||| v-model="iconsCheck" />
+<it-checkbox variant="black" label="Black" ||| icon="verified_user" ||| v-model="iconsCheck" />
+<it-checkbox variant="neutral" label="Neutral" ||| icon="refresh" ||| v-model="iconsCheck" />`,
 
     codePulse: `<it-checkbox variant="primary" pulse label="Look at me" v-model="pulseValue" />`,
 
-    codeLine: `<it-checkbox variant="primary" label="It's time" v-model="lineCheck0" line-through />
-<it-checkbox variant="primary" label="For" v-model="lineCheck1" line-through />
-<it-checkbox variant="primary" label="One more" v-model="lineCheck2" line-through />
-<it-checkbox variant="primary" label="To Do" v-model="lineCheck3" line-through />
-<it-checkbox variant="primary" label="App" v-model="lineCheck4" line-through />`,
+    codeLine: `<it-checkbox variant="primary" label="It's time" v-model="lineCheck0" ||| line-through |||/>
+<it-checkbox variant="primary" label="For" v-model="lineCheck1" ||| line-through |||/>
+<it-checkbox variant="primary" label="One more" v-model="lineCheck2" ||| line-through |||/>
+<it-checkbox variant="primary" label="To Do" v-model="lineCheck3" ||| line-through |||/>
+<it-checkbox variant="primary" label="App" v-model="lineCheck4" ||| line-through |||/>`,
 
     codeSublabel: `<it-checkbox variant="primary" v-model="lineCheckSub1">By signing this I agree with Terms and Conditions</it-checkbox>
 <it-checkbox variant="primary" v-model="lineCheckSub2">
   <template v-slot:default>Subscribe for updates</template>
-  <template v-slot:sublabel>Get notified when you get updates</template>
+ ||| <template v-slot:sublabel>Get notified when you get updates</template> |||
 </it-checkbox>`,
 
     dataSheet: [

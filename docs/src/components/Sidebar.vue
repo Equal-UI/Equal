@@ -1,9 +1,8 @@
 <template>
   <div
     v-clickoutside="hideSidebar"
-    class="sidebar"
+    class="fixed flex flex-col h-full lg:left-0 w-60 -left-60 border-r"
     :style="{
-      left,
       zIndex,
     }"
   >
@@ -12,9 +11,9 @@
       :icon="left === 'inherit' ? 'menu' : 'close'"
       @click="toggleSidebar"
     />
-    <div class="sidebar-top">
+    <div class="border-b bg-white py-3 px-5">
       <router-link to="/" class="logo-link">
-        <img class="sidebar-logo" src="/eqqqual.png" />
+        <img src="/eqqqual.png" />
       </router-link>
       <div class="mt-4 flex flex-col">
         <a
@@ -23,8 +22,11 @@
           rel="noopener noreferrer"
           href="https://github.com/quatrochan/Equal"
         >
-          <it-button size="small" block>
-            <img src="/github-logo.svg" class="mr-2 h-3" alt srcset />Github
+          <it-button size="small" class="w-full">
+            <template #icon>
+              <img src="/github-logo.svg" class="h-3" alt srcset />
+            </template>
+            Github
           </it-button>
         </a>
         <a
@@ -33,13 +35,18 @@
           rel="noopener noreferrer"
           href="https://twitter.com/k0mmsussertod"
         >
-          <it-button size="small" block>
-            <img src="/twitter-logo.svg" class="mr-2 h-3" alt srcset />Twitter
+          <it-button size="small" class="w-full">
+            <template #icon
+              ><img src="/twitter-logo.svg" class="h-3" alt srcset />
+            </template>
+            Twitter
           </it-button>
         </a>
+
+        <div id="search" class="mt-2"></div>
       </div>
     </div>
-    <ul class="sidebar-menu">
+    <ul class="sidebar-menu overflow-y-auto">
       <li class="group-title-high">GENERAL</li>
       <li
         :class="{
@@ -95,12 +102,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, onMounted, onMounted } from 'vue'
 import { clickOutside } from '/@equal/directives'
 import { IComponentListItem, componentGroup } from '../types'
 import { componentsList } from '../data/components'
 import { router } from '../router'
 import { useRoute } from 'vue-router'
+import docsearch from '@docsearch/js'
 
 export default defineComponent({
   directives: {
@@ -111,6 +119,16 @@ export default defineComponent({
     const route = useRoute()
     const left = ref('inherit')
     const zIndex = ref(0)
+
+    onMounted(() => {
+      docsearch({
+        appId: 'YP1BTHBYRL',
+        apiKey: '602b99579ffec6995fe334e2af5d16cc',
+        indexName: 'quatrochan',
+        container: '#search',
+        debug: false, // Set debug to true if you want to inspect the modal
+      })
+    })
 
     const components = ref<IComponentListItem[]>(componentsList)
 
@@ -152,23 +170,10 @@ export default defineComponent({
 
 <style lang="less">
 .sidebar {
-  position: fixed;
-  left: 0px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  width: 15rem;
-  background-color: #fafbfd;
-  border-right: 1px solid #d3dae6;
-  height: 100%;
-  // z-index: 9;
-
-  transition: all 0.18s;
-
   &-top {
-    padding: 12px 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #d3dae6;
+    // padding: 12px 20px;
+    // background-color: #ffffff;
+    // border-bottom: 1px solid #d3dae6;
   }
 
   &-logo {

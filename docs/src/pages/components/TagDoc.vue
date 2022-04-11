@@ -58,16 +58,16 @@ export default defineComponent({
     tagvariants: ['primary', 'success', 'danger', 'warning', 'neutral'],
 
     variantsCode: `<it-tag>Neutral</it-tag>
-<it-tag variant="primary">Primary</it-tag>
-<it-tag variant="success">Success</it-tag>
-<it-tag variant="danger">Danger</it-tag>
-<it-tag variant="warning">Warning</it-tag>`,
+<it-tag ||| variant="primary" |||>Primary</it-tag>
+<it-tag ||| variant="success" |||>Success</it-tag>
+<it-tag ||| variant="danger" |||>Danger</it-tag>
+<it-tag ||| variant="warning" |||>Warning</it-tag>`,
 
     filledCode: `<it-tag>Neutral</it-tag>
-<it-tag variant="primary" filled>Primary</it-tag>
-<it-tag variant="success" filled>Success</it-tag>
-<it-tag variant="danger" filled>Danger</it-tag>
-<it-tag variant="warning" filled>Warning</it-tag>
+<it-tag variant="primary" ||| filled |||>Primary</it-tag>
+<it-tag variant="success" ||| filled |||>Success</it-tag>
+<it-tag variant="danger" ||| filled |||>Danger</it-tag>
+<it-tag variant="warning" ||| filled |||>Warning</it-tag>
 `,
 
     eventSheet: [

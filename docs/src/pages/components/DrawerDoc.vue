@@ -8,10 +8,10 @@
           This component is intended to be used only with wide screens
         </p>
       </template>
-      <it-button type="primary" @click="drawerLeftVisible = true"
+      <it-button variant="primary" @click="drawerLeftVisible = true"
         >Left drawer</it-button
       >
-      <it-button type="primary" @click="drawerVisible = true"
+      <it-button variant="primary" @click="drawerVisible = true"
         >Right drawer</it-button
       >
 
@@ -20,7 +20,7 @@
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
-        <it-divider />
+        <it-divider class="mb-2" />
         <template v-for="(user, i) in fakeUsers" :key="i">
           <div class="flex flex-row px-6 justify-between">
             <it-avatar :src="user.avatar" />
@@ -30,9 +30,9 @@
                 @{{ user.username }}
               </p>
             </div>
-            <it-button icon="call" type="primary"></it-button>
+            <it-button icon="call" variant="primary"></it-button>
           </div>
-          <it-divider />
+          <it-divider class="mt-2 mb-2" />
         </template>
       </it-drawer>
       <it-drawer v-model="drawerLeftVisible" placement="left">
@@ -40,7 +40,7 @@
           <it-icon class="contacts" box name="account_circle" />
           Contacts
         </h3>
-        <it-divider />
+        <it-divider class="mb-2" />
         <template v-for="(user, i) in fakeUsers" :key="i">
           <div class="flex flex-row px-6 justify-between">
             <it-avatar :src="user.avatar" />
@@ -50,9 +50,9 @@
                 @{{ user.username }}
               </p>
             </div>
-            <it-button icon="call" type="primary"></it-button>
+            <it-button icon="call" variant="primary"></it-button>
           </div>
-          <it-divider />
+          <it-divider class="mt-2 mb-2" />
         </template>
       </it-drawer>
     </Box>
@@ -65,11 +65,11 @@
         </p>
       </template>
 
-      <it-button type="primary" @click="nestedDrawer = true"
+      <it-button variant="primary" @click="nestedDrawer = true"
         >Left Nested drawer</it-button
       >
 
-      <it-button type="primary" @click="nestedDrawerR = true"
+      <it-button variant="primary" @click="nestedDrawerR = true"
         >Right Nested drawers</it-button
       >
 
@@ -146,8 +146,8 @@ export default defineComponent({
     fakeUsers: [],
 
     nestedCode: `
-<it-button type="primary" @click="nestedDrawer = true">Left Nested drawer</it-button>
-<it-button type="primary" @click="nestedDrawerR = true">Right Nested drawers</it-button>
+<it-button variant="primary" @click="nestedDrawer = true">Left Nested drawer</it-button>
+<it-button variant="primary" @click="nestedDrawerR = true">Right Nested drawers</it-button>
 
 <it-drawer v-model="nestedDrawer" placement="left">
   <it-button @click="nestedDrawer2 = true">Show nested</it-button>
@@ -174,11 +174,11 @@ export default defineComponent({
   <img class="w-full" src="/finally.png" />
 </it-drawer>`,
 
-    exampleCode: `<it-button @click="drawerLeftVisible = true" type="primary">
+    exampleCode: `<it-button @click="drawerLeftVisible = true" variant="primary">
     Left drawer
     </it-button>
 
-<it-button @click="drawerVisible = true" type="primary">
+<it-button @click="drawerVisible = true" variant="primary">
   Right drawer
 </it-button>
 
@@ -200,7 +200,7 @@ export default defineComponent({
           @{{ user.username }}
         </p>
       </div>
-      <it-button icon="call" type="primary"></it-button>
+      <it-button icon="call" variant="primary"></it-button>
     </div>
     <it-divider />
   </template>
@@ -224,7 +224,7 @@ export default defineComponent({
           @{{ user.username }}
         </p>
       </div>
-      <it-button icon="call" type="primary"></it-button>
+      <it-button icon="call" variant="primary"></it-button>
     </div>
     <it-divider />
   </template>
