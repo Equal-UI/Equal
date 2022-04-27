@@ -3,9 +3,8 @@ import { router } from './router'
 import App from './App.vue'
 import equal from '/@equal'
 import Prism from './components/Prism'
+import mitt from 'mitt' // Import mitt
 
-import Col from './components/Col.vue'
-import Row from './components/Row.vue'
 import ItCode from './components/ItCode.vue'
 import Demobox from './components/Demobox.vue'
 import Box from './components/Box.vue'
@@ -15,10 +14,11 @@ import equalConfig from '/@equal/theme/light'
 import './index.less'
 import '@docsearch/css'
 
+const emitter = mitt()
+
 createApp(App)
+  .provide('emitter', emitter)
   .component('prism', Prism)
-  .component('Col', Col)
-  .component('Row', Row)
   .component('ItCode', ItCode)
   .component('Demobox', Demobox)
   .component('Box', Box)

@@ -7,8 +7,10 @@ export enum Components {
   ITDivider = 'it-divider',
   ITBadge = 'it-badge',
   ITButton = 'it-button',
+  ITButtonGroup = 'it-button-group',
   ITSpinner = 'it-spinner',
   ITCollapse = 'it-collapse',
   ITCollapseItem = 'it-collapse-item',
   ITTextarea = 'it-textarea',
+  ITTooltip = 'it-tooltip',
 }

@@ -1,11 +1,24 @@
 <template>
-  <div class="table-box">
-    <h2 v-if="dataSheet" class="py-4 px-6 leading-none">
+  <div
+    class="
+      my-10
+      flex flex-col
+      rounded
+      border
+      bg-white
+      last:mb-0
+      dark:border-gray-600 dark:bg-neutral-800
+    "
+  >
+    <h2
+      v-if="dataSheet"
+      class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
+    >
       Props <it-tag v-if="tagName">{{ tagName }}</it-tag>
     </h2>
     <table v-if="dataSheet" class="table">
-      <thead>
-        <tr>
+      <thead class="bg-slate-50 dark:bg-neutral-700">
+        <tr class="dark:border-t-gray-600 dark:border-b-gray-600">
           <th>Property</th>
           <th>Type</th>
           <th>Default</th>
@@ -14,7 +27,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in dataSheet" :key="item.property">
+        <tr
+          v-for="item in dataSheet"
+          :key="item.property"
+          class="dark:border-t-gray-600 dark:border-b-gray-600"
+        >
           <td v-for="(col, name) in item">
             <div
               v-if="
@@ -31,16 +48,25 @@
       </tbody>
     </table>
 
-    <h2 v-if="slotSheet" class="py-4 px-6 leading-none">Slots</h2>
+    <h2
+      v-if="slotSheet"
+      class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
+    >
+      Slots
+    </h2>
     <table v-if="slotSheet" class="table">
-      <thead>
-        <tr>
+      <thead class="bg-slate-50 dark:bg-neutral-700">
+        <tr class="dark:border-t-gray-600 dark:border-b-gray-600">
           <th>Name</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in slotSheet" :key="item.property">
+        <tr
+          v-for="item in slotSheet"
+          :key="item.property"
+          class="dark:border-t-gray-600 dark:border-b-gray-600"
+        >
           <td v-for="col in item">
             <span>{{ col }}</span>
           </td>
@@ -48,9 +74,14 @@
       </tbody>
     </table>
 
-    <h2 v-if="methodSheet" class="py-4 px-6 leading-none">Methods</h2>
+    <h2
+      v-if="methodSheet"
+      class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
+    >
+      Methods
+    </h2>
     <table v-if="methodSheet" class="table">
-      <thead>
+      <thead class="bg-slate-50 dark:bg-neutral-700">
         <tr>
           <th>Method</th>
           <th>Description</th>
@@ -66,9 +97,14 @@
       </tbody>
     </table>
 
-    <h2 v-if="eventSheet" class="py-4 px-6 leading-none">Events</h2>
+    <h2
+      v-if="eventSheet"
+      class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
+    >
+      Events
+    </h2>
     <table v-if="eventSheet" class="table">
-      <thead>
+      <thead class="bg-slate-50 dark:bg-neutral-700">
         <tr>
           <th>Event</th>
           <th>Description</th>
@@ -101,31 +137,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-.table-box {
-  border: 1px solid #d3dae6;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-sizing: border-box;
-  overflow-x: auto;
-
-  & + & {
-    margin-top: 40px;
-  }
-}
-
 .table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-
-  & thead {
-    background-color: #fafbfd;
-    border-bottom: 1px solid #d3dae6;
-    border-top: 1px solid #d3dae6;
-  }
-
   & th,
   td {
     line-height: 1;

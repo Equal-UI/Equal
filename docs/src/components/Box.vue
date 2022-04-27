@@ -1,6 +1,15 @@
 <template>
   <div
-    class="it-box bg-white rounded flex flex-col my-10 box-border w-full"
+    class="
+      it-box
+      my-10
+      flex
+      w-full
+      flex-col
+      rounded
+      bg-white
+      dark:border-neutral-700 dark:bg-neutral-800
+    "
     :class="{ 'overflow-hidden': overflowHidden }"
   >
     <h2 class="it-box-title py-4 px-6 leading-none">{{ title }}</h2>
@@ -8,23 +17,23 @@
     <div
       class="
         it-box-scene
-        gap-4
+        box-border
+        flex
         w-full
+        flex-wrap
+        items-center
+        justify-center
+        gap-4
         py-10
         px-6
-        flex-wrap
         leading-none
-        flex
-        justify-center
-        items-center
-        box-border
       "
     >
       <slot></slot>
     </div>
 
     <div
-      class="it-box-code w-full relative overflow-auto"
+      class="it-box-code relative w-full overflow-auto"
       :style="{
         'max-height': expandHeight,
       }"
@@ -38,7 +47,7 @@
         <it-button icon="file_copy" @click="clickCopy" />
       </it-tooltip>
       <prism
-        style="border-top: 1px solid #d3dae6"
+        class="border-t border-t-white dark:border-t-gray-600"
         language="html"
         :code="code"
       ></prism>

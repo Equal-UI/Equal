@@ -98,35 +98,6 @@
       <it-button size="normal" disabled>Button</it-button>
       <it-button size="big" disabled>Button</it-button>
     </Box>
-    <Box :code="codeGroup" title="Group">
-      <div class="margins">
-        <it-button-group>
-          <it-button>Left</it-button>
-          <it-button>Middle</it-button>
-          <it-button>Right</it-button>
-        </it-button-group>
-        <it-button-group>
-          <it-button variant="primary" outlined>Left</it-button>
-          <it-button variant="primary" outlined>Middle</it-button>
-          <it-button variant="primary" outlined>Right</it-button>
-        </it-button-group>
-      </div>
-    </Box>
-
-    <Box :code="codeVerticalGroup" title="Vertical group">
-      <div class="margins">
-        <it-button-group vertical>
-          <it-button>Top</it-button>
-          <it-button>Middle</it-button>
-          <it-button>Bottom</it-button>
-        </it-button-group>
-        <it-button-group vertical>
-          <it-button variant="primary" outlined>Top</it-button>
-          <it-button variant="primary" outlined>Middle</it-button>
-          <it-button variant="primary" outlined>Bottom</it-button>
-        </it-button-group>
-      </div>
-    </Box>
 
     <props-table tag-name="it-button" :data-sheet="dataSheet" />
     <props-table tag-name="it-button-group" :data-sheet="dataSheetGroup" />
@@ -194,28 +165,6 @@ export default defineComponent({
 
     codeBlock: `<it-button class="w-full">Button</it-button>
 <it-button class="w-full" variant="primary" block>Button</it-button>`,
-
-    codeGroup: `<it-button-group>
-  <it-button>Left</it-button>
-  <it-button>Middle</it-button>
-  <it-button>Right</it-button>
-</it-button-group>
-<it-button-group>
-  <it-button variant="primary" outlined>Left</it-button>
-  <it-button variant="primary" outlined>Middle</it-button>
-  <it-button variant="primary" outlined>Right</it-button>
-</it-button-group>`,
-
-    codeVerticalGroup: `<it-button-group vertical>
-  <it-button>Left</it-button>
-  <it-button>Middle</it-button>
-  <it-button>Right</it-button>
-</it-button-group>
-<it-button-group vertical>
-  <it-button variant="primary" outlined>Left</it-button>
-  <it-button variant="primary" outlined>Middle</it-button>
-  <it-button variant="primary" outlined>Right</it-button>
-</it-button-group>`,
 
     codeText: `<it-button ||| variant="text" |||>Button</it-button>
 <it-button ||| variant="primary-text" |||>Button</it-button>

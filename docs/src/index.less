@@ -13,6 +13,32 @@
   background: rgba(125, 211, 252, 0.15);
 }
 
+.scrollbar::-webkit-scrollbar {
+  width: 14px;
+  height: 16px;
+}
+
+/* Track */
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-right: 4px;
+  background: #edf2f7;
+}
+
+/* Handle */
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 100vh;
+  border: 3px solid #edf2f7;
+}
+
+/* Handle on hover */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
 /**
  * Dracula Theme originally by Zeno Rocha [@zenorocha]
  * https://draculatheme.com/
@@ -130,15 +156,15 @@ pre[class*='language-'] {
 
 .token.deleted,
 .token.inserted {
-  @apply block relative -mx-9 pl-8 pr-5 border-l-4 before:absolute before:top-0 before:left-4;
+  @apply relative -mx-9 block border-l-4 pl-8 pr-5 before:absolute before:top-0 before:left-4;
 }
 
 .token.inserted {
-  @apply bg-teal-400/[0.15] border-teal-400 before:content-['+'] before:text-teal-400;
+  @apply border-teal-400 bg-teal-400/[0.15] before:text-teal-400 before:content-['+'];
 }
 
 .token.deleted {
-  @apply bg-rose-500/[0.15] border-rose-400 before:content-['-'] before:text-rose-400;
+  @apply border-rose-400 bg-rose-500/[0.15] before:text-rose-400 before:content-['-'];
 }
 
 pre[class^='language-diff-'] {
@@ -146,5 +172,5 @@ pre[class^='language-diff-'] {
 }
 
 pre[class^='language-diff-'] > code {
-  @apply flex-none min-w-full;
+  @apply min-w-full flex-none;
 }

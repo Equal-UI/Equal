@@ -74,10 +74,6 @@ export default defineComponent({
       )
     })
 
-    const hasBoxShadow = computed(
-      () => !props.outlined && !props.disabled && !props.block && !props.text,
-    )
-
     return { variant }
   },
 })

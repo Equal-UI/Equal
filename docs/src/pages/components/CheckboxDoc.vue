@@ -30,7 +30,11 @@
           resize-on-write
           label-top="Checkbox sublabel"
         />
-        <it-checkbox v-model="lineCheck" label="Line through" />
+        <it-checkbox
+          v-model="lineCheck"
+          variant="primary"
+          label="Line through"
+        />
         <it-input v-model="checkboxIcon" label-top="Checkbox icon" />
         <it-checkbox v-model="checkboxPulse" label="Pulse" />
         <it-checkbox v-model="checkboxDisabled" label="Disabled" />

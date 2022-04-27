@@ -1,23 +1,25 @@
 <template>
   <div
-    class="it-toggle"
+    class="it-toggle h-8"
     tabindex="0"
     :class="{ 'it-toggle--round': round }"
     @keyup.left.prevent="selectPrev"
     @keyup.right.prevent="selectNext"
   >
-    <label
+    <div
       v-for="(option, i) in options"
       :key="i"
-      class="it-toggle-value"
+      class="it-toggle-value relative flex max-h-full justify-center"
       :class="{
         'it-toggle-value--selected': option === modelValue,
       }"
       @click="selectValue(i)"
     >
-      <span v-if="!icons">{{ option }}</span>
-      <it-icon v-else :name="String(option)" />
-    </label>
+      <slot :name="option">
+        <span v-if="!icons">{{ option }}</span>
+        <it-icon v-else :name="String(option)" />
+      </slot>
+    </div>
     <div
       class="it-toggle-slider"
       :style="{
@@ -64,10 +66,8 @@ export default defineComponent({
     function selectPrev() {
       if (!props.options[activeIndex.value - 1]) {
         selectValue(props.options.length - 1)
-        // selectNext(0)
         return
       }
-
       selectValue(activeIndex.value - 1)
     }
 
@@ -77,7 +77,7 @@ export default defineComponent({
     )
     const sliderPosition = computed(() => {
       const pos = props.options.findIndex((v) => v === props.modelValue)
-      return (pos === -1 ? 0 : pos) * 100
+      return pos === -1 ? 0 : pos * 100
     })
 
     return {

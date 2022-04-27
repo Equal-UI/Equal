@@ -1,16 +1,16 @@
 <template>
-  <div class="flex flex-col mx-14 my-8">
+  <div class="mx-14 my-8 flex flex-col">
     <div class="relative flex flex-col items-center py-20">
       <div
         class="
           absolute
           animate-[float_4s_ease-in-out_infinite]
           transition-all
-          ease-out
           duration-500
+          ease-out
         "
         :class="{
-          'top-1/2 left-1/2 scale-0 opacity-0 -translate-x-1/2': !loaded,
+          'top-1/2 left-1/2 -translate-x-1/2 scale-0 opacity-0': !loaded,
           'top-[10%] left-1/4 -translate-x-1/2': loaded,
         }"
       >
@@ -25,12 +25,12 @@
           absolute
           animate-[float_3s_ease-in-out_infinite]
           transition-all
-          ease-out
-          duration-500
           delay-100
+          duration-500
+          ease-out
         "
         :class="{
-          'top-1/2 left-1/2 scale-0 opacity-0 -translate-x-1/2': !loaded,
+          'top-1/2 left-1/2 -translate-x-1/2 scale-0 opacity-0': !loaded,
           'top-[10%] left-3/4 -translate-x-1/2': loaded,
         }"
       >
@@ -45,9 +45,9 @@
           absolute
           animate-[float_3.5s_ease-in-out_infinite]
           transition-all
-          ease-out
-          duration-500
           delay-100
+          duration-500
+          ease-out
         "
         :class="{
           'bottom-1/2 left-1/2 opacity-0': !loaded,
@@ -59,11 +59,11 @@
       <div
         class="
           absolute
+          w-40
           animate-[float_4.5s_ease-in-out_infinite]
           transition-all
-          ease-out
           duration-500
-          w-40
+          ease-out
         "
         :class="{
           'bottom-1/2 left-1/2 opacity-0': !loaded,
@@ -78,13 +78,15 @@
         />
       </div>
 
-      <p class="main-title"><img width="150" src="/logo.png" /></p>
+      <p class="main-title"><img width="150" src="/logo.svg" /></p>
       <h1 class="mb-3.5">Equal UI</h1>
       <h4>Vue 3 components system for your next project based on TypeScript</h4>
     </div>
-    <div class="buttons-group mt-20">
+    <div class="mt-20 flex justify-center space-x-6">
       <router-link to="/start">
-        <it-button type="primary" size="big" pulse>Get started</it-button>
+        <it-button type="primary" size="big" variant="primary" pulse
+          >Get started</it-button
+        >
       </router-link>
       <a
         target="_blank"
@@ -101,7 +103,7 @@
 
       <div v-for="(item, key) in componentGroups" :key="key" class="mb-6">
         <h2>{{ key }}</h2>
-        <div class="mt-4 grid lg:grid-cols-3 grid-cols-1 gap-6 comps-grid">
+        <div class="comps-grid mt-4 grid grid-cols-1 gap-6 lg:grid-cols-3">
           <template v-for="(component, i) in item" :key="i">
             <router-link :to="component.route">
               <div class="card-up p-4">

@@ -1,20 +1,36 @@
 <template>
   <div
-    v-clickoutside="hideSidebar"
-    class="fixed flex flex-col h-full lg:left-0 w-60 -left-60 border-r"
-    :style="{
-      zIndex,
+    v-clickoutside="closeSidebar"
+    class="
+      fixed
+      -left-60
+      flex
+      h-full
+      w-60
+      flex-col
+      border-r
+      bg-white
+      transition-all
+      duration-100
+      dark:border-gray-600
+      lg:left-0
+    "
+    :class="{
+      '!left-0 z-[100]': open,
     }"
   >
-    <it-button
-      class="burger"
-      :icon="left === 'inherit' ? 'menu' : 'close'"
-      @click="toggleSidebar"
-    />
-    <div class="border-b bg-white py-3 px-5">
-      <router-link to="/" class="logo-link">
-        <img src="/eqqqual.png" />
-      </router-link>
+    <div
+      class="
+        border-b
+        bg-white
+        py-3
+        px-5
+        dark:border-gray-600 dark:bg-neutral-900
+      "
+    >
+      <!-- <router-link to="/" class="logo-link">
+        <img src="/logo.png" />
+      </router-link> -->
       <div class="mt-4 flex flex-col">
         <a
           target="_blank"
@@ -31,7 +47,7 @@
         </a>
         <a
           target="_blank"
-          class="flex mt-2"
+          class="mt-2 flex"
           rel="noopener noreferrer"
           href="https://twitter.com/k0mmsussertod"
         >
@@ -46,7 +62,16 @@
         <div id="search" class="mt-2"></div>
       </div>
     </div>
-    <ul class="sidebar-menu overflow-y-auto">
+    <ul
+      class="
+        scrollbar
+        w-full
+        overflow-y-auto
+        px-6
+        py-10
+        dark:bg-neutral-800 dark:text-slate-400
+      "
+    >
       <li class="group-title-high">GENERAL</li>
       <li
         :class="{
@@ -102,13 +127,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onMounted } from 'vue'
+import { defineComponent, ref, computed, onMounted, inject, watch } from 'vue'
 import { clickOutside } from '/@equal/directives'
 import { IComponentListItem, componentGroup } from '../types'
 import { componentsList } from '../data/components'
 import { router } from '../router'
 import { useRoute } from 'vue-router'
 import docsearch from '@docsearch/js'
+import { Emitter } from 'mitt'
+import { TEvents, TTheme } from '../types/Events'
 
 export default defineComponent({
   directives: {
@@ -118,7 +145,9 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const left = ref('inherit')
+    const open = ref(false)
     const zIndex = ref(0)
+    const emitter = inject<Emitter<TEvents>>('emitter')
 
     onMounted(() => {
       docsearch({
@@ -151,6 +180,21 @@ export default defineComponent({
       }, {})
     })
 
+    emitter?.on('sidebar', (value) => {
+      console.log(
+        '🚀 ~ file: Sidebar.vue ~ line 184 ~ emitter?.on ~ value',
+        value,
+      )
+      openSidebar()
+    })
+
+    const openSidebar = () => {
+      open.value = true
+    }
+    const closeSidebar = () => {
+      open.value = false
+    }
+
     function toggleSidebar() {
       left.value = left.value === 'inherit' ? '0px !important' : 'inherit'
       zIndex.value = zIndex.value === 0 ? 1 : 0
@@ -163,58 +207,22 @@ export default defineComponent({
       zIndex.value = 0
     }
 
-    return { left, zIndex, toggleSidebar, hideSidebar, componentGroups }
+    return {
+      left,
+      zIndex,
+      open,
+      closeSidebar,
+      toggleSidebar,
+      hideSidebar,
+      componentGroups,
+    }
   },
 })
 </script>
 
 <style lang="less">
 .sidebar {
-  &-top {
-    // padding: 12px 20px;
-    // background-color: #ffffff;
-    // border-bottom: 1px solid #d3dae6;
-  }
-
-  &-logo {
-    width: 100%;
-  }
-
   &-menu {
-    width: 100%;
-    box-sizing: border-box;
-    list-style: none;
-    padding: 10px 0px 20px;
-    margin: 0px;
-    font-size: 14px;
-    // height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    & > li {
-      display: list-item;
-      box-sizing: border-box;
-      padding: 0 15px;
-    }
-
-    & > li > a:not(.github) {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 4px 7px 4px 30px;
-      width: 100%;
-      box-sizing: border-box;
-      font-weight: 500;
-      font-size: 0.865rem;
-      color: #69707d;
-      transition: all 0.2s ease;
-
-      &:hover {
-        color: #131313;
-        transform: translateX(4px);
-      }
-    }
-
     li.group-title {
       color: #131313;
       padding: 16px 0px 5px 30px;
@@ -246,7 +254,6 @@ export default defineComponent({
 
   > a {
     color: #131313 !important;
-    // padding: 4px 0 4px 30px !important;
     &:hover {
       transform: none !important;
     }
@@ -275,5 +282,3 @@ export default defineComponent({
   }
 }
 </style>
-
-function useRoute() { throw new Error('Function not implemented.') }

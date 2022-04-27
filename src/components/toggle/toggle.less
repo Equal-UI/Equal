@@ -34,6 +34,10 @@
     line-height: 1;
     cursor: pointer;
 
+    > * {
+      z-index: 5;
+    }
+
     &:not(&--selected) {
       color: #6c6781;
     }
@@ -61,7 +65,6 @@
     & > span,
     & > i {
       position: relative;
-      z-index: 5;
       font-size: @default-text-size;
       font-weight: 500;
     }

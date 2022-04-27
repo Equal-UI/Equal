@@ -1,13 +1,13 @@
 <template>
   <div class="it-tooltip">
-    <span
+    <div
       ref="trigger"
       class="it-tooltip-trigger"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
-      <slot></slot>
-    </span>
+      <slot :fixed-classes="{ root: variant.innerSlot }"></slot>
+    </div>
 
     <transition :name="transition">
       <div
@@ -29,13 +29,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
+import { computed, defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { usePopover } from '@/hooks'
-import { Positions } from '@/models/enums'
+import { Components, Positions } from '@/models/enums'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { ITTooltipOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
   name: 'it-tooltip',
   props: {
+    ...getVariantPropsWithClassesList<ITTooltipOptions>(),
     content: [String, Number],
     disabled: Boolean,
     hoverable: Boolean,
@@ -66,10 +70,34 @@ export default defineComponent({
       setPopoverPosition,
     } = usePopover(props)
 
+    const variant = computed(() =>
+      useVariants<ITTooltipOptions>(Components.ITTooltip, props),
+    )
+
     onMounted(() => {
       if (permanent.value) {
         showPopover()
       }
+
+      ;(trigger.value as unknown as HTMLElement)?.addEventListener(
+        'focusin',
+        handleMouseEnter,
+      )
+      ;(trigger.value as unknown as HTMLElement)?.addEventListener(
+        'focusout',
+        handleMouseLeave,
+      )
+    })
+
+    onBeforeUnmount(() => {
+      ;(trigger.value as unknown as HTMLElement)?.removeEventListener(
+        'focusin',
+        handleMouseEnter,
+      )
+      ;(trigger.value as unknown as HTMLElement)?.removeEventListener(
+        'focusout',
+        handleMouseLeave,
+      )
     })
 
     return {
@@ -87,6 +115,7 @@ export default defineComponent({
       hidePopover,
       showPopover,
       setPopoverPosition,
+      variant,
     }
   },
 })

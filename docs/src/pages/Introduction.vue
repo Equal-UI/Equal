@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-14 pb-20">
     <h1>Introduction</h1>
     <div class="it-text-box">
       <h2 class="mb-4">Hello!</h2>

@@ -71,6 +71,17 @@ export interface ITButtonOptions extends IComponentWithRoot {
 }
 
 export type ITButtonVariants = WithVariantProps<ITButtonOptions>
+export interface ITButtonGroupOptions extends IComponentWithRoot {
+  button?: string
+}
+
+export type ITButtonGroupVariants = WithVariantProps<ITButtonOptions>
+
+export interface ITTooltipOptions extends IComponentWithRoot {
+  innerSlot?: string
+}
+
+export type ITTooltipVariants = WithVariantProps<ITButtonOptions>
 
 export interface ITSpinnerOptions extends IComponentWithRoot {}
 

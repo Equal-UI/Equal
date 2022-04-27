@@ -151,7 +151,12 @@ const routes = [
 export const router = createRouter({
   history: createWebHistory('/Equal/'),
   routes,
-  scrollBehavior() {
+  scrollBehavior(to) {
+    // if (to.hash) {
+    //   return {
+    //     selector: to.hash,
+    //   }
+    // }
     return { left: 0, top: 0 }
   },
 })

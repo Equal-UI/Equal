@@ -11,6 +11,7 @@
     "@vueuse/integrations": "^5.0.3",
     "body-scroll-lock": "^3.1.5",
     "faker": "^5.1.0",
+    "mitt": "^3.0.0",
     "prismjs": "^1.23.0",
     "tinycolor2": "^1.4.2",
     "vue": "^3.0.5",

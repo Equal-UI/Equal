@@ -26,7 +26,10 @@
       <it-avatar color="#131313" />
     </Box>
 
-    <Box :code="imageCode" title="Image">
+    <Box id="suda" :code="imageCode" title="Image">
+      <a href="#suda">
+        <h2>suda</h2>
+      </a>
       <it-avatar :src="husky" />
       <it-avatar :src="husky" square />
     </Box>
