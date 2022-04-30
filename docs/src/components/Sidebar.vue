@@ -128,7 +128,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, inject, watch } from 'vue'
-import { clickOutside } from '/@equal/directives'
+import { clickOutside } from '@equal/directives'
 import { IComponentListItem, componentGroup } from '../types'
 import { componentsList } from '../data/components'
 import { router } from '../router'

@@ -42,6 +42,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "serve": "vite serve",
     "test": "vitest run",
     "test:dev": "vitest",
     "tetet": "vitest -u",

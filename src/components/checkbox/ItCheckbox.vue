@@ -4,7 +4,7 @@
       <input
         type="checkbox"
         v-bind="$attrs"
-        class="absolute inset-0 m-0 w-full h-full opacity-0 cursor-pointer peer"
+        class="peer absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0"
         :disabled="disabled"
         @change="toggle"
         :checked="modelValue"

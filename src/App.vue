@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute bottom-2 right-2 p-4 border bg-white">
+  <div class="absolute bottom-2 right-2 border bg-white p-4">
     <it-switch v-model="dark" label="Dark theme" />
   </div>
   <div id="grid" :class="{ dark }" class="bg-white dark:bg-stone-900">
