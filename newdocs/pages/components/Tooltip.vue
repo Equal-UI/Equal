@@ -19,6 +19,31 @@
         <it-input v-model="tooltipContent" label-top="Tooltip text" />
       </template>
     </Demobox>
+
+    <Box :code="directiveCode" title="Directive">
+      <template #description>
+        <p class="mx-6">You can use directive for tooltips</p>
+      </template>
+      <div class="flex flex-col items-center space-y-2">
+        <it-button v-tooltip="{ content: 'Top tooltip' }">Top</it-button>
+        <div class="flex items-center space-x-8">
+          <it-button v-tooltip="{ position: 'left', content: 'Left tooltip' }">
+            Left
+          </it-button>
+          <it-button
+            v-tooltip="{ position: 'right', content: 'Right tooltip' }"
+          >
+            Right
+          </it-button>
+        </div>
+        <it-button
+          v-tooltip="{ position: 'bottom', content: 'Bottom tooltip' }"
+        >
+          Bottom
+        </it-button>
+      </div>
+    </Box>
+
     <Box :code="positionCode" title="Position">
       <template #description>
         <p class="mx-6">
@@ -26,21 +51,21 @@
           the example
         </p>
       </template>
-      <div class="flex flex-col items-center">
-        <it-button-group vertical>
-          <it-tooltip content="Top" placement="top">
-            <it-button>Top</it-button>
+      <div class="flex flex-col items-center space-y-2">
+        <it-tooltip content="Top" placement="top">
+          <it-button>Top</it-button>
+        </it-tooltip>
+        <div class="flex items-center space-x-8">
+          <it-tooltip content="Left" placement="left">
+            <it-button>Left</it-button>
           </it-tooltip>
           <it-tooltip content="Right" placement="right">
             <it-button>Right</it-button>
           </it-tooltip>
-          <it-tooltip content="Left" placement="left">
-            <it-button>Left</it-button>
-          </it-tooltip>
-          <it-tooltip content="Bottom" placement="bottom">
-            <it-button>Bottom</it-button>
-          </it-tooltip>
-        </it-button-group>
+        </div>
+        <it-tooltip content="Bottom" placement="bottom">
+          <it-button>Bottom</it-button>
+        </it-tooltip>
       </div>
     </Box>
     <Box :code="slotCode" title="Content Slot">
@@ -78,6 +103,21 @@ export default defineComponent({
     // tooltipPermanent: boolean = false
     tooltipPlacement: 'top',
     tooltipPlacements: ['top', 'right', 'bottom', 'left'],
+
+    directiveCode: `<it-button ||| v-tooltip="{ content: 'Top tooltip' }" |||>Top</it-button>
+<it-button ||| v-tooltip="{ position: 'left', content: 'Left tooltip' }" |||>
+  Left
+</it-button>
+<it-button
+ ||| v-tooltip="{ position: 'right', content: 'Right tooltip' }" |||
+>
+  Right
+</it-button>
+<it-button
+ ||| v-tooltip="{ position: 'bottom', content: 'Bottom tooltip' }" |||
+>
+  Bottom
+</it-button>`,
 
     positionCode: `<it-tooltip content="Top" ||| placement="top" |||>
   <it-button>Top</it-button>

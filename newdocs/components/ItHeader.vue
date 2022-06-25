@@ -21,10 +21,12 @@
     >
       <div class="flex flex-row">
         <it-button class="flex lg:hidden" icon="menu" @click="openSidebar" />
-        <img class="ml-4 w-6" src="/logo.svg" />
+        <NuxtLink to="/">
+          <img class="ml-4 w-7" src="/logo.svg" />
+        </NuxtLink>
       </div>
 
-      <div>
+      <div class="w-24">
         <it-toggle
           v-model="toggleThemeValue"
           icons
@@ -76,7 +78,7 @@
   </header>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { Emitter } from 'mitt'
 import {
   computed,
@@ -89,41 +91,35 @@ import {
 } from 'vue'
 import { TEvents, TTheme } from '../types/Events'
 
-export default defineComponent({
-  setup() {
-    const toggleThemeValue = ref<TTheme>('light')
-    const emitter = inject<Emitter<TEvents>>('emitter')
-    const scrollPosition = ref(window.scrollY)
+const toggleThemeValue = ref<TTheme>('light')
+const emitter = inject<Emitter<TEvents>>('emitter')
+const scrollPosition = ref(window.scrollY)
 
-    watch(toggleThemeValue, (value) => {
-      emitter?.emit('theme', value)
-    })
+watch(toggleThemeValue, (value) => {
+  emitter?.emit('theme', value)
+})
 
-    const updateScrollValue = () => {
-      scrollPosition.value = window.scrollY
-    }
+const updateScrollValue = () => {
+  scrollPosition.value = window.scrollY
+}
 
-    const openSidebar = () => {
-      emitter?.emit('sidebar', true)
-    }
+const openSidebar = () => {
+  emitter?.emit('sidebar', true)
+}
 
-    emitter?.on('theme', (value) => {
-      toggleThemeValue.value = value
-    })
+emitter?.on('theme', (value) => {
+  toggleThemeValue.value = value
+})
 
-    onMounted(() => {
-      window.addEventListener('scroll', updateScrollValue)
-    })
+onMounted(() => {
+  window.addEventListener('scroll', updateScrollValue)
+})
 
-    onUnmounted(() => {
-      window.removeEventListener('scroll', updateScrollValue)
-    })
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateScrollValue)
+})
 
-    const showBackground = computed(() => {
-      return scrollPosition.value >= 10
-    })
-
-    return { toggleThemeValue, showBackground, openSidebar }
-  },
+const showBackground = computed(() => {
+  return scrollPosition.value >= 10
 })
 </script>

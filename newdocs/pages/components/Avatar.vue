@@ -27,9 +27,6 @@
     </Box>
 
     <Box id="suda" :code="imageCode" title="Image">
-      <a href="#suda">
-        <h2>suda</h2>
-      </a>
       <it-avatar :src="husky" />
       <it-avatar :src="husky" square />
     </Box>

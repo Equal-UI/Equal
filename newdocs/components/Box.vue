@@ -7,6 +7,7 @@
       w-full
       flex-col
       rounded
+      border
       bg-white
       dark:border-neutral-700 dark:bg-neutral-800
     "
@@ -38,22 +39,22 @@
         'max-height': expandHeight,
       }"
     >
-      <it-tooltip
-        ref="tooltip"
-        :content="copyText"
-        class="it-box-code-copy"
-        placement="left"
-      >
-        <it-button icon="file_copy" @click="clickCopy" />
-      </it-tooltip>
+      <it-button
+        icon="file_copy"
+        class="!absolute top-3 right-3"
+        @click="clickCopy"
+        v-tooltip="tooltipValue"
+      />
       <prism
         class="border-t border-t-white dark:border-t-gray-600"
         language="html"
         :code="code"
       ></prism>
     </div>
+    <it-divider v-if="showExpand" />
     <it-button
       style="border: none; border-radius: 0px"
+      v-if="showExpand"
       icon="code"
       type="neutral"
       @click="toggleExpand"
@@ -62,62 +63,47 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { ref, computed } from 'vue'
 
-export default defineComponent({
-  name: 'box',
-  props: {
-    code: String,
-    title: String,
-    overflowHidden: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  data: () => ({
-    expandHeight: '0px',
-    copyText: 'Copy to clipboard',
-    expanded: false,
-  }),
-  methods: {
-    toggleExpand() {
-      this.expandHeight = this.expandHeight === '0px' ? '1000px' : '0px'
-      this.expanded = !this.expanded
-    },
+interface Props {
+  code?: string
+  title?: string
+  overflowHidden?: boolean
+}
 
-    async clickCopy() {
-      this.copyText = 'Copied!'
-      await navigator.clipboard.writeText(this.code)
-      this.$refs.tooltip.setPopoverPosition()
-    },
-  },
+const props = withDefaults(defineProps<Props>(), {
+  overflowHidden: true,
 })
+
+const expandHeight = ref('0px')
+const copyText = ref('Copy to clipboard')
+const expanded = ref(false)
+
+const tooltipValue = { position: 'left', content: copyText }
+
+const showExpand = computed(() => (props.code || '').split('\n').length > 3)
+
+function toggleExpand() {
+  expandHeight.value = expandHeight.value === '0px' ? '1000px' : '0px'
+  expanded.value = !expanded.value
+}
+
+async function clickCopy() {
+  copyText.value = 'Copied!'
+  await navigator.clipboard.writeText(props.code!)
+}
+
+if (!showExpand.value) {
+  expandHeight.value = '1000px'
+}
 </script>
 
 <style lang="less">
 .it-box {
-  border: 1px solid #d3dae6;
   min-height: 150px;
 
-  &-title {
-    .it-tag {
-      @apply ml-2;
-    }
-  }
-
-  // &-scene {
-  //   & > * + * {
-  //     @apply ml-4;
-  //   }
-
-  //   & > * {
-  //     @apply mb-4;
-  //   }
-  // }
-
   &-code {
-    border-bottom: 1px solid #d3dae6;
     transition: max-height 0.4s;
 
     &-copy {

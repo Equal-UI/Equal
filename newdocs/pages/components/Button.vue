@@ -33,6 +33,31 @@
         <it-checkbox v-model="buttonDisabled" label="Disabled" />
       </template>
     </Demobox>
+    <Box :code="codeGroups" title="Buttons group">
+      <it-button-group>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+      </it-button-group>
+
+      <it-button-group vertical>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+      </it-button-group>
+
+      <it-button-group>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+      </it-button-group>
+
+      <it-button-group vertical>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+      </it-button-group>
+    </Box>
     <Box :code="codeType" title="Variants">
       <it-button>Button</it-button>
       <it-button variant="primary">Button</it-button>
@@ -121,6 +146,30 @@ export default defineComponent({
     buttonSize: '',
     buttonTypes: ['neutral', 'primary', 'success', 'danger', 'warning'],
     buttonIcon: false,
+
+    codeGroups: `<it-button-group>
+  <it-button>Button</it-button>
+  <it-button>Button</it-button>
+  <it-button>Button</it-button>
+</it-button-group>
+
+<it-button-group vertical>
+  <it-button>Button</it-button>
+  <it-button>Button</it-button>
+  <it-button>Button</it-button>
+</it-button-group>
+
+<it-button-group>
+  <it-button variant="primary" outlined>Button</it-button>
+  <it-button variant="primary" outlined>Button</it-button>
+  <it-button variant="primary" outlined>Button</it-button>
+</it-button-group>
+
+<it-button-group vertical>
+  <it-button variant="primary" outlined>Button</it-button>
+  <it-button variant="primary" outlined>Button</it-button>
+  <it-button variant="primary" outlined>Button</it-button>
+</it-button-group>`,
 
     codeType: `<it-button>Button</it-button>
 <it-button ||| variant="primary" ||| >Button</it-button>

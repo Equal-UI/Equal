@@ -28,9 +28,6 @@
         dark:border-gray-600 dark:bg-neutral-900
       "
     >
-      <!-- <router-link to="/" class="logo-link">
-        <img src="/logo.png" />
-      </router-link> -->
       <div class="mt-4 flex flex-col">
         <a
           target="_blank"
@@ -59,6 +56,9 @@
           </it-button>
         </a>
       </div>
+      <div class="mt-4">
+      <it-input v-model="search" labelTop="Search" placeholder="Tooltip..." />
+      </div>
     </div>
     <ul
       class="
@@ -72,6 +72,7 @@
     >
       <li class="group-title-high">GENERAL</li>
       <li
+        class="ml-2"
         :class="{
           'active-menu-item': $route.path === '/introduction',
         }"
@@ -85,6 +86,7 @@
         >
       </li>
       <li
+        class="ml-2"
         :class="{
           'active-menu-item': $route.path === '/start',
         }"
@@ -108,7 +110,7 @@
             @click="hideSidebar"
           >
             <NuxtLink :to="component.route">
-              <span class="flex p-2">
+              <span class="flex p-2 pl-8">
                 <it-icon
                   :outlined="component.icon_outlined"
                   :name="component.icon"
@@ -124,88 +126,66 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent, ref, computed, onMounted, inject, watch } from 'vue'
-import { clickOutside } from '@/directives'
+import { clickOutside as vClickoutside } from '@/directives'
 import { IComponentListItem, componentGroup } from '../types'
 import { componentsList } from '../data/components'
 import { useRoute } from 'vue-router'
 import { Emitter } from 'mitt'
 import { TEvents, TTheme } from '../types/Events'
 
-export default defineComponent({
-  directives: {
-    clickoutside: clickOutside,
-  },
-  layout: 'components',
-  setup() {
-    const route = useRoute()
-    const left = ref('inherit')
-    const open = ref(false)
-    const zIndex = ref(0)
-    const emitter = inject<Emitter<TEvents>>('emitter')
+const route = useRoute()
+const left = ref('inherit')
+const open = ref(false)
+const zIndex = ref(0)
+const emitter = inject<Emitter<TEvents>>('emitter')
+const components = ref<IComponentListItem[]>(componentsList)
+const search = ref('')
 
-    onMounted(() => {})
-
-    const components = ref<IComponentListItem[]>(componentsList)
-
-    const componentGroups = computed(() => {
-      return Object.values(componentGroup).reduce((el, next) => {
-        return {
-          ...el,
-          [next]: components.value
-            .map((el) => {
-              if (el.name === 'Switch') {
-                el.icon =
-                  route.path === '/components/switch'
-                    ? 'toggle_on'
-                    : 'toggle_off'
-              }
-              return el
-            })
-            .filter((comp) => comp.group === next),
-        }
-      }, {})
-    })
-
-    emitter?.on('sidebar', (value) => {
-      console.log(
-        '🚀 ~ file: Sidebar.vue ~ line 184 ~ emitter?.on ~ value',
-        value,
-      )
-      openSidebar()
-    })
-
-    const openSidebar = () => {
-      open.value = true
-    }
-    const closeSidebar = () => {
-      open.value = false
-    }
-
-    function toggleSidebar() {
-      left.value = left.value === 'inherit' ? '0px !important' : 'inherit'
-      zIndex.value = zIndex.value === 0 ? 1 : 0
-    }
-    function hideSidebar() {
-      if (left.value === 'inherit') {
-        return
-      }
-      left.value = 'inherit'
-      zIndex.value = 0
-    }
-
+const componentGroups = computed(() => {
+  return Object.values(componentGroup).reduce((el, next) => {
     return {
-      left,
-      zIndex,
-      open,
-      closeSidebar,
-      toggleSidebar,
-      hideSidebar,
-      componentGroups,
+      ...el,
+      [next]: components.value
+        .map((el) => {
+          if (el.name === 'Switch') {
+            el.icon =
+              route.path === '/components/switch' ? 'toggle_on' : 'toggle_off'
+          }
+          return el
+        })
+        .filter(
+          (comp) =>
+            comp.group === next &&
+            comp.name.toLowerCase().includes(search.value.toLowerCase()),
+        ),
     }
-  },
+  }, {})
 })
+
+emitter?.on('sidebar', (value) => {
+  openSidebar()
+})
+
+const openSidebar = () => {
+  open.value = true
+}
+const closeSidebar = () => {
+  open.value = false
+}
+
+function toggleSidebar() {
+  left.value = left.value === 'inherit' ? '0px !important' : 'inherit'
+  zIndex.value = zIndex.value === 0 ? 1 : 0
+}
+function hideSidebar() {
+  if (left.value === 'inherit') {
+    return
+  }
+  left.value = 'inherit'
+  zIndex.value = 0
+}
 </script>
 
 <style lang="less">

@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ dark }">
+  <div :class="{ dark }" class="min-h-screen">
     <Sidebar />
     <div
       class="
@@ -7,12 +7,16 @@
         h-full
         flex-1 flex-col
         pl-0
-        dark:bg-neutral-800 dark:text-white
+        dark:bg-neutral-900 dark:text-white
+        bg-white
         lg:pl-60
+        min-h-screen
       "
     >
       <ItHeader />
-      <NuxtPage />
+      <div class="px-4 md:px-14 py-10">
+        <NuxtPage />
+      </div>
     </div>
   </div>
 </template>

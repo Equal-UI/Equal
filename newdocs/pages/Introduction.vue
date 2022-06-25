@@ -1,7 +1,18 @@
 <template>
-  <div class="px-14 pb-20">
+  <div>
     <h1>Introduction</h1>
-    <div class="it-text-box">
+    <div
+      class="
+        flex
+        w-full
+        flex-col
+        rounded
+        border
+        bg-white
+        p-8
+        dark:border-neutral-700 dark:bg-neutral-800
+      "
+    >
       <h2 class="mb-4">Hello!</h2>
       <p>
         <b>Equal UI</b> is a components framework for Vue 3 based on TypeScript.

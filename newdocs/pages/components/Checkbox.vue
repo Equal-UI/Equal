@@ -132,12 +132,6 @@
       />
       <it-checkbox
         v-model="iconsCheck"
-        variant="black"
-        label="Black"
-        icon="verified_user"
-      />
-      <it-checkbox
-        v-model="iconsCheck"
         variant="neutral"
         label="Neutral"
         icon="refresh"
@@ -177,7 +171,6 @@ export default defineComponent({
       'success',
       'danger',
       'warning',
-      'black',
       'neutral',
     ],
 
@@ -199,14 +192,12 @@ export default defineComponent({
 <it-checkbox ||| variant="success" ||| label="Success" v-model="typesCheck" />
 <it-checkbox ||| variant="danger" ||| label="Danger" v-model="typesCheck" />
 <it-checkbox ||| variant="warning" ||| label="Warning" v-model="typesCheck" />
-<it-checkbox ||| variant="black" ||| label="Black" v-model="typesCheck" />
 <it-checkbox ||| variant="neutral" ||| label="Neutral" v-model="typesCheck" />`,
 
     codeIcon: `<it-checkbox variant="primary" label="Primary" ||| icon="visibility" ||| v-model="iconsCheck" />
 <it-checkbox variant="success" label="Success" ||| icon="room" ||| v-model="iconsCheck" />
 <it-checkbox variant="danger" label="Danger" ||| icon="favorite" ||| v-model="iconsCheck" />
 <it-checkbox variant="warning" label="Warning" ||| icon="alarm_on" ||| v-model="iconsCheck" />
-<it-checkbox variant="black" label="Black" ||| icon="verified_user" ||| v-model="iconsCheck" />
 <it-checkbox variant="neutral" label="Neutral" ||| icon="refresh" ||| v-model="iconsCheck" />`,
 
     codePulse: `<it-checkbox variant="primary" pulse label="Look at me" v-model="pulseValue" />`,
@@ -228,7 +219,7 @@ export default defineComponent({
         property: 'type',
         type: ['String'],
         default: 'primary',
-        values: ['primary', 'success', 'danger', 'warning', 'black', 'neutral'],
+        values: ['primary', 'success', 'danger', 'warning', 'neutral'],
         description: 'Type of the checkbox',
       },
       {

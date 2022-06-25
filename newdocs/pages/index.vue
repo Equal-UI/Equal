@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-14 my-8 flex flex-col">
+  <div class="my-8 flex flex-col">
     <div class="relative flex flex-col items-center py-20">
       <div
         class="
@@ -131,40 +131,31 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { computed, defineComponent, nextTick, onMounted, ref } from 'vue'
 import { IComponentListItem, componentGroup } from '@@/types'
 import { componentsList } from '@@/data/components'
 
-export default defineComponent({
-  data() {
+const components = ref<IComponentListItem[]>(componentsList)
+const loaded = ref(false)
+
+const switchFloat = ref(true)
+const switchCheckbox = ref(true)
+const floatSliderValue = ref(12)
+
+onMounted(() => {
+  setTimeout(() => {
+    loaded.value = true
+  }, 300)
+})
+
+const componentGroups = computed(() => {
+  return Object.values(componentGroup).reduce((el, next) => {
     return {
-      switchFloat: true,
-      switchCheckbox: true,
-      floatSliderValue: 12,
+      ...el,
+      [next]: components.value.filter((comp) => comp.group === next),
     }
-  },
-  setup() {
-    const components = ref<IComponentListItem[]>(componentsList)
-    const loaded = ref(false)
-
-    onMounted(() => {
-      setTimeout(() => {
-        loaded.value = true
-      }, 300)
-    })
-
-    const componentGroups = computed(() => {
-      return Object.values(componentGroup).reduce((el, next) => {
-        return {
-          ...el,
-          [next]: components.value.filter((comp) => comp.group === next),
-        }
-      }, {})
-    })
-
-    return { components, componentGroups, loaded }
-  },
+  }, {})
 })
 </script>
 

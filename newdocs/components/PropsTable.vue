@@ -8,6 +8,7 @@
       bg-white
       last:mb-0
       dark:border-gray-600 dark:bg-neutral-800
+      overflow-x-scroll
     "
   >
     <h2
@@ -38,7 +39,7 @@
                 !['description', 'property'].includes(name) &&
                 Array.isArray(col)
               "
-              style="line-height: 2"
+              class="flex gap-1"
             >
               <it-tag v-for="i in col" :key="i">{{ i }}</it-tag>
             </div>
@@ -105,14 +106,14 @@
     </h2>
     <table v-if="eventSheet" class="table">
       <thead class="bg-slate-50 dark:bg-neutral-700">
-        <tr>
+        <tr class="dark:border-t-gray-600 dark:border-b-gray-600">
           <th>Event</th>
           <th>Description</th>
           <th>Arguments</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in eventSheet" :key="item.property">
+        <tr v-for="item in eventSheet" :key="item.property" class="dark:border-t-gray-600 dark:border-b-gray-600">
           <td v-for="(col, name) in item">
             <span>{{ col }}</span>
           </td>

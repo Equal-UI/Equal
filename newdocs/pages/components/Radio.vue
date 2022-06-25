@@ -28,21 +28,21 @@
       <it-radio
         v-model="typeValue"
         name="type"
-        type="success"
+        variant="success"
         label="Success"
         value="11"
       />
       <it-radio
         v-model="typeValue"
         name="type"
-        type="danger"
+        variant="danger"
         label="Danger"
         value="22"
       />
       <it-radio
         v-model="typeValue"
         name="type"
-        type="warning"
+        variant="warning"
         label="Warning"
         value="33"
       />
@@ -50,11 +50,11 @@
 
     <Box :code="codeSublabel" title="Sublabel">
       <div>
-        <it-radio v-model="subradio" type="primary" :value="1"
+        <it-radio v-model="subradio" variant="primary" :value="1"
           >By signing this I agree with Terms and Conditions</it-radio
         >
         <br />
-        <it-radio v-model="subradio" type="primary" :value="2">
+        <it-radio v-model="subradio" variant="primary" :value="2">
           <template #default>Subscribe for updates</template>
           <template #sublabel>Get notified when you get updates</template>
         </it-radio>
@@ -88,17 +88,17 @@ export default defineComponent({
     subradio: 1,
 
     typeCode: `<it-radio v-model="typeValue" label="Primary" value="00"/>
-<it-radio v-model="typeValue" ||| type="success" ||| label="Success" value="11"/>
-<it-radio v-model="typeValue" ||| type="danger" ||| label="Danger" value="22"/>
-<it-radio v-model="typeValue" ||| type="warning" ||| label="Warning" value="33"/>`,
+<it-radio v-model="typeValue" ||| variant="success" ||| label="Success" value="11"/>
+<it-radio v-model="typeValue" ||| variant="danger" ||| label="Danger" value="22"/>
+<it-radio v-model="typeValue" ||| variant="warning" ||| label="Warning" value="33"/>`,
 
     pulseCode: `<it-radio v-model="pulseValue" pulse label="Look at me" value="42"/>`,
 
     disabledCode: `<it-radio v-model="pulseValue" ||| disabled ||| label="I'm disabled" value="42"/>`,
 
-    codeSublabel: `<it-radio type="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
+    codeSublabel: `<it-radio variant="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
 
-<it-radio type="primary" v-model="subradio" :value="2">
+<it-radio variant="primary" v-model="subradio" :value="2">
   <template #default>Subscribe for updates</template>
  ||| <template #sublabel>Get notified when you get updates</template> |||
 </it-radio>`,
