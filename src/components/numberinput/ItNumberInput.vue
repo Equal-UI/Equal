@@ -1,28 +1,21 @@
 <template>
-  <div>
-    <span class="it-input-label">{{ labelTop }}</span>
-    <div class="it-number-field">
+  <div :class="variant.root">
+    <span :class="variant.labelTop">{{ labelTop }}</span>
+    <div :class="variant.controlsWrapper">
       <it-button
         v-if="!hideControls"
         :disabled="this.disabled || disableController('minus')"
-        type="primary"
         icon="remove"
         @click="decrease"
         @mousedown="press('minus')"
       ></it-button>
 
-      <div
-        class="it-number-input"
-        :class="[
-          disabled && 'it-number-input--disabled',
-          hideControls && 'it-number-input-original--nocontrols',
-        ]"
-      >
+      <div :class="variant.inputWrapper">
         <input
           ref="input"
           type="number"
           :value="modelValue"
-          class="it-number-input-original"
+          :class="variant.input"
           :disabled="disabled"
           :max="max"
           :min="min"
@@ -32,7 +25,7 @@
           @keydown.up.stop.prevent="increase"
           @keydown.down.stop.prevent="decrease"
         />
-        <div ref="buffer" class="it-number-input-buffer">{{ modelValue }}</div>
+        <div ref="buffer" :class="variant.inputBuffer">{{ modelValue }}</div>
       </div>
       <it-button
         v-if="!hideControls"
@@ -47,12 +40,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, nextTick, onMounted } from 'vue'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITNumberInputOptions } from '@/types/components/components'
+import { defineComponent, watch, ref, nextTick, onMounted, computed } from 'vue'
 
 export default defineComponent({
-  name: 'it-number-input',
+  name: Components.ITNumberInput,
   inheritAttrs: false,
   props: {
+    ...getVariantPropsWithClassesList<ITNumberInputOptions>(),
     resizeOnWrite: Boolean,
     disabled: Boolean,
     min: { type: Number, default: -Infinity },
@@ -63,12 +64,19 @@ export default defineComponent({
     modelValue: { type: [Number, String], default: 0 },
   },
   setup(props, { emit }) {
-    const width = ref<number | null>(null)
-    const buffer = ref(null)
-
-    onMounted(() => {
-      width.value = (buffer.value! as HTMLDivElement).clientWidth
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+      return useVariants<ITNumberInputOptions>(
+        Components.ITNumberInput,
+        <VariantJSWithClassesListProps<ITNumberInputOptions>>customProps,
+      )
     })
+
+    const width = ref<number | null>(null)
+    const buffer = ref<HTMLDivElement | null>(null)
 
     watch(
       () => props.modelValue,
@@ -79,6 +87,12 @@ export default defineComponent({
         }
       },
     )
+
+    onMounted(() => {
+      setTimeout(() => {
+        width.value = buffer.value!.clientWidth
+      }, 50)
+    })
 
     // controllers +/-
 
@@ -168,6 +182,7 @@ export default defineComponent({
       press,
       width,
       buffer,
+      variant,
     }
   },
 })

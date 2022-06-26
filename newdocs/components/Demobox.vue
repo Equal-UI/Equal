@@ -29,7 +29,7 @@
           dark:bg-neutral-800
         "
       >
-        <div class="absolute w-32 top-5 right-5">
+        <div class="absolute hidden md:flex  w-32 top-5 right-5">
           <it-toggle v-model="theme" icons round :options="['light', 'dark']">
             <template #light>
               <svg

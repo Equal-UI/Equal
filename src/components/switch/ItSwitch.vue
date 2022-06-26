@@ -1,74 +1,48 @@
 <template>
-  <label class="it-switch-wrapper">
-    <span
-      class="it-switch"
-      :class="[
-        `it-switch--${type}`,
-        modelValue && `it-switch--${type}--checked`,
-        disabled && `it-switch--${type}--disabled`,
-        pulse && !disabled && 'pulse',
-      ]"
-    >
+  <label :class="variant.root">
+    <span :class="[variant.switch, { [variant.switchChecked]: modelValue }]">
       <input
         type="checkbox"
-        class="it-switch-input"
+        :class="variant.input"
         :disabled="disabled"
         style="z-index: 10"
         v-bind="$attrs"
         @change="toggle"
       />
-      <span class="it-switch-circle"></span>
+      <span
+        :class="variant.switchCircle"
+        :style="{ [modelValue ? 'right' : 'left']: '2px' }"
+      ></span>
     </span>
-    <span class="it-switch-label-group">
-      <span
-        v-if="label && !$slots.default"
-        class="it-switch-label"
-        :class="[disabled && 'it-switch-label--disabled']"
-        >{{ label }}</span
-      >
-      <span
-        v-if="subLabel && !$slots.sublabel"
-        class="it-switch-label it-switch-label--sub"
-        :class="[disabled && 'it-switch-label--disabled']"
-        >{{ subLabel }}</span
-      >
-
-      <span
-        v-if="$slots.default"
-        class="it-switch-label"
-        :class="[disabled && 'it-switch-label--disabled']"
-        ><slot></slot
-      ></span>
-      <span
-        v-if="$slots.sublabel"
-        class="it-switch-label it-switch-label--sub"
-        :class="[disabled && 'it-switch-label--disabled']"
-        ><slot name="sublabel"></slot
-      ></span>
+    <span
+      v-if="label || subLabel || $slots.default || $slots.sublabel"
+      :class="variant.labelGroup"
+    >
+      <span v-if="label || $slots.default" :class="variant.label"
+        ><slot>{{ label }}</slot>
+      </span>
+      <span v-if="subLabel || $slots.sublabel" :class="variant.subLabel">
+        <slot name="sublabel">{{ subLabel }}</slot>
+      </span>
     </span>
   </label>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Colors } from '@/models/enums'
+import { computed, defineComponent } from 'vue'
+import { Components } from '@/models/enums'
+import { ITSwitchOptions } from '@/types/components/components'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
-  name: 'it-switch',
+  name: Components.ITSwitch,
   inheritAttrs: false,
   props: {
-    type: {
-      default: Colors.PRIMARY,
-      type: String,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-          Colors.BLACK,
-        ].includes(value),
-    },
+    ...getVariantPropsWithClassesList<ITSwitchOptions>(),
     label: { type: String },
     subLabel: { type: String },
     pulse: { type: Boolean },
@@ -76,6 +50,17 @@ export default defineComponent({
     modelValue: { type: Boolean, default: false },
   },
   setup(props, { emit }) {
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+      return useVariants<ITSwitchOptions>(
+        Components.ITSwitch,
+        <VariantJSWithClassesListProps<ITSwitchOptions>>customProps,
+      )
+    })
+
     function toggle() {
       if (props.disabled) {
         return
@@ -84,7 +69,7 @@ export default defineComponent({
       emit('update:modelValue', newValue)
     }
 
-    return { toggle }
+    return { toggle, variant }
   },
 })
 </script>

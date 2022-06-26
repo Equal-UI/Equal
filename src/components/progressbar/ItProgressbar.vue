@@ -21,12 +21,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Positions } from '@/models/enums'
+import { computed, defineComponent } from 'vue'
+import { Components, Positions } from '@/models/enums'
+import { useVariants } from '@/hooks/useVariants'
+import {
+  ITProgressBarOptions,
+  ITRadioOptions,
+} from '@/types/components/components'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
 
 export default defineComponent({
-  name: 'it-progressbar',
+  name: Components.ITProgressbar,
   props: {
+    ...getVariantPropsWithClassesList<ITProgressBarOptions>(),
     infinite: {
       type: Boolean,
       default: false,
@@ -45,6 +52,12 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+  },
+  setup(props) {
+    const variant = computed(() =>
+      useVariants<ITRadioOptions>(Components.ITRadio, props),
+    )
+    return { variant }
   },
 })
 </script>

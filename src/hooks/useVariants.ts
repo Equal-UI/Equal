@@ -40,11 +40,15 @@ const mergeClasses = (...classes: CSSClasses): string =>
 export var useVariants = <T>(
   name: Components,
   props: VariantJSWithClassesListProps<T> = {},
-): CSSRawClassesList<T> => {
+): {
+  transitions?: Record<string, Record<string, string>>
+} & CSSRawClassesList<T> => {
   const config = inject<EqualUIConfiguration>('config', {})
   const globalVariant = config[name]
 
-  let finalResult: CSSRawClassesList<T> = {}
+  let finalResult: {
+    transitions?: Record<string, Record<string, string>>
+  } & CSSRawClassesList<T> = {}
 
   if (globalVariant) {
     for (let [key, value] of Object.entries(globalVariant.fixedClasses || {})) {
@@ -64,6 +68,7 @@ export var useVariants = <T>(
         )
       }
 
+      // @ts-ignore
       finalResult[key as keyof T] = result.filter((el) => !!el)
     }
   }
@@ -72,6 +77,8 @@ export var useVariants = <T>(
     // @ts-ignore
     finalResult[key] = mergeClasses(value)
   }
+
+  finalResult.transitions = config.transitions
 
   return finalResult
 }

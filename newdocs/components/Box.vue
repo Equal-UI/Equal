@@ -39,14 +39,26 @@
         'max-height': expandHeight,
       }"
     >
-      <it-button
-        icon="file_copy"
-        class="!absolute top-3 right-3"
-        @click="clickCopy"
-        v-tooltip="tooltipValue"
-      />
+      <transition
+        v-bind="{
+          'enter-active-class': 'duration-75',
+          'enter-to-class': 'opacity-100',
+          'enter-from-class': 'opacity-0',
+          'leave-active-class': 'duration-75',
+          'leave-to-class': 'opacity-0',
+          'leave-from-class': 'opacity-100',
+        }"
+      >
+        <it-button
+          icon="file_copy"
+          class="!absolute top-3 right-3"
+          v-show="!showExpand || showCopy"
+          @click="clickCopy"
+          v-tooltip="tooltipValue"
+        />
+      </transition>
       <prism
-        class="border-t border-t-white dark:border-t-gray-600"
+        class="border-t border-t-white !pr-14 dark:border-t-gray-600"
         language="html"
         :code="code"
       ></prism>
@@ -79,12 +91,14 @@ const props = withDefaults(defineProps<Props>(), {
 const expandHeight = ref('0px')
 const copyText = ref('Copy to clipboard')
 const expanded = ref(false)
+const showCopy = ref(false)
 
 const tooltipValue = { position: 'left', content: copyText }
 
 const showExpand = computed(() => (props.code || '').split('\n').length > 3)
 
 function toggleExpand() {
+  showCopy.value = expandHeight.value === '0px' ? true : false
   expandHeight.value = expandHeight.value === '0px' ? '1000px' : '0px'
   expanded.value = !expanded.value
 }

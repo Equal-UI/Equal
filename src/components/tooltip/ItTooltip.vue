@@ -9,22 +9,24 @@
       <slot :fixed-classes="{ root: variant.innerSlot }"></slot>
     </div>
 
-    <transition :name="transition">
-      <div
-        v-show="show"
-        ref="popover"
-        class="it-tooltip-popper"
-        :class="[placement && `it-tooltip--${placement.split('-')[0]}`]"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave"
-      >
-        <div class="it-tooltip-content">
-          <slot name="content">
-            <div>{{ content }}</div>
-          </slot>
+    <Teleport to="body">
+      <transition :name="transition">
+        <div
+          v-show="show"
+          ref="popover"
+          class="it-tooltip-popper"
+          :class="[placement && `it-tooltip--${placement.split('-')[0]}`]"
+          @mouseenter="handleMouseEnter"
+          @mouseleave="handleMouseLeave"
+        >
+          <div class="it-tooltip-content">
+            <slot name="content">
+              <div>{{ content }}</div>
+            </slot>
+          </div>
         </div>
-      </div>
-    </transition>
+      </transition>
+    </Teleport>
   </div>
 </template>
 

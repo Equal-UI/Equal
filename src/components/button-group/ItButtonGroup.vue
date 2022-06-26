@@ -1,5 +1,5 @@
 <template>
-  <div class="it-button-group">
+  <div :class="variant.root">
     <slot />
   </div>
 </template>
@@ -15,7 +15,7 @@ import { ITButtonGroupOptions } from '@/types/components/components'
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'it-button-group',
+  name: Components.ITButtonGroup,
   props: {
     ...getVariantPropsWithClassesList<ITButtonGroupOptions>(),
     vertical: { type: Boolean },

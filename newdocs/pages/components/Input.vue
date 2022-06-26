@@ -9,7 +9,7 @@
         :label-top="inputTopLabel"
         :disabled="inputDisabled"
         :message="inputMessageText"
-        :status="inputStatus"
+        :variant="inputStatus"
         :mask="inputMask"
       />
 
@@ -23,8 +23,8 @@
         />
         <it-select
           v-model="inputStatus"
-          placeholder="Select status"
-          label-top="Status"
+          placeholder="Select variant"
+          label-top="Variant"
           :options="statuses"
         >
         </it-select>
@@ -33,9 +33,9 @@
       </template>
     </Demobox>
     <Box :code="codeStatus" title="Status">
-      <it-input v-model="statusValue" status="success" message="Success" />
-      <it-input v-model="statusValue" status="danger" message="Danger" />
-      <it-input v-model="statusValue" status="warning" message="Warning" />
+      <it-input v-model="statusValue" variant="success" message="Success" />
+      <it-input v-model="statusValue" variant="danger" message="Danger" />
+      <it-input v-model="statusValue" variant="warning" message="Warning" />
     </Box>
     <Box :code="codeIcon" title="With icons">
       <it-input v-model="inputValue" suffix-icon="remove_red_eye" />

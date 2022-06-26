@@ -1,22 +1,21 @@
 <template>
   <teleport to="body">
-    <div class="it-drawer" ref="focusRef">
-      <transition name="fade">
+    <div :class="variant.root" ref="focusRef">
+      <transition v-bind="variant.transitions?.fade">
         <div
           v-show="modelValue && !hideMask"
-          class="it-drawer-mask"
+          :class="variant.mask"
           tabindex="0"
           :style="{ cursor: closableMask ? 'pointer' : 'default' }"
           @click.self="maskClick"
         ></div>
       </transition>
-      <transition :name="`drop-${transitionSide}`">
+      <transition v-bind="bodyTransition">
         <div
           v-show="modelValue"
           ref="drawerRef"
           :style="{ width }"
-          class="it-drawer-body"
-          :class="`it-drawer-body--${placement}`"
+          :class="[variant.body, variant[placement]]"
         >
           <slot></slot>
         </div>
@@ -36,12 +35,19 @@ import {
   watch,
 } from 'vue'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { Positions } from '@/models/enums'
+import { Components, Positions } from '@/models/enums'
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { ITDrawerOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
-  name: 'it-drawer',
+  name: Components.ITDrawer,
   props: {
+    ...getVariantPropsWithClassesList<ITDrawerOptions>(),
     modelValue: { type: Boolean, default: false },
     width: { type: String, default: '500px' },
     closableMask: { type: Boolean, default: true },
@@ -55,6 +61,12 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     let { modelValue } = toRefs(props)
+    const variant = computed(() => {
+      return useVariants<ITDrawerOptions>(
+        Components.ITDrawer,
+        <VariantJSWithClassesListProps<ITDrawerOptions>>(<unknown>props),
+      )
+    })
     const Equal = getCurrentInstance()
     const drawerRef = ref<HTMLElement>()
     const focusRef = ref<HTMLElement>()
@@ -132,14 +144,16 @@ export default defineComponent({
       emit('update:modelValue', false)
     }
 
-    const transitionSide = computed(() => {
-      return props.placement === Positions.R ? Positions.L : Positions.R
+    const bodyTransition = computed(() => {
+      const { dropToRight, dropToLeft } = variant.value.transitions!
+      return props.placement === Positions.R ? dropToLeft : dropToRight
     })
 
     return {
       maskClick,
-      transitionSide,
+      variant,
       drawerRef,
+      bodyTransition,
       focusRef,
     }
   },

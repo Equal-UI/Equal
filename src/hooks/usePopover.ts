@@ -17,8 +17,8 @@ export const usePopover = (props: any) => {
   const autoPosition = ref(props.autoposition)
 
   // Template Refs
-  const popover = ref(null)
-  const trigger = ref(null)
+  const popover = ref(props.popoverEl ?? null)
+  const trigger = ref(props.triggerEl ?? null)
 
   const position = {
     x: 0,
@@ -68,6 +68,9 @@ export const usePopover = (props: any) => {
       return
     }
 
+    const triggerTempGBCR = triggerTemp.getBoundingClientRect().toJSON()
+    const popoverTempGBCR = popoverTemp.getBoundingClientRect()
+
     if (autoPosition.value) {
       // preferred position direction
       const preferredPos = props.placement as Positions
@@ -81,9 +84,6 @@ export const usePopover = (props: any) => {
           ...Object.values(Positions),
         ]),
       ]
-
-      const triggerTempGBCR = triggerTemp.getBoundingClientRect().toJSON()
-      const popoverTempGBCR = popoverTemp.getBoundingClientRect()
 
       for (const pos of predefPositions) {
         const posSide = pos.split('-')[0]
@@ -114,85 +114,68 @@ export const usePopover = (props: any) => {
       }
     }
 
+    const topPos = triggerTempGBCR.top + window.scrollY
+    const leftPos = triggerTempGBCR.left + window.scrollX
+
     switch (placement.value) {
-      case 'top':
+      case Positions.T:
         position.x =
-          triggerTemp.offsetLeft -
-          popoverTemp.offsetWidth / 2 +
-          triggerTemp.offsetWidth / 2
-        position.y = triggerTemp.offsetTop - popoverTemp.offsetHeight
+          leftPos - popoverTemp.offsetWidth / 2 + triggerTemp.offsetWidth / 2
+        position.y = topPos - popoverTemp.offsetHeight
         break
-      case 'top-left':
-        position.x = triggerTemp.offsetLeft
-        position.y = triggerTemp.offsetTop - popoverTemp.offsetHeight
+      case Positions.TL:
+        position.x = leftPos
+        position.y = topPos - popoverTemp.offsetHeight
         break
-      case 'top-right':
+      case Positions.TR:
+        position.x = leftPos + triggerTemp.offsetWidth - popoverTemp.offsetWidth
+        position.y = topPos - popoverTemp.offsetHeight
+        break
+      case Positions.L:
+        position.x = leftPos - popoverTemp.offsetWidth
+        position.y =
+          topPos + triggerTemp.offsetHeight / 2 - popoverTemp.offsetHeight / 2
+        break
+      case Positions.LT:
+        position.x = leftPos - popoverTemp.offsetWidth
+        position.y = topPos
+        break
+      case Positions.LB:
+        position.x = leftPos - popoverTemp.offsetWidth
+        position.y =
+          topPos + triggerTemp.offsetHeight - popoverTemp.offsetHeight
+        break
+      case Positions.R:
+        position.x = leftPos + triggerTemp.offsetWidth
+        position.y =
+          topPos + triggerTemp.offsetHeight / 2 - popoverTemp.offsetHeight / 2
+        break
+      case Positions.RT:
+        position.x = leftPos + triggerTemp.offsetWidth
+        position.y = topPos
+        break
+      case Positions.RB:
+        position.x = leftPos + triggerTemp.offsetWidth
+        position.y =
+          topPos + triggerTemp.offsetHeight - popoverTemp.offsetHeight
+        break
+      case Positions.B:
         position.x =
-          triggerTemp.offsetLeft +
-          triggerTemp.offsetWidth -
-          popoverTemp.offsetWidth
-        position.y = triggerTemp.offsetTop - popoverTemp.offsetHeight
+          leftPos - popoverTemp.offsetWidth / 2 + triggerTemp.offsetWidth / 2
+        position.y = topPos + triggerTemp.offsetHeight
         break
-      case 'left':
-        position.x = triggerTemp.offsetLeft - popoverTemp.offsetWidth
-        position.y =
-          triggerTemp.offsetTop +
-          triggerTemp.offsetHeight / 2 -
-          popoverTemp.offsetHeight / 2
+      case Positions.BL:
+        position.x = leftPos
+        position.y = topPos + triggerTemp.offsetHeight
         break
-      case 'left-top':
-        position.x = triggerTemp.offsetLeft - popoverTemp.offsetWidth
-        position.y = triggerTemp.offsetTop
-        break
-      case 'left-bottom':
-        position.x = triggerTemp.offsetLeft - popoverTemp.offsetWidth
-        position.y =
-          triggerTemp.offsetTop +
-          triggerTemp.offsetHeight -
-          popoverTemp.offsetHeight
-        break
-      case 'right':
-        position.x = triggerTemp.offsetLeft + triggerTemp.offsetWidth
-        position.y =
-          triggerTemp.offsetTop +
-          triggerTemp.offsetHeight / 2 -
-          popoverTemp.offsetHeight / 2
-        break
-      case 'right-top':
-        position.x = triggerTemp.offsetLeft + triggerTemp.offsetWidth
-        position.y = triggerTemp.offsetTop
-        break
-      case 'right-bottom':
-        position.x = triggerTemp.offsetLeft + triggerTemp.offsetWidth
-        position.y =
-          triggerTemp.offsetTop +
-          triggerTemp.offsetHeight -
-          popoverTemp.offsetHeight
-        break
-      case 'bottom':
-        position.x =
-          triggerTemp.offsetLeft -
-          popoverTemp.offsetWidth / 2 +
-          triggerTemp.offsetWidth / 2
-        position.y = triggerTemp.offsetTop + triggerTemp.offsetHeight
-        break
-      case 'bottom-left':
-        position.x = triggerTemp.offsetLeft
-        position.y = triggerTemp.offsetTop + triggerTemp.offsetHeight
-        break
-      case 'bottom-right':
-        position.x =
-          triggerTemp.offsetLeft +
-          triggerTemp.offsetWidth -
-          popoverTemp.offsetWidth
-        position.y = triggerTemp.offsetTop + triggerTemp.offsetHeight
+      case Positions.BR:
+        position.x = leftPos + triggerTemp.offsetWidth - popoverTemp.offsetWidth
+        position.y = topPos + triggerTemp.offsetHeight
         break
       default:
         position.x =
-          triggerTemp.offsetLeft -
-          popoverTemp.offsetWidth / 2 +
-          triggerTemp.offsetWidth / 2
-        position.y = triggerTemp.offsetTop - popoverTemp.offsetHeight
+          leftPos - popoverTemp.offsetWidth / 2 + triggerTemp.offsetWidth / 2
+        position.y = topPos - popoverTemp.offsetHeight
         break
     }
 

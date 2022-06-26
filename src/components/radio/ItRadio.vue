@@ -1,14 +1,7 @@
 <template>
-  <label
-    class="it-radio-wrapper"
-    :class="[
-      isChecked && `it-radio-wrapper--${type}--checked`,
-      `it-radio-wrapper--${type}`,
-      disabled && 'it-radio-wrapper--disabled',
-    ]"
-  >
+  <label :class="variant.root">
     <input
-      class="it-radio-input"
+      class="peer absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0"
       :disabled="disabled"
       type="radio"
       :checked="isChecked"
@@ -16,61 +9,45 @@
       v-bind="$attrs"
       @change="check"
     />
-    <span :class="['it-radio-border', pulse && !disabled && 'pulse']">
-      <span class="it-radio-circle"></span>
+    <span :class="variant.border">
+      <span
+        :class="[
+          variant.circle,
+          {
+            [variant.activeCircle]: isChecked,
+          },
+        ]"
+      ></span>
     </span>
-    <span class="it-radio-label-group">
-      <span
-        v-if="label && !$slots.default"
-        class="it-radio-label"
-        :class="[disabled && 'it-radio-label--disabled']"
-        >{{ label }}</span
-      >
-      <span
-        v-if="subLabel && !$slots.sublabel"
-        class="it-radio-label it-radio-label--sub"
-        :class="[disabled && 'it-radio-label--disabled']"
-        >{{ subLabel }}</span
-      >
-
-      <span
-        v-if="$slots.default"
-        class="it-radio-label"
-        :class="[disabled && 'it-radio-label--disabled']"
-      >
-        <slot></slot>
+    <span
+      v-if="label || subLabel || $slots.default || $slots.sublabel"
+      :class="variant.labelGroup"
+    >
+      <span v-if="label || $slots.default" :class="variant.label"
+        ><slot>{{ label }}</slot>
       </span>
-      <span
-        v-if="$slots.sublabel"
-        class="it-radio-label it-radio-label--sub"
-        :class="[disabled && 'it-radio-label--disabled']"
-      >
-        <slot name="sublabel"></slot>
+      <span v-if="subLabel || $slots.sublabel" :class="variant.subLabel">
+        <slot name="sublabel">{{ subLabel }}</slot>
       </span>
     </span>
   </label>
 </template>
 
 <script lang="ts">
-import { Colors } from '@/models/enums'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITRadioOptions } from '@/types/components/components'
 import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
-  name: 'it-radio',
+  name: Components.ITRadio,
   inheritAttrs: false,
   props: {
-    type: {
-      default: Colors.PRIMARY,
-      type: String,
-      validator: (value: Colors) =>
-        [
-          Colors.PRIMARY,
-          Colors.SUCCESS,
-          Colors.DANGER,
-          Colors.WARNING,
-          Colors.BLACK,
-        ].includes(value),
-    },
+    ...getVariantPropsWithClassesList<ITRadioOptions>(),
     label: { type: String },
     subLabel: { type: String },
     pulse: { type: Boolean },
@@ -79,16 +56,27 @@ export default defineComponent({
     value: {},
   },
   setup(props, { emit }) {
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+      return useVariants<ITRadioOptions>(
+        Components.ITRadio,
+        <VariantJSWithClassesListProps<ITRadioOptions>>customProps,
+      )
+    })
+
     function check() {
       if (props.disabled) {
         return
       }
-
       emit('update:modelValue', props.value)
     }
 
     const isChecked = computed(() => props.modelValue === props.value)
-    return { check, isChecked }
+
+    return { check, isChecked, variant }
   },
 })
 </script>

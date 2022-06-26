@@ -22,6 +22,12 @@ export interface ITAvatarOptions extends IComponentWithRoot {
 
 export type ITAvatarVariants = WithVariantProps<ITAvatarOptions>
 
+export interface ITAvatarGroupOptions extends IComponentWithRoot {
+  count?: string
+}
+
+export type ITAvatarGroupVariants = WithVariantProps<ITAvatarOptions>
+
 export interface ITIconOptions extends IComponentWithRoot {
   box?: string
 }
@@ -46,11 +52,73 @@ export interface ITCheckboxOptions extends IComponentWithRoot {
 
 export type ITCheckboxVariants = WithVariantProps<ITCheckboxOptions>
 
+export interface ITRadioOptions extends IComponentWithRoot {
+  border?: string
+  circle?: string
+  activeCircle?: string
+  radioLabelGroup?: string
+  label?: string
+  subLabel?: string
+}
+
+export type ITRadioVariants = WithVariantProps<ITRadioOptions>
+
+export interface ITProgressBarOptions extends IComponentWithRoot {
+  border?: string
+}
+
+export type ITProgressBarVariants = WithVariantProps<ITProgressBarOptions>
+
 export interface ITDividerOptions extends IComponentWithRoot {
   vertical?: string
 }
 
 export type ITDividerVariants = WithVariantProps<ITCheckboxOptions>
+
+export interface ITDrawerOptions extends IComponentWithRoot {
+  mask?: string
+  body?: string
+  right?: string
+  left?: string
+}
+
+export type ITDrawerVariants = WithVariantProps<ITDrawerOptions>
+
+export interface ITInputOptions extends IComponentWithRoot {
+  label?: string
+  prefixWrapper?: string
+  inputWrapper?: string
+  icon?: string
+  iconWrapper?: string
+  input?: string
+  affix?: string
+  message?: string
+}
+
+export type ITInputVariants = WithVariantProps<ITInputOptions>
+
+export interface ITNumberInputOptions extends IComponentWithRoot {
+  label?: string
+  controlsWrapper?: string
+}
+
+export type ITNumberInputVariants = WithVariantProps<ITNumberInputOptions>
+
+export interface ITSwitchOptions extends IComponentWithRoot {
+  checkLabelGroup?: string
+  label?: string
+  subLabel?: string
+}
+
+export type ITSwitchVariants = WithVariantProps<ITSwitchOptions>
+
+export interface ITSliderOptions extends IComponentWithRoot {
+  label?: string
+  controller?: string
+  sliderLine?: string
+}
+
+export type ITSliderVariants = WithVariantProps<ITSliderOptions>
 
 export interface ITBadgeOptions extends IComponentWithRoot {
   square?: string

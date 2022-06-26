@@ -9,7 +9,7 @@
       :value="modelValue"
       :style="{ resize, 'z-index': mask ? '100' : null }"
       :disabled="disabled"
-      :class="[variant.textarea]"
+      :class="variant.textarea"
       :placeholder="placeholder"
       :rows="rows"
       @input="onInput"
@@ -72,7 +72,7 @@ export default defineComponent({
       if (props.resizeOnWrite) {
         await nextTick()
         ;(textarea.value! as HTMLTextAreaElement).style.height =
-          (textarea.value! as HTMLTextAreaElement).scrollHeight + 'px'
+          ((textarea.value! as HTMLTextAreaElement).scrollHeight || 88) + 'px'
       }
     })
 

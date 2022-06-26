@@ -26,7 +26,7 @@
         </NuxtLink>
       </div>
 
-      <div class="w-24">
+      <div class="">
         <it-toggle
           v-model="toggleThemeValue"
           icons

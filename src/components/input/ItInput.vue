@@ -1,28 +1,27 @@
 <template>
-  <div>
-    <transition name="fade">
-      <div v-show="focus && mask" class="it-input-mask"></div>
+  <div :class="variant.root">
+    <transition v-bind="variant.transitions?.fade">
+      <div v-show="focus && mask" :class="variant.mask"></div>
     </transition>
-    <span v-if="labelTop" class="it-input-label">{{ labelTop }}</span>
+    <span v-if="labelTop" :class="variant.labelTop">{{ labelTop }}</span>
     <div
-      class="it-input-prefix-wrapper"
-      :style="{ 'z-index': mask ? '100' : null }"
+      :class="variant.prefixWrapper"
+      :style="{ 'z-index': mask && focus ? '100' : null }"
     >
-      <div v-if="prefix" class="it-input-prefix">{{ prefix }}</div>
-      <div
-        class="it-input-wrapper"
-        :class="[
-          status && `it-input-wrapper--${status}`,
-          disabled && `it-input-wrapper--disabled`,
-        ]"
-      >
-        <span v-if="prefixIcon" class="it-input-icon-wrapper">
-          <it-icon class="it-input-icon" :name="prefixIcon" />
+      <div v-if="prefix" :class="variant.affix">{{ prefix }}</div>
+      <div :class="variant.inputWrapper">
+        <span
+          v-if="prefixIcon || hasPrefixIconSlot"
+          :class="variant.iconWrapper"
+        >
+          <slot name="prefixIcon">
+            <it-icon :class="variant.icon" :name="prefixIcon" />
+          </slot>
         </span>
         <input
           v-bind="$attrs"
           :type="type"
-          class="it-input"
+          :class="variant.input"
           :disabled="disabled"
           :value="modelValue"
           :placeholder="placeholder"
@@ -30,39 +29,39 @@
           @focus="focus = true"
           @blur="focus = false"
         />
-        <span v-if="suffixIcon" class="it-input-icon-wrapper">
-          <it-icon class="it-input-icon" :name="suffixIcon" />
+        <span
+          v-if="suffixIcon || hasSuffixIconSlot"
+          :class="variant.iconWrapper"
+        >
+          <slot name="suffixIcon">
+            <it-icon :class="variant.icon" :name="suffixIcon" />
+          </slot>
         </span>
       </div>
-      <div v-if="suffix" class="it-input-suffix">{{ suffix }}</div>
+      <div v-if="suffix" :class="variant.affix">{{ suffix }}</div>
     </div>
-    <transition name="fade-bottom">
-      <span
-        v-if="message"
-        class="it-input-message"
-        :class="[
-          status && `it-input-message--${status}`,
-          disabled && `it-input-message--disabled`,
-        ]"
-        >{{ message }}</span
-      >
+    <transition v-bind="variant.transitions?.fade">
+      <span v-if="message" :class="variant.message">{{ message }}</span>
     </transition>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { Colors } from '@/models/enums'
+import { computed, defineComponent, ref } from 'vue'
+import { Components } from '@/models/enums'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { ITInputOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
+import { useCheckSlot } from '@/hooks'
 
 export default defineComponent({
-  name: 'it-input',
+  name: Components.ITInput,
   inheritAttrs: false,
   props: {
-    status: {
-      type: String,
-      validator: (value: Colors) =>
-        [Colors.SUCCESS, Colors.WARNING, Colors.DANGER].includes(value),
-    },
+    ...getVariantPropsWithClassesList<ITInputOptions>(),
     type: {
       type: String,
       default: 'text',
@@ -78,14 +77,28 @@ export default defineComponent({
     disabled: Boolean,
     modelValue: [String, Number],
   },
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const focus = ref(false)
+    const hasPrefixIconSlot = useCheckSlot(slots, 'prefixIcon') !== null
+    const hasSuffixIconSlot = useCheckSlot(slots, 'suffixIcon') !== null
+
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+
+      return useVariants<ITInputOptions>(
+        Components.ITInput,
+        <VariantJSWithClassesListProps<ITInputOptions>>customProps,
+      )
+    })
 
     function input(e: Event) {
       emit('update:modelValue', (e.target as HTMLInputElement).value)
     }
 
-    return { input, focus }
+    return { input, focus, variant, hasPrefixIconSlot, hasSuffixIconSlot }
   },
 })
 </script>

@@ -11,6 +11,14 @@ import {
   ITCollapseVariants,
   ITCollapseItemVariants,
   ITTextareaVariants,
+  ITRadioVariants,
+  ITButtonGroupVariants,
+  ITAvatarGroupVariants,
+  ITDrawerVariants,
+  ITInputVariants,
+  ITNumberInputVariants,
+  ITSliderVariants,
+  ITSwitchVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -42,8 +50,10 @@ export interface Variants<P> {
 }
 
 export type EqualUIConfiguration = {
+  transitions: Record<string, Record<string, string>>
   [Components.ITAlert]?: ITAlertVariants
   [Components.ITAvatar]?: ITAvatarVariants
+  [Components.ITAvatarGroup]?: ITAvatarGroupVariants
   [Components.ITIcon]?: ITIconVariants
   [Components.ITTag]?: ITTagVariants
   [Components.ITCollapse]?: ITCollapseVariants
@@ -51,8 +61,15 @@ export type EqualUIConfiguration = {
   [Components.ITCheckbox]?: ITTagVariants
   [Components.ITCheckbox]?: ITTagVariants
   [Components.ITDivider]?: ITDividerVariants
+  [Components.ITDrawer]?: ITDrawerVariants
   [Components.ITBadge]?: ITBadgeVariants
   [Components.ITButton]?: ITButtonVariants
+  [Components.ITButtonGroup]?: ITButtonGroupVariants
   [Components.ITSpinner]?: ITSpinnerVariants
+  [Components.ITSlider]?: ITSliderVariants
+  [Components.ITSwitch]?: ITSwitchVariants
   [Components.ITTextarea]?: ITTextareaVariants
+  [Components.ITRadio]?: ITRadioVariants
+  [Components.ITInput]?: ITInputVariants
+  [Components.ITNumberInput]?: ITNumberInputVariants
 }

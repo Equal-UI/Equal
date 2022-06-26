@@ -3,7 +3,7 @@ import Alert from './components/alert'
 import Avatar from './components/avatar'
 import AvatarGroup from './components/avatar-group'
 import Button from './components/button'
-// import ButtonGroup from './components/button-group'
+import ButtonGroup from './components/button-group'
 import Badge from './components/badge'
 import Checkbox from './components/checkbox'
 import Collapse from './components/collapse'
@@ -33,6 +33,7 @@ import Tag from './components/tag'
 import Textarea from './components/textarea'
 import Toggle from './components/toggle'
 import Tooltip from './components/tooltip'
+import { tooltip } from './directives/tooltip'
 
 import './styles/index.less'
 import { App, defineComponent } from 'vue'
@@ -44,6 +45,7 @@ const components: Record<string, ReturnType<typeof defineComponent>> = {
   AvatarGroup,
   Badge,
   Button,
+  ButtonGroup,
   Checkbox,
   Collapse,
   CollapseItem,
@@ -81,7 +83,9 @@ function install(Vue: App, configuration: EqualUIConfiguration) {
     drawers: [],
     modals: [],
   } as IEqual
+
   Vue.provide('config', configuration)
+  Vue.directive('tooltip', tooltip(configuration))
 }
 
 export default { install }
@@ -90,6 +94,7 @@ export { default as Alert } from './components/alert'
 export { default as Avatar } from './components/avatar'
 export { default as AvatarGroup } from './components/avatar-group'
 export { default as Button } from './components/button'
+export { default as ButtonGroup } from './components/button-group'
 export { default as Badge } from './components/badge'
 export { default as Checkbox } from './components/checkbox'
 export { default as Collapse } from './components/collapse'

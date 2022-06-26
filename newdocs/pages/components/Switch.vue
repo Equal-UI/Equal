@@ -5,7 +5,7 @@
     <Demobox>
       <it-switch
         v-model="switchValue"
-        :type="switchType"
+        :variant="switchType"
         :disabled="switchDisabled"
         :label="switchLabel"
         :pulse="switchPulse"
@@ -32,11 +32,11 @@
         <it-checkbox v-model="switchDisabled" label="Disabled" />
       </template>
     </Demobox>
-    <Box :code="typesCode" title="Types">
-      <it-switch v-model="typeValue" label="Primary" />
-      <it-switch v-model="typeValue" type="success" label="Success" />
-      <it-switch v-model="typeValue" type="danger" label="Danger" />
-      <it-switch v-model="typeValue" type="warning" label="Warning" />
+    <Box :code="typesCode" title="Variants">
+      <it-switch v-model="typeValue" label="Default" />
+      <it-switch v-model="typeValue" variant="success" label="Success" />
+      <it-switch v-model="typeValue" variant="danger" label="Danger" />
+      <it-switch v-model="typeValue" variant="warning" label="Warning" />
     </Box>
     <Box :code="sublabelCode" title="Types">
       <div class="flex flex-col">

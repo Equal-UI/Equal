@@ -1,64 +1,71 @@
 <template>
-  <div
-    class="it-slider"
-    :class="{ 'it-slider--disabled': disabled }"
-    :tabindex="disabled ? -1 : 0"
-    @keydown.down.left.stop.prevent="keyEvent(Positions.L)"
-    @keydown.up.right.stop.prevent="keyEvent(Positions.R)"
-  >
-    <span v-if="labelTop" class="it-slider-label">{{ labelTop }}</span>
+  <div :class="variant.root">
     <div
       ref="sliderLineRef"
-      class="it-slider-line"
+      :class="variant.sliderLine"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
       @click="onSliderClick"
       @touchend="onSliderClick"
     >
-      <div class="it-slider-bar" :style="{ width: `${valuePosition}%` }"></div>
       <div
-        class="it-slider-controller-wrapper"
+        :class="variant.fillBar"
+        :style="{ width: `${valuePosition}%` }"
+      ></div>
+      <div
+        :class="variant.controllerWrapper"
         :style="{ left: `${valuePosition}%` }"
         @mousedown="onMouseOrTouchDown"
         @touchstart.prevent="onMouseOrTouchDown"
       >
         <it-tooltip ref="tooltipRef" :content="modelValue">
-          <div class="it-slider-controller"></div>
+          <div
+            ref="controller"
+            :tabindex="disabled ? null : 0"
+            @keydown.down.left.stop.prevent="keyEvent(Positions.L)"
+            @keydown.up.right.stop.prevent="keyEvent(Positions.R)"
+            :class="variant.controller"
+          ></div>
         </it-tooltip>
       </div>
     </div>
-    <div v-if="stepPoints && stepsPoints.length" class="it-slider-wrap-points">
+    <div v-if="stepPoints && stepsPoints.length" :class="variant.pointsWrapper">
       <div
         v-for="(step, index) in stepsPoints"
         :key="step.left"
-        class="it-slider-point"
         :style="getStepPointStyles({ step, index })"
-        :class="{ 'it-slider-point--active': step.active }"
+        :class="[variant.stepPoint, { [variant.stepPointActive]: step.active }]"
       ></div>
     </div>
-    <div v-if="numbers" class="it-slider-numbers">
-      <div>{{ min }}</div>
-      <div style="left: 100%">{{ max }}</div>
+    <div v-if="numbers" :class="variant.numbers">
+      <span>{{ min }}</span>
+      <span>{{ max }}</span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ComputedRef, defineComponent, ref, watch } from 'vue'
+import { computed, ComputedRef, defineComponent, ref, watch } from 'vue'
 import { TStepItem, TKeyEvents, TTotalValuePosition } from './types'
 import { DEFAULT_STEP_POINT_HEIGHT, DEFAULT_PROPS } from './constants'
 import { useStepsPoints, useValuePosition } from './hooks'
 import { getTotalPosition, getCoordsByEvent } from './helpers'
 import Tooltip from '@/components/tooltip/ItTooltip.vue'
-import { Positions } from '@/models/enums'
+import { Components, Positions } from '@/models/enums'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { ITSliderOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
-  name: 'it-slider',
+  name: Components.ITSlider,
   components: {
     'it-tooltip': Tooltip,
   },
   props: {
-    labelTop: String,
+    ...getVariantPropsWithClassesList<ITSliderOptions>(),
     disabled: Boolean,
     stepPoints: Boolean,
     numbers: Boolean,
@@ -68,6 +75,19 @@ export default defineComponent({
     modelValue: { type: Number, default: DEFAULT_PROPS.VALUE },
   },
   setup(props, { emit }) {
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+      return useVariants<ITSliderOptions>(
+        Components.ITSlider,
+        <VariantJSWithClassesListProps<ITSliderOptions>>customProps,
+      )
+    })
+
+    const controller = ref<HTMLDivElement>()
+
     const sliderLineRef = ref(null)
     const tooltipRef = ref<typeof Tooltip | null>(null)
 
@@ -106,7 +126,6 @@ export default defineComponent({
 
     function keyEvent(key: TKeyEvents) {
       if (props.disabled) return
-      tooltipRef.value!.showPopover()
 
       const moreValue = [Positions.T, Positions.R].includes(key)
       const lessValue = [Positions.B, Positions.L].includes(key)
@@ -121,6 +140,8 @@ export default defineComponent({
       } else if (lessValue) {
         emit('update:modelValue', newValue)
       }
+      tooltipRef.value!.setPopoverPosition()
+      tooltipRef.value!.showPopover()
     }
 
     function onMouseOrTouchDown(e: MouseEvent & TouchEvent) {
@@ -141,6 +162,7 @@ export default defineComponent({
 
     function onDragging(e: MouseEvent | TouchEvent) {
       if (dragging.value) {
+        tooltipRef.value!.setPopoverPosition()
         let diff = 0
         currentX.value = getCoordsByEvent(e).clientX
         diff =
@@ -149,6 +171,7 @@ export default defineComponent({
 
         newPos.value = startPos.value + diff
         setValuePosition(newPos.value)
+        tooltipRef.value!.setPopoverPosition()
       }
     }
 
@@ -165,6 +188,7 @@ export default defineComponent({
 
     function onSliderClick(e: MouseEvent & TouchEvent) {
       if (props.disabled || dragging.value) return
+      controller.value?.focus()
       const sliderOffsetLeft = (
         sliderLineRef.value! as HTMLElement
       ).getBoundingClientRect().left
@@ -174,6 +198,7 @@ export default defineComponent({
           (sliderLineRef.value! as HTMLElement).offsetWidth) *
         100
       setValuePosition(newValue)
+      tooltipRef.value!.setPopoverPosition()
     }
 
     function handleMouseEnter(e: Event) {
@@ -214,6 +239,8 @@ export default defineComponent({
       handleMouseLeave,
       getStepPointStyles,
       Positions,
+      variant,
+      controller,
     }
   },
 })
