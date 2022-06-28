@@ -17,6 +17,7 @@ export enum Components {
   ITCollapseItem = 'it-collapse-item',
   ITTextarea = 'it-textarea',
   ITTooltip = 'it-tooltip',
+  ITToggle = 'it-toggle',
   ITRadio = 'it-radio',
   ITProgressbar = 'it-progressbar',
   ITInput = 'it-input',

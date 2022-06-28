@@ -15,9 +15,9 @@
         v-show="showTooltip"
         class="it-color-tooltip"
         :style="{
-          top: pointerTop - 60 + '%',
-          left: pointerLeft - 14 + '%',
-          'background-color': colors.hex,
+          top: pointerTop - 55 + '%',
+          left: pointerLeft - 13 + '%',
+          'background-color': colors.toHex(),
         }"
       ></div>
     </transition>
@@ -27,7 +27,7 @@
     >
       <div
         class="it-saturation-circle"
-        :style="{ 'background-color': colors.hex }"
+        :style="{ 'background-color': colors.toHex() }"
       ></div>
     </div>
   </div>
@@ -35,14 +35,15 @@
 
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue'
-import { TColorData } from '../types'
-import { saturation } from '../hooks'
+import { saturation } from '../hooks/saturation'
+import { Colord } from 'colord'
 
 export default defineComponent({
   name: 'saturation',
   props: {
-    modelValue: { type: Object as PropType<TColorData>, required: true },
+    modelValue: { type: Object as PropType<Colord>, required: true },
     tooltip: Boolean,
+    hue: { type: Number },
   },
   setup(props, { emit }) {
     const {
@@ -54,9 +55,9 @@ export default defineComponent({
       handleMouseUp,
     } = saturation(props, emit)
 
-    const bgColor = computed(() => `hsl(${colors.value.hsv.h}, 100%, 50%)`)
-    const pointerTop = computed(() => -(colors.value.hsv.v * 100) + 100)
-    const pointerLeft = computed(() => colors.value.hsv.s * 100)
+    const bgColor = computed(() => `hsl(${props.hue}, 100%, 50%)`)
+    const pointerTop = computed(() => -colors.value.toHsv().v + 100)
+    const pointerLeft = computed(() => colors.value.toHsv().s)
 
     return {
       showTooltip,

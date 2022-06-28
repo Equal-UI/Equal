@@ -11,7 +11,10 @@
       @touchmove="handleChange"
       @touchstart="handleChange"
     >
-      <div class="it-alpha-pointer" :style="{ left: colors.a * 100 + '%' }">
+      <div
+        class="it-alpha-pointer"
+        :style="{ left: colors.toRgb().a * 100 + '%' }"
+      >
         <div class="it-alpha-picker"></div>
       </div>
     </div>
@@ -19,9 +22,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import checkboard from './Checkboard.vue'
-import { alpha } from '../hooks'
+import { alpha } from '../hooks/alpha'
+import { Colord } from 'colord'
 
 export default defineComponent({
   name: 'alpha',
@@ -29,14 +33,14 @@ export default defineComponent({
     checkboard,
   },
   props: {
-    modelValue: Object,
+    modelValue: { type: Object as PropType<Colord>, required: true },
   },
   setup(props, { emit }) {
     const { colors, container, handleChange, handleMouseDown, handleMouseUp } =
       alpha(props, emit)
 
     const gradientColor = computed(() => {
-      const { r, g, b } = colors.value.rgba
+      const { r, g, b } = colors.value.toRgb()
       const rgbStr = [r, g, b].join(',')
       return (
         'linear-gradient(to right, rgba(' +

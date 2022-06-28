@@ -4,7 +4,7 @@
       ref="container"
       class="it-hue-container"
       role="slider"
-      :aria-valuenow="colors.hsl.h"
+      :aria-valuenow="hue"
       aria-valuemin="0"
       aria-valuemax="360"
       @mousedown="handleMouseDown"
@@ -27,25 +27,25 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { hue } from '../hooks'
+import { hue } from '../hooks/hue'
 
 export default defineComponent({
   name: 'hue',
   props: {
-    modelValue: Object,
+    hue: { type: Number, default: 0 },
   },
   setup(props, { emit }) {
     const { container, colors, pullDirection, handleChange, handleMouseDown } =
       hue(props, emit)
 
     const pointerLeft = computed(() => {
-      if (colors.value.hsl.h === 0 && pullDirection.value === 'right') {
+      if (props.hue === 360 && pullDirection.value === 'right') {
         return '100%'
       }
-      return (colors.value.hsl.h * 100) / 360 + '%'
+      return (props.hue * 100) / 360 + '%'
     })
 
-    const cursorColor = computed(() => `hsl(${colors.value.hsv.h}, 100%, 50%)`)
+    const cursorColor = computed(() => `hsl(${props.hue}, 100%, 50%)`)
 
     return {
       container,

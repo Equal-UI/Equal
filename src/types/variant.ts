@@ -19,6 +19,7 @@ import {
   ITNumberInputVariants,
   ITSliderVariants,
   ITSwitchVariants,
+  ITToggleVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -69,6 +70,7 @@ export type EqualUIConfiguration = {
   [Components.ITSlider]?: ITSliderVariants
   [Components.ITSwitch]?: ITSwitchVariants
   [Components.ITTextarea]?: ITTextareaVariants
+  [Components.ITToggle]?: ITToggleVariants
   [Components.ITRadio]?: ITRadioVariants
   [Components.ITInput]?: ITInputVariants
   [Components.ITNumberInput]?: ITNumberInputVariants

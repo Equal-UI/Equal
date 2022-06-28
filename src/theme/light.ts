@@ -128,7 +128,7 @@ export default <EqualUIConfiguration>(<unknown>{
       switchChecked: '!bg-blue-600',
       input: 'absolute cursor-pointer inset-0 w-full h-full opacity-0 peer',
       switchCircle:
-        'absolute bg-white rounded-full peer-active:w-5 transition-all top-0.5 h-4 w-4 shadow-sm',
+        'absolute bg-white rounded-full peer-active:peer-enabled:w-5 transition-all top-0.5 h-4 w-4 shadow-sm',
       label: 'relative flex items-center transition-all',
       subLabel: 'text-gray-500',
       labelGroup: 'ml-2 flex flex-col space-y-0.5 text-sm',
@@ -154,6 +154,21 @@ export default <EqualUIConfiguration>(<unknown>{
         subLabel: 'text-gray-300',
       },
     },
+  },
+  'it-toggle': {
+    fixedClasses: {
+      root: 'select-none min-w-[100px] h-8 flex relative rounded-md transition-all border-[3px] focus-visible:border-blue-600 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-blue-600/30 border-slate-100 bg-slate-100 outline-none focus-visible',
+      value: [
+        '[&:not(:first-of-type)]:before:content-[""] [&:not(:first-of-type)]:before:transition-all [&:not(:first-of-type)]:before:absolute [&:not(:first-of-type)]:before:w-px [&:not(:first-of-type)]:before:top-1 [&:not(:first-of-type)]:before:bottom-1 [&:not(:first-of-type)]:before:left-0 [&:not(:first-of-type)]:before:bg-slate-300',
+        'relative flex max-h-full justify-center flex-1 cursor-pointer [&>*]:z-10 text-sm leading-none p-1.5 text-slate-500 font-medium',
+      ],
+      selected: 'text-black [&+div]:before:invisible',
+      slider:
+        'absolute bg-white shadow rounded left-0 top-0 bottom-0 transition-all',
+      round: '!rounded-full [&>*]:before:invisible',
+    },
+    classes: {},
+    variants: {},
   },
   'it-divider': {
     fixedClasses: {
@@ -287,7 +302,7 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-tooltip': {
     fixedClasses: {
-      root: 'transform-all absolute z-50 scale-50 opacity-0 duration-150',
+      root: 'transition-scale transition-opacity absolute z-50 scale-50 opacity-0',
       body: 'p-2 text-[13px] leading-none shadow shadow-slate-600/10 border border-slate-300 bg-white rounded-md',
       innerSlot: '',
     },

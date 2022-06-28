@@ -1,4 +1,4 @@
-import { ref, nextTick, computed, toRef } from 'vue'
+import { ref, nextTick, computed, toRef, watch } from 'vue'
 import { Positions } from '@/models/enums'
 import { Ref } from 'vue'
 
@@ -9,8 +9,8 @@ export const usePopover = (props: any) => {
   const placement: Ref<Positions> = ref<Positions>(
     props.placement || Positions.T,
   )
-  const disabled = toRef(props, 'disabled') || ref(false)
-  const clickable = toRef(props, 'hoverable') || ref(false)
+  const disabled = ref(false || props.disabled)
+  const clickable = ref(false || props.hoverable)
   const transition = computed(() => `fade-${placement.value.split('-')[0]}`)
   const visionTimer = ref<NodeJS.Timeout | null>(null)
   const permanent = ref(false || props.permanent)
@@ -19,6 +19,24 @@ export const usePopover = (props: any) => {
   // Template Refs
   const popover = ref(props.popoverEl ?? null)
   const trigger = ref(props.triggerEl ?? null)
+
+  watch(permanent, (value) => {
+    if (value) {
+      show.value = true
+      if (trigger.value) {
+        setTimeout(() => {
+          setPopoverPosition()
+        }, 100)
+      }
+    }
+  })
+  watch(disabled, (value) => {
+    if (value) {
+      hidePopover()
+    } else if (permanent) {
+      showPopover()
+    }
+  })
 
   const position = {
     x: 0,

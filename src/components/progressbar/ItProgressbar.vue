@@ -3,31 +3,39 @@
     <div
       class="it-progress-bar"
       :class="[infinite && 'it-progress-bar--infinite']"
-      :style="{ height: `${height}px` }"
     >
       <div
         class="it-progress-line"
         :style="!infinite && { width: `${progress}%` }"
       >
-        <span
+        <!-- <it-tooltip
+          :class="[variant.controller, 'absolute right-0']"
+          ref="tooltipRef"
+          :content="progress + '%'"
+          permanent
+        > -->
+        <div
+          ref="controller"
+          class="absolute right-0 h-full w-px"
+          v-tooltip="tooltipValue"
+        ></div>
+        <!-- </it-tooltip> -->
+        <!-- <span
           v-if="showTooltip && !infinite"
           class="it-progress-tooltip"
           :class="[`it-progress-tooltip--${tooltip}`]"
           v-html="`${progress}%`"
-        />
+        /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, toRef } from 'vue'
 import { Components, Positions } from '@/models/enums'
 import { useVariants } from '@/hooks/useVariants'
-import {
-  ITProgressBarOptions,
-  ITRadioOptions,
-} from '@/types/components/components'
+import { ITProgressBarOptions } from '@/types/components/components'
 import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
 
 export default defineComponent({
@@ -43,7 +51,6 @@ export default defineComponent({
       default: 0,
       validator: (val: number) => val >= 0 && val <= 100,
     },
-    height: { type: Number, default: 7, validator: (val: number) => val > 0 },
     tooltip: {
       default: Positions.T,
       validator: (val: Positions) => [Positions.T, Positions.B].includes(val),
@@ -55,9 +62,36 @@ export default defineComponent({
   },
   setup(props) {
     const variant = computed(() =>
-      useVariants<ITRadioOptions>(Components.ITRadio, props),
+      useVariants<ITProgressBarOptions>(Components.ITProgressbar, props),
     )
-    return { variant }
+
+    const disabledTooltip = computed(() => props.infinite || !props.showTooltip)
+
+    const tooltipValue = {
+      position: toRef(props, 'tooltip'),
+      content: toRef(props, 'progress'),
+      disabled: disabledTooltip,
+      permanent: true,
+    }
+
+    return { variant, tooltipValue }
   },
 })
 </script>
+
+<style>
+@keyframes infinite-load {
+  0% {
+    width: 20%;
+    margin-left: -20%;
+  }
+
+  100% {
+    width: 40%;
+    margin-left: 100%;
+  }
+}
+
+.inf-load {
+}
+</style>

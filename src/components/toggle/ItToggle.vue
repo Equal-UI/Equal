@@ -1,18 +1,19 @@
 <template>
   <div
-    class="it-toggle h-8"
+    :class="[variant.root, { [variant.round]: round }]"
     tabindex="0"
-    :class="{ 'it-toggle--round': round }"
     @keyup.left.prevent="selectPrev"
     @keyup.right.prevent="selectNext"
   >
     <div
       v-for="(option, i) in options"
       :key="i"
-      class="it-toggle-value relative flex max-h-full justify-center"
-      :class="{
-        'it-toggle-value--selected': option === modelValue,
-      }"
+      :class="[
+        variant.value,
+        {
+          [variant.selected]: option === modelValue,
+        },
+      ]"
       @click="selectValue(i)"
     >
       <slot :name="option">
@@ -21,7 +22,7 @@
       </slot>
     </div>
     <div
-      class="it-toggle-slider"
+      :class="[variant.slider, { [variant.round]: round }]"
       :style="{
         width: width + '%',
         transform: `translateX(${sliderPosition}%)`,
@@ -32,21 +33,36 @@
 </template>
 
 <script lang="ts">
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums/Components'
+import { ITToggleOptions } from '@/types/components/components'
 import { computed, defineComponent, PropType, ref } from 'vue'
 import ItIcon from '../icon'
 
 export default defineComponent({
-  name: 'it-toggle',
+  name: Components.ITToggle,
   components: {
     ItIcon,
   },
   props: {
+    ...getVariantPropsWithClassesList<ITToggleOptions>(),
     options: { type: Array as PropType<(string | number)[]>, default: [] },
     round: Boolean,
     icons: Boolean,
     modelValue: [String, Number],
   },
   setup(props, { emit }) {
+    const variant = computed(() => {
+      return useVariants<ITToggleOptions>(
+        Components.ITToggle,
+        <VariantJSWithClassesListProps<ITToggleOptions>>props,
+      )
+    })
+
     const activeIndex = ref(0)
 
     function selectValue(i: number) {
@@ -87,6 +103,7 @@ export default defineComponent({
       width,
       sliderPosition,
       opacity,
+      variant,
     }
   },
 })

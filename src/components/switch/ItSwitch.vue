@@ -45,7 +45,6 @@ export default defineComponent({
     ...getVariantPropsWithClassesList<ITSwitchOptions>(),
     label: { type: String },
     subLabel: { type: String },
-    pulse: { type: Boolean },
     disabled: { type: Boolean },
     modelValue: { type: Boolean, default: false },
   },

@@ -112,6 +112,12 @@ export interface ITSwitchOptions extends IComponentWithRoot {
 
 export type ITSwitchVariants = WithVariantProps<ITSwitchOptions>
 
+export interface ITToggleOptions extends IComponentWithRoot {
+  checkLabelGroup?: string
+}
+
+export type ITToggleVariants = WithVariantProps<ITToggleOptions>
+
 export interface ITSliderOptions extends IComponentWithRoot {
   label?: string
   controller?: string

@@ -3,6 +3,7 @@
     <div class="it-colorpicker-saturation-wrap">
       <saturation
         v-model="colors"
+        :hue="hue"
         :tooltip="showTooltip"
         @change="colorChange"
       ></saturation>
@@ -11,9 +12,9 @@
       <div class="it-colorpicker-sliders">
         <div class="it-colorpicker-hue-wrap">
           <hue
-            v-model="colors"
+            :hue="hue"
             :class="{ 'it-colorpicker-bottom': disableAlpha }"
-            @change="colorChange"
+            @change="changeHue"
           ></hue>
         </div>
         <div v-if="!disableAlpha" class="it-colorpicker-alpha-wrap">
@@ -26,12 +27,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { ColorInput } from 'tinycolor2'
 
 import saturation from './subcomponents/Saturation.vue'
 import hue from './subcomponents/Hue.vue'
 import alpha from './subcomponents/Alpha.vue'
 import { colorpicker } from './hooks'
+import { AnyColor, Colord } from 'colord'
 
 export default defineComponent({
   name: 'it-colorpicker',
@@ -51,15 +52,17 @@ export default defineComponent({
     },
     value: {
       default: '#000',
-      type: [Object, String] as PropType<ColorInput>,
+      type: [Object, String] as PropType<AnyColor | Colord>,
     },
   },
   setup(props, { emit }) {
-    const { colors, colorChange } = colorpicker(props, emit)
+    const { colors, colorChange, changeHue, hue } = colorpicker(props, emit)
 
     return {
       colors,
       colorChange,
+      changeHue,
+      hue,
     }
   },
 })
