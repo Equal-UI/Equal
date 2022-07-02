@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition name="fade">
+    <transition v-bind="variant.transitions?.fade">
       <div v-show="focus && mask" :class="variant.mask"></div>
     </transition>
     <span v-if="labelTop" :class="variant.label">{{ labelTop }}</span>

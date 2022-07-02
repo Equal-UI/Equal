@@ -84,7 +84,7 @@
     </div>
     <div class="mt-20 flex justify-center space-x-6">
       <router-link to="/start">
-        <it-button type="primary" size="big" variant="primary" pulse
+        <it-button size="big" variant="primary" pulse
           >Get started</it-button
         >
       </router-link>

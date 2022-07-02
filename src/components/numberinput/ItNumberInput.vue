@@ -13,7 +13,8 @@
       <div :class="variant.inputWrapper">
         <input
           ref="input"
-          type="number"
+          inputmode="numeric"
+          pattern="[0-9]*"
           :value="modelValue"
           :class="variant.input"
           :disabled="disabled"
@@ -160,9 +161,9 @@ export default defineComponent({
     }
 
     // input behavior
-
     function onInput(e: InputEvent, watchVal: number) {
-      const newVal = watchVal ?? Number((e.target as HTMLInputElement).value)
+      const newVal =
+        watchVal ?? (Number((e.target as HTMLInputElement).value) || 0)
 
       if (newVal > props.max) {
         emit('update:modelValue', props.max)

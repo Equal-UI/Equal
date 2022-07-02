@@ -55,6 +55,7 @@ const components: Record<string, ReturnType<typeof defineComponent>> = {
   ...Dropdown,
   Icon,
   Input,
+  Loadingbar,
   Spinner,
   Modal,
   NumberInput,
@@ -78,7 +79,6 @@ function install(Vue: App, configuration: EqualUIConfiguration) {
   }
   Vue.config.globalProperties.$Message = Message
   Vue.config.globalProperties.$Notification = Notification
-  Vue.config.globalProperties.$Loading = Loadingbar
   Vue.config.globalProperties.$Equal = {
     drawers: [],
     modals: [],

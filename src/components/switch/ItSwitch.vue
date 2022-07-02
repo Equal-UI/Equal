@@ -29,14 +29,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { Components } from '@/models/enums'
-import { ITSwitchOptions } from '@/types/components/components'
 import {
   getVariantPropsWithClassesList,
   VariantJSWithClassesListProps,
 } from '@/helpers/getVariantProps'
 import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITSwitchOptions } from '@/types/components/components'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   name: Components.ITSwitch,

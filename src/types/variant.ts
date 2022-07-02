@@ -20,6 +20,7 @@ import {
   ITSliderVariants,
   ITSwitchVariants,
   ITToggleVariants,
+  ITTabsVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -56,6 +57,7 @@ export type EqualUIConfiguration = {
   [Components.ITAvatar]?: ITAvatarVariants
   [Components.ITAvatarGroup]?: ITAvatarGroupVariants
   [Components.ITIcon]?: ITIconVariants
+  [Components.ITTabs]?: ITTabsVariants
   [Components.ITTag]?: ITTagVariants
   [Components.ITCollapse]?: ITCollapseVariants
   [Components.ITCollapseItem]?: ITCollapseItemVariants

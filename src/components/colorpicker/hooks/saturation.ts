@@ -31,7 +31,7 @@ export const saturation = (
     const left = clamp(pageX - xOffset, 0, clientWidth)
     const top = clamp(pageY - yOffset, 0, clientHeight)
     const saturation = (left / clientWidth) * 100
-    const bright = clamp((-(top / clientHeight) + 1) * 100, 0, 100)
+    const bright = clamp((-(top / clientHeight) + 1) * 100, 0.001, 100)
 
     const { h, a } = colors.value.toHsv()
     emit('change', {

@@ -17,12 +17,12 @@
           padding: iconBoxPadding + 'px',
           fontSize: iconSize + 'px',
           borderRadius: iconBoxRadius + 'px',
+          color: iconColor,
         }"
         :box="iconBox"
         :box-color="iconBoxColor"
         :name="iconName"
         :outlined="iconOutlined"
-        :color="iconColor"
       />
 
       <template #props>
@@ -30,10 +30,10 @@
         <it-popover borderless>
           <it-button
             >Icon color
-            <span
+            <div
               :style="{ 'background-color': iconColor }"
-              class="ml-2 w-4 rounded"
-            ></span>
+              class="ml-2 w-4 h-4 rounded"
+            ></div>
           </it-button>
 
           <template #content>
@@ -99,6 +99,7 @@
 </template>
 
 <script lang="ts">
+import { Colord } from 'colord'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -154,8 +155,8 @@ export default defineComponent({
 
       this.iconBoxColor = `rgba(${r}, ${g}, ${b}, ${a})`
     },
-    updateIconColor(val) {
-      const { r, g, b, a } = val.rgba
+    updateIconColor(val: Colord) {
+      const { r, g, b, a } = val.toRgb()
 
       this.iconColor = `rgba(${r}, ${g}, ${b}, ${a})`
     },

@@ -27,41 +27,41 @@
     overflow-x: auto;
     overflow-y: hidden;
 
-    &--vertical {
-      flex-direction: column;
-      box-shadow: inset -1px 0 0 @color-default-border;
-      overflow-x: hidden;
-      overflow-y: auto;
+    // &--vertical {
+    //   flex-direction: column;
+    //   box-shadow: inset -1px 0 0 @color-default-border;
+    //   overflow-x: hidden;
+    //   overflow-y: auto;
 
-      & > .it-tabs-tab {
-        &::after {
-          right: 0;
-          top: 0;
-          left: auto;
-          width: 2px;
-          height: 100%;
-          transform: scaleX(0);
-          transform-origin: right;
-        }
+    //   & > .it-tabs-tab {
+    //     &::after {
+    //       right: 0;
+    //       top: 0;
+    //       left: auto;
+    //       width: 2px;
+    //       height: 100%;
+    //       transform: scaleX(0);
+    //       transform-origin: right;
+    //     }
 
-        &:focus {
-          &::after {
-            transform: scaleX(2);
-          }
-        }
-      }
+    //     &:focus {
+    //       &::after {
+    //         transform: scaleX(2);
+    //       }
+    //     }
+    //   }
 
-      & > .it-tabs-tab--active {
-        &::after {
-          transform: scaleX(1);
-        }
-      }
+    //   & > .it-tabs-tab--active {
+    //     &::after {
+    //       transform: scaleX(1);
+    //     }
+    //   }
 
-      & > .it-tabs-tab + .it-tabs-tab {
-        margin-top: 8px;
-        margin-left: 0;
-      }
-    }
+    //   & > .it-tabs-tab + .it-tabs-tab {
+    //     margin-top: 8px;
+    //     margin-left: 0;
+    //   }
+    // }
   }
 
   &-body {

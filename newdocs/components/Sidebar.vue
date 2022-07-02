@@ -57,7 +57,7 @@
         </a>
       </div>
       <div class="mt-4">
-      <it-input v-model="search" labelTop="Search" placeholder="Tooltip..." />
+      <it-input v-model="search" labelTop="Search" autocomplete="new-password" placeholder="Tooltip..." />
       </div>
     </div>
     <ul

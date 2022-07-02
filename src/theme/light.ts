@@ -341,6 +341,44 @@ export default <EqualUIConfiguration>(<unknown>{
     classes: {},
     variants: {},
   },
+  'it-colorpicker': {
+    fixedClasses: {
+      root: 'relative w-44 rounded',
+      alphaCheckboard: 'absolute inset-0',
+      alphaWrap: 'h-full mx-1.5 relative cursor-pointer',
+      hueWrap: 'h-full px-3 relative cursor-pointer',
+      huePointer:
+        'absolute rounded-sm h-full w-3.5 shadow-md scale-y-110 -translate-x-1/2 border-2 border-white cursor-ew-resize z-10',
+      saturationWrap: 'relative h-32 w-full',
+      saturationRoot:
+        'absolute inset-0 cursor-pointer border-b-[6px] border-black rounded-t',
+      saturationPointer:
+        'absolute rounded-full h-3 w-3 shadow -translate-x-1/2 -translate-y-1/2 border border-white',
+      sliderWrap: 'relative h-6 w-full [&:last-child>div]:rounded-b',
+      tooltip:
+        'w-12 h-12 border border-4 shadow-md border-white absolute rounded-full',
+    },
+    classes: {},
+    variants: {},
+  },
+  'it-tabs': {
+    fixedClasses: {
+      root: 'flex flex-col',
+      bordered: 'border rounded shadow shadow-slate-600/10 border-slate-300',
+      rootVertical: '!flex-row',
+      header:
+        'flex flex-row flex-nowrap overflow-x-auto shadow-[inset_0_-1px_0_0] shadow-slate-300 overflow-x-auto overflow-y-hidden gap-2',
+      verticalHeader:
+        '!flex-col !shadow-[inset_-1px_0_0_0] !shadow-slate-300 overflow-y-auto overflow-x-hidden',
+      body: 'flex-1',
+      tab: "disabled:cursor-not-allowed inset-0 disabled:text-gray-300 flex-auto relative p-3 text-sm cursor-pointer focus:outline-none focus:after:!scale-y-[2] after:content-[''] after:absolute after:left-0 after:w-full after:h-[2px] after:bottom-0 after:bg-blue-600 after:scale-y-0 after:origin-bottom after:transition-all",
+      verticalTab:
+        "focus:after:!scale-y-[1] focus:after:!scale-x-[2] after:content-[''] after:!top-0 after:!right-0 after:!left-auto after:h-full after:!w-[2px] after:scale-x-0 after:origin-right",
+      activeTab: 'font-semibold after:!scale-100',
+    },
+    classes: {},
+    variants: {},
+  },
   'it-textarea': {
     fixedClasses: {
       label: 'flex text-sm mb-1.5',

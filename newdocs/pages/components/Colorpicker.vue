@@ -19,8 +19,26 @@
       <div class="flex flex-col items-center">
         <it-colorpicker show-tooltip :value="color" @change="updateColor" />
 
+        <h5 class="mt-6">
+          Change event return
+          <it-tooltip>
+            <a target="_blank" href="https://github.com/omgovich/colord"
+              >colord</a
+            >
+
+            <template #content
+              ><div class="max-w-[130px]">
+                If you like EqualUI's colorpicker — don't hesitate to leave a
+                like to colord library
+              </div></template
+            >
+          </it-tooltip>
+          object so for example
+          <pre>value.toRgb()</pre>
+          will return:
+        </h5>
         <h5 class="mt-6">Returned value:</h5>
-        <pre>{{ JSON.stringify(color, null, 2) }}</pre>
+        <pre>{{ JSON.stringify(exColor.toRgb(), null, 2) }}</pre>
       </div>
     </Box>
 
@@ -37,9 +55,9 @@
     </Box>
 
     <Box :code="usageCode" title="Use example">
-      <div class="flex flex-col items-center">
+      <div class="flex flex-col items-center space-y-8">
         <it-colorpicker :value="exampleColor" @change="updateExampleColor" />
-        <it-loading class="mt-4" :color="exampleColor"></it-loading>
+        <it-spinner :style="{'border-right-color': exampleColor}"></it-spinner>
       </div>
     </Box>
 
@@ -48,6 +66,7 @@
 </template>
 
 <script lang="ts">
+import { colord } from 'colord'
 import { defineComponent } from 'vue'
 
 const defaultColors = 'rgb(48, 81, 255)'
@@ -57,6 +76,7 @@ export default defineComponent({
     exampleColor: 'rgba(49,81,254,1)',
     color: defaultColors,
     colorTooltip: true,
+    exColor: colord('rgb(48, 81, 255)'),
     hideAlpha: false,
 
     tooltipCode: `<it-colorpicker showTooltip :value="color" @change="updateColor" />`,
@@ -107,17 +127,17 @@ updateExampleColor(val) {
       {
         event: '@change',
         description:
-          'The event function fires on color change, emits object with color values in different format',
-        arguments: 'function(val: TColorData)',
+          'The event function fires on color change, emits colord object',
+        arguments: 'function(val: Colord)',
       },
     ],
   }),
   methods: {
     updateColor(val) {
-      this.color = val
+      this.exColor = val
     },
     updateExampleColor(val) {
-      const { r, g, b, a } = val.rgba
+      const { r, g, b, a } = val.toRgb()
 
       this.exampleColor = `rgba(${r}, ${g}, ${b}, ${a})`
     },

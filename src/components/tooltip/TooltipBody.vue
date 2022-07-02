@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, inject, Ref, ref } from 'vue'
-import { Components, Positions } from '@/models/enums'
 import { useVariants } from '@/hooks/useVariants'
+import { Components, Positions } from '@/models/enums'
 import { ITTooltipOptions } from '@/types/components/components'
+import { computed, defineComponent, inject, Ref, ref } from 'vue'
 
 export default defineComponent({
   props: {

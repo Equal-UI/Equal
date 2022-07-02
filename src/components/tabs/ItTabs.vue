@@ -1,12 +1,14 @@
 <template>
   <div
     role="tablist"
-    class="it-tabs"
-    :class="{ 'it-tabs--vertical': vertical, 'it-tabs--boxed': box }"
+    :class="[
+      variant.root,
+      { [variant.bordered]: box },
+      { [variant.rootVertical]: vertical },
+    ]"
   >
     <div
-      class="it-tabs-header"
-      :class="{ 'it-tabs-header--vertical': vertical }"
+      :class="[variant.header, { [variant.verticalHeader]: vertical }]"
       :aria-orientation="vertical ? 'vertical' : 'horizontal'"
     >
       <button
@@ -20,11 +22,13 @@
         role="tab"
         :aria-selected="selectedIndex === i"
         :tabindex="selectedIndex === i ? null : -1"
-        class="it-tabs-tab"
-        :class="{
-          'it-tabs-tab--active': selectedIndex === i,
-          'it-tabs-tab--disabled': tab.disabled,
-        }"
+        :class="[
+          variant.tab,
+          {
+            [variant.activeTab]: selectedIndex === i,
+            [variant.verticalTab]: vertical,
+          },
+        ]"
         :disabled="tab.disabled"
         :data-content="tab.title"
         @keydown.right.prevent="vertical ? null : focusNextTab(i + 1)"
@@ -42,16 +46,32 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onMounted, provide, ref } from 'vue'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums/Components'
+import { ITTabsOptions } from '@/types/components/components'
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  onMounted,
+  provide,
+  ref,
+} from 'vue'
 
 export default defineComponent({
-  name: 'it-tabs',
+  name: Components.ITTabs,
   props: {
+    ...getVariantPropsWithClassesList<ITTabsOptions>(),
     initialTab: Number,
     vertical: Boolean,
     box: Boolean,
   },
-  setup(props, { slots }) {
+  setup(props) {
+    const variant = computed(() =>
+      useVariants<ITTabsOptions>(Components.ITTabs, props),
+    )
+
     const selectedIndex = ref(0)
     const tabs = ref([])
     const tabsRefs = ref<HTMLElement[]>([])
@@ -105,6 +125,7 @@ export default defineComponent({
       tabsRefs,
       focusNextTab,
       focusPrevTab,
+      variant,
     }
   },
 })

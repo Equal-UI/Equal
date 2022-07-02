@@ -22,7 +22,7 @@
         </template>
         <template #actions>
           <it-button
-            type="primary"
+            variant="primary"
             @click="$Message({ text: 'You got it' }), (defaultModal = false)"
             >Got it</it-button
           >
@@ -30,7 +30,7 @@
       </it-modal>
     </Box>
     <Box :code="signinCode" title="Sign Up modal">
-      <it-button type="primary" @click="signinModal = true">Sign up</it-button>
+      <it-button variant="primary" @click="signinModal = true">Sign up</it-button>
       <it-modal v-model="signinModal">
         <template #body>
           <div class="signupmodal p-3">
@@ -53,14 +53,14 @@
               label-top="Username"
               prefix-icon="account_circle"
               placeholder="Unique Username"
-              autocomplete="false"
+              autocomplete="off"
             />
             <it-input
               label-top="Password"
               prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
-              autocomplete="false"
+              autocomplete="new-password"
             />
             <div class="signupmodal-wrap-checkbox">
               <it-checkbox
@@ -71,7 +71,7 @@
             <it-button
               block
               size="big"
-              type="primary"
+              variant="primary"
               @click="
                 $Message.success({ text: 'Welcome' }), (signinModal = false)
               "
@@ -82,7 +82,7 @@
       </it-modal>
     </Box>
     <Box :code="confirmCode" title="Confirmation modal">
-      <it-button type="danger" @click="confirmModal = true"
+      <it-button variant="danger" @click="confirmModal = true"
         >Delete account</it-button
       >
       <it-modal v-model="confirmModal">
@@ -95,7 +95,7 @@
         <template #actions>
           <it-button @click="confirmModal = false">Cancel</it-button>
           <it-button
-            type="danger"
+            variant="danger"
             @click="
               $Message.success({ text: 'Account deleted' }),
                 (confirmModal = false)
@@ -106,7 +106,7 @@
       </it-modal>
     </Box>
     <Box :code="imageCode" title="Image only modal">
-      <it-button type="primary" @click="imageModal = true"
+      <it-button variant="primary" @click="imageModal = true"
         >Show image</it-button
       >
       <it-modal v-model="imageModal">
@@ -128,7 +128,7 @@
         </p>
       </template>
 
-      <it-button type="primary" @click="signinNestedModal = true"
+      <it-button variant="primary" @click="signinNestedModal = true"
         >Sign up</it-button
       >
       <it-modal v-model="signinNestedModal">
@@ -153,24 +153,25 @@
               label-top="Username"
               prefix-icon="account_circle"
               placeholder="Unique Username"
-              autocomplete="false"
+              autocomplete="off"
             />
             <it-input
               label-top="Password"
               prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
-              autocomplete="false"
+              autocomplete="off"
             />
             <div class="signupmodal-wrap-checkbox">
-              <it-button text type="primary" block @click="nestedModal = true"
+              <it-button class="w-full" variant="primary-text" @click="nestedModal = true"
                 >Read Terms of Service</it-button
               >
             </div>
             <it-button
               block
               size="big"
-              type="primary"
+              variant="primary"
+              class="w-full"
               :disabled="!agreedTOS"
               @click="signinNestedModal = false"
               >Sign up</it-button
@@ -1033,7 +1034,7 @@
               <it-button
                 block
                 size="big"
-                type="primary"
+                variant="primary"
                 @click=";(nestedModal = false), (agreedTOS = true)"
                 >I agree</it-button
               >
@@ -1062,7 +1063,7 @@ export default defineComponent({
     agreedTOS: false,
 
     nestedCode: `
-<it-button type="primary" @click="signinNestedModal = true">Sign up</it-button>
+<it-button variant="primary" @click="signinNestedModal = true">Sign up</it-button>
 
 <it-modal v-model="signinNestedModal">
   <template #body>
@@ -1096,14 +1097,14 @@ export default defineComponent({
         autocomplete="false"
       />
       <div class="signupmodal-wrap-checkbox">
-        <it-button text type="primary" block @click="nestedModal = true"
+        <it-button text variant="primary" block @click="nestedModal = true"
           >Read Terms of Service</it-button
         >
       </div>
       <it-button
         block
         size="big"
-        type="primary"
+        variant="primary"
         :disabled="!agreedTOS"
         @click="signinNestedModal = false"
         >Sign up</it-button
@@ -1123,7 +1124,7 @@ export default defineComponent({
         <it-button
           block
           size="big"
-          type="primary"
+          variant="primary"
           @click=";(nestedModal = false), (agreedTOS = true)"
           >I agree</it-button
         >
@@ -1131,7 +1132,7 @@ export default defineComponent({
     </div>
   </template>
 </it-modal>`,
-    imageCode: `<it-button @click="imageModal = true" type="primary"
+    imageCode: `<it-button @click="imageModal = true" variant="primary"
   >Show image</it-button
 >
 <it-modal v-model="imageModal">
@@ -1160,14 +1161,14 @@ export default defineComponent({
   </template>
   <template #actions>
     <it-button
-      type="primary"
+      variant="primary"
       @click="$Message({ text: 'You got it' }), (defaultModal = false)"
       >Got it</it-button
     >
   </template>
 </it-modal>`,
 
-    signinCode: `<it-button @click="signinModal = true" type="primary">Sign up</it-button>
+    signinCode: `<it-button @click="signinModal = true" variant="primary">Sign up</it-button>
 <it-modal v-model="signinModal">
   <template #body>
     <div class="signupmodal">
@@ -1185,7 +1186,7 @@ export default defineComponent({
       <it-button
         block
         size="big"
-        type="primary"
+        variant="primary"
         @click="
           $Message.success({ text: 'Welcome' }), (signinModal = false)
         "
@@ -1195,7 +1196,7 @@ export default defineComponent({
   </template>
 </it-modal>`,
 
-    confirmCode: `<it-button @click="confirmModal = true" type="danger">Delete account</it-button>
+    confirmCode: `<it-button @click="confirmModal = true" variant="danger">Delete account</it-button>
 <it-modal v-model="confirmModal">
   <template #header>
     <h3>Delete account</h3>
@@ -1206,7 +1207,7 @@ export default defineComponent({
   <template #actions>
     <it-button @click="confirmModal = false">Cancel</it-button>
     <it-button
-      type="danger"
+      variant="danger"
       @click="
         $Message.success({ text: 'Account deleted' }),
           (confirmModal = false)

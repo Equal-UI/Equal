@@ -1,41 +1,44 @@
 <template>
-  <div class="it-alpha">
-    <div class="it-alpha-checkboard-wrap">
-      <checkboard></checkboard>
-    </div>
-    <div class="it-alpha-gradient" :style="{ background: gradientColor }"></div>
+  <div :class="variant.alphaCheckboard" :style="bgStyle"></div>
+  <div
+    :class="variant.alphaCheckboard"
+    :style="{ background: gradientColor }"
+  ></div>
+  <div
+    ref="container"
+    :class="variant.alphaWrap"
+    @mousedown="handleMouseDown"
+    @touchmove="handleChange"
+    @touchstart="handleChange"
+  >
     <div
-      ref="container"
-      class="it-alpha-container"
-      @mousedown="handleMouseDown"
-      @touchmove="handleChange"
-      @touchstart="handleChange"
-    >
-      <div
-        class="it-alpha-pointer"
-        :style="{ left: colors.toRgb().a * 100 + '%' }"
-      >
-        <div class="it-alpha-picker"></div>
-      </div>
-    </div>
+      :class="variant.huePointer"
+      :style="{ left: colors.toRgb().a * 100 + '%' }"
+    ></div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue'
-import checkboard from './Checkboard.vue'
+import { computed, defineComponent, PropType, reactive, ref } from 'vue'
 import { alpha } from '../hooks/alpha'
 import { Colord } from 'colord'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { ITColorpickerOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
 
 export default defineComponent({
   name: 'alpha',
-  components: {
-    checkboard,
-  },
+  emits: ['change'],
   props: {
+    ...getVariantPropsWithClassesList<ITColorpickerOptions>(),
     modelValue: { type: Object as PropType<Colord>, required: true },
   },
   setup(props, { emit }) {
+    const variant = computed(() =>
+      useVariants<ITColorpickerOptions>(Components.ITColorpicker, props),
+    )
+
     const { colors, container, handleChange, handleMouseDown, handleMouseUp } =
       alpha(props, emit)
 
@@ -51,6 +54,14 @@ export default defineComponent({
       )
     })
 
+    const bgStyle = reactive({
+      'background-size': 'contain',
+      'background-color': 'white',
+      'background-image':
+        'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>\')',
+      'box-shadow': 'inset 0 0 0 1px #0000000d',
+    })
+
     return {
       colors,
       gradientColor,
@@ -58,6 +69,8 @@ export default defineComponent({
       handleChange,
       handleMouseDown,
       handleMouseUp,
+      bgStyle,
+      variant,
     }
   },
 })

@@ -1,6 +1,6 @@
 <template>
-  <div aria-label="Color picker" class="it-colorpicker">
-    <div class="it-colorpicker-saturation-wrap">
+  <div aria-label="Color picker" :class="variant.root">
+    <div :class="variant.saturationWrap">
       <saturation
         v-model="colors"
         :hue="hue"
@@ -8,40 +8,38 @@
         @change="colorChange"
       ></saturation>
     </div>
-    <div class="it-colorpicker-controls">
-      <div class="it-colorpicker-sliders">
-        <div class="it-colorpicker-hue-wrap">
-          <hue
-            :hue="hue"
-            :class="{ 'it-colorpicker-bottom': disableAlpha }"
-            @change="changeHue"
-          ></hue>
-        </div>
-        <div v-if="!disableAlpha" class="it-colorpicker-alpha-wrap">
-          <alpha v-model="colors" @change="colorChange"></alpha>
-        </div>
-      </div>
+
+    <div :class="variant.sliderWrap">
+      <hue :hue="hue" @change="changeHue"></hue>
+    </div>
+    <div v-if="!disableAlpha" :class="variant.sliderWrap">
+      <alpha v-model="colors" @change="colorChange"></alpha>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 
 import saturation from './subcomponents/Saturation.vue'
 import hue from './subcomponents/Hue.vue'
 import alpha from './subcomponents/Alpha.vue'
 import { colorpicker } from './hooks'
 import { AnyColor, Colord } from 'colord'
+import { Components } from '@/models/enums'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { ITColorpickerOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
-  name: 'it-colorpicker',
+  name: Components.ITColorpicker,
   components: {
     saturation,
     hue,
     alpha,
   },
   props: {
+    ...getVariantPropsWithClassesList<ITColorpickerOptions>(),
     disableAlpha: {
       type: Boolean,
       default: false,
@@ -56,6 +54,9 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const variant = computed(() =>
+      useVariants<ITColorpickerOptions>(Components.ITColorpicker, props),
+    )
     const { colors, colorChange, changeHue, hue } = colorpicker(props, emit)
 
     return {
@@ -63,6 +64,7 @@ export default defineComponent({
       colorChange,
       changeHue,
       hue,
+      variant,
     }
   },
 })
