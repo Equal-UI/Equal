@@ -11,7 +11,7 @@
       >
       as a default icons library
     </p>
-    <Demobox>
+    <Demobox name="it-icon">
       <it-icon
         :style="{
           padding: iconBoxPadding + 'px',
@@ -32,7 +32,7 @@
             >Icon color
             <div
               :style="{ 'background-color': iconColor }"
-              class="ml-2 w-4 h-4 rounded"
+              class="ml-2 h-4 w-4 rounded"
             ></div>
           </it-button>
 

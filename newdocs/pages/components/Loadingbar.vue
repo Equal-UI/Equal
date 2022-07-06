@@ -5,9 +5,14 @@
     <Box :code="typesCode" title="Global">
       <it-loading-bar ref="globalLoading" global />
 
-      <!-- <it-button @click="$Loading.start()">Start</it-button>
-<it-button @click="$Loading.update(50)">Set 50%</it-button> -->
       <it-button @click="globalLoading.setProgress(50)">Set 50%</it-button>
+      <it-button @click="globalLoading.setProgress(100)">Set 100%</it-button>
+      <it-button @click="globalLoading.reset()">Restart</it-button>
+    </Box>
+
+    <Box :code="typesCode" title="Global">
+      <it-button @click="globalInfinite = !globalInfinite">Toggle</it-button>
+      <it-loading-bar global :infinite="globalInfinite" />
     </Box>
 
     <Box :code="typesCode" title="Loading bar">
@@ -16,7 +21,7 @@
         <div
           id="scroll-value"
           class="
-          scrollbar
+            scrollbar
             relative
             h-60
             w-full
@@ -29,7 +34,7 @@
           <div class="sticky top-0">
             <it-loading-bar ref="ownloading" />
           </div>
-          <p class="leading-snug text-sm p-8">
+          <p class="p-8 text-sm leading-snug">
             In 2015, fifteen years after a global cataclysm known as the Second
             Impact, teenager Shinji Ikari is summoned to the futuristic city of
             Tokyo-3 by his estranged father Gendo Ikari, director of the special
@@ -130,6 +135,7 @@ export default defineComponent({
   setup() {
     const ownloading = ref()
     const globalLoading = ref()
+    const globalInfinite = ref(false)
 
     const startLoading = () => {
       ownloading.value.setProgress(40)
@@ -148,7 +154,7 @@ export default defineComponent({
       }, 500)
     })
 
-    return { startLoading, ownloading, globalLoading }
+    return { startLoading, ownloading, globalLoading, globalInfinite }
   },
 })
 </script>

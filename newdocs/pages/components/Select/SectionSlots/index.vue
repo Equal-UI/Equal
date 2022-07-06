@@ -1,31 +1,27 @@
 <template>
   <Box :code="codeSectionExamples" :overflow-hidden="false" title="Slots">
-    <Row align="center" justify="center" class="flex">
-      <Col class="my-4 flex flex-col px-4" lg="3" sm="12">
-        <it-select v-model="exampleValue" :options="exampleOptions">
-          <template v-slot:label-top="{ props }">
-            Placement prop: {{ props.placement }}
-          </template>
-          <template v-slot:placeholder="{ props }">
-            <div class="items-center" :style="{ display: 'flex' }">
-              <span>{{ props.placeholder }} - custom</span>
-            </div>
-          </template>
-          <template v-slot:selected-option="{ props }">
-            Selected value: {{ props.modelValue.value }}
-          </template>
-          <template v-slot:option="{ props, option }">
-            <div class="items-center" :style="{ display: 'flex' }">
-              <img src="/github-logo.svg" class="mr-2 h-4" alt srcset />
-              {{ option.name }}
-            </div>
-          </template>
-          <template v-slot:icon>
-            <img src="/twitter-logo.svg" class="mr-2 h-3" alt srcset />
-          </template>
-        </it-select>
-      </Col>
-    </Row>
+    <it-select v-model="exampleValue" :options="exampleOptions">
+      <template v-slot:label-top="{ props }">
+        Placement prop: {{ props.placement }}
+      </template>
+      <template v-slot:placeholder="{ props }">
+        <div class="items-center" :style="{ display: 'flex' }">
+          <span>{{ props.placeholder }} - custom</span>
+        </div>
+      </template>
+      <template v-slot:selected-option="{ props }">
+        Selected value: {{ props.modelValue.value }}
+      </template>
+      <template v-slot:option="{ props, option }">
+        <div class="items-center" :style="{ display: 'flex' }">
+          <img src="/github-logo.svg" class="mr-2 h-4" alt srcset />
+          {{ option.name }}
+        </div>
+      </template>
+      <template v-slot:icon>
+        <img src="/twitter-logo.svg" class="mr-2 h-3" alt srcset />
+      </template>
+    </it-select>
   </Box>
 </template>
 

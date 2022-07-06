@@ -2,7 +2,7 @@
   <div>
     <h1>Radio</h1>
 
-    <Demobox>
+    <Demobox name="it-radio">
       <div class="radios">
         <it-radio
           v-model="radioValue"

@@ -2,7 +2,7 @@
   "src/**/*.{ts,vue}": [
     "yarn lint:prettier"
   ],
-  "newdocs/src/**/*.{ts,vue}": [
+  "newdocs/**/*.{ts,vue}": [
     "yarn lint:prettier"
   ]
 }

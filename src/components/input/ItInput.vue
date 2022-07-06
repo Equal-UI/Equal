@@ -10,14 +10,14 @@
     >
       <div v-if="prefix" :class="variant.affix">{{ prefix }}</div>
       <div :class="variant.inputWrapper">
-        <span
+        <div
           v-if="prefixIcon || hasPrefixIconSlot"
           :class="variant.iconWrapper"
         >
           <slot name="prefixIcon">
             <it-icon :class="variant.icon" :name="prefixIcon" />
           </slot>
-        </span>
+        </div>
         <input
           v-bind="$attrs"
           :type="type"
@@ -29,14 +29,14 @@
           @focus="focus = true"
           @blur="focus = false"
         />
-        <span
+        <div
           v-if="suffixIcon || hasSuffixIconSlot"
           :class="variant.iconWrapper"
         >
           <slot name="suffixIcon">
             <it-icon :class="variant.icon" :name="suffixIcon" />
           </slot>
-        </span>
+        </div>
       </div>
       <div v-if="suffix" :class="variant.affix">{{ suffix }}</div>
     </div>

@@ -2,7 +2,7 @@
   <div>
     <h1>Divider</h1>
 
-    <Demobox>
+    <Demobox name="it-divider">
       <div class="flex w-11/12 justify-center">
         <it-divider :vertical="dividerVertical" />
       </div>

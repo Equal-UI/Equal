@@ -2,7 +2,7 @@
   <div>
     <h1>Progress Bar</h1>
 
-    <Demobox>
+    <Demobox name="it-progress-bar">
       <div class="w-full px-8">
         <it-progressbar
           :show-tooltip="progressShowTooltip"

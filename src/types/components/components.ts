@@ -40,6 +40,10 @@ export interface ITTagOptions extends IComponentWithRoot {
 
 export type ITTagVariants = WithVariantProps<ITTagOptions>
 
+export interface ITLoadingbarOptions extends IComponentWithRoot {}
+
+export type ITLoadingbarVariants = WithVariantProps<ITLoadingbarOptions>
+
 export interface ITCheckboxOptions extends IComponentWithRoot {
   checkbox?: string
   checkIconActive?: string

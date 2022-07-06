@@ -2,7 +2,7 @@
   <div>
     <h1>Alert</h1>
 
-    <Demobox>
+    <Demobox name="it-alert">
       <it-alert
         v-show="alertVisible"
         :iconbox="alertIconBox"

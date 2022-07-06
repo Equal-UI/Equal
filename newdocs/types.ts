@@ -1,4 +1,5 @@
 export enum componentGroup {
+  General = 'General',
   Base = 'Base',
   Form = 'Form',
   Feedback = 'Feedback',

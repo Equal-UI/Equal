@@ -2,7 +2,7 @@
   <div>
     <h1>Dropdown</h1>
 
-    <Demobox>
+    <Demobox name="it-dropdown">
       <it-dropdown :clickable="clickable" :placement="dropdownType">
         <it-button>{{ clickable ? 'Click' : 'Hover' }} me</it-button>
         <template #menu>

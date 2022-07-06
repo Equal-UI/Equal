@@ -2,7 +2,7 @@
   <div>
     <h1>Button</h1>
 
-    <Demobox>
+    <Demobox name="it-button">
       <it-button
         :variant="buttonType"
         :outlined="buttonOutlined"

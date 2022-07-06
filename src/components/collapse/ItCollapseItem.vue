@@ -15,7 +15,10 @@
 </template>
 
 <script lang="ts">
-import { VariantJSWithClassesListProps } from '@/helpers/getVariantProps'
+import {
+  getVariantPropsWithClassesList,
+  VariantJSWithClassesListProps,
+} from '@/helpers/getVariantProps'
 import { useVariants } from '@/hooks/useVariants'
 import { Components } from '@/models/enums'
 import { ITCollapseItemOptions } from '@/types/components/components'
@@ -24,6 +27,7 @@ import { computed, defineComponent, ref } from 'vue'
 export default defineComponent({
   name: Components.ITCollapseItem,
   props: {
+    ...getVariantPropsWithClassesList<ITCollapseItemOptions>(),
     title: { type: String },
     opened: { type: Boolean },
   },

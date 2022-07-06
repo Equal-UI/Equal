@@ -1,6 +1,6 @@
 <template>
   <Demobox>
-    <div>
+    <div class="w-3/4">
       <it-select
         v-model="selectValue"
         :placeholder="selectPlaceholder"
@@ -9,6 +9,7 @@
         :label-top="selectLabel"
         :divided="selectDivided"
         :options="firstSelectOptions"
+        :multiselect="multiselect"
       />
     </div>
     <template #props>
@@ -20,6 +21,7 @@
         label-top="Placement"
         :options="placementOptions"
       />
+      <it-checkbox v-model="multiselect" label="Multiselect" />
       <it-checkbox v-model="selectDivided" label="Divided" />
       <it-checkbox v-model="selectDisabled" label="Disabled" />
     </template>
@@ -34,6 +36,7 @@ export default defineComponent({
   name: 'SectionDemo',
   data: () => ({
     selectValue: '',
+    multiselect: false,
     selectLabel: 'Select me',
     selectPlaceholder: 'Select me',
     selectDisabled: false,
@@ -44,8 +47,13 @@ export default defineComponent({
       'Lorem ipsum dolor sit amet consectetur',
       'Dolor',
       'Lorem ipsum',
-      'Lorem ipsum dolor',
-      'Lorem ipsum dolor iste nam quidem',
+      'Lorem ipsum 1',
+      'Lorem ipsum 2',
+      'Lorem ipsum 3',
+      'Lorem ipsum 4',
+      'Lorem ipsum 5',
+      'Lorem ipsum 1223',
+      'Lorem ipsum wef3',
     ],
   }),
 })

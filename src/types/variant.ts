@@ -21,6 +21,10 @@ import {
   ITSwitchVariants,
   ITToggleVariants,
   ITTabsVariants,
+  ITLoadingbarVariants,
+  ITColorpickerVariants,
+  ITTooltipVariants,
+  ITProgressBarVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -51,7 +55,7 @@ export interface Variants<P> {
   [key: string]: CSSRawClassesList<P> | undefined
 }
 
-export type EqualUIConfiguration = {
+export interface EqualUIConfiguration {
   transitions: Record<string, Record<string, string>>
   [Components.ITAlert]?: ITAlertVariants
   [Components.ITAvatar]?: ITAvatarVariants
@@ -61,6 +65,10 @@ export type EqualUIConfiguration = {
   [Components.ITTag]?: ITTagVariants
   [Components.ITCollapse]?: ITCollapseVariants
   [Components.ITCollapseItem]?: ITCollapseItemVariants
+  [Components.ITColorpicker]?: ITColorpickerVariants
+  [Components.ITLoadingbar]?: ITLoadingbarVariants
+  [Components.ITProgressbar]?: ITProgressBarVariants
+  [Components.ITTooltip]?: ITTooltipVariants
   [Components.ITCheckbox]?: ITTagVariants
   [Components.ITCheckbox]?: ITTagVariants
   [Components.ITDivider]?: ITDividerVariants

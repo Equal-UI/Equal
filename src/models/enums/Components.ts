@@ -11,6 +11,7 @@ export enum Components {
   ITBadge = 'it-badge',
   ITButton = 'it-button',
   ITButtonGroup = 'it-button-group',
+  ITLoadingbar = 'it-loading-bar',
   ITSpinner = 'it-spinner',
   ITSlider = 'it-slider',
   ITSwitch = 'it-switch',

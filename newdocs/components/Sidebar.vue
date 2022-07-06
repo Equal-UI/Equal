@@ -57,7 +57,28 @@
         </a>
       </div>
       <div class="mt-4">
-      <it-input v-model="search" labelTop="Search" autocomplete="new-password" placeholder="Tooltip..." />
+        <it-input
+          v-model="search"
+          labelTop="Search"
+          autocomplete="new-password"
+          placeholder="Tooltip..."
+        >
+          <template #prefixIcon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 text-slate-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              /></svg
+          ></template>
+        </it-input>
       </div>
     </div>
     <ul
@@ -66,40 +87,11 @@
         w-full
         overflow-y-auto
         px-6
-        py-10
+        pt-4
+        pb-10
         dark:bg-neutral-800 dark:text-slate-400
       "
     >
-      <li class="group-title-high">GENERAL</li>
-      <li
-        class="ml-2"
-        :class="{
-          'active-menu-item': $route.path === '/introduction',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/introduction">
-          <span class="flex p-2">
-            <it-icon outlined name="emoji_people" class="mr-2"></it-icon>
-            Introduction
-          </span></router-link
-        >
-      </li>
-      <li
-        class="ml-2"
-        :class="{
-          'active-menu-item': $route.path === '/start',
-        }"
-        @click="hideSidebar"
-      >
-        <router-link to="/start"
-          ><span class="flex p-2">
-            <it-icon outlined name="whatshot" class="mr-2"></it-icon>
-            Getting started
-          </span></router-link
-        >
-      </li>
-      <li class="group-title-high">COMPONENTS</li>
       <template v-for="(item, key) in componentGroups" :key="key">
         <li class="group-title">{{ key }}</li>
         <template v-for="(component, i) in item" :key="i">
@@ -121,6 +113,9 @@
             </NuxtLink>
           </li>
         </template>
+      </template>
+      <template v-if="Object.keys(componentGroups).length <= 0">
+        <p>NOT FOUND</p>
       </template>
     </ul>
   </div>
@@ -145,22 +140,28 @@ const search = ref('')
 
 const componentGroups = computed(() => {
   return Object.values(componentGroup).reduce((el, next) => {
-    return {
+    const toReturn = {
       ...el,
-      [next]: components.value
-        .map((el) => {
-          if (el.name === 'Switch') {
-            el.icon =
-              route.path === '/components/switch' ? 'toggle_on' : 'toggle_off'
-          }
-          return el
-        })
-        .filter(
-          (comp) =>
-            comp.group === next &&
-            comp.name.toLowerCase().includes(search.value.toLowerCase()),
-        ),
     }
+
+    const toNext = components.value
+      .filter(
+        (comp) =>
+          comp.group === next &&
+          comp.name.toLowerCase().includes(search.value.toLowerCase()),
+      )
+      .map((ele) => {
+        if (ele.name === 'Switch') {
+          ele.icon =
+            route.path === '/components/switch' ? 'toggle_on' : 'toggle_off'
+        }
+        return ele
+      })
+
+    if (toNext.length > 0) {
+      toReturn[next] = toNext
+    }
+    return toReturn
   }, {})
 })
 

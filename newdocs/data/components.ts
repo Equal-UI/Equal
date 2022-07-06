@@ -2,6 +2,22 @@ import { componentGroup } from '../types'
 
 export const componentsList = [
   {
+    name: 'Introduction',
+    icon: 'emoji_people',
+    route: '/introduction',
+    examples: 0,
+    group: componentGroup.General,
+  },
+  {
+    name: 'Getting started',
+    icon: 'whatshot',
+    icon_outlined: true,
+
+    route: '/start',
+    examples: 0,
+    group: componentGroup.General,
+  },
+  {
     name: 'Button',
     icon: 'smart_button',
     route: '/components/button',

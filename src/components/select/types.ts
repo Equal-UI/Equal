@@ -10,6 +10,7 @@ export type TOption =
     }
 
 export type TSelectProps = {
+  multiselect: boolean
   modelValue: TOption | null
   disabled: boolean
   options: TOption[]
@@ -17,7 +18,7 @@ export type TSelectProps = {
 }
 
 export type TSelect = {
-  wrappedValue: ComputedRef<TOption>
+  wrappedValue: ComputedRef<TOption | TOption[]>
   getOptionName: (option: TOption) => string | number
   getOptionValue: (option: TOption) => string | number
   setOptionRef: (el: HTMLElement, i: number) => void

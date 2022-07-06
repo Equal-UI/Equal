@@ -2,7 +2,7 @@
   <div>
     <h1>Tag</h1>
 
-    <Demobox>
+    <Demobox name="it-tag">
       <it-tag
         v-show="show"
         :filled="tagFilled"

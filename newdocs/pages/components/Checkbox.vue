@@ -2,7 +2,7 @@
   <div>
     <h1>Checkbox</h1>
 
-    <Demobox>
+    <Demobox name="it-checkbox">
       <it-checkbox
         v-model="checkboxValue"
         :line-through="lineCheck"
@@ -39,6 +39,7 @@
         <it-checkbox v-model="checkboxPulse" label="Pulse" />
         <it-checkbox v-model="checkboxDisabled" label="Disabled" />
       </template>
+      <template #variants> </template>
     </Demobox>
 
     <Box :code="codeType" title="Type">
@@ -50,35 +51,31 @@
     </Box>
 
     <Box :code="codeLine" title="LineThrough">
-      <div class="flex flex-col">
+      <div class="flex flex-col gap-3">
         <it-checkbox
           v-model="lineCheck0"
           variant="primary"
           label="It's time"
           line-through
         />
-        <br />
         <it-checkbox
           v-model="lineCheck1"
           variant="primary"
           label="For"
           line-through
         />
-        <br />
         <it-checkbox
           v-model="lineCheck2"
           variant="primary"
           label="One more"
           line-through
         />
-        <br />
         <it-checkbox
           v-model="lineCheck3"
           variant="primary"
           label="To Do"
           line-through
         />
-        <br />
         <it-checkbox
           v-model="lineCheck4"
           variant="primary"
@@ -156,6 +153,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
 
 export default defineComponent({
   data: () => ({
@@ -166,13 +165,7 @@ export default defineComponent({
     checkboxSubLabel: '',
     checkboxIcon: 'check',
     checkboxType: 'primary',
-    checkboxTypes: [
-      'primary',
-      'success',
-      'danger',
-      'warning',
-      'neutral',
-    ],
+    checkboxTypes: ['primary', 'success', 'danger', 'warning', 'neutral'],
 
     typesCheck: true,
     iconsCheck: true,

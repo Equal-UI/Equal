@@ -46,8 +46,8 @@
     "test": "vitest run",
     "test:dev": "vitest",
     "tetet": "vitest -u",
-    "lint:eslint": "eslint src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
-    "lint:prettier": "prettier -w -u src/**/*.{ts,vue} docs/src/**/*.{ts,vue}",
+    "lint:eslint": "eslint src/**/*.{ts,vue} newdocs/**/*.{ts,vue}",
+    "lint:prettier": "prettier -w -u src/**/*.{ts,vue} newdocs/**/*.{ts,vue}",
     "lint:stylelint": "stylelint **/*.{less,vue} --syntax less"
   },
   "devDependencies": {

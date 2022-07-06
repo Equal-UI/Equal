@@ -1,55 +1,43 @@
 <template>
   <Box :code="codeSectionExamples" :overflow-hidden="false" title="Examples">
-    <Row align="center" justify="center" class="flex">
-      <Col class="my-4 flex flex-col px-4" lg="3" sm="12">
-        <it-select
-          label-top="List of string"
-          v-model="exampleStringValue"
-          :options="exampleStringOptions"
-        />
-        <ItCode class="mt-2">{{ exampleStringValue }}</ItCode>
-      </Col>
+    <it-select
+      label-top="List of string"
+      v-model="exampleStringValue"
+      :options="exampleStringOptions"
+    />
+    <pre class="mt-2">{{ exampleStringValue }}</pre>
 
-      <Col class="my-4 flex flex-col px-4" lg="3" sm="12">
-        <it-select
-          label-top="List of number"
-          v-model="exampleNumberValue"
-          :options="exampleNumberOptions"
-        />
-        <ItCode class="mt-2">{{ exampleNumberValue }}</ItCode>
-      </Col>
+    <it-select
+      label-top="List of number"
+      v-model="exampleNumberValue"
+      :options="exampleNumberOptions"
+    />
+    <pre class="mt-2">{{ exampleNumberValue }}</pre>
 
-      <div :style="{ width: '100%' }" />
+    <div :style="{ width: '100%' }" />
 
-      <Col class="my-4 flex flex-col px-4" lg="3" sm="12">
-        <it-select
-          label-top="Track by 'value'(default)"
-          v-model="exampleTrackByValue1"
-          :options="exampleTrackByOptions1"
-        />
-        <ItCode class="mt-2">{{ exampleTrackByValue1 }}</ItCode>
-      </Col>
+    <it-select
+      label-top="Track by 'value'(default)"
+      v-model="exampleTrackByValue1"
+      :options="exampleTrackByOptions1"
+    />
+    <pre class="mt-2">{{ exampleTrackByValue1 }}</pre>
 
-      <Col class="my-4 flex flex-col px-4" lg="3" sm="12">
-        <it-select
-          label-top="Track by 'some'"
-          v-model="exampleTrackByValue2"
-          track-by="some"
-          :options="exampleTrackByOptions2"
-        />
-        <ItCode class="mt-2">{{ exampleTrackByValue2 }}</ItCode>
-      </Col>
+    <it-select
+      label-top="Track by 'some'"
+      v-model="exampleTrackByValue2"
+      track-by="some"
+      :options="exampleTrackByOptions2"
+    />
+    <pre class="mt-2">{{ exampleTrackByValue2 }}</pre>
 
-      <Col class="my-4 flex flex-col px-4" lg="3" sm="12">
-        <it-select
-          label-top="Track by 'key'"
-          v-model="exampleTrackByValue3"
-          track-by="key"
-          :options="exampleTrackByOptions3"
-        />
-        <ItCode class="mt-2">{{ exampleTrackByValue3 }}</ItCode>
-      </Col>
-    </Row>
+    <it-select
+      label-top="Track by 'key'"
+      v-model="exampleTrackByValue3"
+      track-by="key"
+      :options="exampleTrackByOptions3"
+    />
+    <pre class="mt-2">{{ exampleTrackByValue3 }}</pre>
   </Box>
 </template>
 

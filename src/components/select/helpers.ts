@@ -1,13 +1,13 @@
 import { EDirections } from '@/models/enums'
 
 type Props = {
-  duration: EDirections
+  direction: EDirections
   array: []
   curIndex: number
 }
 
-export const getArrayIndexByDuration = ({
-  duration,
+export const getArrayIndexByDirection = ({
+  direction,
   array,
   curIndex,
 }: Props): number => {
@@ -15,5 +15,5 @@ export const getArrayIndexByDuration = ({
     [EDirections.UP]: curIndex <= 0 ? array.length - 1 : curIndex - 1,
     [EDirections.DOWN]: curIndex === array.length - 1 ? 0 : curIndex + 1,
   }
-  return resultMap[duration]
+  return resultMap[direction]
 }

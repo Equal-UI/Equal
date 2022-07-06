@@ -9,7 +9,7 @@
     <div class="it-select-inner">
       <div
         ref="trigger"
-        v-clickoutside="() => setOpen(false)"
+        v-clickoutside="outsideHandler"
         :tabindex="disabled ? -1 : 0"
         class="it-select-selection"
         :class="selectionClasses"
@@ -20,9 +20,23 @@
         @keydown.esc.stop.prevent="() => setOpen(false)"
         @keydown.enter.stop.prevent="handleEnterKey"
       >
-        <span v-if="wrappedValue[trackBy]" class="it-select-selected">
+        <span
+          v-if="!multiselect && wrappedValue[trackBy]"
+          class="it-select-selected"
+        >
           <slot name="selected-option" :props="props">
             {{ wrappedValue.name }}
+          </slot>
+        </span>
+        <span
+          v-else-if="multiselect && wrappedValue.length > 0"
+          class="it-select-selected"
+        >
+          <slot name="selected-option" :props="props">
+            <!-- {{ wrappedValue.map((el) => el.name).join(', ') }} -->
+            <it-tag v-for="val in wrappedValue" :key="val[trackBy]">{{
+              val.name
+            }}</it-tag>
           </slot>
         </span>
 
@@ -43,7 +57,12 @@
       </div>
 
       <transition name="drop-bottom">
-        <div v-if="show" class="it-select-dropdown" :class="dropdownClasses">
+        <div
+          v-if="show"
+          ref="dropdown"
+          class="it-select-dropdown"
+          :class="dropdownClasses"
+        >
           <ul
             class="it-select-list"
             :ref="(dropdown) => setSelectListRef(dropdown)"
@@ -76,7 +95,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref, watch } from 'vue'
 import { Positions } from '@/models/enums'
 import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
@@ -107,6 +126,7 @@ export default defineComponent({
     labelTop: { type: String, default: null },
     placeholder: { type: String, default: 'Select option' },
     options: { type: Array, default: () => [] },
+    multiselect: Boolean,
     modelValue: { type: [String, Number, Object], default: null },
   },
   emits: ['update:modelValue'],
@@ -129,6 +149,8 @@ export default defineComponent({
       handleKey,
     } = useSelect(props as TSelectProps, emit as TEmit)
 
+    const dropdown = ref<HTMLElement>()
+
     const selectionClasses = computed(() => ({
       'it-select-selection--disabled': props.disabled,
       'it-select-selection--active': show.value,
@@ -140,6 +162,16 @@ export default defineComponent({
         : `it-select-dropdown--${Positions.B}`]: true,
       'it-select-dropdown--divided': props.divided,
     }))
+
+    function outsideHandler(e: Event) {
+      if (!show.value) {
+        return
+      }
+      if (dropdown.value?.contains(e.target as Node) && props.multiselect) {
+        return
+      }
+      setOpen(false)
+    }
 
     return {
       labelTopSlotExist,
@@ -161,6 +193,8 @@ export default defineComponent({
       dropdownClasses,
       props,
       EDirections,
+      outsideHandler,
+      dropdown,
     }
   },
 })

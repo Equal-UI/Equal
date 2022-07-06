@@ -2,7 +2,7 @@
   <div>
     <h1>Badge</h1>
 
-    <Demobox>
+    <Demobox name="it-badge">
       <it-badge
         :value="badgeValue"
         :show="badgeShow"

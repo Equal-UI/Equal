@@ -172,7 +172,7 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-divider': {
     fixedClasses: {
-      root: ['bg-gray-200 w-full h-px', 'dark:bg-neutral-700'],
+      root: 'bg-gray-200 w-full h-px',
       vertical: 'relative !w-px !h-4 !inline-block align-middle -top-0.5',
     },
     classes: {},
@@ -214,7 +214,7 @@ export default <EqualUIConfiguration>(<unknown>{
         'py-2 px-5 text-slate-900 shadow-sm shadow-slate-600/10 border border-slate-300 bg-white max-w-full relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans',
         'focus-visible:border-slate-400 focus-visible:outline-none focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60 active:bg-gray-100',
       ],
-      outlined: 'bg-transparent hover:bg-transparent active:bg-transparent',
+      outlined: '!bg-transparent hover:bg-transparent active:bg-transparent',
       text: 'empty:!hidden flex flex-row space-x-2',
       round: 'rounded-3xl',
       small: '!px-3.5 !py-1',
@@ -475,6 +475,11 @@ export default <EqualUIConfiguration>(<unknown>{
       left: 'left-[20px]',
     },
   },
+  'it-loading-bar': {
+    fixedClasses: {
+      root: 'top-0 left-0 z-50 bg-blue-600 shadow-sm shadow-blue-600/50 transition-all',
+    },
+  },
   'it-input': {
     fixedClasses: {
       root: '',
@@ -487,9 +492,9 @@ export default <EqualUIConfiguration>(<unknown>{
       inputWrapper: 'flex flex-1',
       affix: 'flex text-sm items-center justify-center first:pl-2 last:pr-2',
       input:
-        'flex-1 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
-      icon: 'text-slate-300 !text-lg px-2',
-      iconWrapper: 'flex items-center justify-center',
+        'flex-1 min-w-[170px] w-0 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
+      icon: 'text-slate-300 !text-lg',
+      iconWrapper: 'flex px-2 items-center justify-center',
       message: 'text-xs',
     },
     classes: {},

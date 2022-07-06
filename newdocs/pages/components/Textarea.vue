@@ -2,7 +2,7 @@
   <div>
     <h1>Textarea</h1>
 
-    <Demobox>
+    <Demobox name="it-textarea">
       <it-textarea
         v-model="textareaValue"
         :resizable="textareaResizable"

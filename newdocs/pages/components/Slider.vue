@@ -2,7 +2,7 @@
   <div>
     <h1>Slider</h1>
 
-    <Demobox>
+    <Demobox name="it-slider">
       <div class="w-full px-10">
         <it-slider
           v-model="sliderValue"

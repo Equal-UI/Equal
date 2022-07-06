@@ -2,7 +2,7 @@
   <div>
     <h1>Number Input</h1>
 
-    <Demobox>
+    <Demobox name="it-number-input">
       <it-number-input
         v-model="inputValue"
         :label-top="inputTopLabel"

@@ -2,7 +2,7 @@
   <div>
     <h1>Tabs</h1>
 
-    <Demobox>
+    <Demobox name="it-tabs">
       <it-tabs :vertical="verticalTab" :box="boxTab">
         <it-tab title="Tab 1" class="p-4">First tab</it-tab>
         <it-tab title="Tab 2" class="p-4">Second tab</it-tab>

@@ -2,7 +2,7 @@
   <div>
     <h1>Toggle</h1>
 
-    <Demobox>
+    <Demobox name="it-toggle">
       <it-toggle
         v-model="toggleValue"
         class="mx-4 w-full"

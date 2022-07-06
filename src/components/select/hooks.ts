@@ -1,26 +1,35 @@
-import { ref, onBeforeUpdate, nextTick, computed } from 'vue'
+import { ref, onBeforeUpdate, nextTick, computed, watch } from 'vue'
 import { EDirections } from '@/models/enums'
 import { TEmit } from '@/types'
 import { TOption, TSelect, TSelectProps } from '@/components/select/types'
-import { getArrayIndexByDuration } from './helpers'
+import { getArrayIndexByDirection } from './helpers'
 import { CLASS_SELECTED_OPTION } from './constants'
 
 export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   const indexFocusedOption = ref(-1)
   const optionsRefs = ref<HTMLElement[]>([])
   const selectListRef = ref<HTMLElement | undefined>(undefined)
-  let selectedOptionIndex: number = -1
+  const selectedOptionIndex = ref<number | number[]>(
+    props.multiselect ? [] : -1,
+  )
   const show = ref(false)
 
-  onBeforeUpdate(() => (optionsRefs.value = []))
+  watch(
+    () => props.multiselect,
+    (newVal) => {
+      selectedOptionIndex.value = newVal ? [] : -1
+    },
+  )
 
-  const scrollToSelectedOption = () => {
-    const selectedOption: HTMLElement | null =
-      optionsRefs.value[selectedOptionIndex]
+  // onBeforeUpdate(() => (optionsRefs.value = []))
 
-    if (selectListRef.value !== undefined)
-      selectListRef.value.scrollTop = selectedOption?.offsetTop
-  }
+  // const scrollToSelectedOption = () => {
+  //   const selectedOption: HTMLElement | null =
+  //     optionsRefs.value[selectedOptionIndex.value]
+
+  //   if (selectListRef.value !== undefined)
+  //     selectListRef.value.scrollTop = selectedOption?.offsetTop
+  // }
 
   const getOptionName = (option: TOption) =>
     typeof option === 'object' ? option.name : option
@@ -42,7 +51,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
 
   const setOpen = (state = false) => (show.value = state)
 
-  const toggleDropdown = async () => {
+  const toggleDropdown = () => {
     if (props.disabled) {
       setOpen(false)
       return
@@ -51,15 +60,32 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     } else {
       unfocusOption()
       setOpen(true)
-      await nextTick()
-      if (props.modelValue) scrollToSelectedOption()
+      // await nextTick()
+      // if (props.modelValue) scrollToSelectedOption()
     }
   }
 
   const selectOption = (optionIndex: number) => {
     const option = props.options[optionIndex]
-    selectedOptionIndex = optionIndex
-    emit('update:modelValue', option)
+    if (!option) {
+      return
+    }
+    if (props.multiselect && Array.isArray(selectedOptionIndex.value)) {
+      if (selectedOptionIndex.value.includes(optionIndex)) {
+        selectedOptionIndex.value = selectedOptionIndex.value.filter(
+          (el) => el !== optionIndex,
+        )
+      } else {
+        selectedOptionIndex.value = [...selectedOptionIndex.value, optionIndex]
+      }
+      emit(
+        'update:modelValue',
+        selectedOptionIndex.value.map((el) => props.options[el]),
+      )
+      return
+    }
+    selectedOptionIndex.value = optionIndex
+    emit('update:modelValue', props.options[selectedOptionIndex.value])
   }
 
   const unfocusOption = () => {
@@ -67,10 +93,10 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     indexFocusedOption.value = -1
   }
 
-  const handleKey = async (duration: EDirections) => {
+  const handleKey = async (direction: EDirections) => {
     if (!show.value || !props.options.length) return
-    indexFocusedOption.value = getArrayIndexByDuration({
-      duration,
+    indexFocusedOption.value = getArrayIndexByDirection({
+      direction,
       array: props.options as [],
       curIndex: indexFocusedOption.value,
     })
@@ -91,18 +117,36 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   }
 
   const wrappedValue = computed(() => {
-    const result: TOption = { name: '', [props.trackBy]: '' }
+    let result: TOption | TOption[] = props.multiselect
+      ? [{ name: '', [props.trackBy]: '' }]
+      : { name: '', [props.trackBy]: '' }
 
-    if (props.modelValue === null) {
+    if (!props.modelValue) {
       return result
     }
+    if (
+      Array.isArray(props.modelValue) &&
+      typeof props.modelValue[0] === 'object'
+    ) {
+      return props.modelValue as TOption[]
+    }
 
-    if (typeof props.modelValue === 'object') {
+    if (
+      !Array.isArray(props.modelValue) &&
+      typeof props.modelValue === 'object'
+    ) {
       return props.modelValue as TOption
     }
 
-    result.name = props.modelValue
-    result[props.trackBy] = props.modelValue
+    if (!props.multiselect) {
+      result.name = props.modelValue
+      result[props.trackBy] = props.modelValue
+    }
+    if (props.multiselect) {
+      result = (
+        Array.isArray(props.modelValue) ? props.modelValue : [props.modelValue]
+      ).map((el) => ({ name: el, [props.trackBy]: el }))
+    }
 
     return result
   })

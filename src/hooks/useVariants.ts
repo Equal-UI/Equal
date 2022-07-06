@@ -43,7 +43,10 @@ export var useVariants = <T>(
 ): {
   transitions?: Record<string, Record<string, string>>
 } & CSSRawClassesList<T> => {
-  const config = inject<EqualUIConfiguration>('config', {})
+  const config = inject<EqualUIConfiguration>(
+    'config',
+    {} as EqualUIConfiguration,
+  )
   const globalVariant = config[name]
 
   let finalResult: {

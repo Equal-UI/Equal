@@ -2,7 +2,7 @@
   <div>
     <h1>Input</h1>
 
-    <Demobox>
+    <Demobox name="it-input">
       <it-input
         v-model="inputValue"
         :placeholder="inputPlaceholder"

@@ -2,7 +2,7 @@
   <div>
     <h1>Colorpicker</h1>
 
-    <Demobox>
+    <Demobox name="it-colorpicker">
       <div class="py-12">
         <it-colorpicker
           :show-tooltip="colorTooltip"
@@ -57,7 +57,9 @@
     <Box :code="usageCode" title="Use example">
       <div class="flex flex-col items-center space-y-8">
         <it-colorpicker :value="exampleColor" @change="updateExampleColor" />
-        <it-spinner :style="{'border-right-color': exampleColor}"></it-spinner>
+        <it-spinner
+          :style="{ 'border-right-color': exampleColor }"
+        ></it-spinner>
       </div>
     </Box>
 
