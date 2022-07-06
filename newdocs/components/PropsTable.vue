@@ -3,12 +3,12 @@
     class="
       my-10
       flex flex-col
+      overflow-x-scroll
       rounded
       border
       bg-white
       last:mb-0
       dark:border-gray-600 dark:bg-neutral-800
-      overflow-x-scroll
     "
   >
     <h2
@@ -113,7 +113,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in eventSheet" :key="item.property" class="dark:border-t-gray-600 dark:border-b-gray-600">
+        <tr
+          v-for="item in eventSheet"
+          :key="item.property"
+          class="dark:border-t-gray-600 dark:border-b-gray-600"
+        >
           <td v-for="(col, name) in item">
             <span>{{ col }}</span>
           </td>

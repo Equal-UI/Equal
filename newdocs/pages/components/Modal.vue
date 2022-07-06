@@ -30,7 +30,9 @@
       </it-modal>
     </Box>
     <Box :code="signinCode" title="Sign Up modal">
-      <it-button variant="primary" @click="signinModal = true">Sign up</it-button>
+      <it-button variant="primary" @click="signinModal = true"
+        >Sign up</it-button
+      >
       <it-modal v-model="signinModal">
         <template #body>
           <div class="signupmodal p-3">
@@ -163,7 +165,10 @@
               autocomplete="off"
             />
             <div class="signupmodal-wrap-checkbox">
-              <it-button class="w-full" variant="primary-text" @click="nestedModal = true"
+              <it-button
+                class="w-full"
+                variant="primary-text"
+                @click="nestedModal = true"
                 >Read Terms of Service</it-button
               >
             </div>

@@ -5,16 +5,16 @@
       class="
         flex
         h-full
+        min-h-screen
         flex-1 flex-col
+        bg-white
         pl-0
         dark:bg-neutral-900 dark:text-white
-        bg-white
         lg:pl-60
-        min-h-screen
       "
     >
       <ItHeader />
-      <div class="px-4 md:px-14 py-10">
+      <div class="px-4 py-10 md:px-14">
         <NuxtPage />
       </div>
     </div>

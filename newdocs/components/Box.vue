@@ -13,7 +13,7 @@
     "
     :class="{ 'overflow-hidden': overflowHidden }"
   >
-    <h2 class="text-xl font-semibold py-4 px-6 leading-none">{{ title }}</h2>
+    <h2 class="py-4 px-6 text-xl font-semibold leading-none">{{ title }}</h2>
     <slot name="description"></slot>
     <div
       class="
