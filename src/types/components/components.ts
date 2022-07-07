@@ -34,6 +34,12 @@ export interface ITIconOptions extends IComponentWithRoot {
 
 export type ITIconVariants = WithVariantProps<ITIconOptions>
 
+export interface ITSelectOptions extends IComponentWithRoot {
+  label?: string
+}
+
+export type ITSelectVariants = WithVariantProps<ITSelectOptions>
+
 export interface ITTagOptions extends IComponentWithRoot {
   box?: string
 }

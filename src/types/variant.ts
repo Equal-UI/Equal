@@ -25,6 +25,7 @@ import {
   ITColorpickerVariants,
   ITTooltipVariants,
   ITProgressBarVariants,
+  ITSelectVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -82,6 +83,7 @@ export interface EqualUIConfiguration {
   [Components.ITTextarea]?: ITTextareaVariants
   [Components.ITToggle]?: ITToggleVariants
   [Components.ITRadio]?: ITRadioVariants
+  [Components.ITSelect]?: ITSelectVariants
   [Components.ITInput]?: ITInputVariants
   [Components.ITNumberInput]?: ITNumberInputVariants
 }

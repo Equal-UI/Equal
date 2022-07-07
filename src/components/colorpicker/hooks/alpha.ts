@@ -30,9 +30,9 @@ export const alpha = (
 
     if (colors.value.a !== a) {
       emit('change', {
-        h: colors.value.toHsl().h,
-        s: colors.value.toHsl().s,
-        l: colors.value.toHsl().l,
+        h: colors.value.toHsv().h,
+        s: colors.value.toHsv().s,
+        v: colors.value.toHsv().v,
         a,
       })
     }

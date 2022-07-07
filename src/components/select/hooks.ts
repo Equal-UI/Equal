@@ -65,6 +65,16 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     }
   }
 
+  const remove = (index: number) => {
+    selectedOptionIndex.value = selectedOptionIndex.value.filter(
+      (el, i) => i !== index,
+    )
+    emit(
+      'update:modelValue',
+      selectedOptionIndex.value.map((el) => props.options[el]),
+    )
+  }
+
   const selectOption = (optionIndex: number) => {
     const option = props.options[optionIndex]
     if (!option) {
@@ -118,7 +128,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
 
   const wrappedValue = computed(() => {
     let result: TOption | TOption[] = props.multiselect
-      ? [{ name: '', [props.trackBy]: '' }]
+      ? []
       : { name: '', [props.trackBy]: '' }
 
     if (!props.modelValue) {
@@ -160,6 +170,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     optionsRefs,
     show,
     handleEnterKey,
+    remove,
     setOpen,
     toggleDropdown,
     selectOption,

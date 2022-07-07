@@ -13,6 +13,7 @@ export enum Components {
   ITButtonGroup = 'it-button-group',
   ITLoadingbar = 'it-loading-bar',
   ITSpinner = 'it-spinner',
+  ITSelect = 'it-select',
   ITSlider = 'it-slider',
   ITSwitch = 'it-switch',
   ITCollapse = 'it-collapse',

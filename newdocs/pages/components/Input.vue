@@ -3,15 +3,17 @@
     <h1>Input</h1>
 
     <Demobox name="it-input">
-      <it-input
-        v-model="inputValue"
-        :placeholder="inputPlaceholder"
-        :label-top="inputTopLabel"
-        :disabled="inputDisabled"
-        :message="inputMessageText"
-        :variant="inputStatus"
-        :mask="inputMask"
-      />
+      <div class="w-2/4">
+        <it-input
+          v-model="inputValue"
+          :placeholder="inputPlaceholder"
+          :label-top="inputTopLabel"
+          :disabled="inputDisabled"
+          :message="inputMessageText"
+          :variant="inputStatus"
+          :mask="inputMask"
+        />
+      </div>
 
       <template #props>
         <it-input v-model="inputPlaceholder" label-top="Input placeholder" />

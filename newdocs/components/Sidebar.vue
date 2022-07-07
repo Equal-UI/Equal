@@ -4,6 +4,7 @@
     class="
       fixed
       -left-60
+      mt-14
       flex
       h-full
       w-60
@@ -12,23 +13,16 @@
       bg-white
       transition-all
       duration-100
-      dark:border-gray-600
+      dark:border-zinc-800
       lg:left-0
+      xl:left-96
     "
     :class="{
       '!left-0 z-[100]': open,
     }"
   >
-    <div
-      class="
-        border-b
-        bg-white
-        py-3
-        px-5
-        dark:border-gray-600 dark:bg-neutral-900
-      "
-    >
-      <div class="mt-4 flex flex-col">
+    <div class="bg-white py-3 px-5 dark:border-zinc-800 dark:bg-zinc-900">
+      <!-- <div class="mt-4 flex flex-col">
         <a
           target="_blank"
           class="flex"
@@ -55,8 +49,8 @@
             Twitter
           </it-button>
         </a>
-      </div>
-      <div class="mt-4">
+      </div> -->
+      <div>
         <it-input
           v-model="search"
           labelTop="Search"
@@ -78,6 +72,24 @@
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               /></svg
           ></template>
+          <template v-if="search.length > 0" #suffixIcon>
+            <it-button @click="search = ''" class="!px-1 !py-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3.5 w-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </it-button>
+          </template>
         </it-input>
       </div>
     </div>
@@ -87,13 +99,12 @@
         w-full
         overflow-y-auto
         px-6
-        pt-4
-        pb-10
-        dark:bg-neutral-800 dark:text-slate-400
+        pb-20
+        dark:bg-zinc-900 dark:text-slate-400
       "
     >
       <template v-for="(item, key) in componentGroups" :key="key">
-        <li class="group-title">{{ key }}</li>
+        <li class="mt-4">{{ key }}</li>
         <template v-for="(component, i) in item" :key="i">
           <li
             :class="{
@@ -102,11 +113,11 @@
             @click="hideSidebar"
           >
             <NuxtLink :to="component.route">
-              <span class="flex p-2 pl-8">
+              <span class="flex items-center p-2">
                 <it-icon
                   :outlined="component.icon_outlined"
                   :name="component.icon"
-                  class="mr-2"
+                  class="mr-2 items-center text-lg"
                 ></it-icon>
                 {{ component.name }}
               </span>

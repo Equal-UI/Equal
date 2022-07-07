@@ -8,13 +8,22 @@
     ]"
   >
     <slot></slot>
-    <it-icon
-      :variants="{ tagClose: { root: variant.closeIcon } }"
-      variant="tagClose"
-      v-if="closable"
-      name="clear"
-      @click="close"
-    />
+    <button variant="tagClose" v-if="closable" name="clear" @click.stop="close">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        :class="variant.closeBtn"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="3"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
   </span>
 </template>
 
@@ -26,7 +35,7 @@ import { useVariants } from '@/hooks/useVariants'
 import { ITTagOptions } from '@/types/components/components'
 
 export default defineComponent({
-  name: 'it-tag',
+  name: Components.ITTag,
   props: {
     ...getVariantPropsWithClassesList<ITTagOptions>(),
     closable: { type: Boolean },

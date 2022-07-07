@@ -7,6 +7,8 @@
     />
     <pre class="mt-2">{{ exampleStringValue }}</pre>
 
+    <it-divider />
+
     <it-select
       label-top="List of number"
       v-model="exampleNumberValue"
@@ -14,15 +16,14 @@
     />
     <pre class="mt-2">{{ exampleNumberValue }}</pre>
 
-    <div :style="{ width: '100%' }" />
-
+    <it-divider />
     <it-select
       label-top="Track by 'value'(default)"
       v-model="exampleTrackByValue1"
       :options="exampleTrackByOptions1"
     />
     <pre class="mt-2">{{ exampleTrackByValue1 }}</pre>
-
+    <it-divider />
     <it-select
       label-top="Track by 'some'"
       v-model="exampleTrackByValue2"
@@ -30,7 +31,7 @@
       :options="exampleTrackByOptions2"
     />
     <pre class="mt-2">{{ exampleTrackByValue2 }}</pre>
-
+    <it-divider />
     <it-select
       label-top="Track by 'key'"
       v-model="exampleTrackByValue3"

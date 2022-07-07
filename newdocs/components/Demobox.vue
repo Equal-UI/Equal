@@ -1,14 +1,5 @@
 <template>
-  <div
-    class="
-      flex flex-col
-      overflow-hidden
-      rounded
-      border
-      bg-white
-      dark:border-neutral-700
-    "
-  >
+  <div class="flex flex-col rounded border bg-white dark:border-zinc-800">
     <div class="flex flex-col sm:flex-row">
       <div
         class="
@@ -31,7 +22,7 @@
             items-center
             justify-center
             rounded-tl-sm rounded-bl-sm
-            dark:bg-neutral-800
+            dark:bg-zinc-800
           "
         >
           <div class="absolute top-5 right-5 hidden w-32 md:flex">
@@ -84,7 +75,7 @@
           bg-slate-50
           px-4
           py-5
-          dark:bg-neutral-900
+          dark:bg-zinc-900
           sm:flex-[2]
         "
       >
@@ -95,20 +86,57 @@
     <div v-if="props.name" class="flex-col border-t bg-slate-50">
       <it-collapse>
         <it-collapse-item
-          :fixedClasses="{ root: '!rounded-none border-none' }"
+          :fixedClasses="{
+            root: '!rounded-none border-none',
+            body: 'px-0 py-0',
+          }"
           title="Customization"
         >
-          <slot name="variants">
-            <div v-if="fields" class="space-y-3">
-              <it-input
-                v-for="(value, key) of fields.fixedClasses"
-                :key="key"
-                :label-top="key"
-                v-model="fields.fixedClasses[key]"
-              >
-              </it-input>
-            </div> </slot
-        ></it-collapse-item>
+          <it-tabs>
+            <it-tab title="fixedClasses" class="p-5">
+              <div v-if="fields" class="space-y-3">
+                <it-input
+                  v-for="(value, key) of fields.fixedClasses"
+                  :key="key"
+                  :label-top="key"
+                  v-model="fields.fixedClasses[key]"
+                >
+                </it-input>
+              </div>
+            </it-tab>
+            <it-tab title="Classes" class="p-5">
+              <div v-if="fields && fields.classes" class="space-y-3">
+                <it-input
+                  v-for="(value, key) of fields.classes"
+                  :key="key"
+                  :label-top="key"
+                  v-model="fields.classes[key]"
+                >
+                </it-input>
+              </div>
+              <div v-else><p>There are no built-in classes</p></div>
+            </it-tab>
+            <it-tab title="Variants" class="p-5">
+              <div v-if="fields && fields.variants" class="space-y-3">
+                <it-collapse>
+                  <it-collapse-item
+                    :variants="{ $: { body: 'bg-white space-y-3' } }"
+                    variant="$"
+                    v-for="(variantValue, variantKey) of fields.variants"
+                    :title="variantKey"
+                  >
+                    <it-input
+                      v-for="(value, key) of variantValue"
+                      :key="key"
+                      :label-top="key"
+                      v-model="fields.variants[variantKey][key]"
+                    /> </it-collapse-item
+                ></it-collapse>
+              </div>
+              <div v-else><p>There are no built-in variants</p></div>
+            </it-tab>
+          </it-tabs>
+        </it-collapse-item>
       </it-collapse>
       <!-- <h2 class="text-lg font-semibold">Customization</h2> -->
     </div>

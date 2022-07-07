@@ -48,9 +48,9 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-tag': {
     fixedClasses: {
-      root: 'text-xs border rounded px-2 py-1 text-gray-900 font-medium inline-flex items-center bg-white leading-none',
+      root: 'text-xs flex border rounded px-2 py-1 gap-2 text-gray-900 font-medium inline-flex items-center bg-white leading-none',
       filled: '',
-      closeIcon: 'cursor-pointer select-none text-sm ml-1 leading-3',
+      closeBtn: 'cursor-pointer h-3.5 w-3.5',
     },
     classes: {},
     variants: {
@@ -211,8 +211,8 @@ export default <EqualUIConfiguration>(<unknown>{
   'it-button': {
     fixedClasses: {
       root: [
-        'py-2 px-5 text-slate-900 shadow-sm shadow-slate-600/10 border border-slate-300 bg-white max-w-full relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans',
-        'focus-visible:border-slate-400 focus-visible:outline-none focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60 active:bg-gray-100',
+        'py-2 px-5 text-slate-900 shadow-sm shadow-slate-600/10 border border-slate-300 bg-white max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans',
+        'focus-visible:border-slate-400 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60 active:bg-gray-100',
       ],
       outlined: '!bg-transparent hover:bg-transparent active:bg-transparent',
       text: 'empty:!hidden flex flex-row space-x-2',
@@ -232,18 +232,18 @@ export default <EqualUIConfiguration>(<unknown>{
           'active:bg-blue-700 active:!border-blue-700 focus-visible:border-blue-600 hover:bg-blue-500 hover:!border-blue-500',
         ],
         outlined: '!text-blue-600 hover:bg-blue-400/10 active:bg-blue-400/20',
-        loading: '!border-r-white !border-blue-600',
+        loading: '!border-r-white',
       },
       'primary-text': {
         root: [
-          'bg-transparent shadow-none !shadow-blue-600/40 !text-blue-600 !border-none',
-          'active:bg-blue-400/20 focus-visible:border-none hover:bg-blue-400/10 hover:!border-none',
+          '!bg-transparent shadow-none !shadow-blue-600/40 !text-blue-600 !border-none',
+          'active:!bg-blue-400/20 focus-visible:border-none hover:!bg-blue-400/10 hover:!border-none',
         ],
       },
       text: {
         root: [
-          'bg-transparent shadow-none !border-none',
-          'active:bg-gray-400/20 focus-visible:border-none hover:bg-gray-400/10 hover:!border-none',
+          '!bg-transparent shadow-none !border-none',
+          'active:!bg-gray-400/20 focus-visible:border-none hover:!bg-gray-400/10 hover:!border-none',
         ],
       },
       success: {
@@ -253,12 +253,12 @@ export default <EqualUIConfiguration>(<unknown>{
         ],
         outlined:
           '!text-green-500 hover:bg-green-400/10 active:bg-green-400/20',
-        loading: '!border-r-white !border-green-500',
+        loading: '!border-r-white',
       },
       'success-text': {
         root: [
-          'bg-transparent shadow-none !shadow-green-500/40 !text-green-500 !border-none ',
-          'active:bg-green-400/20 focus-visible:border-none hover:bg-green-400/10 hover:!border-none',
+          '!bg-transparent shadow-none !shadow-green-500/40 !text-green-500 !border-none ',
+          'active:!bg-green-400/20 focus-visible:border-none hover:!bg-green-400/10 hover:!border-none',
         ],
       },
       warning: {
@@ -268,12 +268,12 @@ export default <EqualUIConfiguration>(<unknown>{
         ],
         outlined:
           '!text-yellow-500 hover:bg-yellow-400/10 active:bg-yellow-400/20',
-        loading: '!border-r-white !border-yellow-500',
+        loading: '!border-r-white',
       },
       'warning-text': {
         root: [
-          'bg-transparent shadow-none !shadow-yellow-500/40 !text-yellow-500 !border-none hover:!border-none',
-          'active:bg-yellow-400/20 focus-visible:border-none hover:bg-yellow-400/10',
+          '!bg-transparent shadow-none !shadow-yellow-500/40 !text-yellow-500 !border-none hover:!border-none',
+          'active:!bg-yellow-400/20 focus-visible:border-none hover:!bg-yellow-400/10',
         ],
       },
       danger: {
@@ -282,12 +282,12 @@ export default <EqualUIConfiguration>(<unknown>{
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 hover:bg-red-400 hover:!border-red-400',
         ],
         outlined: '!text-red-500 hover:bg-red-400/10 active:bg-red-400/20',
-        loading: '!border-r-white !border-red-500',
+        loading: '!border-r-white',
       },
       'danger-text': {
         root: [
-          'bg-transparent shadow-none !shadow-red-500/40 !text-red-500 !border-none',
-          'active:bg-red-400/20 hover:bg-red-400/10 hover:!border-none focus-visible:border-none',
+          '!bg-transparent shadow-none !shadow-red-500/40 !text-red-500 !border-none',
+          'active:!bg-red-400/20 hover:!bg-red-400/10 hover:!border-none focus-visible:border-none',
         ],
       },
       disabled: {
@@ -480,9 +480,26 @@ export default <EqualUIConfiguration>(<unknown>{
       root: 'top-0 left-0 z-50 bg-blue-600 shadow-sm shadow-blue-600/50 transition-all',
     },
   },
+  'it-select': {
+    fixedClasses: {
+      root: 'flex flex-col relative',
+      label: 'flex text-sm mb-1',
+      input: [
+        'flex gap-2 items-center outline-none bg-white py-1.5 px-2 text-sm relative rounded border shadow-sm border-slate-300 shadow-slate-600/10 duration-150 transition-all cursor-pointer place-content-between',
+        'hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 focus:shadow-[0_1px_1px_0,0_0_0_3px] focus:shadow-blue-600/30 [&:focus>.material-icons]:text-blue-600',
+      ],
+      dropdown: 'absolute z-50 min-w-[130px] w-full top-full mt-2',
+      placeholder: 'text-gray-400',
+      list: 'bg-white text-sm rounded border border-slate-300 shadow-sm shadow-slate-600/10 roundedselect-none overflow-y-auto max-h-[200px]',
+      selected: 'flex gap-1 flex-wrap',
+      inputDisabled:
+        '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed',
+      inputIcon: '!text-base select-none !leading-none',
+    },
+  },
   'it-input': {
     fixedClasses: {
-      root: '',
+      root: 'flex-1',
       mask: 'fixed inset-0 w-full h-full bg-gray-900/60 z-50',
       labelTop: 'flex text-sm mb-1',
       prefixWrapper: [
@@ -492,7 +509,7 @@ export default <EqualUIConfiguration>(<unknown>{
       inputWrapper: 'flex flex-1',
       affix: 'flex text-sm items-center justify-center first:pl-2 last:pr-2',
       input:
-        'flex-1 min-w-[170px] w-0 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
+        'flex-1 min-w-[10px] w-0 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
       icon: 'text-slate-300 !text-lg',
       iconWrapper: 'flex px-2 items-center justify-center',
       message: 'text-xs',
@@ -559,7 +576,7 @@ export default <EqualUIConfiguration>(<unknown>{
       disabled: {
         controller: '!cursor-not-allowed',
         sliderLine: 'bg-slate-200 cursor-not-allowed',
-        fillBar: 'bg-slate-400',
+        fillBar: '!bg-slate-400',
         stepPoint: '!bg-slate-200',
         stepPointActive: '!bg-slate-400',
       },

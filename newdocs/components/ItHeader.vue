@@ -1,23 +1,21 @@
 <template>
-  <header class="sticky top-0 z-50 h-16 w-full">
+  <header class="fixed top-0 z-50 h-14 w-full">
     <div
       class="
-        h-18
-        mx-4
-        mt-4
         flex
+        h-14
         place-content-between
         items-center
-        rounded-xl
-        p-4
+        border-b
+        bg-white/60
+        py-2
+        px-8
+        backdrop-blur-sm
         transition-all
         duration-200
-        md:mx-14
+        dark:border-zinc-800 dark:bg-zinc-800/80
+        xl:px-96
       "
-      :class="{
-        'bg-white/80 shadow-md backdrop-blur-sm dark:bg-neutral-700/80':
-          showBackground,
-      }"
     >
       <div class="flex flex-row">
         <it-button class="flex lg:hidden" icon="menu" @click="openSidebar" />
@@ -26,7 +24,7 @@
         </NuxtLink>
       </div>
 
-      <div class="">
+      <div class="w-24">
         <it-toggle
           v-model="toggleThemeValue"
           icons
@@ -99,9 +97,9 @@ watch(toggleThemeValue, (value) => {
   emitter?.emit('theme', value)
 })
 
-const updateScrollValue = () => {
-  scrollPosition.value = window.scrollY
-}
+// const updateScrollValue = () => {
+//   scrollPosition.value = window.scrollY
+// }
 
 const openSidebar = () => {
   emitter?.emit('sidebar', true)
@@ -111,15 +109,15 @@ emitter?.on('theme', (value) => {
   toggleThemeValue.value = value
 })
 
-onMounted(() => {
-  window.addEventListener('scroll', updateScrollValue)
-})
+// onMounted(() => {
+//   window.addEventListener('scroll', updateScrollValue)
+// })
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', updateScrollValue)
-})
+// onUnmounted(() => {
+//   window.removeEventListener('scroll', updateScrollValue)
+// })
 
-const showBackground = computed(() => {
-  return scrollPosition.value >= 10
-})
+// const showBackground = computed(() => {
+//   return scrollPosition.value >= 10
+// })
 </script>

@@ -1,102 +1,93 @@
 <template>
-  <div class="it-select">
-    <span v-if="labelTop || labelTopSlotExist" class="it-input-label">
+  <div :class="variant.root">
+    <span v-if="labelTop || labelTopSlotExist" :class="variant.label">
       <slot name="label-top" :props="props">
         {{ labelTop }}
       </slot>
     </span>
 
-    <div class="it-select-inner">
-      <div
-        ref="trigger"
-        v-clickoutside="outsideHandler"
-        :tabindex="disabled ? -1 : 0"
-        class="it-select-selection"
-        :class="selectionClasses"
-        @click="toggleDropdown"
-        @keydown.tab="() => setOpen(false)"
-        @keydown.down.stop.prevent="handleKey(EDirections.DOWN)"
-        @keydown.up.stop.prevent="handleKey(EDirections.UP)"
-        @keydown.esc.stop.prevent="() => setOpen(false)"
-        @keydown.enter.stop.prevent="handleEnterKey"
+    <div
+      ref="trigger"
+      v-clickoutside="outsideHandler"
+      :tabindex="disabled ? undefined : 0"
+      :class="[variant.input, { [variant.inputDisabled]: disabled }]"
+      @click="toggleDropdown"
+      @keydown.tab="() => setOpen(false)"
+      @keydown.down.stop.prevent="handleKey(EDirections.DOWN)"
+      @keydown.up.stop.prevent="handleKey(EDirections.UP)"
+      @keydown.esc.stop.prevent="() => setOpen(false)"
+      @keydown.enter.stop.prevent="handleEnterKey"
+      @keydown.space.stop.prevent="handleEnterKey"
+    >
+      <span
+        v-if="!multiselect && wrappedValue[trackBy]"
+        :class="[variant.selected]"
       >
-        <span
-          v-if="!multiselect && wrappedValue[trackBy]"
-          class="it-select-selected"
-        >
-          <slot name="selected-option" :props="props">
-            {{ wrappedValue.name }}
-          </slot>
-        </span>
-        <span
-          v-else-if="multiselect && wrappedValue.length > 0"
-          class="it-select-selected"
-        >
-          <slot name="selected-option" :props="props">
-            <!-- {{ wrappedValue.map((el) => el.name).join(', ') }} -->
-            <it-tag v-for="val in wrappedValue" :key="val[trackBy]">{{
-              val.name
-            }}</it-tag>
-          </slot>
-        </span>
-
-        <span v-else class="it-select-placeholder">
-          <slot name="placeholder" :props="props">
-            {{ placeholder }}
-          </slot>
-        </span>
-
-        <slot name="icon" :props="props">
-          <i
-            class="it-select-arrow material-icons"
-            :class="show && 'it-select-arrow--active'"
-          >
-            unfold_more
-          </i>
+        <slot name="selected-option" :props="props">
+          {{ wrappedValue.name }}
         </slot>
-      </div>
-
-      <transition name="drop-bottom">
-        <div
-          v-if="show"
-          ref="dropdown"
-          class="it-select-dropdown"
-          :class="dropdownClasses"
-        >
-          <ul
-            class="it-select-list"
-            :ref="(dropdown) => setSelectListRef(dropdown)"
+      </span>
+      <span
+        v-else-if="multiselect && wrappedValue.length > 0"
+        :class="[variant.selected]"
+      >
+        <slot name="selected-option" :props="props">
+          <it-tag
+            variant="primary"
+            closable
+            filled
+            v-for="(val, i) in wrappedValue"
+            @close="remove(i)"
+            :key="val[trackBy]"
+            >{{ val.name }}</it-tag
           >
-            <li
-              v-for="(option, optionIndex) in options"
-              :key="optionIndex"
-              :ref="(el) => setOptionRef(el, optionIndex)"
-              class="it-select-option"
-              :class="
-                indexFocusedOption === optionIndex && CLASS_SELECTED_OPTION
-              "
-              @click="selectOption(optionIndex)"
-            >
-              <slot name="option" :props="props" :option="option">
-                {{ getOptionName(option) }}
-                <transition name="fade-right">
-                  <span
-                    v-if="wrappedValue[trackBy] === getOptionValue(option)"
-                    class="it-select-option-check"
-                  />
-                </transition>
-              </slot>
-            </li>
-          </ul>
-        </div>
-      </transition>
+        </slot>
+      </span>
+
+      <span v-else :class="variant.placeholder">
+        <slot name="placeholder" :props="props">
+          {{ placeholder }}
+        </slot>
+      </span>
+
+      <slot name="icon" :props="props">
+        <i class="material-icons" :class="variant.inputIcon"> unfold_more </i>
+      </slot>
     </div>
+
+    <transition name="drop-bottom">
+      <div v-if="show" ref="dropdown" :class="variant.dropdown">
+        <ul
+          :class="variant.list"
+          :ref="(dropdown) => setSelectListRef(dropdown)"
+        >
+          <li
+            v-for="(option, optionIndex) in options"
+            :key="optionIndex"
+            :ref="(el) => setOptionRef(el, optionIndex)"
+            class="it-select-option"
+            :class="indexFocusedOption === optionIndex && CLASS_SELECTED_OPTION"
+            @click="selectOption(optionIndex)"
+          >
+            <slot name="option" :props="props" :option="option">
+              {{ getOptionName(option) }}
+              <transition name="fade-right">
+                <span
+                  v-if="wrappedValue[trackBy] === getOptionValue(option)"
+                  class="it-select-option-check"
+                />
+              </transition>
+            </slot>
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, ref, watch } from 'vue'
-import { Positions } from '@/models/enums'
+import { Components, Positions } from '@/models/enums'
 import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
 import { TEmit } from '@/types'
@@ -108,13 +99,17 @@ import {
 import { TSelectProps } from './types'
 import { EDirections } from '@/models/enums'
 import { useCheckSlot } from '@/hooks'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { ITSelectOptions } from '@/types/components/components'
+import { useVariants } from '@/hooks/useVariants'
 
 export default defineComponent({
-  name: 'it-select',
+  name: Components.ITSelect,
   directives: {
     clickoutside: clickOutside,
   },
   props: {
+    ...getVariantPropsWithClassesList<ITSelectOptions>(),
     placement: {
       type: String,
       default: Positions.B,
@@ -131,6 +126,10 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props: TProps, { emit, slots }) {
+    const variant = computed(() =>
+      useVariants<ITSelectOptions>(Components.ITSelect, props),
+    )
+
     const labelTopSlotExist = useCheckSlot(slots, 'label-top') !== null
 
     const {
@@ -147,14 +146,12 @@ export default defineComponent({
       toggleDropdown,
       selectOption,
       handleKey,
+      remove,
     } = useSelect(props as TSelectProps, emit as TEmit)
 
     const dropdown = ref<HTMLElement>()
 
-    const selectionClasses = computed(() => ({
-      'it-select-selection--disabled': props.disabled,
-      'it-select-selection--active': show.value,
-    }))
+    const selectionClasses = computed(() => ({}))
 
     const dropdownClasses = computed(() => ({
       [props.placement
@@ -195,6 +192,8 @@ export default defineComponent({
       EDirections,
       outsideHandler,
       dropdown,
+      variant,
+      remove,
     }
   },
 })
