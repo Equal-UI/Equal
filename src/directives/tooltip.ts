@@ -1,11 +1,12 @@
-import { usePopover } from '@/hooks/usePopover'
-import { createApp, Directive, unref, ref, watch } from 'vue'
 import TooltipBody from '@/components/tooltip/TooltipBody.vue'
-import { EqualUIConfiguration } from '@/types/variant'
+import { usePopover } from '@/hooks/usePopover'
 import { Positions } from '@/models/enums/Positions'
+import { EqualUIConfiguration } from '@/types/variant'
+import { autoUpdate } from '@floating-ui/dom'
+import { createApp, Directive, h, reactive, ref, unref, watch } from 'vue'
 
 export const tooltip = (theme: EqualUIConfiguration): Directive => ({
-  created(elem, binding) {
+  mounted(elem, binding) {
     const {
       show,
       popover,
@@ -19,22 +20,22 @@ export const tooltip = (theme: EqualUIConfiguration): Directive => ({
     } = usePopover({})
 
     const mountEl = document.createElement('div')
-    const myTooltip = createApp(TooltipBody)
+
+    // https://github.com/vuejs/core/issues/4874#issuecomment-959008724
+    const myTooltip = createApp({
+      render: () =>
+        h(
+          TooltipBody,
+          reactive({
+            placement,
+            show,
+            content: binding.value.content,
+          }),
+        ),
+    })
+    myTooltip.provide('config', theme)
 
     placement.value = unref(binding.value.position) || placement.value
-
-    myTooltip.provide('placement', placement)
-    myTooltip.provide('config', theme)
-    myTooltip.provide('show', show)
-    myTooltip.provide('content', binding.value.content)
-
-    // if (binding.value?.position) {
-    //   placement.value = unref(binding.value.position)
-    // }
-
-    // if (binding.value?.permanent) {
-    //   permanent.value = unref(binding.value?.permanent)
-    // }
 
     watch(
       ref(binding.value.disabled),
@@ -74,7 +75,13 @@ export const tooltip = (theme: EqualUIConfiguration): Directive => ({
     elem.handleMouseEnter = handleMouseEnter
     elem.handleMouseLeave = handleMouseLeave
 
-    elem.setPopoverPosition = setPopoverPosition
+    if (binding.value.autoUpdate) {
+      const cleanup = autoUpdate(trigger.value, popover.value, () => {
+        setPopoverPosition()
+      })
+
+      elem.cleanup = cleanup || (() => {})
+    }
 
     elem.addEventListener('mouseenter', elem.handleMouseEnter)
     elem.addEventListener('mouseleave', elem.handleMouseLeave)
@@ -88,6 +95,7 @@ export const tooltip = (theme: EqualUIConfiguration): Directive => ({
     elem.removeEventListener('focus', elem.handleMouseEnter)
     elem.removeEventListener('blur', elem.handleMouseLeave)
 
+    elem.cleanup && elem.cleanup()
     elem.myTooltip.unmount()
     elem.mountEl.parentNode.removeChild(elem.mountEl)
   },

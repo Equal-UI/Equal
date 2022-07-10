@@ -26,6 +26,7 @@ export type TSelect = {
   optionsRefs: Ref<HTMLElement[]>
   show: Ref<boolean>
   handleEnterKey: () => void
+  remove: () => void
   setOpen: (state: boolean) => void
   toggleDropdown: () => void
   selectOption: (optionIndex: number) => void

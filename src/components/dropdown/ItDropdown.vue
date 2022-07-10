@@ -1,16 +1,11 @@
 <template>
   <div v-clickoutside="hidePopover" class="it-dropdown" v-on="listeners">
-    <div ref="trigger" class="it-dropdown-trigger">
+    <div ref="trigger">
       <slot></slot>
     </div>
 
     <transition :name="transition">
-      <div
-        v-show="show"
-        ref="popover"
-        class="it-dropdown-slot"
-        :class="[placement && `it-dropdown-slot--${placementSide}`]"
-      >
+      <div v-show="show" ref="popover" class="it-dropdown-slot">
         <slot name="menu"></slot>
       </div>
     </transition>
@@ -76,7 +71,7 @@ export default defineComponent({
     }
 
     const transition = computed(() => `drop-${placement.value}`)
-    const placementSide = computed(() => placement.value.split('-')[0])
+    // const placementSide = computed(() => placement.value.split('-')[0])
     const listeners = computed(() => {
       return props.clickable
         ? {
@@ -91,7 +86,7 @@ export default defineComponent({
     return {
       toggleDropdown,
       transition,
-      placementSide,
+      // placementSide,
       listeners,
       show,
       hidePopover,

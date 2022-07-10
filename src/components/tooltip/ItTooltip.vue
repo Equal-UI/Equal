@@ -2,44 +2,45 @@
   <div class="it-tooltip">
     <div
       ref="trigger"
-      class="it-tooltip-trigger"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
       <slot :fixed-classes="{ root: variant.innerSlot }"></slot>
     </div>
 
-    <Teleport to="body">
-      <transition :name="transition">
-        <div
-          v-show="show"
-          ref="popover"
-          class="it-tooltip-popper"
-          :class="[placement && `it-tooltip--${placement.split('-')[0]}`]"
-          @mouseenter="handleMouseEnter"
-          @mouseleave="handleMouseLeave"
-        >
-          <div class="it-tooltip-content">
-            <slot name="content">
-              <div>{{ content }}</div>
-            </slot>
-          </div>
-        </div>
-      </transition>
-    </Teleport>
+    <TooltipBody
+      :ref="
+        (el) => {
+          if (el) popover = el.$el
+        }
+      "
+      :content="content"
+      :placement="placement"
+      :show="show"
+    >
+      <slot name="content"></slot>
+    </TooltipBody>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeUnmount, onMounted } from 'vue'
-import { usePopover } from '@/hooks'
-import { Components, Positions } from '@/models/enums'
+import TooltipBody from '@/components/tooltip/TooltipBody.vue'
 import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
-import { ITTooltipOptions } from '@/types/components/components'
+import { usePopover } from '@/hooks'
 import { useVariants } from '@/hooks/useVariants'
+import { Components, Positions } from '@/models/enums'
+import { ITTooltipOptions } from '@/types/components/components'
+import {
+  computed,
+  defineComponent,
+  onBeforeUnmount,
+  onMounted,
+  watch,
+} from 'vue'
 
 export default defineComponent({
-  name: 'it-tooltip',
+  name: Components.ITTooltip,
+  components: { TooltipBody },
   props: {
     ...getVariantPropsWithClassesList<ITTooltipOptions>(),
     content: [String, Number],
@@ -74,6 +75,13 @@ export default defineComponent({
 
     const variant = computed(() =>
       useVariants<ITTooltipOptions>(Components.ITTooltip, props),
+    )
+
+    watch(
+      () => props.placement,
+      (newVal) => {
+        placement.value = newVal as Positions
+      },
     )
 
     onMounted(() => {

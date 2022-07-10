@@ -302,7 +302,7 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-tooltip': {
     fixedClasses: {
-      root: 'transition-scale transition-opacity absolute z-50 scale-50 opacity-0',
+      root: 'absolute z-50',
       body: 'p-2 text-[13px] leading-none shadow shadow-slate-600/10 border border-slate-300 bg-white rounded-md',
       innerSlot: '',
     },
@@ -606,6 +606,38 @@ export default <EqualUIConfiguration>(<unknown>{
       'leave-active-class': 'duration-100',
       'leave-from-class': 'opacity-100 translate-x-0',
       'leave-to-class': 'opacity-0 -translate-x-2',
+    },
+    fadeToLeft: {
+      'enter-active-class': 'transition-all duration-200 origin-right',
+      'enter-from-class': 'opacity-0 scale-0 translate-x-8',
+      'enter-to-class': 'opacity-100 scale-100 translate-x-0',
+      'leave-active-class': 'transition-all duration-150 origin-right',
+      'leave-from-class': 'opacity-100 scale-100 translate-x-0',
+      'leave-to-class': 'opacity-0 scale-0 translate-x-4',
+    },
+    fadeToRight: {
+      'enter-active-class': 'transition-all duration-200 origin-left',
+      'enter-from-class': 'opacity-0 scale-0 -translate-x-8',
+      'enter-to-class': 'opacity-100 scale-100 translate-x-0',
+      'leave-active-class': 'transition-all duration-150 origin-left',
+      'leave-from-class': 'opacity-100 scale-100 translate-x-0',
+      'leave-to-class': 'opacity-0 scale-0 -translate-x-4',
+    },
+    fadeToTop: {
+      'enter-active-class': 'transition-all duration-200 origin-bottom',
+      'enter-from-class': 'opacity-0 scale-0 translate-y-4',
+      'enter-to-class': 'opacity-100 scale-100 translate-y-0',
+      'leave-active-class': 'transition-all duration-150 origin-bottom',
+      'leave-from-class': 'opacity-100 scale-100 translate-y-0',
+      'leave-to-class': 'opacity-0 scale-0 translate-y-4',
+    },
+    fadeToBottom: {
+      'enter-active-class': 'transition-all duration-200 origin-top',
+      'enter-from-class': 'opacity-0 scale-0 -translate-y-4',
+      'enter-to-class': 'opacity-100 scale-100 translate-y-0',
+      'leave-active-class': 'transition-all duration-150 origin-top',
+      'leave-from-class': 'opacity-100 scale-100 translate-y-0',
+      'leave-to-class': 'opacity-0 scale-0 -translate-y-4',
     },
   },
 })

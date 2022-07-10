@@ -1,7 +1,6 @@
 import { Positions } from '@/models/enums'
+import { computePosition, offset, Placement } from '@floating-ui/dom'
 import { computed, nextTick, ref, Ref, watch } from 'vue'
-
-// REFACTOR HOOK
 
 export const usePopover = (props: any) => {
   const show = ref(false)
@@ -46,8 +45,9 @@ export const usePopover = (props: any) => {
     if (disabled.value) {
       return
     }
+
     if (
-      (e.target as HTMLElement).isSameNode(popover.value! as HTMLElement) &&
+      (e.target as HTMLElement).isSameNode(popover.value as HTMLElement) &&
       !clickable.value
     ) {
       return
@@ -61,7 +61,7 @@ export const usePopover = (props: any) => {
     if (!permanent.value) {
       visionTimer.value = setTimeout(() => {
         hidePopover()
-      }, 200)
+      }, 150)
     }
   }
 
@@ -71,133 +71,29 @@ export const usePopover = (props: any) => {
 
   function showPopover() {
     if (!show.value && !disabled.value) {
-      show.value = true
       setPopoverPosition()
+      show.value = true
     }
   }
 
   async function setPopoverPosition() {
     await nextTick()
-    const popoverTemp = popover.value! as HTMLElement
-    const triggerTemp = trigger.value! as HTMLElement
+    const popoverTemp = popover.value as HTMLElement
+    const triggerTemp = trigger.value as HTMLElement
 
-    if (!popoverTemp) {
+    if (!popoverTemp || !triggerTemp) {
       return
     }
 
-    const triggerTempGBCR = triggerTemp.getBoundingClientRect().toJSON()
-    const popoverTempGBCR = popoverTemp.getBoundingClientRect()
+    const { x, y } = await computePosition(triggerTemp, popoverTemp, {
+      middleware: [offset(8)],
+      placement: placement.value as Placement,
+    })
 
-    if (autoPosition.value) {
-      // preferred position direction
-      const preferredPos = props.placement as Positions
-      const predefPositions = [
-        ...new Set([
-          preferredPos,
-          Positions.T,
-          Positions.B,
-          Positions.R,
-          Positions.L,
-          ...Object.values(Positions),
-        ]),
-      ]
-
-      for (const pos of predefPositions) {
-        const posSide = pos.split('-')[0]
-
-        const PosIsVertical = [Positions.T, Positions.B].includes(
-          posSide as Positions,
-        )
-
-        let searchPredicate = triggerTempGBCR[posSide as keyof DOMRect]
-
-        if (posSide === Positions.B) {
-          searchPredicate =
-            window.innerHeight - triggerTempGBCR[posSide as keyof DOMRect]
-        }
-
-        if (posSide === Positions.R) {
-          searchPredicate =
-            window.innerWidth - triggerTempGBCR[posSide as keyof DOMRect]
-        }
-
-        if (
-          searchPredicate >=
-          popoverTempGBCR[PosIsVertical ? 'height' : 'width'] + 24
-        ) {
-          placement.value = pos
-          break
-        }
-      }
-    }
-
-    const topPos = triggerTempGBCR.top + window.scrollY
-    const leftPos = triggerTempGBCR.left + window.scrollX
-
-    switch (placement.value) {
-      case Positions.T:
-        position.x =
-          leftPos - popoverTemp.offsetWidth / 2 + triggerTemp.offsetWidth / 2
-        position.y = topPos - popoverTemp.offsetHeight
-        break
-      case Positions.TL:
-        position.x = leftPos
-        position.y = topPos - popoverTemp.offsetHeight
-        break
-      case Positions.TR:
-        position.x = leftPos + triggerTemp.offsetWidth - popoverTemp.offsetWidth
-        position.y = topPos - popoverTemp.offsetHeight
-        break
-      case Positions.L:
-        position.x = leftPos - popoverTemp.offsetWidth
-        position.y =
-          topPos + triggerTemp.offsetHeight / 2 - popoverTemp.offsetHeight / 2
-        break
-      case Positions.LT:
-        position.x = leftPos - popoverTemp.offsetWidth
-        position.y = topPos
-        break
-      case Positions.LB:
-        position.x = leftPos - popoverTemp.offsetWidth
-        position.y =
-          topPos + triggerTemp.offsetHeight - popoverTemp.offsetHeight
-        break
-      case Positions.R:
-        position.x = leftPos + triggerTemp.offsetWidth
-        position.y =
-          topPos + triggerTemp.offsetHeight / 2 - popoverTemp.offsetHeight / 2
-        break
-      case Positions.RT:
-        position.x = leftPos + triggerTemp.offsetWidth
-        position.y = topPos
-        break
-      case Positions.RB:
-        position.x = leftPos + triggerTemp.offsetWidth
-        position.y =
-          topPos + triggerTemp.offsetHeight - popoverTemp.offsetHeight
-        break
-      case Positions.B:
-        position.x =
-          leftPos - popoverTemp.offsetWidth / 2 + triggerTemp.offsetWidth / 2
-        position.y = topPos + triggerTemp.offsetHeight
-        break
-      case Positions.BL:
-        position.x = leftPos
-        position.y = topPos + triggerTemp.offsetHeight
-        break
-      case Positions.BR:
-        position.x = leftPos + triggerTemp.offsetWidth - popoverTemp.offsetWidth
-        position.y = topPos + triggerTemp.offsetHeight
-        break
-      default:
-        position.x =
-          leftPos - popoverTemp.offsetWidth / 2 + triggerTemp.offsetWidth / 2
-        position.y = topPos - popoverTemp.offsetHeight
-        break
-    }
-
-    popoverTemp.style.top = `${position.y}px`
-    popoverTemp.style.left = `${position.x}px`
+    Object.assign(popoverTemp.style, {
+      left: `${x}px`,
+      top: `${y}px`,
+    })
   }
 
   return {

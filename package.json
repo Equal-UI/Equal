@@ -91,6 +91,7 @@
     "vue-eslint-parser": "^7.5.0"
   },
   "dependencies": {
+    "@floating-ui/dom": "^0.5.4",
     "@vueuse/core": "^5.0.3",
     "@vueuse/integrations": "^5.0.3",
     "body-scroll-lock": "^3.1.5",

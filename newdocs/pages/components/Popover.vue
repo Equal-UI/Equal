@@ -5,14 +5,14 @@
       <it-popover :disabled="removed">
         <it-button>Delete</it-button>
         <template #content>
-          <div>
+          <div class="p-1">
             <p class="mb-2">Please confirm deletion</p>
             <div class="flex justify-end">
               <it-button size="small">No</it-button>
               <it-button
                 class="ml-2"
                 size="small"
-                type="danger"
+                variant="danger"
                 @click="
                   ;(removed = true), $Message.success({ text: 'Deleted' })
                 "

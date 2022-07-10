@@ -65,13 +65,16 @@ export default defineComponent({
       useVariants<ITProgressBarOptions>(Components.ITProgressbar, props),
     )
 
-    const disabledTooltip = computed(() => props.infinite || !props.showTooltip)
+    const disabledTooltip = computed(() => {
+      return props.infinite || !props.showTooltip
+    })
 
     const tooltipValue = {
       position: toRef(props, 'tooltip'),
       content: toRef(props, 'progress'),
       disabled: disabledTooltip,
-      permanent: true,
+      permanent: !disabledTooltip.value,
+      autoUpdate: true,
     }
 
     return { variant, tooltipValue }
