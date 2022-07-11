@@ -13,6 +13,7 @@ export const usePopover = (props: any) => {
   const visionTimer = ref<NodeJS.Timeout | null>(null)
   const permanent = ref(false || props.permanent)
   const autoPosition = ref(props.autoposition)
+  const elOffset = ref(props.offset || 8)
 
   // Template Refs
   const popover = ref(props.popoverEl ?? null)
@@ -20,10 +21,10 @@ export const usePopover = (props: any) => {
 
   watch(permanent, (value) => {
     if (value) {
-      show.value = true
       if (trigger.value) {
         setTimeout(() => {
           setPopoverPosition()
+          show.value = true
         }, 100)
       }
     }
@@ -35,11 +36,6 @@ export const usePopover = (props: any) => {
       showPopover()
     }
   })
-
-  const position = {
-    x: 0,
-    y: 0,
-  }
 
   function handleMouseEnter(e: Event) {
     if (disabled.value) {
@@ -86,11 +82,12 @@ export const usePopover = (props: any) => {
     }
 
     const { x, y } = await computePosition(triggerTemp, popoverTemp, {
-      middleware: [offset(8)],
+      middleware: [offset(elOffset.value)],
       placement: placement.value as Placement,
     })
 
     Object.assign(popoverTemp.style, {
+      position: 'absolute',
       left: `${x}px`,
       top: `${y}px`,
     })
@@ -105,8 +102,8 @@ export const usePopover = (props: any) => {
     visionTimer,
     popover,
     trigger,
-    position,
     permanent,
+    elOffset,
     handleMouseEnter,
     handleMouseLeave,
     hidePopover,

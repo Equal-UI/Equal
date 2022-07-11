@@ -11,6 +11,7 @@
 </template>
 
 <script lang="ts">
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
 import { useVariants } from '@/hooks/useVariants'
 import { Components, Positions } from '@/models/enums'
 import { ITTooltipOptions } from '@/types/components/components'
@@ -18,6 +19,7 @@ import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
+    ...getVariantPropsWithClassesList<ITTooltipOptions>(),
     hoverable: Boolean,
     placement: {
       type: String,
@@ -30,7 +32,7 @@ export default defineComponent({
   },
   setup(props) {
     const variant = computed(
-      () => useVariants<ITTooltipOptions>(Components.ITTooltip), // TODO: props from directive
+      () => useVariants<ITTooltipOptions>(Components.ITTooltip, props), // TODO: props from directive
     )
 
     const placementTransition = computed(() => {

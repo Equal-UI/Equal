@@ -8,24 +8,11 @@
         class="it-progress-line"
         :style="!infinite && { width: `${progress}%` }"
       >
-        <!-- <it-tooltip
-          :class="[variant.controller, 'absolute right-0']"
-          ref="tooltipRef"
-          :content="progress + '%'"
-          permanent
-        > -->
         <div
           ref="controller"
           class="absolute right-0 h-full w-px"
           v-tooltip="tooltipValue"
         ></div>
-        <!-- </it-tooltip> -->
-        <!-- <span
-          v-if="showTooltip && !infinite"
-          class="it-progress-tooltip"
-          :class="[`it-progress-tooltip--${tooltip}`]"
-          v-html="`${progress}%`"
-        /> -->
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="it-tooltip">
+  <div>
     <div
       ref="trigger"
       @mouseenter="handleMouseEnter"
@@ -15,8 +15,8 @@
         }
       "
       :content="content"
-      :placement="placement"
       :show="show"
+      v-bind="$props"
     >
       <slot name="content"></slot>
     </TooltipBody>
@@ -65,7 +65,6 @@ export default defineComponent({
       popover,
       trigger,
       permanent,
-      position,
       handleMouseEnter,
       handleMouseLeave,
       hidePopover,
@@ -85,26 +84,22 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      if (permanent.value) {
-        showPopover()
-      }
-
-      ;(trigger.value as unknown as HTMLElement)?.addEventListener(
+      ;(trigger.value as HTMLElement)?.addEventListener(
         'focusin',
         handleMouseEnter,
       )
-      ;(trigger.value as unknown as HTMLElement)?.addEventListener(
+      ;(trigger.value as HTMLElement)?.addEventListener(
         'focusout',
         handleMouseLeave,
       )
     })
 
     onBeforeUnmount(() => {
-      ;(trigger.value as unknown as HTMLElement)?.removeEventListener(
+      ;(trigger.value as HTMLElement)?.removeEventListener(
         'focusin',
         handleMouseEnter,
       )
-      ;(trigger.value as unknown as HTMLElement)?.removeEventListener(
+      ;(trigger.value as HTMLElement)?.removeEventListener(
         'focusout',
         handleMouseLeave,
       )
@@ -119,7 +114,6 @@ export default defineComponent({
       visionTimer,
       popover,
       trigger,
-      position,
       handleMouseEnter,
       handleMouseLeave,
       hidePopover,

@@ -50,6 +50,10 @@ export interface ITLoadingbarOptions extends IComponentWithRoot {}
 
 export type ITLoadingbarVariants = WithVariantProps<ITLoadingbarOptions>
 
+export interface ITDropdownOptions extends IComponentWithRoot {}
+
+export type ITDropdownVariants = WithVariantProps<ITDropdownOptions>
+
 export interface ITCheckboxOptions extends IComponentWithRoot {
   checkbox?: string
   checkIconActive?: string

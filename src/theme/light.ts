@@ -302,19 +302,21 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-tooltip': {
     fixedClasses: {
-      root: 'absolute z-50',
+      root: 'absolute z-10',
       body: 'p-2 text-[13px] leading-none shadow shadow-slate-600/10 border border-slate-300 bg-white rounded-md',
       innerSlot: '',
     },
     classes: {},
-    variants: {
-      vertical: {
-        button: '',
-      },
-      horizontal: {
-        button: '',
-      },
+    variants: {},
+  },
+  'it-dropdown': {
+    fixedClasses: {
+      root: '',
+      dropdown: 'absolute z-10',
+      item: '',
     },
+    classes: {},
+    variants: {},
   },
   'it-spinner': {
     fixedClasses: {

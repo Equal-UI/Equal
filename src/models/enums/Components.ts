@@ -7,6 +7,7 @@ export enum Components {
   ITCheckbox = 'it-checkbox',
   ITColorpicker = 'it-colorpicker',
   ITDivider = 'it-divider',
+  ITDropdown = 'it-dropdown',
   ITDrawer = 'it-drawer',
   ITBadge = 'it-badge',
   ITButton = 'it-button',

@@ -1,11 +1,11 @@
 <template>
-  <div v-clickoutside="hidePopover" class="it-dropdown" v-on="listeners">
+  <div v-clickoutside="hidePopover" v-on="listeners">
     <div ref="trigger">
       <slot></slot>
     </div>
 
     <transition :name="transition">
-      <div v-show="show" ref="popover" class="it-dropdown-slot">
+      <div v-show="show" ref="popover" :class="variant.dropdown">
         <slot name="menu"></slot>
       </div>
     </transition>
@@ -13,17 +13,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { Positions } from '@/models/enums'
-import { usePopover } from '@/hooks'
 import { clickOutside } from '@/directives'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { usePopover } from '@/hooks'
+import { useVariants } from '@/hooks/useVariants'
+import { Components, Positions } from '@/models/enums'
+import { ITDropdownOptions } from '@/types/components/components'
+import { computed, defineComponent, inject, onMounted, provide } from 'vue'
 
 export default defineComponent({
-  name: 'it-dropdown',
+  name: Components.ITDropdown,
   directives: {
     clickoutside: clickOutside,
   },
   props: {
+    ...getVariantPropsWithClassesList<ITDropdownOptions>(),
     placement: {
       default: Positions.B,
       type: String,
@@ -52,11 +56,26 @@ export default defineComponent({
       disabled,
       popover,
       trigger,
+      elOffset,
       handleMouseEnter,
       handleMouseLeave,
       hidePopover,
       showPopover,
     } = usePopover(props)
+
+    const variant = computed(() =>
+      useVariants<ITDropdownOptions>(Components.ITDropdown, props),
+    )
+
+    const isNested = inject('isNested', false)
+    provide('isNested', true)
+
+    onMounted(() => {
+      if (isNested) {
+        elOffset.value = 1
+        placement.value = Positions.R
+      }
+    })
 
     function toggleDropdown() {
       if (disabled.value) {
@@ -71,7 +90,6 @@ export default defineComponent({
     }
 
     const transition = computed(() => `drop-${placement.value}`)
-    // const placementSide = computed(() => placement.value.split('-')[0])
     const listeners = computed(() => {
       return props.clickable
         ? {
@@ -86,13 +104,13 @@ export default defineComponent({
     return {
       toggleDropdown,
       transition,
-      // placementSide,
       listeners,
       show,
       hidePopover,
       placement,
       popover,
       trigger,
+      variant,
     }
   },
 })

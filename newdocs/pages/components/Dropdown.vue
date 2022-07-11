@@ -9,8 +9,29 @@
           <it-dropdown-menu>
             <it-dropdown-item>Hello</it-dropdown-item>
             <it-dropdown-item disabled>Disabled</it-dropdown-item>
-            <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
-            <it-dropdown-item divided>Divided</it-dropdown-item>
+            <it-dropdown :clickable="clickable" :placement="dropdownType">
+              <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+
+              <template #menu>
+                <it-dropdown-menu>
+                  <it-dropdown-item divided>123123 </it-dropdown-item>
+                  <it-dropdown :clickable="clickable" :placement="dropdownType">
+                    <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+
+                    <template #menu>
+                      <it-dropdown-menu>
+                        <it-dropdown-item divided>123123 </it-dropdown-item>
+                        <it-dropdown-item icon="cloud"
+                          >rghberhr
+                        </it-dropdown-item>
+                      </it-dropdown-menu>
+                    </template>
+                  </it-dropdown>
+                </it-dropdown-menu>
+              </template>
+            </it-dropdown>
+            <it-divider />
+            <it-dropdown-item>Divided</it-dropdown-item>
           </it-dropdown-menu>
         </template>
       </it-dropdown>

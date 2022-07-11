@@ -1,15 +1,14 @@
 <template>
   <li
     class="it-dropdown-item"
-    :class="[
-      disabled && 'it-dropdown-item--disabled',
-      divided && 'it-dropdown-item--divided',
-    ]"
+    :class="[disabled && 'it-dropdown-item--disabled']"
   >
-    <it-icon v-if="icon" class="it-dropdown-icon" :name="icon"></it-icon>
-    <span class="it-dropdown-text">
-      <slot></slot>
-    </span>
+    <div>
+      <it-icon v-if="icon" class="it-dropdown-icon" :name="icon"></it-icon>
+      <span class="it-dropdown-text">
+        <slot></slot>
+      </span>
+    </div>
   </li>
 </template>
 
@@ -20,7 +19,6 @@ export default defineComponent({
   name: 'it-dropdown-item',
   props: {
     disabled: Boolean,
-    divided: Boolean,
     icon: String,
   },
 })
