@@ -13,9 +13,7 @@
                 class="ml-2"
                 size="small"
                 variant="danger"
-                @click="
-                  ;(removed = true), $Message.success({ text: 'Deleted' })
-                "
+                @click=";(removed = true), $Message({ text: 'Deleted' })"
                 >Yes</it-button
               >
             </div>

@@ -1,37 +1,35 @@
 <template>
   <teleport to="body">
-    <transition name="fade">
+    <transition v-bind="variant.transitions?.fade">
       <div
         v-show="modelValue"
         v-bind="$attrs"
         ref="modalRef"
-        class="it-modal-mask"
+        :class="variant.mask"
         :style="{ cursor: closableMask ? 'pointer' : 'default' }"
       >
-        <transition name="drop-top">
-          <div v-show="modelValue" class="it-modal-wrap">
+        <transition v-bind="variant.transitions?.dropToBottom">
+          <div
+            v-show="modelValue"
+            @click.self="maskClick"
+            :class="variant.bodyWrapper"
+          >
             <div
-              class="it-modal-wrap-inner"
               tabindex="0"
-              @click.self="maskClick"
+              :class="variant.body"
+              ref="modalBody"
+              :style="!onlyImageSlot ? { maxWidth: width } : { width: 'auto' }"
             >
-              <div
-                class="it-modal-body"
-                ref="modalBody"
-                :class="{ 'it-modal-body--has-image': onlyImageSlot }"
-                :style="!onlyImageSlot ? { maxWidth: width } : null"
-              >
-                <slot name="image" />
-                <slot />
-                <div v-if="itHasHeader" class="it-modal-header">
-                  <slot name="header" />
-                </div>
-                <div v-if="itHasBody" class="it-modal-content">
-                  <slot name="body" />
-                </div>
-                <div v-if="itHasActions" class="it-modal-footer">
-                  <slot name="actions" />
-                </div>
+              <slot name="image" />
+              <slot />
+              <div v-if="itHasHeader" :class="variant.header">
+                <slot name="header" />
+              </div>
+              <div v-if="itHasBody" :class="variant.content">
+                <slot name="body" />
+              </div>
+              <div v-if="itHasActions" :class="variant.footer">
+                <slot name="actions" />
               </div>
             </div>
           </div>
@@ -42,28 +40,37 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  watch,
-  ref,
-  computed,
-  nextTick,
-  getCurrentInstance,
-} from 'vue'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
 import { useCheckSlot } from '@/hooks'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITModalOptions } from '@/types/components/components'
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  nextTick,
+  ref,
+  watch,
+} from 'vue'
 
 export default defineComponent({
-  name: 'it-modal',
+  name: Components.ITModal,
   inheritAttrs: false,
   props: {
+    ...getVariantPropsWithClassesList<ITModalOptions>(),
     modelValue: { type: Boolean, default: false },
     width: { type: String, default: '500px' },
     closableMask: { type: Boolean, default: true },
     closeOnEsc: { type: Boolean, default: true },
   },
   setup(props, { emit, slots }) {
+    const variant = computed(() =>
+      useVariants<ITModalOptions>(Components.ITModal, props),
+    )
+
     const modalRef = ref<HTMLElement | null>()
     const itHasHeader = useCheckSlot(slots, 'header') !== null
     const itHasBody = useCheckSlot(slots, 'body') !== null
@@ -139,7 +146,7 @@ export default defineComponent({
             modalBody.value.style.transform = ''
 
             deactivate()
-            setTimeout(enableBodyScroll.bind(this, modalRef.value), 500)
+            setTimeout(enableBodyScroll.bind(this, modalRef.value), 100)
             document.removeEventListener('keydown', pressEsc)
           }
         }
@@ -160,6 +167,7 @@ export default defineComponent({
       itHasActions,
       close,
       onlyImageSlot,
+      variant,
     }
   },
 })

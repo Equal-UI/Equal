@@ -14,4 +14,5 @@ export interface IComponentListItem {
   route: string
   group: componentGroup
   examples?: number
+  coming_soon?: boolean
 }

@@ -16,10 +16,21 @@
       >
 
       <it-drawer v-model="drawerVisible">
-        <h3 class="m-6">
-          <it-icon class="contacts" box name="account_circle" />
-          Contacts
-        </h3>
+        <div class="relative flex flex-row items-center p-6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="contacts h-7 w-7 rounded"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <h3>Contacts</h3>
+        </div>
         <it-divider class="mb-2" />
         <template v-for="(user, i) in fakeUsers" :key="i">
           <div class="flex flex-row justify-between px-6">
@@ -30,16 +41,38 @@
                 @{{ user.username }}
               </p>
             </div>
-            <it-button icon="call" variant="primary"></it-button>
+            <it-button variant="primary"
+              ><template #icon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                  /></svg></template
+            ></it-button>
           </div>
           <it-divider class="mt-2 mb-2" />
         </template>
       </it-drawer>
       <it-drawer v-model="drawerLeftVisible" placement="left">
-        <h3 class="m-6">
-          <it-icon class="contacts" box name="account_circle" />
-          Contacts
-        </h3>
+        <div class="relative flex flex-row items-center p-6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="contacts h-7 w-7 rounded"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <h3>Contacts</h3>
+        </div>
         <it-divider class="mb-2" />
         <template v-for="(user, i) in fakeUsers" :key="i">
           <div class="flex flex-row justify-between px-6">
@@ -50,7 +83,18 @@
                 @{{ user.username }}
               </p>
             </div>
-            <it-button icon="call" variant="primary"></it-button>
+            <it-button variant="primary"
+              ><template #icon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                  /></svg></template
+            ></it-button>
           </div>
           <it-divider class="mt-2 mb-2" />
         </template>
@@ -183,13 +227,23 @@ export default defineComponent({
 </it-button>
 
 <it-drawer v-model="drawerVisible">
-  <h3 style="margin: 24px">
-    <it-icon
-      box
-      name="account_circle"
-    />
-    Contacts
-  </h3>
+  <div class="p-6 flex flex-row items-center relative">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-7 w-7 rounded contacts"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    <h3>
+      Contacts
+    </h3>
+  </div>
   <it-divider />
   <template v-for="(user, i) in fakeUsers" :key="i">
     <div>
@@ -207,13 +261,23 @@ export default defineComponent({
 </it-drawer>
 
 <it-drawer placement="left" v-model="drawerLeftVisible">
-  <h3 style="margin: 24px">
-    <it-icon
-      box
-      name="account_circle"
-    />
-    Contacts
-  </h3>
+  <div class="p-6 flex flex-row items-center relative">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-7 w-7 rounded contacts"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    <h3>
+      Contacts
+    </h3>
+  </div>
   <it-divider />
   <template v-for="(user, i) in fakeUsers" :key="i">
     <div>
@@ -224,7 +288,8 @@ export default defineComponent({
           @{{ user.username }}
         </p>
       </div>
-      <it-button icon="call" variant="primary"></it-button>
+      <it-button variant="primary">
+      </it-button>
     </div>
     <it-divider />
   </template>

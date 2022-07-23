@@ -1,6 +1,6 @@
 <template>
   <div :class="{ dark }" class="min-h-screen">
-    <div class="dark:bg-zinc-900">
+    <div class="dark:bg-neutral-800">
       <ItHeader />
       <Sidebar />
       <div
@@ -11,9 +11,9 @@
           flex-1 flex-col
           bg-white
           pl-0
-          dark:bg-zinc-900 dark:text-white
+          dark:bg-neutral-800 dark:text-white
           lg:pl-60
-          xl:mx-96
+          2xl:mx-96
         "
       >
         <div class="px-4 py-24 md:px-14">

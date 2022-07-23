@@ -59,7 +59,7 @@ export default defineComponent({
       'background-color': 'white',
       'background-image':
         'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill-opacity=".05"><path d="M8 0h8v8H8zM0 8h8v8H0z"/></svg>\')',
-      'box-shadow': 'inset 0 0 0 1px #0000000d',
+      'box-shadow': 'inset 0 0 0 1px #00000052',
     })
 
     return {

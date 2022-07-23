@@ -6,42 +6,15 @@
       <it-button
         type="primary"
         @click="
-          $Notification({
-            title: 'Primary notification',
-            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
-          })
+          $Notification(
+            {
+              duration: 2000,
+              placement: 'bottom-right',
+            },
+            123123,
+          )
         "
         >Primary notification</it-button
-      >
-      <it-button
-        type="success"
-        @click="
-          $Notification.success({
-            title: 'Success notification',
-            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
-          })
-        "
-        >Success notification</it-button
-      >
-      <it-button
-        type="danger"
-        @click="
-          $Notification.danger({
-            title: 'Danger notification',
-            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
-          })
-        "
-        >Danger notification</it-button
-      >
-      <it-button
-        type="warning"
-        @click="
-          $Notification.warning({
-            title: 'Warning notification',
-            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
-          })
-        "
-        >Warning notification</it-button
       >
     </Box>
     <Box :code="emojiCode" title="🧬 Notification with Emoji">

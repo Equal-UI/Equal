@@ -15,7 +15,7 @@
       duration-100
       dark:border-zinc-800
       lg:left-0
-      xl:left-96
+      2xl:left-96
     "
     :class="{
       '!left-0 z-[100]': open,
@@ -55,7 +55,7 @@
           v-model="search"
           labelTop="Search"
           autocomplete="new-password"
-          placeholder="Tooltip..."
+          :placeholder="searchPlaceholder"
         >
           <template #prefixIcon>
             <svg
@@ -100,26 +100,60 @@
         overflow-y-auto
         px-6
         pb-20
-        dark:bg-zinc-900 dark:text-slate-400
+        dark:bg-zinc-900 dark:text-slate-200
       "
     >
       <template v-for="(item, key) in componentGroups" :key="key">
-        <li class="mt-4">{{ key }}</li>
+        <li class="mt-4 mb-2 text-base font-semibold">{{ key }}</li>
         <template v-for="(component, i) in item" :key="i">
           <li
             :class="{
-              'active-menu-item': $route.path === component.route,
+              'bg-blue-600/10 text-blue-600': $route.path === component.route,
             }"
+            class="
+              mb-1
+              flex flex-row
+              rounded
+              text-sm
+              font-medium
+              text-gray-500
+              dark:text-slate-200
+            "
             @click="hideSidebar"
           >
-            <NuxtLink :to="component.route">
-              <span class="flex items-center p-2">
-                <it-icon
-                  :outlined="component.icon_outlined"
-                  :name="component.icon"
-                  class="mr-2 items-center text-lg"
-                ></it-icon>
-                {{ component.name }}
+            <NuxtLink class="w-full" :to="component.route">
+              <span
+                class="
+                  flex
+                  items-center
+                  justify-between
+                  py-1.5
+                  px-3
+                  text-sm
+                  transition-all
+                  hover:pl-4
+                "
+                :class="{
+                  'hover:text-gray-900': $route.path !== component.route,
+                }"
+              >
+                <div class="flex items-center">
+                  <i
+                    class="material-icons mr-2 items-center !text-xl"
+                    :class="{
+                      'material-icons-outlined': component.icon_outlined,
+                    }"
+                    >{{ component.icon }}</i
+                  >
+                  {{ component.name }}
+                </div>
+                <it-tag
+                  variant="primary"
+                  filled
+                  class="ml-2"
+                  v-if="component.soon"
+                  >Soon</it-tag
+                >
               </span>
             </NuxtLink>
           </li>
@@ -133,13 +167,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref, computed, onMounted, inject, watch } from 'vue'
 import { clickOutside as vClickoutside } from '@/directives'
-import { IComponentListItem, componentGroup } from '../types'
-import { componentsList } from '../data/components'
-import { useRoute } from 'vue-router'
 import { Emitter } from 'mitt'
-import { TEvents, TTheme } from '../types/Events'
+import { computed, inject, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { componentsList } from '../data/components'
+import { componentGroup, IComponentListItem } from '../types'
+import { TEvents } from '../types/Events'
 
 const route = useRoute()
 const left = ref('inherit')
@@ -148,6 +182,7 @@ const zIndex = ref(0)
 const emitter = inject<Emitter<TEvents>>('emitter')
 const components = ref<IComponentListItem[]>(componentsList)
 const search = ref('')
+const searchPlaceholder = ref('Tooltip')
 
 const componentGroups = computed(() => {
   return Object.values(componentGroup).reduce((el, next) => {
@@ -176,14 +211,46 @@ const componentGroups = computed(() => {
   }, {})
 })
 
+const typeWritePlaceholder = (placeholder: string) => {
+  if (placeholder.length) {
+    const [next, ...last] = placeholder
+    searchPlaceholder.value = searchPlaceholder.value + next
+    setTimeout(() => {
+      typeWritePlaceholder(last.join(''))
+    }, 60)
+  }
+}
+
+onMounted(() => {
+  const placeholdersList = [
+    'Datepicker',
+    'Modal',
+    'Avatar',
+    'Checkbox',
+    'Tooltip',
+    'Button',
+  ]
+  let i = 0
+  setInterval(() => {
+    searchPlaceholder.value = ''
+    typeWritePlaceholder(placeholdersList[i])
+    i = i >= placeholdersList.length - 1 ? 0 : i + 1
+  }, 7000)
+})
+
 emitter?.on('sidebar', (value) => {
-  openSidebar()
+  open.value = !open.value
 })
 
 const openSidebar = () => {
   open.value = true
 }
-const closeSidebar = () => {
+const closeSidebar = (e: Event) => {
+  if (
+    e.target.id === 'menuBtn' ||
+    document.getElementById('menuBtn').contains(e.target)
+  )
+    return
   open.value = false
 }
 
@@ -199,66 +266,3 @@ function hideSidebar() {
   zIndex.value = 0
 }
 </script>
-
-<style lang="less">
-.sidebar {
-  &-menu {
-    li.group-title {
-      color: #131313;
-      padding: 16px 0px 5px 30px;
-      font-weight: 600;
-      font-size: 1rem;
-
-      &-high {
-        color: #131313;
-        padding: 20px 0px 5px 30px;
-        font-weight: 600;
-        font-size: 1rem;
-        letter-spacing: 1px;
-      }
-    }
-  }
-
-  .burger {
-    display: none;
-    position: absolute;
-    right: -33px;
-    top: 8px;
-    z-index: 9999999;
-  }
-}
-
-.active-menu-item {
-  font-weight: 500;
-  transition: all 0.3s;
-
-  > a {
-    color: #131313 !important;
-    &:hover {
-      transform: none !important;
-    }
-  }
-
-  span {
-    @apply rounded;
-    @apply p-2;
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 6px,
-      rgba(50, 50, 93, 0.1) 0px 7px 14px, rgba(50, 50, 93, 0.05) 0px 0px 0px 1px;
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  .sidebar {
-    left: -15rem !important;
-
-    &-menu {
-      height: 93%;
-    }
-  }
-
-  .burger {
-    display: block !important;
-  }
-}
-</style>

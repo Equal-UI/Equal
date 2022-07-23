@@ -21,17 +21,6 @@
     </div>
 
     <div>
-      <h3>Icon</h3>
-
-      <it-icon
-        name="info"
-        box
-        variant="test"
-        :variants="{ test: { box: 'bg-blue-600 text-white' } }"
-      />
-    </div>
-
-    <div>
       <h3>Colorpicker</h3>
 
       <it-popover borderless>
@@ -97,13 +86,13 @@
         <it-button>Primary</it-button>
       </it-badge>
       <it-badge variant="danger" point>
-        <it-button icon="mail_outline"></it-button>
+        <it-button></it-button>
       </it-badge>
       <it-badge variant="success" point>
-        <it-button icon="thumb_up"></it-button>
+        <it-button></it-button>
       </it-badge>
       <it-badge variant="warning" point>
-        <it-button icon="error_outline"></it-button>
+        <it-button></it-button>
       </it-badge>
     </div>
 
@@ -381,10 +370,10 @@
       <it-button @click="$Message({ text: 'Primary message' })"
         >Default</it-button
       >
-      <it-button @click="$Message.warning({ text: 'Warnning message' })"
+      <it-button @click="$Message({ text: 'Warnning message' })"
         >Warning</it-button
       >
-      <it-button @click="$Message.danger({ text: 'Danger message' })"
+      <it-button @click="$Message({ text: 'Danger message' })"
         >Danger</it-button
       >
     </div>

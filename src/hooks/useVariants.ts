@@ -3,15 +3,11 @@ import {
   CSSClasses,
   CSSClassKeyValuePair,
   CSSRawClassesList,
-  WithVariantProps,
 } from './../types/variant'
 import { EqualUIConfiguration } from '@/types/variant'
 import { inject } from 'vue'
 import { Components } from '@/models/enums'
-import {
-  parseVariantWithClassesList,
-  VariantJSWithClassesListProps,
-} from '@/helpers/getVariantProps'
+import { VariantJSWithClassesListProps } from '@/helpers/getVariantProps'
 
 export const selectClasses = (
   classesObject: CSSClassKeyValuePair,

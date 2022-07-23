@@ -9,7 +9,6 @@
         :disabled="checkboxDisabled"
         :variant="checkboxType"
         :pulse="checkboxPulse"
-        :icon="checkboxIcon"
         :label="checkboxLabel"
       >
         <template #sublabel>{{ checkboxSubLabel }}</template>
@@ -102,39 +101,6 @@
       </div>
     </Box>
 
-    <Box :code="codeIcon" title="Icon">
-      <it-checkbox
-        v-model="iconsCheck"
-        variant="primary"
-        label="Primary"
-        icon="visibility"
-      />
-      <it-checkbox
-        v-model="iconsCheck"
-        variant="success"
-        label="Success"
-        icon="room"
-      />
-      <it-checkbox
-        v-model="iconsCheck"
-        variant="danger"
-        label="Danger"
-        icon="favorite"
-      />
-      <it-checkbox
-        v-model="iconsCheck"
-        variant="warning"
-        label="Warning"
-        icon="alarm_on"
-      />
-      <it-checkbox
-        v-model="iconsCheck"
-        variant="neutral"
-        label="Neutral"
-        icon="refresh"
-      />
-    </Box>
-
     <Box :code="codePulse" title="Pulse">
       <template #description>
         <p class="mx-6">Pulse helps you to catch user's attention</p>
@@ -187,12 +153,6 @@ export default defineComponent({
 <it-checkbox ||| variant="warning" ||| label="Warning" v-model="typesCheck" />
 <it-checkbox ||| variant="neutral" ||| label="Neutral" v-model="typesCheck" />`,
 
-    codeIcon: `<it-checkbox variant="primary" label="Primary" ||| icon="visibility" ||| v-model="iconsCheck" />
-<it-checkbox variant="success" label="Success" ||| icon="room" ||| v-model="iconsCheck" />
-<it-checkbox variant="danger" label="Danger" ||| icon="favorite" ||| v-model="iconsCheck" />
-<it-checkbox variant="warning" label="Warning" ||| icon="alarm_on" ||| v-model="iconsCheck" />
-<it-checkbox variant="neutral" label="Neutral" ||| icon="refresh" ||| v-model="iconsCheck" />`,
-
     codePulse: `<it-checkbox variant="primary" pulse label="Look at me" v-model="pulseValue" />`,
 
     codeLine: `<it-checkbox variant="primary" label="It's time" v-model="lineCheck0" ||| line-through |||/>
@@ -228,13 +188,6 @@ export default defineComponent({
         default: '',
         values: [],
         description: 'Sub label of the checkbox',
-      },
-      {
-        property: 'icon',
-        type: ['String'],
-        default: 'check',
-        values: ['Material Icons'],
-        description: 'Icon of the checkbox',
       },
       {
         property: 'line-through',

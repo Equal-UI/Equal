@@ -25,6 +25,7 @@
         <p class="mx-6">You can use directive for tooltips</p>
       </template>
       <div class="flex flex-col items-center space-y-2">
+        <it-button v-tooltip="withSlot">With slot</it-button>
         <it-button v-tooltip="{ content: 'Top tooltip' }">Top</it-button>
         <div class="flex items-center space-x-8">
           <it-button v-tooltip="{ position: 'left', content: 'Left tooltip' }">
@@ -207,5 +208,10 @@ export default defineComponent({
       },
     ],
   }),
+  setup() {
+    const withSlot = { content: 'Top tooltip', children: h('h1', {}, 'EPTA') }
+
+    return { withSlot: withSlot }
+  },
 })
 </script>

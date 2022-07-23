@@ -12,12 +12,11 @@
     :disabled="disabled"
   >
     <span :style="{ opacity: loading ? 0 : 1 }" :class="variant.text">
-      <slot name="icon">
-        <it-icon v-if="icon" class="it-btn-icon" :name="icon" />
-      </slot>
+      <slot name="icon"> </slot>
       <span v-if="$slots.default">
         <slot />
       </span>
+      <slot name="icon-after"> </slot>
     </span>
     <it-spinner
       variant="$"
@@ -31,7 +30,6 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import ItIcon from '@/components/icon'
 import ItSpinner from '@/components/spinner'
 import { Components, Sizes } from '@/models/enums'
 import { useVariants } from '@/hooks/useVariants'
@@ -44,7 +42,6 @@ import { ITButtonOptions } from '@/types/components/components'
 export default defineComponent({
   name: Components.ITButton,
   components: {
-    ItIcon,
     ItSpinner,
   },
   props: {

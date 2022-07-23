@@ -10,7 +10,6 @@
         :pulse="buttonPulse"
         :loading="buttonLoading"
         :disabled="buttonDisabled"
-        :icon="buttonIconValue"
         :block="buttonBlock"
         :size="buttonSize"
         >{{ buttonText }}</it-button
@@ -95,16 +94,97 @@
       <it-button size="big">Button</it-button>
     </Box>
     <Box :code="codeIcon" title="With icon">
-      <it-button icon="face">Button</it-button>
-      <it-button icon="face" />
-      <it-button icon="face" icon-after>Button</it-button>
+      <it-button
+        ><template #icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            /></svg></template
+        >Button</it-button
+      >
+      <it-button
+        ><template #icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            /></svg></template
+      ></it-button>
+      <it-button
+        >Button
+        <template #icon-after>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            />
+          </svg>
+        </template>
+      </it-button>
     </Box>
     <Box :code="toggleCode" title="Toggle">
       <it-button
-        :icon="following ? 'done' : 'person'"
         :variant="following ? 'primary' : 'neutral'"
         @click="following = !following"
-        >{{ following ? 'Following' : 'Follow' }}</it-button
+      >
+        <template #icon-after>
+          <svg
+            v-if="following"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          <svg
+            v-else
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            />
+          </svg>
+        </template>
+        {{ following ? 'Following' : 'Follow' }}</it-button
       >
     </Box>
     <Box :code="codeLoading" title="Loading">

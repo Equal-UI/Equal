@@ -17,8 +17,7 @@
       @click="selectValue(i)"
     >
       <slot :name="option">
-        <span v-if="!icons">{{ option }}</span>
-        <it-icon v-else :name="String(option)" />
+        <span>{{ option }}</span>
       </slot>
     </div>
     <div
@@ -41,13 +40,9 @@ import { useVariants } from '@/hooks/useVariants'
 import { Components } from '@/models/enums/Components'
 import { ITToggleOptions } from '@/types/components/components'
 import { computed, defineComponent, PropType, ref } from 'vue'
-import ItIcon from '../icon'
 
 export default defineComponent({
   name: Components.ITToggle,
-  components: {
-    ItIcon,
-  },
   props: {
     ...getVariantPropsWithClassesList<ITToggleOptions>(),
     options: { type: Array as PropType<(string | number)[]>, default: [] },

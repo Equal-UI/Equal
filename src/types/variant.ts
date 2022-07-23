@@ -1,6 +1,5 @@
 import { Components } from '@/models/enums'
 import {
-  ITIconVariants,
   ITTagVariants,
   ITAvatarVariants,
   ITAlertVariants,
@@ -26,6 +25,8 @@ import {
   ITTooltipVariants,
   ITProgressBarVariants,
   ITSelectVariants,
+  ITModalVariants,
+  ITMessageVariants,
 } from './components/components'
 
 export declare type CSSClassKeyValuePair = {
@@ -61,7 +62,6 @@ export interface EqualUIConfiguration {
   [Components.ITAlert]?: ITAlertVariants
   [Components.ITAvatar]?: ITAvatarVariants
   [Components.ITAvatarGroup]?: ITAvatarGroupVariants
-  [Components.ITIcon]?: ITIconVariants
   [Components.ITTabs]?: ITTabsVariants
   [Components.ITTag]?: ITTagVariants
   [Components.ITCollapse]?: ITCollapseVariants
@@ -79,6 +79,8 @@ export interface EqualUIConfiguration {
   [Components.ITButtonGroup]?: ITButtonGroupVariants
   [Components.ITSpinner]?: ITSpinnerVariants
   [Components.ITSlider]?: ITSliderVariants
+  [Components.ITModal]?: ITModalVariants
+  [Components.ITMessage]?: ITMessageVariants
   [Components.ITSwitch]?: ITSwitchVariants
   [Components.ITTextarea]?: ITTextareaVariants
   [Components.ITToggle]?: ITToggleVariants

@@ -6,24 +6,22 @@
       <it-dropdown :clickable="clickable" :placement="dropdownType">
         <it-button>{{ clickable ? 'Click' : 'Hover' }} me</it-button>
         <template #menu>
-          <it-dropdown-menu>
+          <it-dropdown-menu class="w-32">
             <it-dropdown-item>Hello</it-dropdown-item>
             <it-dropdown-item disabled>Disabled</it-dropdown-item>
             <it-dropdown :clickable="clickable" :placement="dropdownType">
-              <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+              <it-dropdown-item nested>Cloud</it-dropdown-item>
 
               <template #menu>
                 <it-dropdown-menu>
                   <it-dropdown-item divided>123123 </it-dropdown-item>
                   <it-dropdown :clickable="clickable" :placement="dropdownType">
-                    <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+                    <it-dropdown-item nested>Cloud</it-dropdown-item>
 
                     <template #menu>
                       <it-dropdown-menu>
                         <it-dropdown-item divided>123123 </it-dropdown-item>
-                        <it-dropdown-item icon="cloud"
-                          >rghberhr
-                        </it-dropdown-item>
+                        <it-dropdown-item>rghberhr </it-dropdown-item>
                       </it-dropdown-menu>
                     </template>
                   </it-dropdown>
@@ -53,8 +51,41 @@
           <it-dropdown-menu>
             <it-dropdown-item>Hello</it-dropdown-item>
             <it-dropdown-item disabled>Disabled</it-dropdown-item>
-            <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+            <it-dropdown-item>Cloud</it-dropdown-item>
             <it-dropdown-item divided>Divided</it-dropdown-item>
+          </it-dropdown-menu>
+        </template>
+      </it-dropdown>
+    </Box>
+
+    <Box :code="codeExample" title="Nested">
+      <it-dropdown>
+        <it-button>{{ clickable ? 'Click' : 'Hover' }} me</it-button>
+        <template #menu>
+          <it-dropdown-menu class="w-32">
+            <it-dropdown-item>Hello</it-dropdown-item>
+            <it-dropdown-item disabled>Disabled</it-dropdown-item>
+            <it-dropdown>
+              <it-dropdown-item nested>Cloud</it-dropdown-item>
+
+              <template #menu>
+                <it-dropdown-menu>
+                  <it-dropdown-item divided>123123 </it-dropdown-item>
+                  <it-dropdown>
+                    <it-dropdown-item nested>Cloud</it-dropdown-item>
+
+                    <template #menu>
+                      <it-dropdown-menu>
+                        <it-dropdown-item divided>123123 </it-dropdown-item>
+                        <it-dropdown-item>rghberhr </it-dropdown-item>
+                      </it-dropdown-menu>
+                    </template>
+                  </it-dropdown>
+                </it-dropdown-menu>
+              </template>
+            </it-dropdown>
+            <it-divider />
+            <it-dropdown-item>Divided</it-dropdown-item>
           </it-dropdown-menu>
         </template>
       </it-dropdown>
@@ -93,7 +124,7 @@ export default defineComponent({
   <it-dropdown-menu slot="menu">
     <it-dropdown-item>Hello</it-dropdown-item>
     <it-dropdown-item disabled>Disabled</it-dropdown-item>
-    <it-dropdown-item icon="cloud">Cloud</it-dropdown-item>
+    <it-dropdown-item>Cloud</it-dropdown-item>
     <it-dropdown-item divided>Divided</it-dropdown-item>
   </it-dropdown-menu>
 </it-dropdown>`,

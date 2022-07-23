@@ -1,6 +1,7 @@
 import NotificationVue from './ItNotification.vue'
-import { createApp, ComponentPublicInstance } from 'vue'
-import { Colors, Positions } from '@/models/enums'
+import { createApp, ComponentPublicInstance, VNode, h, reactive } from 'vue'
+import { Positions } from '@/models/enums'
+import { EqualUIConfiguration } from '@/types/variant'
 
 interface INotificationOptions {
   id: number | null
@@ -9,8 +10,6 @@ interface INotificationOptions {
   show: boolean
   type: string
   duration: number
-  icon: string
-  image: string
   placement: string
   emoji: string
   position: {
@@ -20,87 +19,100 @@ interface INotificationOptions {
   [key: string]: any
 }
 
-const notifications: ComponentPublicInstance[] = []
+const notifications: { id: number; component: ComponentPublicInstance }[] = []
 
 let idStart = 0
 
-const Notification = (options: Partial<INotificationOptions> = {}) => {
-  options.placement = options.placement || Positions.TR
-  const onClose = options.onClose
-  const id = idStart++
+const Notification =
+  (config: EqualUIConfiguration) =>
+  (options: Partial<INotificationOptions> = {}, children: VNode) => {
+    options.placement = options.placement || Positions.TR
+    const onClose = options.onClose
+    const id = idStart++
 
-  options.onClose = () => {
-    Notification.close(id, onClose)
-  }
+    options.onClose = () => {
+      Notification.close(id, onClose)
+    }
 
-  const tempDiv = document.createElement('div')
-  const instance = createApp(NotificationVue).mount(tempDiv)
-
-  const newData = Object.assign(options, { id })
-  for (const [key, value] of Object.entries(newData)) {
-    ;(instance.$data as INotificationOptions)[key] = value
-  }
-
-  document.body.appendChild(instance.$el)
-  ;(instance.$data as INotificationOptions).show = true
-
-  const offsets: { [key: string]: number } = {
-    [Positions.TR]: 0,
-    [Positions.TL]: 0,
-    [Positions.BR]: 0,
-    [Positions.BL]: 0,
-  }
-
-  notifications
-    .filter(
-      (el) =>
-        (el.$data as INotificationOptions).placement === options.placement,
+    const newProps = reactive(
+      Object.assign(options, {
+        id,
+        ref: 'elRef',
+        show: false,
+        onShowChange: (val: boolean) => {},
+      }),
     )
-    .forEach((el) => {
-      offsets[options.placement!] += (el.$el as HTMLElement).offsetHeight + 6
+
+    newProps.onShowChange = (val) => {
+      newProps.show = val
+    }
+
+    const tempDiv = document.createElement('div')
+    const instance = createApp({
+      render: () => h(NotificationVue, newProps, () => children),
     })
-  ;(instance.$data as INotificationOptions).position = {
-    [options.placement.split('-')[0]]: offsets[options.placement] + 6,
-    [options.placement.split('-')[1]]: 10,
+    instance.provide('config', config)
+    const mountedInstance = instance.mount(tempDiv)
+    document.body.appendChild(mountedInstance.$el)
+
+    newProps.show = true
+
+    const offsets: { [key: string]: number } = {
+      [Positions.TR]: 0,
+      [Positions.TL]: 0,
+      [Positions.BR]: 0,
+      [Positions.BL]: 0,
+    }
+
+    notifications
+      .filter(
+        (el) =>
+          (el.component.$refs.elRef as INotificationOptions).placement ===
+          options.placement,
+      )
+      .forEach((el) => {
+        offsets[options.placement!] +=
+          (el.component.$el as HTMLElement).offsetHeight + 6
+      })
+    ;(mountedInstance.$refs.elRef as INotificationOptions).position[
+      options.placement.split('-')[0]
+    ] = offsets[options.placement] + 6
+    ;(mountedInstance.$refs.elRef as INotificationOptions).position[
+      options.placement.split('-')[1]
+    ] = 10
+
+    notifications.push({ id, component: mountedInstance })
+
+    return Notification
   }
-
-  notifications.push(instance)
-
-  return instance
-}
 
 Notification.close = (id: number, onClose?: () => void) => {
-  const index = notifications.findIndex(
-    (el) => (el.$data as INotificationOptions).id === id,
-  )
-  const height = (notifications[index].$el as HTMLElement).offsetHeight
+  const index = notifications.findIndex((el) => el.id === id)
+  if (!notifications[index]) {
+    return
+  }
+  const height = (notifications[index].component.$el as HTMLElement)
+    .offsetHeight
   if (onClose) {
     onClose()
   }
+
   notifications
     .filter(
       (el) =>
-        (el.$data as INotificationOptions).placement ===
-        (notifications[index].$data as INotificationOptions).placement,
+        (el.component.$refs.elRef as INotificationOptions).placement ===
+        (notifications[index].component.$refs.elRef as INotificationOptions)
+          .placement,
     )
     .forEach((el) => {
-      const data = el.$data as INotificationOptions
+      const data = el.component.$refs.elRef as INotificationOptions
       if (data.id! > id) {
         const elPlacement = data.placement.split('-')
-        data.position = {
-          [elPlacement[0]]: data.position[elPlacement[0]] - (height + 6),
-          [elPlacement[1]]: 10,
-        }
+        data.position[elPlacement[0]] =
+          data.position[elPlacement[0]] - (height + 6)
       }
     })
   notifications.splice(index, 1)
 }
-;[Colors.PRIMARY, Colors.SUCCESS, Colors.DANGER, Colors.WARNING].forEach(
-  (type) => {
-    // @ts-ignore
-    Notification[type] = (options: INotificationOptions) =>
-      Notification({ ...options, type })
-  },
-)
 
 export default Notification

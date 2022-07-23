@@ -40,13 +40,75 @@
       <it-input v-model="statusValue" variant="warning" message="Warning" />
     </Box>
     <Box :code="codeIcon" title="With icons">
-      <it-input v-model="inputValue" suffix-icon="remove_red_eye" />
-      <it-input v-model="inputValue" prefix-icon="cloud_queue" />
-      <it-input
-        v-model="inputValue"
-        suffix-icon="remove_red_eye"
-        prefix-icon="cloud_queue"
-      />
+      <it-input v-model="inputValue">
+        <template #prefixIcon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            />
+          </svg>
+        </template>
+      </it-input>
+      <it-input v-model="inputValue"
+        ><template #prefixIcon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            /></svg
+        ></template>
+        <template #suffixIcon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            />
+          </svg>
+        </template>
+      </it-input>
+      <it-input v-model="inputValue">
+        <template #suffixIcon>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+            />
+          </svg>
+        </template>
+      </it-input>
     </Box>
     <Box :code="codeSuffix" title="Prefix / suffix">
       <it-input v-model="inputValue" prefix="https://" />

@@ -31,6 +31,7 @@ export const tooltip = (theme: EqualUIConfiguration): Directive => ({
             show,
             content: binding.value.content,
           }),
+          () => binding.value.children,
         ),
     })
     myTooltip.provide('config', theme)

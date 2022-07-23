@@ -51,7 +51,20 @@
       </span>
 
       <slot name="icon" :props="props">
-        <i class="material-icons" :class="variant.inputIcon"> unfold_more </i>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          :class="variant.inputIcon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+          />
+        </svg>
       </slot>
     </div>
 
@@ -151,15 +164,6 @@ export default defineComponent({
 
     const dropdown = ref<HTMLElement>()
 
-    const selectionClasses = computed(() => ({}))
-
-    const dropdownClasses = computed(() => ({
-      [props.placement
-        ? `it-select-dropdown--${props.placement}`
-        : `it-select-dropdown--${Positions.B}`]: true,
-      'it-select-dropdown--divided': props.divided,
-    }))
-
     function outsideHandler(e: Event) {
       if (!show.value) {
         return
@@ -186,8 +190,6 @@ export default defineComponent({
       toggleDropdown,
       selectOption,
       handleKey,
-      selectionClasses,
-      dropdownClasses,
       props,
       EDirections,
       outsideHandler,

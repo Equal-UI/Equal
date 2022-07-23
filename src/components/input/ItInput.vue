@@ -10,13 +10,8 @@
     >
       <div v-if="prefix" :class="variant.affix">{{ prefix }}</div>
       <div :class="variant.inputWrapper">
-        <div
-          v-if="prefixIcon || hasPrefixIconSlot"
-          :class="variant.iconWrapper"
-        >
-          <slot name="prefixIcon">
-            <it-icon :class="variant.icon" :name="prefixIcon" />
-          </slot>
+        <div v-if="hasPrefixIconSlot" :class="variant.iconWrapper">
+          <slot name="prefixIcon"> </slot>
         </div>
         <input
           v-bind="$attrs"
@@ -29,13 +24,8 @@
           @focus="focus = true"
           @blur="focus = false"
         />
-        <div
-          v-if="suffixIcon || hasSuffixIconSlot"
-          :class="variant.iconWrapper"
-        >
-          <slot name="suffixIcon">
-            <it-icon :class="variant.icon" :name="suffixIcon" />
-          </slot>
+        <div v-if="hasSuffixIconSlot" :class="variant.iconWrapper">
+          <slot name="suffixIcon"> </slot>
         </div>
       </div>
       <div v-if="suffix" :class="variant.affix">{{ suffix }}</div>
@@ -72,8 +62,6 @@ export default defineComponent({
     suffix: String,
     message: String,
     mask: Boolean,
-    suffixIcon: String,
-    prefixIcon: String,
     disabled: Boolean,
     modelValue: [String, Number],
   },

@@ -9,7 +9,7 @@
       rounded
       border
       bg-white
-      dark:border-neutral-700 dark:bg-neutral-800
+      dark:border-neutral-700 dark:bg-zinc-800
     "
     :class="{ 'overflow-hidden': overflowHidden }"
   >
@@ -35,6 +35,7 @@
 
     <div
       class="it-box-code relative w-full overflow-auto"
+      v-if="code"
       :style="{
         'max-height': expandHeight,
       }"
@@ -50,12 +51,28 @@
         }"
       >
         <it-button
-          icon="file_copy"
-          class="!absolute top-3 right-3"
+          class="!absolute top-3 right-3 !px-2"
           v-show="!showExpand || showCopy"
           @click="clickCopy"
           v-tooltip="tooltipValue"
-        />
+        >
+          <template #icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+              />
+            </svg>
+          </template>
+        </it-button>
       </transition>
       <prism
         class="border-t border-t-white !pr-14 dark:border-t-gray-600"
@@ -67,10 +84,26 @@
     <it-button
       style="border: none; border-radius: 0px"
       v-if="showExpand"
-      icon="code"
       type="neutral"
       @click="toggleExpand"
-      >{{ expanded ? 'Hide code' : 'Show code' }}</it-button
+    >
+      <template #icon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          />
+        </svg>
+      </template>
+      {{ expanded ? 'Hide code' : 'Show code' }}</it-button
     >
   </div>
 </template>

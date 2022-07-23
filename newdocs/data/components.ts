@@ -12,7 +12,6 @@ export const componentsList = [
     name: 'Getting started',
     icon: 'whatshot',
     icon_outlined: true,
-
     route: '/start',
     examples: 0,
     group: componentGroup.General,
@@ -22,13 +21,6 @@ export const componentsList = [
     icon: 'smart_button',
     route: '/components/button',
     examples: 13,
-    group: componentGroup.Base,
-  },
-  {
-    name: 'Icon',
-    icon: 'insert_emoticon',
-    route: '/components/icon',
-    examples: 3,
     group: componentGroup.Base,
   },
   {
@@ -53,6 +45,15 @@ export const componentsList = [
     route: '/components/colorpicker',
     examples: 3,
     group: componentGroup.Form,
+  },
+  {
+    name: 'Datepicker',
+    icon: 'calendar_month',
+    icon_outlined: true,
+    route: '/components/datepicker',
+    examples: 3,
+    group: componentGroup.Form,
+    soon: true,
   },
   {
     name: 'Input',
@@ -236,5 +237,14 @@ export const componentsList = [
     route: '/components/dropdown',
     examples: 1,
     group: componentGroup.Navigation,
+  },
+  {
+    name: 'Breadcrumbs',
+    icon: 'home',
+    icon_outlined: true,
+    route: '/components/breadcrumbs',
+    examples: 1,
+    group: componentGroup.Navigation,
+    soon: true,
   },
 ]

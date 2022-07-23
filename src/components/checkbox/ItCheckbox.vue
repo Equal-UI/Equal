@@ -10,20 +10,26 @@
         :checked="modelValue"
       />
       <span :class="variant.checkbox">
-        <it-icon
-          :variants="{
-            custom: {
-              root: [
-                variant.checkIcon,
-                {
-                  [variant.checkIconActive]: modelValue,
-                },
-              ],
-            },
-          }"
-          variant="custom"
-          :name="icon"
-        />
+        <div
+          :class="[
+            variant.checkIcon,
+            { [variant.checkIconActive]: modelValue },
+          ]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
       </span>
     </span>
     <span

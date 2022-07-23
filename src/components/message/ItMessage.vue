@@ -1,76 +1,75 @@
 <template>
-  <transition name="fade-bottom" @after-leave="destroy">
+  <transition v-bind="variant.transitions?.fadeToBottom" @after-leave="destroy">
     <div
+      ref="rootRef"
+      :style="{ top: realTop + 'px' }"
       v-show="show"
-      :style="{ top: `${top}px` }"
-      class="it-message"
-      :class="[`it-message--${type}`]"
+      :class="variant.root"
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
     >
-      <it-icon class="it-message-icon" :name="icon || computedIcon" />
-      <span class="it-message-text">{{ text }}</span>
+      <slot>
+        <span>{{ text }}</span>
+      </slot>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-import { Colors } from '@/models/enums'
-import { defineComponent } from 'vue'
-import ItIcon from '../icon'
-
-const typeIcon: { [key in Colors]?: string } = {
-  [Colors.PRIMARY]: 'info_outline',
-  [Colors.SUCCESS]: 'done',
-  [Colors.WARNING]: 'error_outline',
-  [Colors.DANGER]: 'clear',
-}
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { useVariants } from '@/hooks/useVariants'
+import { Components } from '@/models/enums'
+import { ITMessageOptions } from '@/types/components/components'
+import { computed, defineComponent, onMounted, ref } from 'vue'
 
 export default defineComponent({
-  name: 'it-message',
-  components: {
-    'it-icon': ItIcon,
+  name: Components.ITMessage,
+  props: {
+    ...getVariantPropsWithClassesList<ITMessageOptions>(),
+    id: Number,
+    show: Boolean,
+    text: String,
+    duration: { type: Number },
   },
-  data() {
-    return {
-      id: null,
-      show: false,
-      text: '',
-      icon: '',
-      duration: 4000,
-      onClose: () => {},
-      top: 6,
-      type: Colors.PRIMARY,
-      timer: null as unknown as NodeJS.Timeout,
-    }
-  },
-  computed: {
-    computedIcon(): Colors {
-      return typeIcon[this.type] as Colors
-    },
-  },
-  mounted() {
-    this.startTimer()
-  },
-  methods: {
-    destroy() {
-      this.$el.parentNode!.removeChild(this.$el)
-    },
+  setup(props, { emit }) {
+    const variant = computed(() =>
+      useVariants<ITMessageOptions>(Components.ITMessage, props),
+    )
+    const realTop = ref(6)
+    const timer = ref<number | null>(null)
 
-    startTimer() {
-      if (this.duration > 0) {
-        this.timer = setTimeout(() => {
-          this.show = false
-          if (this.onClose) {
-            this.onClose()
-          }
-        }, this.duration)
+    const rootRef = ref<HTMLElement>()
+
+    onMounted(startTimer)
+
+    function startTimer() {
+      if (props.duration && props.duration > 0) {
+        timer.value = setTimeout(() => {
+          emit('showChange', false)
+          emit('close')
+        }, props.duration)
       }
-    },
+    }
 
-    clearTimer() {
-      clearTimeout(this.timer!)
-    },
+    function destroy() {
+      if (rootRef.value) {
+        rootRef.value!.parentNode!.removeChild(rootRef.value)
+      }
+    }
+
+    function clearTimer() {
+      clearTimeout(timer.value as number)
+    }
+
+    return {
+      timer,
+      startTimer,
+      destroy,
+      clearTimer,
+      rootRef,
+      realTop,
+      variant,
+    }
   },
 })
 </script>

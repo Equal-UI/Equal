@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col rounded border bg-white dark:border-zinc-800">
+  <div class="flex flex-col rounded border bg-white dark:border-neutral-700">
     <div class="flex flex-col sm:flex-row">
       <div
         class="

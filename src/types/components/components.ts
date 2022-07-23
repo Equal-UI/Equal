@@ -28,12 +28,6 @@ export interface ITAvatarGroupOptions extends IComponentWithRoot {
 
 export type ITAvatarGroupVariants = WithVariantProps<ITAvatarOptions>
 
-export interface ITIconOptions extends IComponentWithRoot {
-  box?: string
-}
-
-export type ITIconVariants = WithVariantProps<ITIconOptions>
-
 export interface ITSelectOptions extends IComponentWithRoot {
   label?: string
 }
@@ -45,6 +39,24 @@ export interface ITTagOptions extends IComponentWithRoot {
 }
 
 export type ITTagVariants = WithVariantProps<ITTagOptions>
+
+export interface ITMessageOptions extends IComponentWithRoot {
+  box?: string
+}
+
+export type ITMessageVariants = WithVariantProps<ITMessageOptions>
+
+export interface ITNotificationOptions extends IComponentWithRoot {
+  box?: string
+}
+
+export type ITNotificationVariants = WithVariantProps<ITNotificationOptions>
+
+export interface ITModalOptions extends IComponentWithRoot {
+  box?: string
+}
+
+export type ITModalVariants = WithVariantProps<ITModalOptions>
 
 export interface ITLoadingbarOptions extends IComponentWithRoot {}
 

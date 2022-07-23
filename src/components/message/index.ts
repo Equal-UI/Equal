@@ -1,6 +1,6 @@
 import MessageVue from './ItMessage.vue'
-import { createApp, ComponentPublicInstance } from 'vue'
-import { Colors } from '../../models/enums'
+import { createApp, ComponentPublicInstance, h, reactive, VNode } from 'vue'
+import { EqualUIConfiguration } from '@/types/variant'
 
 interface IMessageOptions {
   text?: string | number
@@ -10,67 +10,69 @@ interface IMessageOptions {
   onClose?: () => void
 }
 
-const messageTypes = [
-  Colors.PRIMARY,
-  Colors.SUCCESS,
-  Colors.DANGER,
-  Colors.WARNING,
-]
-
-const messages: ComponentPublicInstance[] = []
+const messages: { id: number; component: ComponentPublicInstance }[] = []
 
 let idStart = 0
 
-const Message = (options: IMessageOptions = {}) => {
-  const onClose = options.onClose
-  const id = idStart++
+const Message =
+  (config: EqualUIConfiguration) =>
+  (options: IMessageOptions = {}, children: VNode) => {
+    const onClose = options.onClose
+    const id = idStart++
 
-  options.onClose = () => {
-    Message.close(id, onClose)
+    options.onClose = () => {
+      Message.close(id, onClose)
+    }
+
+    const lastOffset =
+      messages[messages.length - 1]?.component.$el.offsetTop +
+        messages[messages.length - 1]?.component.$el.offsetHeight || 0
+
+    const newProps = reactive(
+      Object.assign(options, {
+        id,
+        show: false,
+        ref: 'elRef',
+        onShowChange: (val: boolean) => {},
+      }),
+    )
+
+    newProps.onShowChange = (val) => {
+      newProps.show = val
+    }
+
+    const tempDiv = document.createElement('div')
+    const instance = createApp({
+      render: () => h(MessageVue, newProps, () => children),
+    })
+    instance.provide('config', config)
+    const mountedInstance = instance.mount(tempDiv)
+    mountedInstance.$refs.elRef.realTop = lastOffset + 6
+
+    document.body.appendChild(mountedInstance.$el)
+    newProps.show = true
+
+    messages.push({ id, component: mountedInstance })
+
+    return { id, Message }
   }
-
-  const tempDiv = document.createElement('div')
-  const instance = createApp(MessageVue).mount(tempDiv)
-
-  const newData = Object.assign(options, { id })
-  for (const [key, value] of Object.entries(newData)) {
-    instance.$data[key] = value
-  }
-
-  document.body.appendChild(instance.$el)
-  instance.$data.show = true
-
-  let topDist = 0
-
-  messages.forEach((el) => {
-    topDist += (el.$el as HTMLElement).offsetHeight + 6
-  })
-
-  instance.$data.top = topDist + 6
-
-  messages.push(instance)
-
-  return instance
-}
 
 Message.close = (id: number, onClose?: () => void) => {
-  // @ts-ignore
-  const index = messages.findIndex((el) => el.$data.id === id)
-  const height = (messages[index].$el as HTMLElement).offsetHeight
+  const index = messages.findIndex((el) => el.id === id)
+  if (!messages[index]) {
+    return
+  }
+  const height = (messages[index].component.$el as HTMLElement).offsetHeight
+  messages[index].component.$refs.elRef.$emit('showChange', false)
   messages.splice(index, 1)
   if (onClose) {
     onClose()
   }
   messages.forEach((el) => {
-    if (el.$data.id > id) {
-      // @ts-ignore
-      el.top -= height + 6
+    if (el.id > id) {
+      el.component.$refs.elRef.realTop -= height + 6
     }
   })
 }
-
-messageTypes.forEach((type) => {
-  Message[type] = (options: IMessageOptions) => Message({ type, ...options })
-})
 
 export default Message

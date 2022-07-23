@@ -9,19 +9,39 @@
         border-b
         bg-white/60
         py-2
-        px-8
+        px-4
         backdrop-blur-sm
         transition-all
         duration-200
         dark:border-zinc-800 dark:bg-zinc-800/80
-        xl:px-96
+        md:px-14
+        2xl:px-96
       "
     >
       <div class="flex flex-row">
-        <it-button class="flex lg:hidden" icon="menu" @click="openSidebar" />
-        <NuxtLink to="/">
-          <img class="ml-4 w-7" src="/logo.svg" />
-        </NuxtLink>
+        <it-button id="menuBtn" class="flex lg:hidden" @click="openSidebar">
+          <template #icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              /></svg
+          ></template>
+        </it-button>
+        <div class="relative ml-4 flex flex-row">
+          <NuxtLink to="/">
+            <img class="w-7" src="/logo.svg" />
+            <div class="fancybox"></div>
+          </NuxtLink>
+        </div>
       </div>
 
       <div class="w-24">

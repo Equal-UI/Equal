@@ -39,10 +39,25 @@
             <h2>Sign up</h2>
             <it-input
               label-top="Email"
-              prefix-icon="email"
               type="email"
               placeholder="yourmail@gmail.com"
-            />
+            >
+              <template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  /></svg
+              ></template>
+            </it-input>
             <div class="signupmodal-wrap-inputs flex flex-row">
               <div class="flex-1">
                 <it-input label-top="First Name" placeholder="John" />
@@ -53,17 +68,43 @@
             </div>
             <it-input
               label-top="Username"
-              prefix-icon="account_circle"
               placeholder="Unique Username"
               autocomplete="off"
-            />
+              ><template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  /></svg></template
+            ></it-input>
             <it-input
               label-top="Password"
-              prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
               autocomplete="new-password"
-            />
+              ><template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  /></svg></template
+            ></it-input>
             <div class="signupmodal-wrap-checkbox">
               <it-checkbox
                 v-model="signincheckbox"
@@ -74,9 +115,7 @@
               block
               size="big"
               variant="primary"
-              @click="
-                $Message.success({ text: 'Welcome' }), (signinModal = false)
-              "
+              @click="$Message({ text: 'Welcome' }), (signinModal = false)"
               >Sign up</it-button
             >
           </div>
@@ -99,8 +138,7 @@
           <it-button
             variant="danger"
             @click="
-              $Message.success({ text: 'Account deleted' }),
-                (confirmModal = false)
+              $Message({ text: 'Account deleted' }), (confirmModal = false)
             "
             >Delete</it-button
           >
@@ -139,10 +177,25 @@
             <h2>Sign up</h2>
             <it-input
               label-top="Email"
-              prefix-icon="email"
               type="email"
               placeholder="yourmail@gmail.com"
-            />
+            >
+              <template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  /></svg
+              ></template>
+            </it-input>
             <div class="signupmodal-wrap-inputs flex flex-row">
               <div class="flex-1">
                 <it-input label-top="First Name" placeholder="John" />
@@ -153,17 +206,47 @@
             </div>
             <it-input
               label-top="Username"
-              prefix-icon="account_circle"
               placeholder="Unique Username"
               autocomplete="off"
-            />
+            >
+              <template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  /></svg
+              ></template>
+            </it-input>
             <it-input
               label-top="Password"
-              prefix-icon="lock"
               type="password"
               placeholder="Must have at least 6 characters"
               autocomplete="off"
-            />
+            >
+              <template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  /></svg
+              ></template>
+            </it-input>
             <div class="signupmodal-wrap-checkbox">
               <it-button
                 class="w-full"
@@ -1076,7 +1159,6 @@ export default defineComponent({
       <h2>Sign up</h2>
       <it-input
         label-top="Email"
-        prefix-icon="email"
         type="email"
         placeholder="yourmail@gmail.com"
       />
@@ -1090,17 +1172,47 @@ export default defineComponent({
       </div>
       <it-input
         label-top="Username"
-        prefix-icon="account_circle"
         placeholder="Unique Username"
         autocomplete="false"
-      />
+      >
+      <template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  /></svg></template
+            >
+      </it-input>
       <it-input
         label-top="Password"
-        prefix-icon="lock"
         type="password"
         placeholder="Must have at least 6 characters"
         autocomplete="false"
-      />
+      >
+      <template #prefixIcon
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  /></svg></template
+            >
+      </it-input>
       <div class="signupmodal-wrap-checkbox">
         <it-button text variant="primary" block @click="nestedModal = true"
           >Read Terms of Service</it-button
@@ -1193,7 +1305,7 @@ export default defineComponent({
         size="big"
         variant="primary"
         @click="
-          $Message.success({ text: 'Welcome' }), (signinModal = false)
+          $Message({ text: 'Welcome' }), (signinModal = false)
         "
         >Sign up</it-button
       >
@@ -1214,7 +1326,7 @@ export default defineComponent({
     <it-button
       variant="danger"
       @click="
-        $Message.success({ text: 'Account deleted' }),
+        $Message({ text: 'Account deleted' }),
           (confirmModal = false)
       "
       >Delete</it-button

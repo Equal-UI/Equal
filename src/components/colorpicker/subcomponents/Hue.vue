@@ -1,5 +1,13 @@
 <template>
   <div
+    :class="variant.alphaCheckboard"
+    :style="{
+      background:
+        'linear-gradient(90deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)',
+      'box-shadow': 'inset 0 0 0 1px #00000052',
+    }"
+  ></div>
+  <div
     ref="container"
     :class="variant.hueWrap"
     role="slider"
@@ -9,11 +17,6 @@
     @mousedown="handleMouseDown"
     @touchmove="handleChange"
     @touchstart="handleChange"
-    :style="{
-      background:
-        'linear-gradient(90deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)',
-      'box-shadow': 'inset 0 0 0 1px #0000000d',
-    }"
   >
     <div
       :class="variant.huePointer"

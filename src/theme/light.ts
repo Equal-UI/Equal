@@ -48,7 +48,7 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-tag': {
     fixedClasses: {
-      root: 'text-xs flex border rounded px-2 py-1 gap-2 text-gray-900 font-medium inline-flex items-center bg-white leading-none',
+      root: 'text-xs flex border rounded px-1 py-0.5 gap-2 text-gray-900 font-medium inline-flex items-center bg-white leading-none',
       filled: '',
       closeBtn: 'cursor-pointer h-3.5 w-3.5',
     },
@@ -79,8 +79,8 @@ export default <EqualUIConfiguration>(<unknown>{
         'relative flex bg-white items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm shadow-slate-600/10 border-slate-300 rounded-sm',
         'hover:border-blue-600 active:peer-checked:pt-3 active:bg-blue-600/30 active:border-blue-600 peer-checked:border-blue-600 peer-focus-visible:border-blue-600 peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] peer-focus-visible:shadow-blue-600/30',
       ],
-      checkIcon: 'mt-5 opacity-0',
-      checkIconActive: '!mt-0 opacity-100 text-blue-600',
+      checkIcon: 'mt-5 opacity-0 h-full w-full',
+      checkIconActive: '!mt-0 opacity-100 text-blue-600 drop-shadow-sm',
       label:
         "relative flex items-center transition-all before:content-[''] before:absolute before:w-0 before:h-0.5 before:rounded-3xl before:bg-gray-300",
       subLabel: 'text-gray-500',
@@ -214,8 +214,8 @@ export default <EqualUIConfiguration>(<unknown>{
         'py-2 px-5 text-slate-900 shadow-sm shadow-slate-600/10 border border-slate-300 bg-white max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans',
         'focus-visible:border-slate-400 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60 active:bg-gray-100',
       ],
-      outlined: '!bg-transparent hover:bg-transparent active:bg-transparent',
-      text: 'empty:!hidden flex flex-row space-x-2',
+      outlined: '!bg-transparent active:bg-transparent',
+      text: 'empty:!hidden flex flex-row space-x-2 items-center',
       round: 'rounded-3xl',
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base',
@@ -313,7 +313,10 @@ export default <EqualUIConfiguration>(<unknown>{
     fixedClasses: {
       root: '',
       dropdown: 'absolute z-10',
-      item: '',
+      menu: 'rounded bg-white shadow shadow-slate-600/10 border border-slate-300 space-y-1 py-1',
+      item: 'mx-1 px-2 py-1.5 hover:bg-gray-500/10 leading-none rounded flex flex-row justify-between items-center',
+      itemText: 'flex text-sm font-medium items-center',
+      itemIcon: 'mr-2',
     },
     classes: {},
     variants: {},
@@ -336,6 +339,7 @@ export default <EqualUIConfiguration>(<unknown>{
     fixedClasses: {
       root: 'first:rounded-tl first:rounded-tr last:shadow-sm last:rounded-bl last:rounded-br border-r border-l border-t first:border-b-none last:border border-slate-300',
       expanded: '',
+      icon: 'w-5 h-5',
       activator:
         'flex rounded-[inherit] px-4 py-3 bg-gray-50 w-full focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus-visible:shadow-slate-200/60 outline-none justify-between text-sm font-medium',
       body: 'text-sm border-t border-slate-300 px-4 py-4',
@@ -348,7 +352,7 @@ export default <EqualUIConfiguration>(<unknown>{
       root: 'relative w-44 rounded',
       alphaCheckboard: 'absolute inset-0',
       alphaWrap: 'h-full mx-1.5 relative cursor-pointer',
-      hueWrap: 'h-full px-3 relative cursor-pointer',
+      hueWrap: 'h-full mx-1.5 relative cursor-pointer',
       huePointer:
         'absolute rounded-sm h-full w-3.5 shadow-md scale-y-110 -translate-x-1/2 border-2 border-white cursor-ew-resize z-10',
       saturationWrap: 'relative h-32 w-full',
@@ -440,7 +444,7 @@ export default <EqualUIConfiguration>(<unknown>{
         root: '[&>:first-child]:rounded-r-none [&>:last-child]:rounded-l-none [&>*+*]:border-l-0',
       },
       vertical: {
-        root: 'flex-col [&>:first-child]:rounded-b-none [&>:last-child]:rounded-t-none [&>*+*]:border-t-0 [&>:not(:last-child):not(:focus-visible)]:shadow-none',
+        root: 'flex-col [&>:first-child]:rounded-b-none [&>:last-child]:rounded-t-none [&>*+*]:border-t-0 [&>:not(:last-child):not(:focus-visible)]:!shadow-none',
       },
     },
   },
@@ -496,7 +500,7 @@ export default <EqualUIConfiguration>(<unknown>{
       selected: 'flex gap-1 flex-wrap',
       inputDisabled:
         '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed',
-      inputIcon: '!text-base select-none !leading-none',
+      inputIcon: '!text-base select-none !leading-none h-5 w-5',
     },
   },
   'it-input': {
@@ -512,8 +516,8 @@ export default <EqualUIConfiguration>(<unknown>{
       affix: 'flex text-sm items-center justify-center first:pl-2 last:pr-2',
       input:
         'flex-1 min-w-[10px] w-0 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
-      icon: 'text-slate-300 !text-lg',
-      iconWrapper: 'flex px-2 items-center justify-center',
+      // icon: 'text-slate-300 !text-lg',
+      iconWrapper: 'flex px-2 items-center justify-center text-slate-400',
       message: 'text-xs',
     },
     classes: {},
@@ -584,6 +588,30 @@ export default <EqualUIConfiguration>(<unknown>{
       },
     },
   },
+  'it-modal': {
+    fixedClasses: {
+      root: '',
+      mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm',
+      bodyWrapper: 'flex h-full w-full items-center justify-center',
+      body: 'rounded overflow-hidden w-full bg-white cursor-default outline-none',
+      header: 'py-4 px-6 text-md font-medium',
+      content: 'first:pt-4 pb-4 px-6 text-sm overflow-auto',
+      footer: 'flex flex-row justify-end py-4 px-6 space-x-3 bg-slate-50',
+    },
+    variants: {},
+  },
+  'it-message': {
+    fixedClasses: {
+      root: 'z-50 fixed left-1/2 transition-all text-sm -translate-x-1/2 rounded-md bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+    },
+    variants: {},
+  },
+  'it-notification': {
+    fixedClasses: {
+      root: 'fixed z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+    },
+    variants: {},
+  },
   transitions: {
     fade: {
       'enter-active-class': 'duration-75',
@@ -609,35 +637,43 @@ export default <EqualUIConfiguration>(<unknown>{
       'leave-from-class': 'opacity-100 translate-x-0',
       'leave-to-class': 'opacity-0 -translate-x-2',
     },
+    dropToBottom: {
+      'enter-active-class': 'duration-100',
+      'enter-from-class': 'opacity-0 -translate-y-2',
+      'enter-to-class': 'opacity-100 translate-y-0',
+      'leave-active-class': 'duration-100',
+      'leave-from-class': 'opacity-100 translate-y-0',
+      'leave-to-class': 'opacity-0 -translate-y-2',
+    },
     fadeToLeft: {
-      'enter-active-class': 'transition-all duration-200 origin-right',
+      'enter-active-class': 'duration-200 origin-right',
       'enter-from-class': 'opacity-0 scale-0 translate-x-8',
       'enter-to-class': 'opacity-100 scale-100 translate-x-0',
-      'leave-active-class': 'transition-all duration-150 origin-right',
+      'leave-active-class': 'duration-150 origin-right',
       'leave-from-class': 'opacity-100 scale-100 translate-x-0',
       'leave-to-class': 'opacity-0 scale-0 translate-x-4',
     },
     fadeToRight: {
-      'enter-active-class': 'transition-all duration-200 origin-left',
+      'enter-active-class': 'duration-200 origin-left',
       'enter-from-class': 'opacity-0 scale-0 -translate-x-8',
       'enter-to-class': 'opacity-100 scale-100 translate-x-0',
-      'leave-active-class': 'transition-all duration-150 origin-left',
+      'leave-active-class': 'duration-150 origin-left',
       'leave-from-class': 'opacity-100 scale-100 translate-x-0',
       'leave-to-class': 'opacity-0 scale-0 -translate-x-4',
     },
     fadeToTop: {
-      'enter-active-class': 'transition-all duration-200 origin-bottom',
+      'enter-active-class': 'duration-200 origin-bottom',
       'enter-from-class': 'opacity-0 scale-0 translate-y-4',
       'enter-to-class': 'opacity-100 scale-100 translate-y-0',
-      'leave-active-class': 'transition-all duration-150 origin-bottom',
+      'leave-active-class': 'duration-150 origin-bottom',
       'leave-from-class': 'opacity-100 scale-100 translate-y-0',
       'leave-to-class': 'opacity-0 scale-0 translate-y-4',
     },
     fadeToBottom: {
-      'enter-active-class': 'transition-all duration-200 origin-top',
+      'enter-active-class': 'duration-200 origin-top',
       'enter-from-class': 'opacity-0 scale-0 -translate-y-4',
       'enter-to-class': 'opacity-100 scale-100 translate-y-0',
-      'leave-active-class': 'transition-all duration-150 origin-top',
+      'leave-active-class': 'duration-150 origin-top',
       'leave-from-class': 'opacity-100 scale-100 translate-y-0',
       'leave-to-class': 'opacity-0 scale-0 -translate-y-4',
     },

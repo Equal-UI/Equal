@@ -5,9 +5,20 @@
       <it-button
         v-if="!hideControls"
         :disabled="this.disabled || disableController('minus')"
-        icon="remove"
         @click="decrease"
         @mousedown="press('minus')"
+        ><template #icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"
+            /></svg></template
       ></it-button>
 
       <div :class="variant.inputWrapper">
@@ -32,9 +43,20 @@
         v-if="!hideControls"
         :disabled="this.disabled || disableController('plus')"
         type="primary"
-        icon="add"
         @click="increase"
         @mousedown="press('plus')"
+        ><template #icon
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+              clip-rule="evenodd"
+            /></svg></template
       ></it-button>
     </div>
   </div>

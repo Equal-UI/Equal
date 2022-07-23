@@ -16,7 +16,23 @@
       >
         <it-tooltip content="With tooltips">
           <it-badge variant="danger" point>
-            <it-button icon="mail_outline"></it-button>
+            <it-button>
+              <template #icon>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                  />
+                </svg> </template
+            ></it-button>
           </it-badge>
         </it-tooltip>
       </div>
@@ -108,11 +124,13 @@
             <router-link :to="component.route">
               <div class="card-up p-4">
                 <div class="flex">
-                  <it-icon
-                    :outlined="component.icon_outlined"
-                    style="font-size: 24px"
-                    :name="component.icon"
-                  />
+                  <i
+                    class="material-icons mr-2 items-center !text-xl"
+                    :class="{
+                      'material-icons-outlined': component.icon_outlined,
+                    }"
+                    >{{ component.icon }}</i
+                  >
                   <h3 class="ml-2 font-semibold">{{ component.name }}</h3>
                 </div>
                 <div class="mt-2">

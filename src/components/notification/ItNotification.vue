@@ -1,120 +1,134 @@
 <template>
-  <transition name="fade-bottom" @after-leave="destroy">
+  <transition
+    v-bind="variant.transitions?.[placementTransition]"
+    @after-leave="destroy"
+  >
     <div
+      ref="rootRef"
       v-show="show"
       :style="positionPx"
-      class="it-notification"
-      :class="[`it-notification--${type}`]"
+      :class="variant.root"
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
     >
-      <div
-        class="it-notification-left"
-        :style="{
-          'background-image': backgroundImage,
-          'background-color': emoji || image ? '#fdfdfd' : typeColor,
-          'border-right': (emoji || image) && '1px solid #dfdfdf',
-        }"
-      >
-        <it-icon
-          v-if="!image && !emoji"
-          class="it-notification-icon"
-          :name="icon || typeIcon"
-        />
-        <span v-if="emoji && !image" class="it-notification-emoji">{{
-          emoji
-        }}</span>
-      </div>
-      <div class="it-notification-text-block">
-        <span v-if="title" class="it-notification-text-block-title">{{
-          title
-        }}</span>
-        <span>{{ text }}</span>
-      </div>
+      <slot></slot>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { Colors, Positions } from '@/models/enums'
-import ItIcon from '@/components/icon'
-import { typeIcon } from '@/components/message/model'
-
-const colorTypes: { [key in Colors]?: string } = {
-  [Colors.PRIMARY]: '#3051ff',
-  [Colors.SUCCESS]: '#07d85b',
-  [Colors.DANGER]: '#F93155',
-  [Colors.WARNING]: '#ffba00',
-}
+import { computed, defineComponent, onMounted, reactive, ref } from 'vue'
+import { Components, Positions } from '@/models/enums'
+import { useVariants } from '@/hooks/useVariants'
+import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
+import { ITNotificationOptions } from '@/types/components/components'
 
 export default defineComponent({
-  name: 'it-notification',
-  components: {
-    'it-icon': ItIcon,
+  name: Components.ITNotification,
+  props: {
+    ...getVariantPropsWithClassesList<ITNotificationOptions>(),
+    id: Number,
+    show: Boolean,
+    duration: Number,
+    placement: { type: String, default: Positions.TR },
   },
-  data() {
+  setup(props, { emit }) {
+    const variant = computed(() =>
+      useVariants<ITNotificationOptions>(Components.ITNotification, props),
+    )
+    const position = reactive({})
+    const positionPx = computed(() => {
+      return Object.fromEntries(
+        Object.entries(position).map(([key, value]) => [key, value + 'px']),
+      )
+    })
+
+    const timer = ref<number | null>(null)
+    const rootRef = ref<HTMLElement>()
+
+    function destroy() {
+      if (rootRef.value) {
+        rootRef.value!.parentNode!.removeChild(rootRef.value)
+      }
+    }
+
+    const placementTransition = computed(() => {
+      const [first, ...rest] =
+        props.placement.split('-')[0] === 'top' ? 'bottom' : 'top'
+
+      return ['fadeTo', first.toUpperCase(), ...rest].join('')
+    })
+
+    onMounted(startTimer)
+
+    function startTimer() {
+      if (props.duration && props.duration > 0) {
+        timer.value = setTimeout(() => {
+          emit('showChange', false)
+          emit('close')
+        }, props.duration) as any
+      }
+    }
+
+    function clearTimer() {
+      clearTimeout(timer.value as number)
+    }
+
     return {
-      id: null,
-      show: false,
-      text: '',
-      title: '',
-      icon: '',
-      emoji: '',
-      image: '',
-      duration: 5000,
-      position: {} as { [key: string]: string },
-      placement: Positions.TR,
-      type: Colors.PRIMARY,
-      timer: null as unknown as NodeJS.Timeout,
-      onClose: () => {},
+      positionPx,
+      clearTimer,
+      startTimer,
+      destroy,
+      position,
+      variant,
+      placementTransition,
     }
   },
-  computed: {
-    backgroundImage(): string {
-      return this.image ? `url(${this.image})` : ''
-    },
-    typeColor(): string {
-      if (this.emoji) {
-        return '#fbfbfb'
-      }
-      return colorTypes[this.type]!
-    },
-    positionPx() {
-      const posPx: { [key: string]: string } = {}
-      for (const key in this.position) {
-        if (this.position.hasOwnProperty(key)) {
-          posPx[key] = this.position[key] + 'px'
-        }
-      }
-      return posPx
-    },
-    typeIcon(): string {
-      return typeIcon[this.type]!
-    },
-  },
-  mounted() {
-    this.startTimer()
-  },
-  methods: {
-    destroy() {
-      this.$el.parentNode!.removeChild(this.$el)
-    },
+  // data() {
+  //   return {
+  //     id: null,
+  //     show: false,
+  //     text: '',
+  //     duration: 5000,
+  //     position: {} as { [key: string]: string },
+  //     placement: Positions.TR,
+  //     timer: null as unknown as NodeJS.Timeout,
+  //     onClose: () => {},
+  //   }
+  // },
+  // computed: {
+  //   positionPx() {
+  //     const posPx: { [key: string]: string } = {}
+  //     for (const key in this.position) {
+  //       if (this.position.hasOwnProperty(key)) {
+  //         posPx[key] = this.position[key] + 'px'
+  //       }
+  //     }
+  //     return posPx
+  //   },
+  // },
+  // mounted() {
+  //   this.startTimer()
+  // },
+  // methods: {
+  //   destroy() {
+  //     this.$el.parentNode!.removeChild(this.$el)
+  //   },
 
-    startTimer() {
-      if (this.duration > 0) {
-        this.timer = setTimeout(() => {
-          this.show = false
-          if (this.onClose) {
-            this.onClose()
-          }
-        }, this.duration) as any
-      }
-    },
+  //   startTimer() {
+  //     if (this.duration > 0) {
+  //       this.timer = setTimeout(() => {
+  //         this.show = false
+  //         if (this.onClose) {
+  //           this.onClose()
+  //         }
+  //       }, this.duration) as any
+  //     }
+  //   },
 
-    clearTimer() {
-      clearTimeout(this.timer)
-    },
-  },
+  //   clearTimer() {
+  //     clearTimeout(this.timer)
+  //   },
+  // },
 })
 </script>

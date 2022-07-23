@@ -1,5 +1,11 @@
 import { Positions } from '@/models/enums'
-import { computePosition, offset, Placement } from '@floating-ui/dom'
+import {
+  computePosition,
+  offset,
+  shift,
+  Placement,
+  flip,
+} from '@floating-ui/dom'
 import { computed, nextTick, ref, Ref, watch } from 'vue'
 
 export const usePopover = (props: any) => {
@@ -12,7 +18,7 @@ export const usePopover = (props: any) => {
   const transition = computed(() => `fade-${placement.value.split('-')[0]}`)
   const visionTimer = ref<NodeJS.Timeout | null>(null)
   const permanent = ref(false || props.permanent)
-  const autoPosition = ref(props.autoposition)
+  // const autoPosition = ref(props.autoposition) apply shift + flip or not
   const elOffset = ref(props.offset || 8)
 
   // Template Refs
@@ -81,8 +87,12 @@ export const usePopover = (props: any) => {
       return
     }
 
-    const { x, y } = await computePosition(triggerTemp, popoverTemp, {
-      middleware: [offset(elOffset.value)],
+    const {
+      x,
+      y,
+      placement: extPlacement,
+    } = await computePosition(triggerTemp, popoverTemp, {
+      middleware: [offset(elOffset.value), flip(), shift()],
       placement: placement.value as Placement,
     })
 

@@ -3,16 +3,10 @@
     <h1>Message</h1>
 
     <Box :code="messagesCode" title="Message types">
-      <it-button type="primary" @click="showMessage">Primary message</it-button>
-      <it-button type="success" @click="showMessage('success')"
-        >Success message</it-button
-      >
-      <it-button type="danger" @click="showMessage('danger')"
-        >Danger message</it-button
-      >
-      <it-button type="warning" @click="showMessage('warning')"
-        >Warning message</it-button
-      >
+      <div class="flex !w-40 flex-col gap-2">
+        <it-input v-model="messageText" />
+        <it-button type="primary" @click="showMessage">Message</it-button>
+      </div>
     </Box>
 
     <Box :code="durationCode" title="Duration">
@@ -27,37 +21,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import ItTag from '@/components/tag'
 
 export default defineComponent({
   data: () => ({
-    messagesCode:
-      `<it-button @click="showMessage()">Primary message</it-button>
-<it-button @click="showMessage('Success')" type="success">Success message</it-button>
-<it-button @click="showMessage('Danger')" type="danger">Danger message</it-button>
-<it-button @click="showMessage('Warning')" type="warning">Warning message</it-button>
-
-` +
-      `export default {
-  methods: {
-    showMessage(type) {
-      switch (type) {
-        case 'success':
-          this.$Message.success({ text: 'Success message!' })
-          break
-        case 'danger':
-          this.$Message.danger({ text: 'Danger message!' })
-          break
-        case 'warning':
-          this.$Message.warning({ text: 'Success message!' })
-          break
-        default:
-          this.$Message({ text: 'Primary message!' })
-          break
-      }
-    }
-  }
-}`,
-
+    messageText: 'Hello',
+    messagesCode: `<it-button @click="showMessage()">Message</it-button>`,
     durationCode: `<it-button @click="$Message({duration: 5000, text: 'I have 5000ms left'})">5000 ms</it-button>`,
 
     dataSheet: [
@@ -100,21 +69,14 @@ export default defineComponent({
     ],
   }),
   methods: {
-    showMessage(type: string) {
-      switch (type) {
-        case 'success':
-          this.$Message.success({ text: 'Success message!' })
-          break
-        case 'danger':
-          this.$Message.danger({ text: 'Danger message!' })
-          break
-        case 'warning':
-          this.$Message.warning({ text: 'Warning message!' })
-          break
-        default:
-          this.$Message({ text: 'Primary message!' })
-          break
-      }
+    showMessage() {
+      const { id, Message } = this.$Message(
+        { text: this.messageText },
+        // h(ItTag, () => '12312312312223'),
+      )
+      setTimeout(() => {
+        Message.close(id)
+      }, 2000)
     },
   },
 })

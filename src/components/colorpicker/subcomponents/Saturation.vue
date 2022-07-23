@@ -13,7 +13,7 @@
       :style="{
         background:
           'linear-gradient(to top, #000, rgba(0, 0, 0, 0)), linear-gradient(to right, #fff, rgba(255, 255, 255, 0))',
-        'box-shadow': 'inset 0 0 0 1px #0000000d',
+        'box-shadow': 'inset 0 0 0 1px #00000052',
       }"
     ></div>
     <div

@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ItIcon from '@/components/icon'
 
 const exampleOptions = [
   { name: 'New York', value: 'nwrk' },
@@ -37,7 +36,6 @@ const exampleOptions = [
 
 export default defineComponent({
   name: 'SectionSlots',
-  components: { ItIcon },
   data: () => ({
     exampleValue: null,
     exampleOptions: exampleOptions,
@@ -52,7 +50,6 @@ export default defineComponent({
           </template>
           <template v-slot:placeholder="{ props }">
             <div class="items-center" :style="{ display: 'flex' }">
-              <it-icon class="mr-2" name="unfold_more" />
               <span>{{ props.placeholder }} - custom</span>
             </div>
           </template>
