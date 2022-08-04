@@ -41,12 +41,12 @@
       <template #variants> </template>
     </Demobox>
 
-    <Box :code="codeType" title="Type">
+    <Box :code="codeType" title="Variant">
       <it-checkbox v-model="typesCheck" variant="primary" label="Primary" />
       <it-checkbox v-model="typesCheck" variant="success" label="Success" />
       <it-checkbox v-model="typesCheck" variant="danger" label="Danger" />
       <it-checkbox v-model="typesCheck" variant="warning" label="Warning" />
-      <it-checkbox v-model="typesCheck" variant="neutral" label="Neutral" />
+      <it-checkbox v-model="typesCheck" label="default" />
     </Box>
 
     <Box :code="codeLine" title="LineThrough">
@@ -131,7 +131,7 @@ export default defineComponent({
     checkboxSubLabel: '',
     checkboxIcon: 'check',
     checkboxType: 'primary',
-    checkboxTypes: ['primary', 'success', 'danger', 'warning', 'neutral'],
+    checkboxTypes: ['primary', 'success', 'danger', 'warning', 'default'],
 
     typesCheck: true,
     iconsCheck: true,
@@ -151,7 +151,7 @@ export default defineComponent({
 <it-checkbox ||| variant="success" ||| label="Success" v-model="typesCheck" />
 <it-checkbox ||| variant="danger" ||| label="Danger" v-model="typesCheck" />
 <it-checkbox ||| variant="warning" ||| label="Warning" v-model="typesCheck" />
-<it-checkbox ||| variant="neutral" ||| label="Neutral" v-model="typesCheck" />`,
+<it-checkbox label="Default" v-model="typesCheck" />`,
 
     codePulse: `<it-checkbox variant="primary" pulse label="Look at me" v-model="pulseValue" />`,
 
@@ -171,8 +171,8 @@ export default defineComponent({
       {
         property: 'type',
         type: ['String'],
-        default: 'primary',
-        values: ['primary', 'success', 'danger', 'warning', 'neutral'],
+        default: 'default',
+        values: ['primary', 'success', 'danger', 'warning', 'default'],
         description: 'Type of the checkbox',
       },
       {

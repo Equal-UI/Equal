@@ -178,10 +178,11 @@ export default <EqualUIConfiguration>(<unknown>{
     classes: {},
     variants: {
       default: {
-        root: 'focus-visible:border-blue-600 focus-visible:shadow-blue-600/30 border-slate-100 bg-slate-100',
-        value: '[&:not(:first-of-type)]:before:bg-slate-300 text-slate-500',
-        selected: 'text-slate-900',
-        slider: 'bg-white',
+        root: 'focus-visible:border-blue-600 focus-visible:shadow-blue-600/30 border-slate-100 dark:border-zinc-700 bg-slate-100 dark:bg-zinc-700 dark:focus-visible:shadow-slate-200/60',
+        value:
+          '[&:not(:first-of-type)]:before:bg-slate-300 dark:[&:not(:first-of-type)]:before:bg-zinc-600 text-slate-500 dark:text-slate-400',
+        selected: 'text-slate-900 dark:text-zinc-100',
+        slider: 'bg-white dark:bg-zinc-500',
       },
     },
   },
@@ -193,14 +194,14 @@ export default <EqualUIConfiguration>(<unknown>{
     classes: {},
     variants: {
       default: {
-        root: 'bg-gray-200',
+        root: 'bg-gray-200 dark:bg-zinc-600',
       },
     },
   },
   'it-badge': {
     fixedClasses: {
       root: 'relative flex',
-      body: 'text-white text-[10px] rounded-xl px-1.5 leading-4 border border-white inline-block',
+      body: 'text-white text-[10px] rounded-xl px-1.5 leading-4 border border-white dark:border-neutral-800 inline-block',
       square: '!rounded-[5px]',
       point: 'w-3 h-3 !p-0',
       'top-left': 'absolute top-0 left-0 -translate-x-[45%] -translate-y-[45%]',
@@ -247,7 +248,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
     variants: {
       default: {
-        root: 'text-slate-900 shadow-slate-600/10 border-slate-300 bg-white focus-visible:border-slate-400 focus-visible:shadow-slate-200/60 active:bg-gray-100',
+        root: 'text-slate-900 dark:text-slate-200 shadow-slate-600/10 border-slate-300 dark:border-zinc-700 dark:active:border-zinc-600 bg-white dark:bg-zinc-700 focus-visible:border-slate-400 focus-visible:shadow-slate-200/60 dark:focus-visible:shadow-slate-200/60 dark:active:bg-zinc-600 active:bg-gray-100',
       },
       primary: {
         root: [
@@ -336,7 +337,7 @@ export default <EqualUIConfiguration>(<unknown>{
     classes: {},
     variants: {
       default: {
-        body: 'shadow-slate-600/10 border-slate-300 bg-white',
+        body: 'shadow-slate-600/10 dark:text-slate-200 border-slate-300 dark:border-neutral-900 bg-white dark:bg-zinc-700',
       },
     },
   },
@@ -738,36 +739,36 @@ export default <EqualUIConfiguration>(<unknown>{
       'leave-to-class': 'opacity-0 -translate-y-2',
     },
     fadeToLeft: {
-      'enter-active-class': 'duration-200 origin-right',
-      'enter-from-class': 'opacity-0 scale-0 translate-x-8',
+      'enter-active-class': 'duration-150 origin-right',
+      'enter-from-class': 'opacity-0 scale-75 translate-x-2',
       'enter-to-class': 'opacity-100 scale-100 translate-x-0',
       'leave-active-class': 'duration-150 origin-right',
       'leave-from-class': 'opacity-100 scale-100 translate-x-0',
-      'leave-to-class': 'opacity-0 scale-0 translate-x-4',
+      'leave-to-class': 'opacity-0 scale-75 translate-x-2',
     },
     fadeToRight: {
-      'enter-active-class': 'duration-200 origin-left',
-      'enter-from-class': 'opacity-0 scale-0 -translate-x-8',
+      'enter-active-class': 'duration-150 origin-left',
+      'enter-from-class': 'opacity-0 scale-75 -translate-x-2',
       'enter-to-class': 'opacity-100 scale-100 translate-x-0',
       'leave-active-class': 'duration-150 origin-left',
       'leave-from-class': 'opacity-100 scale-100 translate-x-0',
-      'leave-to-class': 'opacity-0 scale-0 -translate-x-4',
+      'leave-to-class': 'opacity-0 scale-75 -translate-x-2',
     },
     fadeToTop: {
-      'enter-active-class': 'duration-200 origin-bottom',
-      'enter-from-class': 'opacity-0 scale-0 translate-y-4',
+      'enter-active-class': 'duration-150 origin-bottom',
+      'enter-from-class': 'opacity-0 scale-75 translate-y-2',
       'enter-to-class': 'opacity-100 scale-100 translate-y-0',
       'leave-active-class': 'duration-150 origin-bottom',
       'leave-from-class': 'opacity-100 scale-100 translate-y-0',
-      'leave-to-class': 'opacity-0 scale-0 translate-y-4',
+      'leave-to-class': 'opacity-0 scale-75 translate-y-2',
     },
     fadeToBottom: {
-      'enter-active-class': 'duration-200 origin-top',
-      'enter-from-class': 'opacity-0 scale-0 -translate-y-4',
+      'enter-active-class': 'duration-150 origin-top',
+      'enter-from-class': 'opacity-0 scale-75 -translate-y-2',
       'enter-to-class': 'opacity-100 scale-100 translate-y-0',
       'leave-active-class': 'duration-150 origin-top',
       'leave-from-class': 'opacity-100 scale-100 translate-y-0',
-      'leave-to-class': 'opacity-0 scale-0 -translate-y-4',
+      'leave-to-class': 'opacity-0 scale-75 -translate-y-2',
     },
   },
 })

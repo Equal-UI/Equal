@@ -96,6 +96,7 @@
     <ul
       class="
         scrollbar
+        dark:scrollbar-dark
         w-full
         overflow-y-auto
         px-6

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col rounded border bg-white dark:border-neutral-700">
+  <div class="flex flex-col rounded border bg-white dark:border-zinc-600">
     <div class="flex flex-col sm:flex-row">
       <div
         class="
@@ -33,8 +33,9 @@
                   class="h-full transition-all duration-100 ease-out"
                   :class="{
                     'fill-yellow-600/40 stroke-yellow-500': theme === 'light',
-                    'fill-gray-600/40 stroke-gray-500': theme !== 'light',
                   }"
+                  stroke="currentColor"
+                  fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="3"
                 >
@@ -50,9 +51,11 @@
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-full transition-all duration-500 ease-out"
                   :class="{
-                    'fill-indigo-600/30 stroke-indigo-600': theme === 'dark',
-                    'fill-gray-600/40 stroke-gray-500': theme !== 'dark',
+                    'fill-indigo-400/30 stroke-indigo-600': theme === 'dark',
+                    'fill-gray-600/40': theme !== 'dark',
                   }"
+                  stroke="currentColor"
+                  fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                 >

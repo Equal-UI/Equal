@@ -33,7 +33,7 @@ const mergeClasses = (...classes: CSSClasses): string =>
     .replace(/  +/g, ' ')
     .trim()
 
-export var useVariants = <T>(
+export let useVariants = <T>(
   name: Components,
   props: VariantJSWithClassesListProps<T> = {},
 ): {

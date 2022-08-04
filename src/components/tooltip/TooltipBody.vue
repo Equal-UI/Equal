@@ -34,7 +34,6 @@ export default defineComponent({
     const variant = computed(
       () => useVariants<ITTooltipOptions>(Components.ITTooltip, props), // TODO: props from directive
     )
-
     const placementTransition = computed(() => {
       const [first, ...rest] = props.placement
       return ['fadeTo', first.toUpperCase(), ...rest].join('')

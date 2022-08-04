@@ -71,10 +71,14 @@ import { useVariants } from '@/hooks/useVariants'
 import { Components } from '@/models/enums'
 import { ITNumberInputOptions } from '@/types/components/components'
 import { defineComponent, watch, ref, nextTick, onMounted, computed } from 'vue'
+import ItButton from '../button'
 
 export default defineComponent({
   name: Components.ITNumberInput,
   inheritAttrs: false,
+  components: {
+    ItButton,
+  },
   props: {
     ...getVariantPropsWithClassesList<ITNumberInputOptions>(),
     resizeOnWrite: Boolean,

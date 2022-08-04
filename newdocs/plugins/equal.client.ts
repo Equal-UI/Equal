@@ -1,5 +1,5 @@
 import Equal from '@'
-import equalConfig from '@/theme/light'
+import equalConfig from '@/theme/full'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const reactiveConfig = reactive(equalConfig)

@@ -149,7 +149,7 @@
     </Box>
     <Box :code="toggleCode" title="Toggle">
       <it-button
-        :variant="following ? 'primary' : 'neutral'"
+        :variant="following ? 'primary' : 'default'"
         @click="following = !following"
       >
         <template #icon-after>
@@ -224,7 +224,7 @@ export default defineComponent({
     buttonBlock: false,
     buttonType: 'primary',
     buttonSize: '',
-    buttonTypes: ['neutral', 'primary', 'success', 'danger', 'warning'],
+    buttonTypes: ['default', 'primary', 'success', 'danger', 'warning'],
     buttonIcon: false,
 
     codeGroups: `<it-button-group>
@@ -279,7 +279,7 @@ export default defineComponent({
     toggleCode: `<it-button
   @click="following = !following"
   :icon="following ? 'done' : 'person'"
-  :variant="following ? 'primary' : 'neutral'"
+  :variant="following ? 'primary' : 'default'"
   >{{ following ? 'Following' : 'Follow' }}</it-button>`,
 
     codeLoading: `<it-button variant="primary" ||| loading |||>Loading</it-button>
@@ -315,8 +315,8 @@ export default defineComponent({
       {
         property: 'Variant',
         type: ['String'],
-        default: 'neutral',
-        values: ['primary', 'success', 'danger', 'warning', 'neutral'],
+        default: 'default',
+        values: ['primary', 'success', 'danger', 'warning', 'default'],
         description: 'Variant of the button',
       },
       {

@@ -20,7 +20,7 @@ export type VariantJSWithClassesListProps<ClassesKeys> = {
   }
   variant?: {
     type: PropType<string | undefined>
-    default: undefined
+    default?: string
   }
 }
 
@@ -49,6 +49,6 @@ export const getVariantPropsWithClassesList = <
   },
   variant: {
     type: String as PropType<string | undefined>,
-    default: undefined,
+    default: 'default',
   },
 })

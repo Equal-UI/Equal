@@ -9,7 +9,7 @@
       rounded
       border
       bg-white
-      dark:border-neutral-700 dark:bg-zinc-800
+      dark:border-zinc-600 dark:bg-zinc-800
     "
     :class="{ 'overflow-hidden': overflowHidden }"
   >

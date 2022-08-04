@@ -34,7 +34,7 @@
       <it-tag variant="warning">Warning</it-tag>
     </Box>
     <Box :code="filledCode" title="Filled">
-      <it-tag>Neutral</it-tag>
+      <it-tag filled>Neutral</it-tag>
       <it-tag variant="primary" filled> Primary</it-tag>
       <it-tag variant="success" filled>Success</it-tag>
       <it-tag variant="danger" filled>Danger</it-tag>
@@ -54,8 +54,8 @@ export default defineComponent({
     tagText: 'Tag',
     tagClosable: false,
     tagFilled: false,
-    tagvariant: 'neutral',
-    tagvariants: ['primary', 'success', 'danger', 'warning', 'neutral'],
+    tagvariant: 'default',
+    tagvariants: ['primary', 'success', 'danger', 'warning', 'default'],
 
     variantsCode: `<it-tag>Neutral</it-tag>
 <it-tag ||| variant="primary" |||>Primary</it-tag>
@@ -63,7 +63,7 @@ export default defineComponent({
 <it-tag ||| variant="danger" |||>Danger</it-tag>
 <it-tag ||| variant="warning" |||>Warning</it-tag>`,
 
-    filledCode: `<it-tag>Neutral</it-tag>
+    filledCode: `<it-tag ||| filled |||>Neutral</it-tag>
 <it-tag variant="primary" ||| filled |||>Primary</it-tag>
 <it-tag variant="success" ||| filled |||>Success</it-tag>
 <it-tag variant="danger" ||| filled |||>Danger</it-tag>

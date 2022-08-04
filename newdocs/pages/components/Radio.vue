@@ -24,7 +24,7 @@
     </Demobox>
 
     <Box :code="typeCode" title="Types">
-      <it-radio v-model="typeValue" name="type" label="Primary" value="00" />
+      <it-radio v-model="typeValue" name="type" label="Default" value="00" />
       <it-radio
         v-model="typeValue"
         name="type"
@@ -50,11 +50,11 @@
 
     <Box :code="codeSublabel" title="Sublabel">
       <div>
-        <it-radio v-model="subradio" variant="primary" :value="1"
+        <it-radio v-model="subradio" :value="1"
           >By signing this I agree with Terms and Conditions</it-radio
         >
         <br />
-        <it-radio v-model="subradio" variant="primary" :value="2">
+        <it-radio v-model="subradio" :value="2">
           <template #default>Subscribe for updates</template>
           <template #sublabel>Get notified when you get updates</template>
         </it-radio>

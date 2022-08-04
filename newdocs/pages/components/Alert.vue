@@ -30,6 +30,7 @@
     </Demobox>
 
     <Box :code="typesCode" title="Type">
+      <it-alert :title="alertTitle" :body="alertBody" />
       <it-alert variant="primary" :title="alertTitle" :body="alertBody" />
       <it-alert variant="success" :title="alertTitle" :body="alertBody" />
       <it-alert variant="danger" :title="alertTitle" :body="alertBody" />

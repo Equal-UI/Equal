@@ -4,27 +4,22 @@
       <slot></slot>
     </span>
 
-    <transition :name="transition">
-      <div
-        v-show="show && !disabled"
-        ref="popover"
-        class="it-tooltip-popper"
-        :class="[placement && `it-tooltip--${placement}`]"
-      >
-        <div
-          class="it-tooltip-content"
-          :class="{
-            'it-tooltip-content--borderless': borderless,
-          }"
-        >
-          <slot name="content"></slot>
-        </div>
-      </div>
-    </transition>
+    <TooltipBody
+      :ref="
+        (el) => {
+          if (el) popover = el.$el
+        }
+      "
+      :show="show"
+      v-bind="$props"
+    >
+      <slot name="content"></slot>
+    </TooltipBody>
   </div>
 </template>
 
 <script lang="ts">
+import TooltipBody from '@/components/tooltip/TooltipBody.vue'
 import { defineComponent } from 'vue'
 import { usePopover } from '@/hooks'
 import { clickOutside } from '@/directives'
@@ -32,6 +27,7 @@ import { Positions } from '@/models/enums'
 
 export default defineComponent({
   name: 'it-popover',
+  components: { TooltipBody },
   directives: {
     clickoutside: clickOutside,
   },
@@ -55,7 +51,6 @@ export default defineComponent({
       transition,
       popover,
       trigger,
-      position,
       hidePopover,
       showPopover,
       setPopoverPosition,
@@ -69,7 +64,6 @@ export default defineComponent({
       transition,
       popover,
       trigger,
-      position,
       hidePopover,
       showPopover,
       setPopoverPosition,

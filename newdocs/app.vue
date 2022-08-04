@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ dark }" class="min-h-screen">
+  <div class="min-h-screen">
     <div class="dark:bg-neutral-800">
       <ItHeader />
       <Sidebar />
@@ -47,5 +47,13 @@ emitter!.on('theme', (theme) => {
 onMounted(() => {
   dark.value = darkModeMediaQuery.matches
   emitter?.emit('theme', dark.value ? 'dark' : 'light')
+})
+
+watch(dark, (newValue, oldValue) => {
+  if (newValue === true && oldValue !== true) {
+    document.body.classList.add('dark')
+    return
+  }
+  document.body.classList.remove('dark')
 })
 </script>

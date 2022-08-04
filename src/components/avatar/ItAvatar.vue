@@ -3,7 +3,7 @@
     :class="[variant.root, { [variant.square]: square || squaredGroup }]"
     :style="rootStyles"
   >
-    <img v-if="$attrs.src" class="it-avatar-img" v-bind="$attrs" />
+    <img v-if="$attrs.src" v-bind="$attrs" />
     <span v-else-if="text" :class="variant.text">{{ avatarText }}</span>
     <svg v-else :class="variant.icon" viewBox="64 64 896 896">
       <path

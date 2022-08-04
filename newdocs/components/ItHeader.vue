@@ -58,9 +58,9 @@
               :class="{
                 'fill-yellow-600/40 stroke-yellow-500':
                   toggleThemeValue === 'light',
-                'fill-gray-600/40 stroke-gray-500':
-                  toggleThemeValue !== 'light',
               }"
+              stroke="currentColor"
+              fill="none"
               viewBox="0 0 24 24"
               stroke-width="3"
             >
@@ -76,10 +76,12 @@
               xmlns="http://www.w3.org/2000/svg"
               class="h-full transition-all duration-500 ease-out"
               :class="{
-                'fill-indigo-600/30 stroke-indigo-600':
+                'fill-indigo-400/30 stroke-indigo-600':
                   toggleThemeValue === 'dark',
-                'fill-gray-600/40 stroke-gray-500': toggleThemeValue !== 'dark',
+                'fill-gray-600/40': toggleThemeValue !== 'dark',
               }"
+              stroke="currentColor"
+              fill="none"
               viewBox="0 0 24 24"
               stroke-width="2"
             >
