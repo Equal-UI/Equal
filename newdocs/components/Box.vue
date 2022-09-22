@@ -17,7 +17,6 @@
     <slot name="description"></slot>
     <div
       class="
-        it-box-scene
         box-border
         flex
         w-full

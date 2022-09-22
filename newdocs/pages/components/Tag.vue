@@ -35,7 +35,7 @@
     </Box>
     <Box :code="filledCode" title="Filled">
       <it-tag filled>Neutral</it-tag>
-      <it-tag variant="primary" filled> Primary</it-tag>
+      <it-tag variant="primary" filled>Primary</it-tag>
       <it-tag variant="success" filled>Success</it-tag>
       <it-tag variant="danger" filled>Danger</it-tag>
       <it-tag variant="warning" filled>Warning</it-tag>

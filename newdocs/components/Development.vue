@@ -12,6 +12,7 @@
         bg-white
         px-4
         py-16
+        dark:border-black dark:bg-zinc-800
       "
     >
       <h1 class="text-center">Magic happens here</h1>

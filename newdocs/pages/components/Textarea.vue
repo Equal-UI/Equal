@@ -22,7 +22,27 @@
         <it-checkbox v-model="textareaDisabled" label="Disabled" />
       </template>
     </Demobox>
-    <Box :code="disabledCode" title="Types">
+    <Box :code="variantsCode" title="Variants">
+      <it-textarea
+        v-model="validValue"
+        :label-top="textareaTopLabel"
+        variant="success"
+        message="Textarea is valid"
+      />
+      <it-textarea
+        v-model="warningValue"
+        :label-top="textareaTopLabel"
+        variant="warning"
+        message="Text has typos"
+      />
+      <it-textarea
+        v-model="dangerValue"
+        :label-top="textareaTopLabel"
+        variant="danger"
+        message="Validation error"
+      />
+    </Box>
+    <Box :code="disabledCode" title="Disabled">
       <it-textarea
         v-model="disabledValue"
         :label-top="textareaTopLabel"
@@ -45,9 +65,30 @@ export default defineComponent({
     textareaDisabled: false,
     textareaValue: '',
     disabledValue: 'This textarea is disabled',
+    validValue: 'This textarea is valid',
+    warningValue: 'Weclome everyone',
+    dangerValue: 'Invalid value',
     textareaResizeWrite: false,
     mask: false,
 
+    variantsCode: `<it-textarea
+  v-model="validValue"
+  label-top="Your textarea"
+ ||| variant="success" |||
+  message="Textarea is valid"
+/>
+<it-textarea
+  v-model="warningValue"
+  label-top="Your textarea"
+ ||| variant="warning" |||
+  message="Text has typos"
+/>
+<it-textarea
+  v-model="dangerValue"
+  label-top="Your textarea"
+ ||| variant="danger" |||
+  message="Validation error"
+/>`,
     disabledCode: `<it-textarea v-model="disabledValue" ||| disabled |||></it-textarea>`,
 
     dataSheet: [

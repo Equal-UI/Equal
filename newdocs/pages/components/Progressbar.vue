@@ -31,21 +31,12 @@
       </template>
     </Demobox>
     <Box :code="infiniteCode" title="Infinite">
-      <div class="heights-progress">
+      <div class="flex w-full flex-col gap-3">
         <it-progressbar infinite />
       </div>
     </Box>
-    <Box :code="heightCode" title="Height">
-      <div class="heights-progress">
-        <it-progressbar :height="3" :progress="progressValue42" />
-        <it-progressbar :height="5" :progress="progressValue42" />
-        <it-progressbar :height="7" :progress="progressValue42" />
-        <it-progressbar :height="10" :progress="progressValue42" />
-        <it-progressbar :height="13" :progress="progressValue42" />
-      </div>
-    </Box>
     <Box :code="tooltipCode" title="Tooltip position">
-      <div class="heights-progress">
+      <div class="flex w-full flex-col gap-3">
         <it-progressbar :progress="progressValue42" />
         <it-progressbar :progress="progressValue42" tooltip="bottom" />
       </div>
@@ -67,12 +58,6 @@ export default defineComponent({
     progressValue42: 42,
 
     infiniteCode: `<it-progressbar ||| infinite ||| />`,
-
-    heightCode: `<it-progressbar :height="3" :progress="progressValue" />
-<it-progressbar :height="5" :progress="progressValue" />
-<it-progressbar :height="7" :progress="progressValue" />
-<it-progressbar :height="10" :progress="progressValue" />
-<it-progressbar :height="13" :progress="progressValue" />`,
 
     tooltipCode: `<it-progressbar :progress="progressValue" />
 <it-progressbar :progress="progressValue" ||| tooltip="bottom" ||| />`,
@@ -117,14 +102,3 @@ export default defineComponent({
   }),
 })
 </script>
-
-<style lang="less">
-.heights-progress {
-  position: relative;
-  width: 100%;
-
-  .it-progress-wrapper + .it-progress-wrapper {
-    margin-top: 30px;
-  }
-}
-</style>

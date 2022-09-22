@@ -86,7 +86,15 @@
         <slot name="props"></slot>
       </div>
     </div>
-    <div v-if="props.name" class="flex-col border-t bg-slate-50">
+    <div
+      v-if="props.name"
+      class="
+        flex-col
+        border-t
+        bg-slate-50
+        dark:border-zinc-600 dark:bg-zinc-800
+      "
+    >
       <it-collapse>
         <it-collapse-item
           :fixedClasses="{
@@ -98,42 +106,137 @@
           <it-tabs>
             <it-tab title="fixedClasses" class="p-5">
               <div v-if="fields" class="space-y-3">
-                <it-input
+                <it-alert
+                  variant="primary"
+                  title="Changes applied here affected everywhere on the website"
+                />
+                <div
+                  class="flex gap-2"
                   v-for="(value, key) of fields.fixedClasses"
                   :key="key"
-                  :label-top="key"
-                  v-model="fields.fixedClasses[key]"
                 >
-                </it-input>
+                  <it-input
+                    :label-top="key"
+                    v-model="fields.fixedClasses[key]"
+                  />
+                  <div class="flex flex-col justify-end">
+                    <it-button
+                      v-tooltip="{ content: 'Refresh to initial' }"
+                      class="mb-px h-8"
+                      @click="setToDefault('fixedClasses', key)"
+                      ><template #icon
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                          /></svg
+                      ></template>
+                    </it-button>
+                  </div>
+                </div>
               </div>
             </it-tab>
             <it-tab title="Classes" class="p-5">
-              <div v-if="fields && fields.classes" class="space-y-3">
-                <it-input
+              <div
+                v-if="fields && Object.keys(fields.classes || {}).length"
+                class="space-y-3"
+              >
+                <it-alert
+                  variant="primary"
+                  title="Changes applied here affected everywhere on the website"
+                />
+                <div
+                  class="flex gap-2"
                   v-for="(value, key) of fields.classes"
                   :key="key"
-                  :label-top="key"
-                  v-model="fields.classes[key]"
                 >
-                </it-input>
+                  <it-input
+                    :key="key"
+                    :label-top="key"
+                    v-model="fields.classes[key]"
+                  />
+                  <div class="flex flex-col justify-end">
+                    <it-button
+                      v-tooltip="{ content: 'Refresh to initial' }"
+                      class="mb-px h-8"
+                      @click="setToDefault('classes', key)"
+                      ><template #icon
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-4 w-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                          /></svg
+                      ></template>
+                    </it-button>
+                  </div>
+                </div>
               </div>
               <div v-else><p>There are no built-in classes</p></div>
             </it-tab>
             <it-tab title="Variants" class="p-5">
-              <div v-if="fields && fields.variants" class="space-y-3">
+              <div
+                v-if="fields && Object.keys(fields.variants).length"
+                class="space-y-3"
+              >
+                <it-alert
+                  variant="primary"
+                  title="Changes applied here affected everywhere on the website"
+                />
                 <it-collapse>
                   <it-collapse-item
-                    :variants="{ $: { body: 'bg-white space-y-3' } }"
-                    variant="$"
                     v-for="(variantValue, variantKey) of fields.variants"
                     :title="variantKey"
                   >
-                    <it-input
-                      v-for="(value, key) of variantValue"
-                      :key="key"
-                      :label-top="key"
-                      v-model="fields.variants[variantKey][key]"
-                    /> </it-collapse-item
+                    <div class="flex flex-col space-y-3">
+                      <div
+                        class="flex gap-2"
+                        v-for="(value, key) of variantValue"
+                        :key="key"
+                      >
+                        <it-input
+                          :label-top="key"
+                          v-model="fields.variants[variantKey][key]"
+                        />
+                        <div class="flex flex-col justify-end">
+                          <it-button
+                            v-tooltip="{ content: 'Refresh to initial' }"
+                            class="mb-px h-8"
+                            @click="setToDefault(variantKey, key, true)"
+                            ><template #icon
+                              ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                                /></svg
+                            ></template>
+                          </it-button>
+                        </div>
+                      </div>
+                    </div> </it-collapse-item
                 ></it-collapse>
               </div>
               <div v-else><p>There are no built-in variants</p></div>
@@ -141,7 +244,6 @@
           </it-tabs>
         </it-collapse-item>
       </it-collapse>
-      <!-- <h2 class="text-lg font-semibold">Customization</h2> -->
     </div>
   </div>
 </template>
@@ -150,6 +252,8 @@
 import { Emitter } from 'mitt'
 import { inject, ref } from 'vue'
 import { TEvents, TTheme } from '../types/Events'
+import { uiConfig } from '../data/symbols'
+import equalConfig from '@/theme/full'
 
 const props = defineProps<{
   name?: string
@@ -161,9 +265,19 @@ emitter?.on('theme', (value) => {
   theme.value = value
 })
 
-const uiconfig = inject('uiconfig', {})
-
+const uiconfig = inject(uiConfig, {})
+const initialUiconfig = Object.create(equalConfig)
 const fields = props.name ? uiconfig[props.name] : {}
+const initialFields = props.name ? initialUiconfig[props.name] : {}
+
+const setToDefault = (outerKey, innerKey, variant = false) => {
+  if (!variant) {
+    fields[outerKey][innerKey] = initialFields[outerKey][innerKey]
+    return
+  }
+  fields.variants[outerKey][innerKey] =
+    initialFields.variants[outerKey][innerKey]
+}
 </script>
 
 <style lang="less"></style>

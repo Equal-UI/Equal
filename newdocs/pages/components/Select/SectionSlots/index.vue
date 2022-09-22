@@ -19,7 +19,7 @@
         </div>
       </template>
       <template v-slot:icon>
-        <img src="/twitter-logo.svg" class="mr-2 h-3" alt srcset />
+        <img src="/twitter-logo.svg" class="h-3" alt srcset />
       </template>
     </it-select>
   </Box>

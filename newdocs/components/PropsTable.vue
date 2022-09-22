@@ -15,7 +15,7 @@
       v-if="dataSheet"
       class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
     >
-      Props <it-tag v-if="tagName">{{ tagName }}</it-tag>
+      Props <it-tag filled v-if="tagName">{{ tagName }}</it-tag>
     </h2>
     <table v-if="dataSheet" class="table">
       <thead class="bg-slate-50 dark:bg-neutral-700">
@@ -41,7 +41,9 @@
               "
               class="flex gap-1"
             >
-              <it-tag v-for="i in col" :key="i">{{ i }}</it-tag>
+              <it-tag filled variant="primary" v-for="i in col" :key="i">{{
+                i
+              }}</it-tag>
             </div>
             <span v-else>{{ col }}</span>
           </td>
