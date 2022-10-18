@@ -97,7 +97,7 @@ export default <EqualUIConfiguration>(<unknown>{
       },
       primary: {
         checkbox:
-          'hover:border-blue-600 active:bg-blue-600/30 peer-checked:bg-blue-600 peer-checked:border-blue-600 active:peer-checked:bg-blue-600',
+          'hover:border-blue-600 active:bg-blue-600/30 peer-checked:bg-blue-600 peer-checked:border-blue-600 active:peer-checked:bg-blue-600 peer-focus-visible:border-blue-600 peer-focus-visible:shadow-blue-600/30',
         checkIcon: '!text-white',
       },
       success: {
@@ -345,7 +345,7 @@ export default <EqualUIConfiguration>(<unknown>{
       root: '',
       dropdown: 'absolute z-10',
       menu: 'rounded shadow border space-y-1 py-1',
-      item: 'mx-1 px-2 py-1.5 leading-none rounded flex flex-row justify-between items-center',
+      item: 'mx-1 px-2 py-1 leading-none rounded flex flex-row justify-between items-center',
       itemText: 'flex text-sm font-medium items-center',
       itemIcon: 'mr-2',
     },
@@ -374,7 +374,7 @@ export default <EqualUIConfiguration>(<unknown>{
   'it-collapse-item': {
     fixedClasses: {
       root: 'first:rounded-tl first:rounded-tr last:shadow-sm last:rounded-bl last:rounded-br border-r border-l border-t first:border-b-none last:border',
-      expanded: '',
+      expanded: '!rounded-b-none',
       icon: 'w-5 h-5',
       activator:
         'flex rounded-[inherit] px-4 py-3 w-full focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] outline-none justify-between text-sm font-medium',
@@ -561,19 +561,21 @@ export default <EqualUIConfiguration>(<unknown>{
       root: 'flex flex-col relative',
       label: 'flex text-sm mb-1',
       input:
-        'flex gap-2 items-center outline-none py-1.5 px-2 text-sm relative rounded border shadow-sm duration-150 transition-all cursor-pointer place-content-between focus:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'flex items-center outline-none py-1.5 px-2 text-sm relative rounded border shadow-sm duration-150 transition-all cursor-pointer place-content-between focus:shadow-[0_1px_1px_0,0_0_0_3px]',
       dropdown: 'absolute z-50 min-w-[130px] w-full top-full mt-2',
       placeholder: 'text-gray-400',
-      list: 'text-sm rounded border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
+      list: 'flex flex-col gap-1 text-sm rounded border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
       selected: 'flex gap-1 flex-wrap',
+      option: 'p-1 rounded cursor-pointer hover:bg-blue-600 hover:text-white',
+      optionSelected: 'rounded bg-blue-600',
       inputDisabled:
         '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed',
-      inputIcon: '!text-base select-none !leading-none h-5 w-5',
+      inputIcon: '!text-base select-none !leading-none h-5 min-w-5',
     },
     variants: {
       default: {
         input:
-          'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 focus:shadow-blue-600/30 [&:focus>svg]:text-blue-600 [&:focus>svg]:transition-all',
+          'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
         list: 'bg-white border-slate-300 shadow-slate-600/10',
       },
     },
@@ -676,12 +678,26 @@ export default <EqualUIConfiguration>(<unknown>{
       },
     },
   },
+  'it-progressbar': {
+    fixedClasses: {
+      root: '',
+      progressBar: 'rounded h-2 w-full overflow-hidden',
+      progressLine: 'rounded h-full relative',
+    },
+    classes: {},
+    variants: {
+      default: {
+        progressBar: 'bg-zinc-200',
+        progressLine: 'bg-blue-600',
+      },
+    },
+  },
   'it-modal': {
     fixedClasses: {
       root: '',
       mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm',
       bodyWrapper: 'flex h-full w-full items-center justify-center',
-      body: 'rounded overflow-hidden w-full bg-white cursor-default outline-none',
+      body: 'relative rounded overflow-hidden w-full bg-white cursor-default outline-none',
       header: 'py-4 px-6 text-md font-medium',
       content: 'first:pt-4 pb-4 px-6 text-sm overflow-auto',
       footer: 'flex flex-row justify-end py-4 px-6 space-x-3',

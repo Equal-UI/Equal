@@ -1,8 +1,8 @@
 <template>
   <div :class="variant.root">
-    <transition v-bind="variant.transitions?.fade">
+    <Transition v-bind="variant.transitions?.fade">
       <div v-show="focus && mask" :class="variant.mask"></div>
-    </transition>
+    </Transition>
     <span v-if="labelTop" :class="variant.labelTop">{{ labelTop }}</span>
     <div
       :class="variant.prefixWrapper"
@@ -30,9 +30,9 @@
       </div>
       <div v-if="suffix" :class="variant.affix">{{ suffix }}</div>
     </div>
-    <transition v-bind="variant.transitions?.fade">
+    <Transition v-bind="variant.transitions?.fade">
       <span v-if="message" :class="variant.message">{{ message }}</span>
-    </transition>
+    </Transition>
   </div>
 </template>
 

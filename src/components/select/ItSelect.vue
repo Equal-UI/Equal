@@ -19,15 +19,16 @@
       @keydown.enter.stop.prevent="handleEnterKey"
       @keydown.space.stop.prevent="handleEnterKey"
     >
-      <span
+      <slot name="icon" :props="props"></slot>
+      <div
         v-if="!multiselect && wrappedValue[trackBy]"
         :class="[variant.selected]"
       >
         <slot name="selected-option" :props="props">
           {{ wrappedValue.name }}
         </slot>
-      </span>
-      <span
+      </div>
+      <div
         v-else-if="multiselect && wrappedValue.length > 0"
         :class="[variant.selected]"
       >
@@ -42,7 +43,7 @@
             >{{ val.name }}</it-tag
           >
         </slot>
-      </span>
+      </div>
 
       <span v-else :class="variant.placeholder">
         <slot name="placeholder" :props="props">
@@ -50,7 +51,7 @@
         </slot>
       </span>
 
-      <slot name="icon" :props="props">
+      <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           :class="variant.inputIcon"
@@ -65,10 +66,10 @@
             d="M8 9l4-4 4 4m0 6l-4 4-4-4"
           />
         </svg>
-      </slot>
+      </div>
     </div>
 
-    <transition name="drop-bottom">
+    <Transition name="drop-bottom">
       <div v-if="show" ref="dropdown" :class="variant.dropdown">
         <ul
           :class="variant.list"
@@ -78,28 +79,33 @@
             v-for="(option, optionIndex) in options"
             :key="optionIndex"
             :ref="(el) => setOptionRef(el, optionIndex)"
-            class="it-select-option"
-            :class="indexFocusedOption === optionIndex && CLASS_SELECTED_OPTION"
+            :class="[
+              {
+                CLASS_SELECTED_OPTION: indexFocusedOption === optionIndex,
+                [variant.optionSelected]:
+                  indexFocusedOption === optionIndex ||
+                  Array.isArray(wrappedValue)
+                    ? wrappedValue.find(
+                        (el) => el[trackBy] === getOptionValue(option),
+                      )
+                    : wrappedValue[trackBy] === getOptionValue(option),
+              },
+              variant.option,
+            ]"
             @click="selectOption(optionIndex)"
           >
             <slot name="option" :props="props" :option="option">
               {{ getOptionName(option) }}
-              <transition name="fade-right">
-                <span
-                  v-if="wrappedValue[trackBy] === getOptionValue(option)"
-                  class="it-select-option-check"
-                />
-              </transition>
             </slot>
           </li>
         </ul>
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
 import { Components, Positions } from '@/models/enums'
 import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'

@@ -19,7 +19,7 @@ export type VariantJSWithClassesListProps<ClassesKeys> = {
     default: undefined
   }
   variant?: {
-    type: PropType<string | undefined>
+    type: PropType<string | string[] | undefined>
     default?: string
   }
 }
@@ -48,7 +48,7 @@ export const getVariantPropsWithClassesList = <
     default: undefined,
   },
   variant: {
-    type: String as PropType<string | undefined>,
+    type: [String, Array] as PropType<string | string[] | undefined>,
     default: 'default',
   },
 })

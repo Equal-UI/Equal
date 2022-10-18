@@ -1,7 +1,7 @@
 <template>
-  <div :class="[variant.root, { [variant.expanded]: active }]">
+  <div :class="variant.root">
     <button
-      :class="variant.activator"
+      :class="[variant.activator, { [variant.expanded]: active }]"
       :aria-expanded="active"
       @click="active = !active"
     >

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <transition v-bind="variant.transitions?.fade">
+    <Transition v-bind="variant.transitions?.fade">
       <div v-show="focus && mask" :class="variant.mask"></div>
-    </transition>
+    </Transition>
     <span v-if="labelTop" :class="variant.label">{{ labelTop }}</span>
     <textarea
       ref="textarea"
@@ -16,6 +16,9 @@
       @focus="focus = true"
       @blur="focus = false"
     ></textarea>
+    <Transition v-bind="variant.transitions?.fade">
+      <span v-if="message" :class="variant.message">{{ message }}</span>
+    </Transition>
   </div>
 </template>
 
@@ -41,6 +44,7 @@ export default defineComponent({
     rows: { type: Number, default: 4 },
     modelValue: String,
     mask: Boolean,
+    message: String,
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {

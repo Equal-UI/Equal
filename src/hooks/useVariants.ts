@@ -43,7 +43,7 @@ export let useVariants = <T>(
     'config',
     {} as EqualUIConfiguration,
   )
-  const globalVariant = config[name]
+  const globalVariant = config[name] // FIXME: Not gonna work with nuxt
 
   let finalResult: {
     transitions?: Record<string, Record<string, string>>
@@ -60,10 +60,17 @@ export let useVariants = <T>(
         result.push(
           // @ts-ignore
           props.classes?.[key] || globalVariant?.classes?.[key],
-          // @ts-ignore
-          props.variants?.[props.variant]?.[key] ||
-            // @ts-ignore
-            globalVariant?.variants?.[props.variant]?.[key],
+          Array.isArray(props.variant)
+            ? props.variant.map(
+                (el) =>
+                  // @ts-ignore
+                  props.variants?.[el]?.[key] ||
+                  globalVariant?.variants?.[el]?.[key],
+              )
+            : // @ts-ignore
+              props.variants?.[props.variant]?.[key] ||
+                // @ts-ignore
+                globalVariant?.variants?.[props.variant]?.[key],
         )
       }
 

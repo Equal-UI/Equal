@@ -1,11 +1,8 @@
 <template>
-  <div class="it-progress-wrapper">
-    <div
-      class="it-progress-bar"
-      :class="[infinite && 'it-progress-bar--infinite']"
-    >
+  <div :class="variant.root">
+    <div :class="variant.progressBar">
       <div
-        class="it-progress-line"
+        :class="[variant.progressLine, { 'inf-load': infinite }]"
         :style="!infinite && { width: `${progress}%` }"
       >
         <div
@@ -69,7 +66,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
 @keyframes infinite-load {
   0% {
     width: 20%;
@@ -83,5 +80,7 @@ export default defineComponent({
 }
 
 .inf-load {
+  overflow: hidden;
+  animation: infinite-load 1s infinite linear;
 }
 </style>
