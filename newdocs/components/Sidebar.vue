@@ -1,22 +1,7 @@
 <template>
   <div
     v-clickoutside="closeSidebar"
-    class="
-      fixed
-      -left-60
-      mt-14
-      flex
-      h-full
-      w-60
-      flex-col
-      border-r
-      bg-white
-      transition-all
-      duration-100
-      dark:border-zinc-800
-      lg:left-0
-      2xl:left-96
-    "
+    class="fixed -left-60 mt-14 flex h-full w-60 flex-col border-r bg-white transition-all duration-100 dark:border-zinc-800 lg:left-0"
     :class="{
       '!left-0 z-[100]': open,
     }"
@@ -94,48 +79,23 @@
       </div>
     </div>
     <ul
-      class="
-        scrollbar
-        dark:scrollbar-dark
-        w-full
-        overflow-y-auto
-        px-6
-        pb-20
-        dark:bg-zinc-900 dark:text-slate-200
-      "
+      class="scrollbar dark:scrollbar-dark w-full overflow-y-auto px-6 pb-20 dark:bg-zinc-900 dark:text-slate-200"
     >
       <template v-for="(item, key) in componentGroups" :key="key">
         <li class="mt-4 mb-2 text-base font-semibold">{{ key }}</li>
         <template v-for="(component, i) in item" :key="i">
           <li
             :class="{
-              'bg-blue-600/10 text-blue-600': $route.path === component.route,
+              'bg-blue-600/10 text-blue-600': route.path === component.route,
             }"
-            class="
-              mb-1
-              flex flex-row
-              rounded
-              text-sm
-              font-medium
-              text-gray-500
-              dark:text-slate-200
-            "
+            class="mb-1 flex flex-row rounded text-sm font-medium text-gray-500 dark:text-slate-200"
             @click="hideSidebar"
           >
             <NuxtLink class="w-full" :to="component.route">
               <span
-                class="
-                  flex
-                  items-center
-                  justify-between
-                  py-1.5
-                  px-3
-                  text-sm
-                  transition-all
-                  hover:pl-4
-                "
+                class="flex items-center justify-between py-1.5 px-3 text-sm transition-all hover:pl-4"
                 :class="{
-                  'hover:text-gray-900': $route.path !== component.route,
+                  'hover:text-gray-900': route.path !== component.route,
                 }"
               >
                 <div class="flex items-center">

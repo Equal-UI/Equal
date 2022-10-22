@@ -2,13 +2,7 @@
   <div class="my-8 flex flex-col">
     <div class="relative flex flex-col items-center py-20">
       <div
-        class="
-          absolute
-          animate-[float_4s_ease-in-out_infinite]
-          transition-all
-          duration-500
-          ease-out
-        "
+        class="absolute animate-[float_4s_ease-in-out_infinite] transition-all duration-500 ease-out"
         :class="{
           'top-1/2 left-1/2 -translate-x-1/2 scale-0 opacity-0': !loaded,
           'top-[10%] left-1/4 -translate-x-1/2': loaded,
@@ -37,14 +31,7 @@
         </it-tooltip>
       </div>
       <div
-        class="
-          absolute
-          animate-[float_3s_ease-in-out_infinite]
-          transition-all
-          delay-100
-          duration-500
-          ease-out
-        "
+        class="absolute animate-[float_3s_ease-in-out_infinite] transition-all delay-100 duration-500 ease-out"
         :class="{
           'top-1/2 left-1/2 -translate-x-1/2 scale-0 opacity-0': !loaded,
           'top-[10%] left-3/4 -translate-x-1/2': loaded,
@@ -57,14 +44,7 @@
         />
       </div>
       <div
-        class="
-          absolute
-          animate-[float_3.5s_ease-in-out_infinite]
-          transition-all
-          delay-100
-          duration-500
-          ease-out
-        "
+        class="absolute animate-[float_3.5s_ease-in-out_infinite] transition-all delay-100 duration-500 ease-out"
         :class="{
           'bottom-1/2 left-1/2 opacity-0': !loaded,
           'bottom-1/2 left-3/4': loaded,
@@ -73,14 +53,7 @@
         <it-switch v-model="switchFloat" />
       </div>
       <div
-        class="
-          absolute
-          w-40
-          animate-[float_4.5s_ease-in-out_infinite]
-          transition-all
-          duration-500
-          ease-out
-        "
+        class="absolute w-40 animate-[float_4.5s_ease-in-out_infinite] transition-all duration-500 ease-out"
         :class="{
           'bottom-1/2 left-1/2 opacity-0': !loaded,
           'bottom-[1%] left-1/2': loaded,
@@ -117,7 +90,9 @@
     <div class="py-6">
       <h1>Components</h1>
 
-      <div v-for="(item, key) in componentGroups" :key="key" class="mb-6">
+      <LandingComponentsBlock />
+
+      <!-- <div v-for="(item, key) in componentGroups" :key="key" class="mb-6">
         <h2>{{ key }}</h2>
         <div class="comps-grid mt-4 grid grid-cols-1 gap-6 lg:grid-cols-3">
           <template v-for="(component, i) in item" :key="i">
@@ -143,8 +118,8 @@
               </div>
             </router-link>
           </template>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>

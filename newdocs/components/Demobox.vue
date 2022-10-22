@@ -1,29 +1,12 @@
 <template>
-  <div class="flex flex-col rounded border bg-white dark:border-zinc-600">
+  <div class="flex flex-col rounded border dark:border-zinc-600">
     <div class="flex flex-col sm:flex-row">
       <div
-        class="
-          flex
-          min-h-[200px]
-          items-center
-          justify-center
-          rounded-tl-sm rounded-bl-sm
-          dark:bg-neutral-800
-          sm:flex-[4]
-        "
+        class="flex min-h-[200px] items-center justify-center rounded-tl-sm rounded-bl-sm dark:bg-neutral-800 sm:flex-[4]"
         :class="{ dark: theme === 'dark' ? true : false }"
       >
         <div
-          class="
-            relative
-            flex
-            h-full
-            w-full
-            items-center
-            justify-center
-            rounded-tl-sm rounded-bl-sm
-            dark:bg-zinc-800
-          "
+          class="relative flex h-full w-full items-center justify-center rounded-tl-sm rounded-bl-sm dark:bg-zinc-800"
         >
           <div class="absolute top-5 right-5 hidden w-32 md:flex">
             <it-toggle v-model="theme" icons round :options="['light', 'dark']">
@@ -72,15 +55,7 @@
         </div>
       </div>
       <div
-        class="
-          flex flex-col
-          space-y-3
-          bg-slate-50
-          px-4
-          py-5
-          dark:bg-zinc-900
-          sm:flex-[2]
-        "
+        class="flex flex-col space-y-3 bg-slate-50 px-4 py-5 dark:bg-zinc-900 sm:flex-[2]"
       >
         <h2 class="text-lg font-semibold">Props</h2>
         <slot name="props"></slot>
@@ -88,23 +63,18 @@
     </div>
     <div
       v-if="props.name"
-      class="
-        flex-col
-        border-t
-        bg-slate-50
-        dark:border-zinc-600 dark:bg-zinc-800
-      "
+      class="flex-col border-t bg-slate-50 dark:border-zinc-600 dark:border-t-gray-600 dark:bg-zinc-800"
     >
       <it-collapse>
         <it-collapse-item
-          :fixedClasses="{
+          :base="{
             root: '!rounded-none border-none',
             body: 'px-0 py-0',
           }"
           title="Customization"
         >
           <it-tabs>
-            <it-tab title="fixedClasses" class="p-5">
+            <it-tab title="Base" class="p-5">
               <div v-if="fields" class="space-y-3">
                 <it-alert
                   variant="primary"
@@ -112,18 +82,15 @@
                 />
                 <div
                   class="flex gap-2"
-                  v-for="(value, key) of fields.fixedClasses"
+                  v-for="(value, key) of fields.base"
                   :key="key"
                 >
-                  <it-input
-                    :label-top="key"
-                    v-model="fields.fixedClasses[key]"
-                  />
+                  <it-input :label-top="key" v-model="fields.base[key]" />
                   <div class="flex flex-col justify-end">
                     <it-button
-                      v-tooltip="{ content: 'Refresh to initial' }"
+                      v-tooltip="{ content: 'Reset to default' }"
                       class="mb-px h-8"
-                      @click="setToDefault('fixedClasses', key)"
+                      @click="setToDefault('base', key)"
                       ><template #icon
                         ><svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +132,7 @@
                   />
                   <div class="flex flex-col justify-end">
                     <it-button
-                      v-tooltip="{ content: 'Refresh to initial' }"
+                      v-tooltip="{ content: 'Reset to default' }"
                       class="mb-px h-8"
                       @click="setToDefault('classes', key)"
                       ><template #icon
@@ -215,7 +182,7 @@
                         />
                         <div class="flex flex-col justify-end">
                           <it-button
-                            v-tooltip="{ content: 'Refresh to initial' }"
+                            v-tooltip="{ content: 'Reset to default' }"
                             class="mb-px h-8"
                             @click="setToDefault(variantKey, key, true)"
                             ><template #icon

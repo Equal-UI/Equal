@@ -50,11 +50,11 @@ export let useVariants = <T>(
   } & CSSRawClassesList<T> = {}
 
   if (globalVariant) {
-    for (let [key, value] of Object.entries(globalVariant.fixedClasses || {})) {
+    for (let [key, value] of Object.entries(globalVariant.base || {})) {
       // @ts-ignore
-      const result = props.fixedClasses?.[key]
+      const result = props.base?.[key]
         ? // @ts-ignore
-          [props.fixedClasses[key]]
+          [props.base[key]]
         : [value]
       if (props.variant) {
         result.push(

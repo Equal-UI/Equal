@@ -12,6 +12,9 @@
     @touchstart="handleChange"
   >
     <div
+      tabindex="0"
+      @keydown.left.prevent="toKeyHandler('left', $event)"
+      @keydown.right.prevent="toKeyHandler('right', $event)"
       :class="variant.huePointer"
       :style="{ left: colors.toRgb().a * 100 + '%' }"
     ></div>
@@ -39,8 +42,14 @@ export default defineComponent({
       useVariants<ITColorpickerOptions>(Components.ITColorpicker, props),
     )
 
-    const { colors, container, handleChange, handleMouseDown, handleMouseUp } =
-      alpha(props, emit)
+    const {
+      colors,
+      container,
+      toKeyHandler,
+      handleChange,
+      handleMouseDown,
+      handleMouseUp,
+    } = alpha(props, emit)
 
     const gradientColor = computed(() => {
       const { r, g, b } = colors.value.toRgb()
@@ -69,6 +78,7 @@ export default defineComponent({
       handleChange,
       handleMouseDown,
       handleMouseUp,
+      toKeyHandler,
       bgStyle,
       variant,
     }

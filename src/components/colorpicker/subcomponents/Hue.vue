@@ -19,8 +19,11 @@
     @touchstart="handleChange"
   >
     <div
+      tabindex="0"
       :class="variant.huePointer"
-      :style="{ left: pointerLeft, 'background-color': cursorColor }"
+      :style="{ left: pointerLeft + '%', 'background-color': cursorColor }"
+      @keydown.left.prevent="toKeyHandler('left', $event)"
+      @keydown.right.prevent="toKeyHandler('right', $event)"
       role="presentation"
     ></div>
   </div>
@@ -46,22 +49,27 @@ export default defineComponent({
       useVariants<ITColorpickerOptions>(Components.ITColorpicker, props),
     )
 
-    const { container, colors, pullDirection, handleChange, handleMouseDown } =
-      hue(props, emit)
+    const {
+      container,
+      pullDirection,
+      toKeyHandler,
+      handleChange,
+      handleMouseDown,
+    } = hue(props, emit)
 
     const pointerLeft = computed(() => {
       if (props.hue === 360 && pullDirection.value === 'right') {
-        return '100%'
+        return 100
       }
-      return (props.hue * 100) / 360 + '%'
+      return (props.hue * 100) / 360
     })
 
     const cursorColor = computed(() => `hsl(${props.hue}, 100%, 50%)`)
 
     return {
       container,
-      colors,
       handleChange,
+      toKeyHandler,
       handleMouseDown,
       cursorColor,
       pointerLeft,

@@ -1,6 +1,6 @@
+import { clamp } from '@/helpers/clamp'
 import { Positions } from '@/models/enums/Positions'
-import { Colord } from 'colord'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 export const hue = (
   props: { [key: string]: any },
@@ -9,14 +9,14 @@ export const hue = (
   const oldHue = ref(0)
   const pullDirection = ref<Positions>(Positions.R)
   const container = ref<HTMLElement | null>(null)
-  const colors = computed(() => {
-    const h = props.hue
-    if (h - oldHue.value > 0) pullDirection.value = Positions.R
-    if (h - oldHue.value < 0) pullDirection.value = Positions.L
-    oldHue.value = h
+  // const colors = computed(() => {
+  //   const h = props.hue
+  //   if (h - oldHue.value > 0) pullDirection.value = Positions.R
+  //   if (h - oldHue.value < 0) pullDirection.value = Positions.L
+  //   oldHue.value = h
 
-    return props.hue
-  })
+  //   return props.hue
+  // })
   function handleChange(e: TouchEvent & MouseEvent, skip: any) {
     !skip && e.preventDefault()
 
@@ -46,6 +46,26 @@ export const hue = (
       emit('change', h)
     }
   }
+
+  function toKeyHandler(side: Positions.L | Positions.R, e: KeyboardEvent) {
+    let newHue = props.hue
+    const amount = e.shiftKey ? 15 : 5
+    switch (side) {
+      case Positions.L:
+        newHue -= amount
+        break
+      case Positions.R:
+        newHue += amount
+        break
+      default:
+        return
+    }
+
+    if (props.hue !== newHue) {
+      emit('change', clamp(newHue, 0, 360))
+    }
+  }
+
   function handleMouseDown(e) {
     handleChange(e, true)
     window.addEventListener('mousemove', handleChange)
@@ -61,8 +81,9 @@ export const hue = (
 
   return {
     container,
-    colors,
+    // colors,
     pullDirection,
+    toKeyHandler,
     handleChange,
     handleMouseDown,
   }

@@ -27,6 +27,11 @@
     ></div>
     <div
       :class="variant.saturationPointer"
+      tabindex="0"
+      @keydown.left.prevent="toKeyHandler('left', $event)"
+      @keydown.right.prevent="toKeyHandler('right', $event)"
+      @keydown.up.prevent="toKeyHandler('up', $event)"
+      @keydown.down.prevent="toKeyHandler('down', $event)"
       :style="{
         top: pointerTop + '%',
         left: pointerLeft + '%',
@@ -61,6 +66,9 @@ export default defineComponent({
       handleChange,
       handleMouseDown,
       handleMouseUp,
+      toKeyHandler,
+      pointerTop,
+      pointerLeft,
     } = saturation(props, emit)
 
     const variant = computed(() =>
@@ -68,8 +76,6 @@ export default defineComponent({
     )
 
     const bgColor = computed(() => `hsl(${props.hue}, 100%, 50%)`)
-    const pointerTop = computed(() => -colors.value.toHsv().v + 100)
-    const pointerLeft = computed(() => colors.value.toHsv().s)
 
     return {
       showTooltip,
@@ -79,6 +85,7 @@ export default defineComponent({
       pointerTop,
       pointerLeft,
       handleChange,
+      toKeyHandler,
       handleMouseDown,
       handleMouseUp,
       variant,

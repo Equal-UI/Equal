@@ -1,3 +1,5 @@
+import { clamp } from '@/helpers/clamp'
+import { Positions } from '@/models/enums/Positions'
 import { computed, ref } from 'vue'
 
 export const alpha = (
@@ -29,11 +31,38 @@ export const alpha = (
     }
 
     if (colors.value.a !== a) {
+      const HSValue = colors.value.toHsv()
       emit('change', {
-        h: colors.value.toHsv().h,
-        s: colors.value.toHsv().s,
-        v: colors.value.toHsv().v,
+        h: HSValue.h,
+        s: HSValue.s,
+        v: HSValue.v,
         a,
+      })
+    }
+  }
+
+  function toKeyHandler(side: Positions.L | Positions.R, e: KeyboardEvent) {
+    let newAlpha = colors.value.toHsv().a
+    const amount = e.shiftKey ? 0.075 : 0.025
+    switch (side) {
+      case Positions.L:
+        newAlpha -= amount
+        break
+      case Positions.R:
+        newAlpha += amount
+        break
+      default:
+        return
+    }
+
+    const clampedValue = clamp(newAlpha, 0, 1)
+    if (colors.value.a !== clampedValue) {
+      const HSValue = colors.value.toHsv()
+      emit('change', {
+        h: HSValue.h,
+        s: HSValue.s,
+        v: HSValue.v,
+        a: clampedValue,
       })
     }
   }
@@ -56,6 +85,7 @@ export const alpha = (
     container,
     handleChange,
     handleMouseDown,
+    toKeyHandler,
     handleMouseUp,
   }
 }

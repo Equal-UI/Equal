@@ -2,7 +2,7 @@ import { EqualUIConfiguration } from '@/types/variant'
 
 export default <EqualUIConfiguration>(<unknown>{
   'it-alert': {
-    fixedClasses: {
+    base: {
       root: 'rounded border flex px-4 py-4',
       title: 'text-sm font-semibold leading-none',
       body: 'text-sm leading-none mt-2.5',
@@ -42,7 +42,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-tag': {
-    fixedClasses: {
+    base: {
       root: 'text-xs flex border rounded px-1 py-0.5 gap-2 font-medium inline-flex items-center leading-none',
       filled: '',
       closeBtn: 'cursor-pointer h-3.5 w-3.5',
@@ -72,7 +72,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-checkbox': {
-    fixedClasses: {
+    base: {
       root: 'relative flex cursor-pointer',
       checkbox: [
         'relative flex bg-white items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm shadow-slate-600/10 border-slate-300 rounded-sm',
@@ -126,7 +126,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-switch': {
-    fixedClasses: {
+    base: {
       root: 'flex cursor-pointer',
       switch:
         'flex bg-slate-300 h-5 transition-all rounded-full relative min-w-[35px] focus-within:shadow-[0_0_0_1px,0_0_0_3px]',
@@ -165,7 +165,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-toggle': {
-    fixedClasses: {
+    base: {
       root: 'select-none min-w-[100px] h-8 flex relative rounded-md transition-all border-[3px] focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] outline-none focus-visible',
       value: [
         '[&:not(:first-of-type)]:before:content-[""] [&:not(:first-of-type)]:before:transition-all [&:not(:first-of-type)]:before:absolute [&:not(:first-of-type)]:before:w-px [&:not(:first-of-type)]:before:top-1 [&:not(:first-of-type)]:before:bottom-1 [&:not(:first-of-type)]:before:left-0',
@@ -186,7 +186,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-divider': {
-    fixedClasses: {
+    base: {
       root: 'w-full h-px',
       vertical: 'relative !w-px !h-4 !inline-block align-middle -top-0.5',
     },
@@ -198,7 +198,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-badge': {
-    fixedClasses: {
+    base: {
       root: 'relative flex',
       body: 'text-white text-[10px] rounded-xl px-1.5 leading-4 border border-white inline-block',
       square: '!rounded-[5px]',
@@ -231,7 +231,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-button': {
-    fixedClasses: {
+    base: {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       outlined: '',
       text: 'empty:!hidden flex flex-row space-x-2 items-center',
@@ -329,7 +329,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-tooltip': {
-    fixedClasses: {
+    base: {
       root: 'absolute z-10',
       body: 'p-2 text-[13px] leading-none shadow border rounded-md',
     },
@@ -341,7 +341,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-dropdown': {
-    fixedClasses: {
+    base: {
       root: '',
       dropdown: 'absolute z-10',
       menu: 'rounded shadow border space-y-1 py-1',
@@ -358,21 +358,21 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-spinner': {
-    fixedClasses: {
+    base: {
       root: 'border-transparent border-r-black bg-transparent animate-spin w-8 h-8 border-4 rounded-full',
     },
     classes: {},
     variants: {},
   },
   'it-collapse': {
-    fixedClasses: {
+    base: {
       root: 'w-full flex flex-col',
     },
     classes: {},
     variants: {},
   },
   'it-collapse-item': {
-    fixedClasses: {
+    base: {
       root: 'first:rounded-tl first:rounded-tr last:shadow-sm last:rounded-bl last:rounded-br border-r border-l border-t first:border-b-none last:border',
       expanded: '!rounded-b-none',
       icon: 'w-5 h-5',
@@ -390,7 +390,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-colorpicker': {
-    fixedClasses: {
+    base: {
       root: 'relative w-44 rounded',
       alphaCheckboard: 'absolute inset-0',
       alphaWrap: 'h-full mx-1.5 relative cursor-pointer',
@@ -401,7 +401,7 @@ export default <EqualUIConfiguration>(<unknown>{
       saturationRoot:
         'absolute inset-0 cursor-pointer border-b-[6px] border-black rounded-t',
       saturationPointer:
-        'absolute rounded-full h-3 w-3 shadow -translate-x-1/2 -translate-y-1/2 border border-white',
+        'absolute rounded-full h-3 w-3 shadow -translate-x-1/2 -translate-y-1/2 border border-white focus-visible:border-2',
       sliderWrap: 'relative h-6 w-full [&:last-child>div]:rounded-b',
       tooltip:
         'w-12 h-12 border border-4 shadow-md border-white absolute rounded-full',
@@ -410,7 +410,7 @@ export default <EqualUIConfiguration>(<unknown>{
     variants: {},
   },
   'it-tabs': {
-    fixedClasses: {
+    base: {
       root: 'flex flex-col',
       bordered: 'border rounded shadow',
       rootVertical: '!flex-row',
@@ -434,10 +434,11 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-textarea': {
-    fixedClasses: {
+    base: {
+      root: 'flex flex-col',
       label: 'flex text-sm mb-1.5',
       textarea:
-        'relative min-h-min appearance-none w-full placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
+        'relative flex-1 min-h-min appearance-none w-full placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
       mask: 'fixed bg-gray-900/40 inset-0 z-50',
     },
     classes: {},
@@ -449,7 +450,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-radio': {
-    fixedClasses: {
+    base: {
       root: 'relative flex cursor-pointer',
       border:
         'relative flex items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm rounded-full peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
@@ -488,7 +489,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-button-group': {
-    fixedClasses: {
+    base: {
       root: 'flex [&>:not(:first-child):not(:last-child)]:rounded-none',
     },
     classes: {},
@@ -502,7 +503,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-avatar': {
-    fixedClasses: {
+    base: {
       root: 'rounded-full flex justify-center items-center overflow-hidden',
       text: 'font-semibold align-middle',
       icon: 'w-1/2 mb-0.5',
@@ -517,7 +518,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-avatar-group': {
-    fixedClasses: {
+    base: {
       root: 'flex [&>div]:border-2 [&>div]:border-white',
       count: 'flex justify-center items-center',
     },
@@ -533,7 +534,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-drawer': {
-    fixedClasses: {
+    base: {
       root: 'inset-0 w-full h-full',
       mask: 'fixed bg-gray-900/60 inset-0 w-full h-full',
       body: 'fixed max-w-[75%] top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
@@ -547,7 +548,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-loading-bar': {
-    fixedClasses: {
+    base: {
       root: 'top-0 left-0 z-50 shadow-sm transition-all',
     },
     variants: {
@@ -557,7 +558,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-select': {
-    fixedClasses: {
+    base: {
       root: 'flex flex-col relative',
       label: 'flex text-sm mb-1',
       input:
@@ -581,7 +582,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-input': {
-    fixedClasses: {
+    base: {
       root: 'flex-1',
       mask: 'fixed inset-0 w-full h-full bg-gray-900/60 z-50',
       labelTop: 'flex text-sm mb-1',
@@ -623,7 +624,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-number-input': {
-    fixedClasses: {
+    base: {
       root: '',
       labelTop: 'flex text-sm mb-1',
       controlsWrapper:
@@ -646,7 +647,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-slider': {
-    fixedClasses: {
+    base: {
       root: 'relative w-full select-none',
       controller:
         'outline-none cursor-ew-resize border-[0.8px] w-[9px] h-[19px] rounded-sm transition-all shadow-sm focus:shadow-[0_1px_1px_0,0_0_0_3px]',
@@ -679,7 +680,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-progressbar': {
-    fixedClasses: {
+    base: {
       root: '',
       progressBar: 'rounded h-2 w-full overflow-hidden',
       progressLine: 'rounded h-full relative',
@@ -693,7 +694,7 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-modal': {
-    fixedClasses: {
+    base: {
       root: '',
       mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm',
       bodyWrapper: 'flex h-full w-full items-center justify-center',
@@ -709,13 +710,13 @@ export default <EqualUIConfiguration>(<unknown>{
     },
   },
   'it-message': {
-    fixedClasses: {
+    base: {
       root: 'z-50 fixed left-1/2 transition-all text-sm -translate-x-1/2 rounded-md bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
     },
     variants: {},
   },
   'it-notification': {
-    fixedClasses: {
+    base: {
       root: 'fixed z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
     },
     variants: {},

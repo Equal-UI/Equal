@@ -39,9 +39,9 @@ describe('suite name', () => {
     `)
   })
 
-  it('Props fixedClasses override global', () => {
+  it('Props base override global', () => {
     const defVariant = useVariants(Components.ITAlert, {
-      fixedClasses: { title: { 'text-xl': true }, icon: ['text-xl'] },
+      base: { title: { 'text-xl': true }, icon: ['text-xl'] },
     })
     expect(defVariant).toMatchInlineSnapshot(`
       {
@@ -55,9 +55,9 @@ describe('suite name', () => {
     `)
   })
 
-  it('Props fixedClasses override global', () => {
+  it('Props base override global', () => {
     const defVariant = useVariants(Components.ITAlert, {
-      fixedClasses: { title: 'text-xl' },
+      base: { title: 'text-xl' },
     })
     expect(defVariant).toMatchInlineSnapshot(`
       {
@@ -74,7 +74,7 @@ describe('suite name', () => {
 
 const deff: EqualUIConfiguration = {
   'it-alert': {
-    fixedClasses: {
+    base: {
       root: 'rounded border flex bg-white px-4 py-5',
       title: 'text-sm font-semibold text-gray-900 leading-none',
       body: 'text-sm text-gray-900 leading-none mt-2.5',
@@ -128,11 +128,11 @@ export var useVariants = <T>(
   let finalResult: CSSRawClassesList<T> = {}
 
   if (globalVariant) {
-    for (let [key, value] of Object.entries(globalVariant.fixedClasses || {})) {
+    for (let [key, value] of Object.entries(globalVariant.base || {})) {
       // @ts-ignore
-      const result = props.fixedClasses?.[key]
+      const result = props.base?.[key]
         ? // @ts-ignore
-          [props.fixedClasses[key]]
+          [props.base[key]]
         : [value]
       if (props.variant) {
         result.push(

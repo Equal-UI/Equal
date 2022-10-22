@@ -10,7 +10,7 @@ export type VariantJSWithClassesListProps<ClassesKeys> = {
     type: PropType<CSSRawClassesList<ClassesKeys>>
     default: undefined
   }
-  fixedClasses?: {
+  base?: {
     type: PropType<CSSRawClassesList<ClassesKeys>>
     default: undefined
   }
@@ -39,7 +39,7 @@ export const getVariantPropsWithClassesList = <
     type: Object as PropType<CSSRawClassesList<ClassesKeys>>,
     default: undefined,
   },
-  fixedClasses: {
+  base: {
     type: Object as PropType<CSSRawClassesList<ClassesKeys>>,
     default: undefined,
   },

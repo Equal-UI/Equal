@@ -1,5 +1,5 @@
 import { clamp } from '@/helpers/clamp'
-import { Colord, HsvaColor } from 'colord'
+import { Colord } from 'colord'
 import { computed, ref } from 'vue'
 
 export const saturation = (
@@ -9,6 +9,9 @@ export const saturation = (
   const showTooltip = ref(false)
   const colors = computed<Colord>(() => props.modelValue)
   const container = ref<HTMLElement | null>(null)
+
+  const pointerTop = computed(() => -colors.value.toHsv().v + 100)
+  const pointerLeft = computed(() => colors.value.toHsv().s)
 
   function handleChange(e: MouseEvent & TouchEvent, skip: boolean) {
     !skip && e.preventDefault()
@@ -42,6 +45,40 @@ export const saturation = (
     })
   }
 
+  function toKeyHandler(
+    side: 'up' | 'right' | 'down' | 'left',
+    e: KeyboardEvent,
+  ) {
+    const { h, s, v, a } = colors.value.toHsv()
+    const amount = e.shiftKey ? 15 : 5
+    let newS = s
+    let newV = v
+    switch (side) {
+      case 'up':
+        newV += amount
+        break
+      case 'down':
+        newV -= amount
+        break
+      case 'left':
+        newS -= amount
+        break
+      case 'right':
+        newS += amount
+        break
+
+      default:
+        return
+        break
+    }
+    emit('change', {
+      h,
+      s: clamp(newS, 0, 100),
+      v: clamp(newV, 0.001, 100),
+      a,
+    })
+  }
+
   function handleMouseDown() {
     window.addEventListener('mousemove', handleChange)
     window.addEventListener('mouseup', handleChange)
@@ -62,8 +99,11 @@ export const saturation = (
     showTooltip,
     colors,
     container,
+    pointerTop,
+    pointerLeft,
     handleChange,
     handleMouseDown,
     handleMouseUp,
+    toKeyHandler,
   }
 }

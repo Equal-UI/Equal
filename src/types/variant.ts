@@ -49,7 +49,7 @@ export declare type CSSRawClassesList<ClassesKeys> = {
 
 export type WithVariantProps<P> = {
   classes?: CSSRawClassesList<P>
-  fixedClasses?: CSSRawClassesList<P>
+  base?: CSSRawClassesList<P>
   variants?: Variants<P>
 } & P
 

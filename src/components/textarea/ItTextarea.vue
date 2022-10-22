@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="variant.root">
     <Transition v-bind="variant.transitions?.fade">
       <div v-show="focus && mask" :class="variant.mask"></div>
     </Transition>
