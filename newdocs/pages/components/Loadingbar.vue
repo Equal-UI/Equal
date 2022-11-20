@@ -20,16 +20,7 @@
         <p>Reading progress example</p>
         <div
           id="scroll-value"
-          class="
-            scrollbar
-            relative
-            h-60
-            w-full
-            overflow-scroll overflow-x-hidden
-            rounded
-            border
-            shadow-sm
-          "
+          class="relative h-60 w-full overflow-scroll overflow-x-hidden rounded border shadow-sm dark:border-zinc-500 dark:bg-slate-800"
         >
           <div class="sticky top-0">
             <it-loading-bar ref="ownloading" />
@@ -137,10 +128,6 @@ export default defineComponent({
     const globalLoading = ref()
     const globalInfinite = ref(false)
 
-    const startLoading = () => {
-      ownloading.value.setProgress(40)
-    }
-
     onMounted(() => {
       setTimeout(() => {
         const scrollZone = document.getElementById('scroll-value')
@@ -154,7 +141,7 @@ export default defineComponent({
       }, 500)
     })
 
-    return { startLoading, ownloading, globalLoading, globalInfinite }
+    return { ownloading, globalLoading, globalInfinite }
   },
 })
 </script>

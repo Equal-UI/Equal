@@ -1,22 +1,19 @@
 <template>
   <span :class="variant.root">
     <slot />
-    <Transition
-      enter-active-class="duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.475)]"
-      enter-from-class="transform scale-0"
-      leave-active-class="duration-200 ease-in]"
-      leave-to-class="transform scale-0"
-    >
+    <Transition v-bind="variant.transitions?.scale">
       <span
         v-if="show"
-        :class="{
-          [variant.body]: true,
-          [variant[position]]: $slots.default,
-          [variant.point]: point,
-          [variant.square]: square,
-        }"
+        :class="[
+          variant.body,
+          {
+            [variant[position]]: $slots.default,
+            [variant.point]: point,
+            [variant.square]: square,
+          },
+        ]"
       >
-        {{ contentValue }}
+        <slot name="content">{{ contentValue }}</slot>
       </span>
     </Transition>
   </span>

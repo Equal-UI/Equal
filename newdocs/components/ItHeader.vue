@@ -1,22 +1,7 @@
 <template>
   <header class="fixed top-0 z-50 h-14 w-full">
     <div
-      class="
-        flex
-        h-14
-        place-content-between
-        items-center
-        border-b
-        bg-white/60
-        py-2
-        px-4
-        backdrop-blur-sm
-        transition-all
-        duration-200
-        dark:border-zinc-800 dark:bg-zinc-800/80
-        md:px-14
-        2xl:px-96
-      "
+      class="flex h-14 place-content-between items-center border-b bg-white/60 py-2 px-4 backdrop-blur-sm transition-all duration-200 dark:border-zinc-800 dark:bg-zinc-800/80 md:px-14 2xl:px-96"
     >
       <div class="flex flex-row">
         <it-button id="menuBtn" class="flex lg:hidden" @click="openSidebar">
@@ -33,8 +18,9 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 d="M4 6h16M4 12h16M4 18h16"
-              /></svg
-          ></template>
+              />
+            </svg>
+          </template>
         </it-button>
         <div class="relative ml-4 flex flex-row">
           <NuxtLink to="/">
@@ -76,7 +62,7 @@
               xmlns="http://www.w3.org/2000/svg"
               class="h-full transition-all duration-500 ease-out"
               :class="{
-                'fill-indigo-400/30 stroke-indigo-600':
+                'fill-indigo-400/30 stroke-blue-800':
                   toggleThemeValue === 'dark',
                 'fill-gray-600/40': toggleThemeValue !== 'dark',
               }"
@@ -100,15 +86,7 @@
 
 <script setup lang="ts">
 import { Emitter } from 'mitt'
-import {
-  computed,
-  defineComponent,
-  inject,
-  onMounted,
-  onUnmounted,
-  ref,
-  watch,
-} from 'vue'
+import { inject, ref, watch } from 'vue'
 import { TEvents, TTheme } from '../types/Events'
 
 const toggleThemeValue = ref<TTheme>('light')

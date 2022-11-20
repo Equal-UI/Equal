@@ -19,11 +19,10 @@
           placeholder="Select variant"
           label-top="Tag variant"
           :options="tagvariants"
-        >
-        </it-select>
+        ></it-select>
         <it-input v-model="tagText" label-top="Tag text" />
-        <it-checkbox v-model="tagFilled" label="Filled" />
-        <it-checkbox v-model="tagClosable" label="Closable" />
+        <it-checkbox variant="primary" v-model="tagFilled" label="Filled" />
+        <it-checkbox variant="primary" v-model="tagClosable" label="Closable" />
       </template>
     </Demobox>
     <Box :code="variantsCode" title="variants">

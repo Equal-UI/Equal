@@ -28,10 +28,18 @@
           placeholder="Select variant"
           label-top="Variant"
           :options="statuses"
-        >
-        </it-select>
-        <it-checkbox v-model="inputMask" label="Mask" />
-        <it-checkbox v-model="inputDisabled" label="Disabled" />
+        ></it-select>
+        <it-checkbox
+          variant="primary"
+          v-model="inputMask"
+          label="Mask"
+          subLabel="Focus on the input to see the mask"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="inputDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
     <Box :code="codeStatus" title="Status">
@@ -58,9 +66,9 @@
           </svg>
         </template>
       </it-input>
-      <it-input v-model="inputValue"
-        ><template #prefixIcon
-          ><svg
+      <it-input v-model="inputValue">
+        <template #prefixIcon>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
             fill="none"
@@ -72,8 +80,9 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-            /></svg
-        ></template>
+            />
+          </svg>
+        </template>
         <template #suffixIcon>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -35,10 +35,13 @@
           label="Line through"
         />
         <it-input v-model="checkboxIcon" label-top="Checkbox icon" />
-        <it-checkbox v-model="checkboxPulse" label="Pulse" />
-        <it-checkbox v-model="checkboxDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="checkboxDisabled"
+          label="Disabled"
+        />
       </template>
-      <template #variants> </template>
+      <template #variants></template>
     </Demobox>
 
     <Box :code="codeType" title="Variant">
@@ -86,9 +89,9 @@
 
     <Box :code="codeSublabel" title="Sublabel">
       <div class="w-3/5">
-        <it-checkbox v-model="lineCheckSub1" variant="primary"
-          >By signing this I agree with Terms and Conditions</it-checkbox
-        >
+        <it-checkbox v-model="lineCheckSub1" variant="primary">
+          By signing this I agree with Terms and Conditions
+        </it-checkbox>
         <br />
         <it-checkbox
           v-model="lineCheckSub2"
@@ -119,8 +122,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useVariants } from '@/hooks/useVariants'
-import { Components } from '@/models/enums'
 
 export default defineComponent({
   data: () => ({

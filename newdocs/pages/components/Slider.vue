@@ -19,9 +19,21 @@
         <it-number-input v-model="sliderMin" label-top="Min" />
         <it-number-input v-model="sliderMax" label-top="Max" />
         <it-number-input v-model="sliderStep" label-top="Step" />
-        <it-checkbox v-model="sliderNumbers" label="Numbers" />
-        <it-checkbox v-model="sliderStepPoints" label="Step points" />
-        <it-checkbox v-model="sliderDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="sliderNumbers"
+          label="Numbers"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="sliderStepPoints"
+          label="Step points"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="sliderDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
     <Box :code="stepCode" title="Step points">

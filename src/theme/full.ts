@@ -8,7 +8,7 @@ export default {
       body: 'text-sm leading-none mt-2.5',
       iconbox: 'p-1.5 rounded',
       icon: 'select-none mr-3.5 text-2xl leading-none',
-      closeIcon: 'select-none cursor-pointer',
+      closeIcon: 'ml-4 select-none cursor-pointer',
     },
     classes: {
       root: 'bg-opacity-5',
@@ -81,10 +81,11 @@ export default {
       checkIcon: 'opacity-0 h-full w-full',
       checkIconActive: '!mt-0 opacity-100 text-blue-600 drop-shadow-sm',
       label:
-        "relative flex items-center transition-all before:content-[''] before:absolute before:w-0 before:h-0.5 before:rounded-3xl before:bg-gray-300",
+        "relative flex items-center transition-all before:content-[''] before:absolute before:w-0 before:h-0.5 before:rounded-3xl before:bg-gray-300 dark:text-white",
       subLabel: 'text-gray-500',
       labelGroup: 'ml-2 flex flex-col space-y-0.5 text-sm',
-      lineThrough: 'text-gray-300 before:w-full before:transition-all',
+      lineThrough:
+        'text-gray-300 dark:text-gray-500 before:w-full before:transition-all',
     },
     classes: {
       checkIconActive: '[text-shadow:0_1px_0_rgba(0,0,0,0.07)]',
@@ -117,9 +118,9 @@ export default {
       },
       disabled: {
         checkbox:
-          'cursor-not-allowed border-gray-300 active:border-gray-300 bg-gray-100 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300 active:!pt-0',
-        checkIcon: '!text-gray-300 [text-shadow:none]',
-        label: 'text-gray-300',
+          'cursor-not-allowed border-gray-300 active:border-gray-300 bg-gray-100 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300 active:!pt-0 dark:!text-zinc-500 dark:!bg-neutral-700 dark:border-neutral-700 dark:peer-checked:border-gray-700',
+        checkIcon: '!text-gray-300 dark:!text-gray-500 [text-shadow:none]',
+        label: 'text-gray-300 dark:text-gray-500',
         subLabel: 'text-gray-300',
         lineThrough: '',
       },
@@ -134,7 +135,7 @@ export default {
       input: 'absolute cursor-pointer inset-0 w-full h-full opacity-0 peer',
       switchCircle:
         'absolute bg-white rounded-full peer-active:peer-enabled:w-5 transition-all top-0.5 h-4 w-4 shadow-sm',
-      label: 'relative flex items-center transition-all',
+      label: 'relative flex items-center transition-all dark:text-white',
       subLabel: 'text-gray-500',
       labelGroup: 'ml-2 flex flex-col space-y-0.5 text-sm',
     },
@@ -238,7 +239,7 @@ export default {
       text: 'empty:!hidden flex flex-row space-x-2 items-center',
       round: 'rounded-3xl',
       small: '!px-3.5 !py-1',
-      big: '!px-7 !py-3.5 text-base',
+      big: '!px-7 !py-3.5 text-base rounded-md',
       empty: '!p-2',
       loading: 'absolute !w-6 !h-6',
     },
@@ -252,10 +253,11 @@ export default {
       },
       primary: {
         root: [
-          'bg-blue-600 shadow-md !shadow-blue-600/40 border-blue-600 text-white',
+          'bg-blue-600 shadow-md dark:shadow-sm !shadow-blue-600/40 border-blue-600 text-white',
           'active:bg-blue-700 active:!border-blue-700 focus-visible:border-blue-600 hover:bg-blue-500 hover:!border-blue-500',
         ],
-        outlined: '!text-blue-600 hover:bg-blue-400/10 active:bg-blue-400/20',
+        outlined:
+          '!text-blue-600 !shadow-sm hover:!bg-blue-400/10 active:!bg-blue-400/20',
         loading: '!border-r-white',
       },
       'primary-text': {
@@ -274,11 +276,11 @@ export default {
       },
       success: {
         root: [
-          'bg-green-500 shadow-md !shadow-green-500/40 !border-green-500 !text-white',
+          'bg-green-500 shadow-md dark:shadow-sm !shadow-green-500/40 !border-green-500 !text-white',
           'active:bg-green-600 active:!border-green-600 focus-visible:border-green-500 hover:bg-green-400 hover:!border-green-400',
         ],
         outlined:
-          '!text-green-500 hover:bg-green-400/10 active:bg-green-400/20',
+          '!text-green-500 !shadow-sm hover:!bg-green-400/10 active:!bg-green-400/20',
         loading: '!border-r-white',
       },
       'success-text': {
@@ -290,11 +292,11 @@ export default {
       },
       warning: {
         root: [
-          'bg-yellow-500 shadow-md !text-white  !shadow-yellow-500/40 !border-yellow-500',
+          'bg-yellow-500 shadow-md dark:shadow-sm !text-white  !shadow-yellow-500/40 !border-yellow-500',
           'active:bg-yellow-600 active:!border-yellow-600 focus-visible:border-yellow-500 hover:bg-yellow-400 hover:!border-yellow-400',
         ],
         outlined:
-          '!text-yellow-500 hover:bg-yellow-400/10 active:bg-yellow-400/20',
+          '!text-yellow-500 !shadow-sm hover:!bg-yellow-400/10 active:!bg-yellow-400/20',
         loading: '!border-r-white',
       },
       'warning-text': {
@@ -306,10 +308,11 @@ export default {
       },
       danger: {
         root: [
-          'bg-red-500 shadow-md !shadow-red-500/40 !border-red-500 !text-white',
+          'bg-red-500 shadow-md dark:shadow-sm !shadow-red-500/40 !border-red-500 !text-white',
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 hover:bg-red-400 hover:!border-red-400',
         ],
-        outlined: '!text-red-500 hover:bg-red-400/10 active:bg-red-400/20',
+        outlined:
+          '!text-red-500 !shadow-sm hover:!bg-red-400/10 active:!bg-red-400/20',
         loading: '!border-r-white',
       },
       'danger-text': {
@@ -321,7 +324,7 @@ export default {
       },
       disabled: {
         root: [
-          'shadow-none cursor-not-allowed border-gray-300 !text-gray-300 bg-gray-100',
+          'shadow-none cursor-not-allowed border-gray-300 !text-gray-300 bg-gray-100 dark:!text-zinc-500 dark:!bg-neutral-700 dark:border-neutral-700',
           'active:border-gray-300 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300',
         ],
         outlined: '!bg-gray-100',
@@ -337,7 +340,10 @@ export default {
     classes: {},
     variants: {
       default: {
-        body: 'shadow-slate-600/10 dark:text-slate-200 border-slate-300 dark:border-none dark:shadow-[0px_2px_4px_rgb(13_14_18/69%),0px_4px_24px_rgb(13_14_18/69%),inset_0px_0px_0px_1px_rgb(214_214_255/10%),inset_0px_1px_0px_rgb(214_214_255/10%)] bg-white dark:bg-zinc-700',
+        body: [
+          'shadow-slate-600/10 border-slate-300 dark:text-slate-200 dark:border-none bg-white dark:bg-zinc-700',
+          'dark:shadow-[0px_1px_2px_rgb(13_14_18/69%),0px_1px_4px_rgb(13_14_18/69%),inset_0px_0px_0px_1px_rgb(214_214_255/10%),inset_0px_1px_0px_rgb(214_214_255/10%)]',
+        ],
       },
     },
   },
@@ -399,9 +405,8 @@ export default {
       hueWrap: 'h-full mx-1.5 relative cursor-pointer',
       huePointer:
         'absolute rounded-sm h-full w-3.5 shadow-md scale-y-110 -translate-x-1/2 border-2 border-white cursor-ew-resize z-10',
-      saturationWrap: 'relative h-32 w-full',
-      saturationRoot:
-        'absolute inset-0 cursor-pointer border-b-[6px] border-black rounded-t',
+      saturationWrap: 'relative h-32 w-full bg-black rounded-t-md',
+      saturationRoot: 'absolute inset-0 cursor-pointer rounded-t',
       saturationPointer:
         'absolute rounded-full h-3 w-3 shadow -translate-x-1/2 -translate-y-1/2 border border-white focus-visible:border-2',
       sliderWrap: 'relative h-6 w-full [&:last-child>div]:rounded-b',
@@ -442,9 +447,10 @@ export default {
       root: 'flex flex-col',
       label: 'flex text-sm mb-1.5',
       textarea:
-        'relative flex-1 min-h-min appearance-none w-full bg-white dark:bg-zinc-700 placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
+        'relative peer flex-1 min-h-min appearance-none w-full bg-white dark:bg-zinc-700 placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed dark:disabled:!text-zinc-500 dark:disabled:!border-neutral-700 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
       mask: 'fixed bg-gray-900/40 inset-0 z-50',
-      message: 'text-xs',
+      message:
+        'text-xs peer-disabled:text-gray-300 dark:peer-disabled:!text-zinc-500',
     },
     classes: {},
     variants: {
@@ -472,8 +478,9 @@ export default {
   'it-radio': {
     base: {
       root: 'relative flex cursor-pointer',
+      input: 'peer absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0',
       border:
-        'relative flex items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm rounded-full peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'relative flex bg-white dark:border-zinc-600 dark:bg-zinc-700 dark:hover:bg-zinc-600 items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm rounded-full peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       circle: 'transition-all scale-0 absolute bg-white w-2 h-2 rounded-full',
       activeCircle: 'scale-100',
       label: 'relative flex items-center transition-all',
@@ -484,25 +491,25 @@ export default {
     variants: {
       default: {
         border:
-          'bg-white shadow-slate-600/10 border-slate-300 hover:border-blue-600 active:bg-blue-600/30 active:border-blue-600 peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-focus-visible:border-blue-600 peer-focus-visible:shadow-blue-600/30',
+          'shadow-slate-600/10 border-slate-300 hover:!border-blue-600 active:!bg-blue-600/30 dark:active:bg-blue-600/30 dark:peer-checked:hover:bg-blue-600 active:border-blue-600 peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-focus-visible:border-blue-600 peer-focus-visible:shadow-blue-600/30',
       },
       success: {
         border:
-          'active:bg-green-100 active:border-green-500 hover:border-green-500 active:peer-checked:bg-green-500 peer-checked:bg-green-500 peer-checked:border-green-500 peer-focus-visible:border-green-500 peer-focus-visible:shadow-green-500/30',
+          'active:!bg-green-600/30 active:border-green-500 hover:!border-green-500 active:peer-checked:bg-green-500 peer-checked:bg-green-500 dark:peer-checked:hover:bg-green-500 peer-checked:border-green-500 peer-focus-visible:border-green-500 peer-focus-visible:shadow-green-500/30',
       },
       warning: {
         border:
-          'active:bg-yellow-100 active:border-yellow-500 hover:border-yellow-500 active:peer-checked:bg-yellow-500 peer-checked:bg-yellow-500 peer-checked:border-yellow-500 peer-focus-visible:border-yellow-500 peer-focus-visible:shadow-yellow-500/30',
+          'active:!bg-yellow-600/30 active:border-yellow-500 hover:!border-yellow-500 active:peer-checked:bg-yellow-500 peer-checked:bg-yellow-500 dark:peer-checked:hover:bg-yellow-500 peer-checked:border-yellow-500 peer-focus-visible:border-yellow-500 peer-focus-visible:shadow-yellow-500/30',
       },
       danger: {
         border:
-          'active:bg-red-100 active:border-red-500 hover:border-red-500 peer-checked:bg-red-500 active:peer-checked:bg-red-500 peer-checked:border-red-500 peer-focus-visible:border-red-500 peer-focus-visible:shadow-red-500/30',
+          'active:!bg-red-600/30 active:border-red-500 hover:!border-red-500 peer-checked:bg-red-500 active:peer-checked:bg-red-500 dark:peer-checked:hover:bg-red-500 peer-checked:border-red-500 peer-focus-visible:border-red-500 peer-focus-visible:shadow-red-500/30',
       },
       disabled: {
         root: 'cursor-not-allowed',
         border:
-          'border-gray-300 active:border-gray-300 !bg-gray-100 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300 active:!pt-0',
-        circle: '!bg-gray-300',
+          'border-gray-300 active:border-gray-300 !bg-gray-100 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300 active:!pt-0 dark:peer-checked:border-gray-700 dark:!bg-neutral-700 dark:border-neutral-700',
+        circle: '!bg-gray-300 dark:!bg-gray-500',
         label: 'text-gray-300',
         subLabel: 'text-gray-300',
       },
@@ -539,7 +546,7 @@ export default {
   },
   'it-avatar-group': {
     base: {
-      root: 'flex [&>div]:border-2 [&>div]:border-white',
+      root: 'flex bg-inherit [&>div]:border-2 [&>div]:border-transparent [&>div]:!bg-inherit',
       count: 'flex justify-center items-center',
     },
     variants: {
@@ -582,22 +589,26 @@ export default {
       root: 'flex flex-col relative dark:text-white',
       label: 'flex text-sm mb-1',
       input:
-        'flex dark:border-zinc-900 dark:bg-zinc-700 gap-2 items-center outline-none py-1.5 px-2 text-sm relative rounded border shadow-sm duration-150 transition-all cursor-pointer place-content-between focus:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'flex gap-2 items-center outline-none py-1.5 px-2 text-sm relative rounded border shadow-sm duration-150 transition-all cursor-pointer place-content-between focus:shadow-[0_1px_1px_0,0_0_0_3px]',
       dropdown: 'absolute z-50 min-w-[130px] w-full top-full mt-2',
       placeholder: 'text-gray-400',
-      list: 'flex flex-col gap-1 p-1 text-sm dark:border-zinc-900 dark:bg-zinc-700 rounded border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
+      list: 'flex flex-col gap-1 p-1 text-sm rounded-md border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
       selected: 'flex gap-1 flex-wrap',
       option: 'p-1 rounded cursor-pointer hover:bg-blue-600 hover:text-white',
-      optionSelected: 'rounded bg-blue-600',
-      inputDisabled:
-        '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed',
+      optionSelected: 'rounded bg-blue-600 text-white',
       inputIcon: '!text-base select-none !leading-none h-5 min-w-5',
+      message: 'text-xs',
     },
     variants: {
       default: {
         input:
-          'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
-        list: 'bg-white border-slate-300 shadow-slate-600/10',
+          'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 dark:border-zinc-900 dark:bg-zinc-700 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
+        list: 'bg-white border-slate-300 shadow-slate-600/10 dark:border-zinc-900 dark:bg-zinc-700',
+      },
+      disabled: {
+        input:
+          '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed dark:bg-zinc-700 dark:!text-zinc-500 dark:!border-neutral-700',
+        message: 'text-gray-300 dark:text-zinc-500',
       },
     },
   },
@@ -605,14 +616,15 @@ export default {
     base: {
       root: 'flex-1',
       mask: 'fixed inset-0 w-full h-full bg-gray-900/60 z-50',
-      labelTop: 'flex text-sm mb-1',
+      labelTop: 'flex text-sm mb-1 dark:text-white',
       prefixWrapper:
         'bg-white dark:border-zinc-900 dark:bg-zinc-700 flex relative rounded border shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
       inputWrapper: 'flex flex-1',
       affix: 'flex text-sm items-center justify-center first:pl-2 last:pr-2',
       input:
-        'dark:bg-zinc-700 flex-1 min-w-[10px] w-0 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
-      iconWrapper: 'flex px-2 items-center justify-center text-slate-400',
+        'dark:bg-zinc-700 dark:text-white flex-1 min-w-[10px] w-0 py-1.5 only:px-2 first:pl-2 last:pr-2 text-sm outline-none focus:placeholder:indent-1.5 placeholder:transition-all',
+      iconWrapper:
+        'flex px-2 items-center justify-center text-slate-400 dark:text-slate-200',
       message: 'text-xs',
     },
     classes: {},
@@ -637,9 +649,11 @@ export default {
         message: 'text-red-500',
       },
       disabled: {
-        prefixWrapper: '!border-slate-300 cursor-not-allowed bg-gray-100',
-        input: 'cursor-not-allowed text-gray-300',
-        message: 'text-gray-300',
+        prefixWrapper:
+          '!border-slate-300 cursor-not-allowed bg-gray-100 dark:!text-zinc-500 dark:!border-neutral-700',
+        input:
+          'cursor-not-allowed text-gray-300 dark:!text-zinc-500 dark:!bg-neutral-700',
+        message: 'text-gray-300 dark:text-zinc-500',
       },
     },
   },
@@ -661,7 +675,8 @@ export default {
           'border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus-within:border-blue-600 focus-within:!border-blue-600 focus-within:shadow-blue-600/30',
       },
       disabled: {
-        inputWrapper: '!border-slate-300 cursor-not-allowed bg-gray-100',
+        inputWrapper:
+          '!border-slate-300 cursor-not-allowed bg-gray-100 !border-slate-300 cursor-not-allowed bg-gray-100 dark:!text-zinc-500 dark:!border-neutral-700',
         input: 'cursor-not-allowed text-gray-300',
       },
     },
@@ -685,17 +700,17 @@ export default {
       default: {
         controller:
           'border-slate-300 bg-white focus:border-blue-600 shadow-slate-600/70 focus:shadow-blue-600/30',
-        sliderLine: 'bg-slate-200',
+        sliderLine: 'bg-slate-200 dark:bg-zinc-700',
         fillBar: 'bg-blue-600',
         stepPoint: 'bg-black dark:bg-white',
         stepPointActive: '!bg-blue-600',
       },
       disabled: {
         controller: '!cursor-not-allowed bg-white shadow-slate-600/70',
-        sliderLine: 'bg-slate-200 cursor-not-allowed',
-        fillBar: 'bg-slate-400',
+        sliderLine: 'bg-slate-200 dark:bg-zinc-700 cursor-not-allowed',
+        fillBar: 'bg-slate-400 dark:!bg-gray-500',
         stepPoint: 'bg-slate-200',
-        stepPointActive: 'bg-slate-400',
+        stepPointActive: 'bg-slate-400 dark:!bg-gray-500',
       },
     },
   },
@@ -708,7 +723,7 @@ export default {
     classes: {},
     variants: {
       default: {
-        progressBar: 'bg-zinc-200',
+        progressBar: 'bg-zinc-200 dark:bg-zinc-700',
         progressLine: 'bg-blue-600',
       },
     },
@@ -716,7 +731,7 @@ export default {
   'it-modal': {
     base: {
       root: '',
-      mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm',
+      mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm transform-gpu',
       bodyWrapper: 'flex h-full w-full items-center justify-center',
       body: 'relative rounded overflow-hidden w-full cursor-default outline-none',
       header: 'py-4 px-6 text-md font-medium',
@@ -733,17 +748,30 @@ export default {
   },
   'it-message': {
     base: {
-      root: 'z-50 fixed left-1/2 transition-all text-sm -translate-x-1/2 rounded-md bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+      root: [
+        'z-50 fixed left-1/2 transition-all text-sm -translate-x-1/2 rounded-md dark:text-slate-200 dark:border-none bg-white dark:bg-zinc-700 border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+        'dark:shadow-[0px_1px_2px_rgb(13_14_18/69%),0px_1px_4px_rgb(13_14_18/69%),inset_0px_0px_0px_1px_rgb(214_214_255/10%),inset_0px_1px_0px_rgb(214_214_255/10%)]',
+      ],
     },
     variants: {},
   },
   'it-notification': {
     base: {
-      root: 'fixed z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+      root: [
+        'fixed z-50 overflow-hidden transition-all text-sm rounded dark:text-slate-200 dark:border-none dark:border-none bg-white dark:bg-zinc-700 border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+        'dark:shadow-[0px_1px_2px_rgb(13_14_18/69%),0px_1px_4px_rgb(13_14_18/69%),inset_0px_0px_0px_1px_rgb(214_214_255/10%),inset_0px_1px_0px_rgb(214_214_255/10%)]',
+      ],
     },
     variants: {},
   },
   transitions: {
+    scale: {
+      'enter-active-class':
+        'duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.475)]',
+      'enter-from-class': 'transform scale-0',
+      'leave-active-class': 'duration-200 ease-in',
+      'leave-to-class': 'transform scale-0',
+    },
     fade: {
       'enter-active-class': 'duration-75',
       'enter-to-class': 'opacity-100',

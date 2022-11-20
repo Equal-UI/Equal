@@ -5,7 +5,11 @@
       :aria-expanded="active"
       @click="active = !active"
     >
-      <span>{{ title }}</span>
+      <span>
+        <slot name="title">
+          {{ title }}
+        </slot>
+      </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         :class="variant.icon"

@@ -24,15 +24,16 @@
           <it-button
             variant="primary"
             @click="$Message({ text: 'You got it' }), (defaultModal = false)"
-            >Got it</it-button
           >
+            Got it
+          </it-button>
         </template>
       </it-modal>
     </Box>
     <Box :code="signinCode" title="Sign Up modal">
-      <it-button variant="primary" @click="signinModal = true"
-        >Sign up</it-button
-      >
+      <it-button variant="primary" @click="signinModal = true">
+        Sign up
+      </it-button>
       <it-modal v-model="signinModal">
         <template #body>
           <div class="signupmodal p-3">
@@ -42,8 +43,8 @@
               type="email"
               placeholder="yourmail@gmail.com"
             >
-              <template #prefixIcon
-                ><svg
+              <template #prefixIcon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   fill="none"
@@ -55,8 +56,9 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  /></svg
-              ></template>
+                  />
+                </svg>
+              </template>
             </it-input>
             <div class="signupmodal-wrap-inputs flex flex-row">
               <div class="flex-1">
@@ -70,8 +72,9 @@
               label-top="Username"
               placeholder="Unique Username"
               autocomplete="off"
-              ><template #prefixIcon
-                ><svg
+            >
+              <template #prefixIcon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   fill="none"
@@ -83,15 +86,18 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  /></svg></template
-            ></it-input>
+                  />
+                </svg>
+              </template>
+            </it-input>
             <it-input
               label-top="Password"
               type="password"
               placeholder="Must have at least 6 characters"
               autocomplete="new-password"
-              ><template #prefixIcon
-                ><svg
+            >
+              <template #prefixIcon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   fill="none"
@@ -103,8 +109,10 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  /></svg></template
-            ></it-input>
+                  />
+                </svg>
+              </template>
+            </it-input>
             <div class="signupmodal-wrap-checkbox">
               <it-checkbox
                 v-model="signincheckbox"
@@ -116,16 +124,17 @@
               size="big"
               variant="primary"
               @click="$Message({ text: 'Welcome' }), (signinModal = false)"
-              >Sign up</it-button
             >
+              Sign up
+            </it-button>
           </div>
         </template>
       </it-modal>
     </Box>
     <Box :code="confirmCode" title="Confirmation modal">
-      <it-button variant="danger" @click="confirmModal = true"
-        >Delete account</it-button
-      >
+      <it-button variant="danger" @click="confirmModal = true">
+        Delete account
+      </it-button>
       <it-modal v-model="confirmModal">
         <template #header>
           <h3>Delete account</h3>
@@ -134,21 +143,24 @@
           Account will be deleted permanently, please confirm
         </template>
         <template #actions>
-          <it-button @click="confirmModal = false">Cancel</it-button>
+          <it-button variant="text" @click="confirmModal = false">
+            Cancel
+          </it-button>
           <it-button
             variant="danger"
             @click="
               $Message({ text: 'Account deleted' }), (confirmModal = false)
             "
-            >Delete</it-button
           >
+            Delete
+          </it-button>
         </template>
       </it-modal>
     </Box>
     <Box :code="imageCode" title="Image only modal">
-      <it-button variant="primary" @click="imageModal = true"
-        >Show image</it-button
-      >
+      <it-button variant="primary" @click="imageModal = true">
+        Show image
+      </it-button>
       <it-modal v-model="imageModal">
         <template #image>
           <img
@@ -168,9 +180,9 @@
         </p>
       </template>
 
-      <it-button variant="primary" @click="signinNestedModal = true"
-        >Sign up</it-button
-      >
+      <it-button variant="primary" @click="signinNestedModal = true">
+        Sign up
+      </it-button>
       <it-modal v-model="signinNestedModal">
         <template #body>
           <div class="signupmodal p-3">
@@ -180,8 +192,8 @@
               type="email"
               placeholder="yourmail@gmail.com"
             >
-              <template #prefixIcon
-                ><svg
+              <template #prefixIcon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   fill="none"
@@ -193,8 +205,9 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  /></svg
-              ></template>
+                  />
+                </svg>
+              </template>
             </it-input>
             <div class="signupmodal-wrap-inputs flex flex-row">
               <div class="flex-1">
@@ -209,8 +222,8 @@
               placeholder="Unique Username"
               autocomplete="off"
             >
-              <template #prefixIcon
-                ><svg
+              <template #prefixIcon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   fill="none"
@@ -222,8 +235,9 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  /></svg
-              ></template>
+                  />
+                </svg>
+              </template>
             </it-input>
             <it-input
               label-top="Password"
@@ -231,8 +245,8 @@
               placeholder="Must have at least 6 characters"
               autocomplete="off"
             >
-              <template #prefixIcon
-                ><svg
+              <template #prefixIcon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   fill="none"
@@ -244,16 +258,18 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  /></svg
-              ></template>
+                  />
+                </svg>
+              </template>
             </it-input>
             <div class="signupmodal-wrap-checkbox">
               <it-button
                 class="w-full"
                 variant="primary-text"
                 @click="nestedModal = true"
-                >Read Terms of Service</it-button
               >
+                Read Terms of Service
+              </it-button>
             </div>
             <it-button
               block
@@ -262,8 +278,9 @@
               class="w-full"
               :disabled="!agreedTOS"
               @click="signinNestedModal = false"
-              >Sign up</it-button
             >
+              Sign up
+            </it-button>
           </div>
         </template>
       </it-modal>
@@ -1124,8 +1141,9 @@
                 size="big"
                 variant="primary"
                 @click=";(nestedModal = false), (agreedTOS = true)"
-                >I agree</it-button
               >
+                I agree
+              </it-button>
             </div>
           </div>
         </template>
@@ -1298,7 +1316,7 @@ export default defineComponent({
       <it-input labelTop="Username" prefix-icon="account_circle" placeholder="Unique Username" />
       <it-input labelTop="Password" prefix-icon="lock" type="password" placeholder="Must have at least 6 characters" />
       <div class="signupmodal-wrap-checkbox">
-        <it-checkbox v-model="signincheckbox" label="I agree to our Terms of Service" />
+        <it-checkbox variant="primary" v-model="signincheckbox" label="I agree to our Terms of Service" />
       </div>
       <it-button
         block
@@ -1322,7 +1340,7 @@ export default defineComponent({
     Account will be deleted permanently, please confirm
   </template>
   <template #actions>
-    <it-button @click="confirmModal = false">Cancel</it-button>
+    <it-button variant="text" @click="confirmModal = false">Cancel</it-button>
     <it-button
       variant="danger"
       @click="

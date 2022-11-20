@@ -8,14 +8,18 @@
           <div class="p-1">
             <p class="mb-2">Please confirm deletion</p>
             <div class="flex justify-end">
-              <it-button size="small">No</it-button>
+              <it-button variant="text" size="small">No</it-button>
               <it-button
                 class="ml-2"
                 size="small"
                 variant="danger"
-                @click=";(removed = true), $Message({ text: 'Deleted' })"
-                >Yes</it-button
+                @click="
+                  ;(removed = true),
+                    $Message({ text: 'Deleted', duration: 3000 })
+                "
               >
+                Yes
+              </it-button>
             </div>
           </div>
         </template>
@@ -64,12 +68,13 @@
       <it-popover placement="top" borderless>
         <it-button>Show image</it-button>
 
-        <template #content
-          ><img
+        <template #content>
+          <img
             width="150"
             src="https://pbs.twimg.com/profile_images/1063458070775427072/HAgejyos_400x400.jpg"
             alt="logo"
-        /></template>
+          />
+        </template>
       </it-popover>
     </Box>
     <props-table
@@ -97,7 +102,7 @@ export default defineComponent({
           style="margin-left: 8px"
           size="small"
           type="danger"
-          @click="(removed = true), $Message.success({ text: 'Deleted' })"
+          @click="(removed = true), $Message.success({ text: 'Deleted', duration: 3000 })"
           >Yes</it-button
         >
       </div>

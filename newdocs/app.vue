@@ -1,13 +1,13 @@
 <template>
   <div class="min-h-screen">
-    <span v-if="isDev" class="fixed bottom-2 right-2 z-50 dark:text-white"
-      >fps: {{ fps }}</span
-    >
-    <div class="dark:bg-neutral-800">
+    <span v-if="isDev" class="fixed bottom-2 right-2 z-50 dark:text-white">
+      fps: {{ fps }}
+    </span>
+    <div class="dark:bg-neutral-900">
       <ItHeader />
       <Sidebar />
       <div
-        class="flex h-full min-h-screen flex-1 flex-col bg-white pl-0 dark:bg-neutral-800 dark:text-white lg:pl-60 xl:px-60"
+        class="flex h-full min-h-screen flex-1 flex-col bg-white pl-0 dark:bg-neutral-900 dark:text-white lg:pl-60 xl:px-60"
       >
         <div class="px-4 py-24 md:px-14">
           <NuxtPage />

@@ -12,14 +12,29 @@
           :label="radioLabel"
           value="1"
         />
-        <it-radio v-model="radioValue" name="demo" label="Second" value="2" />
-        <it-radio v-model="radioValue" name="demo" label="Third" value="3" />
+        <it-radio
+          v-model="radioValue"
+          :disabled="radioDisabled"
+          name="demo"
+          label="Second"
+          value="2"
+        />
+        <it-radio
+          v-model="radioValue"
+          :disabled="radioDisabled"
+          name="demo"
+          label="Third"
+          value="3"
+        />
       </div>
 
       <template #props>
         <it-input v-model="radioLabel" label-top="Radio label" />
-        <it-checkbox v-model="radioPulse" label="Pulse" />
-        <it-checkbox v-model="radioDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="radioDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
 
@@ -50,9 +65,9 @@
 
     <Box :code="codeSublabel" title="Sublabel">
       <div>
-        <it-radio v-model="subradio" :value="1"
-          >By signing this I agree with Terms and Conditions</it-radio
-        >
+        <it-radio v-model="subradio" :value="1">
+          By signing this I agree with Terms and Conditions
+        </it-radio>
         <br />
         <it-radio v-model="subradio" :value="2">
           <template #default>Subscribe for updates</template>

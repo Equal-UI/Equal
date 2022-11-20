@@ -1,6 +1,6 @@
 <template>
-  <teleport to="body">
-    <transition v-bind="variant.transitions?.fade">
+  <Teleport to="body">
+    <Transition v-bind="variant.transitions?.fade">
       <div
         v-show="modelValue"
         v-bind="$attrs"
@@ -8,7 +8,7 @@
         :class="variant.mask"
         :style="{ cursor: closableMask ? 'pointer' : 'default' }"
       >
-        <transition v-bind="variant.transitions?.dropToBottom">
+        <Transition v-bind="variant.transitions?.dropToBottom">
           <div
             v-show="modelValue"
             @click.self="maskClick"
@@ -33,10 +33,10 @@
               </div>
             </div>
           </div>
-        </transition>
+        </Transition>
       </div>
-    </transition>
-  </teleport>
+    </Transition>
+  </Teleport>
 </template>
 
 <script lang="ts">

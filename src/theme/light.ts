@@ -8,7 +8,7 @@ export default <EqualUIConfiguration>(<unknown>{
       body: 'text-sm leading-none mt-2.5',
       iconbox: 'p-1.5 rounded',
       icon: 'select-none mr-3.5 text-2xl leading-none',
-      closeIcon: 'select-none cursor-pointer',
+      closeIcon: 'ml-4 select-none cursor-pointer',
     },
     classes: {
       root: 'bg-opacity-5',
@@ -397,9 +397,8 @@ export default <EqualUIConfiguration>(<unknown>{
       hueWrap: 'h-full mx-1.5 relative cursor-pointer',
       huePointer:
         'absolute rounded-sm h-full w-3.5 shadow-md scale-y-110 -translate-x-1/2 border-2 border-white cursor-ew-resize z-10',
-      saturationWrap: 'relative h-32 w-full',
-      saturationRoot:
-        'absolute inset-0 cursor-pointer border-b-[6px] border-black rounded-t',
+      saturationWrap: 'relative h-32 w-full bg-black rounded-t-md',
+      saturationRoot: 'absolute inset-0 cursor-pointer rounded-t',
       saturationPointer:
         'absolute rounded-full h-3 w-3 shadow -translate-x-1/2 -translate-y-1/2 border border-white focus-visible:border-2',
       sliderWrap: 'relative h-6 w-full [&:last-child>div]:rounded-b',
@@ -452,8 +451,9 @@ export default <EqualUIConfiguration>(<unknown>{
   'it-radio': {
     base: {
       root: 'relative flex cursor-pointer',
+      input: 'peer absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0',
       border:
-        'relative flex items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm rounded-full peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'relative flex bg-white items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm rounded-full peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       circle: 'transition-all scale-0 absolute bg-white w-2 h-2 rounded-full',
       activeCircle: 'scale-100',
       label: 'relative flex items-center transition-all',
@@ -464,7 +464,7 @@ export default <EqualUIConfiguration>(<unknown>{
     variants: {
       default: {
         border:
-          'bg-white shadow-slate-600/10 border-slate-300 hover:border-blue-600 active:bg-blue-600/30 active:border-blue-600 peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-focus-visible:border-blue-600 peer-focus-visible:shadow-blue-600/30',
+          'shadow-slate-600/10 border-slate-300 hover:border-blue-600 active:bg-blue-600/30 active:border-blue-600 peer-checked:border-blue-600 peer-checked:bg-blue-600 peer-focus-visible:border-blue-600 peer-focus-visible:shadow-blue-600/30',
       },
       success: {
         border:
@@ -519,7 +519,7 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-avatar-group': {
     base: {
-      root: 'flex [&>div]:border-2 [&>div]:border-white',
+      root: 'flex bg-inherit [&>div]:border-2 [&>div]:border-transparent [&>div]:!bg-inherit',
       count: 'flex justify-center items-center',
     },
     variants: {
@@ -569,8 +569,6 @@ export default <EqualUIConfiguration>(<unknown>{
       selected: 'flex gap-1 flex-wrap',
       option: 'p-1 rounded cursor-pointer hover:bg-blue-600 hover:text-white',
       optionSelected: 'rounded bg-blue-600',
-      inputDisabled:
-        '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed',
       inputIcon: '!text-base select-none !leading-none h-5 min-w-5',
     },
     variants: {
@@ -578,6 +576,11 @@ export default <EqualUIConfiguration>(<unknown>{
         input:
           'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
         list: 'bg-white border-slate-300 shadow-slate-600/10',
+      },
+      disabled: {
+        input:
+          '!border-slate-300 cursor-not-allowed bg-gray-100 text-gray-300 cursor-not-allowed',
+        message: 'text-gray-300',
       },
     },
   },
@@ -696,7 +699,7 @@ export default <EqualUIConfiguration>(<unknown>{
   'it-modal': {
     base: {
       root: '',
-      mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm',
+      mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm transform-gpu',
       bodyWrapper: 'flex h-full w-full items-center justify-center',
       body: 'relative rounded overflow-hidden w-full bg-white cursor-default outline-none',
       header: 'py-4 px-6 text-md font-medium',

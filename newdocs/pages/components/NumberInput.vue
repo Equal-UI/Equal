@@ -20,9 +20,21 @@
         <it-number-input v-model="inputMax" label-top="Max" />
         <it-number-input v-model="inputStep" :min="0" label-top="Step" />
         <it-divider />
-        <it-checkbox v-model="resizeOnChange" label="Resize on change" />
-        <it-checkbox v-model="controlsDisabled" label="Hide controls" />
-        <it-checkbox v-model="inputDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="resizeOnChange"
+          label="Resize on change"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="controlsDisabled"
+          label="Hide controls"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="inputDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
     <props-table :data-sheet="dataSheet" />

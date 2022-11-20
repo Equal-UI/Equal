@@ -16,10 +16,27 @@
       <template #props>
         <it-input v-model="textareaPlaceholder" label-top="Placeholder text" />
         <it-input v-model="textareaTopLabel" label-top="Label" />
-        <it-checkbox v-model="textareaResizable" label="Resizable" />
-        <it-checkbox v-model="textareaResizeWrite" label="Resize on write" />
-        <it-checkbox v-model="mask" label="Mask" />
-        <it-checkbox v-model="textareaDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="textareaResizable"
+          label="Resizable"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="textareaResizeWrite"
+          label="Resize on write"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="mask"
+          label="Mask"
+          subLabel="Focus on the textarea to see the mask"
+        />
+        <it-checkbox
+          variant="primary"
+          v-model="textareaDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
     <Box :code="variantsCode" title="Variants">
@@ -46,6 +63,7 @@
       <it-textarea
         v-model="disabledValue"
         :label-top="textareaTopLabel"
+        message="I'm disabled"
         disabled
       ></it-textarea>
     </Box>

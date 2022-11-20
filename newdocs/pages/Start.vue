@@ -2,16 +2,7 @@
   <div>
     <h1>Getting started</h1>
     <div
-      class="
-        flex
-        w-full
-        flex-col
-        rounded
-        border
-        bg-white
-        p-8
-        dark:border-neutral-700 dark:bg-neutral-800
-      "
+      class="flex w-full flex-col rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"
     >
       <h2 class="mb-5">Install with NPM or Yarn</h2>
       <prism language="bash" class="rounded" :code="installCode"></prism>
@@ -46,22 +37,26 @@ createApp.use(Button).use(Alert).use(Switch)"
           target="_blank"
           rel="noopener noreferrer"
           href="https://material.io/resources/icons/"
-          >Material Icons</a
         >
+          Material Icons
+        </a>
         as default icons, and
         <a
           href="https://fonts.google.com/specimen/Inter"
           target="_blank"
           rel="noopener noreferrer"
-          >Inter</a
         >
+          Inter
+        </a>
         font by
         <a
           href="https://twitter.com/rsms"
           target="_blank"
           rel="noopener noreferrer"
-          >@rsms</a
-        >. The simplest way to add them via CDN:
+        >
+          @rsms
+        </a>
+        . The simplest way to add them via CDN:
       </p>
       <prism language="html" class="rounded" :code="headLink"></prism>
     </div>

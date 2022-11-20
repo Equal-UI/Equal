@@ -20,18 +20,16 @@
           placeholder="Select type"
           label-top="Badge type"
           :options="badgeTypes"
-        >
-        </it-select>
+        ></it-select>
         <it-select
           v-model="badgePosition"
           placeholder="Select position"
           label-top="Badge position"
           :options="badgePositions"
-        >
-        </it-select>
-        <it-checkbox v-model="badgePoint" label="Point" />
-        <it-checkbox v-model="badgeSquare" label="Square" />
-        <it-checkbox v-model="badgeShow" label="Show" />
+        ></it-select>
+        <it-checkbox variant="primary" v-model="badgePoint" label="Point" />
+        <it-checkbox variant="primary" v-model="badgeSquare" label="Square" />
+        <it-checkbox variant="primary" v-model="badgeShow" label="Show" />
         <it-number-input v-model="badgeMax" label-top="Max value" />
         <it-number-input v-model="badgeValue" label-top="Badge value" />
       </template>
@@ -64,11 +62,28 @@
 
     <Box :code="pointCode" title="Point">
       <it-badge variant="primary" point>
-        <it-button>Primary</it-button>
+        <it-button>
+          <template #icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+              />
+            </svg>
+          </template>
+        </it-button>
       </it-badge>
       <it-badge variant="danger" point>
-        <it-button
-          ><template #icon>
+        <it-button>
+          <template #icon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
@@ -82,12 +97,13 @@
                 stroke-linejoin="round"
                 d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
               />
-            </svg> </template
-        ></it-button>
+            </svg>
+          </template>
+        </it-button>
       </it-badge>
       <it-badge variant="success" point>
-        <it-button
-          ><template #icon>
+        <it-button>
+          <template #icon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
@@ -101,12 +117,13 @@
                 stroke-linejoin="round"
                 d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
               />
-            </svg> </template
-        ></it-button>
+            </svg>
+          </template>
+        </it-button>
       </it-badge>
       <it-badge variant="warning" point>
-        <it-button
-          ><template #icon>
+        <it-button>
+          <template #icon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
@@ -120,8 +137,9 @@
                 stroke-linejoin="round"
                 d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
               />
-            </svg> </template
-        ></it-button>
+            </svg>
+          </template>
+        </it-button>
       </it-badge>
     </Box>
 
@@ -130,8 +148,8 @@
         <it-button>Square</it-button>
       </it-badge>
       <it-badge variant="primary" point square>
-        <it-button
-          ><template #icon>
+        <it-button>
+          <template #icon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-4 w-4"
@@ -145,8 +163,9 @@
                 stroke-linejoin="round"
                 d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
               />
-            </svg> </template
-        ></it-button>
+            </svg>
+          </template>
+        </it-button>
       </it-badge>
     </Box>
 
@@ -170,7 +189,7 @@
         <it-tag variant="danger">Maximum</it-tag>
       </it-badge>
 
-      <it-tag variant="success" class="ml-2">
+      <it-tag variant="success" filled class="ml-2">
         <it-badge variant="success" point />
         In range
       </it-tag>
@@ -201,12 +220,13 @@
       </it-badge>
     </Box>
 
-    <props-table :data-sheet="dataSheet" />
+    <props-table :data-sheet="dataSheet" :slot-sheet="slotSheet" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { variantProps } from '~~/data/dataSheetVariantProps'
 
 export default defineComponent({
   data: () => ({
@@ -252,7 +272,7 @@ export default defineComponent({
   <it-tag variant="danger">Maximum</it-tag>
 </it-badge>
 
-<it-tag variant="success" class="ml-2">
+<it-tag variant="success" filled class="ml-2">
   <it-badge variant="success" point class="mr-1" />
   In range
 </it-tag>`,
@@ -264,16 +284,16 @@ export default defineComponent({
   <it-button icon="thumb_up"></it-button>
 </it-badge>`,
 
-    positionsCode: `<it-badge point :value="12">
+    positionsCode: `<it-badge point>
   <it-button>Top-right</it-button>
 </it-badge>
-<it-badge point ||| position="bottom-right" ||| :value="12">
+<it-badge point ||| position="bottom-right" |||>
   <it-button>Bottom-right</it-button>
 </it-badge>
-<it-badge point ||| position="bottom-left" ||| :value="12">
+<it-badge point ||| position="bottom-left" |||>
   <it-button>Bottom-left</it-button>
 </it-badge>
-<it-badge point ||| position="top-left" ||| :value="12">
+<it-badge point ||| position="top-left" |||>
   <it-button>Top-left</it-button>
 </it-badge>`,
 
@@ -292,14 +312,7 @@ export default defineComponent({
   <it-button>🪄🎩</it-button>
 </it-badge>`,
 
-    dataSheet: [
-      {
-        property: 'variant',
-        type: ['String'],
-        default: '',
-        values: ['primary', 'success', 'danger', 'warning'],
-        description: 'Variant of the badge',
-      },
+    dataSheet: variantProps.concat([
       {
         property: 'value',
         type: ['Number', 'String'],
@@ -341,6 +354,16 @@ export default defineComponent({
         default: 'false',
         values: [],
         description: 'Make badge squared',
+      },
+    ]),
+    slotSheet: [
+      {
+        name: 'default',
+        description: 'Target slot',
+      },
+      {
+        name: 'content',
+        description: 'Badge body',
       },
     ],
   }),

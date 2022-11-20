@@ -32,7 +32,6 @@
     rgb(0, 227, 184),
     rgb(70, 239, 111)
   );
-
   background-size: 200% 200%;
   animation: fancy 2s ease-out infinite;
 }

@@ -8,55 +8,14 @@
           This component is intended to be used only with wide screens
         </p>
       </template>
-      <it-button variant="primary" @click="drawerLeftVisible = true"
-        >Left drawer</it-button
-      >
-      <it-button variant="primary" @click="drawerVisible = true"
-        >Right drawer</it-button
-      >
+      <it-button variant="primary" @click="drawerLeftVisible = true">
+        Left drawer
+      </it-button>
+      <it-button variant="primary" @click="drawerVisible = true">
+        Right drawer
+      </it-button>
 
-      <it-drawer v-model="drawerVisible">
-        <div class="relative flex flex-row items-center p-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="contacts h-7 w-7 rounded"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          <h3>Contacts</h3>
-        </div>
-        <it-divider class="mb-2" />
-        <template v-for="(user, i) in fakeUsers" :key="i">
-          <div class="flex flex-row justify-between px-6">
-            <it-avatar :src="user.avatar" />
-            <div class="flex flex-1 flex-col justify-between pl-3">
-              <p class="font-medium">{{ user.name }}</p>
-              <p style="color: #787f8a" class="text-sm font-medium">
-                @{{ user.username }}
-              </p>
-            </div>
-            <it-button variant="primary"
-              ><template #icon
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                  /></svg></template
-            ></it-button>
-          </div>
-          <it-divider class="mt-2 mb-2" />
-        </template>
-      </it-drawer>
+      <it-drawer v-model="drawerVisible"></it-drawer>
       <it-drawer v-model="drawerLeftVisible" placement="left">
         <div class="relative flex flex-row items-center p-6">
           <svg
@@ -83,9 +42,9 @@
                 @{{ user.username }}
               </p>
             </div>
-            <it-button variant="primary"
-              ><template #icon
-                ><svg
+            <it-button variant="primary">
+              <template #icon>
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
                   viewBox="0 0 20 20"
@@ -93,8 +52,10 @@
                 >
                   <path
                     d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                  /></svg></template
-            ></it-button>
+                  />
+                </svg>
+              </template>
+            </it-button>
           </div>
           <it-divider class="mt-2 mb-2" />
         </template>
@@ -109,33 +70,33 @@
         </p>
       </template>
 
-      <it-button variant="primary" @click="nestedDrawer = true"
-        >Left Nested drawer</it-button
-      >
+      <it-button variant="primary" @click="nestedDrawer = true">
+        Left Nested drawer
+      </it-button>
 
-      <it-button variant="primary" @click="nestedDrawerR = true"
-        >Right Nested drawers</it-button
-      >
+      <it-button variant="primary" @click="nestedDrawerR = true">
+        Right Nested drawers
+      </it-button>
 
       <it-drawer v-model="nestedDrawer" placement="left">
         <div class="mt-12 flex justify-center">
-          <it-button size="big" @click="nestedDrawer2 = true"
-            >Show nested</it-button
-          >
+          <it-button size="big" @click="nestedDrawer2 = true">
+            Show nested
+          </it-button>
         </div>
       </it-drawer>
       <it-drawer v-model="nestedDrawer2" placement="left">
         <div class="mt-12 flex justify-center">
-          <it-button size="big" @click="nestedDrawer3 = true"
-            >Show nested</it-button
-          >
+          <it-button size="big" @click="nestedDrawer3 = true">
+            Show nested
+          </it-button>
         </div>
       </it-drawer>
       <it-drawer v-model="nestedDrawer3" placement="left">
         <div class="mt-12 flex justify-center">
-          <it-button size="big" @click="nestedDrawer4 = true"
-            >Show nested</it-button
-          >
+          <it-button size="big" @click="nestedDrawer4 = true">
+            Show nested
+          </it-button>
         </div>
       </it-drawer>
       <it-drawer v-model="nestedDrawer4" placement="left">
@@ -144,23 +105,23 @@
 
       <it-drawer v-model="nestedDrawerR">
         <div class="mt-12 flex justify-center">
-          <it-button size="big" @click="nestedDrawerR2 = true"
-            >Show nested</it-button
-          >
+          <it-button size="big" @click="nestedDrawerR2 = true">
+            Show nested
+          </it-button>
         </div>
       </it-drawer>
       <it-drawer v-model="nestedDrawerR2">
         <div class="mt-12 flex justify-center">
-          <it-button size="big" @click="nestedDrawerR3 = true"
-            >Show nested</it-button
-          >
+          <it-button size="big" @click="nestedDrawerR3 = true">
+            Show nested
+          </it-button>
         </div>
       </it-drawer>
       <it-drawer v-model="nestedDrawerR3">
         <div class="mt-12 flex justify-center">
-          <it-button size="big" @click="nestedDrawerR4 = true"
-            >Show nested</it-button
-          >
+          <it-button size="big" @click="nestedDrawerR4 = true">
+            Show nested
+          </it-button>
         </div>
       </it-drawer>
       <it-drawer v-model="nestedDrawerR4">

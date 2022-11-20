@@ -1,5 +1,6 @@
 <template>
-  <button
+  <component
+    :is="component"
     :class="[
       {
         [variant.outlined]: outlined,
@@ -12,11 +13,11 @@
     :disabled="disabled"
   >
     <span :style="{ opacity: loading ? 0 : 1 }" :class="variant.text">
-      <slot name="icon"> </slot>
+      <slot name="icon"></slot>
       <span v-if="$slots.default">
         <slot />
       </span>
-      <slot name="icon-after"> </slot>
+      <slot name="icon-after"></slot>
     </span>
     <it-spinner
       variant="$"
@@ -25,7 +26,7 @@
       :radius="10"
       :stroke="3"
     />
-  </button>
+  </component>
 </template>
 
 <script lang="ts">
@@ -58,8 +59,10 @@ export default defineComponent({
     pulse: { type: Boolean },
     loading: { type: Boolean },
     icon: { type: String, default: null },
+    nuxt: { type: Boolean },
+    routerLink: { type: Boolean },
   },
-  setup(props) {
+  setup(props, { attrs }) {
     const variant = computed(() => {
       const customProps = {
         ...props,
@@ -71,7 +74,18 @@ export default defineComponent({
       )
     })
 
-    return { variant }
+    const component = computed(() => {
+      if (props.nuxt) {
+        return 'NuxtLink'
+      } else if (props.routerLink) {
+        return 'router-link'
+      } else if (attrs.href) {
+        return 'a'
+      }
+      return 'button'
+    })
+
+    return { variant, component }
   },
 })
 </script>

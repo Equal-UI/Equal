@@ -10,7 +10,7 @@
       ref="trigger"
       v-clickoutside="outsideHandler"
       :tabindex="disabled ? undefined : 0"
-      :class="[variant.input, { [variant.inputDisabled]: disabled }]"
+      :class="variant.input"
       @click="toggleDropdown"
       @keydown.tab="() => setOpen(false)"
       @keydown.down.stop.prevent="handleKey(EDirections.DOWN)"
@@ -34,14 +34,15 @@
       >
         <slot name="selected-option" :props="props">
           <it-tag
-            variant="primary"
-            closable
+            :variant="tagVariant"
+            :closable="!disabled"
             filled
             v-for="(val, i) in wrappedValue"
             @close="remove(i)"
             :key="val[trackBy]"
-            >{{ val.name }}</it-tag
           >
+            {{ val.name }}
+          </it-tag>
         </slot>
       </div>
 
@@ -68,6 +69,10 @@
         </svg>
       </div>
     </div>
+
+    <Transition v-bind="variant.transitions?.fade">
+      <span v-if="message" :class="variant.message">{{ message }}</span>
+    </Transition>
 
     <Transition name="drop-bottom">
       <div v-if="show" ref="dropdown" :class="variant.dropdown">
@@ -110,6 +115,7 @@ import { Components, Positions } from '@/models/enums'
 import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
 import { TEmit } from '@/types'
+import ItTag from '@/components/tag'
 import { TProps } from '@/types/global'
 import {
   ALLOWED_POSITION,
@@ -127,6 +133,7 @@ export default defineComponent({
   directives: {
     clickoutside: clickOutside,
   },
+  components: { ItTag },
   props: {
     ...getVariantPropsWithClassesList<ITSelectOptions>(),
     placement: {
@@ -137,6 +144,8 @@ export default defineComponent({
     disabled: { type: Boolean, default: false },
     divided: { type: Boolean, default: false },
     trackBy: { type: String, default: 'value' },
+    tagVariant: { type: String, default: 'primary' },
+    message: String,
     labelTop: { type: String, default: null },
     placeholder: { type: String, default: 'Select option' },
     options: { type: Array, default: () => [] },
@@ -145,9 +154,13 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props: TProps, { emit, slots }) {
-    const variant = computed(() =>
-      useVariants<ITSelectOptions>(Components.ITSelect, props),
-    )
+    const variant = computed(() => {
+      const customProps = {
+        ...props,
+        variant: props.disabled ? 'disabled' : props.variant,
+      }
+      return useVariants<ITSelectOptions>(Components.ITSelect, customProps)
+    })
 
     const labelTopSlotExist = useCheckSlot(slots, 'label-top') !== null
 

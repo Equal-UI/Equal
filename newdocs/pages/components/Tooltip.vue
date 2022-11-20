@@ -74,7 +74,8 @@
         <it-tooltip placement="top">
           <template #content>
             <span>
-              <it-tag type="primary">Wow</it-tag>&nbsp; I came from slot
+              <it-tag variant="primary">Wow</it-tag>
+              &nbsp; I came from slot
             </span>
           </template>
           <it-button>Slot content</it-button>

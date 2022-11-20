@@ -7,7 +7,11 @@
         <it-divider :vertical="dividerVertical" />
       </div>
       <template #props>
-        <it-checkbox v-model="dividerVertical" label="Vertical" />
+        <it-checkbox
+          variant="primary"
+          v-model="dividerVertical"
+          label="Vertical"
+        />
       </template>
     </Demobox>
 

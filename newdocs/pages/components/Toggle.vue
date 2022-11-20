@@ -11,7 +11,7 @@
       />
 
       <template #props>
-        <it-checkbox v-model="toggleRound" label="Round" />
+        <it-checkbox variant="primary" v-model="toggleRound" label="Round" />
       </template>
     </Demobox>
     <Box :code="exampleCode" title="Types">
@@ -61,7 +61,7 @@
               xmlns="http://www.w3.org/2000/svg"
               class="h-full transition-all duration-500 ease-out"
               :class="{
-                'fill-indigo-400/30 stroke-indigo-600':
+                'fill-indigo-400/30 stroke-blue-800':
                   toggleIconsValue === 'dark',
                 'fill-gray-600/40': toggleIconsValue !== 'dark',
               }"

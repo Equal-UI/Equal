@@ -1,33 +1,12 @@
 <template>
   <div
-    class="
-      it-box
-      my-10
-      flex
-      w-full
-      flex-col
-      rounded
-      border
-      bg-white
-      dark:border-zinc-600 dark:bg-zinc-800
-    "
+    class="it-box my-10 flex w-full flex-col rounded border bg-white dark:border-zinc-600 dark:bg-zinc-800"
     :class="{ 'overflow-hidden': overflowHidden }"
   >
     <h2 class="py-4 px-6 text-xl font-semibold leading-none">{{ title }}</h2>
     <slot name="description"></slot>
     <div
-      class="
-        box-border
-        flex
-        w-full
-        flex-wrap
-        items-center
-        justify-center
-        gap-4
-        py-10
-        px-6
-        leading-none
-      "
+      class="box-border flex w-full flex-wrap items-center justify-center gap-4 bg-inherit py-10 px-6 leading-none"
     >
       <slot></slot>
     </div>
@@ -50,7 +29,10 @@
         }"
       >
         <it-button
-          class="!absolute top-3 right-3 !px-2"
+          :variants="{
+            $: { root: '!absolute top-3 right-3 !px-2', text: '!text-white' },
+          }"
+          :variant="['text', '$']"
           v-show="!showExpand || showCopy"
           @click="clickCopy"
           v-tooltip="tooltipValue"
@@ -102,8 +84,8 @@
           />
         </svg>
       </template>
-      {{ expanded ? 'Hide code' : 'Show code' }}</it-button
-    >
+      {{ expanded ? 'Hide code' : 'Show code' }}
+    </it-button>
   </div>
 </template>
 

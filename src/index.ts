@@ -34,7 +34,6 @@ import Toggle from './components/toggle'
 import Tooltip from './components/tooltip'
 import { tooltip } from './directives/tooltip'
 
-import './styles/index.less'
 import { App, defineComponent } from 'vue'
 import { EqualUIConfiguration } from './types/variant'
 

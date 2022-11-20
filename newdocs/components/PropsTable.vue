@@ -1,21 +1,13 @@
 <template>
   <div
-    class="
-      my-10
-      flex flex-col
-      overflow-x-scroll
-      rounded
-      border
-      bg-white
-      last:mb-0
-      dark:border-gray-600 dark:bg-neutral-800
-    "
+    class="my-10 flex flex-col overflow-x-scroll rounded border bg-white last:mb-0 dark:border-gray-600 dark:bg-neutral-800"
   >
     <h2
       v-if="dataSheet"
       class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
     >
-      Props <it-tag filled v-if="tagName">{{ tagName }}</it-tag>
+      Props
+      <it-tag filled v-if="tagName">{{ tagName }}</it-tag>
     </h2>
     <table v-if="dataSheet" class="table">
       <thead class="bg-slate-50 dark:bg-neutral-700">
@@ -41,9 +33,9 @@
               "
               class="flex gap-1"
             >
-              <it-tag filled variant="primary" v-for="i in col" :key="i">{{
-                i
-              }}</it-tag>
+              <it-tag filled variant="primary" v-for="i in col" :key="i">
+                {{ i }}
+              </it-tag>
             </div>
             <span v-else>{{ col }}</span>
           </td>

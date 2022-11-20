@@ -14,14 +14,14 @@
 
               <template #menu>
                 <it-dropdown-menu>
-                  <it-dropdown-item divided>123123 </it-dropdown-item>
+                  <it-dropdown-item divided>123123</it-dropdown-item>
                   <it-dropdown :clickable="clickable" :placement="dropdownType">
                     <it-dropdown-item nested>Cloud</it-dropdown-item>
 
                     <template #menu>
                       <it-dropdown-menu>
-                        <it-dropdown-item divided>123123 </it-dropdown-item>
-                        <it-dropdown-item>rghberhr </it-dropdown-item>
+                        <it-dropdown-item divided>123123</it-dropdown-item>
+                        <it-dropdown-item>rghberhr</it-dropdown-item>
                       </it-dropdown-menu>
                     </template>
                   </it-dropdown>
@@ -40,7 +40,7 @@
           label-top="Dropdown placement"
           :options="dropdownTypes"
         />
-        <it-checkbox v-model="clickable" label="Clickable" />
+        <it-checkbox variant="primary" v-model="clickable" label="Clickable" />
       </template>
     </Demobox>
 
@@ -70,14 +70,14 @@
 
               <template #menu>
                 <it-dropdown-menu>
-                  <it-dropdown-item divided>123123 </it-dropdown-item>
+                  <it-dropdown-item divided>123123</it-dropdown-item>
                   <it-dropdown>
                     <it-dropdown-item nested>Cloud</it-dropdown-item>
 
                     <template #menu>
                       <it-dropdown-menu>
-                        <it-dropdown-item divided>123123 </it-dropdown-item>
-                        <it-dropdown-item>rghberhr </it-dropdown-item>
+                        <it-dropdown-item divided>123123</it-dropdown-item>
+                        <it-dropdown-item>rghberhr</it-dropdown-item>
                       </it-dropdown-menu>
                     </template>
                   </it-dropdown>

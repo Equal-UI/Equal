@@ -25,7 +25,7 @@ import { useVariants } from '@/hooks/useVariants'
 import { Components } from '@/models/enums'
 
 export default defineComponent({
-  name: 'it-avatar',
+  name: Components.ITAvatar,
   props: {
     ...getVariantPropsWithClassesList<ITAvatarOptions>(),
     text: { type: String, default: null },
@@ -37,12 +37,12 @@ export default defineComponent({
     const squaredGroup = inject('square', null)
     const groupSize = inject('size', null)
 
-    const variant = computed(() => {
-      return useVariants<ITAvatarOptions>(
+    const variant = computed(() =>
+      useVariants<ITAvatarOptions>(
         Components.ITAvatar,
         <VariantJSWithClassesListProps<ITAvatarOptions>>props,
-      )
-    })
+      ),
+    )
 
     const avatarText = computed(() => getUpperFirstLettersWords(props.text, 2))
 

@@ -45,7 +45,7 @@
           <template #prefixIcon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 text-slate-500"
+              class="h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -55,8 +55,9 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              /></svg
-          ></template>
+              />
+            </svg>
+          </template>
           <template v-if="search.length > 0" #suffixIcon>
             <it-button @click="search = ''" class="!px-1 !py-1">
               <svg
@@ -86,26 +87,29 @@
         <template v-for="(component, i) in item" :key="i">
           <li
             :class="{
-              'bg-blue-600/10 text-blue-600': route.path === component.route,
+              'bg-gray-400/10 text-blue-600 dark:bg-gray-500/10':
+                route.path === component.route,
             }"
-            class="mb-1 flex flex-row rounded text-sm font-medium text-gray-500 dark:text-slate-200"
+            class="mb-1 flex flex-row rounded text-sm font-medium text-gray-600 dark:text-slate-200"
             @click="hideSidebar"
           >
             <NuxtLink class="w-full" :to="component.route">
               <span
-                class="flex items-center justify-between py-1.5 px-3 text-sm transition-all hover:pl-4"
+                class="flex items-center justify-between py-1.5 px-3 text-sm leading-6 transition-all hover:pl-4"
                 :class="{
-                  'hover:text-gray-900': route.path !== component.route,
+                  'hover:text-gray-900 dark:hover:text-white':
+                    route.path !== component.route,
                 }"
               >
                 <div class="flex items-center">
                   <i
-                    class="material-icons mr-2 items-center !text-xl"
+                    class="material-icons mr-3 items-center !text-xl text-gray-500"
                     :class="{
                       'material-icons-outlined': component.icon_outlined,
                     }"
-                    >{{ component.icon }}</i
                   >
+                    {{ component.icon }}
+                  </i>
                   {{ component.name }}
                 </div>
                 <it-tag
@@ -113,8 +117,9 @@
                   filled
                   class="ml-2"
                   v-if="component.soon"
-                  >Soon</it-tag
                 >
+                  Soon
+                </it-tag>
               </span>
             </NuxtLink>
           </li>

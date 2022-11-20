@@ -10,8 +10,13 @@
         />
       </div>
       <template #props>
-        <it-checkbox v-model="colorTooltip" label="Tooltip on move" />
-        <it-checkbox v-model="hideAlpha" label="Hide alpha" />
+        <it-checkbox
+          variant="primary"
+          v-model="colorTooltip"
+          label="Tooltip on move"
+          subLabel="Move cursor with color picker to see the toltip on top"
+        />
+        <it-checkbox variant="primary" v-model="hideAlpha" label="Hide alpha" />
       </template>
     </Demobox>
 
@@ -21,18 +26,9 @@
 
         <h5 class="mt-6">
           Change event return
-          <it-tooltip>
-            <a target="_blank" href="https://github.com/omgovich/colord"
-              >colord</a
-            >
-
-            <template #content
-              ><div class="max-w-[130px]">
-                If you like EqualUI's colorpicker — don't hesitate to leave a
-                like to colord library
-              </div></template
-            >
-          </it-tooltip>
+          <a target="_blank" href="https://github.com/omgovich/colord">
+            colord
+          </a>
           object so for example
           <pre>value.toRgb()</pre>
           will return:
@@ -81,7 +77,7 @@ export default defineComponent({
     exColor: colord('rgb(48, 81, 255)'),
     hideAlpha: false,
 
-    tooltipCode: `<it-colorpicker showTooltip :value="color" @change="updateColor" />`,
+    tooltipCode: `<it-colorpicker ||| showTooltip ||| :value="color" @change="updateColor" />`,
 
     popoverCode: `<it-popover borderless>
   <it-button>Choose color</it-button>

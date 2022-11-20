@@ -7,56 +7,47 @@
         :variant="buttonType"
         :outlined="buttonOutlined"
         :round="buttonRound"
-        :pulse="buttonPulse"
         :loading="buttonLoading"
         :disabled="buttonDisabled"
         :block="buttonBlock"
         :size="buttonSize"
-        >{{ buttonText }}</it-button
       >
+        {{ buttonText }}
+      </it-button>
       <template #props>
         <it-select
           v-model="buttonType"
           placeholder="Select type"
           label-top="Button variant"
           :options="buttonTypes"
-        >
-        </it-select>
+        />
+        <it-toggle
+          v-model="buttonSize"
+          class="my-4"
+          :options="['small', 'normal', 'big']"
+        />
         <it-input v-model="buttonText" label-top="Button text" />
-        <it-checkbox v-model="buttonOutlined" label="Outline" />
-        <it-checkbox v-model="buttonRound" label="Round" />
-        <it-checkbox v-model="buttonIcon" label="Icon" />
-        <it-checkbox v-model="buttonLoading" label="Loading" />
-        <it-checkbox v-model="buttonPulse" label="Pulse" />
-        <it-checkbox v-model="buttonBlock" label="Block" />
-        <it-checkbox v-model="buttonDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="buttonOutlined"
+          label="Outline"
+        />
+        <it-checkbox variant="primary" v-model="buttonRound" label="Round" />
+        <it-checkbox variant="primary" v-model="buttonIcon" label="Icon" />
+        <it-checkbox
+          variant="primary"
+          v-model="buttonLoading"
+          label="Loading"
+        />
+        <it-checkbox variant="primary" v-model="buttonBlock" label="Block" />
+        <it-checkbox
+          variant="primary"
+          v-model="buttonDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
-    <Box :code="codeGroups" title="Buttons group">
-      <it-button-group>
-        <it-button>Button</it-button>
-        <it-button>Button</it-button>
-        <it-button>Button</it-button>
-      </it-button-group>
 
-      <it-button-group vertical>
-        <it-button>Button</it-button>
-        <it-button>Button</it-button>
-        <it-button>Button</it-button>
-      </it-button-group>
-
-      <it-button-group>
-        <it-button variant="primary" outlined>Button</it-button>
-        <it-button variant="primary" outlined>Button</it-button>
-        <it-button variant="primary" outlined>Button</it-button>
-      </it-button-group>
-
-      <it-button-group vertical>
-        <it-button variant="primary" outlined>Button</it-button>
-        <it-button variant="primary" outlined>Button</it-button>
-        <it-button variant="primary" outlined>Button</it-button>
-      </it-button-group>
-    </Box>
     <Box :code="codeType" title="Variants">
       <it-button>Button</it-button>
       <it-button variant="primary">Button</it-button>
@@ -94,9 +85,9 @@
       <it-button size="big">Button</it-button>
     </Box>
     <Box :code="codeIcon" title="With icon">
-      <it-button
-        ><template #icon
-          ><svg
+      <it-button>
+        <template #icon>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
             fill="none"
@@ -108,12 +99,14 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-            /></svg></template
-        >Button</it-button
-      >
-      <it-button
-        ><template #icon
-          ><svg
+            />
+          </svg>
+        </template>
+        Button
+      </it-button>
+      <it-button>
+        <template #icon>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
             fill="none"
@@ -125,10 +118,12 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
-            /></svg></template
-      ></it-button>
-      <it-button
-        >Button
+            />
+          </svg>
+        </template>
+      </it-button>
+      <it-button>
+        Button
         <template #icon-after>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -184,24 +179,43 @@
             />
           </svg>
         </template>
-        {{ following ? 'Following' : 'Follow' }}</it-button
-      >
+        {{ following ? 'Following' : 'Follow' }}
+      </it-button>
     </Box>
     <Box :code="codeLoading" title="Loading">
       <it-button variant="primary" loading>Loading</it-button>
       <it-button variant="primary" loading outlined>Loading</it-button>
     </Box>
-    <Box :code="codePulse" title="Pulse">
-      <template #description>
-        <p class="mx-6">Pulse helps you to catch user's attention</p>
-      </template>
-      <it-button variant="primary" pulse>Look at me</it-button>
-      <it-button variant="primary" pulse outlined>Look at me</it-button>
-    </Box>
     <Box :code="codeDisabled" title="Disabled">
       <it-button size="small" disabled>Button</it-button>
       <it-button size="normal" disabled>Button</it-button>
       <it-button size="big" disabled>Button</it-button>
+    </Box>
+
+    <Box :code="codeGroups" title="Buttons group">
+      <it-button-group>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+      </it-button-group>
+
+      <it-button-group vertical>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+        <it-button>Button</it-button>
+      </it-button-group>
+
+      <it-button-group>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+      </it-button-group>
+
+      <it-button-group vertical>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+        <it-button variant="primary" outlined>Button</it-button>
+      </it-button-group>
     </Box>
 
     <props-table tag-name="it-button" :data-sheet="dataSheet" />
@@ -220,10 +234,9 @@ export default defineComponent({
     buttonDisabled: false,
     buttonLoading: false,
     following: false,
-    buttonPulse: false,
     buttonBlock: false,
     buttonType: 'primary',
-    buttonSize: '',
+    buttonSize: 'normal',
     buttonTypes: ['default', 'primary', 'success', 'danger', 'warning'],
     buttonIcon: false,
 
@@ -272,9 +285,15 @@ export default defineComponent({
 <it-button variant="danger" ||| round |||>Button</it-button>
 <it-button variant="warning" ||| round |||>Button</it-button>`,
 
-    codeIcon: `<it-button ||| icon="face" |||>Button</it-button>
-<it-button ||| icon="face" |||/>
-<it-button ||| icon="face" ||| iconAfter>Button</it-button>`,
+    codeIcon: `<it-button>
+  ||| <template #icon></template> ||| Button
+</it-button>
+<it-button>
+  ||| <template #icon></template> ||| 
+</it-button>
+<it-button>
+  ||| <template #icon-after></template> ||| 
+</it-button>`,
 
     toggleCode: `<it-button
   @click="following = !following"

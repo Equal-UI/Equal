@@ -4,11 +4,12 @@
     <div :class="variant.controlsWrapper">
       <it-button
         v-if="!hideControls"
-        :disabled="this.disabled || disableController('minus')"
+        :disabled="disabled || disableController('minus')"
         @click="decrease"
         @mousedown="press('minus')"
-        ><template #icon
-          ><svg
+      >
+        <template #icon>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
             viewBox="0 0 20 20"
@@ -18,8 +19,10 @@
               fill-rule="evenodd"
               d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
               clip-rule="evenodd"
-            /></svg></template
-      ></it-button>
+            />
+          </svg>
+        </template>
+      </it-button>
 
       <div :class="variant.inputWrapper">
         <input
@@ -41,12 +44,13 @@
       </div>
       <it-button
         v-if="!hideControls"
-        :disabled="this.disabled || disableController('plus')"
+        :disabled="disabled || disableController('plus')"
         type="primary"
         @click="increase"
         @mousedown="press('plus')"
-        ><template #icon
-          ><svg
+      >
+        <template #icon>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4"
             viewBox="0 0 20 20"
@@ -56,8 +60,10 @@
               fill-rule="evenodd"
               d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
               clip-rule="evenodd"
-            /></svg></template
-      ></it-button>
+            />
+          </svg>
+        </template>
+      </it-button>
     </div>
   </div>
 </template>

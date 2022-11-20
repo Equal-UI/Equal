@@ -19,15 +19,18 @@
           :min="1"
           label-top="Progress bar height"
         />
-        <it-checkbox v-model="progressShowTooltip" label="Show tooltip" />
+        <it-checkbox
+          variant="primary"
+          v-model="progressShowTooltip"
+          label="Show tooltip"
+        />
         <it-select
           v-model="progressTooltip"
           placeholder="Select tooltip"
           label-top="Tooltip position"
           :disabled="!progressShowTooltip"
           :options="tooltipTypes"
-        >
-        </it-select>
+        ></it-select>
       </template>
     </Demobox>
     <Box :code="infiniteCode" title="Infinite">

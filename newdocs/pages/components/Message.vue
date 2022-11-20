@@ -12,8 +12,9 @@
     <Box :code="durationCode" title="Duration">
       <it-button
         @click="$Message({ duration: 5000, text: 'I have 5000ms left' })"
-        >5000 ms</it-button
       >
+        5000 ms
+      </it-button>
     </Box>
     <props-table :event-sheet="eventSheet" :data-sheet="dataSheet" />
   </div>
@@ -27,7 +28,7 @@ export default defineComponent({
   data: () => ({
     messageText: 'Hello',
     messagesCode: `<it-button @click="showMessage()">Message</it-button>`,
-    durationCode: `<it-button @click="$Message({duration: 5000, text: 'I have 5000ms left'})">5000 ms</it-button>`,
+    durationCode: `<it-button @click="$Message({ ||| duration: 5000 |||, text: 'I have 5000ms left' })">5000 ms</it-button>`,
 
     dataSheet: [
       {

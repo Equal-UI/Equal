@@ -28,8 +28,11 @@
           label-top="Switch sublabel"
           placeholder="Additional information"
         ></it-textarea>
-        <it-checkbox v-model="switchPulse" label="Pulse" />
-        <it-checkbox v-model="switchDisabled" label="Disabled" />
+        <it-checkbox
+          variant="primary"
+          v-model="switchDisabled"
+          label="Disabled"
+        />
       </template>
     </Demobox>
     <Box :code="typesCode" title="Variants">

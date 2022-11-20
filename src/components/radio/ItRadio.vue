@@ -1,7 +1,7 @@
 <template>
   <label :class="variant.root">
     <input
-      class="peer absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0"
+      :class="variant.input"
       :disabled="disabled"
       type="radio"
       :checked="isChecked"
@@ -23,8 +23,8 @@
       v-if="label || subLabel || $slots.default || $slots.sublabel"
       :class="variant.labelGroup"
     >
-      <span v-if="label || $slots.default" :class="variant.label"
-        ><slot>{{ label }}</slot>
+      <span v-if="label || $slots.default" :class="variant.label">
+        <slot>{{ label }}</slot>
       </span>
       <span v-if="subLabel || $slots.sublabel" :class="variant.subLabel">
         <slot name="sublabel">{{ subLabel }}</slot>

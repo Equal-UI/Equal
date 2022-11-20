@@ -2,7 +2,7 @@
   <div
     ref="container"
     :class="variant.saturationRoot"
-    :style="{ background: bgColor, 'margin-bottom': '-1px' }"
+    :style="{ background: bgColor, 'margin-bottom': '4px' }"
     @mousedown="handleMouseDown"
     @touchmove="handleChange"
     @touchstart="handleChange"

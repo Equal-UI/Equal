@@ -6,15 +6,19 @@
       <it-tabs :vertical="verticalTab" :box="boxTab">
         <it-tab title="Tab 1" class="p-4">First tab</it-tab>
         <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
-        <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
-          >Third tab</it-tab
-        >
+        <it-tab title="Tab 3" :disabled="disabledTab" class="p-4">
+          Third tab
+        </it-tab>
       </it-tabs>
 
       <template #props>
-        <it-checkbox v-model="verticalTab" label="Vertical" />
-        <it-checkbox v-model="boxTab" label="Tab Box" />
-        <it-checkbox v-model="disabledTab" label="Disabled Tab" />
+        <it-checkbox variant="primary" v-model="verticalTab" label="Vertical" />
+        <it-checkbox variant="primary" v-model="boxTab" label="Tab Box" />
+        <it-checkbox
+          variant="primary"
+          v-model="disabledTab"
+          label="Disabled Tab"
+        />
       </template>
     </Demobox>
     <Box :code="boxedCode" title="Tabs in box">
@@ -22,16 +26,16 @@
         <it-tabs box class="flex-1">
           <it-tab title="Tab 1" class="p-4">First tab</it-tab>
           <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
-            >Third tab</it-tab
-          >
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4">
+            Third tab
+          </it-tab>
         </it-tabs>
         <it-tabs vertical box class="mt-3 flex-1">
           <it-tab title="Tab 1" class="p-4">First tab</it-tab>
           <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
-            >Third tab</it-tab
-          >
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4">
+            Third tab
+          </it-tab>
         </it-tabs>
       </div>
     </Box>
@@ -40,16 +44,16 @@
         <it-tabs class="flex-1">
           <it-tab title="Tab 1" class="p-4">First tab</it-tab>
           <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
-            >Third tab</it-tab
-          >
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4">
+            Third tab
+          </it-tab>
         </it-tabs>
         <it-tabs vertical class="mt-4 flex-1">
           <it-tab title="Tab 1" class="p-4">First tab</it-tab>
           <it-tab title="Tab 2" class="p-4">Second tab</it-tab>
-          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4"
-            >Third tab</it-tab
-          >
+          <it-tab title="Tab 3" :disabled="disabledTab" class="p-4">
+            Third tab
+          </it-tab>
         </it-tabs>
       </div>
     </Box>
