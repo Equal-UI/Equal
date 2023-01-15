@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/Equal/',
     head: {
+      title: 'Equal UI',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
         {
