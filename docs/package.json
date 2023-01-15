@@ -17,6 +17,7 @@
   "dependencies": {
     "@docsearch/js": "^3.0.0",
     "@vueuse/core": "^9.3.1",
+    "@vueuse/integrations": "^5.0.3",
     "@floating-ui/dom": "^0.5.4",
     "body-scroll-lock": "^3.1.5",
     "colord": "^2.9.2",
