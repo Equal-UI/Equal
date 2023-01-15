@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   alias: {
     '@': '/../src',
     '@floating-ui': './node_modules/@floating-ui',
+    '@floating-ui/dom': './node_modules/@floating-ui/dom',
     '@vueuse/integrations/useFocusTrap':
       './node_modules/@vueuse/integrations/useFocusTrap',
     'body-scroll-lock': './node_modules/body-scroll-lock',
