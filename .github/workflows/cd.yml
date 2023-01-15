@@ -6,6 +6,7 @@ permissions:
   pull-requests: write
   issues: write
   repository-projects: write
+  contents: write
 
 jobs:
   cd:
