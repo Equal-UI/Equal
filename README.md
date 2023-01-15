@@ -60,19 +60,19 @@ yarn add equal-vue
 ```js
 import { createApp } from 'vue'
 import Equal from 'equal-vue'
-import 'equal-vue/dist/style.css'
+import Config from 'equal-vue/dist/full' // or light / dark theme
 
-createApp.use(Equal)
+createApp.use(Equal, Config)
 ```
 
 ## Or individual components
 
 ```js
 import { createApp } from 'vue'
-import { Button, Alert, Switch } from 'equal-vue'
-import 'equal-vue/dist/style.css'
+import { Button, Switch } from 'equal-vue'
+import Config from 'equal-vue/dist/full' // or light / dark theme
 
-createApp.use(Button).use(Alert).use(Switch)
+createApp.use(Button, Config).use(Switch, Config)
 ```
 
 # License
