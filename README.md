@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://equal-ui.github.io/Equal/">
-    <img width="150" src="./docs/public/logo.png">
+    <img width="150" src="./docs/public/logo.svg">
   </a>
 
 <p align="center">
