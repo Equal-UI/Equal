@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     '@': '/../src',
     '@floating-ui': './node_modules/@floating-ui',
     'body-scroll-lock': './node_modules/body-scroll-lock',
-    'colord': './node_modules/colord',
+    'colord': './node_modules/colord/index.js',
   },
   postcss: {
     plugins: {
