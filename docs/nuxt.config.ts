@@ -2,6 +2,22 @@
 export default defineNuxtConfig({
   app: {
     baseURL: '/Equal/',
+    head: {
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap',
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900',
+        },
+      ],
+    },
   },
   target: 'static',
   router: {
@@ -18,24 +34,7 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
-  meta: {
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined',
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap',
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900',
-      },
-    ],
-  },
 })
-
 
 // alias: {
 //   '@': '/../src',
