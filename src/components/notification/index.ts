@@ -13,7 +13,7 @@ interface INotificationOptions {
   placement: string
   emoji: string
   position: {
-    [key: string]: number
+    [key: string]: number | string
   }
   onClose: () => void
   [key: string]: any
@@ -59,6 +59,8 @@ const Notification =
 
     const offsets: { [key: string]: number } = {
       [Positions.TR]: 0,
+      [Positions.T]: 0,
+      [Positions.B]: 0,
       [Positions.TL]: 0,
       [Positions.BR]: 0,
       [Positions.BL]: 0,
@@ -77,9 +79,14 @@ const Notification =
     ;(mountedInstance.$refs.elRef as INotificationOptions).position[
       options.placement.split('-')[0]
     ] = offsets[options.placement] + 6
-    ;(mountedInstance.$refs.elRef as INotificationOptions).position[
-      options.placement.split('-')[1]
-    ] = 10
+    if (options.placement.split('-')[1]) {
+      ;(mountedInstance.$refs.elRef as INotificationOptions).position[
+        options.placement.split('-')[1]
+      ] = 10
+    } else {
+      ;(mountedInstance.$refs.elRef as INotificationOptions).position['right'] =
+        '50%'
+    }
 
     notifications.push({ id, component: mountedInstance })
 

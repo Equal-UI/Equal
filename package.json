@@ -1,7 +1,7 @@
 {
   "name": "equal-vue",
   "version": "0.9.0",
-  "homepage": "https://quatrochan.github.io/Equal/",
+  "homepage": "https://equal-ui.github.io/Equal/",
   "description": "Equal is a Vue 3 UI library based on TypeScript",
   "author": {
     "name": "Yan Savinov",
@@ -43,13 +43,13 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:theme",
+    "build:theme": "ts-node ./scripts/prepareTheme.ts",
     "serve": "vite serve",
     "test": "vitest run",
     "test:dev": "vitest",
-    "tetet": "vitest -u",
-    "lint:eslint": "eslint src/**/*.{ts,vue} newdocs/**/*.{ts,vue}",
-    "lint:prettier": "prettier -w -u src/**/*.{ts,vue} newdocs/**/*.{ts,vue}",
+    "lint:eslint": "eslint src/**/*.{ts,vue} docs/**/*.{ts,vue}",
+    "lint:prettier": "prettier -w -u src/**/*.{ts,vue} docs/**/*.{ts,vue}",
     "lint:stylelint": "stylelint **/*.{less,vue} --syntax less"
   },
   "devDependencies": {
@@ -87,7 +87,8 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-standard": "^20.0.0",
     "tailwindcss": "^3.1.0",
-    "typescript": "^4.1.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4",
     "vite": "^2.0.0-beta.40",
     "vitest": "^0.5.9",
     "vue-eslint-parser": "^7.5.0"

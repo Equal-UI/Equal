@@ -1,6 +1,4 @@
-import { EqualUIConfiguration } from '@/types/variant'
-
-export default <EqualUIConfiguration>(<unknown>{
+export default {
   'it-alert': {
     base: {
       root: 'rounded border flex px-4 py-4',
@@ -43,31 +41,31 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-tag': {
     base: {
-      root: 'text-xs flex border rounded px-1 py-0.5 gap-2 font-medium inline-flex items-center leading-none',
+      root: 'text-xs flex rounded px-1 py-1 gap-2 font-medium inline-flex items-center leading-none',
       filled: '',
       closeBtn: 'cursor-pointer h-3.5 w-3.5',
     },
     classes: {},
     variants: {
       default: {
-        root: '',
-        filled: 'bg-white text-gray-900',
+        root: 'bg-zinc-400',
+        filled: 'bg-zinc-500/20 text-zinc-600',
       },
       primary: {
-        root: 'border-blue-600',
-        filled: 'bg-blue-600 !text-white',
+        root: 'bg-blue-600',
+        filled: '!bg-blue-500/20 text-blue-500',
       },
       success: {
-        root: 'border-green-500',
-        filled: 'bg-green-500 !text-white',
+        root: 'bg-green-500',
+        filled: '!bg-green-500/20 text-green-500',
       },
       warning: {
-        root: 'border-yellow-500',
-        filled: 'bg-yellow-500 !text-white',
+        root: 'bg-yellow-500',
+        filled: '!bg-yellow-500/20 text-yellow-500',
       },
       danger: {
-        root: 'border-red-500',
-        filled: 'bg-red-500 !text-white',
+        root: 'bg-red-500',
+        filled: '!bg-red-500/20 text-red-500',
       },
     },
   },
@@ -159,6 +157,7 @@ export default <EqualUIConfiguration>(<unknown>{
         root: 'cursor-not-allowed',
         input: 'cursor-not-allowed',
         switchChecked: '!bg-slate-400',
+        switchCircle: 'bg-gray-300',
         label: 'text-gray-300',
         subLabel: 'text-gray-300',
       },
@@ -234,10 +233,10 @@ export default <EqualUIConfiguration>(<unknown>{
     base: {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       outlined: '',
-      text: 'empty:!hidden flex flex-row space-x-2 items-center',
-      round: 'rounded-3xl',
+      text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
+      round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
-      big: '!px-7 !py-3.5 text-base',
+      big: '!px-7 !py-3.5 text-base rounded-md',
       empty: '!p-2',
       loading: 'absolute !w-6 !h-6',
     },
@@ -434,17 +433,33 @@ export default <EqualUIConfiguration>(<unknown>{
   },
   'it-textarea': {
     base: {
-      root: 'flex flex-col',
+      root: 'flex flex-1 flex-col',
       label: 'flex text-sm mb-1.5',
       textarea:
         'relative flex-1 min-h-min appearance-none w-full placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
       mask: 'fixed bg-gray-900/40 inset-0 z-50',
+      message: 'text-xs peer-disabled:text-gray-300',
     },
     classes: {},
     variants: {
       default: {
         textarea:
           'border-slate-300 shadow-slate-600/10 disabled:text-gray-300 disabled:bg-gray-100 focus-visible:border-blue-600 focus-visible:shadow-blue-600/30 ',
+      },
+      success: {
+        textarea:
+          '!border-green-500 focus-within:!border-green-500 focus-visible:shadow-green-500/30',
+        message: 'text-green-500',
+      },
+      warning: {
+        textarea:
+          '!border-yellow-500 focus-within:!border-yellow-500  focus-visible:shadow-yellow-500/30',
+        message: 'text-yellow-500',
+      },
+      danger: {
+        textarea:
+          '!border-red-500 focus-within:!border-red-500 focus-visible:shadow-red-500/30',
+        message: 'text-red-500',
       },
     },
   },
@@ -537,7 +552,7 @@ export default <EqualUIConfiguration>(<unknown>{
     base: {
       root: 'inset-0 w-full h-full',
       mask: 'fixed bg-gray-900/60 inset-0 w-full h-full',
-      body: 'fixed max-w-[75%] top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
+      body: 'fixed max-w-[75%] z-50 top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
       right: 'right-[20px]',
       left: 'left-[20px]',
     },
@@ -712,12 +727,6 @@ export default <EqualUIConfiguration>(<unknown>{
       },
     },
   },
-  'it-message': {
-    base: {
-      root: 'z-50 fixed left-1/2 transition-all text-sm -translate-x-1/2 rounded-md bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
-    },
-    variants: {},
-  },
   'it-notification': {
     base: {
       root: 'fixed z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
@@ -725,6 +734,13 @@ export default <EqualUIConfiguration>(<unknown>{
     variants: {},
   },
   transitions: {
+    scale: {
+      'enter-active-class':
+        'duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.475)]',
+      'enter-from-class': 'transform scale-0',
+      'leave-active-class': 'duration-200 ease-in',
+      'leave-to-class': 'transform scale-0',
+    },
     fade: {
       'enter-active-class': 'duration-75',
       'enter-to-class': 'opacity-100',
@@ -790,4 +806,4 @@ export default <EqualUIConfiguration>(<unknown>{
       'leave-to-class': 'opacity-0 scale-0 -translate-y-4',
     },
   },
-})
+}

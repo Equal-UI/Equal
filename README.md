@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://quatrochan.github.io/Equal/">
-    <img width="300" src="https://quatrochan.github.io/Equal/eqqqual.png">
+  <a href="https://equal-ui.github.io/Equal/">
+    <img width="150" src="./docs/public/logo.png">
   </a>
 
 <p align="center">
@@ -15,23 +15,25 @@
 </p>
 </p>
 
-<h2 align="center">
+<h1 align="center">
   Equal UI
 </h2>
 
 <div align="center">
-Equal UI is a Vue 3 components library with 30+ components based on TypeScript and personal design system.
+Equal UI is a Vue 3 hackable components library with 30+ components on top of Tailwindcss
 <br>
-  <a href="https://quatrochan.github.io/Equal/"><strong>Explore Equal UI docs</strong></a>
+  <a href="https://equal-ui.github.io/Equal/"><strong>Explore Equal UI docs</strong></a>
 </div>
 
 # Features
-  - Enterpise class UI based on Equal design system
-  - Supports [Material Design Icons](https://material.io/resources/icons/)
-  - Lightweight: 18KB brotli
-  - Includes 30+ components
-  - Based on TypeScript
 
+- Enterpise class UI based on Equal design system
+- Built-in dark theme
+- Full components customization
+- Theme building feature with Tailwindcss
+- Lightweight: 18KB brotli
+- Includes 30+ components
+- Based on TypeScript
 
 # Links
 
@@ -39,7 +41,7 @@ Equal UI is a Vue 3 components library with 30+ components based on TypeScript a
 
 # Install
 
-You need [Vue.js](https://v3.vuejs.org/) version 3.0+
+You need [Vue.js](https://v3.vuejs.org/) version 3.1+
 
 ```bash
 # npm
@@ -72,43 +74,6 @@ import 'equal-vue/dist/style.css'
 
 createApp.use(Button).use(Alert).use(Switch)
 ```
-
-<!-- ## Or start with CDN
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <link
-      href="https://cdn.jsdelivr.net/npm/equal-vue/dist/style.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
-    />
-  </head>
-  <body>
-    <div id="app">
-      <it-button type="primary">Quickstart</it-button>
-    </div>
-
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="https://unpkg.com/equal-vue"></script>
-    <script>
-      Vue.createApp()
-    </script>
-  </body>
-</html>
-``` -->
 
 # License
 

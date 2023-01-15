@@ -9,8 +9,9 @@
       <it-button
         :variant="switchBtn ? 'primary' : 'neutral'"
         @click="switchBtn = !switchBtn"
-        >{{ switchBtn ? 'Following' : 'Click to follow' }}</it-button
       >
+        {{ switchBtn ? 'Following' : 'Click to follow' }}
+      </it-button>
 
       <it-button>Button</it-button>
       <it-button variant="primary">Button</it-button>
@@ -186,31 +187,31 @@
       <h3>Collapse</h3>
 
       <it-collapse>
-        <it-collapse-item title="Title 1"
-          >The First Things First manifesto was written 29 November 1963 and
+        <it-collapse-item title="Title 1">
+          The First Things First manifesto was written 29 November 1963 and
           published in 1964 by Ken Garland. It was backed by over 400 graphic
           designers and artists and also received the backing of Tony Benn,
           radical left-wing MP and activist, who published it in its entirety in
-          The Guardian newspaper.</it-collapse-item
-        >
-        <it-collapse-item title="Title 2"
-          >Reacting against a rich and affluent Britain of the 1960s, it tried
-          to re-radicalise a design industry which the signatories felt had
-          become lazy and uncritical. Drawing on ideas shared by critical
-          theory, the Frankfurt School, and the counter-culture of the time, it
-          explicitly reaffirmed the belief that design is not a neutral,
-          value-free process.</it-collapse-item
-        >
-        <it-collapse-item title="Title 3"
-          >It rallied against the consumerist culture that was purely concerned
+          The Guardian newspaper.
+        </it-collapse-item>
+        <it-collapse-item title="Title 2">
+          Reacting against a rich and affluent Britain of the 1960s, it tried to
+          re-radicalise a design industry which the signatories felt had become
+          lazy and uncritical. Drawing on ideas shared by critical theory, the
+          Frankfurt School, and the counter-culture of the time, it explicitly
+          reaffirmed the belief that design is not a neutral, value-free
+          process.
+        </it-collapse-item>
+        <it-collapse-item title="Title 3">
+          It rallied against the consumerist culture that was purely concerned
           with buying and selling things and tried to highlight a Humanist
           dimension to graphic design theory. It was later updated and
           republished with a new group of signatories as the First Things First
-          2000 manifesto.</it-collapse-item
-        >
-        <it-collapse-item title="Title 4"
-          >Try Equal UI, you'll like it</it-collapse-item
-        >
+          2000 manifesto.
+        </it-collapse-item>
+        <it-collapse-item title="Title 4">
+          Try Equal UI, you'll like it
+        </it-collapse-item>
       </it-collapse>
     </div>
 
@@ -367,15 +368,15 @@
 
     <div>
       <h3>Message</h3>
-      <it-button @click="$Message({ text: 'Primary message' })"
-        >Default</it-button
-      >
-      <it-button @click="$Message({ text: 'Warnning message' })"
-        >Warning</it-button
-      >
-      <it-button @click="$Message({ text: 'Danger message' })"
-        >Danger</it-button
-      >
+      <it-button @click="$Message({ text: 'Primary message' })">
+        Default
+      </it-button>
+      <it-button @click="$Message({ text: 'Warnning message' })">
+        Warning
+      </it-button>
+      <it-button @click="$Message({ text: 'Danger message' })">
+        Danger
+      </it-button>
     </div>
 
     <div>
@@ -400,8 +401,9 @@
           <it-button
             variant="primary"
             @click="$Message({ text: 'Created' }), (modal = false)"
-            >Create</it-button
           >
+            Create
+          </it-button>
         </template>
       </it-modal>
     </div>
@@ -416,8 +418,9 @@
             text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
-        >Top-left</it-button
       >
+        Top-left
+      </it-button>
       <it-button
         @click="
           $Notification({
@@ -426,8 +429,9 @@
             text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
-        >Top-right</it-button
       >
+        Top-right
+      </it-button>
       <it-button
         @click="
           $Notification({
@@ -436,8 +440,9 @@
             text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
-        >Bottom-left</it-button
       >
+        Bottom-left
+      </it-button>
       <it-button
         @click="
           $Notification({
@@ -446,8 +451,9 @@
             text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
           })
         "
-        >Bottom-right</it-button
       >
+        Bottom-right
+      </it-button>
     </div>
 
     <div>
@@ -462,8 +468,9 @@
         href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html"
         target="_blank"
         rel="noopener noreferrer"
-        >Make it accessible</a
       >
+        Make it accessible
+      </a>
 
       <!-- <div style="margin-bottom: 22px; border: 1px solid #D3DAE6; border-radius: 4px; box-shadow: 0px 1px 1px 0px rgb(228,231,230,1); width: 100%;">
         <it-tabs>

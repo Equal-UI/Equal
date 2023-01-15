@@ -47,7 +47,6 @@ export default defineComponent({
     ...getVariantPropsWithClassesList<ITToggleOptions>(),
     options: { type: Array as PropType<(string | number)[]>, default: [] },
     round: Boolean,
-    icons: Boolean,
     modelValue: [String, Number],
   },
   setup(props, { emit }) {

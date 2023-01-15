@@ -42,7 +42,8 @@
           variant.label,
           { [variant.lineThrough]: lineThrough && modelValue },
         ]"
-        ><slot>{{ label }}</slot>
+      >
+        <slot>{{ label }}</slot>
       </span>
       <span v-if="subLabel || $slots.sublabel" :class="variant.subLabel">
         <slot name="sublabel">{{ subLabel }}</slot>

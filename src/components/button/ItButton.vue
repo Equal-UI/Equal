@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, resolveComponent } from 'vue'
 import ItSpinner from '@/components/spinner'
 import { Components, Sizes } from '@/models/enums'
 import { useVariants } from '@/hooks/useVariants'
@@ -58,7 +58,6 @@ export default defineComponent({
     round: { type: Boolean },
     pulse: { type: Boolean },
     loading: { type: Boolean },
-    icon: { type: String, default: null },
     nuxt: { type: Boolean },
     routerLink: { type: Boolean },
   },
@@ -76,7 +75,8 @@ export default defineComponent({
 
     const component = computed(() => {
       if (props.nuxt) {
-        return 'NuxtLink'
+        // https://github.com/nuxt/framework/issues/4098#issuecomment-1090133831
+        return resolveComponent('NuxtLink')
       } else if (props.routerLink) {
         return 'router-link'
       } else if (attrs.href) {

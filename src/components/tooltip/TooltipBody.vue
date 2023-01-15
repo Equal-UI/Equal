@@ -31,8 +31,8 @@ export default defineComponent({
     show: Boolean,
   },
   setup(props) {
-    const variant = computed(
-      () => useVariants<ITTooltipOptions>(Components.ITTooltip, props), // TODO: props from directive
+    const variant = computed(() =>
+      useVariants<ITTooltipOptions>(Components.ITTooltip, props),
     )
     const placementTransition = computed(() => {
       const [first, ...rest] = props.placement

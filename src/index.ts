@@ -16,7 +16,6 @@ import Dropdown from './components/dropdown'
 import Input from './components/input'
 import Spinner from './components/spinner'
 import Loadingbar from './components/loadingbar'
-import Message from './components/message'
 import Modal from './components/modal'
 import Notification from './components/notification'
 import NumberInput from './components/numberinput'
@@ -74,7 +73,6 @@ function install(Vue: App, configuration: EqualUIConfiguration) {
   for (const component in components) {
     Vue.component(components[component].name, components[component])
   }
-  Vue.config.globalProperties.$Message = Message(configuration)
   Vue.config.globalProperties.$Notification = Notification(configuration)
   Vue.config.globalProperties.$Equal = {
     drawers: [],
@@ -103,7 +101,6 @@ export { default as Dropdown } from './components/dropdown'
 export { default as Input } from './components/input'
 export { default as Spinner } from './components/spinner'
 export { default as Loadingbar } from './components/loadingbar'
-export { default as Message } from './components/message'
 export { default as Modal } from './components/modal'
 export { default as Notification } from './components/notification'
 export { default as NumberInput } from './components/numberinput'

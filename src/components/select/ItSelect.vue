@@ -83,16 +83,18 @@
           <li
             v-for="(option, optionIndex) in options"
             :key="optionIndex"
+            :data-focused="indexFocusedOption === optionIndex"
             :ref="(el) => setOptionRef(el, optionIndex)"
             :class="[
               {
-                CLASS_SELECTED_OPTION: indexFocusedOption === optionIndex,
+                [variant.focusedHovered]: indexFocusedOption === optionIndex,
                 [variant.optionSelected]:
                   indexFocusedOption === optionIndex ||
-                  Array.isArray(wrappedValue)
-                    ? wrappedValue.find(
-                        (el) => el[trackBy] === getOptionValue(option),
-                      )
+                  (Array.isArray(wrappedValue) && wrappedValue)
+                    ? (wrappedValue.length
+                        ? wrappedValue
+                        : [wrappedValue]
+                      ).find((el) => el[trackBy] === getOptionValue(option))
                     : wrappedValue[trackBy] === getOptionValue(option),
               },
               variant.option,
@@ -110,7 +112,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
+import { defineComponent, computed, ref, onMounted } from 'vue'
 import { Components, Positions } from '@/models/enums'
 import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
@@ -172,6 +174,7 @@ export default defineComponent({
       indexFocusedOption,
       optionsRefs,
       show,
+      selectedOptionIndex,
       handleEnterKey,
       setOpen,
       setSelectListRef,
@@ -182,6 +185,14 @@ export default defineComponent({
     } = useSelect(props as TSelectProps, emit as TEmit)
 
     const dropdown = ref<HTMLElement>()
+
+    onMounted(() => {
+      if (!props.multiselect) {
+        indexFocusedOption.value = props.options.indexOf(
+          wrappedValue.value || wrappedValue.value[props.trackBy],
+        )
+      }
+    })
 
     function outsideHandler(e: Event) {
       if (!show.value) {

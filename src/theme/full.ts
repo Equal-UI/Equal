@@ -1,11 +1,9 @@
-import { EqualUIConfiguration } from '@/types/variant'
-
 export default {
   'it-alert': {
     base: {
       root: 'rounded border flex px-4 py-4',
-      title: 'text-sm font-semibold leading-none',
-      body: 'text-sm leading-none mt-2.5',
+      title: 'text-sm font-semibold leading-none dark:text-white',
+      body: 'text-sm leading-none mt-2.5 dark:text-white',
       iconbox: 'p-1.5 rounded',
       icon: 'select-none mr-3.5 text-2xl leading-none',
       closeIcon: 'ml-4 select-none cursor-pointer',
@@ -130,7 +128,7 @@ export default {
     base: {
       root: 'flex cursor-pointer',
       switch:
-        'flex bg-slate-300 h-5 transition-all rounded-full relative min-w-[35px] focus-within:shadow-[0_0_0_1px,0_0_0_3px]',
+        'flex bg-slate-300 dark:bg-zinc-700 h-5 transition-all rounded-full relative min-w-[35px] focus-within:shadow-[0_0_0_1px,0_0_0_3px]',
       switchChecked: '',
       input: 'absolute cursor-pointer inset-0 w-full h-full opacity-0 peer',
       switchCircle:
@@ -142,24 +140,26 @@ export default {
     variants: {
       default: {
         switch: 'focus-within:shadow-blue-600/30',
-        switchChecked: 'bg-blue-600',
+        switchChecked: '!bg-blue-600',
       },
       success: {
         switch: 'focus-within:shadow-green-500/30',
-        switchChecked: 'bg-green-500',
+        switchChecked: '!bg-green-500',
       },
       warning: {
         switch: 'focus-within:shadow-yellow-500/30',
-        switchChecked: 'bg-yellow-500',
+        switchChecked: '!bg-yellow-500',
       },
       danger: {
         switch: 'focus-within:shadow-red-500/30',
-        switchChecked: 'bg-red-500',
+        switchChecked: '!bg-red-500',
       },
       disabled: {
         root: 'cursor-not-allowed',
         input: 'cursor-not-allowed',
-        switchChecked: '!bg-slate-400',
+        switch: 'dark:!bg-neutral-700',
+        switchChecked: '!bg-slate-400 dark:!bg-gray-500',
+        switchCircle: 'bg-gray-300',
         label: 'text-gray-300',
         subLabel: 'text-gray-300',
       },
@@ -236,8 +236,8 @@ export default {
     base: {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       outlined: '',
-      text: 'empty:!hidden flex flex-row space-x-2 items-center',
-      round: 'rounded-3xl',
+      text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
+      round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base rounded-md',
       empty: '!p-2',
@@ -444,8 +444,8 @@ export default {
   },
   'it-textarea': {
     base: {
-      root: 'flex flex-col',
-      label: 'flex text-sm mb-1.5',
+      root: 'flex flex-1 flex-col',
+      label: 'flex text-sm mb-1.5 dark:text-white',
       textarea:
         'relative peer flex-1 min-h-min appearance-none w-full bg-white dark:bg-zinc-700 placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed dark:disabled:!text-zinc-500 dark:disabled:!border-neutral-700 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
       mask: 'fixed bg-gray-900/40 inset-0 z-50',
@@ -483,7 +483,7 @@ export default {
         'relative flex bg-white dark:border-zinc-600 dark:bg-zinc-700 dark:hover:bg-zinc-600 items-center justify-center transition-all select-none h-[1.125rem] w-[1.125rem] overflow-hidden border shadow-sm rounded-full peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       circle: 'transition-all scale-0 absolute bg-white w-2 h-2 rounded-full',
       activeCircle: 'scale-100',
-      label: 'relative flex items-center transition-all',
+      label: 'relative flex items-center transition-all dark:text-white',
       subLabel: 'text-gray-500',
       labelGroup: 'ml-2 flex flex-col space-y-0.5 text-sm',
     },
@@ -564,7 +564,7 @@ export default {
     base: {
       root: 'inset-0 w-full h-full',
       mask: 'fixed bg-gray-900/60 inset-0 w-full h-full',
-      body: 'fixed max-w-[75%] top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
+      body: 'fixed max-w-[75%] z-50 top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
       right: 'right-[20px]',
       left: 'left-[20px]',
     },
@@ -594,10 +594,12 @@ export default {
       placeholder: 'text-gray-400',
       list: 'flex flex-col gap-1 p-1 text-sm rounded-md border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
       selected: 'flex gap-1 flex-wrap',
-      option: 'p-1 rounded cursor-pointer hover:bg-blue-600 hover:text-white',
-      optionSelected: 'rounded bg-blue-600 text-white',
+      option:
+        'py-1 px-2 rounded cursor-pointer hover:bg-blue-600 hover:text-white',
+      optionSelected: 'rounded !bg-blue-600 text-white',
       inputIcon: '!text-base select-none !leading-none h-5 min-w-5',
       message: 'text-xs',
+      focusedHovered: 'bg-gray-400/50',
     },
     variants: {
       default: {
@@ -660,12 +662,13 @@ export default {
   'it-number-input': {
     base: {
       root: '',
-      labelTop: 'flex text-sm mb-1',
+      labelTop: 'flex text-sm mb-1 dark:text-white',
       controlsWrapper:
         'flex [&>button:first-child]:rounded-r-none [&>button:first-child]:border-r-0 [&>button:last-child]:rounded-l-none [&>button:last-child]:border-l-0',
       inputWrapper:
         'only:rounded border dark:border-zinc-500 shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
-      input: 'px-3 py-1.5 outline-none h-8 text-sm dark:bg-zinc-700',
+      input:
+        'px-3 py-1.5 outline-none h-8 text-sm dark:bg-zinc-700 dark:text-white',
       inputBuffer:
         'absolute -left-80 -top-80 flex-nowrap invisible px-3 py-1.5',
     },
@@ -677,7 +680,7 @@ export default {
       disabled: {
         inputWrapper:
           '!border-slate-300 cursor-not-allowed bg-gray-100 !border-slate-300 cursor-not-allowed bg-gray-100 dark:!text-zinc-500 dark:!border-neutral-700',
-        input: 'cursor-not-allowed text-gray-300',
+        input: 'cursor-not-allowed dark:!bg-neutral-700 text-gray-300',
       },
     },
   },
@@ -694,7 +697,7 @@ export default {
       stepPoint: 'absolute w-px top-3 h-1.5',
       stepPointActive: '',
       numbers:
-        'relative mt-0.5 text-xs flex place-content-between [&>:first-child]:-translate-x-1/2 [&>:last-child]:translate-x-1/2',
+        'relative mt-0.5 text-xs dark:text-white flex place-content-between [&>:first-child]:-translate-x-1/2 [&>:last-child]:translate-x-1/2',
     },
     variants: {
       default: {
@@ -745,15 +748,6 @@ export default {
         footer: 'bg-slate-50 dark:bg-zinc-700',
       },
     },
-  },
-  'it-message': {
-    base: {
-      root: [
-        'z-50 fixed left-1/2 transition-all text-sm -translate-x-1/2 rounded-md dark:text-slate-200 dark:border-none bg-white dark:bg-zinc-700 border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
-        'dark:shadow-[0px_1px_2px_rgb(13_14_18/69%),0px_1px_4px_rgb(13_14_18/69%),inset_0px_0px_0px_1px_rgb(214_214_255/10%),inset_0px_1px_0px_rgb(214_214_255/10%)]',
-      ],
-    },
-    variants: {},
   },
   'it-notification': {
     base: {

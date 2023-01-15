@@ -18,8 +18,8 @@
       v-if="label || subLabel || $slots.default || $slots.sublabel"
       :class="variant.labelGroup"
     >
-      <span v-if="label || $slots.default" :class="variant.label"
-        ><slot>{{ label }}</slot>
+      <span v-if="label || $slots.default" :class="variant.label">
+        <slot>{{ label }}</slot>
       </span>
       <span v-if="subLabel || $slots.sublabel" :class="variant.subLabel">
         <slot name="sublabel">{{ subLabel }}</slot>

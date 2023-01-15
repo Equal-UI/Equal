@@ -3,7 +3,6 @@ import { EDirections } from '@/models/enums'
 import { TEmit } from '@/types'
 import { TOption, TSelect, TSelectProps } from '@/components/select/types'
 import { getArrayIndexByDirection } from './helpers'
-import { CLASS_SELECTED_OPTION } from './constants'
 
 export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
   const indexFocusedOption = ref(-1)
@@ -21,15 +20,24 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     },
   )
 
+  // watch(
+  //   () => props.modelValue,
+  //   (newVal) => {
+  //     selectedOptionIndex.value = props.options.indexOf(
+  //       newVal.value || wrappedValue.value[props.trackBy],
+  //     )
+  //   },
+  // )
+
   // onBeforeUpdate(() => (optionsRefs.value = []))
 
-  // const scrollToSelectedOption = () => {
-  //   const selectedOption: HTMLElement | null =
-  //     optionsRefs.value[selectedOptionIndex.value]
-
-  //   if (selectListRef.value !== undefined)
-  //     selectListRef.value.scrollTop = selectedOption?.offsetTop
-  // }
+  const scrollToSelectedOption = () => {
+    const selectedEl = optionsRefs.value.find(
+      (r) => r.dataset.focused === 'true',
+    )
+    console.log(selectedEl)
+    selectedEl?.scrollIntoView({ block: 'nearest', inline: 'start' })
+  }
 
   const getOptionName = (option: TOption) =>
     typeof option === 'object' ? option.name : option
@@ -51,7 +59,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
 
   const setOpen = (state = false) => (show.value = state)
 
-  const toggleDropdown = () => {
+  const toggleDropdown = async () => {
     if (props.disabled) {
       setOpen(false)
       return
@@ -60,8 +68,11 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     } else {
       unfocusOption()
       setOpen(true)
-      // await nextTick()
-      // if (props.modelValue) scrollToSelectedOption()
+
+      if (!props.multiselect) {
+        await nextTick()
+        scrollToSelectedOption()
+      }
     }
   }
 
@@ -95,12 +106,19 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
       return
     }
     selectedOptionIndex.value = optionIndex
+    indexFocusedOption.value = optionIndex
     emit('update:modelValue', props.options[selectedOptionIndex.value])
   }
 
   const unfocusOption = () => {
-    if (indexFocusedOption.value === -1) return
-    indexFocusedOption.value = -1
+    if (
+      indexFocusedOption.value === -1 ||
+      indexFocusedOption.value === selectedOptionIndex.value
+    )
+      return
+    if (!props.multiselect) {
+      indexFocusedOption.value = selectedOptionIndex.value as number
+    }
   }
 
   const handleKey = async (direction: EDirections) => {
@@ -111,8 +129,8 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
       curIndex: indexFocusedOption.value,
     })
     await nextTick()
-    const selectedEl = optionsRefs.value.find((r) =>
-      r.className.includes(CLASS_SELECTED_OPTION),
+    const selectedEl = optionsRefs.value.find(
+      (r) => r.dataset.focused === 'true',
     )
     selectedEl?.scrollIntoView({ block: 'nearest', inline: 'start' })
   }
@@ -167,6 +185,7 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     getOptionName,
     setOptionRef,
     indexFocusedOption,
+    selectedOptionIndex,
     optionsRefs,
     show,
     handleEnterKey,

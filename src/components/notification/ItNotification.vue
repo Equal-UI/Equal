@@ -6,7 +6,10 @@
     <div
       ref="rootRef"
       v-show="show"
-      :style="positionPx"
+      :style="{
+        transform: positionCentered ? 'translateX(50%)' : '',
+        ...positionPx,
+      }"
       :class="variant.root"
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
@@ -29,7 +32,7 @@ export default defineComponent({
     ...getVariantPropsWithClassesList<ITNotificationOptions>(),
     id: Number,
     show: Boolean,
-    duration: Number,
+    duration: { type: Number, default: 3000 },
     placement: { type: String, default: Positions.TR },
   },
   setup(props, { emit }) {
@@ -39,9 +42,16 @@ export default defineComponent({
     const position = reactive({})
     const positionPx = computed(() => {
       return Object.fromEntries(
-        Object.entries(position).map(([key, value]) => [key, value + 'px']),
+        Object.entries(position).map(([key, value]) => {
+          const newVal = isNaN(value) ? value : value + 'px'
+          return [key, newVal]
+        }),
       )
     })
+
+    const positionCentered = computed(() =>
+      [Positions.T, Positions.B].includes(props.placement),
+    )
 
     const timer = ref<number | null>(null)
     const rootRef = ref<HTMLElement>()
@@ -82,6 +92,7 @@ export default defineComponent({
       position,
       variant,
       placementTransition,
+      positionCentered,
     }
   },
   // data() {
