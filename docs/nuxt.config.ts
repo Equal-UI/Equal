@@ -8,6 +8,7 @@ export default defineNuxtConfig({
   css: ['assets/index.css'],
   alias: {
     '@': '/../src',
+    '@floating-ui': './node_modules/@floating-ui',
   },
   postcss: {
     plugins: {
