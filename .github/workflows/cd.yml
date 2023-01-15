@@ -5,9 +5,9 @@ on: [push, pull_request]
 jobs:
   cd:
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: ./docs
+    # defaults:
+    #   run:
+    #     working-directory: ./docs
 
     strategy:
       matrix:
@@ -26,11 +26,17 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+      - name: Install dependencies of docs
+        working-directory: ./docs
+        run: yarn
+
       - name: Generate
+        working-directory: ./docs
         run: yarn generate
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        working-directory: ./docs
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
