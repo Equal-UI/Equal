@@ -2,6 +2,11 @@ name: cd
 
 on: [push, pull_request]
 
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+
 jobs:
   cd:
     runs-on: ${{ matrix.os }}
