@@ -9,6 +9,8 @@ export default defineNuxtConfig({
   alias: {
     '@': '/../src',
     '@floating-ui': './node_modules/@floating-ui',
+    'body-scroll-lock': './node_modules/body-scroll-lock',
+    colord: './node_modules/colord',
   },
   postcss: {
     plugins: {
