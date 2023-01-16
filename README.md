@@ -60,7 +60,7 @@ yarn add equal-vue
 ```js
 import { createApp } from 'vue'
 import Equal from 'equal-vue'
-import Config from 'equal-vue/dist/full' // or light / dark theme
+import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 
 createApp.use(Equal, Config)
 ```
@@ -70,7 +70,7 @@ createApp.use(Equal, Config)
 ```js
 import { createApp } from 'vue'
 import { Button, Switch } from 'equal-vue'
-import Config from 'equal-vue/dist/full' // or light / dark theme
+import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 
 createApp.use(Button, Config).use(Switch, Config)
 ```
