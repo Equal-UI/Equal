@@ -7,13 +7,30 @@
       <h2 class="mb-5">Install with NPM or Yarn</h2>
       <prism language="bash" class="rounded" :code="installCode"></prism>
 
+      <h2 class="my-4">Install Tailwind version >3.1</h2>
+      <p>
+        Add Equal UI theme file to the
+        <code>tailwind.config.js</code>
+      </p>
+      <prism
+        language="js"
+        class="rounded"
+        code="module.exports = {
+  content: [
+    './node_modules/equal-vue/dist/theme/*.{js,ts,json}', // full / dark / light
+  ],
+  darkMode: 'class', // add 'dark' to the body tag to enable dark mode
+}
+      "
+      ></prism>
+
       <h2 class="my-5">Use all components</h2>
       <prism
         language="js"
         class="rounded"
         code="import { createApp } from 'vue'
 import Equal from 'equal-vue'
-import Config from 'equal-vue/dist/full' // or light / dark theme 
+import Config from 'equal-vue/dist/theme/full' // or light / dark theme 
 
 createApp.use(Equal, Config)"
       ></prism>
@@ -24,7 +41,7 @@ createApp.use(Equal, Config)"
         class="rounded"
         code="import { createApp } from 'vue'
 import { Button, Alert, Switch } from 'equal-vue'
-import Config from 'equal-vue/dist/full' // or light / dark theme 
+import Config from 'equal-vue/dist/theme/full' // or light / dark theme 
 
 createApp.use(Button, Config).use(Switch, Config)"
       ></prism>
