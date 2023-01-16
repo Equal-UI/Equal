@@ -77,4 +77,4 @@ createApp.use(Button, Config).use(Switch, Config)
 
 # License
 
-[MIT](https://raw.githubusercontent.com/quatrochan/Equal/master/LICENSE)
+[MIT](https://raw.githubusercontent.com/Equal-UI/Equal/master/LICENSE)

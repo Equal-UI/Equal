@@ -1,6 +1,6 @@
 {
   "name": "equal-vue",
-  "version": "0.9.0",
+  "version": "0.9.0.1",
   "homepage": "https://equal-ui.github.io/Equal/",
   "description": "Equal is a Vue 3 UI library based on TypeScript",
   "author": {
@@ -20,10 +20,10 @@
   "types": "src/types/index.d.ts",
   "private": false,
   "license": "MIT",
-  "bugs": "https://github.com/quatrochan/Equal/issues",
+  "bugs": "https://github.com/Equal-UI/Equal/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/quatrochan/Equal"
+    "url": "https://github.com/Equal-UI/Equal"
   },
   "files": [
     "src",

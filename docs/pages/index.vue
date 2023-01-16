@@ -30,10 +30,9 @@
       <it-button
         target="_blank"
         rel="noopener noreferrer"
-        href="https://github.com/quatrochan/Equal"
+        href="https://github.com/Equal-UI/Equal"
         size="big"
         variant="text"
-        outlined
       >
         <template #icon>
           <svg

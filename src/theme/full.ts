@@ -159,7 +159,7 @@ export default {
         input: 'cursor-not-allowed',
         switch: 'dark:!bg-neutral-700',
         switchChecked: '!bg-slate-400 dark:!bg-gray-500',
-        switchCircle: 'bg-gray-300',
+        switchCircle: 'bg-gray-100 dark:bg-gray-400',
         label: 'text-gray-300',
         subLabel: 'text-gray-300',
       },
@@ -234,8 +234,9 @@ export default {
   },
   'it-button': {
     base: {
-      root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
-      outlined: '',
+      root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] dark:focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] dark:active:shadow-none',
+      outlined:
+        '!shadow-sm focus-visible:!shadow-[0_1px_1px_0,0_0_0_3px] dark:active:!shadow-none active:!shadow-none',
       text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
       round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
@@ -257,7 +258,7 @@ export default {
           'active:bg-blue-700 active:!border-blue-700 focus-visible:border-blue-600 hover:bg-blue-500 hover:!border-blue-500',
         ],
         outlined:
-          '!text-blue-600 !shadow-sm hover:!bg-blue-400/10 active:!bg-blue-400/20',
+          '!text-blue-600 hover:!bg-blue-400/10 active:!bg-blue-400/20 focus-visible:!shadow-blue-600/40',
         loading: '!border-r-white',
       },
       'primary-text': {
@@ -270,7 +271,7 @@ export default {
       text: {
         root: [
           '!bg-transparent shadow-none !border-none',
-          'focus-visible:shadow-slate-200/60 active:bg-gray-100 active:!bg-gray-400/20 focus-visible:border-none hover:!border-none',
+          'dark:focus-visible:shadow-slate-200/60 focus-visible:shadow-slate-200/60 active:bg-gray-100 active:!bg-gray-400/20 focus-visible:border-none hover:!border-none',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-gray-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
       },
@@ -280,7 +281,7 @@ export default {
           'active:bg-green-600 active:!border-green-600 focus-visible:border-green-500 hover:bg-green-400 hover:!border-green-400',
         ],
         outlined:
-          '!text-green-500 !shadow-sm hover:!bg-green-400/10 active:!bg-green-400/20',
+          '!text-green-500 hover:!bg-green-400/10 active:!bg-green-400/20 focus-visible:!shadow-green-500/40',
         loading: '!border-r-white',
       },
       'success-text': {
@@ -292,11 +293,11 @@ export default {
       },
       warning: {
         root: [
-          'bg-yellow-500 shadow-md dark:shadow-sm !text-white  !shadow-yellow-500/40 !border-yellow-500',
+          'bg-yellow-500 shadow-md dark:shadow-sm !text-white !shadow-yellow-500/40 !border-yellow-500',
           'active:bg-yellow-600 active:!border-yellow-600 focus-visible:border-yellow-500 hover:bg-yellow-400 hover:!border-yellow-400',
         ],
         outlined:
-          '!text-yellow-500 !shadow-sm hover:!bg-yellow-400/10 active:!bg-yellow-400/20',
+          '!text-yellow-500 hover:!bg-yellow-400/10 active:!bg-yellow-400/20 focus-visible:!shadow-yellow-500/40',
         loading: '!border-r-white',
       },
       'warning-text': {
@@ -312,7 +313,7 @@ export default {
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 hover:bg-red-400 hover:!border-red-400',
         ],
         outlined:
-          '!text-red-500 !shadow-sm hover:!bg-red-400/10 active:!bg-red-400/20',
+          '!text-red-500 hover:!bg-red-400/10 active:!bg-red-400/20 focus-visible:!shadow-red-500/40',
         loading: '!border-r-white',
       },
       'danger-text': {
@@ -448,7 +449,7 @@ export default {
       label: 'flex text-sm mb-1.5 dark:text-white',
       textarea:
         'relative peer flex-1 min-h-min appearance-none w-full bg-white dark:bg-zinc-700 placeholder:duration-200 duration-150 transition-all placeholder:transition-all placeholder:indent-0 text-sm px-1.5 py-1 border shadow-sm rounded outline-none hover:border-slate-400 disabled:hover:border-slate-300 disabled:cursor-not-allowed dark:disabled:!text-zinc-500 dark:disabled:!border-neutral-700 focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] focus:z-10 focus:placeholder:indent-1.5',
-      mask: 'fixed bg-gray-900/40 inset-0 z-50',
+      mask: 'fixed bg-gray-900/40 dark:bg-zinc-900/70 inset-0 z-50',
       message:
         'text-xs peer-disabled:text-gray-300 dark:peer-disabled:!text-zinc-500',
     },
@@ -465,7 +466,7 @@ export default {
       },
       warning: {
         textarea:
-          '!border-yellow-500 focus-within:!border-yellow-500  focus-visible:shadow-yellow-500/30',
+          '!border-yellow-500 focus-within:!border-yellow-500 focus-visible:shadow-yellow-500/30',
         message: 'text-yellow-500',
       },
       danger: {
@@ -563,8 +564,8 @@ export default {
   'it-drawer': {
     base: {
       root: 'inset-0 w-full h-full',
-      mask: 'fixed bg-gray-900/60 inset-0 w-full h-full',
-      body: 'fixed max-w-[75%] z-50 top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
+      mask: 'fixed bg-gray-900/60 dark:bg-zinc-900/70 z-50 inset-0 w-full h-full',
+      body: 'fixed max-w-[75%] z-50 top-[20px] h-[calc(100%-40px)] overflow-auto rounded-md transition-all delay-100',
       right: 'right-[20px]',
       left: 'left-[20px]',
     },
@@ -617,7 +618,7 @@ export default {
   'it-input': {
     base: {
       root: 'flex-1',
-      mask: 'fixed inset-0 w-full h-full bg-gray-900/60 z-50',
+      mask: 'fixed inset-0 w-full h-full bg-gray-900/60 dark:bg-zinc-900/70 z-50',
       labelTop: 'flex text-sm mb-1 dark:text-white',
       prefixWrapper:
         'bg-white dark:border-zinc-900 dark:bg-zinc-700 flex relative rounded border shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
@@ -642,7 +643,7 @@ export default {
       },
       warning: {
         prefixWrapper:
-          '!border-yellow-500 focus-within:!border-yellow-500  focus-within:shadow-yellow-500/30',
+          '!border-yellow-500 focus-within:!border-yellow-500 focus-within:shadow-yellow-500/30',
         message: 'text-yellow-500',
       },
       danger: {
@@ -734,7 +735,7 @@ export default {
   'it-modal': {
     base: {
       root: '',
-      mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm transform-gpu',
+      mask: 'fixed inset-0 z-50 bg-gray-900/70 dark:bg-zinc-900/70 backdrop-blur-sm transform-gpu',
       bodyWrapper: 'flex h-full w-full items-center justify-center',
       body: 'relative rounded overflow-hidden w-full cursor-default outline-none',
       header: 'py-4 px-6 text-md font-medium',

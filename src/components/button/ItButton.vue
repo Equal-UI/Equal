@@ -2,13 +2,13 @@
   <component
     :is="component"
     :class="[
+      variant.root,
       {
         [variant.outlined]: outlined,
         [`${variant[size] ?? ''}`]: size,
         [variant.round]: round,
         [variant.empty]: !$slots.default,
       },
-      variant.root,
     ]"
     :disabled="disabled"
   >

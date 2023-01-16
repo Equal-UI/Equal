@@ -72,7 +72,7 @@
           <it-button
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/quatrochan/Equal"
+            href="https://github.com/Equal-UI/Equal"
             variant="text"
           >
             <template #icon>

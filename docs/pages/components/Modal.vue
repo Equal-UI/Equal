@@ -21,10 +21,7 @@
           </p>
         </template>
         <template #actions>
-          <it-button
-            variant="primary"
-            @click="$Message({ text: 'You got it' }), (defaultModal = false)"
-          >
+          <it-button variant="primary" @click="defaultModal = false">
             Got it
           </it-button>
         </template>
@@ -120,10 +117,14 @@
               />
             </div>
             <it-button
+              class="w-full"
               block
               size="big"
               variant="primary"
-              @click="$Message({ text: 'Welcome' }), (signinModal = false)"
+              @click="
+                $Notification({ placement: 'top' }, 'Welcome'),
+                  (signinModal = false)
+              "
             >
               Sign up
             </it-button>
@@ -149,7 +150,8 @@
           <it-button
             variant="danger"
             @click="
-              $Message({ text: 'Account deleted' }), (confirmModal = false)
+              $Notification({ placement: 'top' }, 'Account deleted'),
+                (confirmModal = false)
             "
           >
             Delete

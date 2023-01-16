@@ -158,7 +158,7 @@ export default {
         input: 'cursor-not-allowed',
         switch: '!bg-neutral-700',
         switchChecked: '!bg-slate-400 !bg-gray-500',
-        switchCircle: 'bg-gray-300',
+        switchCircle: 'bg-gray-400',
         label: 'text-gray-300',
         subLabel: 'text-gray-300',
       },
@@ -233,7 +233,8 @@ export default {
   'it-button': {
     base: {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
-      outlined: '',
+      outlined:
+        '!shadow-sm focus-visible:!shadow-[0_1px_1px_0,0_0_0_3px] active:!shadow-none',
       text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
       round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
@@ -255,20 +256,20 @@ export default {
           'active:bg-blue-700 active:!border-blue-700 focus-visible:border-blue-600 hover:bg-blue-500 hover:!border-blue-500',
         ],
         outlined:
-          '!text-blue-600 !shadow-sm hover:!bg-blue-400/10 active:!bg-blue-400/20',
+          '!text-blue-600 hover:!bg-blue-400/10 active:!bg-blue-400/20 focus-visible:shadow-blue-600/40',
         loading: '!border-r-white',
       },
       'primary-text': {
         root: [
           '!bg-transparent shadow-none !shadow-blue-600/40 text-blue-600 !border-none',
-          'active:!bg-blue-400/20 focus-visible:border-none hover:!border-none',
+          'active:!bg-blue-400/20 focus-visible:border-none hover:!border-none focus-visible:!shadow-blue-600/40',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-blue-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
       },
       text: {
         root: [
           '!bg-transparent shadow-none !border-none',
-          'focus-visible:shadow-slate-200/60 active:bg-gray-100 active:!bg-gray-400/20 focus-visible:border-none hover:!border-none',
+          'focus-visible:shadow-slate-200/60 focus-visible:shadow-slate-200/60 active:bg-gray-100 active:!bg-gray-400/20 focus-visible:border-none hover:!border-none',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-gray-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
       },
@@ -278,7 +279,7 @@ export default {
           'active:bg-green-600 active:!border-green-600 focus-visible:border-green-500 hover:bg-green-400 hover:!border-green-400',
         ],
         outlined:
-          '!text-green-500 !shadow-sm hover:!bg-green-400/10 active:!bg-green-400/20',
+          '!text-green-500 hover:!bg-green-400/10 active:!bg-green-400/20 focus-visible:!shadow-green-500/40',
         loading: '!border-r-white',
       },
       'success-text': {
@@ -290,11 +291,11 @@ export default {
       },
       warning: {
         root: [
-          'bg-yellow-500 shadow-sm !text-white  !shadow-yellow-500/40 !border-yellow-500',
+          'bg-yellow-500 shadow-sm !text-white !shadow-yellow-500/40 !border-yellow-500',
           'active:bg-yellow-600 active:!border-yellow-600 focus-visible:border-yellow-500 hover:bg-yellow-400 hover:!border-yellow-400',
         ],
         outlined:
-          '!text-yellow-500 !shadow-sm hover:!bg-yellow-400/10 active:!bg-yellow-400/20',
+          '!text-yellow-500 hover:!bg-yellow-400/10 active:!bg-yellow-400/20 focus-visible:!shadow-yellow-500/40',
         loading: '!border-r-white',
       },
       'warning-text': {
@@ -310,7 +311,7 @@ export default {
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 hover:bg-red-400 hover:!border-red-400',
         ],
         outlined:
-          '!text-red-500 !shadow-sm hover:!bg-red-400/10 active:!bg-red-400/20',
+          '!text-red-500 hover:!bg-red-400/10 active:!bg-red-400/20 focus-visible:!shadow-red-500/40',
         loading: '!border-r-white',
       },
       'danger-text': {
@@ -462,7 +463,7 @@ export default {
       },
       warning: {
         textarea:
-          '!border-yellow-500 focus-within:!border-yellow-500  focus-visible:shadow-yellow-500/30',
+          '!border-yellow-500 focus-within:!border-yellow-500 focus-visible:shadow-yellow-500/30',
         message: 'text-yellow-500',
       },
       danger: {
@@ -560,7 +561,7 @@ export default {
   'it-drawer': {
     base: {
       root: 'inset-0 w-full h-full',
-      mask: 'fixed bg-gray-900/60 inset-0 w-full h-full',
+      mask: 'fixed bg-gray-900/60 inset-0 w-full h-full z-50',
       body: 'fixed max-w-[75%] z-50 top-[20px] h-[calc(100%-40px)] rounded-md transition-all delay-100',
       right: 'right-[20px]',
       left: 'left-[20px]',
@@ -638,7 +639,7 @@ export default {
       },
       warning: {
         prefixWrapper:
-          '!border-yellow-500 focus-within:!border-yellow-500  focus-within:shadow-yellow-500/30',
+          '!border-yellow-500 focus-within:!border-yellow-500 focus-within:shadow-yellow-500/30',
         message: 'text-yellow-500',
       },
       danger: {
