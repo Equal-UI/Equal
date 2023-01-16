@@ -6,6 +6,7 @@ export default defineNuxtConfig({
       title: 'Equal UI',
       meta: [
         { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: 'Equal UI' },
         { name: 'twitter:image', content: '/Equal/logo.png' },
       ],
       link: [
