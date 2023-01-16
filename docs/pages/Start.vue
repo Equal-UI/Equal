@@ -20,8 +20,7 @@
     './node_modules/equal-vue/dist/theme/*.{js,ts,json}', // full / dark / light
   ],
   darkMode: 'class', // add 'dark' to the body tag to enable dark mode
-}
-      "
+}"
       ></prism>
 
       <h2 class="my-5">Use all components</h2>
