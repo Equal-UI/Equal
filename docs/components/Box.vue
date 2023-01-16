@@ -11,13 +11,7 @@
       <slot></slot>
     </div>
 
-    <div
-      class="it-box-code relative w-full"
-      v-if="code"
-      :style="{
-        'max-height': expandHeight,
-      }"
-    >
+    <div class="it-box-code relative w-full" v-if="code && expanded">
       <transition
         v-bind="{
           'enter-active-class': 'duration-75',
@@ -65,7 +59,7 @@
     <it-button
       style="border: none; border-radius: 0px"
       v-if="showExpand"
-      type="neutral"
+      variant="default"
       @click="toggleExpand"
     >
       <template #icon>
@@ -102,7 +96,6 @@ const props = withDefaults(defineProps<Props>(), {
   overflowHidden: true,
 })
 
-const expandHeight = ref('0px')
 const copyText = ref('Copy to clipboard')
 const expanded = ref(false)
 const showCopy = ref(false)
@@ -112,8 +105,7 @@ const tooltipValue = { position: 'left', content: copyText }
 const showExpand = computed(() => (props.code || '').split('\n').length > 3)
 
 function toggleExpand() {
-  showCopy.value = expandHeight.value === '0px' ? true : false
-  expandHeight.value = expandHeight.value === '0px' ? '1000px' : '0px'
+  showCopy.value = !showCopy.value
   expanded.value = !expanded.value
 }
 
@@ -123,7 +115,7 @@ async function clickCopy() {
 }
 
 if (!showExpand.value) {
-  expandHeight.value = '1000px'
+  expanded.value = true
 }
 </script>
 

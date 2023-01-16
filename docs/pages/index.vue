@@ -9,10 +9,12 @@
       >
         Equal UI
       </h1>
-      <h4 class="text-center text-lg dark:text-slate-300">
-        Vue 3 hackable components library with 30+ components on top of
-        Tailwindcss. Full customization. Built-in design system with dark and
-        light themes.
+      <h4
+        class="px-4 text-center text-lg font-medium text-slate-600 dark:text-slate-400 md:px-32"
+      >
+        Elevate your project's design with our fully customizable Vue 3
+        component library, featuring over 30 components built on top of Tailwind
+        CSS and own design system with dark and light themes
       </h4>
     </div>
     <div class="flex justify-center space-x-6">
@@ -130,7 +132,7 @@
     </div>
 
     <div>
-      <div class="mt-12 flex flex-col items-center justify-center">
+      <div class="mt-4 flex flex-col items-center justify-center">
         <h1 class="mb-2 text-2xl font-bold">BUILD YOUR OWN THEME</h1>
         <h2 class="mb-2 text-center text-sm">
           CUSTOMIZE YOUR USER INTERFACE WITH TAILWIND CLASSES USING EQUAL UI'S
