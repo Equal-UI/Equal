@@ -4,6 +4,10 @@ export default defineNuxtConfig({
     baseURL: '/Equal/',
     head: {
       title: 'Equal UI',
+      meta: [
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:image', content: '/Equal/logo.svg' },
+      ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
         {
