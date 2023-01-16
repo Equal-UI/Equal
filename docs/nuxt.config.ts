@@ -5,9 +5,31 @@ export default defineNuxtConfig({
     head: {
       title: 'Equal UI',
       meta: [
+        {
+          name: 'description',
+          content: 'Equal is a Vue UI library based on TypeScript',
+        },
         { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: 'Equal UI' },
-        { name: 'twitter:image', content: '/Equal/logo.png' },
+        { name: 'twitter:site', content: '@EqualVue' },
+        { name: 'twitter:creator', content: '@k0mmsussertod' },
+        {
+          name: 'twitter:image',
+          content: 'https://equal-ui.github.io/Equal/logo.png',
+        },
+        {
+          property: 'og:url',
+          content: 'https://equal-ui.github.io/Equal/Equal/',
+        },
+        { property: 'og:title', content: 'Equal UI' },
+        {
+          property: 'og:description',
+          content:
+            'Equal UI – open-source Vue 3 components system for your next project',
+        },
+        {
+          property: 'og:image',
+          content: 'https://equal-ui.github.io/Equal/logo.png',
+        },
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/Equal/favicon.ico' },
