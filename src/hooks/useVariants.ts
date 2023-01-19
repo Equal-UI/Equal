@@ -43,7 +43,7 @@ export let useVariants = <T>(
     'config',
     {} as EqualUIConfiguration,
   )
-  const globalVariant = config[name] // FIXME: Not gonna work with nuxt
+  const globalVariant = config[name] // FIXME: Not gonna work with nuxt?
 
   let finalResult: {
     transitions?: Record<string, Record<string, string>>
@@ -58,8 +58,6 @@ export let useVariants = <T>(
         : [value]
       if (props.variant) {
         result.push(
-          // @ts-ignore
-          props.classes?.[key] || globalVariant?.classes?.[key],
           Array.isArray(props.variant)
             ? props.variant.map(
                 (el) =>

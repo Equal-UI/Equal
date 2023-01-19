@@ -1,16 +1,10 @@
 export default {
   'it-alert': {
     base: {
-      root: 'rounded border flex px-4 py-4',
+      root: 'rounded border flex px-4 py-4 bg-opacity-5',
       title: 'text-sm font-semibold leading-none dark:text-white',
       body: 'text-sm leading-none mt-2.5 dark:text-white',
-      iconbox: 'p-1.5 rounded',
-      icon: 'select-none mr-3.5 text-2xl leading-none',
       closeIcon: 'ml-4 select-none cursor-pointer',
-    },
-    classes: {
-      root: 'bg-opacity-5',
-      iconbox: '!text-white',
     },
     variants: {
       default: {
@@ -18,24 +12,15 @@ export default {
       },
       primary: {
         root: 'border-blue-600 bg-blue-600',
-        body: 'text-sm leading-none mt-2.5',
-        iconbox: 'bg-blue-600 ',
-        icon: 'text-blue-600',
       },
       success: {
         root: 'border-green-500 bg-green-600',
-        iconbox: 'bg-green-500',
-        icon: 'text-green-500',
       },
       warning: {
         root: 'border-yellow-500 bg-yellow-500',
-        iconbox: 'bg-yellow-500',
-        icon: 'text-yellow-500',
       },
       danger: {
         root: 'border-red-500 bg-red-500',
-        iconbox: 'bg-red-500',
-        icon: 'text-red-500',
       },
     },
   },
@@ -45,7 +30,6 @@ export default {
       filled: '',
       closeBtn: 'cursor-pointer h-3.5 w-3.5',
     },
-    classes: {},
     variants: {
       default: {
         root: 'bg-zinc-400 dark:bg-zinc-600',
@@ -77,16 +61,14 @@ export default {
         'active:peer-checked:pt-1.5 peer-focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       ],
       checkIcon: 'opacity-0 h-full w-full',
-      checkIconActive: '!mt-0 opacity-100 text-blue-600 drop-shadow-sm',
+      checkIconActive:
+        '!mt-0 opacity-100 text-blue-600 drop-shadow-sm [text-shadow:0_1px_0_rgba(0,0,0,0.07)]',
       label:
         "relative flex items-center transition-all before:content-[''] before:absolute before:w-0 before:h-0.5 before:rounded-3xl before:bg-gray-300 dark:text-white",
       subLabel: 'text-gray-500',
       labelGroup: 'ml-2 flex flex-col space-y-0.5 text-sm',
       lineThrough:
         'text-gray-300 dark:text-gray-500 before:w-full before:transition-all',
-    },
-    classes: {
-      checkIconActive: '[text-shadow:0_1px_0_rgba(0,0,0,0.07)]',
     },
     variants: {
       default: {
@@ -176,7 +158,6 @@ export default {
       slider: 'absolute shadow rounded left-0 top-0 bottom-0 transition-all',
       round: '!rounded-full [&>*]:before:invisible',
     },
-    classes: {},
     variants: {
       default: {
         root: 'focus-visible:border-blue-600 focus-visible:shadow-blue-600/30 border-slate-100 dark:border-zinc-700 bg-slate-100 dark:bg-zinc-700 dark:focus-visible:shadow-slate-200/60',
@@ -192,7 +173,6 @@ export default {
       root: 'w-full h-px',
       vertical: 'relative !w-px !h-4 !inline-block align-middle -top-0.5',
     },
-    classes: {},
     variants: {
       default: {
         root: 'bg-gray-200 dark:bg-zinc-600',
@@ -213,7 +193,6 @@ export default {
       'bottom-left':
         'absolute bottom-0 left-0 -translate-x-[45%] translate-y-[45%]',
     },
-    classes: {},
     variants: {
       default: {
         body: 'bg-red-500',
@@ -234,19 +213,15 @@ export default {
   },
   'it-button': {
     base: {
-      root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] dark:focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] dark:active:shadow-none',
+      root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center active:shadow-none font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] dark:focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] dark:active:shadow-none',
       outlined:
-        '!shadow-sm focus-visible:!shadow-[0_1px_1px_0,0_0_0_3px] dark:active:!shadow-none active:!shadow-none',
+        '!shadow-sm focus-visible:!shadow-[0_1px_1px_0,0_0_0_3px] dark:active:!shadow-none active:!shadow-none !bg-transparent active:bg-transparent',
       text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
       round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base rounded-md',
       empty: '!p-2',
       loading: 'absolute !w-6 !h-6',
-    },
-    classes: {
-      root: 'active:shadow-none',
-      outlined: '!bg-transparent active:bg-transparent',
     },
     variants: {
       default: {
@@ -338,7 +313,6 @@ export default {
       root: 'absolute z-10',
       body: 'p-2 text-[13px] leading-none shadow border rounded-md',
     },
-    classes: {},
     variants: {
       default: {
         body: [
@@ -357,7 +331,6 @@ export default {
       itemText: 'flex text-sm font-medium items-center',
       itemIcon: 'mr-2',
     },
-    classes: {},
     variants: {
       default: {
         menu: 'bg-white shadow-slate-600/10 border-slate-300 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white',
@@ -369,14 +342,12 @@ export default {
     base: {
       root: 'border-transparent border-r-black bg-transparent animate-spin w-8 h-8 border-4 rounded-full',
     },
-    classes: {},
     variants: {},
   },
   'it-collapse': {
     base: {
       root: 'w-full flex flex-col',
     },
-    classes: {},
     variants: {},
   },
   'it-collapse-item': {
@@ -388,7 +359,6 @@ export default {
         'flex rounded-[inherit] px-4 py-3 w-full focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] outline-none justify-between text-sm font-medium',
       body: 'text-sm border-t px-4 py-4',
     },
-    classes: {},
     variants: {
       default: {
         root: 'border-slate-300 dark:border-black',
@@ -414,7 +384,6 @@ export default {
       tooltip:
         'w-12 h-12 border border-4 shadow-md border-white absolute rounded-full',
     },
-    classes: {},
     variants: {},
   },
   'it-tabs': {
@@ -432,7 +401,6 @@ export default {
         "focus:after:!scale-y-[1] focus:after:!scale-x-[2] after:content-[''] after:!top-0 after:!right-0 after:!left-auto after:h-full after:!w-[2px] after:scale-x-0 after:origin-right",
       activeTab: 'font-semibold after:!scale-100',
     },
-    classes: {},
     variants: {
       default: {
         bordered: 'shadow-slate-600/10 border-slate-300 dark:border-zinc-500',
@@ -453,7 +421,6 @@ export default {
       message:
         'text-xs peer-disabled:text-gray-300 dark:peer-disabled:!text-zinc-500',
     },
-    classes: {},
     variants: {
       default: {
         textarea:
@@ -488,7 +455,6 @@ export default {
       subLabel: 'text-gray-500',
       labelGroup: 'ml-2 flex flex-col space-y-0.5 text-sm',
     },
-    classes: {},
     variants: {
       default: {
         border:
@@ -520,7 +486,6 @@ export default {
     base: {
       root: 'flex [&>:not(:first-child):not(:last-child)]:rounded-none',
     },
-    classes: {},
     variants: {
       horizontal: {
         root: '[&>:first-child]:rounded-r-none [&>:last-child]:rounded-l-none [&>*+*]:border-l-0',
@@ -630,7 +595,6 @@ export default {
         'flex px-2 items-center justify-center text-slate-400 dark:text-slate-200',
       message: 'text-xs',
     },
-    classes: {},
     variants: {
       default: {
         prefixWrapper:
@@ -724,7 +688,6 @@ export default {
       progressBar: 'rounded h-2 w-full overflow-hidden',
       progressLine: 'rounded h-full relative',
     },
-    classes: {},
     variants: {
       default: {
         progressBar: 'bg-zinc-200 dark:bg-zinc-700',
