@@ -168,9 +168,9 @@ export default defineComponent({
 <it-input v-model="inputValue" ||| prefix-icon="cloud_queue" |||/>
 <it-input v-model="inputValue" ||| suffix-icon="remove_red_eye" prefix-icon="cloud_queue" |||/>`,
 
-    codeStatus: `<it-input v-model="statusValue" ||| status="success" ||| message="Success"/>
-<it-input v-model="statusValue" ||| status="danger" ||| message="Danger"/>
-<it-input v-model="statusValue" ||| status="warning" ||| message="Warning"/>`,
+    codeStatus: `<it-input v-model="statusValue" ||| variant="success" ||| message="Success"/>
+<it-input v-model="statusValue" ||| variant="danger" ||| message="Danger"/>
+<it-input v-model="statusValue" ||| variant="warning" ||| message="Warning"/>`,
 
     codeSuffix: `<it-input ||| prefix="https://" ||| v-model="inputValue" />
 <it-input ||| suffix=".com" ||| v-model="inputValue" />

@@ -55,7 +55,7 @@
         </div>
       </div>
       <div
-        class="flex flex-col space-y-3 rounded-tr-md bg-slate-50 px-4 py-5 dark:bg-zinc-900 sm:flex-[2]"
+        class="flex flex-col space-y-3 rounded-tr-md px-4 py-5 dark:!bg-zinc-900 sm:flex-[2]"
       >
         <div class="flex flex-row justify-between">
           <h2 class="text-lg font-semibold">Props</h2>
@@ -148,53 +148,6 @@
                   </div>
                 </div>
               </div>
-            </it-tab>
-            <it-tab title="Classes" class="p-5">
-              <div
-                v-if="fields && Object.keys(fields.classes || {}).length"
-                class="space-y-3"
-              >
-                <it-alert
-                  variant="primary"
-                  title="Changes applied here affected everywhere on the website"
-                />
-                <div
-                  class="flex gap-2"
-                  v-for="(value, key) of fields.classes"
-                  :key="key"
-                >
-                  <it-input
-                    :key="key"
-                    :label-top="key"
-                    v-model="fields.classes[key]"
-                  />
-                  <div class="flex flex-col justify-end">
-                    <it-button
-                      v-tooltip="{ content: 'Reset to default' }"
-                      class="mb-px h-8"
-                      @click="setToDefault('classes', key)"
-                    >
-                      <template #icon>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                          />
-                        </svg>
-                      </template>
-                    </it-button>
-                  </div>
-                </div>
-              </div>
-              <div v-else><p>There are no built-in classes</p></div>
             </it-tab>
             <it-tab title="Variants" class="p-5">
               <div

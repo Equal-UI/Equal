@@ -117,7 +117,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { variantProps } from '~~/data/dataSheetVariantProps'
 
 export default defineComponent({
   data: () => ({
@@ -210,7 +209,7 @@ export default defineComponent({
   <it-avatar :src="husky" />
 </it-avatar-group>`,
 
-    dataSheet: variantProps.concat([
+    dataSheet: [
       {
         property: 'src',
         type: ['String'],
@@ -246,9 +245,9 @@ export default defineComponent({
         values: [],
         description: 'Makes avatar square',
       },
-    ]),
+    ],
 
-    dataSheetGroup: variantProps.concat([
+    dataSheetGroup: [
       {
         property: 'vertical',
         type: ['Boolean'],
@@ -277,7 +276,7 @@ export default defineComponent({
         values: [],
         description: 'Limit the maximum amount of visible avatars',
       },
-    ]),
+    ],
   }),
 })
 </script>

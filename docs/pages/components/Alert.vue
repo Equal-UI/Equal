@@ -55,8 +55,6 @@
 </template>
 
 <script setup lang="ts">
-import { variantProps } from '~~/data/dataSheetVariantProps'
-
 const alertVisible = ref(true)
 const alertTitle = ref('Alert title')
 const alertBody = ref('We think we know you')
@@ -75,7 +73,7 @@ const slotCode = `<it-alert variant="primary" title="Alert with slot body">
   You can put whatever you want here, I'd put a ||| <it-tag variant="primary">Tag</it-tag> |||
 </it-alert>`
 
-const dataSheet = variantProps.concat([
+const dataSheet = [
   {
     property: 'title',
     type: ['String'],
@@ -104,7 +102,7 @@ const dataSheet = variantProps.concat([
     values: [],
     description: 'Visibility of the alert',
   },
-])
+]
 
 const eventSheet = [
   {
@@ -118,6 +116,10 @@ const slotSheet = [
   {
     name: 'default',
     description: 'Alert body',
+  },
+  {
+    name: 'icon',
+    description: 'Slot for icon',
   },
 ]
 </script>

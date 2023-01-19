@@ -1,13 +1,13 @@
 <template>
   <div
-    class="my-10 flex flex-col overflow-x-auto rounded border bg-white last:mb-0 dark:border-gray-600 dark:bg-neutral-800"
+    class="my-10 flex flex-col overflow-x-auto rounded border bg-white last:mb-0 dark:border-gray-600 dark:bg-zinc-800"
   >
-    <h2 class="bg-white py-4 px-6 leading-none dark:bg-neutral-800">
+    <h2 class="bg-white py-4 px-6 leading-none dark:bg-zinc-800">
       Props
       <it-tag filled v-if="tagName">{{ tagName }}</it-tag>
     </h2>
     <table v-if="dataSheet && dataSheet.length" class="table">
-      <thead class="bg-slate-50 dark:bg-neutral-700">
+      <thead class="bg-slate-50 dark:bg-zinc-800">
         <tr class="dark:border-t-gray-600 dark:border-b-gray-600">
           <th>Property</th>
           <th>Type</th>
@@ -18,7 +18,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="item in dataSheet"
+          v-for="item in augmentedDataSheet"
           :key="item.property"
           class="dark:border-t-gray-600 dark:border-b-gray-600"
         >
@@ -44,12 +44,12 @@
 
     <h2
       v-if="slotSheet"
-      class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
+      class="bg-white py-4 px-6 leading-none dark:bg-zinc-800"
     >
       Slots
     </h2>
     <table v-if="slotSheet" class="table">
-      <thead class="bg-slate-50 dark:bg-neutral-700">
+      <thead class="bg-slate-50 dark:bg-zinc-800">
         <tr class="dark:border-t-gray-600 dark:border-b-gray-600">
           <th>Name</th>
           <th>Description</th>
@@ -93,12 +93,12 @@
 
     <h2
       v-if="eventSheet"
-      class="bg-white py-4 px-6 leading-none dark:bg-neutral-800"
+      class="bg-white py-4 px-6 leading-none dark:bg-zinc-800"
     >
       Events
     </h2>
     <table v-if="eventSheet" class="table">
-      <thead class="bg-slate-50 dark:bg-neutral-700">
+      <thead class="bg-slate-50 dark:bg-zinc-800">
         <tr class="dark:border-t-gray-600 dark:border-b-gray-600">
           <th>Event</th>
           <th>Description</th>
@@ -130,6 +130,33 @@ export default defineComponent({
     eventSheet: Array,
     methodSheet: Array,
     slotSheet: Array,
+  },
+  setup(props) {
+    const augmentedDataSheet = ref([
+      {
+        property: 'base',
+        type: ['Object'],
+        default: '-',
+        values: [],
+        description: 'Inline Base of the component',
+      },
+      {
+        property: 'variants',
+        type: ['Object'],
+        default: '-',
+        values: [],
+        description: 'Inline Variants of the component',
+      },
+      {
+        property: 'variant',
+        type: ['String', 'Array<string>'],
+        default: 'default',
+        values: [],
+        description: 'Variant of the component',
+      },
+      ...props.dataSheet,
+    ])
+    return { augmentedDataSheet }
   },
 })
 </script>

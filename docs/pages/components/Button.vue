@@ -334,8 +334,8 @@ export default defineComponent({
 
     dataSheet: [
       {
-        property: 'Variant',
-        type: ['String'],
+        property: 'variant',
+        type: ['String', 'Array'],
         default: 'default',
         values: [
           'primary',

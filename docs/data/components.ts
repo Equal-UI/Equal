@@ -17,6 +17,14 @@ export const componentsList = [
     group: componentGroup.General,
   },
   {
+    name: 'Theming',
+    icon: 'palette',
+    icon_outlined: true,
+    route: '/theming',
+    examples: 0,
+    group: componentGroup.General,
+  },
+  {
     name: 'Contribution',
     icon: 'edit',
     icon_outlined: true,

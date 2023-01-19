@@ -226,7 +226,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { variantProps } from '~~/data/dataSheetVariantProps'
 
 export default defineComponent({
   data: () => ({
@@ -312,7 +311,7 @@ export default defineComponent({
   <it-button>🪄🎩</it-button>
 </it-badge>`,
 
-    dataSheet: variantProps.concat([
+    dataSheet: [
       {
         property: 'value',
         type: ['Number', 'String'],
@@ -355,7 +354,7 @@ export default defineComponent({
         values: [],
         description: 'Make badge squared',
       },
-    ]),
+    ],
     slotSheet: [
       {
         name: 'default',

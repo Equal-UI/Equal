@@ -20,7 +20,7 @@
     <div class="flex justify-center space-x-6">
       <it-button
         routerLink
-        to="/start"
+        to="/introduction"
         type="primary"
         size="big"
         variant="primary"
@@ -123,7 +123,9 @@
                 </svg>
               </template>
             </it-toggle>
-            <span class="mt-2 text-xs font-medium dark:text-zinc-400">
+            <span
+              class="mt-2 text-center text-xs font-medium dark:text-zinc-400"
+            >
               This toggle is Equal UI component too
             </span>
           </div>
