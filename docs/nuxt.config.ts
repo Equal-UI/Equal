@@ -9,7 +9,7 @@ export default defineNuxtConfig({
           name: 'description',
           content: 'Equal is a Vue UI library based on TypeScript',
         },
-        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:site', content: '@EqualVue' },
         { name: 'twitter:creator', content: '@k0mmsussertod' },
         {
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         },
         {
           property: 'og:image',
-          content: 'https://equal-ui.github.io/Equal/logo.png',
+          content: 'https://equal-ui.github.io/Equal/twitter.png',
         },
       ],
       link: [
