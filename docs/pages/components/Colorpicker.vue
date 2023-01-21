@@ -26,13 +26,15 @@
 
         <h5 class="mt-6">
           Change event return
-          <a
-            class="underline decoration-1 hover:decoration-4"
+          <it-button
+            variant="primary-text"
             target="_blank"
+            rel="noopener noreferrer"
+            class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
             href="https://github.com/omgovich/colord"
           >
             colord
-          </a>
+          </it-button>
           object so for example
           <pre>value.toRgb()</pre>
           will return:

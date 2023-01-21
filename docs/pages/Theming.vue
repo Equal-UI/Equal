@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1 class="mb-4 text-2xl font-bold">Theming</h1>
+    <h1 class="mb-4 text-2xl font-bold">
+      Theming
+      <it-tag variant="warning">This page is WIP</it-tag>
+    </h1>
     <div
       class="flex w-full flex-col rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"
     >
@@ -50,7 +53,6 @@
         </li>
       </ul>
       <p>Or make your own theme file from scratch</p>
-      <p>This page is WIP</p>
     </div>
   </div>
 </template>
