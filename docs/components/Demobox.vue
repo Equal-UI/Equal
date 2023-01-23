@@ -19,6 +19,8 @@
                   }"
                   stroke="currentColor"
                   fill="none"
+                  width="1rem"
+                  height="1rem"
                   viewBox="0 0 24 24"
                   stroke-width="3"
                 >
@@ -39,6 +41,8 @@
                   }"
                   stroke="currentColor"
                   fill="none"
+                  width="1rem"
+                  height="1rem"
                   viewBox="0 0 24 24"
                   stroke-width="2"
                 >

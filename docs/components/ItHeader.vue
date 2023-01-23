@@ -106,6 +106,8 @@
                     toggleThemeValue === 'light',
                 }"
                 stroke="currentColor"
+                width="1rem"
+                height="1rem"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="3"
@@ -127,6 +129,8 @@
                   'fill-gray-600/40': toggleThemeValue !== 'dark',
                 }"
                 stroke="currentColor"
+                width="1rem"
+                height="1rem"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="2"

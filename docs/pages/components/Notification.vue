@@ -7,19 +7,6 @@
         Notification example
       </it-button>
     </Box>
-    <!-- <Box :code="imageCode" title="Notification with image">
-      <it-button
-        @click="
-          $Notification({
-            title: 'Image notification',
-            image: '/Equal/husky.jpg',
-            text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
-          })
-        "
-      >
-        Click me
-      </it-button>
-    </Box> -->
     <Box :code="placementCode" title="Notification position">
       <div class="flex flex-col gap-4">
         <div class="flex flex-row justify-center gap-3">
