@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         { name: 'twitter:creator', content: '@k0mmsussertod' },
         {
           name: 'twitter:image',
-          content: 'https://equal-ui.github.io/Equal/logo.png',
+          content: 'https://equal-ui.github.io/Equal/twitter.png',
         },
         {
           property: 'og:url',
