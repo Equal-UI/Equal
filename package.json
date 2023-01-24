@@ -14,7 +14,9 @@
       "import": "./dist/equal-vue.es.js",
       "require": "./dist/equal-vue.umd.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./dist/theme/dark": "./dist/theme/dark",
+    "./dist/theme/light": "./dist/theme/light",
+    "./dist/theme/full": "./dist/theme/full"
   },
   "unpkg": "dist/equal.umd.min.js",
   "types": "src/types/index.d.ts",
