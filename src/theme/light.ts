@@ -1,5 +1,5 @@
 export default {
-  'it-alert': {
+  ItAlert: {
     base: {
       root: 'rounded border flex px-4 py-4 bg-opacity-5',
       title: 'text-sm font-semibold leading-none',
@@ -24,7 +24,7 @@ export default {
       },
     },
   },
-  'it-tag': {
+  ItTag: {
     base: {
       root: 'text-xs flex rounded px-1 py-1 gap-2 font-medium inline-flex items-center leading-none',
       filled: '',
@@ -53,7 +53,7 @@ export default {
       },
     },
   },
-  'it-checkbox': {
+  ItCheckbox: {
     base: {
       root: 'relative flex cursor-pointer',
       checkbox: [
@@ -105,7 +105,7 @@ export default {
       },
     },
   },
-  'it-switch': {
+  ItSwitch: {
     base: {
       root: 'flex cursor-pointer',
       switch:
@@ -145,7 +145,7 @@ export default {
       },
     },
   },
-  'it-toggle': {
+  ItToggle: {
     base: {
       root: 'select-none min-w-[100px] h-8 flex relative rounded-md transition-all border-[3px] focus-visible:shadow-[0_1px_1px_0,0_0_0_3px] outline-none focus-visible',
       value: [
@@ -165,7 +165,7 @@ export default {
       },
     },
   },
-  'it-divider': {
+  ItDivider: {
     base: {
       root: 'w-full h-px',
       vertical: 'relative !w-px !h-4 !inline-block align-middle -top-0.5',
@@ -176,7 +176,7 @@ export default {
       },
     },
   },
-  'it-badge': {
+  ItBadge: {
     base: {
       root: 'relative flex',
       body: 'text-white text-[10px] rounded-xl px-1.5 leading-4 border border-white inline-block',
@@ -208,7 +208,7 @@ export default {
       },
     },
   },
-  'it-button': {
+  ItButton: {
     base: {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center items-center active:shadow-none font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       outlined:
@@ -305,7 +305,7 @@ export default {
       },
     },
   },
-  'it-tooltip': {
+  ItTooltip: {
     base: {
       root: 'absolute z-10',
       body: 'p-2 text-[13px] leading-none shadow border rounded-md',
@@ -316,7 +316,7 @@ export default {
       },
     },
   },
-  'it-dropdown': {
+  ItDropdown: {
     base: {
       root: '',
       dropdown: 'absolute z-10',
@@ -332,19 +332,19 @@ export default {
       },
     },
   },
-  'it-spinner': {
+  ItSpinner: {
     base: {
       root: 'border-transparent border-r-black bg-transparent animate-spin w-8 h-8 border-4 rounded-full',
     },
     variants: {},
   },
-  'it-collapse': {
+  ItCollapse: {
     base: {
       root: 'w-full flex flex-col',
     },
     variants: {},
   },
-  'it-collapse-item': {
+  ItCollapseItem: {
     base: {
       root: 'first:rounded-tl first:rounded-tr last:shadow-sm last:rounded-bl last:rounded-br border-r border-l border-t first:border-b-none last:border',
       expanded: '!rounded-b-none',
@@ -361,7 +361,7 @@ export default {
       },
     },
   },
-  'it-colorpicker': {
+  ItColorpicker: {
     base: {
       root: 'relative w-44 rounded',
       alphaCheckboard: 'absolute inset-0',
@@ -379,7 +379,7 @@ export default {
     },
     variants: {},
   },
-  'it-tabs': {
+  ItTabs: {
     base: {
       root: 'flex flex-col',
       bordered: 'border rounded shadow',
@@ -402,7 +402,7 @@ export default {
       },
     },
   },
-  'it-textarea': {
+  ItTextarea: {
     base: {
       root: 'flex flex-1 flex-col',
       label: 'flex text-sm mb-1.5',
@@ -433,7 +433,7 @@ export default {
       },
     },
   },
-  'it-radio': {
+  ItRadio: {
     base: {
       root: 'relative flex cursor-pointer',
       input: 'peer absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0',
@@ -472,7 +472,7 @@ export default {
       },
     },
   },
-  'it-button-group': {
+  ItButtonGroup: {
     base: {
       root: 'flex [&>:not(:first-child):not(:last-child)]:rounded-none',
     },
@@ -485,7 +485,7 @@ export default {
       },
     },
   },
-  'it-avatar': {
+  ItAvatar: {
     base: {
       root: 'rounded-full flex justify-center items-center overflow-hidden',
       text: 'font-semibold align-middle',
@@ -500,7 +500,7 @@ export default {
       },
     },
   },
-  'it-avatar-group': {
+  ItAvatarGroup: {
     base: {
       root: 'flex bg-inherit [&>div]:border-2 [&>div]:border-transparent [&>div]:!bg-inherit',
       count: 'flex justify-center items-center',
@@ -516,7 +516,7 @@ export default {
       },
     },
   },
-  'it-drawer': {
+  ItDrawer: {
     base: {
       root: 'inset-0 w-full h-full',
       mask: 'fixed bg-gray-900/60 inset-0 w-full h-full z-50',
@@ -530,7 +530,7 @@ export default {
       },
     },
   },
-  'it-loading-bar': {
+  ItLoadingBar: {
     base: {
       root: 'top-0 left-0 z-50 shadow-sm transition-all',
     },
@@ -540,7 +540,7 @@ export default {
       },
     },
   },
-  'it-select': {
+  ItSelect: {
     base: {
       root: 'flex flex-col relative',
       label: 'flex text-sm mb-1',
@@ -567,7 +567,7 @@ export default {
       },
     },
   },
-  'it-input': {
+  ItInput: {
     base: {
       root: 'flex-1',
       mask: 'fixed inset-0 w-full h-full bg-gray-900/60 z-50',
@@ -608,7 +608,7 @@ export default {
       },
     },
   },
-  'it-number-input': {
+  ItNumberInput: {
     base: {
       root: '',
       labelTop: 'flex text-sm mb-1',
@@ -631,7 +631,7 @@ export default {
       },
     },
   },
-  'it-slider': {
+  ItSlider: {
     base: {
       root: 'relative w-full select-none',
       controller:
@@ -664,7 +664,7 @@ export default {
       },
     },
   },
-  'it-progressbar': {
+  ItProgressbar: {
     base: {
       root: '',
       progressBar: 'rounded h-2 w-full overflow-hidden',
@@ -677,7 +677,7 @@ export default {
       },
     },
   },
-  'it-modal': {
+  ItModal: {
     base: {
       root: '',
       mask: 'fixed inset-0 z-50 bg-gray-900/70 backdrop-blur-sm transform-gpu',
@@ -693,7 +693,7 @@ export default {
       },
     },
   },
-  'it-notification': {
+  ItNotification: {
     base: {
       root: 'fixed z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
     },
