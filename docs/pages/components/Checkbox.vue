@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Checkbox</h1>
 
-    <Demobox name="it-checkbox">
+    <Demobox name="ItCheckbox">
       <it-checkbox
         v-model="checkboxValue"
         :line-through="lineCheck"

@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Switch</h1>
 
-    <Demobox name="it-switch">
+    <Demobox name="ItSwitch">
       <it-switch
         v-model="switchValue"
         :variant="switchType"

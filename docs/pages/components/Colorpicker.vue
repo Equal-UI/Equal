@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Colorpicker</h1>
 
-    <Demobox name="it-colorpicker">
+    <Demobox name="ItColorpicker">
       <div class="py-12">
         <it-colorpicker
           :show-tooltip="colorTooltip"

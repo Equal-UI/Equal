@@ -2,7 +2,7 @@
   <div>
     <h1>Avatar</h1>
 
-    <Demobox name="it-avatar">
+    <Demobox name="ItAvatar">
       <it-avatar
         :text="avatarText ? 'Yan Savinov' : null"
         :src="avatarImage ? husky : null"

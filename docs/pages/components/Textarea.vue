@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Textarea</h1>
 
-    <Demobox name="it-textarea">
+    <Demobox name="ItTextarea">
       <div class="px-8">
         <it-textarea
           v-model="textareaValue"

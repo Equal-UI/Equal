@@ -4,7 +4,7 @@
 
     <Demobox
       source-url="https://github.com/Equal-UI/Equal/tree/master/src/components/button/ItButton.vue"
-      name="it-button"
+      name="ItButton"
     >
       <it-button
         :variant="buttonType"
@@ -215,7 +215,11 @@
       </it-button-group>
     </Box>
 
-    <props-table tag-name="it-button" :data-sheet="dataSheet" />
+    <props-table
+      tag-name="it-button"
+      :data-sheet="dataSheet"
+      :slot-sheet="slotSheet"
+    />
     <props-table tag-name="it-button-group" :data-sheet="dataSheetGroup" />
   </div>
 </template>
@@ -329,6 +333,17 @@ export default defineComponent({
         default: 'false',
         values: [],
         description: 'Make group vertical',
+      },
+    ],
+
+    slotSheet: [
+      {
+        name: 'icon',
+        description: 'Icon on the left side',
+      },
+      {
+        name: 'icon-after',
+        description: 'Icon on the right side',
       },
     ],
 

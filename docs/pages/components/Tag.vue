@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Tag</h1>
 
-    <Demobox name="it-tag">
+    <Demobox name="ItTag">
       <it-tag
         v-show="show"
         :filled="tagFilled"

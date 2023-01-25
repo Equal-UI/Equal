@@ -52,7 +52,7 @@
       </div>
     </div>
     <ul
-      class="scrollbar dark:scrollbar-dark h-full w-full overflow-y-auto px-6 pb-20 dark:bg-zinc-900 dark:text-slate-200"
+      class="scrollbar h-full w-full overflow-y-auto px-6 pb-20 dark:bg-zinc-900 dark:text-slate-200"
     >
       <template v-for="(item, key) in componentGroups" :key="key">
         <li class="mt-4 mb-2 text-base font-semibold">{{ key }}</li>

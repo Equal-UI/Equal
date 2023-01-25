@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Input</h1>
 
-    <Demobox name="it-input">
+    <Demobox name="ItInput">
       <div class="w-2/4">
         <it-input
           v-model="inputValue"
@@ -140,7 +140,7 @@
         disabled
       />
     </Box>
-    <props-table :data-sheet="dataSheet" />
+    <props-table :data-sheet="dataSheet" :slot-sheet="slotSheet" />
   </div>
 </template>
 
@@ -175,6 +175,17 @@ export default defineComponent({
     codeSuffix: `<it-input ||| prefix="https://" ||| v-model="inputValue" />
 <it-input ||| suffix=".com" ||| v-model="inputValue" />
 <it-input ||| prefix="https://" suffix=".com" ||| v-model="inputValue" />`,
+
+    slotSheet: [
+      {
+        name: 'prefixIcon',
+        description: 'Icon on the left side',
+      },
+      {
+        name: 'suffixIcon',
+        description: 'Icon on the right side',
+      },
+    ],
 
     dataSheet: [
       {

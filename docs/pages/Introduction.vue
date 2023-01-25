@@ -179,6 +179,11 @@
         </it-button>
       </p>
 
+      <p>
+        Also, do not hesitate to use Customization feature under every component
+        on it's own page
+      </p>
+
       <it-divider class="mt-8" />
       <div class="flex flex-col justify-center">
         <p class="my-4 text-center font-semibold">What's next?</p>

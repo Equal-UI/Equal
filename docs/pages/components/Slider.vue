@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Slider</h1>
 
-    <Demobox name="it-slider">
+    <Demobox name="ItSlider">
       <div class="w-full px-10">
         <it-slider
           v-model="sliderValue"

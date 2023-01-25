@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Alert</h1>
 
-    <Demobox name="it-alert">
+    <Demobox name="ItAlert">
       <it-alert
         v-show="alertVisible"
         :variant="alertType"

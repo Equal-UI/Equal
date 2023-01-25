@@ -2,7 +2,7 @@
   <div class="mb-10 flex flex-col rounded border dark:border-zinc-600">
     <div class="flex flex-col sm:flex-row">
       <div
-        class="flex min-h-[200px] items-center justify-center rounded-tl-sm rounded-bl-sm dark:bg-neutral-800 sm:flex-[4]"
+        class="flex min-h-[200px] items-center justify-center rounded-tl-sm rounded-bl-sm dark:bg-zinc-800 sm:flex-[4]"
         :class="{ dark: theme === 'dark' ? true : false }"
       >
         <div
@@ -247,15 +247,15 @@ const sourceUrlPredicted = computed(() => {
     return props.sourceUrl
   }
   // /components/button/ItButton.vue
-  const splittedName = props.name.split('-')
-  const folderName =
-    splittedName.length > 2
-      ? splittedName[1].toLowerCase() + splittedName[2].toLowerCase()
-      : splittedName[1].toLowerCase()
-  const compName = splittedName
-    .map((el) => el[0].toUpperCase() + el.substring(1))
-    .join('')
-  return `https://github.com/Equal-UI/Equal/tree/master/src/components/${folderName}/${compName}.vue`
+  const splittedName = props.name.split('It')
+  // const folderName =
+  //   splittedName.length > 1
+  //     ? splittedName[1].toLowerCase() + splittedName[2].toLowerCase()
+  //     : splittedName[1].toLowerCase()
+  // const compName = splittedName
+  //   .map((el) => el[0].toUpperCase() + el.substring(1))
+  //   .join('')
+  return `https://github.com/Equal-UI/Equal/tree/master/src/components/${splittedName[0]}/${props.name}.vue`
 })
 
 const uiconfig = inject(uiConfig, {})
