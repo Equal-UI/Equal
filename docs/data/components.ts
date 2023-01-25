@@ -263,4 +263,22 @@ export const componentsList = [
     group: componentGroup.Navigation,
     soon: true,
   },
+  {
+    name: 'Transitions',
+    icon: 'animation',
+    icon_outlined: true,
+    route: '/transitions',
+    examples: 1,
+    group: componentGroup.Other,
+    // soon: true,
+  },
+  {
+    name: 'Directives',
+    icon: 'token',
+    icon_outlined: true,
+    route: '/directives',
+    examples: 1,
+    group: componentGroup.Other,
+    // soon: true,
+  },
 ]

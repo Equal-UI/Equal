@@ -223,7 +223,7 @@ export default {
     },
     variants: {
       default: {
-        root: 'text-slate-200 shadow-slate-600/10 border-zinc-700 active:border-zinc-600 bg-zinc-700 focus-visible:border-slate-400 focus-visible:shadow-slate-200/60 active:bg-zinc-600',
+        root: 'text-slate-200 shadow-[0px_1px_1px_-1px_rgba(255,255,255)_inset,rgba(0,0,0,0.05)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] border-zinc-900/90 active:border-zinc-600 bg-zinc-700 focus-visible:border-slate-400 focus-visible:!shadow-[0px_1px_1px_-1px_rgba(202,202,202,0.90)_inset,0_1px_1px_0,0_0_0_3px] focus-visible:!shadow-slate-200/60 active:bg-zinc-600',
       },
       primary: {
         root: [
@@ -421,7 +421,7 @@ export default {
     variants: {
       default: {
         textarea:
-          'border-zinc-900 shadow-slate-600/10 disabled:text-gray-300 disabled:bg-gray-100 focus-visible:!border-blue-600 focus-visible:shadow-blue-600/30',
+          'border-zinc-900/90 shadow-slate-600/10 disabled:text-gray-300 disabled:bg-gray-100 focus-visible:!border-blue-600 focus-visible:shadow-blue-600/30',
       },
       success: {
         textarea:
@@ -567,8 +567,8 @@ export default {
     variants: {
       default: {
         input:
-          'shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 border-zinc-900 bg-zinc-700 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
-        list: 'shadow-slate-600/10 border-zinc-900 bg-zinc-700',
+          'shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 border-zinc-900/90 bg-zinc-700 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
+        list: 'shadow-slate-600/10 border-zinc-900/90 bg-zinc-700',
       },
       disabled: {
         input:
@@ -583,7 +583,7 @@ export default {
       mask: 'fixed inset-0 w-full h-full bg-gray-900/60 z-50',
       labelTop: 'flex text-sm mb-1 text-white',
       prefixWrapper:
-        'border-zinc-900 bg-zinc-700 flex relative rounded border shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'border-zinc-900/90 bg-zinc-700 flex relative rounded border shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
       inputWrapper: 'flex flex-1',
       affix: 'flex text-sm items-center justify-center first:pl-2 last:pr-2',
       input:

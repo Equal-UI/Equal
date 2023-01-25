@@ -8,10 +8,6 @@
 <img src="https://img.shields.io/npm/l/equal-vue">
 <img src="https://img.shields.io/npm/dw/equal-vue">
 <img src="https://img.badgesize.io/https:/unpkg.com/equal-vue/?label=Brotli%20size%3A%20JS&compression=brotli">
-
-<a href="https://twitter.com/EqualVue">
-    <img src="https://img.shields.io/twitter/follow/EqualVue?label=Equal%20Vue&style=social" alt="Twitter Follow">
-</a>
 </p>
 </p>
 
@@ -31,7 +27,7 @@ Equal UI is a Vue 3 hackable components library with 30+ components on top of Ta
 - Built-in dark theme
 - Full components customization
 - Theme building feature with Tailwindcss
-- Lightweight: 18KB brotli
+- Lightweight: 12KB brotli
 - Includes 30+ components
 - Based on TypeScript
 

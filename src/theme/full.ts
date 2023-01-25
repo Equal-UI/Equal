@@ -225,7 +225,7 @@ export default {
     },
     variants: {
       default: {
-        root: 'text-slate-900 dark:text-slate-200 shadow-slate-600/10 border-slate-300 dark:border-zinc-700 dark:active:border-zinc-600 bg-white dark:bg-zinc-700 focus-visible:border-slate-400 focus-visible:shadow-slate-200/60 dark:focus-visible:shadow-slate-200/60 dark:active:bg-zinc-600 active:bg-gray-100',
+        root: 'text-slate-900 dark:text-slate-200 dark:shadow-[0px_1px_1px_-1px_rgba(255,255,255)_inset,rgba(0,0,0,0.05)_0px_1px_3px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] border-slate-300 dark:border-zinc-900/90 bg-white dark:bg-zinc-700 focus-visible:border-slate-400 focus-visible:shadow-slate-200/60 dark:focus-visible:!shadow-[0px_1px_1px_-1px_rgba(202,202,202,0.90)_inset,0_1px_1px_0,0_0_0_3px] dark:focus-visible:!shadow-slate-200/40 dark:active:bg-zinc-600 active:bg-gray-100',
       },
       primary: {
         root: [
@@ -424,7 +424,7 @@ export default {
     variants: {
       default: {
         textarea:
-          'dark:border-zinc-900 border-slate-300 shadow-slate-600/10 disabled:text-gray-300 disabled:bg-gray-100 focus-visible:!border-blue-600 focus-visible:shadow-blue-600/30',
+          'dark:border-zinc-900/90 border-slate-300 shadow-slate-600/10 disabled:text-gray-300 disabled:bg-gray-100 focus-visible:!border-blue-600 focus-visible:shadow-blue-600/30',
       },
       success: {
         textarea:
@@ -570,8 +570,8 @@ export default {
     variants: {
       default: {
         input:
-          'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 dark:border-zinc-900 dark:bg-zinc-700 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
-        list: 'bg-white border-slate-300 shadow-slate-600/10 dark:border-zinc-900 dark:bg-zinc-700',
+          'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 dark:border-zinc-900/90 dark:bg-zinc-700 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
+        list: 'bg-white border-slate-300 shadow-slate-600/10 dark:border-zinc-900/90 dark:bg-zinc-700',
       },
       disabled: {
         input:
@@ -586,7 +586,7 @@ export default {
       mask: 'fixed inset-0 w-full h-full bg-gray-900/60 dark:bg-zinc-900/70 z-50',
       labelTop: 'flex text-sm mb-1 dark:text-white',
       prefixWrapper:
-        'bg-white dark:border-zinc-900 dark:bg-zinc-700 flex relative rounded border shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'bg-white dark:border-zinc-900/90 dark:bg-zinc-700 flex relative rounded border shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
       inputWrapper: 'flex flex-1',
       affix: 'flex text-sm items-center justify-center first:pl-2 last:pr-2',
       input:
@@ -631,7 +631,7 @@ export default {
       controlsWrapper:
         'flex [&>button:first-child]:rounded-r-none [&>button:first-child]:border-r-0 [&>button:last-child]:rounded-l-none [&>button:last-child]:border-l-0',
       inputWrapper:
-        'only:rounded border dark:border-zinc-500 shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
+        'only:rounded border dark:border-zinc-900/90 shadow-sm overflow-hidden duration-150 transition-all focus-within:shadow-[0_1px_1px_0,0_0_0_3px]',
       input:
         'px-3 py-1.5 outline-none h-8 text-sm dark:bg-zinc-700 dark:text-white',
       inputBuffer:

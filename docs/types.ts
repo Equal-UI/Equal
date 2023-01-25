@@ -5,6 +5,7 @@ export enum componentGroup {
   Feedback = 'Feedback',
   DataDisplay = 'Data Display',
   Navigation = 'Navigation',
+  Other = 'Other',
 }
 
 export interface IComponentListItem {

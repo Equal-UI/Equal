@@ -167,7 +167,6 @@
             class="h-fit max-w-full overflow-x-scroll rounded"
             :code="tagCode"
           ></prism>
-          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -191,7 +190,7 @@ emitter?.on('theme', (value) => {
 })
 
 const tagCode = `{
-  'it-tag': {
+  'ItTag': {
     base: {
       root: 'text-xs flex text-white rounded px-1 py-1 gap-2 font-medium inline-flex items-center leading-none',
       filled: '',

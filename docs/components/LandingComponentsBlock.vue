@@ -10,7 +10,7 @@
           Button
         </h4>
         <div class="flex h-full items-center justify-center">
-          <it-button variant="primary">Start Building</it-button>
+          <it-button>Start Building</it-button>
         </div>
       </div>
     </div>
@@ -116,6 +116,6 @@ const checkboxValues = reactive([
   { label: 'Start building', done: false },
   { label: 'Make UI', done: false },
   { label: 'Write backend endpoints', done: false },
-  { label: 'Write frontend MVP', done: false },
+  { label: 'Frontend logic', done: false },
 ])
 </script>
