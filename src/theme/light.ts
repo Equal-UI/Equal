@@ -532,7 +532,7 @@ export default {
   },
   ItLoadingBar: {
     base: {
-      root: 'top-0 left-0 z-50 shadow-sm transition-all',
+      root: 'top-0 left-0 z-[99] shadow-sm transition-all',
     },
     variants: {
       default: {
