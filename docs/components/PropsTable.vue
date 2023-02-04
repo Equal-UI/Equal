@@ -154,7 +154,7 @@ export default defineComponent({
         values: [],
         description: 'Variant of the component',
       },
-      ...props.dataSheet,
+      ...(props.dataSheet || []),
     ])
     return { augmentedDataSheet }
   },
