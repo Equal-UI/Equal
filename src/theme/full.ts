@@ -98,7 +98,7 @@ export default {
       },
       disabled: {
         checkbox:
-          'cursor-not-allowed border-gray-300 active:border-gray-300 bg-gray-100 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300 active:!pt-0 dark:!text-zinc-500 dark:!bg-neutral-700 dark:border-neutral-700 dark:peer-checked:border-gray-700',
+          'cursor-not-allowed !border-gray-300 active:!border-gray-300 !bg-gray-100 active:!bg-gray-100 peer-checked:!border-gray-300 hover:!border-gray-300 active:!pt-0 dark:!text-zinc-500 dark:!bg-neutral-700 dark:!border-neutral-700 peer-checked:!bg-gray-100 dark:peer-checked:!bg-neutral-700 dark:peer-checked:!border-gray-700',
         checkIcon: '!text-gray-300 dark:!text-gray-500 [text-shadow:none]',
         label: 'text-gray-300 dark:text-gray-500',
         subLabel: 'text-gray-300',
@@ -300,8 +300,8 @@ export default {
       },
       disabled: {
         root: [
-          'shadow-none cursor-not-allowed border-gray-300 !text-gray-300 bg-gray-100 dark:!text-zinc-500 dark:!bg-neutral-700 dark:border-neutral-700',
-          'active:border-gray-300 active:bg-gray-100 peer-checked:border-gray-300 hover:border-gray-300',
+          '!shadow-none cursor-not-allowed !border-gray-300 !text-gray-300 !bg-gray-100 dark:!text-zinc-500 dark:!bg-neutral-700 dark:!border-neutral-700',
+          'active:!border-gray-300 active:!bg-gray-100 peer-checked:!border-gray-300 hover:!border-gray-300',
         ],
         outlined: '!bg-gray-100',
         loading: '!border-r-slate-300',

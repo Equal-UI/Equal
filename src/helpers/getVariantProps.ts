@@ -49,6 +49,6 @@ export const getVariantPropsWithClassesList = <
   },
   variant: {
     type: [String, Array] as PropType<string | string[] | undefined>,
-    default: 'default',
+    default: undefined,
   },
 })

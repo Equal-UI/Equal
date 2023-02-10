@@ -65,7 +65,10 @@ export default defineComponent({
     const variant = computed(() => {
       const customProps = {
         ...props,
-        variant: props.disabled ? 'disabled' : props.variant,
+        variant:
+          props.disabled || props.loading
+            ? [props.variant, 'disabled']
+            : props.variant,
       }
       return useVariants<ITButtonOptions>(
         Components.ITButton,

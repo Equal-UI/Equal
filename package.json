@@ -1,6 +1,6 @@
 {
   "name": "equal-vue",
-  "version": "0.9.15",
+  "version": "0.9.16",
   "homepage": "https://equal-ui.github.io/Equal/",
   "description": "Equal is a Vue 3 UI library based on TypeScript",
   "author": {
@@ -19,7 +19,7 @@
     "./dist/theme/full": "./dist/theme/full"
   },
   "unpkg": "dist/equal.umd.min.js",
-  "types": "src/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "private": false,
   "license": "MIT",
   "bugs": "https://github.com/Equal-UI/Equal/issues",
@@ -101,6 +101,7 @@
     "@vueuse/integrations": "^5.0.3",
     "body-scroll-lock": "^3.1.5",
     "colord": "^2.9.2",
+    "vite-plugin-dts": "^1.7.2",
     "vue": "^3.0.5"
   }
 }

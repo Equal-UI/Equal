@@ -1,5 +1,6 @@
 import type { UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
 const path = require('path')
 
 const config: UserConfig = {
@@ -9,7 +10,12 @@ const config: UserConfig = {
       replacement: path.resolve(__dirname, 'src'),
     },
   ],
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),

@@ -56,21 +56,21 @@ export let useVariants = <T>(
         ? // @ts-ignore
           [props.base[key]]
         : [value]
-      if (props.variant) {
-        result.push(
-          Array.isArray(props.variant)
-            ? props.variant.map(
-                (el) =>
-                  // @ts-ignore
-                  props.variants?.[el]?.[key] ||
-                  globalVariant?.variants?.[el]?.[key],
-              )
-            : // @ts-ignore
-              props.variants?.[props.variant]?.[key] ||
+
+      const variant = props.variant || 'default'
+      result.push(
+        Array.isArray(variant)
+          ? variant.map(
+              (el) =>
                 // @ts-ignore
-                globalVariant?.variants?.[props.variant]?.[key],
-        )
-      }
+                props.variants?.[el]?.[key] ||
+                globalVariant?.variants?.[el]?.[key],
+            )
+          : // @ts-ignore
+            props.variants?.[variant]?.[key] ||
+              // @ts-ignore
+              globalVariant?.variants?.[variant]?.[key],
+      )
 
       // @ts-ignore
       finalResult[key as keyof T] = result.filter((el) => !!el)
