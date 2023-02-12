@@ -214,7 +214,7 @@ export default {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center active:shadow-none items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       outlined:
         '!shadow-sm focus-visible:!shadow-[0_1px_1px_0,0_0_0_3px] active:!shadow-none !bg-transparent active:bg-transparent',
-      text: 'empty:!hidden flex text-center flex-row space-x-2 items-center !shadow-none',
+      text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
       round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base rounded-md',
@@ -236,14 +236,14 @@ export default {
       },
       'primary-text': {
         root: [
-          '!bg-transparent shadow-none !shadow-blue-600/40 text-blue-600 !border-none',
+          '!bg-transparent !shadow-blue-600/40 text-blue-600 !border-none',
           'active:!bg-blue-400/20 focus-visible:border-none hover:!border-none focus-visible:!shadow-blue-600/40',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-blue-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
       },
       text: {
         root: [
-          '!bg-transparent shadow-none !border-none',
+          '!bg-transparent !border-none',
           'focus-visible:shadow-slate-200/60 focus-visible:shadow-slate-200/60 active:bg-gray-100 active:!bg-gray-400/20 focus-visible:border-none hover:!border-none',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-gray-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
@@ -259,7 +259,7 @@ export default {
       },
       'success-text': {
         root: [
-          '!bg-transparent shadow-none !shadow-green-500/40 !text-green-500 !border-none ',
+          '!bg-transparent !shadow-green-500/40 !text-green-500 !border-none ',
           'active:!bg-green-400/20 focus-visible:border-none hover:!border-none',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-green-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
@@ -275,7 +275,7 @@ export default {
       },
       'warning-text': {
         root: [
-          '!bg-transparent shadow-none !shadow-yellow-500/40 !text-yellow-500 !border-none hover:!border-none',
+          '!bg-transparent !shadow-yellow-500/40 !text-yellow-500 !border-none hover:!border-none',
           'active:!bg-yellow-400/20 focus-visible:border-none',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-yellow-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
@@ -291,7 +291,7 @@ export default {
       },
       'danger-text': {
         root: [
-          '!bg-transparent shadow-none !shadow-red-500/40 !text-red-500 !border-none',
+          '!bg-transparent !shadow-red-500/40 !text-red-500 !border-none',
           'active:!bg-red-400/20 hover:!border-none focus-visible:border-none',
           "after:content-[''] after:rounded after:absolute after:inset-0 after:bg-red-400/10 after:scale-50 after:opacity-0 hover:after:scale-100 hover:after:opacity-100 after:transition-all after:ease-in-out after:duration-200",
         ],
