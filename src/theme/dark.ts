@@ -214,7 +214,7 @@ export default {
       root: 'py-2 px-5 shadow-sm border max-w-full outline-none relative flex justify-center active:shadow-none items-center font-medium text-sm leading-none cursor-pointer rounded select-none transition-all duration-200 outline-0 font-sans focus-visible:shadow-[0_1px_1px_0,0_0_0_3px]',
       outlined:
         '!shadow-sm focus-visible:!shadow-[0_1px_1px_0,0_0_0_3px] active:!shadow-none !bg-transparent active:bg-transparent',
-      text: 'empty:!hidden flex text-center flex-row space-x-2 items-center',
+      text: 'empty:!hidden flex text-center flex-row space-x-2 items-center !shadow-none',
       round: 'rounded-3xl after:rounded-3xl',
       small: '!px-3.5 !py-1',
       big: '!px-7 !py-3.5 text-base rounded-md',
