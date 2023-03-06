@@ -36,7 +36,7 @@
         />
       </template>
     </Demobox>
-    <Box :code="stepCode" title="Step points">
+    <Box :template="stepCode" title="Step points">
       <it-slider
         v-model="stepSliderValue"
         :step-points="true"
@@ -45,10 +45,10 @@
         :step="2"
       />
     </Box>
-    <Box :code="numbersCode" title="Numbers">
+    <Box :template="numbersCode" title="Numbers">
       <it-slider v-model="numberSliderValue" numbers :min="0" :max="42" />
     </Box>
-    <Box :code="disabledCode" title="Disabled">
+    <Box :template="disabledCode" title="Disabled">
       <it-slider v-model="stepSliderValue" disabled :min="0" :max="20" />
     </Box>
     <props-table :data-sheet="dataSheet" />

@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Collapse</h1>
 
-    <Box :code="collapseCode" title="Default">
+    <Box :template="collapseCode" title="Default">
       <it-collapse>
         <it-collapse-item title="Title 1">
           The First Things First manifesto was written 29 November 1963 and
@@ -32,7 +32,7 @@
       </it-collapse>
     </Box>
 
-    <Box :code="singleCode" title="Single">
+    <Box :template="singleCode" title="Single">
       <div class="flex w-full flex-col">
         <it-collapse>
           <it-collapse-item title="Article">Hello there</it-collapse-item>
@@ -48,7 +48,7 @@
       </div>
     </Box>
 
-    <Box :code="nestedCode" title="Nested">
+    <Box :template="nestedCode" title="Nested">
       <it-collapse>
         <it-collapse-item title="Question">
           Why would you use nested collapse components?
@@ -61,7 +61,7 @@
       </it-collapse>
     </Box>
 
-    <Box :code="titleCode" title="Custom title">
+    <Box :template="titleCode" title="Custom title">
       <it-collapse>
         <it-collapse-item>
           <template #title>Magic 🔮</template>

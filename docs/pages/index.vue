@@ -12,9 +12,7 @@
       <h4
         class="px-4 text-center text-lg font-medium text-slate-600 dark:text-slate-400 md:px-32"
       >
-        Elevate your project's design with our fully customizable Vue 3
-        component library, featuring over 30 components built on top of Tailwind
-        CSS and own design system with dark and light themes
+        {{ $t('landing.title') }}
       </h4>
     </div>
     <div class="flex justify-center space-x-6">
@@ -26,7 +24,7 @@
         variant="primary"
         pulse
       >
-        Get started
+        {{ $t('landing.get_started') }}
       </it-button>
 
       <it-button
@@ -53,23 +51,25 @@
       </it-button>
     </div>
 
-    <div class="">
+    <div>
       <div class="my-4 flex justify-center">
-        <h1 class="text-2xl font-bold">COMPONENTS</h1>
+        <h1 class="text-2xl font-bold">{{ $t('landing.components') }}</h1>
       </div>
       <LandingComponentsBlock />
     </div>
 
     <div>
       <div class="flex justify-center">
-        <h1 class="mb-4 text-2xl font-bold">LIGHT AND DARK THEMES</h1>
+        <h1 class="mb-4 text-2xl font-bold">
+          {{ $t('landing.themes.title') }}
+        </h1>
       </div>
 
       <div
         class="flex flex-col gap-4 rounded-lg border bg-white p-4 transition-all dark:border-zinc-600 dark:bg-zinc-800 sm:flex-row"
       >
         <div class="flex-1">
-          <p class="text-sm">Built-in dark theme, try this switch</p>
+          <p class="text-sm">{{ $t('landing.themes.text') }}</p>
         </div>
         <div class="flex-1">
           <div
@@ -126,7 +126,7 @@
             <span
               class="mt-2 text-center text-xs font-medium dark:text-zinc-400"
             >
-              This toggle is Equal UI component too
+              {{ $t('landing.themes.toggle_desc') }}
             </span>
           </div>
         </div>
@@ -135,10 +135,11 @@
 
     <div>
       <div class="mt-4 flex flex-col items-center justify-center">
-        <h1 class="mb-2 text-2xl font-bold">BUILD YOUR OWN THEME</h1>
+        <h1 class="mb-2 text-2xl font-bold">
+          {{ $t('landing.owntheme.title') }}
+        </h1>
         <h2 class="mb-2 text-center text-sm">
-          CUSTOMIZE YOUR USER INTERFACE WITH TAILWIND CLASSES USING EQUAL UI'S
-          ADVANCED CUSTOMIZATION FEATURE
+          {{ $t('landing.owntheme.subtitle') }}
         </h2>
       </div>
 
@@ -147,12 +148,11 @@
       >
         <div class="flex flex-1 flex-col">
           <p class="text-sm">
-            Every component has multiple variations, and you can create your own
-            variations at the build and runtime
+            {{ $t('landing.owntheme.text') }}
           </p>
           <div class="flex flex-1 flex-col items-center justify-center gap-4">
             <it-tag filled class="mt-6" :variant="variantValue">
-              Hello there!
+              {{ $t('landing.tag_text') }}
             </it-tag>
             <it-toggle
               class="mt-4 w-64"

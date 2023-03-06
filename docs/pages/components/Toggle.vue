@@ -14,7 +14,7 @@
         <it-checkbox variant="primary" v-model="toggleRound" label="Round" />
       </template>
     </Demobox>
-    <Box :code="exampleCode" title="Types">
+    <Box :template="exampleCode" title="Types">
       <div class="w-full">
         <it-toggle
           v-model="toggleValue"
@@ -28,7 +28,7 @@
         />
       </div>
     </Box>
-    <Box :code="iconsCode" title="Icons">
+    <Box :template="iconsCode" title="Icons">
       <div>
         <it-toggle
           v-model="toggleIconsValue"

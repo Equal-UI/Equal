@@ -31,7 +31,7 @@
       </template>
     </Demobox>
 
-    <Box :code="typesCode" title="Type">
+    <Box :template="typesCode" title="Type">
       <it-alert :title="alertTitle" :body="alertBody" />
       <it-alert variant="primary" :title="alertTitle" :body="alertBody" />
       <it-alert variant="success" :title="alertTitle" :body="alertBody" />
@@ -39,7 +39,7 @@
       <it-alert variant="warning" :title="alertTitle" :body="alertBody" />
     </Box>
 
-    <Box :code="slotCode" title="Slot">
+    <Box :template="slotCode" title="Slot">
       <it-alert variant="primary" title="Alert with slot body">
         You can put whatever you want here, I'd put a
         <it-tag variant="primary">Tag</it-tag>
@@ -62,7 +62,6 @@ const alertShowIcon = ref(true)
 const alertClosable = ref(false)
 const alertType = ref('primary')
 const alertTypes = ref(['primary', 'success', 'danger', 'warning'])
-const alertIconBox = ref(false)
 
 const typesCode = `<it-alert ||| variant="primary" ||| :title="alertTitle" :body="alertBody"/>
 <it-alert ||| variant="success" ||| :title="alertTitle" :body="alertBody"/>

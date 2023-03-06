@@ -1,6 +1,6 @@
 <template>
-  <div v-clickoutside="hidePopover" class="it-tooltip">
-    <span ref="trigger" class="it-tooltip-trigger" @click="showPopover">
+  <div v-clickoutside="hidePopover">
+    <span ref="trigger" @click="showPopover">
       <slot></slot>
     </span>
 
@@ -10,7 +10,7 @@
           if (el) popover = el.$el
         }
       "
-      :show="show"
+      :show="show && !$props.disabled"
       v-bind="$props"
     >
       <slot name="content"></slot>
@@ -23,17 +23,16 @@ import TooltipBody from '@/components/tooltip/TooltipBody.vue'
 import { defineComponent } from 'vue'
 import { usePopover } from '@/hooks'
 import { clickOutside } from '@/directives'
-import { Positions } from '@/models/enums'
+import { Components, Positions } from '@/models/enums'
 
 export default defineComponent({
-  name: 'it-popover',
+  name: Components.ITPopover,
   components: { TooltipBody },
   directives: {
     clickoutside: clickOutside,
   },
   props: {
     disabled: Boolean,
-    borderless: Boolean,
     placement: {
       type: String,
       default: Positions.T,

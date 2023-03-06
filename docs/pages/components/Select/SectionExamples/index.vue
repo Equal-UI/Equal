@@ -1,5 +1,5 @@
 <template>
-  <Box :code="codeSectionExamples" title="Examples">
+  <Box :template="codeSectionExamples" title="Examples">
     <it-select
       label-top="List of string"
       v-model="exampleStringValue"

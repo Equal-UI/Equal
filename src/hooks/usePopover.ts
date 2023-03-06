@@ -35,6 +35,7 @@ export const usePopover = (props: any) => {
       }
     }
   })
+
   watch(disabled, (value) => {
     if (value) {
       hidePopover()

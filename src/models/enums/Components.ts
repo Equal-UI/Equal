@@ -29,4 +29,5 @@ export enum Components {
   ITProgressbar = 'ItProgressbar',
   ITInput = 'ItInput',
   ITNumberInput = 'ItNumberInput',
+  ITPopover = 'ItPopover',
 }

@@ -10,13 +10,14 @@
       <div>
         <it-input
           v-model="search"
-          labelTop="Search"
+          :label-top="$t('sidebar.search.label')"
           autocomplete="new-password"
           :placeholder="searchPlaceholder"
         >
           <template #prefixIcon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
+              v-if="search.length > 0"
               class="h-5"
               fill="none"
               viewBox="0 0 24 24"
@@ -30,8 +31,8 @@
               />
             </svg>
           </template>
-          <template v-if="search.length > 0" #suffixIcon>
-            <it-button @click="search = ''" class="!px-1 !py-1">
+          <template #suffixIcon>
+            <it-button variant="text" @click="search = ''" class="!p-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-3.5 w-3.5"
@@ -73,7 +74,7 @@
                     route.path !== component.route,
                 }"
               >
-                <div class="flex items-center">
+                <div class="flex items-center leading-4">
                   <i
                     class="material-icons mr-3 items-center !text-xl text-gray-500"
                     :class="{
@@ -82,7 +83,7 @@
                   >
                     {{ component.icon }}
                   </i>
-                  {{ component.name }}
+                  {{ $t(component.name) }}
                 </div>
                 <it-tag
                   variant="primary"
@@ -90,7 +91,7 @@
                   class="ml-2"
                   v-if="component.soon"
                 >
-                  Soon
+                  {{ $t('sidebar.soon') }}
                 </it-tag>
               </span>
             </NuxtLink>
@@ -98,7 +99,7 @@
         </template>
       </template>
       <template v-if="Object.keys(componentGroups).length <= 0">
-        😞 Oops, component not found.
+        {{ $t('sidebar.notfound') }}
       </template>
     </ul>
   </div>
@@ -112,7 +113,9 @@ import { useRoute } from 'vue-router'
 import { componentsList } from '../data/components'
 import { componentGroup, IComponentListItem } from '../types'
 import { TEvents } from '../types/Events'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const route = useRoute()
 const left = ref('inherit')
 const open = ref(false)
@@ -120,7 +123,7 @@ const zIndex = ref(0)
 const emitter = inject<Emitter<TEvents>>('emitter')
 const components = ref<IComponentListItem[]>(componentsList)
 const search = ref('')
-const searchPlaceholder = ref('Tooltip')
+const searchPlaceholder = ref(t('sidebar.search.placeholder_1'))
 
 const componentGroups = computed(() => {
   return Object.values(componentGroup).reduce((el, next) => {
@@ -132,10 +135,10 @@ const componentGroups = computed(() => {
       .filter(
         (comp) =>
           comp.group === next &&
-          comp.name.toLowerCase().includes(search.value.toLowerCase()),
+          t(comp.name).toLowerCase().includes(t(search.value.toLowerCase())),
       )
       .map((ele) => {
-        if (ele.name === 'Switch') {
+        if (ele.name === 'sidebar.switch') {
           ele.icon =
             route.path === '/components/switch' ? 'toggle_on' : 'toggle_off'
         }
@@ -161,19 +164,19 @@ const typeWritePlaceholder = (placeholder: string) => {
 
 onMounted(() => {
   const placeholdersList = [
-    'Datepicker',
-    'Modal',
-    'Avatar',
-    'Checkbox',
-    'Tooltip',
-    'Button',
+    t('sidebar.search.placeholder_2'),
+    t('sidebar.search.placeholder_3'),
+    t('sidebar.search.placeholder_4'),
+    t('sidebar.search.placeholder_5'),
+    t('sidebar.search.placeholder_6'),
+    t('sidebar.search.placeholder_7'),
   ]
   let i = 0
   setInterval(() => {
     searchPlaceholder.value = ''
     typeWritePlaceholder(placeholdersList[i])
     i = i >= placeholdersList.length - 1 ? 0 : i + 1
-  }, 7000)
+  }, 6000)
 })
 
 emitter?.on('sidebar', (value) => {

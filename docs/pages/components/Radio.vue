@@ -38,7 +38,7 @@
       </template>
     </Demobox>
 
-    <Box :code="typeCode" title="Types">
+    <Box :template="typeCode" title="Types">
       <it-radio v-model="typeValue" name="type" label="Default" value="00" />
       <it-radio
         v-model="typeValue"
@@ -63,7 +63,7 @@
       />
     </Box>
 
-    <Box :code="codeSublabel" title="Sublabel">
+    <Box :template="codeSublabel" title="Sublabel">
       <div>
         <it-radio v-model="subradio" :value="1">
           By signing this I agree with Terms and Conditions
@@ -76,13 +76,7 @@
       </div>
     </Box>
 
-    <Box :code="pulseCode" title="Pulse">
-      <template #description>
-        <p class="px-6">Pulse helps you to catch user's attention</p>
-      </template>
-      <it-radio v-model="pulseValue" pulse label="Look at me" value="42" />
-    </Box>
-    <Box :code="disabledCode" title="Disabled">
+    <Box :template="disabledCode" title="Disabled">
       <it-radio v-model="pulseValue" disabled label="I'm disabled" value="42" />
     </Box>
     <props-table :data-sheet="dataSheet" />
@@ -107,8 +101,6 @@ export default defineComponent({
 <it-radio v-model="typeValue" ||| variant="danger" ||| label="Danger" value="22"/>
 <it-radio v-model="typeValue" ||| variant="warning" ||| label="Warning" value="33"/>`,
 
-    pulseCode: `<it-radio v-model="pulseValue" pulse label="Look at me" value="42"/>`,
-
     disabledCode: `<it-radio v-model="pulseValue" ||| disabled ||| label="I'm disabled" value="42"/>`,
 
     codeSublabel: `<it-radio variant="primary" v-model="subradio" :value="1">By signing this I agree with Terms and Conditions</it-radio>
@@ -119,13 +111,6 @@ export default defineComponent({
 </it-radio>`,
 
     dataSheet: [
-      {
-        property: 'type',
-        type: ['String'],
-        default: 'primary',
-        values: ['primary', 'success', 'danger', 'warning'],
-        description: 'Type of the radio',
-      },
       {
         property: 'label',
         type: ['String'],

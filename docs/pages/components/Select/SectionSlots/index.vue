@@ -1,5 +1,5 @@
 <template>
-  <Box :code="codeSectionExamples" title="Slots">
+  <Box :template="codeSectionExamples" title="Slots">
     <it-select v-model="exampleValue" :options="exampleOptions">
       <template v-slot:label-top="{ props }">
         Placement prop: {{ props.placement }}

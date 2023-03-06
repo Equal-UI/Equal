@@ -30,24 +30,23 @@
         </div>
       </div>
 
-      <div class="flex flex-row items-center space-x-3">
-        <div>
-          <it-button
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/k0mmsussertod"
-            variant="text"
-          >
-            <template #icon>
-              <svg
-                height="20"
-                width="20"
-                class="fill-slate-400 dark:fill-white"
-                viewBox="328 355 335 276"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="
+      <div class="flex flex-row items-center gap-4">
+        <it-button
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://twitter.com/k0mmsussertod"
+          variant="text"
+        >
+          <template #icon>
+            <svg
+              height="20"
+              width="20"
+              class="fill-slate-400 dark:fill-white"
+              viewBox="328 355 335 276"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="
                   M 630, 425
                   A 195, 195 0 0 1 331, 600
                   A 142, 142 0 0 0 428, 570
@@ -63,33 +62,32 @@
                   A 117, 117 0 0 0 662, 390
                   A  65,  65 0 0 1 630, 425
                   Z"
-                />
-              </svg>
-            </template>
-          </it-button>
-        </div>
-        <div>
-          <it-button
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/Equal-UI/Equal"
-            variant="text"
-          >
-            <template #icon>
-              <svg
-                class="fill-slate-400 dark:fill-white"
-                height="20"
-                version="1.1"
-                viewBox="0 0 16 16"
-                width="20"
-              >
-                <path
-                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                ></path>
-              </svg>
-            </template>
-          </it-button>
-        </div>
+              />
+            </svg>
+          </template>
+        </it-button>
+
+        <it-button
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/Equal-UI/Equal"
+          variant="text"
+        >
+          <template #icon>
+            <svg
+              class="fill-slate-400 dark:fill-white"
+              height="20"
+              version="1.1"
+              viewBox="0 0 16 16"
+              width="20"
+            >
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg>
+          </template>
+        </it-button>
+
         <div class="flex w-24 flex-row items-center">
           <it-toggle
             v-model="toggleThemeValue"
@@ -144,6 +142,50 @@
             </template>
           </it-toggle>
         </div>
+        <it-select v-model="$i18n.locale" :options="availableLocales">
+          <template #icon>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-4 w-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802"
+              />
+            </svg>
+          </template>
+          <template #dropdown-footer>
+            <it-button
+              href="https://github.com/Equal-UI/Equal/blob/master/docs/locales/README.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="text"
+            >
+              <template #icon>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-4 w-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+              </template>
+              Translate
+            </it-button>
+          </template>
+        </it-select>
       </div>
     </div>
   </header>
@@ -153,6 +195,10 @@
 import { Emitter } from 'mitt'
 import { inject, ref, watch } from 'vue'
 import { TEvents, TTheme } from '../types/Events'
+import { useI18n } from 'vue-i18n'
+const isDev = process.env.NODE_ENV === 'development'
+
+const { availableLocales } = useI18n()
 
 const toggleThemeValue = ref<TTheme>('light')
 const emitter = inject<Emitter<TEvents>>('emitter')

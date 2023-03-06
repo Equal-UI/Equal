@@ -74,8 +74,9 @@
       <span v-if="message" :class="variant.message">{{ message }}</span>
     </Transition>
 
-    <Transition name="drop-bottom">
+    <Transition v-bind="variant.transitions?.fade">
       <div v-if="show" ref="dropdown" :class="variant.dropdown">
+        <slot name="dropdown-header"></slot>
         <ul
           :class="variant.list"
           :ref="(dropdown) => setSelectListRef(dropdown)"
@@ -106,13 +107,14 @@
             </slot>
           </li>
         </ul>
+        <slot name="dropdown-footer"></slot>
       </div>
     </Transition>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onMounted } from 'vue'
+import { defineComponent, computed, ref, onMounted, watch, nextTick } from 'vue'
 import { Components, Positions } from '@/models/enums'
 import { clickOutside } from '@/directives'
 import { useSelect } from '@/components/select/hooks'
@@ -129,6 +131,13 @@ import { useCheckSlot } from '@/hooks'
 import { getVariantPropsWithClassesList } from '@/helpers/getVariantProps'
 import { ITSelectOptions } from '@/types/components/components'
 import { useVariants } from '@/hooks/useVariants'
+import {
+  computePosition,
+  offset,
+  shift,
+  Placement,
+  flip,
+} from '@floating-ui/dom'
 
 export default defineComponent({
   name: Components.ITSelect,
@@ -184,7 +193,30 @@ export default defineComponent({
       remove,
     } = useSelect(props as TSelectProps, emit as TEmit)
 
+    const trigger = ref<HTMLElement>()
     const dropdown = ref<HTMLElement>()
+
+    watch(show, async (newValue) => {
+      if (newValue) {
+        await nextTick()
+        if (trigger.value && dropdown.value) {
+          const {
+            x,
+            y,
+            placement: extPlacement,
+          } = await computePosition(trigger.value, dropdown.value, {
+            middleware: [offset(6), flip(), shift()], // todo: move offset to prop
+            placement: 'bottom',
+          })
+
+          Object.assign(dropdown.value.style, {
+            position: 'absolute',
+            left: `${x}px`,
+            top: `${y}px`,
+          })
+        }
+      }
+    })
 
     onMounted(() => {
       if (!props.multiselect) {
@@ -226,6 +258,7 @@ export default defineComponent({
       dropdown,
       variant,
       remove,
+      trigger,
     }
   },
 })

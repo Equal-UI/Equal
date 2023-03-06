@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Spinner</h1>
 
-    <Box :code="spinnerCode" title="Spinner colors">
+    <Box :template="spinnerCode" title="Spinner colors">
       <it-spinner />
       <it-spinner
         variant="red"

@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Loading bar</h1>
 
-    <Box :code="typesCode" title="Global">
+    <Box :template="typesTemplate" :code="typesCode" title="Global">
       <it-loading-bar ref="globalLoading" global />
 
       <it-button @click="globalLoading.setProgress(50)">Set 50%</it-button>
@@ -10,12 +10,12 @@
       <it-button @click="globalLoading.reset()">Restart</it-button>
     </Box>
 
-    <Box :code="infiniteCode" title="Infinite">
+    <Box :template="infiniteCode" title="Infinite">
       <it-button @click="globalInfinite = !globalInfinite">Toggle</it-button>
       <it-loading-bar global :infinite="globalInfinite" />
     </Box>
 
-    <Box :code="exampleBar" title="Loading bar">
+    <Box :template="exampleBar" :code="exampleBarCode" title="Loading bar">
       <div class="flex flex-col gap-4">
         <p>Reading progress example</p>
         <div
@@ -82,7 +82,7 @@
         </div>
       </div>
     </Box>
-    <props-table :method-sheet="methodSheet" />
+    <props-table :data-sheet="dataSheet" :method-sheet="methodSheet" />
   </div>
 </template>
 
@@ -91,27 +91,60 @@ import { defineComponent, ref, onMounted } from 'vue'
 
 export default defineComponent({
   data: () => ({
-    typesCode: `<it-button @click="$Loading.start()">Start</it-button>
-<it-button @click="$Loading.update(50)">Set 50%</it-button>
-<it-button @click="$Loading.finish()">Finish</it-button>
-`,
-    infiniteCode: `<it-loading-bar global ||| :infinite="globalInfinite" ||| />`,
+    typesTemplate: `<it-loading-bar ref="globalLoading" global />
 
-    methodSheet: [
+<it-button @click="globalLoading.setProgress(50)">Set 50%</it-button>
+<it-button @click="globalLoading.setProgress(100)">Set 100%</it-button>
+<it-button @click="globalLoading.reset()">Restart</it-button>`,
+
+    typesCode: `import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const globalLoading = ref()
+
+    return {
+      globalLoading,
+    }
+  },
+})`,
+
+    infiniteCode: `<it-loading-bar global ||| :infinite="globalInfinite" |||/>
+
+<it-button @click="globalInfinite = !globalInfinite">Toggle</it-button>`,
+
+    dataSheet: [
       {
-        method: 'start',
-        description: 'Start loading progress',
-        // arguments: []
+        property: 'global',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes the loading bar teleported to body',
       },
       {
-        method: 'update',
+        property: 'teleport',
+        type: ['String'],
+        default: '-',
+        values: [],
+        description: 'Selector string where Teleport loading bar to',
+      },
+      {
+        property: 'infinite',
+        type: ['Boolean'],
+        default: 'false',
+        values: [],
+        description: 'Makes the loading bar infinite',
+      },
+    ],
+    methodSheet: [
+      {
+        method: 'setProgress',
         description: 'Update progress value in percentage',
         arguments: 'value: number',
       },
       {
-        method: 'finish',
-        description: 'Finish loading and hide',
-        // arguments: []
+        method: 'reset',
+        description: 'Resets progress',
       },
     ],
   }),
@@ -139,10 +172,9 @@ export default defineComponent({
     <it-loading-bar ref="ownloading" />
   </div>
   <p class="p-8 text-sm leading-snug">Long text</p>
-</div>
+</div>`
 
-<script>
-const ownloading = ref()
+    const exampleBarCode = `const ownloading = ref()
 
 onMounted(() => {
   setTimeout(() => {
@@ -155,11 +187,15 @@ onMounted(() => {
       })
     }
   }, 500)
-})
-<\/script>
-`
+})`
 
-    return { ownloading, globalLoading, globalInfinite, exampleBar }
+    return {
+      ownloading,
+      globalLoading,
+      globalInfinite,
+      exampleBar,
+      exampleBarCode,
+    }
   },
 })
 </script>

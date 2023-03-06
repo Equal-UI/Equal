@@ -15,7 +15,7 @@
       </template>
     </Demobox>
 
-    <Box :code="codeHorizontal" title="Horizontal">
+    <Box :template="codeHorizontal" title="Horizontal">
       <p class="text-sm">
         Not that I wish to imply you have been sleeping on the job. No one is
         more deserving of a rest. And all the effort in the world would have
@@ -35,7 +35,7 @@
       </p>
     </Box>
 
-    <Box :code="codeVertical" title="Vertical">
+    <Box :template="codeVertical" title="Vertical">
       <div class="m-0 text-sm">
         Still
         <it-divider vertical />

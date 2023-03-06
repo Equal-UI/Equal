@@ -33,12 +33,12 @@
         ></it-select>
       </template>
     </Demobox>
-    <Box :code="infiniteCode" title="Infinite">
+    <Box :template="infiniteCode" title="Infinite">
       <div class="flex w-full flex-col gap-3">
         <it-progressbar infinite />
       </div>
     </Box>
-    <Box :code="tooltipCode" title="Tooltip position">
+    <Box :template="tooltipCode" title="Tooltip position">
       <div class="flex w-full flex-col gap-3">
         <it-progressbar :progress="progressValue42" />
         <it-progressbar :progress="progressValue42" tooltip="bottom" />

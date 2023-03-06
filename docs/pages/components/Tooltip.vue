@@ -21,7 +21,7 @@
       </template>
     </Demobox>
 
-    <Box :code="directiveCode" title="Directive">
+    <Box :template="directiveCode" title="Directive">
       <template #description>
         <p class="mx-6">You can use directive for tooltips</p>
       </template>
@@ -46,7 +46,7 @@
       </div>
     </Box>
 
-    <Box :code="positionCode" title="Position">
+    <Box :template="positionCode" title="Position">
       <template #description>
         <p class="mx-6">
           There are 12 positions available for tooltip, most used are shown in
@@ -70,7 +70,7 @@
         </it-tooltip>
       </div>
     </Box>
-    <Box :code="slotCode" title="Content Slot">
+    <Box :template="slotCode" title="Content Slot">
       <div class="flex flex-col items-center">
         <it-tooltip placement="top">
           <template #content>
@@ -83,7 +83,7 @@
         </it-tooltip>
       </div>
     </Box>
-    <Box :code="autopositionCode" title="Autoposition">
+    <Box :template="autopositionCode" title="Autoposition">
       <div class="flex flex-col items-center">
         <it-tooltip placement="bottom">
           <template #content>

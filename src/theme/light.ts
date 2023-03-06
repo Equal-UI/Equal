@@ -249,7 +249,7 @@ export default {
       },
       success: {
         root: [
-          'bg-green-500 shadow-md !shadow-green-500/40 !border-green-500 !text-white',
+          'bg-green-500 shadow-md !shadow-green-500/40 !border-green-500 text-white',
           'active:bg-green-600 active:!border-green-600 focus-visible:border-green-500 hover:bg-green-400 hover:!border-green-400',
         ],
         outlined:
@@ -265,7 +265,7 @@ export default {
       },
       warning: {
         root: [
-          'bg-yellow-500 shadow-md !text-white !shadow-yellow-500/40 !border-yellow-500',
+          'bg-yellow-500 shadow-md text-white !shadow-yellow-500/40 !border-yellow-500',
           'active:bg-yellow-600 active:!border-yellow-600 focus-visible:border-yellow-500 hover:bg-yellow-400 hover:!border-yellow-400',
         ],
         outlined:
@@ -281,7 +281,7 @@ export default {
       },
       danger: {
         root: [
-          'bg-red-500 shadow-md !shadow-red-500/40 !border-red-500 !text-white',
+          'bg-red-500 shadow-md !shadow-red-500/40 !border-red-500 text-white',
           'active:bg-red-600 active:!border-red-600 focus-visible:border-red-500 hover:bg-red-400 hover:!border-red-400',
         ],
         outlined:
@@ -297,7 +297,7 @@ export default {
       },
       disabled: {
         root: [
-          '!shadow-none cursor-not-allowed !border-gray-300 !text-gray-300 bg-gray-100',
+          '!shadow-none !cursor-not-allowed !border-gray-300 !text-gray-300 bg-gray-100',
           'active:!border-gray-300 active:!bg-gray-100 peer-checked:!border-gray-300 hover:!border-gray-300',
         ],
         outlined: '!bg-gray-100',
@@ -391,7 +391,7 @@ export default {
       body: 'flex-1',
       tab: "disabled:cursor-not-allowed inset-0 flex-auto relative p-3 text-sm cursor-pointer focus:outline-none focus:after:!scale-y-[2] after:content-[''] after:absolute after:left-0 after:w-full after:h-[2px] after:bottom-0 after:scale-y-0 after:origin-bottom after:transition-all",
       verticalTab:
-        "focus:after:!scale-y-[1] focus:after:!scale-x-[2] after:content-[''] after:!top-0 after:!right-0 after:!left-auto after:h-full after:!w-[2px] after:scale-x-0 after:origin-right",
+        "focus:after:!scale-y-100 focus:after:!scale-x-[1] focus:after:!scale-x-[2] after:content-[''] after:!top-0 after:!right-0 after:!left-auto after:h-full after:!w-[2px] after:scale-x-0 after:origin-right",
       activeTab: 'font-semibold after:!scale-100',
     },
     variants: {
@@ -546,9 +546,10 @@ export default {
       label: 'flex text-sm mb-1',
       input:
         'flex items-center outline-none py-1.5 px-2 text-sm relative rounded border shadow-sm duration-150 transition-all cursor-pointer place-content-between focus:shadow-[0_1px_1px_0,0_0_0_3px]',
-      dropdown: 'absolute z-50 min-w-[130px] w-full top-full mt-2',
+      dropdown:
+        'absolute z-50 min-w-[130px] w-full flex flex-col gap-1 p-1 text-sm rounded-md border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
       placeholder: 'text-gray-400',
-      list: 'flex flex-col gap-1 text-sm rounded border shadow-sm rounded select-none overflow-y-auto max-h-[200px]',
+      list: 'flex flex-col gap-1',
       selected: 'flex gap-1 flex-wrap',
       option: 'p-1 rounded cursor-pointer hover:bg-blue-600 hover:text-white',
       optionSelected: 'rounded bg-blue-600',
@@ -558,7 +559,7 @@ export default {
       default: {
         input:
           'bg-white border-slate-300 shadow-slate-600/10 hover:border-slate-400 focus:border-blue-600 focus:!border-blue-600 focus:shadow-blue-600/30 [&:focus>div>svg]:text-blue-600 [&:focus>svg]:transition-all',
-        list: 'bg-white border-slate-300 shadow-slate-600/10',
+        dropdown: 'bg-white border-slate-300 shadow-slate-600/10',
       },
       disabled: {
         input:
@@ -695,9 +696,29 @@ export default {
   },
   ItNotification: {
     base: {
-      root: 'fixed z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 leading-none px-3 py-1.5',
+      root: 'fixed flex flex-col gap-1 z-50 overflow-hidden transition-all text-sm rounded bg-white border shadow shadow-slate-600/10 border-slate-300 px-3 py-2',
+      title: 'font-semibold',
+      text: '',
+      progressLine:
+        'absolute bottom-0 left-0 h-0.5 w-full origin-left bg-blue-500 transition-all',
     },
-    variants: {},
+    variants: {
+      success: {
+        root: '!border-green-500',
+        title: '!text-green-500',
+        progressLine: '!bg-green-500',
+      },
+      warning: {
+        root: '!border-yellow-500',
+        title: '!text-yellow-500',
+        progressLine: '!bg-yellow-500',
+      },
+      danger: {
+        root: '!border-red-500/80',
+        title: '!text-red-500',
+        progressLine: '!bg-red-500',
+      },
+    },
   },
   transitions: {
     scale: {

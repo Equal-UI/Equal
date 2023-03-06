@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Drawer</h1>
 
-    <Box :code="exampleCode" title="Drawer">
+    <Box :template="exampleCode" title="Drawer">
       <template #description>
         <p class="mx-6">
           This component is intended to be used only with wide screens
@@ -62,7 +62,7 @@
       </it-drawer>
     </Box>
 
-    <Box :code="nestedCode" title="Nested Drawers">
+    <Box :template="nestedCode" title="Nested Drawers">
       <template #description>
         <p class="mx-6">
           Nested drawers isn't a good idea for your interface, but we

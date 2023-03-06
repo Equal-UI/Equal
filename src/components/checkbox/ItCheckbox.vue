@@ -69,7 +69,6 @@ export default defineComponent({
     ...getVariantPropsWithClassesList<ITCheckboxOptions>(),
     label: { type: String },
     subLabel: { type: String },
-    pulse: { type: Boolean },
     disabled: { type: Boolean },
     lineThrough: { type: Boolean },
     modelValue: {},

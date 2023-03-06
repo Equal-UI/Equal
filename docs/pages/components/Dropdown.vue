@@ -44,7 +44,7 @@
       </template>
     </Demobox>
 
-    <Box :code="codeExample" title="Example">
+    <Box :template="codeExample" title="Example">
       <it-dropdown>
         <it-button>Hover me</it-button>
         <template #menu>
@@ -58,7 +58,7 @@
       </it-dropdown>
     </Box>
 
-    <Box :code="codeExample" title="Nested">
+    <Box :template="codeExample" title="Nested">
       <it-dropdown>
         <it-button>{{ clickable ? 'Click' : 'Hover' }} me</it-button>
         <template #menu>

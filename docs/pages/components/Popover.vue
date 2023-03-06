@@ -2,21 +2,25 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Popover</h1>
 
-    <Box :code="exampleCode" title="Example">
+    <Box :template="exampleCode" title="Example">
       <it-popover :disabled="removed">
         <it-button>Delete</it-button>
         <template #content>
           <div class="p-1">
             <p class="mb-2">Please confirm deletion</p>
-            <div class="flex justify-end">
+            <div class="flex justify-end gap-2">
               <it-button variant="text" size="small">No</it-button>
               <it-button
-                class="ml-2"
                 size="small"
                 variant="danger"
                 @click="
                   ;(removed = true),
-                    $Message({ text: 'Deleted', duration: 3000 })
+                    notification({
+                      text: 'Deleted',
+                      duration: 3000,
+                      placement: 'top',
+                      variant: 'danger',
+                    })
                 "
               >
                 Yes
@@ -27,7 +31,7 @@
       </it-popover>
     </Box>
 
-    <Box :code="positionsCode" title="Positions">
+    <Box :template="positionsCode" title="Positions">
       <template #description>
         <p class="px-6">
           Click to see the popover. There are 12 positions available for
@@ -59,22 +63,16 @@
       </it-button-group>
     </Box>
 
-    <Box :code="imageCode" title="Image">
+    <Box :template="imageCode" title="Image">
       <template #description>
-        <p class="px-6">
-          You can disable paddings inside popover and show image
-        </p>
+        <p class="px-6">You can show any content inside popover</p>
       </template>
 
-      <it-popover placement="top" borderless>
+      <it-popover placement="top">
         <it-button>Show image</it-button>
 
         <template #content>
-          <img
-            width="150"
-            src="https://pbs.twimg.com/profile_images/1063458070775427072/HAgejyos_400x400.jpg"
-            alt="logo"
-          />
+          <img width="150" src="/logo.svg" alt="logo" />
         </template>
       </it-popover>
     </Box>
@@ -95,17 +93,25 @@ export default defineComponent({
     exampleCode: `<it-popover :disabled="removed">
   <it-button>Delete</it-button>
   <template #content>
-    <div>
-      <p style="margin-bottom: 8px">Please confirm deletion</p>
-      <div style="display: flex; justify-content: flex-end">
-        <it-button size="small">No</it-button>
+    <div class="p-1">
+      <p class="mb-2">Please confirm deletion</p>
+      <div class="flex justify-end gap-2">
+        <it-button variant="text" size="small">No</it-button>
         <it-button
-          style="margin-left: 8px"
           size="small"
-          type="danger"
-          @click="(removed = true), $Message.success({ text: 'Deleted', duration: 3000 })"
-          >Yes</it-button
+          variant="danger"
+          @click="
+            ;(removed = true),
+              notification({
+                text: 'Deleted',
+                duration: 3000,
+                placement: 'top',
+                variant: 'danger',
+              })
+          "
         >
+          Yes
+        </it-button>
       </div>
     </div>
   </template>
@@ -133,10 +139,16 @@ export default defineComponent({
   </it-popover>
 </it-button-group>`,
 
-    imageCode: `<it-popover placement="top" borderless>
+    imageCode: `<it-popover placement="top">
   <it-button>Show logo</it-button>
 
-  <template #content><img width="150" src="https://pbs.twimg.com/profile_images/1063458070775427072/HAgejyos_400x400.jpg" alt="logo"></template>
+  <template #content>
+    <img
+      width="150"
+      src="/logo.svg"
+      alt="logo"
+    />
+  </template>
 </it-popover>`,
 
     dataSheet: [
@@ -159,13 +171,6 @@ export default defineComponent({
           'top-right',
         ],
         description: 'Position of the popover',
-      },
-      {
-        property: 'borderless',
-        type: ['Boolean'],
-        default: 'false',
-        values: [],
-        description: 'Remove paddings',
       },
       {
         property: 'disabled',

@@ -42,12 +42,12 @@
         />
       </template>
     </Demobox>
-    <Box :code="codeStatus" title="Status">
+    <Box :template="codeStatus" title="Status">
       <it-input v-model="statusValue" variant="success" message="Success" />
       <it-input v-model="statusValue" variant="danger" message="Danger" />
       <it-input v-model="statusValue" variant="warning" message="Warning" />
     </Box>
-    <Box :code="codeIcon" title="With icons">
+    <Box :template="codeIcon" title="With icons">
       <it-input v-model="inputValue">
         <template #prefixIcon>
           <svg
@@ -119,12 +119,12 @@
         </template>
       </it-input>
     </Box>
-    <Box :code="codeSuffix" title="Prefix / suffix">
+    <Box :template="codeSuffix" title="Prefix / suffix">
       <it-input v-model="inputValue" prefix="https://" />
       <it-input v-model="inputValue" suffix=".com" />
       <it-input v-model="inputValue" prefix="https://" suffix=".com" />
     </Box>
-    <Box :code="codeMask" title="Masked">
+    <Box :template="codeMask" title="Masked">
       <it-input
         v-model="inputValue"
         label-top="Click me"
@@ -132,7 +132,7 @@
         mask
       />
     </Box>
-    <Box :code="codeDisabled" title="Disabled">
+    <Box :template="codeDisabled" title="Disabled">
       <it-input
         v-model="inputDisabledValue"
         message="I'm disabled"
@@ -188,13 +188,6 @@ export default defineComponent({
     ],
 
     dataSheet: [
-      {
-        property: 'type',
-        type: ['String'],
-        default: 'text',
-        values: ['text', 'password'],
-        description: 'Type of the input',
-      },
       {
         property: 'placeholder',
         type: ['String'],

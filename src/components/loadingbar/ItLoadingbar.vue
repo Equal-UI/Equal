@@ -1,7 +1,7 @@
 <template>
   <Teleport
     :to="global ? 'body' : teleport"
-    :disabled="!teleport"
+    :disabled="!teleport && !global"
     v-if="!teleport || isMounted"
   >
     <div

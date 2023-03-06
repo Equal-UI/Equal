@@ -12,7 +12,7 @@
         :square="badgeSquare"
         :position="badgePosition"
       >
-        <it-button>Badged</it-button>
+        <it-button>Badger</it-button>
       </it-badge>
       <template #props>
         <it-select
@@ -35,7 +35,7 @@
       </template>
     </Demobox>
 
-    <Box :code="typesCode" title="Type">
+    <Box :template="typesCode" title="Type">
       <it-badge value="12" variant="primary">
         <it-button>Primary</it-button>
       </it-badge>
@@ -50,7 +50,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="combineCode" title="With another component">
+    <Box :template="combineCode" title="With another component">
       <it-badge value="Typing..." variant="danger">
         <it-avatar
           square
@@ -60,7 +60,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="pointCode" title="Point">
+    <Box :template="pointCode" title="Point">
       <it-badge variant="primary" point>
         <it-button>
           <template #icon>
@@ -143,7 +143,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="squareCode" title="Square">
+    <Box :template="squareCode" title="Square">
       <it-badge variant="primary" :value="12" square>
         <it-button>Square</it-button>
       </it-badge>
@@ -169,7 +169,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="positionsCode" title="Positions">
+    <Box :template="positionsCode" title="Positions">
       <it-badge point :value="12">
         <it-button>Top-right</it-button>
       </it-badge>
@@ -184,7 +184,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="maxvalCode" title="Max value">
+    <Box :template="maxvalCode" title="Max value">
       <it-badge :value="110" :max-value="99">
         <it-tag variant="danger">Maximum</it-tag>
       </it-badge>
@@ -195,12 +195,12 @@
       </it-tag>
     </Box>
 
-    <Box :code="standaloneCode" title="Standalone">
+    <Box :template="standaloneCode" title="Standalone">
       <it-badge :value="101" />
       <it-badge :value="101" square />
     </Box>
 
-    <Box :code="customCode" title="Custom variant">
+    <Box :template="customCode" title="Custom variant">
       <it-badge
         value="🐇"
         variant="violet"

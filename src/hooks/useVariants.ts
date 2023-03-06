@@ -33,7 +33,7 @@ const mergeClasses = (...classes: CSSClasses): string =>
     .replace(/  +/g, ' ')
     .trim()
 
-export let useVariants = <T>(
+export const useVariants = <T>(
   name: Components,
   props: VariantJSWithClassesListProps<T> = {},
 ): {
@@ -43,7 +43,7 @@ export let useVariants = <T>(
     'config',
     {} as EqualUIConfiguration,
   )
-  const globalVariant = config[name] // FIXME: Not gonna work with nuxt?
+  const globalVariant = config && config[name] // FIXME: Not gonna work with nuxt?
 
   let finalResult: {
     transitions?: Record<string, Record<string, string>>
@@ -82,7 +82,7 @@ export let useVariants = <T>(
     finalResult[key] = mergeClasses(value)
   }
 
-  finalResult.transitions = config.transitions
+  finalResult.transitions = config?.transitions || {}
 
   return finalResult
 }

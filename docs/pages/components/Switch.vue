@@ -35,13 +35,13 @@
         />
       </template>
     </Demobox>
-    <Box :code="typesCode" title="Variants">
+    <Box :template="typesCode" title="Variants">
       <it-switch v-model="typeValue" label="Default" />
       <it-switch v-model="typeValue" variant="success" label="Success" />
       <it-switch v-model="typeValue" variant="danger" label="Danger" />
       <it-switch v-model="typeValue" variant="warning" label="Warning" />
     </Box>
-    <Box :code="sublabelCode" title="Types">
+    <Box :template="sublabelCode" title="Types">
       <div class="flex flex-col">
         <it-switch v-model="sublabel1" label="Label only" />
         <br />
@@ -50,13 +50,7 @@
         </it-switch>
       </div>
     </Box>
-    <Box :code="pulseCode" title="Pulse">
-      <template #description>
-        <p class="px-6">Pulse helps you to catch user's attention</p>
-      </template>
-      <it-switch v-model="pulseValue" pulse label="Look at me" />
-    </Box>
-    <Box :code="disabledCode" title="Disabled">
+    <Box :template="disabledCode" title="Disabled">
       <it-switch v-model="pulseValue" disabled label="I'm disabled" />
     </Box>
     <props-table :data-sheet="dataSheet" />
@@ -85,9 +79,6 @@ export default defineComponent({
 <it-switch v-model="typeValue" ||| variant="success" ||| label="Success" />
 <it-switch v-model="typeValue" ||| variant="danger" ||| label="Danger" />
 <it-switch v-model="typeValue" ||| variant="warning" ||| label="Warning" />`,
-
-    pulseCode: `<it-switch v-model="pulseValue" pulse label="Look at me" />`,
-
     sublabelCode: `<it-switch v-model="sublabel1" label="Label only" />
 
 <it-switch v-model="sublabel2" label="Show ">
@@ -97,13 +88,6 @@ export default defineComponent({
     disabledCode: `<it-switch v-model="pulseValue" ||| disabled ||| label="I'm disabled"/>`,
 
     dataSheet: [
-      {
-        property: 'type',
-        type: ['String'],
-        default: 'primary',
-        values: ['primary', 'success', 'danger', 'warning'],
-        description: 'Type of the switch',
-      },
       {
         property: 'label',
         type: ['String'],

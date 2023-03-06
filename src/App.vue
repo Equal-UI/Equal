@@ -367,19 +367,6 @@
     </div>
 
     <div>
-      <h3>Message</h3>
-      <it-button @click="$Message({ text: 'Primary message' })">
-        Default
-      </it-button>
-      <it-button @click="$Message({ text: 'Warnning message' })">
-        Warning
-      </it-button>
-      <it-button @click="$Message({ text: 'Danger message' })">
-        Danger
-      </it-button>
-    </div>
-
-    <div>
       <h3>Modal</h3>
       <it-button @click="modal = !modal">Show modal</it-button>
       <it-modal v-model="modal">
@@ -398,17 +385,12 @@
         </template>
         <template #actions>
           <it-button @click="modal = false">Cancel</it-button>
-          <it-button
-            variant="primary"
-            @click="$Message({ text: 'Created' }), (modal = false)"
-          >
-            Create
-          </it-button>
+          <it-button variant="primary" @click="modal = false">Create</it-button>
         </template>
       </it-modal>
     </div>
 
-    <div>
+    <!-- <div>
       <h3>Notification</h3>
       <it-button
         @click="
@@ -454,7 +436,7 @@
       >
         Bottom-right
       </it-button>
-    </div>
+    </div> -->
 
     <div>
       <h3>Drawer</h3>

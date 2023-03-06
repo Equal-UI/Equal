@@ -9,7 +9,8 @@ yarn-error.log*
 dist/demo.html
 
 .idea
-.vscode
+.vscode/*
+!dist/extensions.json
 .bitmap
 *.suo
 *.ntvs*

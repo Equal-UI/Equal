@@ -1,5 +1,12 @@
 import NotificationVue from './ItNotification.vue'
-import { createApp, ComponentPublicInstance, VNode, h, reactive } from 'vue'
+import {
+  createApp,
+  ComponentPublicInstance,
+  VNode,
+  h,
+  reactive,
+  inject,
+} from 'vue'
 import { Positions } from '@/models/enums'
 import { EqualUIConfiguration } from '@/types/variant'
 
@@ -8,13 +15,8 @@ interface INotificationOptions {
   title: string | number
   text: string | number
   show: boolean
-  type: string
   duration: number
   placement: string
-  emoji: string
-  position: {
-    [key: string]: number | string
-  }
   onClose: () => void
   [key: string]: any
 }
@@ -23,15 +25,19 @@ const notifications: { id: number; component: ComponentPublicInstance }[] = []
 
 let idStart = 0
 
-const Notification =
-  (config: EqualUIConfiguration) =>
-  (options: Partial<INotificationOptions> = {}, children: VNode) => {
+// Has to be used only inside the setup()
+export const useNotification = () => {
+  const config = inject<EqualUIConfiguration>(
+    'config',
+    {} as EqualUIConfiguration,
+  )
+  return (options: Partial<INotificationOptions> = {}, children: VNode) => {
     options.placement = options.placement || Positions.TR
     const onClose = options.onClose
     const id = idStart++
 
     options.onClose = () => {
-      Notification.close(id, onClose)
+      useNotification.close(id, {}, onClose)
     }
 
     const newProps = reactive(
@@ -48,6 +54,7 @@ const Notification =
     }
 
     const tempDiv = document.createElement('div')
+
     const instance = createApp({
       render: () => h(NotificationVue, newProps, () => children),
     })
@@ -90,14 +97,21 @@ const Notification =
 
     notifications.push({ id, component: mountedInstance })
 
-    return Notification
+    return useNotification.close.bind(this, id, newProps)
   }
+}
 
-Notification.close = (id: number, onClose?: () => void) => {
-  const index = notifications.findIndex((el) => el.id === id)
+useNotification.close = (
+  id: number,
+  props?: Record<string, any>,
+  onClose?: () => void,
+) => {
+  const index = notifications.findIndex((el) => el.id === (id || props?.id))
   if (!notifications[index]) {
     return
   }
+
+  props!.show = false
   const height = (notifications[index].component.$el as HTMLElement)
     .offsetHeight
   if (onClose) {
@@ -113,7 +127,7 @@ Notification.close = (id: number, onClose?: () => void) => {
     )
     .forEach((el) => {
       const data = el.component.$refs.elRef as INotificationOptions
-      if (data.id! > id) {
+      if (data.id! >= (id || props?.id)) {
         const elPlacement = data.placement.split('-')
         data.position[elPlacement[0]] =
           data.position[elPlacement[0]] - (height + 6)
@@ -121,5 +135,3 @@ Notification.close = (id: number, onClose?: () => void) => {
     })
   notifications.splice(index, 1)
 }
-
-export default Notification

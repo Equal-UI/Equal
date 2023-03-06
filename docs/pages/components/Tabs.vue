@@ -21,7 +21,7 @@
         />
       </template>
     </Demobox>
-    <Box :code="boxedCode" title="Tabs in box">
+    <Box :template="boxedCode" title="Tabs in box">
       <div class="flex flex-1 flex-col">
         <it-tabs box class="flex-1">
           <it-tab title="Tab 1" class="p-4">First tab</it-tab>
@@ -39,7 +39,7 @@
         </it-tabs>
       </div>
     </Box>
-    <Box :code="notboxedCode" title="Tabs without box">
+    <Box :template="notboxedCode" title="Tabs without box">
       <div class="flex flex-1 flex-col">
         <it-tabs class="flex-1">
           <it-tab title="Tab 1" class="p-4">First tab</it-tab>

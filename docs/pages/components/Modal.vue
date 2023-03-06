@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-4 text-2xl font-bold">Modal</h1>
 
-    <Box :code="exampleCode" title="Modal example">
+    <Box :template="exampleCode" title="Modal example">
       <it-button @click="defaultModal = true">Modal</it-button>
       <it-modal v-model="defaultModal">
         <template #image>
@@ -27,7 +27,7 @@
         </template>
       </it-modal>
     </Box>
-    <Box :code="signinCode" title="Sign Up modal">
+    <Box :template="signinCode" title="Sign Up modal">
       <it-button variant="primary" @click="signinModal = true">
         Sign up
       </it-button>
@@ -122,7 +122,7 @@
               size="big"
               variant="primary"
               @click="
-                $Notification({ placement: 'top' }, 'Welcome'),
+                notification({ placement: 'top' }, 'Welcome'),
                   (signinModal = false)
               "
             >
@@ -132,7 +132,7 @@
         </template>
       </it-modal>
     </Box>
-    <Box :code="confirmCode" title="Confirmation modal">
+    <Box :template="confirmCode" title="Confirmation modal">
       <it-button variant="danger" @click="confirmModal = true">
         Delete account
       </it-button>
@@ -150,7 +150,7 @@
           <it-button
             variant="danger"
             @click="
-              $Notification({ placement: 'top' }, 'Account deleted'),
+              notification({ placement: 'top' }, 'Account deleted'),
                 (confirmModal = false)
             "
           >
@@ -159,7 +159,7 @@
         </template>
       </it-modal>
     </Box>
-    <Box :code="imageCode" title="Image only modal">
+    <Box :template="imageCode" title="Image only modal">
       <it-button variant="primary" @click="imageModal = true">
         Show image
       </it-button>
@@ -173,7 +173,7 @@
       </it-modal>
     </Box>
 
-    <Box :code="nestedCode" title="Nested modals">
+    <Box :template="nestedCode" title="Nested modals">
       <template #description>
         <p class="mx-6">
           Nested modals isn't a good idea for your interface, but we implemented
@@ -1158,8 +1158,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useNotification } from '@/'
 
 export default defineComponent({
+  setup() {
+    const notification = useNotification()
+    return { notification }
+  },
   data: () => ({
     defaultModal: false,
     signinModal: false,
@@ -1299,7 +1304,7 @@ export default defineComponent({
   <template #actions>
     <it-button
       variant="primary"
-      @click="$Message({ text: 'You got it' }), (defaultModal = false)"
+      @click="notification({ text: 'You got it' }), (defaultModal = false)"
       >Got it</it-button
     >
   </template>
@@ -1325,7 +1330,7 @@ export default defineComponent({
         size="big"
         variant="primary"
         @click="
-          $Message({ text: 'Welcome' }), (signinModal = false)
+          notification({ text: 'Welcome' }), (signinModal = false)
         "
         >Sign up</it-button
       >
@@ -1346,7 +1351,7 @@ export default defineComponent({
     <it-button
       variant="danger"
       @click="
-        $Message({ text: 'Account deleted' }),
+        notification({ text: 'Account deleted' }),
           (confirmModal = false)
       "
       >Delete</it-button
@@ -1375,7 +1380,6 @@ export default defineComponent({
         values: [],
         description: 'Modal body width',
       },
-      // todo:
       {
         property: 'close-on-esc',
         type: ['Boolean'],

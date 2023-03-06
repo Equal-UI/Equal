@@ -14,7 +14,15 @@
       @mouseleave="startTimer"
       @mouseenter="clearTimer"
     >
-      <slot></slot>
+      <slot>
+        <h3 v-if="title" :class="variant.title">{{ title }}</h3>
+        <p v-if="text" :class="variant.text">{{ text }}</p>
+      </slot>
+      <div
+        v-if="progress"
+        :class="variant.progressLine"
+        :style="{ transform: `scaleX(${lineWidth})` }"
+      ></div>
     </div>
   </transition>
 </template>
@@ -31,14 +39,19 @@ export default defineComponent({
   props: {
     ...getVariantPropsWithClassesList<ITNotificationOptions>(),
     id: Number,
+    text: String,
+    title: String,
     show: Boolean,
-    duration: { type: Number, default: 3000 },
+    progress: Boolean,
+    duration: { type: Number, default: 5000 },
     placement: { type: String, default: Positions.TR },
   },
   setup(props, { emit }) {
     const variant = computed(() =>
       useVariants<ITNotificationOptions>(Components.ITNotification, props),
     )
+    const lineWidth = ref(0.9)
+    const hovered = ref(false)
     const position = reactive({})
     const positionPx = computed(() => {
       return Object.fromEntries(
@@ -50,7 +63,7 @@ export default defineComponent({
     })
 
     const positionCentered = computed(() =>
-      [Positions.T, Positions.B].includes(props.placement),
+      [Positions.T, Positions.B].includes(props.placement as Positions),
     )
 
     const timer = ref<number | null>(null)
@@ -69,19 +82,35 @@ export default defineComponent({
       return ['fadeTo', first.toUpperCase(), ...rest].join('')
     })
 
-    onMounted(startTimer)
+    onMounted(() => {
+      startTimer()
+    })
 
     function startTimer() {
       if (props.duration && props.duration > 0) {
+        hovered.value = false
+        if (props.progress) {
+          widthInterval()
+        }
         timer.value = setTimeout(() => {
           emit('showChange', false)
           emit('close')
-        }, props.duration) as any
+        }, props.duration) as unknown as number
       }
+    }
+
+    function widthInterval() {
+      setTimeout(() => {
+        lineWidth.value -= 100 / props.duration
+        if (!hovered.value && lineWidth.value > 0) {
+          widthInterval()
+        }
+      }, 100)
     }
 
     function clearTimer() {
       clearTimeout(timer.value as number)
+      hovered.value = true
     }
 
     return {
@@ -93,53 +122,8 @@ export default defineComponent({
       variant,
       placementTransition,
       positionCentered,
+      lineWidth,
     }
   },
-  // data() {
-  //   return {
-  //     id: null,
-  //     show: false,
-  //     text: '',
-  //     duration: 5000,
-  //     position: {} as { [key: string]: string },
-  //     placement: Positions.TR,
-  //     timer: null as unknown as NodeJS.Timeout,
-  //     onClose: () => {},
-  //   }
-  // },
-  // computed: {
-  //   positionPx() {
-  //     const posPx: { [key: string]: string } = {}
-  //     for (const key in this.position) {
-  //       if (this.position.hasOwnProperty(key)) {
-  //         posPx[key] = this.position[key] + 'px'
-  //       }
-  //     }
-  //     return posPx
-  //   },
-  // },
-  // mounted() {
-  //   this.startTimer()
-  // },
-  // methods: {
-  //   destroy() {
-  //     this.$el.parentNode!.removeChild(this.$el)
-  //   },
-
-  //   startTimer() {
-  //     if (this.duration > 0) {
-  //       this.timer = setTimeout(() => {
-  //         this.show = false
-  //         if (this.onClose) {
-  //           this.onClose()
-  //         }
-  //       }, this.duration) as any
-  //     }
-  //   },
-
-  //   clearTimer() {
-  //     clearTimeout(this.timer)
-  //   },
-  // },
 })
 </script>

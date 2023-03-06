@@ -35,7 +35,6 @@ export const useSelect = (props: TSelectProps, emit: TEmit): TSelect => {
     const selectedEl = optionsRefs.value.find(
       (r) => r.dataset.focused === 'true',
     )
-    console.log(selectedEl)
     selectedEl?.scrollIntoView({ block: 'nearest', inline: 'start' })
   }
 

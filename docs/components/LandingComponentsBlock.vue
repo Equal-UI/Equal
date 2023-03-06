@@ -7,10 +7,10 @@
         class="flex h-full flex-col rounded-lg border bg-white p-4 transition-all dark:border-zinc-600 dark:bg-zinc-800"
       >
         <h4 class="text-xl font-bold tracking-tight dark:text-neutral-50">
-          Button
+          {{ $t('landing.button') }}
         </h4>
         <div class="flex h-full items-center justify-center">
-          <it-button>Start Building</it-button>
+          <it-button>{{ $t('landing.button_text') }}</it-button>
         </div>
       </div>
     </div>
@@ -19,12 +19,12 @@
         class="relative flex h-full flex-col rounded-lg border bg-white p-4 transition-all dark:border-zinc-600 dark:bg-zinc-800"
       >
         <h4 class="text-xl font-bold tracking-tight dark:text-neutral-50">
-          Colorpicker
+          {{ $t('landing.colorpicker') }}
         </h4>
         <p
           class="mt-2 text-sm font-normal leading-6 tracking-normal dark:text-neutral-300"
         >
-          Colorpicker with colord library support
+          {{ $t('landing.colorpicker_text') }}
         </p>
         <div class="flex h-full items-center justify-center">
           <it-colorpicker :value="colorpickerValue" />
@@ -36,7 +36,7 @@
         class="flex h-full flex-col rounded-lg border bg-white p-4 transition-all dark:border-zinc-600 dark:bg-zinc-800"
       >
         <h4 class="text-xl font-bold tracking-tight dark:text-neutral-50">
-          Slider
+          {{ $t('landing.slider') }}
         </h4>
         <div class="flex h-full items-center justify-center">
           <it-slider :min="0" :max="300" v-model="sliderValue" />
@@ -48,13 +48,13 @@
         class="group flex h-full flex-col rounded-lg border bg-white p-4 transition-all dark:border-zinc-600 dark:bg-zinc-800"
       >
         <h4 class="text-xl font-bold tracking-tight dark:text-neutral-50">
-          Textarea
+          {{ $t('landing.textarea.header') }}
         </h4>
         <div class="mt-4 flex h-full items-center justify-center">
           <it-textarea
             class="h-full w-full"
-            label-top="Biography"
-            placeholder="This story begins..."
+            :label-top="$t('landing.textarea.label')"
+            :placeholder="$t('landing.textarea.placeholder')"
             v-model="textareaValue"
           />
         </div>
@@ -65,13 +65,13 @@
         class="group flex h-full flex-col rounded-lg border bg-white p-4 transition-all dark:border-zinc-600 dark:bg-zinc-800"
       >
         <h4 class="text-xl font-bold tracking-tight dark:text-neutral-50">
-          Input
+          {{ $t('landing.input.header') }}
         </h4>
         <div class="flex h-full items-center justify-center">
           <it-input
             v-model="inputValue"
-            label-top="Name"
-            placeholder="Write what you want"
+            :label-top="$t('landing.input.label')"
+            :placeholder="$t('landing.input.placeholder')"
           />
         </div>
       </div>
@@ -82,12 +82,12 @@
       >
         <div class="flex-1">
           <h4 class="text-xl font-bold tracking-tight dark:text-neutral-50">
-            Checkboxes
+            {{ $t('landing.checkboxes.header') }}
           </h4>
           <p
             class="mt-2 text-sm font-normal leading-6 tracking-normal dark:text-neutral-300"
           >
-            Checkboxes with customizations
+            {{ $t('landing.checkboxes.text') }}
           </p>
         </div>
         <div class="flex flex-1 flex-col justify-between">
@@ -95,7 +95,7 @@
             v-for="(checkbox, i) in checkboxValues"
             :key="i"
             v-model="checkbox.done"
-            variant="primary"
+            :variant="checkbox.variant"
             :label="checkbox.label"
           />
         </div>
@@ -106,16 +106,39 @@
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n() // use as global scope
 
 const sliderValue = ref(42)
 const colorpickerValue = ref('#4c0ced')
 const inputValue = ref('')
 const textareaValue = ref('')
 const checkboxValues = reactive([
-  { label: 'Find an idea', done: true },
-  { label: 'Start building', done: false },
-  { label: 'Make UI', done: false },
-  { label: 'Write backend endpoints', done: false },
-  { label: 'Frontend logic', done: false },
+  {
+    label: t('landing.checkboxes.checkbox_label_1'),
+    done: true,
+    variant: 'primary',
+  },
+  {
+    label: t('landing.checkboxes.checkbox_label_2'),
+    done: false,
+    variant: 'primary',
+  },
+  {
+    label: t('landing.checkboxes.checkbox_label_3'),
+    done: false,
+    variant: 'primary',
+  },
+  {
+    label: t('landing.checkboxes.checkbox_label_4'),
+    done: false,
+    variant: 'warning',
+  },
+  {
+    label: t('landing.checkboxes.checkbox_label_5'),
+    done: false,
+    variant: 'danger',
+  },
 ])
 </script>

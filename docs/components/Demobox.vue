@@ -62,7 +62,7 @@
         class="flex flex-col space-y-3 rounded-tr-md px-4 py-5 dark:!bg-zinc-900 sm:flex-[2]"
       >
         <div class="flex flex-row justify-between">
-          <h2 class="text-lg font-semibold">Props</h2>
+          <h2 class="text-lg font-semibold">{{ $t('demobox.props') }}</h2>
           <it-button
             target="_blank"
             rel="noopener noreferrer"
@@ -86,7 +86,7 @@
                 />
               </svg>
             </template>
-            Source code
+            {{ $t('demobox.source') }}
           </it-button>
         </div>
         <slot name="props"></slot>
@@ -102,14 +102,14 @@
             root: '!rounded-none border-none',
             body: 'px-0 py-0',
           }"
-          title="Customization"
+          :title="$t('demobox.customization')"
         >
           <it-tabs>
-            <it-tab title="Base" class="p-5">
+            <it-tab :title="$t('demobox.base')" class="p-5">
               <div v-if="fields" class="space-y-3">
                 <it-alert
                   variant="primary"
-                  title="Changes applied here affected everywhere on the website"
+                  :title="$t('demobox.changes-applied')"
                 />
                 <div
                   class="flex gap-2"
@@ -128,7 +128,7 @@
                   />
                   <div class="flex flex-col justify-end">
                     <it-button
-                      v-tooltip="{ content: 'Reset to default' }"
+                      v-tooltip="{ content: $t('demobox.reset') }"
                       class="mb-px h-8"
                       @click="setToDefault('base', key)"
                     >
@@ -153,14 +153,14 @@
                 </div>
               </div>
             </it-tab>
-            <it-tab title="Variants" class="p-5">
+            <it-tab :title="$t('demobox.variants')" class="p-5">
               <div
                 v-if="fields && Object.keys(fields.variants).length"
                 class="space-y-3"
               >
                 <it-alert
                   variant="primary"
-                  title="Changes applied here affected everywhere on the website"
+                  :title="$t('demobox.changes-applied')"
                 />
                 <it-collapse>
                   <it-collapse-item
@@ -212,7 +212,9 @@
                   </it-collapse-item>
                 </it-collapse>
               </div>
-              <div v-else><p>There are no built-in variants</p></div>
+              <div v-else>
+                <p>{{ $t('demobox.no-variants') }}</p>
+              </div>
             </it-tab>
           </it-tabs>
         </it-collapse-item>
@@ -246,7 +248,7 @@ const sourceUrlPredicted = computed(() => {
   if (props.sourceUrl) {
     return props.sourceUrl
   }
-  // /components/button/ItButton.vue
+
   const splittedName = props.name.split('It')
   // const folderName =
   //   splittedName.length > 1

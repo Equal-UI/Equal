@@ -62,6 +62,14 @@ export const DATA_SHEET = [
 
 export const SLOT_SHEET = [
   {
+    property: 'dropdown-header',
+    description: 'Dropdown top slot',
+  },
+  {
+    property: 'dropdown-footer',
+    description: 'Dropdown footer slot',
+  },
+  {
     property: 'label-top',
     description: 'Label top text',
   },

@@ -15,11 +15,7 @@ module.exports = {
     },
     extend: {},
   },
-  safelist: [
-    {
-      pattern: /./,
-    },
-  ],
+  safelist: process.env.NODE_ENV === 'production' ? [{ pattern: /./ }] : [],
   plugins: [],
   darkMode: 'class',
 }

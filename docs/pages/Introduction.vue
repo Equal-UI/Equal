@@ -17,7 +17,7 @@
       </p>
 
       <h2 class="my-4 text-lg font-semibold">How it works</h2>
-      <p class="">
+      <p>
         Every component's template contains tags with variant blocks. This
         example shows short version of
         <it-button

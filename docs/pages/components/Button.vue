@@ -49,39 +49,39 @@
       </template>
     </Demobox>
 
-    <Box :code="codeType" title="Variants">
+    <Box :template="codeType" title="Variants">
       <it-button>Button</it-button>
       <it-button variant="primary">Button</it-button>
       <it-button variant="success">Button</it-button>
       <it-button variant="danger">Button</it-button>
       <it-button variant="warning">Button</it-button>
     </Box>
-    <Box :code="codeOutline" title="Outline">
+    <Box :template="codeOutline" title="Outline">
       <it-button variant="primary" outlined>Button</it-button>
       <it-button variant="success" outlined>Button</it-button>
       <it-button variant="danger" outlined>Button</it-button>
       <it-button variant="warning" outlined>Button</it-button>
     </Box>
-    <Box :code="codeText" title="Text variant">
+    <Box :template="codeText" title="Text variant">
       <it-button variant="text">Button</it-button>
       <it-button variant="primary-text">Button</it-button>
       <it-button variant="success-text">Button</it-button>
       <it-button variant="danger-text">Button</it-button>
       <it-button variant="warning-text">Button</it-button>
     </Box>
-    <Box :code="codeRound" title="Round">
+    <Box :template="codeRound" title="Round">
       <it-button round>Button</it-button>
       <it-button variant="primary" round>Button</it-button>
       <it-button variant="success" round>Button</it-button>
       <it-button variant="danger" round>Button</it-button>
       <it-button variant="warning" round>Button</it-button>
     </Box>
-    <Box :code="codeSize" title="Size">
+    <Box :template="codeSize" title="Size">
       <it-button size="small">Button</it-button>
       <it-button size="normal">Button</it-button>
       <it-button size="big">Button</it-button>
     </Box>
-    <Box :code="codeIcon" title="With icon">
+    <Box :template="codeIcon" title="With icon">
       <it-button>
         <template #icon>
           <svg
@@ -139,7 +139,7 @@
         </template>
       </it-button>
     </Box>
-    <Box :code="toggleCode" title="Toggle">
+    <Box :template="toggleCode" title="Toggle">
       <it-button
         :variant="following ? 'primary' : 'default'"
         @click="following = !following"
@@ -179,17 +179,17 @@
         {{ following ? 'Following' : 'Follow' }}
       </it-button>
     </Box>
-    <Box :code="codeLoading" title="Loading">
+    <Box :template="codeLoading" title="Loading">
       <it-button variant="primary" loading>Loading</it-button>
       <it-button variant="primary" loading outlined>Loading</it-button>
     </Box>
-    <Box :code="codeDisabled" title="Disabled">
+    <Box :template="codeDisabled" title="Disabled">
       <it-button size="small" disabled>Button</it-button>
       <it-button size="normal" disabled>Button</it-button>
       <it-button size="big" disabled>Button</it-button>
     </Box>
 
-    <Box :code="codeGroups" title="Buttons group">
+    <Box :template="codeGroups" title="Buttons group">
       <it-button-group>
         <it-button>Button</it-button>
         <it-button>Button</it-button>
@@ -275,10 +275,10 @@ export default defineComponent({
 </it-button-group>`,
 
     codeType: `<it-button>Button</it-button>
-<it-button ||| variant="primary" ||| >Button</it-button>
-<it-button ||| variant="success" ||| >Button</it-button>
-<it-button ||| variant="danger" ||| > Button</it-button>
-<it-button ||| variant="warning" ||| >Button</it-button>
+<it-button ||| variant="primary" |||>Button</it-button>
+<it-button ||| variant="success" |||>Button</it-button>
+<it-button ||| variant="danger" |||> Button</it-button>
+<it-button ||| variant="warning" |||>Button</it-button>
 `,
     codeSize: `<it-button ||| size="small" |||>Button</it-button>
 <it-button ||| size="normal" |||>Button</it-button>

@@ -8,7 +8,6 @@
         :line-through="lineCheck"
         :disabled="checkboxDisabled"
         :variant="checkboxType"
-        :pulse="checkboxPulse"
         :label="checkboxLabel"
       >
         <template #sublabel>{{ checkboxSubLabel }}</template>
@@ -17,11 +16,9 @@
         <it-select
           v-model="checkboxType"
           placeholder="Select type"
-          label-top="Checkbox type"
+          label-top="Variant"
           :options="checkboxTypes"
-        >
-          >
-        </it-select>
+        ></it-select>
         <it-input v-model="checkboxLabel" label-top="Checkbox label" />
         <it-textarea
           v-model="checkboxSubLabel"
@@ -34,7 +31,6 @@
           variant="primary"
           label="Line through"
         />
-        <it-input v-model="checkboxIcon" label-top="Checkbox icon" />
         <it-checkbox
           variant="primary"
           v-model="checkboxDisabled"
@@ -44,7 +40,7 @@
       <template #variants></template>
     </Demobox>
 
-    <Box :code="codeType" title="Variant">
+    <Box :template="codeType" title="Variant">
       <it-checkbox v-model="typesCheck" variant="primary" label="Primary" />
       <it-checkbox v-model="typesCheck" variant="success" label="Success" />
       <it-checkbox v-model="typesCheck" variant="danger" label="Danger" />
@@ -52,7 +48,7 @@
       <it-checkbox v-model="typesCheck" label="default" />
     </Box>
 
-    <Box :code="codeLine" title="LineThrough">
+    <Box :template="codeLine" title="LineThrough">
       <div class="flex flex-col gap-3">
         <it-checkbox
           v-model="lineCheck0"
@@ -87,7 +83,7 @@
       </div>
     </Box>
 
-    <Box :code="codeSublabel" title="Sublabel">
+    <Box :template="codeSublabel" title="Sublabel">
       <div class="w-3/5">
         <it-checkbox v-model="lineCheckSub1" variant="primary">
           By signing this I agree with Terms and Conditions
@@ -104,18 +100,6 @@
       </div>
     </Box>
 
-    <Box :code="codePulse" title="Pulse">
-      <template #description>
-        <p class="mx-6">Pulse helps you to catch user's attention</p>
-      </template>
-      <it-checkbox
-        v-model="pulseValue"
-        variant="primary"
-        pulse
-        label="Look at me"
-      />
-    </Box>
-
     <props-table :slot-sheet="slotSheet" :data-sheet="dataSheet" />
   </div>
 </template>
@@ -127,10 +111,8 @@ export default defineComponent({
   data: () => ({
     checkboxDisabled: false,
     checkboxValue: false,
-    checkboxPulse: false,
     checkboxLabel: 'Checkbox',
     checkboxSubLabel: '',
-    checkboxIcon: 'check',
     checkboxType: 'primary',
     checkboxTypes: ['primary', 'success', 'danger', 'warning', 'default'],
 
@@ -154,8 +136,6 @@ export default defineComponent({
 <it-checkbox ||| variant="warning" ||| label="Warning" v-model="typesCheck" />
 <it-checkbox label="Default" v-model="typesCheck" />`,
 
-    codePulse: `<it-checkbox variant="primary" pulse label="Look at me" v-model="pulseValue" />`,
-
     codeLine: `<it-checkbox variant="primary" label="It's time" v-model="lineCheck0" ||| line-through |||/>
 <it-checkbox variant="primary" label="For" v-model="lineCheck1" ||| line-through |||/>
 <it-checkbox variant="primary" label="One more" v-model="lineCheck2" ||| line-through |||/>
@@ -169,13 +149,6 @@ export default defineComponent({
 </it-checkbox>`,
 
     dataSheet: [
-      {
-        property: 'type',
-        type: ['String'],
-        default: 'default',
-        values: ['primary', 'success', 'danger', 'warning', 'default'],
-        description: 'Type of the checkbox',
-      },
       {
         property: 'label',
         type: ['String'],
@@ -210,13 +183,6 @@ export default defineComponent({
         default: false,
         values: [],
         description: 'Checkbox value',
-      },
-      {
-        property: 'pulse',
-        type: ['Boolean'],
-        default: false,
-        values: [],
-        description: 'Add pulse to the element',
       },
     ],
 

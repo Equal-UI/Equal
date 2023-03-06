@@ -15,35 +15,35 @@
       </template>
     </Demobox>
 
-    <Box :code="typesCode" title="Type">
+    <Box :template="typesCode" title="Type">
       <it-avatar />
       <it-avatar square />
     </Box>
 
-    <Box :code="colorCode" title="Color">
+    <Box :template="colorCode" title="Color">
       <it-avatar color="#3051ff" />
       <it-avatar color="#f93155" />
       <it-avatar color="#131313" />
     </Box>
 
-    <Box id="suda" :code="imageCode" title="Image">
+    <Box id="suda" :template="imageCode" title="Image">
       <it-avatar :src="husky" />
       <it-avatar :src="husky" square />
     </Box>
 
-    <Box :code="textCode" title="Initials">
+    <Box :template="textCode" title="Initials">
       <it-avatar color="#3051ff" text="Yan" />
       <it-avatar color="#3051ff" text="Yan Savinov" />
     </Box>
 
-    <Box :code="sizeCode" title="Size">
+    <Box :template="sizeCode" title="Size">
       <it-avatar />
       <it-avatar size="50px" />
       <it-avatar size="60px" />
       <it-avatar size="70px" />
     </Box>
 
-    <Box :code="badgeCode" title="With badge">
+    <Box :template="badgeCode" title="With badge">
       <it-badge value="1">
         <it-avatar :src="husky" square />
       </it-badge>
@@ -52,7 +52,7 @@
       </it-badge>
     </Box>
 
-    <Box :code="groupCode" title="Group">
+    <Box :template="groupCode" title="Group">
       <it-avatar-group>
         <it-avatar :src="husky" />
         <it-avatar :src="husky" />
@@ -88,7 +88,7 @@
       </it-avatar-group>
     </Box>
 
-    <Box :code="groupMaxCode" title="Group with avatars limit">
+    <Box :template="groupMaxCode" title="Group with avatars limit">
       <it-avatar-group :max="3">
         <it-avatar :src="husky" />
         <it-avatar :src="husky" />

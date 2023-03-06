@@ -17,7 +17,7 @@ import Input from './components/input'
 import Spinner from './components/spinner'
 import Loadingbar from './components/loadingbar'
 import Modal from './components/modal'
-import Notification from './components/notification'
+import { useNotification } from './components/notification'
 import NumberInput from './components/numberinput'
 import Popover from './components/popover'
 import Progressbar from './components/progressbar'
@@ -73,7 +73,6 @@ function install(Vue: App, configuration: EqualUIConfiguration) {
   for (const component in components) {
     Vue.component(components[component].name, components[component])
   }
-  Vue.config.globalProperties.$Notification = Notification(configuration)
   Vue.config.globalProperties.$Equal = {
     drawers: [],
     modals: [],
@@ -102,7 +101,7 @@ export { default as Input } from './components/input'
 export { default as Spinner } from './components/spinner'
 export { default as Loadingbar } from './components/loadingbar'
 export { default as Modal } from './components/modal'
-export { default as Notification } from './components/notification'
+export { useNotification } from './components/notification'
 export { default as NumberInput } from './components/numberinput'
 export { default as Popover } from './components/popover'
 export { default as Progressbar } from './components/progressbar'

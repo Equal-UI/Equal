@@ -41,7 +41,7 @@
         />
       </template>
     </Demobox>
-    <Box :code="variantsCode" title="Variants">
+    <Box :template="variantsCode" title="Variants">
       <it-textarea
         v-model="validValue"
         :label-top="textareaTopLabel"
@@ -61,7 +61,7 @@
         message="Validation error"
       />
     </Box>
-    <Box :code="disabledCode" title="Disabled">
+    <Box :template="disabledCode" title="Disabled">
       <it-textarea
         v-model="disabledValue"
         :label-top="textareaTopLabel"

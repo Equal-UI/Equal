@@ -20,7 +20,7 @@
       </template>
     </Demobox>
 
-    <Box :code="tooltipCode" title="With Tooltip">
+    <Box :template="tooltipCode" title="With Tooltip">
       <div class="flex flex-col items-center">
         <it-colorpicker show-tooltip :value="color" @change="updateColor" />
 
@@ -44,7 +44,7 @@
       </div>
     </Box>
 
-    <Box :code="popoverCode" title="Use with it-popover">
+    <Box :template="popoverCode" title="Use with it-popover">
       <div class="flex flex-col">
         <it-popover borderless>
           <it-button>Choose color</it-button>
@@ -56,7 +56,7 @@
       </div>
     </Box>
 
-    <Box :code="usageCode" title="Use example">
+    <Box :template="usageCode" title="Use example">
       <div class="flex flex-col items-center space-y-8">
         <it-colorpicker :value="exampleColor" @change="updateExampleColor" />
         <it-spinner

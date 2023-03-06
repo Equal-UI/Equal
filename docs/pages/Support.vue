@@ -1,40 +1,39 @@
 <template>
   <div>
-    <h1 class="mb-4 text-2xl font-bold">Support</h1>
+    <h1 class="mb-4 text-2xl font-bold">{{ $t('sidebar.support') }}</h1>
     <div
       class="flex w-full flex-col rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"
     >
-      <p class="">
-        We are grateful for your interest in supporting Equal UI! Your support
-        helps us to continue developing and maintaining the project, as well as
-        adding new features and improving documentation.
+      <p>
+        {{ $t('support.intro') }}
       </p>
 
-      <h3 class="mt-4 text-base font-semibold">Ways to Support</h3>
+      <h3 class="mt-4 mb-2 text-base font-semibold">
+        {{ $t('support.ways_to_support_title') }}
+      </h3>
 
-      <ul class="list-inside list-disc">
-        <li class="my-2">Make a financial contribution via crypto.</li>
-        <li class="my-2">Star and share the repository on GitHub.</li>
-        <li class="my-2">
-          Leave a positive review on the project's listing in package managers.
+      <ul class="list-inside list-disc space-y-2">
+        <li>{{ $t('support.via_crypto') }}</li>
+        <li>{{ $t('support.github_star') }}</li>
+        <li>
+          {{ $t('support.review') }}
         </li>
-        <li class="my-2">Promote the project on social media.</li>
-        <li class="my-2">
-          Contribute to the project by reporting bugs, fixing issues, or
-          implementing new features.
+        <li>{{ $t('support.promote') }}</li>
+        <li>
+          {{ $t('support.contribute') }}
         </li>
       </ul>
 
-      <h3 class="mt-4 text-base font-semibold">Donations</h3>
+      <h3 class="mt-4 text-base font-semibold">
+        {{ $t('support.donations_title') }}
+      </h3>
 
       <p class="my-2">
-        At this moment the only way you can support the author is crypto. All
-        donations go towards maintaining the project, development time, and
-        other expenses.
+        {{ $t('support.donations_text') }}
       </p>
 
       <p class="my-2 max-w-full overflow-hidden text-ellipsis">
-        Cardano wallet:
+        {{ $t('support.cardano_wallet') }}
         <it-tooltip class="inline-block max-w-full">
           <it-tag
             variant="primary"
@@ -48,7 +47,7 @@
           </template>
         </it-tooltip>
         <it-divider class="my-2" />
-        Ethereum wallet:
+        {{ $t('support.eth_wallet') }}
         <it-tooltip class="inline-block max-w-full">
           <it-tag
             variant="primary"
@@ -64,12 +63,10 @@
       </p>
 
       <p class="my-2">
-        Thank you for your support of Equal UI! It is greatly appreciated and
-        helps to ensure the continued development and improvement of the
-        project.
+        {{ $t('support.thanks') }}
       </p>
       <p class="my-2">
-        For any questions about sponsoring project you can contact
+        {{ $t('support.contact') }}
         <it-tooltip class="inline-block">
           <it-tag variant="primary" @click="clickCopy">
             yan.savinov.hire@gmail.com
@@ -84,9 +81,10 @@
 </template>
 
 <script setup lang="ts">
-const copyText = ref('Click to copy')
-const copyTextWallet = ref('Click to copy')
-const copyTextWalletEth = ref('Click to copy')
+const clickText = 'Click to copy'
+const copyText = ref(clickText)
+const copyTextWallet = ref(clickText)
+const copyTextWalletEth = ref(clickText)
 
 async function clickCopy() {
   copyText.value = 'Copied!'

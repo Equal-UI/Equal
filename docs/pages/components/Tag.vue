@@ -25,14 +25,14 @@
         <it-checkbox variant="primary" v-model="tagClosable" label="Closable" />
       </template>
     </Demobox>
-    <Box :code="variantsCode" title="variants">
+    <Box :template="variantsCode" title="variants">
       <it-tag>Neutral</it-tag>
       <it-tag variant="primary">Primary</it-tag>
       <it-tag variant="success">Success</it-tag>
       <it-tag variant="danger">Danger</it-tag>
       <it-tag variant="warning">Warning</it-tag>
     </Box>
-    <Box :code="filledCode" title="Filled">
+    <Box :template="filledCode" title="Filled">
       <it-tag filled>Neutral</it-tag>
       <it-tag variant="primary" filled>Primary</it-tag>
       <it-tag variant="success" filled>Success</it-tag>

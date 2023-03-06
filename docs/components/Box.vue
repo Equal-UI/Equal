@@ -11,49 +11,85 @@
       <slot></slot>
     </div>
 
-    <div class="it-box-code relative w-full" v-if="code && expanded">
-      <transition
-        v-bind="{
-          'enter-active-class': 'duration-75',
-          'enter-to-class': 'opacity-100',
-          'enter-from-class': 'opacity-0',
-          'leave-active-class': 'duration-75',
-          'leave-to-class': 'opacity-0',
-          'leave-from-class': 'opacity-100',
-        }"
-      >
-        <it-button
-          :variants="{
-            $: { root: '!absolute top-3 right-3 !px-2', text: '!text-white' },
-          }"
-          :variant="['text', '$']"
-          v-show="!showExpand || showCopy"
-          @click="clickCopy"
-          v-tooltip="tooltipValue"
-        >
-          <template #icon>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-              />
-            </svg>
-          </template>
-        </it-button>
-      </transition>
-      <prism
-        class="border-t border-t-white !pr-14 dark:border-t-gray-600"
-        language="html"
-        :code="code"
-      ></prism>
+    <div
+      class="it-box-code relative w-full"
+      v-if="(template || code) && expanded"
+    >
+      <it-tabs>
+        <it-tab :title="$t('examplebox.template')" class="relative">
+          <it-button
+            :variants="{
+              $: {
+                root: '!absolute top-3 right-3 !px-2',
+                text: '!text-white',
+              },
+            }"
+            :variant="['text', '$']"
+            v-show="!showExpand || showCopy"
+            @click="copyTemplate"
+            v-tooltip="tooltipValueTemplate"
+          >
+            <template #icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </svg>
+            </template>
+          </it-button>
+
+          <prism
+            class="border-t border-t-white !pr-14 dark:border-t-gray-600"
+            language="html"
+            :code="template"
+          ></prism>
+        </it-tab>
+        <it-tab v-if="code" :title="$t('examplebox.code')" class="relative">
+          <it-button
+            :variants="{
+              $: {
+                root: '!absolute top-3 right-3 !px-2',
+                text: '!text-white',
+              },
+            }"
+            :variant="['text', '$']"
+            v-show="!showExpand || showCopy"
+            @click="copyCode"
+            v-tooltip="tooltipValueCode"
+          >
+            <template #icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </svg>
+            </template>
+          </it-button>
+          <prism
+            class="border-t border-t-white !pr-14 dark:border-t-gray-600"
+            language="js"
+            :code="code"
+          ></prism>
+        </it-tab>
+      </it-tabs>
     </div>
     <it-divider v-if="showExpand" />
     <it-button
@@ -78,7 +114,7 @@
           />
         </svg>
       </template>
-      {{ expanded ? 'Hide code' : 'Show code' }}
+      {{ expanded ? $t('examplebox.hide-code') : $t('examplebox.show-code') }}
     </it-button>
   </div>
 </template>
@@ -87,6 +123,7 @@
 import { ref, computed } from 'vue'
 
 interface Props {
+  template?: string
   code?: string
   title?: string
   overflowHidden?: boolean
@@ -96,21 +133,31 @@ const props = withDefaults(defineProps<Props>(), {
   overflowHidden: true,
 })
 
-const copyText = ref('Copy to clipboard')
+const copyTextTemplate = ref('Copy to clipboard')
+const copyTextCode = ref('Copy to clipboard')
 const expanded = ref(false)
 const showCopy = ref(false)
 
-const tooltipValue = { position: 'left', content: copyText }
+const tooltipValueTemplate = { position: 'left', content: copyTextTemplate }
+const tooltipValueCode = { position: 'left', content: copyTextCode }
 
-const showExpand = computed(() => (props.code || '').split('\n').length > 3)
+const showExpand = computed(
+  () =>
+    (props.template || '').split('\n').length > 3 ||
+    (props.code || '').split('\n').length > 3,
+)
 
 function toggleExpand() {
   showCopy.value = !showCopy.value
   expanded.value = !expanded.value
 }
 
-async function clickCopy() {
-  copyText.value = 'Copied!'
+async function copyTemplate() {
+  copyTextTemplate.value = 'Copied!'
+  await navigator.clipboard.writeText(props.template!)
+}
+async function copyCode() {
+  copyTextCode.value = 'Copied!'
   await navigator.clipboard.writeText(props.code!)
 }
 

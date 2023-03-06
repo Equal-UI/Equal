@@ -1,33 +1,31 @@
 <template>
-  <transition name="fade">
-    <div v-show="visible" :class="variant.root">
-      <slot name="icon" />
-      <div>
-        <p :class="variant.title">{{ title }}</p>
-        <p v-if="!defaultSlot && body" :class="variant.body">{{ body }}</p>
-        <p v-if="defaultSlot" :class="variant.body">
-          <slot />
-        </p>
-      </div>
-
-      <button v-if="closable" :class="variant.closeIcon" @click="clickCross">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="h-6 w-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+  <div v-show="visible" :class="variant.root">
+    <slot name="icon" />
+    <div>
+      <p :class="variant.title">{{ title }}</p>
+      <p v-if="!defaultSlot && body" :class="variant.body">{{ body }}</p>
+      <p v-if="defaultSlot" :class="variant.body">
+        <slot />
+      </p>
     </div>
-  </transition>
+
+    <button v-if="closable" :class="variant.closeIcon" @click="clickCross">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-6 w-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
 </template>
 
 <script lang="ts">

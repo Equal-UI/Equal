@@ -12,7 +12,7 @@
       <prism
         language="js"
         class="rounded border dark:border-neutral-700"
-        code="// e.g., equal-vue/dist/theme/full
+        template="// e.g., equal-vue/dist/theme/full
 
 {
   ...otherComponents,
@@ -95,7 +95,7 @@
       <prism
         language="html"
         class="rounded border dark:border-neutral-700"
-        code='// First import theme file in your script like this:
+        template='// First import theme file in your script like this:
 // import variant from "equal-vue/dist/theme/full"
         
 <Transition ||| v-bind="variant.transitions.fade" |||>
