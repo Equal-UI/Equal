@@ -23,13 +23,13 @@ Equal UI is a Vue 3 hackable components library with 30+ components on top of Ta
 
 # Features
 
-- Enterpise class UI based on Equal design system
-- Built-in dark theme
-- Full components customization
-- Theme building feature with Tailwindcss
-- Lightweight: 12KB brotli
-- Includes 30+ components
-- Based on TypeScript
+🔥 One of the best visuals in Vue ecosystem
+🌃 Built-in dark theme
+🎨 Full customization
+💬 Have tooltips, notifications, popovers
+👌 Lightweight: 12KB brotli
+🔧 Includes 30+ components
+💅 Uses your Tailwindcss classes
 
 # Links
 

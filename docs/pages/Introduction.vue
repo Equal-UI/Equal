@@ -4,8 +4,8 @@
     <div
       class="flex w-full flex-col rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"
     >
-      <p>
-        <b>Equal UI</b>
+      <p class="dark:text-slate-300">
+        <b class="dark:text-white">Equal UI</b>
         is a design philosophy that focuses on creating user interfaces that are
         accessible, intuitive, and easy to use for all users, regardless of
         their physical abilities or technological expertise. It involves

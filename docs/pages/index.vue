@@ -10,7 +10,7 @@
         Equal UI
       </h1>
       <h4
-        class="px-4 text-center text-lg font-medium text-slate-600 dark:text-slate-400 md:px-32"
+        class="px-4 text-center text-xl font-medium text-slate-600 dark:text-slate-300 md:px-32"
       >
         {{ $t('landing.title') }}
       </h4>
