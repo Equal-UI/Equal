@@ -31,7 +31,7 @@ export const useNotification = () => {
     'config',
     {} as EqualUIConfiguration,
   )
-  return (options: Partial<INotificationOptions> = {}, children: VNode) => {
+  return (options: Partial<INotificationOptions> = {}, children?: VNode) => {
     options.placement = options.placement || Positions.TR
     const onClose = options.onClose
     const id = idStart++

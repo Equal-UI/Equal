@@ -15,7 +15,7 @@
       <prism
         language="html"
         class="rounded border dark:border-neutral-700"
-        template="<it-button v-tooltip=&quot;{ content: 'Top tooltip' }&quot;>Top</it-button>
+        code="<it-button v-tooltip=&quot;{ content: 'Top tooltip' }&quot;>Top</it-button>
 
 // or render you own components with h() function
 <it-button v-tooltip=&quot;{ content: 'Top tooltip', children: h('YourComponent') }&quot;>Top</it-button>"

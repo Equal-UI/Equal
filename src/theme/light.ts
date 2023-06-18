@@ -397,7 +397,7 @@ export default {
     variants: {
       default: {
         bordered: 'shadow-slate-600/10 border-slate-300',
-        header: 'shadow-slate-300',
+        header: '!shadow-slate-300',
         tab: 'disabled:text-gray-300 after:bg-blue-600',
       },
     },

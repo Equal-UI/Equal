@@ -402,7 +402,7 @@ export default {
     variants: {
       default: {
         bordered: 'shadow-slate-600/10 border-zinc-500',
-        header: 'shadow-zinc-500',
+        header: '!shadow-zinc-500',
         verticalHeader: '!shadow-zinc-500',
         tab: ' after:bg-blue-600 disabled:text-gray-500 text-white',
         body: 'text-white',

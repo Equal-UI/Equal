@@ -8,6 +8,7 @@ import { EqualUIConfiguration } from '@/types/variant'
 import { inject } from 'vue'
 import { Components } from '@/models/enums'
 import { VariantJSWithClassesListProps } from '@/helpers/getVariantProps'
+import { twMerge } from 'tailwind-merge'
 
 export const selectClasses = (
   classesObject: CSSClassKeyValuePair,
@@ -79,7 +80,7 @@ export const useVariants = <T>(
 
   for (let [key, value] of Object.entries(finalResult)) {
     // @ts-ignore
-    finalResult[key] = mergeClasses(value)
+    finalResult[key] = twMerge(mergeClasses(value))
   }
 
   finalResult.transitions = config?.transitions || {}

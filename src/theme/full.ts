@@ -404,8 +404,8 @@ export default {
     variants: {
       default: {
         bordered: 'shadow-slate-600/10 border-slate-300 dark:border-zinc-500',
-        header: 'shadow-slate-300 dark:shadow-zinc-500',
-        verticalHeader: '!shadow-slate-300 dark:!shadow-zinc-500',
+        header: '!shadow-slate-300 dark:!shadow-zinc-500',
+        verticalHeader: '!shadow-slate-300 dark:!shadow-zinc-500 !shadow-[inset_-1px_0_0_0]',
         tab: 'disabled:text-gray-300 after:bg-blue-600 dark:disabled:text-gray-500 dark:text-white',
         body: 'dark:text-white',
       },
