@@ -158,7 +158,7 @@
 <script lang="ts">
 import { defineComponent, h } from 'vue'
 import { useNotification } from '@/'
-import { NotificationExample } from '#components'
+import { NotificationExample as NotificationExampleComponent } from '#components'
 
 export default defineComponent({
   setup() {
@@ -169,7 +169,7 @@ export default defineComponent({
           duration: 3000,
           placement,
         },
-        h(NotificationExample),
+        h(NotificationExampleComponent),
       )
     }
     return { notification, notificationExample }
