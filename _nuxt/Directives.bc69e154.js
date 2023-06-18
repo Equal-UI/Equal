@@ -1,0 +1,4 @@
+import{_ as a}from"./Prism.8f2ef735.js";import{a as c,r as i,o as s,b as l,e as t,f as o,h as e,w as d}from"./entry.48add3f8.js";const p={},_={class:"mb-4 text-2xl font-bold"},u={class:"flex w-full flex-col space-y-4 rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"},h=t("p",null," Equal UI has v-tooltip directive to create tooltips with very specific content and behavior ",-1);function f(m,b){const n=i("it-tag"),r=a;return s(),l("div",null,[t("h1",_,[o(" Directives "),e(n,{variant:"warning"},{default:d(()=>[o("This page is WIP")]),_:1})]),t("div",u,[h,e(r,{language:"html",class:"rounded border dark:border-neutral-700",code:`<it-button v-tooltip="{ content: 'Top tooltip' }">Top</it-button>
+
+// or render you own components with h() function
+<it-button v-tooltip="{ content: 'Top tooltip', children: h('YourComponent') }">Top</it-button>`})])])}const g=c(p,[["render",f]]);export{g as default};
