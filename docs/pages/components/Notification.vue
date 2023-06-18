@@ -175,7 +175,6 @@ export default defineComponent({
     return { notification, notificationExample }
   },
   data: () => ({
-    NotificationExample,
     typesTemplate: `<it-button @click="notificationExample()">
   Notification example
 </it-button>`,
