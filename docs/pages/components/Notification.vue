@@ -181,7 +181,6 @@ export default defineComponent({
 
     durationCode: `import { defineComponent } from 'vue'
 import { useNotification } from '@/'
-import { NotificationExample } from '#components'
 
 export default defineComponent({
   setup() {
@@ -287,7 +286,6 @@ export default defineComponent({
 
     typesCode: `import { defineComponent, h } from 'vue'
 import { useNotification } from 'equal-vue'
-import { NotificationExample } from '#components'
 
 export default defineComponent({
   setup() {
