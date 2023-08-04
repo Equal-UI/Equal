@@ -40,25 +40,25 @@ const isDev = process.env.NODE_ENV === 'development'
 const { locale, t } = useI18n()
 const notification = useNotification()
 
-watch(locale, () => {
-  if (!['en'].includes(locale.value)) {
-    const myNotification = notification({
-      title: t('improve_translation_title'),
-      text: t('improve_translation_text'),
-      placement: 'bottom-right',
-      duration: 10000,
-      variants: {
-        $: {
-          root: 'max-w-lg',
-        },
-      },
-      variant: ['default', '$'],
-    })
-    // setTimeout(() => {
-    //   myNotification()
-    // }, 3000)
-  }
-})
+// watch(locale, () => {
+//   if (!['en'].includes(locale.value)) {
+//     const myNotification = notification({
+//       title: t('improve_translation_title'),
+//       text: t('improve_translation_text'),
+//       placement: 'bottom-right',
+//       duration: 10000,
+//       variants: {
+//         $: {
+//           root: 'max-w-lg',
+//         },
+//       },
+//       variant: ['default', '$'],
+//     })
+//     // setTimeout(() => {
+//     //   myNotification()
+//     // }, 3000)
+//   }
+// })
 
 const fps = isDev ? useFps() : 0
 
