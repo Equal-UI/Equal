@@ -202,7 +202,7 @@ import { TEvents, TTheme } from '../types/Events'
 import { useI18n } from 'vue-i18n'
 const isDev = process.env.NODE_ENV === 'development'
 
-const { availableLocales, locale, fallbackLocale, fal } = useI18n()
+const { availableLocales, locale, fallbackLocale } = useI18n()
 
 const toggleThemeValue = ref<TTheme>('light')
 const emitter = inject<Emitter<TEvents>>('emitter')
