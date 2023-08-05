@@ -215,7 +215,6 @@ const valueWithFallback = computed(() => {
   if (availableLocales.includes(locale.value)) {
     return locale.value
   }
-  console.log('1111!!!!!!!!!', fallbackLocale)
   return fallbackLocale.value
 })
 
