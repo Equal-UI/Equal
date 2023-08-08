@@ -71,6 +71,6 @@ import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 createApp.use(Button, Config).use(Switch, Config)
 ```
 
-# License
+# 许可证
 
 [MIT](https://raw.githubusercontent.com/Equal-UI/Equal/master/LICENSE)
