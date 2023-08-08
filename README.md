@@ -22,7 +22,7 @@ Equal UI is a Vue 3 hackable components library with 30+ components on top of Ta
 </div>
 
 ---
-<a href="./README_zh-Hans.md">中文简体</a>
+<a href="./README_zh-hans.md">中文简体</a>
 
 # Features
 
