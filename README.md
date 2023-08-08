@@ -21,6 +21,9 @@ Equal UI is a Vue 3 hackable components library with 30+ components on top of Ta
   <a href="https://equal-ui.github.io/Equal/"><strong>Explore Equal UI docs</strong></a>
 </div>
 
+---
+<a href="./README_zh-Hans.md">中文简体</a>
+
 # Features
 
 - 🔥 One of the best visuals in Vue ecosystem
