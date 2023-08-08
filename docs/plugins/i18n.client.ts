@@ -1,17 +1,17 @@
 import { createI18n } from 'vue-i18n'
-import en from '../locales/en.json'
-import zh from '../locales/zh.json'
+import { en, zhHans, zhHant } from '../locales'
 
 // @ts-ignore
 export default defineNuxtPlugin(({ vueApp }) => {
   const i18n = createI18n({
     legacy: false,
     globalInjection: true,
-    locale: navigator.language.split('-')[0],
+    locale: window.navigator.language,
     fallbackLocale: 'en',
     messages: {
       en,
-      zh
+      'zh-Hans': zhHans,
+      'zh-Hant': zhHant,
     },
   })
 

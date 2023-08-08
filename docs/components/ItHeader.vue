@@ -142,7 +142,11 @@
             </template>
           </it-toggle>
         </div>
-        <it-select v-model="$i18n.locale" :options="availableLocales">
+        <it-select
+          :model-value="valueWithFallback"
+          @update:modelValue="$i18n.locale = $event"
+          :options="availableLocales"
+        >
           <template #icon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -193,18 +197,25 @@
 
 <script setup lang="ts">
 import { Emitter } from 'mitt'
-import { inject, ref, watch } from 'vue'
+import { computed, inject, ref, watch } from 'vue'
 import { TEvents, TTheme } from '../types/Events'
 import { useI18n } from 'vue-i18n'
 const isDev = process.env.NODE_ENV === 'development'
 
-const { availableLocales } = useI18n()
+const { availableLocales, locale, fallbackLocale } = useI18n()
 
 const toggleThemeValue = ref<TTheme>('light')
 const emitter = inject<Emitter<TEvents>>('emitter')
 
 watch(toggleThemeValue, (value) => {
   emitter?.emit('theme', value)
+})
+
+const valueWithFallback = computed(() => {
+  if (availableLocales.includes(locale.value)) {
+    return locale.value
+  }
+  return fallbackLocale.value
 })
 
 const openSidebar = () => {
