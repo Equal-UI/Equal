@@ -16,31 +16,28 @@
 </h2>
 
 <div align="center">
-Equal UI is a Vue 3 hackable components library with 30+ components on top of Tailwindcss
+Equal UI 是一个 Vue 3 可拆解的组件库，在 Tailwindcss 之上包含 30+ 个组件
 <br>
-  <a href="https://equal-ui.github.io/Equal/"><strong>Explore Equal UI docs</strong></a>
+  <a href="https://equal-ui.github.io/Equal/"><strong>探索 Equal UI 文档</strong></a>
 </div>
 
----
-<a href="./README_zh-hans.md">中文简体</a>
+# 特征
 
-# Features
+- 🔥 Vue 生态系统中最好的视觉效果之一
+- 🌃 内置深色主题
+- 🎨 完全定制
+- 💬 有工具提示、通知、弹出框
+- 👌 轻量级：12KB brotli
+- 🔧 包括 30+ 组件
+- 💅 使用你的顺风类
 
-- 🔥 One of the best visuals in Vue ecosystem
-- 🌃 Built-in dark theme
-- 🎨 Full customization
-- 💬 Have tooltips, notifications, popovers
-- 👌 Lightweight: 12KB brotli
-- 🔧 Includes 30+ components
-- 💅 Uses your Tailwindcss classes
-
-# Links
+# 链接
 
 <b> Twitter: </b> [@Yan](https://twitter.com/k0mmsussertod)
 
-# Install
+# 安装
 
-You need [Vue.js](https://v3.vuejs.org/) version 3.1+
+你需要 [Vue.js](https://v3.vuejs.org/) 版本 3.1+
 
 ```bash
 # npm
@@ -52,9 +49,9 @@ npm install equal-vue
 yarn add equal-vue
 ```
 
-# Usage
+# 用法
 
-## All components
+## 所有组件
 
 ```js
 import { createApp } from 'vue'
@@ -64,7 +61,7 @@ import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 createApp.use(Equal, Config)
 ```
 
-## Or individual components
+## 或单个组件
 
 ```js
 import { createApp } from 'vue'
@@ -74,6 +71,6 @@ import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 createApp.use(Button, Config).use(Switch, Config)
 ```
 
-# License
+# 许可证
 
 [MIT](https://raw.githubusercontent.com/Equal-UI/Equal/master/LICENSE)
