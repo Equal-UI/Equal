@@ -55,6 +55,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 const alertVisible = ref(true)
 const alertTitle = ref('Alert title')
 const alertBody = ref('We think we know you')
