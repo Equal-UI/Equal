@@ -63,6 +63,13 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
+  nitro: {
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+  },
 })
 
 // alias: {
