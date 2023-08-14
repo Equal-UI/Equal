@@ -1,5 +1,5 @@
-import en from './en.json'
-import zhHans from './zh-hans.json'
-import zhHant from './zh-hant.json'
+import en from './en'
+import zhHans from './zh-hans'
+import zhHant from './zh-hant'
 
 export { en, zhHans, zhHant }
