@@ -1,47 +1,41 @@
 <template>
   <div>
-    <h1 class="mb-4 text-2xl font-bold">Introduction</h1>
+    <h1 class="mb-4 text-2xl font-bold">
+      {{ $t('introduction.title') }}
+    </h1>
     <div
       class="flex w-full flex-col rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"
     >
-      <p class="dark:text-slate-300">
+      <i18n-t
+        keypath="introduction.description"
+        tag="p"
+        class="dark:text-slate-300"
+      >
         <b class="dark:text-white">Equal UI</b>
-        is a design philosophy that focuses on creating user interfaces that are
-        accessible, intuitive, and easy to use for all users, regardless of
-        their physical abilities or technological expertise. It involves
-        creating user interfaces that are visually and functionally consistent
-        across different devices and platforms, and that are easy to navigate
-        and use for people with disabilities or special needs. Equal UI aims to
-        create a more inclusive and equitable user experience for all users, by
-        designing interfaces that are easy to understand and use for everyone.
-      </p>
+      </i18n-t>
 
-      <h2 class="my-4 text-lg font-semibold">How it works</h2>
-      <p>
-        Every component's template contains tags with variant blocks. This
-        example shows short version of
+      <h2 class="my-4 text-lg font-semibold">
+        {{ $t('introduction.how_works.label') }}
+      </h2>
+      <i18n-t keypath="introduction.how_works.content" tag="p">
         <it-button
           variant="primary-text"
           nuxt
           to="/components/alert"
           target="_blank"
           rel="noopener noreferrer"
-          class="!text-md !inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+          class="!text-md !inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
         >
           it-alert
         </it-button>
-        :
-      </p>
+      </i18n-t>
+
       <prism
         language="html"
         class="my-4 rounded border dark:border-neutral-700"
         :code="alertCode"
       ></prism>
-      <p>
-        There are a single source of styles in Equal UI. It's the file with
-        object containing classes for every component. There are 3 different
-        types:
-      </p>
+      <p>{{ $t('introduction.types.title') }}</p>
       <ul class="mt-2">
         <li>
           <it-button
@@ -50,10 +44,11 @@
             target="_blank"
             size="big"
             rel="noopener noreferrer"
-            class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+            class="!inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
           >
-            <strong>Full:</strong>
-            contains classes for light and dark themes
+            <i18n-t keypath="introduction.types.type1.description">
+              <strong>{{ $t('introduction.types.type1.name') }}</strong>
+            </i18n-t>
           </it-button>
         </li>
         <li>
@@ -63,10 +58,11 @@
             target="_blank"
             rel="noopener noreferrer"
             size="big"
-            class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+            class="!inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
           >
-            <strong>Light:</strong>
-            contains classes for light theme
+            <i18n-t keypath="introduction.types.type2.description">
+              <strong>{{ $t('introduction.types.type2.name') }}</strong>
+            </i18n-t>
           </it-button>
         </li>
         <li>
@@ -76,28 +72,27 @@
             target="_blank"
             size="big"
             rel="noopener noreferrer"
-            class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+            class="!inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
           >
-            <strong>Dark:</strong>
-            contains classes for dark theme
+            <i18n-t keypath="introduction.types.type3.description">
+              <strong>{{ $t('introduction.types.type3.name') }}</strong>
+            </i18n-t>
           </it-button>
         </li>
       </ul>
 
-      <p class="mt-4">
-        This is how
+      <i18n-t keypath="introduction.blocks_title" tag="p" class="mt-4">
         <it-button
           variant="primary-text"
           nuxt
           to="/components/alert"
           target="_blank"
           rel="noopener noreferrer"
-          class="!text-md !inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+          class="!text-md !inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
         >
           it-alert
         </it-button>
-        block looks:
-      </p>
+      </i18n-t>
 
       <prism
         language="js"
@@ -105,40 +100,29 @@
         :code="alertBlockCode"
       ></prism>
 
-      <p>
+      <i18n-t keypath="introduction.variants.title" tag="p" class="mt-4">
         <strong>Base</strong>
-        contains entries for every major part of the component and applies
-        permanent classes to them
-      </p>
-      <p>
         <strong>Variants</strong>
-        contains entries for every variant of the component. Default variant is
-        applied by default. Classes in chosen variant applies classes on top of
-        the
         <it-tag variant="primary">base</it-tag>
-      </p>
+      </i18n-t>
 
-      <p class="mt-4">
-        To apply variant to the component you need to use
+      <i18n-t keypath="introduction.variants.usage1.title" tag="p" class="mt-4">
         <it-tag variant="primary">variant</it-tag>
-        prop, it works with every Equal UI component
-      </p>
+      </i18n-t>
 
       <prism
         language="html"
         class="my-4 rounded border dark:border-neutral-700"
         :code="usePropCode"
       ></prism>
-      <p>Result:</p>
+      <p>{{ $t('introduction.variants.result') }}</p>
       <it-alert variant="primary" title="Example alert">
         This is the result component with primary variant
       </it-alert>
 
-      <p class="mt-4">
-        Also you can make inline variants via
+      <i18n-t keypath="introduction.variants.usage2.title" tag="p" class="mt-4">
         <it-tag variant="primary">variants</it-tag>
-        prop. You can use multiple variants at the same time!
-      </p>
+      </i18n-t>
 
       <prism
         language="html"
@@ -146,7 +130,7 @@
         :code="multiVarCode"
       ></prism>
 
-      <p>Result:</p>
+      <p>{{ $t('introduction.variants.result') }}</p>
       <it-alert
         :variants="{
           'my-variant': {
@@ -161,41 +145,38 @@
         and classes from two variants.
       </it-alert>
 
-      <p class="mt-4">
-        Equal UI uses Tailwindcss as a classes provider. But you can use you
-        your own classes or another utility classes provider if you want.
-      </p>
+      <p class="mt-4">{{ $t('introduction.note') }}</p>
 
-      <h2 class="my-4 text-lg font-semibold">How to create my own theme?</h2>
-      <p>
-        To create your theme please read the
+      <h2 class="my-4 text-lg font-semibold">
+        {{ $t('introduction.create_theme.title') }}
+      </h2>
+      <i18n-t keypath="introduction.create_theme.step1" tag="p">
         <it-button
           variant="primary-text"
           nuxt
           to="/theming"
-          class="!text-md !inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+          class="!text-md !inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
         >
-          theming
+          {{ $t('introduction.create_theme.theme') }}
         </it-button>
-      </p>
+      </i18n-t>
 
-      <p>
-        Also, do not hesitate to use Customization feature under every component
-        on it's own page
-      </p>
+      <p>{{ $t('introduction.create_theme.step2') }}</p>
 
       <it-divider class="mt-8" />
       <div class="flex flex-col justify-center">
-        <p class="my-4 text-center font-semibold">What's next?</p>
+        <p class="my-4 text-center font-semibold">
+          {{ $t('introduction.next.title') }}
+        </p>
         <div class="flex flex-col justify-around gap-4 md:flex-row">
           <it-button size="big" nuxt to="/start" variant="primary" class="grow">
-            Getting started
+            {{ $t('introduction.next.start') }}
           </it-button>
           <it-button size="big" nuxt to="/contribute" class="grow">
-            How to contribute?
+            {{ $t('introduction.next.contribute') }}
           </it-button>
           <it-button size="big" nuxt to="/support" class="grow">
-            Support the project
+            {{ $t('introduction.next.support') }}
           </it-button>
         </div>
       </div>

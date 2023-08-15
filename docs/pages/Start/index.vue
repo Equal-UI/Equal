@@ -1,10 +1,14 @@
 <template>
   <div>
-    <h1 class="mb-4 text-2xl font-bold">Getting started</h1>
+    <h1 class="mb-4 text-2xl font-bold">
+      {{ $t('start.title') }}
+    </h1>
     <div
       class="flex w-full flex-col rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"
     >
-      <h2 class="mb-5 text-base font-semibold">1. Install with NPM or Yarn</h2>
+      <h2 class="mb-5 text-base font-semibold">
+        {{ $t('start.step1.title') }}
+      </h2>
       <prism
         language="bash"
         class="rounded border dark:border-neutral-700"
@@ -12,22 +16,22 @@
       ></prism>
 
       <h2 class="my-4 text-base font-semibold">
-        2. Install Tailwind version 3.2+
+        {{ $t('start.step2.title') }}
       </h2>
       <p>
-        To install Tailwind follow his official documentation:
+        {{ $t('start.step2.description') }}
         <it-button
           variant="primary-text"
           href="https://tailwindcss.com/docs/installation"
           target="_blank"
           rel="noopener noreferrer"
-          class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
+          class="!inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
         >
           https://tailwindcss.com/docs/installation
         </it-button>
       </p>
       <p class="my-4 text-base font-semibold">
-        3. Add Equal UI theme file to the
+        {{ $t('start.step3.title') }}
         <code>tailwind.config.js</code>
       </p>
       <prism
@@ -41,55 +45,59 @@
 }"
       ></prism>
 
-      <h2 class="my-5 text-base font-semibold">4. Use all components</h2>
+      <h2 class="my-5 text-base font-semibold">
+        {{ $t('start.step4.title') }}
+      </h2>
       <prism
         language="js"
         class="rounded border dark:border-neutral-700"
         code="import { createApp } from 'vue'
 import Equal from 'equal-vue'
-import Config from 'equal-vue/dist/theme/full' // or light / dark theme 
+import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 
 createApp.use(Equal, Config)"
       ></prism>
 
       <it-collapse class="mt-4">
-        <it-collapse-item title="4.1. Or individual components">
+        <it-collapse-item :title="$t('start.step4_1.title')">
           <prism
             language="js"
             class="rounded border dark:border-neutral-700"
             code="import { createApp } from 'vue'
 import { Button, Alert, Switch } from 'equal-vue'
-import Config from 'equal-vue/dist/theme/full' // or light / dark theme 
+import Config from 'equal-vue/dist/theme/full' // or light / dark theme
 
 createApp.use(Button, Config).use(Switch, Config)"
           ></prism>
         </it-collapse-item>
       </it-collapse>
 
-      <h2 class="mt-5 mb-2 text-base font-semibold">5. Add Inter font</h2>
-      <p class="mb-2">
-        Equal UI uses
-        <it-button
-          variant="primary-text"
-          href="https://fonts.google.com/specimen/Inter"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
-        >
-          Inter
-        </it-button>
-        font by
-        <it-button
-          variant="primary-text"
-          href="https://twitter.com/rsms"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="!inline-block !py-0 !px-1 font-semibold leading-relaxed text-blue-500"
-        >
-          @rsms
-        </it-button>
-        . The simplest way to add it via CDN:
-      </p>
+      <h2 class="mb-2 mt-5 text-base font-semibold">
+        {{ $t('start.step5.title') }}
+      </h2>
+      <div class="mb-2">
+        <i18n-t keypath="start.step5.description" tag="p">
+          <it-button
+            variant="primary-text"
+            href="https://fonts.google.com/specimen/Inter"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="!inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
+          >
+            Inter
+          </it-button>
+          <it-button
+            variant="primary-text"
+            href="https://twitter.com/rsms"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="!inline-block !px-1 !py-0 font-semibold leading-relaxed text-blue-500"
+          >
+            @rsms
+          </it-button>
+        </i18n-t>
+      </div>
+
       <prism
         language="html"
         class="rounded border dark:border-neutral-700"
