@@ -6,8 +6,6 @@
 <p align="center">
 <img src="https://img.shields.io/npm/v/equal-vue?color=blue">
 <img src="https://img.shields.io/npm/l/equal-vue">
-<img src="https://img.shields.io/npm/dw/equal-vue">
-<img src="https://img.badgesize.io/https:/unpkg.com/equal-vue/?label=Brotli%20size%3A%20JS&compression=brotli">
 </p>
 </p>
 
@@ -19,6 +17,13 @@
 Equal UI 是一个 Vue 3 可拆解的组件库，在 Tailwindcss 之上包含 30+ 个组件
 <br>
   <a href="https://equal-ui.github.io/Equal/"><strong>探索 Equal UI 文档</strong></a>
+</div>
+
+<br>
+<div align="center">
+<a href="./README.md">English</a>
+|
+<span><strong>中文简体</strong></span>
 </div>
 
 # 特征

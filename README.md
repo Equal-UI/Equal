@@ -6,8 +6,6 @@
 <p align="center">
 <img src="https://img.shields.io/npm/v/equal-vue?color=blue">
 <img src="https://img.shields.io/npm/l/equal-vue">
-<img src="https://img.shields.io/npm/dw/equal-vue">
-<img src="https://img.badgesize.io/https:/unpkg.com/equal-vue/?label=Brotli%20size%3A%20JS&compression=brotli">
 </p>
 </p>
 
@@ -21,8 +19,12 @@ Equal UI is a Vue 3 hackable components library with 30+ components on top of Ta
   <a href="https://equal-ui.github.io/Equal/"><strong>Explore Equal UI docs</strong></a>
 </div>
 
----
+<br>
+<div align="center">
+<span><strong>English</strong></span>
+|
 <a href="./README_zh-hans.md">中文简体</a>
+</div>
 
 # Features
 
