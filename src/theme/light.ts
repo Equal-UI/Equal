@@ -121,19 +121,19 @@ export default {
     variants: {
       default: {
         switch: 'focus-within:shadow-blue-600/30',
-        switchChecked: 'bg-blue-600',
+        switchChecked: '!bg-blue-600',
       },
       success: {
         switch: 'focus-within:shadow-green-500/30',
-        switchChecked: 'bg-green-500',
+        switchChecked: '!bg-green-500',
       },
       warning: {
         switch: 'focus-within:shadow-yellow-500/30',
-        switchChecked: 'bg-yellow-500',
+        switchChecked: '!bg-yellow-500',
       },
       danger: {
         switch: 'focus-within:shadow-red-500/30',
-        switchChecked: 'bg-red-500',
+        switchChecked: '!bg-red-500',
       },
       disabled: {
         root: 'cursor-not-allowed',
