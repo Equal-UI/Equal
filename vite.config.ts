@@ -4,12 +4,14 @@ import dts from 'vite-plugin-dts'
 const path = require('path')
 
 const config: UserConfig = {
-  alias: [
-    {
-      find: '@',
-      replacement: path.resolve(__dirname, 'src'),
-    },
-  ],
+  resolve: {
+    alias: [
+      {
+        find: '@',
+        replacement: path.resolve(__dirname, 'src'),
+      },
+    ],
+  },
   plugins: [
     vue(),
     dts({
@@ -33,6 +35,9 @@ const config: UserConfig = {
         },
       },
     },
+  },
+  server: {
+    port: 3000,
   },
 }
 
