@@ -1,0 +1,4 @@
+import{_ as s}from"./DLMznalT.js";import{_ as a,p as l,o as c,c as d,a as o,d as e,b as n,w as p}from"./BZMuJF5d.js";const u={},_={class:"mb-4 text-2xl font-bold"},m={class:"flex w-full flex-col space-y-4 rounded border bg-white p-8 dark:border-neutral-700 dark:bg-neutral-800"};function b(f,t){const r=l("it-tag"),i=s;return c(),d("div",null,[o("h1",_,[t[1]||(t[1]=e(" Directives ")),n(r,{variant:"warning"},{default:p(()=>t[0]||(t[0]=[e("This page is WIP")])),_:1})]),o("div",m,[t[2]||(t[2]=o("p",null," Equal UI has v-tooltip directive to create tooltips with very specific content and behavior ",-1)),n(i,{language:"html",class:"rounded border dark:border-neutral-700",code:`<it-button v-tooltip="{ content: 'Top tooltip' }">Top</it-button>
+
+// or render you own components with h() function
+<it-button v-tooltip="{ content: 'Top tooltip', children: h('YourComponent') }">Top</it-button>`})])])}const h=a(u,[["render",b]]);export{h as default};
